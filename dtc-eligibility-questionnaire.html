@@ -110,6 +110,16 @@ body {
 }
 .toc-sidebar a:hover, .toc-sidebar a:focus-visible { color: var(--accent); padding-left: 4px; }
 .toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent-tertiary); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 .toc-sidebar .toc-close {
   position: absolute; top: 16px; right: 16px;
   background: none; border: none; font-size: 1.4rem;
@@ -1041,6 +1051,9 @@ body {
   <a href="#study-guide">Study Guide & Checklist</a>
   <a href="#quiz">Comprehensive Knowledge Check</a>
   <a href="#footnotes">Footnotes</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="documents/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
 </div>
 
 <div class="page-header">

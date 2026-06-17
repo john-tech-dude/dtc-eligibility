@@ -57,6 +57,16 @@ body {
 }
 .toc-sidebar a:hover { color: var(--accent); padding-left: 4px; }
 .toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 .toc-sidebar .toc-close {
   position: absolute; top: 16px; right: 16px;
   background: none; border: none; font-size: 1.4rem;
@@ -330,6 +340,9 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   <a href="#page3">Page 3 — Bill of Exchange</a>
   <a href="#page3" class="sub">UNCITRAL Convention</a>
   <a href="#page3" class="sub">Endorsement & Signature</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="../dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
 </div>
 
 <div class="page-header">

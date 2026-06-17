@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* Dark Theme (Default) */
   --bg-primary: #0a0a0f;
   --bg-secondary: #111118;
   --bg-tertiary: #1a1a25;
@@ -35,6 +36,28 @@
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+[data-theme="light"] {
+  --bg-primary: #f8f6f1;
+  --bg-secondary: #ede9e2;
+  --bg-tertiary: #e2ddd4;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --text-primary: #1a1814;
+  --text-secondary: #3d3830;
+  --text-muted: #7a7468;
+  --accent-gold: #8b6914;
+  --accent-gold-light: #a07c1e;
+  --accent-gold-dark: #6b5010;
+  --accent-blue: #1e3a5f;
+  --accent-blue-light: #2d5a8a;
+  --border-subtle: rgba(139, 105, 20, 0.12);
+  --border-gold: rgba(139, 105, 20, 0.25);
+  --border-gold-bright: rgba(139, 105, 20, 0.45);
+  --shadow-gold: 0 0 60px rgba(139, 105, 20, 0.06);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 16px 48px rgba(139, 105, 20, 0.12);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -53,6 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 /* Animated Background */
@@ -68,12 +92,61 @@ body::before {
     radial-gradient(ellipse at 80% 80%, rgba(26, 58, 92, 0.03) 0%, transparent 50%);
   z-index: -1;
   pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+[data-theme="light"] body::before {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(139, 105, 20, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(30, 58, 95, 0.04) 0%, transparent 50%);
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2.5rem;
+}
+
+/* Theme Toggle — Bottom Right, Icon Only */
+.theme-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-gold);
+  transition: var(--transition);
+}
+
+.theme-toggle:hover svg {
+  color: var(--accent-gold-light);
 }
 
 /* Premium Header */
@@ -84,6 +157,7 @@ header {
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 header::before {
@@ -121,6 +195,11 @@ header::before {
   margin-bottom: 1.5rem;
   letter-spacing: 0.15em;
   text-shadow: 0 0 40px rgba(201, 168, 76, 0.2);
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+[data-theme="light"] .header-logo {
+  text-shadow: 0 0 30px rgba(139, 105, 20, 0.15);
 }
 
 .header-subtitle {
@@ -241,6 +320,18 @@ main {
   border: 1px solid rgba(201, 168, 76, 0.3);
 }
 
+[data-theme="light"] .document-card.professional .document-tag {
+  background: rgba(30, 58, 95, 0.08);
+  color: var(--accent-blue-light);
+  border: 1px solid rgba(30, 58, 95, 0.2);
+}
+
+[data-theme="light"] .document-card.theological .document-tag {
+  background: rgba(139, 105, 20, 0.1);
+  color: var(--accent-gold-dark);
+  border: 1px solid rgba(139, 105, 20, 0.2);
+}
+
 .document-title {
   font-family: var(--font-heading);
   font-size: 1.8rem;
@@ -266,6 +357,11 @@ main {
   border-radius: 8px;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+[data-theme="light"] .document-meta {
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .document-meta-label {
@@ -333,6 +429,14 @@ main {
   box-shadow: 0 8px 24px rgba(26, 58, 92, 0.3);
 }
 
+[data-theme="light"] .document-button:hover {
+  box-shadow: 0 8px 24px rgba(139, 105, 20, 0.25);
+}
+
+[data-theme="light"] .document-card.professional .document-button:hover {
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.25);
+}
+
 .context-section {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
@@ -341,6 +445,7 @@ main {
   margin-bottom: 5rem;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 .context-title {
@@ -370,6 +475,13 @@ main {
   border-left: 4px solid var(--accent-blue);
   padding: 2.5rem;
   border-radius: 0 var(--radius) var(--radius) 0;
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+[data-theme="light"] .note-section {
+  background: rgba(30, 58, 95, 0.06);
+  border: 1px solid rgba(30, 58, 95, 0.15);
+  border-left: 4px solid var(--accent-blue);
 }
 
 .note-title {
@@ -397,6 +509,7 @@ footer {
   color: var(--text-muted);
   font-size: 0.9rem;
   position: relative;
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 footer::before {
@@ -446,28 +559,42 @@ footer::before {
   .header-logo {
     font-size: 2.5rem;
   }
-  
+
   .documents-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .context-section,
   .note-section {
     padding: 2rem;
   }
-  
+
   header {
     padding: 4rem 0 3rem;
   }
-  
+
   main {
     padding: 3rem 0;
   }
 }
 </style>
+<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/B_gibqBG9BW9XPC5a3VwRbgclqhjG5Eko0O92DBAn7FKA73T0x7X_AZJk4_TjoNK8Uh4NZLEhl5Nr6zw4p8prdaDDV-MuPVpOmPDIEYzo_bHRXnmLgpI8zOvCFnUNtztvw3wzqtaetQKg65pyDpWj20m5GGoKYii5bDo7mwNJXfBG6hgxha8QeR2j0KlvHhcVWN1_4w3grjjaKrLEs9yP29p9Akdw8_nnkC_7LNi0EJ_lOaovOl-dcGKbjx1spzPXClGGMrzkSpV9bi6zzjGFk8cIePc7vtW7lz-PSlzhTzuLroxyv1kBmHqjUPobTdHbD2cAsRLYRhRfRosbe_9NXdoS_9DavSdCl_u0cgR-82jmKDNL8Ax9pswGk2oXd0zAbBqY6eECocWWd7cZK6hkglPo7PPWmWjWy6NAvCcy-ZftLzRersyJY0SOCIFKz4yU3hBiZ42LVHVkIuwGvcZEol_q8lrl1iCvCFEP3qquHMQuiIxvPXMWpUutEtdShPeKTKmCFMgJLQKEmAxh5LbRpyXgITQrFmPoV6soQIFxPU3VDoxsDo7so_8j6UYuuff0Tx-3tEenPLqmoYLOLEnSnxF4Af-PG4IYmWe5J-g718mQp29fmDqWfe0AJrQomhnwoHlTKcNeQFLvn2swWav-rNe6zuGIieb0RIRRmYw5bTdsuGEIKsLW3jXsYwr-ZbP9a_bPGg2IM8GVD7u9vY_IcMJN49Tw8mM0G2UlcDtEopalYSbZwoNGp7AyvDWhT2wXWxCoS07KjdbHwTfUdsEYInqcpn7hz39L1w1ZR0-zvce8wA3DEA9yVuxRu4R76eFoDP7UQoTluC4hUtVJ8viSiAd5IrPLIhVgZQiS2gBXsuB8yo8bSuQQn_-eiCCjrRhbe3mdYW3h-POxvSzXSCYEFyE-wXd7_eK-ofUBzyVyn-KUs4vyTWbKm3XS7LG8RIA90rRRd-Ei-KzxBoKJUpq6NuPTPEnRKrFUBvMaSaiRkrF4-QgavU6Xfy4q0mi40jROM7FKFgl_CVOhTys8vBzr9NBLIjGaJNfFNcmwh5lM0LkJXKYXwwahbpleJrCNA'></script><base target="_blank">
 </head>
 <body>
+
+<!-- Theme Toggle — Bottom Right, Icon Only -->
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
+  <!-- Moon icon (shown in light mode, hidden in dark) -->
+  <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <!-- Sun icon (shown in dark mode, hidden in light) -->
+  <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="5"/>
+    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+  </svg>
+</button>
 
 <header>
   <div class="container header-content">
@@ -483,7 +610,7 @@ footer::before {
 <main class="container">
   <div class="section-title">The Collection</div>
   <div class="divider">— ✦ —</div>
-  
+
   <div class="documents-grid">
     <!-- Professional Document -->
     <div class="document-card professional">
@@ -565,7 +692,7 @@ footer::before {
 
   <div class="section-title">Scholarly Context</div>
   <div class="divider">— ✦ —</div>
-  
+
   <div class="context-section">
     <h3 class="context-title">The Distinguished Dual Perspective</h3>
     <div class="context-text">
@@ -595,6 +722,38 @@ footer::before {
     <p class="footer-subtext">Both documents reflect the June 2026 DTC Operational Arrangements and contemporary eligibility requirements</p>
   </div>
 </footer>
+
+<script>
+function updateIcon(theme) {
+  const moon = document.getElementById('moonIcon');
+  const sun = document.getElementById('sunIcon');
+  if (theme === 'dark') {
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  } else {
+    moon.style.display = 'block';
+    sun.style.display = 'none';
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  updateIcon(theme);
+  localStorage.setItem('dtc-theme', theme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+}
+
+// Load saved theme on page load
+(function() {
+  const savedTheme = localStorage.getItem('dtc-theme') || 'dark';
+  setTheme(savedTheme);
+})();
+</script>
 
 </body>
 </html>
