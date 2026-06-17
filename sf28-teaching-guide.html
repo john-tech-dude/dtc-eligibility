@@ -1085,7 +1085,7 @@ body {
     </div>
     <div class="red-flag-card">
       <h4>Corporate or Partnership as Surety</h4>
-      <p>No corporation, partnership, or unincorporated association is acceptable as an <strong>individual surety</strong>. The surety must be a natural person. Members of a partnership cannot serve as sureties on bonds where the partnership is the principal.</p>
+      <p>No corporation, partnership, or unincorporated association is acceptable as an <strong>individual surety</strong>. The surety must be a natural person. <span class="hotspot" data-modal="stockholders" tabindex="0" role="button" onclick="openModal('modal-stockholders')">Stockholders</span> of corporate principals are only acceptable if their qualifications are independent of their stockholdings.</p>
     </div>
     <div class="red-flag-card">
       <h4>Financial Interest in Principal</h4>
@@ -1093,7 +1093,7 @@ body {
     </div>
     <div class="red-flag-card">
       <h4>Net Worth Below Penal Amount</h4>
-      <p>The individual surety must show a net worth <strong>not less than the penal amount</strong> of the bond. Pledging assets worth less than the bond amount, or failing to account for existing liens, renders the affidavit non-compliant.</p>
+      <p>The individual surety must show a net worth <strong>not less than the <span class="hotspot" data-modal="penal-amount" tabindex="0" role="button" onclick="openModal('modal-penal-amount')">penal amount</span></strong> of the bond. Pledging assets worth less than the bond amount, or failing to account for existing liens, renders the affidavit non-compliant.</p>
     </div>
     <div class="red-flag-card">
       <h4>Unattached Asset Documentation</h4>
@@ -1109,7 +1109,7 @@ body {
     </div>
     <div class="red-flag-card">
       <h4>Citizenship Requirement for U.S. Contracts</h4>
-      <p>For contracts awarded in the United States, the surety must be a <strong>U.S. citizen</strong>. Permanent residency only suffices when the contracting officer is located in an outlying area or foreign country.</p>
+      <p>For contracts awarded in the United States, the surety must be a <strong>U.S. citizen</strong>. Permanent residency only suffices when the <span class="hotspot" data-modal="contracting-officer" tabindex="0" role="button" onclick="openModal('modal-contracting-officer')">contracting officer</span> is located in an <span class="hotspot" data-modal="outlying-area" tabindex="0" role="button" onclick="openModal('modal-outlying-area')">outlying area</span> or foreign country.</p>
     </div>
   </div>
 </div>
@@ -1132,7 +1132,7 @@ body {
       <span class="scenario-tag">$500K Bond</span>
       <span class="scenario-tag">Single Surety</span>
     </div>
-    <h4>Scenario A: John Doe — Performance Bond on Construction Contract</h4>
+    <h4>Scenario A: John Doe — <span class="hotspot" data-modal="performance-bond" tabindex="0" role="button" onclick="openModal('modal-performance-bond')">Performance Bond</span> on <span class="hotspot" data-modal="construction-company" tabindex="0" role="button" onclick="openModal('modal-construction-company')">Construction Contract</span></h4>
     <p><strong>The Situation:</strong> John Doe owns a $1.2 million home free and clear in Fairfax County, Virginia. He is asked to serve as individual surety on a $500,000 performance bond for a friend's construction company.</p>
     <p><strong>SF 28 Walkthrough:</strong></p>
     <ul>
@@ -1140,11 +1140,11 @@ body {
       <li><strong>Field 2A (Home Address):</strong> 1234 Maple Drive, Fairfax, VA 22030 — the address of the pledged property.</li>
       <li><strong>Field 3 (Occupation):</strong> Retired Engineer, 35 years — demonstrates stability and income history.</li>
       <li><strong>Field 4A (Employer):</strong> Self-employed consultant — since retired, he states "Retired; former employer: ABC Engineering, Inc."</li>
-      <li><strong>Field 7 (Assets):</strong> Real estate: Single-family residence at 1234 Maple Drive, Fairfax, VA. Legal description: Lot 14, Block 3, Fairfax County Plat Book 445, Page 22. Market value: $1,200,000 (per attached certified appraisal dated within 6 months). Current tax assessment: $1,100,000.</li>
-      <li><strong>Field 8 (Encumbrances):</strong> "None. Property is owned free and clear. No mortgages, liens, judgments, or tax delinquencies." Attach title insurance policy and current tax receipt.</li>
+      <li><strong>Field 7 (Assets):</strong> Real estate: Single-family residence at 1234 Maple Drive, Fairfax, VA. <span class="hotspot" data-modal="legal-description" tabindex="0" role="button" onclick="openModal('modal-legal-description')">Legal description</span>: Lot 14, Block 3, Fairfax County Plat Book 445, Page 22. Market value: $1,200,000 (per attached certified <span class="hotspot" data-modal="appraisal" tabindex="0" role="button" onclick="openModal('modal-appraisal')">appraisal</span> dated within 6 months). Current tax assessment: $1,100,000.</li>
+      <li><strong>Field 8 (Encumbrances):</strong> "None. Property is owned free and clear. No mortgages, liens, judgments, or tax delinquencies." Attach <span class="hotspot" data-modal="title-insurance" tabindex="0" role="button" onclick="openModal('modal-title-insurance')">title insurance</span> policy and current tax receipt.</li>
       <li><strong>Field 9 (Prior Pledges):</strong> "None. This property has never been pledged as surety on any prior bond."</li>
       <li><strong>Field 10 (Signature):</strong> Original ink signature required. John signs in blue or black ink.</li>
-      <li><strong>Field 12 (Notary):</strong> A Virginia notary public administers the oath, signs, affixes seal, and notes commission expiration date.</li>
+      <li><strong>Field 12 (Notary):</strong> A Virginia notary public administers the oath, signs, affixes <span class="hotspot" data-modal="notary-seal" tabindex="0" role="button" onclick="openModal('modal-notary-seal')">seal</span>, and notes <span class="hotspot" data-modal="notary-commission" tabindex="0" role="button" onclick="openModal('modal-notary-commission')">commission expiration</span> date.</li>
     </ul>
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Real estate is the most common pledged asset for individual sureties. The legal description must be precise, the appraisal must be current (within 6 months), and the title must be clean. Net worth ($1.2M) exceeds penal amount ($500K) by a comfortable margin.</div>
   </div>
@@ -1798,6 +1798,204 @@ body {
     </div>
   </div>
 </div>
+
+<!-- Stockholders -->
+<div class="modal-overlay" id="modal-stockholders" role="dialog" aria-modal="true" aria-labelledby="modal-title-stockholders">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-stockholders">Stockholders</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporate Ownership</div>
+        <div class="def-word">Stockholders</div>
+        <p>Owners of shares in a corporation. When a corporate principal is bidding on a government contract, stockholders may not serve as individual sureties unless their personal qualifications are entirely independent of their corporate stock ownership.</p>
+      </div>
+      <p><strong>The independence requirement:</strong> A stockholder's personal assets (home, savings, investments) cannot be used to guarantee a contract for their own corporation. This creates a conflict of interest — the surety would essentially be guaranteeing themselves, which defeats the purpose of having a third-party guarantor.</p>
+      <p><strong>Acceptable scenario:</strong> A stockholder may serve as surety for a different company (unrelated to their stock ownership) if they meet all other SF 28 requirements independently.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.101-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_101_2">acquisition.gov (FAR 28.101-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Penal Amount -->
+<div class="modal-overlay" id="modal-penal-amount" role="dialog" aria-modal="true" aria-labelledby="modal-title-penal-amount">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-penal-amount">Penal Amount</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bond Liability</div>
+        <div class="def-word">Penal Amount</div>
+        <p>The maximum dollar amount for which a surety can be held liable under a bond. This is the bond's face value — the amount the government can collect from the surety if the principal defaults.</p>
+      </div>
+      <p><strong>Net worth requirement:</strong> FAR 28.102-2(a) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This means if the bond is $500,000, the surety must show a net worth of at least $500,000 after accounting for all debts and encumbrances.</p>
+      <p><strong>Calculation example:</strong> If you have $1.2 million in assets and $400,000 in liabilities (mortgage, loans, credit cards), your net worth is $800,000. This qualifies you for bonds up to $800,000 in penal amount.</p>
+      <p><strong>Why this matters:</strong> The government must be confident that if it calls on the bond, the surety has sufficient personal resources to pay the full amount. The penal amount is the ceiling of that exposure.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Contracting Officer -->
+<div class="modal-overlay" id="modal-contracting-officer" role="dialog" aria-modal="true" aria-labelledby="modal-title-contracting-officer">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-contracting-officer">Contracting Officer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Government Official</div>
+        <div class="def-word">Contracting Officer</div>
+        <p>The federal government official responsible for administering government contracts, including evaluating bond acceptability and surety qualifications.</p>
+      </div>
+      <p><strong>Role in bond acceptance:</strong> The contracting officer reviews SF 28 affidavits to ensure they meet FAR requirements, verify that pledged assets are sufficient and properly documented, and determine whether the surety is acceptable for the specific contract.</p>
+      <p><strong>Authority:</strong> Contracting officers have broad discretion to reject inadequate surety arrangements. They may require additional documentation, reject affidavits with discrepancies, or demand corporate surety bonds in place of individual surety arrangements.</p>
+      <p><strong>Geographic jurisdiction:</strong> The contracting officer's location determines certain requirements, such as whether permanent resident (non-citizen) sureties are acceptable. Outlying areas have special citizenship rules.</p>
+      <div class="citation"><strong>Source:</strong> FAR 1.601; FAR 28.102-2. <a href="https://www.acquisition.gov/far/part-1#FAR_1_601">acquisition.gov (FAR 1.601)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Outlying Area -->
+<div class="modal-overlay" id="modal-outlying-area" role="dialog" aria-modal="true" aria-labelledby="modal-title-outlying-area">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-outlying-area">Outlying Area</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Geographic Exception</div>
+        <div class="def-word">Outlying Area</div>
+        <p>A geographic location outside the 50 states and the District of Columbia where the standard U.S. citizenship requirement for individual sureties may be relaxed.</p>
+      </div>
+      <p><strong>Citizenship exception:</strong> Under FAR 28.102-2(b), when a contract is to be performed in an outlying area, a permanent resident alien (lawful permanent resident/green card holder) may serve as an individual surety, even though they are not a U.S. citizen.</p>
+      <p><strong>What qualifies as outlying area:</strong> This includes Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, Northern Mariana Islands, and certain U.S. territories and possessions. It does not include foreign countries.</p>
+      <p><strong>Contracting officer location:</strong> The citizenship exception applies when the contracting officer is located in an outlying area, not just where the contract will be performed. The rationale is that it may be difficult to find U.S. citizens willing to serve as sureties in these locations.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Performance Bond -->
+<div class="modal-overlay" id="modal-performance-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-performance-bond">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-performance-bond">Performance Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contract Bond Type</div>
+        <div class="def-word">Performance Bond</div>
+        <p>A bond that guarantees the principal (contractor) will complete the contract according to its terms. If the principal defaults or fails to perform, the surety must either complete the contract or pay damages up to the penal amount.</p>
+      </div>
+      <p><strong>Common in construction:</strong> Performance bonds are most frequently required on construction contracts, but they may also be used for service contracts, supply contracts, and other types of federal agreements.</p>
+      <p><strong>Relationship to payment bonds:</strong> On many federal construction contracts (under the Miller Act), a performance bond must be accompanied by a payment bond, which guarantees the principal will pay subcontractors, laborers, and material suppliers.</p>
+      <p><strong>Penal amount:</strong> Performance bonds are typically set at 100% of the contract price. For a $500,000 contract, the performance bond would be $500,000.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-1; Miller Act (40 U.S.C. §§ 3131-3134). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_1">acquisition.gov (FAR 28.102-1)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Construction Company -->
+<div class="modal-overlay" id="modal-construction-company" role="dialog" aria-modal="true" aria-labelledby="modal-title-construction-company">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-construction-company">Construction Company</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contractor Type</div>
+        <div class="def-word">Construction Company</div>
+        <p>A business entity engaged in building, construction, renovation, or repair projects. Construction companies are the most common type of principal on federal performance bonds.</p>
+      </div>
+      <p><strong>Why construction needs bonds:</strong> Construction contracts involve significant upfront costs, long project timelines, and complex dependencies. If a contractor fails to complete a project, the financial impact on the government can be substantial. Performance bonds protect the government from this risk.</p>
+      <p><strong>Surety challenges for construction:</strong> Construction companies often have thin margins and volatile cash flows, making them poor candidates for self-bonding. Individual sureties are often needed when the company lacks established bonding capacity with corporate sureties.</p>
+      <p><strong>Common bond requirements:</strong> Construction contracts typically require both performance bonds (guaranteeing completion) and payment bonds (guaranteeing payment to subcontractors and suppliers).</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-1; Miller Act. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_1">acquisition.gov (FAR 28.102-1)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Legal Description -->
+<div class="modal-overlay" id="modal-legal-description" role="dialog" aria-modal="true" aria-labelledby="modal-title-legal-description">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legal-description">Legal Description</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Documentation</div>
+        <div class="def-word">Legal Description</div>
+        <p>The formal, technically precise description of real property as recorded in official land records (deeds, plat books, tax maps). This description, not just the street address, is what legally identifies the pledged asset.</p>
+      </div>
+      <p><strong>Format example:</strong> "Lot 14, Block 3, Fairfax County Plat Book 445, Page 22" or "Beginning at a point on the north side of Oak Street, thence running north 150 feet to the north line of said tract, thence east 200 feet..." (metes and bounds).</p>
+      <p><strong>Why precision matters:</strong> Vague descriptions like "the house at 1234 Maple Street" are insufficient for legal purposes. The legal description must exactly match what's recorded in the county land records to prove ownership and enable the government to perfect its lien interest if needed.</p>
+      <p><strong>Where to find it:</strong> On your property deed, current survey, title commitment, or property tax records. The same legal description appears on all these documents.</p>
+      <div class="citation"><strong>Source:</strong> Local county recorder office; property title documents.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Title Insurance -->
+<div class="modal-overlay" id="modal-title-insurance" role="dialog" aria-modal="true" aria-labelledby="modal-title-title-insurance">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-title-insurance">Title Insurance</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Insurance Product</div>
+        <div class="def-word">Title Insurance Policy</div>
+        <p>An insurance policy that protects against loss from defects in title to real property, such as undisclosed liens, forged documents, or errors in the public record.</p>
+      </div>
+      <p><strong>Required for pledged assets:</strong> SF 28 requires "Documentation of the pledged asset must be attached" (Section 7). For real estate, a current title insurance policy is the preferred evidence of clear, marketable ownership.</p>
+      <p><strong>What it shows:</strong> The title commitment or policy reveals the current owner, any existing mortgages or liens, easements, restrictions, and other encumbrances that could affect the government's ability to claim the asset if needed.</p>
+      <p><strong>Owner's policy vs. lender's policy:</strong> The surety should provide an owner's policy (protecting the surety's interest) rather than a lender's policy (which only protects a mortgage lender). The government requires evidence that the surety has clear, insurable title.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; American Land Title Association.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Appraisal -->
+<div class="modal-overlay" id="modal-appraisal" role="dialog" aria-modal="true" aria-labelledby="modal-title-appraisal">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-appraisal">Appraisal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Valuation Document</div>
+        <div class="def-word">Certified Appraisal</div>
+        <p>A professional estimate of the fair market value of an asset, performed by a qualified appraiser and accompanied by their certification statement. For real estate, this establishes the property's current market value for asset qualification purposes.</p>
+      </div>
+      <p><strong>Recency requirement:</strong> SF 28 instructions specify that appraisals should be "current" — typically within 6 months of the affidavit date. Real estate markets change, and stale valuations may not reflect current conditions.</p>
+      <p><strong>Qualified appraiser:</strong> The appraiser should be state-licensed or certified, familiar with the local market where the property is located, and independent of the transaction (no conflict of interest).</p>
+      <p><strong>Contents required:</strong> The appraisal must include the property address, legal description, date of inspection, comparables used in valuation, appraiser's qualifications, and certification signature.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; Uniform Standards of Professional Appraisal Practice (USPAP).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Notary Commission -->
+<div class="modal-overlay" id="modal-notary-commission" role="dialog" aria-modal="true" aria-labelledby="modal-title-notary-commission">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-notary-commission">Notary Commission</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Official Authorization</div>
+        <div class="def-word">Notary Commission</div>
+        <p>The official authorization granted by a state government to an individual to perform notarizations — witnessing signatures, administering oaths, and certifying the authenticity of documents.</p>
+      </div>
+      <p><strong>Expiration date:</strong> SF 28 Field 12e requires the notary to record their commission expiration date. Notary commissions typically last 4-10 years depending on the state. An expired commission invalidates the notarization.</p>
+      <p><strong>Current commission required:</strong> The notarization must be performed while the commission is current. A notarization performed after a commission expired cannot be "ratified" or validated retroactively.</p>
+      <p><strong>Verification:</strong> Contracting officers may verify notary commissions through state notary databases, especially for high-value bonds or if fraud is suspected.</p>
+      <div class="citation"><strong>Source:</strong> State notary statutes; SF 28 Field 12 instructions. <a href="https://www.nationalnotary.org">nationalnotary.org (Notary Commission)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Notary Seal -->
+<div class="modal-overlay" id="modal-notary-seal" role="dialog" aria-modal="true" aria-labelledby="modal-title-notary-seal">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-notary-seal">Notary Seal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Notarization Element</div>
+        <div class="def-word">Official Seal</div>
+        <p>The official stamp or embossing device used by a notary to authenticate their notarization. The seal contains the notary's name, commission number, state, and commission expiration date.</p>
+      </div>
+      <p><strong>Physical vs. electronic seals:</strong> SF 28 requires original ink signatures and original seals. Traditional rubber stamps with ink are acceptable. Embossing seals are also common. Electronic notarization (e-notarization) is generally not acceptable for SF 28.</p>
+      <p><strong>Placement on form:</strong> The seal should be affixed in the designated seal box on SF 28 (Field 12). If the form has no seal box, the seal should be placed near the notary's signature without obscuring any text.</p>
+      <p><strong>Importance:</strong> The seal proves the notarization was performed by a duly commissioned official. A notarization without a seal may be rejected as invalid by the contracting officer.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 12 instructions; Model Notary Act.</div>
+    </div>
+  </div>
+</div>
+
 
 <script>
 let currentModal = null;
