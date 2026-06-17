@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  --ink: #0f1115;
+  --ink-secondary: #2d3142;
+  --ink-tertiary: #5a5d6b;
+  --ink-muted: #8a8d9a;
+  --ink-faint: #b8bac4;
+  --border: #d0d2da;
+  --border-light: #e6e7ec;
+  --border-faint: #f0f1f5;
+  --bg: #ffffff;
+  --bg-warm: #faf9f6;
+  --bg-cream: #f7f5f0;
+  --bg-ivory: #fdfcfa;
+  --accent: #1a3a5c;
+  --accent-light: #e8f0f8;
+  --accent-muted: #c5d6e8;
+  --accent-hover: #0f2640;
+  --gold: #a67c00;
+  --gold-light: #fbf6e8;
+  --gold-muted: #d4b84a;
+  --gold-deep: #7a5c00;
+  --green: #1a5c3a;
+  --green-light: #e8f8f0;
+  --teal: #0d7377;
+  --teal-light: #e6f7f7;
+  --red: #8c1a1a;
+  --red-light: #fdf0f0;
+  --red-muted: #d4a0a0;
+  --modal-overlay: rgba(10,12,18,0.65);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-warm);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.3s ease;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 16px; top: 80px; z-index: 70;
+  width: 40px; height: 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: all 0.2s;
+}
+.toc-toggle:hover { background: var(--accent-hover); }
+.toc-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  color: var(--ink); margin-bottom: 16px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-faint);
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.78rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: all 0.15s;
+}
+.toc-sidebar a:hover, .toc-sidebar a:focus-visible { color: var(--accent); padding-left: 4px; }
+.toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.toc-sidebar .toc-close {
+  position: absolute; top: 16px; right: 16px; background: none;
+  border: none; font-size: 1.4rem; color: var(--ink-muted); cursor: pointer;
+}
+.toc-close:focus-visible { outline: 2px solid var(--accent); border-radius: 2px; }
+
+.page-header {
+  background: var(--bg); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 24px 32px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.header-text .sub {
+  font-size: 0.72rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 2px;
+}
+.header-text .sub a {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.header-text .sub a:hover { border-bottom-color: var(--accent); }
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.15); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+.update-banner {
+  background: var(--accent-light); border: 1px solid var(--accent-muted);
+  border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px; font-size: 0.82rem; color: var(--accent);
+}
+.update-banner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.update-banner strong { color: var(--ink); }
+.update-banner .legacy-tag {
+  display: inline-block; background: var(--gold-light); color: var(--gold-deep);
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 2px 8px; border-radius: 100px;
+  margin-left: 6px; border: 1px solid rgba(166,124,0,0.2);
+}
+
+.teach-banner {
+  background: var(--teal-light); border: 1px solid rgba(13,115,119,0.15);
+  border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px; font-size: 0.84rem; color: var(--teal);
+}
+.teach-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.teach-banner strong { color: var(--ink); }
+
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 48px 52px 56px; position: relative;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.title-block {
+  text-align: center; padding-bottom: 24px; margin-bottom: 28px; position: relative;
+}
+.title-block::after {
+  content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 2px; background: var(--accent);
+}
+.title-block h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--ink); line-height: 1.3; margin-bottom: 8px;
+}
+.title-block .parent {
+  font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+  color: var(--ink-muted); font-weight: 400;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.hint-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; background: var(--accent-light);
+  border: 1px solid var(--accent-muted); border-radius: var(--radius-sm);
+  margin-bottom: 28px; font-size: 0.78rem; color: var(--accent);
+}
+.hint-bar svg { flex-shrink: 0; width: 18px; height: 18px; }
+
+.instruction-box {
+  background: var(--bg-ivory); border: 1px solid var(--border-faint);
+  border-left: 3px solid var(--accent); padding: 20px 24px;
+  font-size: 0.84rem; line-height: 1.8; margin-bottom: 32px;
+  color: var(--ink-secondary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.instruction-box strong { font-weight: 600; color: var(--ink); }
+
+.section-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 6px; margin: 36px 0 20px; color: var(--ink); position: relative;
+}
+.section-heading::after {
+  content: ""; position: absolute; bottom: -1.5px; left: 0;
+  width: 40px; height: 1.5px; background: var(--gold);
+}
+
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: all 0.2s ease; padding: 0 1px;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 2px;
+  outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.7; transition: opacity 0.2s;
+  display: inline-block; width: 12px; height: 12px;
+  line-height: 12px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+.sf28-form {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.sf28-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.sf28-header-left { max-width: 60%; }
+.sf28-header-left h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.sf28-header-left .sf28-subtitle {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.sf28-header-right {
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+
+.sf28-omb {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  margin-top: 6px;
+  background: var(--bg-cream);
+}
+
+.sf28-omb strong {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ink-secondary);
+  margin-bottom: 2px;
+}
+
+.sf28-oath {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--bg-cream);
+  border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm);
+}
+
+.sf28-oath strong { color: var(--ink); }
+
+.sf28-grid {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--ink);
+  margin-bottom: 24px;
+}
+
+.sf28-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--ink);
+}
+.sf28-row:last-child { border-bottom: none; }
+
+.sf28-cell {
+  padding: 10px 12px;
+  border-right: 1px solid var(--ink);
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.sf28-cell:last-child { border-right: none; }
+
+.sf28-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.sf28-field {
+  border-bottom: 1px solid var(--border);
+  min-height: 24px;
+  margin-top: 4px;
+  transition: border-color 0.2s;
+}
+.sf28-field:hover { border-bottom-color: var(--accent); }
+
+.sf28-field-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sf28-field-row .sf28-field { flex: 1; }
+
+.sf28-field-sm { min-width: 60px; flex: 0 0 60px !important; }
+.sf28-field-md { min-width: 120px; flex: 0 0 120px !important; }
+
+.sf28-asset-section {
+  border: 1px solid var(--ink);
+  margin-bottom: 24px;
+}
+
+.sf28-asset-header {
+  background: var(--bg-cream);
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--ink);
+  line-height: 1.6;
+}
+
+.sf28-asset-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.sf28-asset-table th {
+  background: var(--bg-cream);
+  border: 1px solid var(--ink);
+  padding: 8px 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-secondary);
+}
+
+.sf28-asset-table td {
+  border: 1px solid var(--border);
+  padding: 8px 6px;
+  height: 36px;
+  color: var(--ink-muted);
+}
+
+.sf28-asset-table tbody tr:hover td { background: var(--bg-cream); }
+
+.sf28-encumbrance {
+  border: 1px solid var(--ink);
+  margin-bottom: 24px;
+}
+
+.sf28-encumbrance-header {
+  background: var(--bg-cream);
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--ink);
+}
+
+.sf28-encumbrance-body {
+  padding: 12px;
+  min-height: 80px;
+}
+
+.sf28-signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--ink);
+  margin-bottom: 24px;
+}
+
+.sf28-sig-cell {
+  padding: 12px;
+  border-right: 1px solid var(--ink);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sf28-sig-cell:last-child { border-right: none; }
+
+.sf28-sig-line {
+  border-bottom: 1px solid var(--ink);
+  min-height: 32px;
+  margin-top: 8px;
+}
+
+.sf28-notary {
+  border: 1px solid var(--ink);
+  margin-bottom: 24px;
+}
+
+.sf28-notary-header {
+  background: var(--bg-cream);
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  border-bottom: 1px solid var(--ink);
+}
+
+.sf28-notary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.sf28-notary-cell {
+  padding: 12px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  min-height: 60px;
+}
+.sf28-notary-cell:nth-child(2n) { border-right: none; }
+.sf28-notary-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+.sf28-notary-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.sf28-notary-seal {
+  grid-column: 1 / -1;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  border-bottom: none;
+}
+
+.sf28-seal-box {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.red-flags {
+  margin-top: 40px; padding: 28px 32px;
+  background: var(--red-light); border: 1px solid var(--red-muted);
+  border-radius: var(--radius-lg); border-left: 3px solid var(--red);
+}
+.red-flags h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+  color: var(--red); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.red-flags-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.red-flag-card {
+  background: var(--bg); border: 1px solid var(--red-muted);
+  border-radius: var(--radius-sm); padding: 16px;
+}
+.red-flag-card h4 {
+  font-size: 0.8rem; font-weight: 600; color: var(--red);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.red-flag-card p {
+  font-size: 0.78rem; color: var(--ink-tertiary); line-height: 1.6;
+}
+
+.scenarios-section {
+  margin-top: 40px; padding-top: 32px;
+  border-top: 2px solid var(--border-light);
+}
+.scenario-tabs {
+  display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+}
+.scenario-tab {
+  padding: 8px 16px; background: var(--bg-cream);
+  border: 1px solid var(--border-light); border-radius: 100px;
+  font-size: 0.78rem; font-weight: 600; color: var(--ink-tertiary);
+  cursor: pointer; transition: all 0.2s;
+}
+.scenario-tab:hover, .scenario-tab:focus-visible {
+  background: var(--accent-light); color: var(--accent);
+  border-color: var(--accent-muted); outline: none;
+}
+.scenario-tab.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.scenario-panel {
+  display: none;
+  background: var(--bg-ivory); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-md); padding: 24px;
+}
+.scenario-panel.active { display: block; }
+.scenario-panel h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  color: var(--accent); margin-bottom: 12px;
+}
+.scenario-panel .scenario-meta {
+  display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.scenario-panel .scenario-tag {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px;
+  background: var(--accent-light); color: var(--accent);
+}
+.scenario-panel p, .scenario-panel li {
+  font-size: 0.84rem; color: var(--ink-secondary);
+  line-height: 1.7; margin-bottom: 10px;
+}
+.scenario-panel ul { margin-left: 20px; padding: 0; }
+.scenario-panel li { margin-bottom: 6px; }
+.scenario-panel .scenario-tip {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 16px; margin-top: 14px; font-size: 0.8rem; color: #0f3d24;
+}
+.scenario-panel .scenario-tip strong { color: var(--green); }
+
+.mistakes-section {
+  margin-top: 40px; padding-top: 32px;
+  border-top: 2px solid var(--border-light);
+}
+.mistake-card {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px; margin-bottom: 12px;
+}
+.mistake-card h4 {
+  font-size: 0.85rem; font-weight: 600; color: var(--gold-deep); margin-bottom: 6px;
+}
+.mistake-card p {
+  font-size: 0.8rem; color: var(--ink-tertiary); line-height: 1.6;
+}
+
+.study-guide {
+  margin-top: 48px; padding: 32px;
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+.study-guide h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+  color: var(--ink); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.study-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.study-card {
+  background: var(--bg); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 18px;
+}
+.study-card h4 {
+  font-size: 0.8rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.study-card ul { margin: 0; padding-left: 18px; }
+.study-card li {
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  margin-bottom: 6px; line-height: 1.6;
+}
+
+.deadline-callout {
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px; margin: 20px 0; font-size: 0.82rem;
+}
+.deadline-callout h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+  color: var(--gold-deep); margin-bottom: 8px;
+}
+.deadline-callout ul { margin: 0; padding-left: 18px; }
+.deadline-callout li {
+  color: var(--ink-secondary); margin-bottom: 6px; line-height: 1.6;
+}
+
+.footnote {
+  font-size: 0.74rem; color: var(--ink-muted); margin-top: 8px; line-height: 1.6;
+}
+.footnote sup { font-size: 0.6rem; color: var(--gold); font-weight: 600; }
+
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: var(--bg-cream); border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 22px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.6rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: all 0.2s; margin-top: -4px;
+}
+.modal-close:hover, .modal-close:focus-visible { background: var(--border-light); color: var(--ink); outline: 2px solid var(--accent); }
+.modal-body {
+  padding: 24px 32px 32px; overflow-y: auto;
+  max-height: calc(88vh - 90px); font-size: 0.88rem;
+  line-height: 1.85; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 14px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 16px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body .citation a {
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.modal-body .citation a:hover { border-bottom-color: var(--accent); }
+.modal-body ul { margin: 12px 0 12px 24px; padding: 0; }
+.modal-body li { margin-bottom: 8px; line-height: 1.7; }
+.modal-body .key-term { font-weight: 600; color: var(--ink); }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--ink); margin: 20px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.def-callout .def-type {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+
+.tip-box {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: #0f3d24; line-height: 1.7;
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay,
+  .scenario-tabs, .teach-banner, .update-banner { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .section-heading { border-bottom: 1px solid #000; margin: 24px 0 12px; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+  .study-guide, .red-flags, .scenarios-section, .mistakes-section {
+    page-break-inside: avoid; margin-top: 24px; padding-top: 16px;
+  }
+  .scenario-panel { display: block !important; border: 1px solid #ccc; margin-bottom: 12px; }
+}
+
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 20px 14px 48px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .modal-card { max-width: 100%; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-overlay.active .modal-card { transform: translateY(0); }
+  .toc-sidebar { width: 100%; }
+  .sf28-row { grid-template-columns: 1fr; }
+  .sf28-cell { border-right: none; border-bottom: 1px solid var(--ink); }
+  .sf28-signature-grid, .sf28-notary-grid { grid-template-columns: 1fr; }
+  .sf28-sig-cell, .sf28-notary-cell { border-right: none; }
+  .study-grid, .red-flags-grid { grid-template-columns: 1fr; }
+  .scenario-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+}
+
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 32px 28px 40px; margin-top: 48px; text-align: center;
+}
+.footer-content { max-width: 1100px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; font-size: 0.75rem; color: var(--ink-muted); line-height: 1.6;
+}
+.footer-version { font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--ink-tertiary); font-size: 0.8rem; }
+.footer-links { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.7rem; }
+
+@media (max-width: 720px) {
+  .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+</style>
+
+<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/OJa96yBLdsASD6AkpCb_8XWAdXjh07zPMPIPLOTaEaZ1Xc0A6_l95CYWEOyxhRFnGcUKpWcyyxRyGp2V5aqrCUSVq3wHG81UQfWdQszxUS8osigxTilHhemdF_nTZ3c6yjwkH-zUgul6aUURLrwZD1G8AmFMmDnmPsVrgxb9esoltdz28Mk3cFDpfuhnvBNXMAo1pzOVQd1fVJ7d4KJL2ZMr6Vg0GsmMRnKxmUEqqeDCGq7xQXM6xmT3XkjEffN5hk8Hx0Vk_g_l7u713-qGrimDng-EmczICwdeuqPdmU1I0qUyciFLXaMj64_1HIdqoH-BwT5eTqU-a2MV4S1OCX42Tlqwpb3QcPbq9IpVPbqIf9L_ZT9mSrU8uhX6zy0z-JyBS1oTYnc7Fb-8dC7_WKbzYOKncbkXtHRjNSmxVMcD86_fRRSYkkHrgaxnpK7oT3Kw-o7HEEa5TKlmOBTza43H9UyszdLP_Mq02HtG1NivYozZkD6uzuPzK7QgpySt3K_QQgPZMPXlBRU-M6yQT4J5I5GE-J5GPpMysVLUK25_tYuS1KXYSmTMEFIGybX3mHMbxMtgm6L9C6WmGCIS0XvhTQMQ-T11AurLc2s8_ZcvN6pR3FGJ59hDulWrV-yIpII9RYEBst8X6EAOka_CO3i0BaGTjqU5cAAdm_4h8dxkAdHWXXfsh5ePQ6m7eOB8H8ORQAezTar-sVX7VTF4QgXk0lQUSHQx82i7gOPJWUr7YoOoOgRkTv3ax3E1WGkiZMuGe_eJmJabGFnGVv09Gj9LTInufMuu6WhEqyTF2uAxH3bkMZdU6Tq3poqTN4tIHzBzwwcEtTind9n76ssQYvGXX5BbgAEiUuvvhGjULq-jhcRQRUv1bqGHZ-kU8wFfDF1ODuEIZoJ_NFKUgzQ9MwqQOWKWWYPNoJ2lEOFKNj4fW5rjQu6nR8erPVAw7ltxvHQ8kVKi6pJkLPYZq2FfqAgLuzrV0X8CQqDXVpqZyLESmVyPPNdI6GRKsZu7pFdKI7cqZv2lP3Pz3A1eTmxa-bhV2nfHES6ZmnMtd_y7Xs_jF93gxOMD0CQ_KRKGpg'></script>
+</head>
+<body>
+
+<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#form">SF 28 Form</a>
+  <a href="#oath" class="sub">Oath & Affirmation</a>
+  <a href="#personal-info" class="sub">Personal Information</a>
+  <a href="#assets" class="sub">Pledged Assets</a>
+  <a href="#encumbrances" class="sub">Liens & Encumbrances</a>
+  <a href="#signature" class="sub">Signature & Notary</a>
+  <a href="#instructions" class="sub">Instructions (Page 4)</a>
+  <a href="#red-flags">Red Flags & Discretion</a>
+  <a href="#scenarios">Scenario-Based Learning</a>
+  <a href="#mistakes">Common Mistakes</a>
+  <a href="#study-guide">Study Guide & Checklist</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="documents/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">SF</div>
+      <div class="header-text">
+        <h1>SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</h1>
+        <div class="sub">Standard Form 28 (Rev. 10/2023) · Interactive definitions · FAR 28.203 compliance walkthroughs</div>
+      </div>
+    </div>
+    <div class="header-badge">Teaching Tool</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Content Updated:</strong> This guide reflects the <strong>October 2023 Revision</strong> of SF 28. All fields match the current GSA form. <span class="legacy-tag">Rev. 10/2023</span></span>
+</div>
+
+<div class="doc-frame">
+
+<div class="teach-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. This guide combines the original GSA form with definitions, FAR regulatory citations, scenario walkthroughs, and a study checklist. Use the ☰ menu to navigate.</span>
+</div>
+
+<div class="title-block">
+  <h2>Affidavit of Individual Surety <span class="hotspot" data-modal="sf28" tabindex="0" role="button" onclick="openModal('modal-sf28')">(SF 28)</span></h2>
+  <div class="parent">Prescribed by GSA-FAR (48 CFR) <span class="hotspot" data-modal="far-53-228e" tabindex="0" role="button" onclick="openModal('modal-far-53-228e')">53.228(e)</span> · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
+</div>
+
+<div class="deadline-callout" id="instructions">
+  <h4>⏱ Critical Requirements at a Glance</h4>
+  <ul>
+    <li><strong>Must be a natural person:</strong> No corporation, partnership, or unincorporated association can serve as an individual surety.</li>
+    <li><strong>U.S. citizenship required:</strong> For contracts awarded in the United States. For outlying areas/foreign countries, permanent residency suffices.</li>
+    <li><strong>Original signatures only:</strong> Reproduced or electronic signatures are <strong>not acceptable</strong>. The affidavit must be notarized.</li>
+    <li><strong>Net worth ≥ penal amount:</strong> The surety must demonstrate net worth not less than the penal amount of the bond.</li>
+    <li><strong>No financial interest in principal:</strong> The surety cannot have any financial interest in assets connected with the principal on the bond.</li>
+    <li><strong>Documentation of pledged assets must be attached:</strong> Including CUSIP numbers, par amounts, certified evidence of title, and current tax assessments for real estate.</li>
+  </ul>
+</div>
+
+<div class="sf28-form" id="form">
+
+<div class="sf28-header">
+  <div class="sf28-header-left">
+    <h3>Affidavit Of Individual Surety</h3>
+    <div class="sf28-subtitle">(See instructions on page 4)</div>
+  </div>
+  <div class="sf28-header-right">
+    <div>OMB Control Number: <strong>9000-0001</strong></div>
+    <div class="sf28-omb">
+      <strong>Expiration Date:</strong> 1/31/2027
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; gap: 24px; margin-bottom: 16px; font-size: 0.9rem;">
+  <div style="flex: 1;"><strong>State Of</strong> <span class="hotspot" data-modal="state" tabindex="0" role="button" onclick="openModal('modal-state')" style="border-bottom: 1px dotted var(--accent); cursor: pointer;">__________</span></div>
+  <div style="flex: 1;"><strong>County Of</strong> <span class="hotspot" data-modal="county" tabindex="0" role="button" onclick="openModal('modal-county')" style="border-bottom: 1px dotted var(--accent); cursor: pointer;">__________</span></div>
+</div>
+
+<div class="sf28-oath" id="oath">
+  <p>I, the undersigned, being duly sworn, depose and say that I am: (1) the <span class="hotspot" data-modal="surety" tabindex="0" role="button" onclick="openModal('modal-surety')">surety</span> to the attached <span class="hotspot" data-modal="bond" tabindex="0" role="button" onclick="openModal('modal-bond')">bond(s)</span>; (2) a <span class="hotspot" data-modal="citizen" tabindex="0" role="button" onclick="openModal('modal-citizen')">citizen of the United States</span>; and of <span class="hotspot" data-modal="full-age" tabindex="0" role="button" onclick="openModal('modal-full-age')">full age and legally competent</span>. Where the sureties are acting as <span class="hotspot" data-modal="co-sureties" tabindex="0" role="button" onclick="openModal('modal-co-sureties')">co-sureties</span>, we, the Sureties, bind ourselves in such sum "<span class="hotspot" data-modal="jointly-and-severally" tabindex="0" role="button" onclick="openModal('modal-jointly-and-severally')">jointly and severally</span>" as well as "<span class="hotspot" data-modal="severally" tabindex="0" role="button" onclick="openModal('modal-severally')">severally</span>" only for the purpose of allowing a joint action or actions against any or all of us. For all other purposes, each Surety binds itself, jointly and severally with the <span class="hotspot" data-modal="principal" tabindex="0" role="button" onclick="openModal('modal-principal')">Principal</span>. I recognize that statements contained herein concern a matter within the jurisdiction of an agency of the United States and the making of a <span class="hotspot" data-modal="false-statement" tabindex="0" role="button" onclick="openModal('modal-false-statement')">false, fictitious or fraudulent statement</span> may render the maker subject to prosecution under <span class="hotspot" data-modal="title-18" tabindex="0" role="button" onclick="openModal('modal-title-18')">Title 18, United States Code Sections 1001 and 494</span>. This affidavit is made to induce the United States of America to accept me as surety on the attached bond.</p>
+</div>
+<div class="sf28-grid" id="personal-info">
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">1. Name (First, Middle, Last) (Type or Print)</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">2A. Home Address (Number, Street, City, State, ZIP Code)</div>
+      <div class="sf28-field"></div>
+    </div>
+  </div>
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">3. Type And Duration Of Occupation</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">2B. Telephone Number &nbsp;&nbsp; 2C. Email Address</div>
+      <div class="sf28-field-row">
+        <div class="sf28-field sf28-field-md"></div>
+        <div class="sf28-field"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">4A. Name And Address Of Employer (Number, Street, City, State, ZIP Code) (If self-employed, so state)</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">5A. Name And Address Of Individual Surety Broker Used (Number, Street, City, State, ZIP Code)</div>
+      <div class="sf28-field"></div>
+    </div>
+  </div>
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">4B. Employer Email Address</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">5B. Surety Broker Email Address</div>
+      <div class="sf28-field"></div>
+    </div>
+  </div>
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">5C. Home Telephone Number &nbsp;&nbsp; 5D. Business Telephone Number</div>
+      <div class="sf28-field-row">
+        <div class="sf28-field sf28-field-md"></div>
+        <div class="sf28-field sf28-field-md"></div>
+      </div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">6A. Name And Address Of Financial Institution Submitting The Pledge Of Securities On Behalf Of Individual Surety (Number, Street, City, State, ZIP Code)</div>
+      <div class="sf28-field"></div>
+    </div>
+  </div>
+  <div class="sf28-row">
+    <div class="sf28-cell">
+      <div class="sf28-label">6B. Financial Institution Email Address &nbsp;&nbsp; 6C. Routing Transit Number (RTN)</div>
+      <div class="sf28-field-row">
+        <div class="sf28-field"></div>
+        <div class="sf28-field sf28-field-md"></div>
+      </div>
+    </div>
+    <div class="sf28-cell">
+      <div class="sf28-label">6D. Contact Person Name &nbsp;&nbsp; 6E. Contact Person Telephone Number &nbsp;&nbsp; 6F. Contact Person Email Address</div>
+      <div class="sf28-field-row">
+        <div class="sf28-field"></div>
+        <div class="sf28-field sf28-field-sm"></div>
+        <div class="sf28-field"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sf28-asset-section" id="assets">
+  <div class="sf28-asset-header">
+    7. The Following Is A True Representation Of The Assets I Have Pledged To The United States In Support Of The Attached Bond. (List The <span class="hotspot" data-modal="cusip" tabindex="0" role="button" onclick="openModal('modal-cusip')">Committee On Uniform Securities Identification Procedures (CUSIP)</span> Number And Par (Face) Amount Of Each Security).
+  </div>
+  <table class="sf28-asset-table">
+    <thead>
+      <tr>
+        <th style="width: 25%;">CUSIP Number</th>
+        <th style="width: 25%;">Security Description</th>
+        <th style="width: 25%;">Par (Face) Amount</th>
+        <th style="width: 25%;">Current Market Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  <div style="padding: 10px 12px; font-size: 0.72rem; color: var(--ink-muted); font-style: italic; border-top: 1px solid var(--border);">
+    <strong>Note:</strong> For real estate, include a legal description, street address and other identifying characteristics; the market value; attach supporting certified documents including recorded lien; evidence of title and the current tax assessment on the property. For market value approach, also provide a current appraisal.
+  </div>
+</div>
+
+<div class="sf28-encumbrance">
+  <div class="sf28-encumbrance-header">
+    Real Estate and Other Assets (describe the assets, the details of the escrow account, and attach certified evidence thereof)
+  </div>
+  <div class="sf28-encumbrance-body">
+    <div class="sf28-field" style="min-height: 60px;"></div>
+  </div>
+</div>
+
+<div class="sf28-encumbrance" id="encumbrances">
+  <div class="sf28-encumbrance-header">
+    8. Identify All <span class="hotspot" data-modal="liens" tabindex="0" role="button" onclick="openModal('modal-liens')">Liens</span>, <span class="hotspot" data-modal="judgments" tabindex="0" role="button" onclick="openModal('modal-judgments')">Judgements</span>, Or Any Other <span class="hotspot" data-modal="encumbrances" tabindex="0" role="button" onclick="openModal('modal-encumbrances')">Encumbrances</span> Involving Subject Assets Including Real Estate Taxes Due And Payable.
+  </div>
+  <div class="sf28-encumbrance-body">
+    <div class="sf28-field" style="min-height: 80px;"></div>
+  </div>
+</div>
+
+<div class="sf28-encumbrance">
+  <div class="sf28-encumbrance-header">
+    9. Identify All Bonds, Including <span class="hotspot" data-modal="bid-guarantees" tabindex="0" role="button" onclick="openModal('modal-bid-guarantees')">Bid Guarantees</span>, For Which The Subject Assets Have Been Pledged Within Three Years Prior To The Date Of Execution Of This Affidavit.
+  </div>
+  <div class="sf28-encumbrance-body">
+    <div class="sf28-field" style="min-height: 80px;"></div>
+  </div>
+</div>
+
+<div style="font-size: 0.78rem; font-weight: 600; color: var(--ink-secondary); margin-bottom: 16px; text-align: center;">
+  Documentation Of The Pledged Asset Must Be Attached.
+</div>
+
+<div class="sf28-signature-grid" id="signature">
+  <div class="sf28-sig-cell">
+    <div class="sf28-label">10. Signature</div>
+    <div class="sf28-sig-line"></div>
+    <div style="font-size: 0.7rem; color: var(--ink-muted); margin-top: 4px;">(Original signature required — no reproductions)</div>
+  </div>
+  <div class="sf28-sig-cell">
+    <div class="sf28-label">11. Bond And Contract To Which This Affidavit Relates (where appropriate)</div>
+    <div class="sf28-sig-line"></div>
+  </div>
+</div>
+
+<div class="sf28-notary">
+  <div class="sf28-notary-header">
+    12. Subscribed And Sworn To Before Me As Follows:
+  </div>
+  <div class="sf28-notary-grid">
+    <div class="sf28-notary-cell">
+      <div class="sf28-notary-label">a. Date Oath Administered</div>
+      <div class="sf28-field-row">
+        <div class="sf28-field sf28-field-sm" style="text-align: center;">Month</div>
+        <div class="sf28-field sf28-field-sm" style="text-align: center;">Day</div>
+        <div class="sf28-field sf28-field-sm" style="text-align: center;">Year</div>
+      </div>
+    </div>
+    <div class="sf28-notary-cell">
+      <div class="sf28-notary-label">b. City And State (or other jurisdiction)</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-notary-cell">
+      <div class="sf28-notary-label">c. Name And Title Of Official Administering Oath (type or print)</div>
+      <div class="sf28-field"></div>
+    </div>
+    <div class="sf28-notary-cell">
+      <div class="sf28-notary-label">d. Signature</div>
+      <div class="sf28-field" style="min-height: 32px;"></div>
+    </div>
+    <div class="sf28-notary-cell sf28-notary-seal">
+      <div class="sf28-seal-box">Official<br>Seal</div>
+    </div>
+    <div class="sf28-notary-cell">
+      <div class="sf28-notary-label">e. My Commission Expires</div>
+      <div class="sf28-field"></div>
+    </div>
+  </div>
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border-light); font-size: 0.7rem; color: var(--ink-muted);">
+  <div><strong>STANDARD FORM 28 (REV. 10/2023)</strong></div>
+  <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · Authorized For Local Reproduction · Previous Edition Is Not Usable</div>
+</div>
+
+</div>
+
+<div class="red-flags" id="red-flags">
+  <h3>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    Red Flags: Individual Surety Compliance Risks
+  </h3>
+  <div class="red-flags-grid">
+    <div class="red-flag-card">
+      <h4>Reproduced Signatures = Rejection</h4>
+      <p>All signatures on the affidavit <strong>must be originals</strong>. Affidavits bearing reproduced, stamped, or electronic signatures are not acceptable. DocuSign, Adobe Sign, or photocopied signatures will result in immediate rejection by the contracting officer.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Corporate or Partnership as Surety</h4>
+      <p>No corporation, partnership, or unincorporated association is acceptable as an <strong>individual surety</strong>. The surety must be a natural person. Members of a partnership cannot serve as sureties on bonds where the partnership is the principal.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Financial Interest in Principal</h4>
+      <p>An individual surety <strong>cannot include</strong> any financial interest in assets connected with the principal on the bond. Stockholders of corporate principals are only acceptable if their qualifications are independent of their stockholdings.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Net Worth Below Penal Amount</h4>
+      <p>The individual surety must show a net worth <strong>not less than the penal amount</strong> of the bond. Pledging assets worth less than the bond amount, or failing to account for existing liens, renders the affidavit non-compliant.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Unattached Asset Documentation</h4>
+      <p>The form explicitly states: <strong>"Documentation Of The Pledged Asset Must Be Attached."</strong> Missing certified evidence of title, recorded liens, tax assessments, or appraisals will delay or prevent acceptance.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Undisclosed Prior Pledges (3-Year Lookback)</h4>
+      <p>Section 9 requires disclosure of <strong>all bonds</strong> for which the subject assets have been pledged within three years. Failing to disclose a prior pledge can constitute a false statement under 18 U.S.C. § 1001 — a federal felony.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Missing Notarization</h4>
+      <p>The affidavit <strong>must be notarized</strong> with an original notary seal. A notary commission must be current (check expiration date in field 12e). Self-notarization or notarization by an interested party is void.</p>
+    </div>
+    <div class="red-flag-card">
+      <h4>Citizenship Requirement for U.S. Contracts</h4>
+      <p>For contracts awarded in the United States, the surety must be a <strong>U.S. citizen</strong>. Permanent residency only suffices when the contracting officer is located in an outlying area or foreign country.</p>
+    </div>
+  </div>
+</div>
+
+<div class="scenarios-section" id="scenarios">
+  <div class="section-heading">Scenario-Based Learning</div>
+  <p style="font-size: 0.82rem; color: var(--ink-tertiary); margin-bottom: 16px;">
+    Work through realistic surety situations to see how SF 28 applies in practice. Click a tab to switch scenarios.
+  </p>
+  <div class="scenario-tabs" role="tablist">
+    <button class="scenario-tab active" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate Surety</button>
+    <button class="scenario-tab" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Securities Portfolio Surety</button>
+    <button class="scenario-tab" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: Co-Surety Arrangement</button>
+    <button class="scenario-tab" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Foreign Contract Surety</button>
+  </div>
+
+  <div class="scenario-panel active" id="sc-a">
+    <div class="scenario-meta">
+      <span class="scenario-tag">Real Estate</span>
+      <span class="scenario-tag">$500K Bond</span>
+      <span class="scenario-tag">Single Surety</span>
+    </div>
+    <h4>Scenario A: John Doe — Performance Bond on Construction Contract</h4>
+    <p><strong>The Situation:</strong> John Doe owns a $1.2 million home free and clear in Fairfax County, Virginia. He is asked to serve as individual surety on a $500,000 performance bond for a friend's construction company.</p>
+    <p><strong>SF 28 Walkthrough:</strong></p>
+    <ul>
+      <li><strong>Field 1 (Name):</strong> John Michael Doe — must match the name on the property deed exactly.</li>
+      <li><strong>Field 2A (Home Address):</strong> 1234 Maple Drive, Fairfax, VA 22030 — the address of the pledged property.</li>
+      <li><strong>Field 3 (Occupation):</strong> Retired Engineer, 35 years — demonstrates stability and income history.</li>
+      <li><strong>Field 4A (Employer):</strong> Self-employed consultant — since retired, he states "Retired; former employer: ABC Engineering, Inc."</li>
+      <li><strong>Field 7 (Assets):</strong> Real estate: Single-family residence at 1234 Maple Drive, Fairfax, VA. Legal description: Lot 14, Block 3, Fairfax County Plat Book 445, Page 22. Market value: $1,200,000 (per attached certified appraisal dated within 6 months). Current tax assessment: $1,100,000.</li>
+      <li><strong>Field 8 (Encumbrances):</strong> "None. Property is owned free and clear. No mortgages, liens, judgments, or tax delinquencies." Attach title insurance policy and current tax receipt.</li>
+      <li><strong>Field 9 (Prior Pledges):</strong> "None. This property has never been pledged as surety on any prior bond."</li>
+      <li><strong>Field 10 (Signature):</strong> Original ink signature required. John signs in blue or black ink.</li>
+      <li><strong>Field 12 (Notary):</strong> A Virginia notary public administers the oath, signs, affixes seal, and notes commission expiration date.</li>
+    </ul>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Real estate is the most common pledged asset for individual sureties. The legal description must be precise, the appraisal must be current (within 6 months), and the title must be clean. Net worth ($1.2M) exceeds penal amount ($500K) by a comfortable margin.</div>
+  </div>
+
+  <div class="scenario-panel" id="sc-b">
+    <div class="scenario-meta">
+      <span class="scenario-tag">Securities</span>
+      <span class="scenario-tag">$250K Bond</span>
+      <span class="scenario-tag">Broker-Held</span>
+    </div>
+    <h4>Scenario B: Jane Smith — Treasury Portfolio as Surety</h4>
+    <p><strong>The Situation:</strong> Jane Smith holds $400,000 in U.S. Treasury securities through her brokerage account at Fidelity. She is asked to serve as surety on a $250,000 payment bond for a software development contract.</p>
+    <p><strong>SF 28 Walkthrough:</strong></p>
+    <ul>
+      <li><strong>Field 1–6:</strong> Standard personal information. Jane is a U.S. citizen, software architect at TechCorp for 12 years.</li>
+      <li><strong>Field 5A (Surety Broker):</strong> Fidelity Investments, 100 Summer Street, Boston, MA 02110.</li>
+      <li><strong>Field 6A (Financial Institution):</strong> Fidelity Investments — same as broker since she holds securities directly.</li>
+      <li><strong>Field 6C (RTN):</strong> 021000018 (Fidelity's routing number for wire transfers).</li>
+      <li><strong>Field 7 (Assets):</strong>
+        <ul>
+          <li>CUSIP: 912828XM6 | Description: U.S. Treasury Note 2.875% due 05/15/2028 | Par: $150,000 | Market Value: $148,500</li>
+          <li>CUSIP: 912828XN4 | Description: U.S. Treasury Note 3.125% due 11/15/2029 | Par: $100,000 | Market Value: $102,000</li>
+          <li>CUSIP: 912828XO2 | Description: U.S. Treasury Bill due 08/15/2025 | Par: $150,000 | Market Value: $149,250</li>
+        </ul>
+        Total pledged value: $399,750 (exceeds $250K penal amount).
+      </li>
+      <li><strong>Field 8 (Encumbrances):</strong> "None. Securities are held in a non-margin, fully paid cash account. No loans, liens, or rehypothecation agreements." Attach Fidelity account statement showing "Cash" account type.</li>
+      <li><strong>Field 9 (Prior Pledges):</strong> "None. These Treasury securities have never been pledged as surety on any prior bond within the past three years."</li>
+      <li><strong>Attached Documentation:</strong> Fidelity account statement (most recent month), CUSIP verification printout, broker attestation letter confirming sole ownership and no encumbrances.</li>
+    </ul>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Securities are excellent surety assets because they are liquid and easily valued. U.S. Treasuries are preferred because they carry minimal credit risk. Always verify the account is non-margin (no loans against the securities) and obtain a broker attestation letter.</div>
+  </div>
+
+  <div class="scenario-panel" id="sc-c">
+    <div class="scenario-meta">
+      <span class="scenario-tag">Co-Surety</span>
+      <span class="scenario-tag">$1M Bond</span>
+      <span class="scenario-tag">Two Sureties</span>
+    </div>
+    <h4>Scenario C: Brothers Serving as Co-Sureties</h4>
+    <p><strong>The Situation:</strong> Two brothers, Robert and William Chen, each own a $750,000 condominium in Manhattan. Their father's construction company needs a $1,000,000 performance bond. Each brother agrees to pledge his condo as co-surety.</p>
+    <p><strong>SF 28 Walkthrough:</strong></p>
+    <ul>
+      <li><strong>Two separate SF 28 forms are required</strong> — one for each co-surety. Each brother completes his own affidavit.</li>
+      <li><strong>Oath Paragraph:</strong> Both brothers check the co-surety box. They bind themselves "jointly and severally" — meaning the government can sue either or both for the full $1M.</li>
+      <li><strong>Robert Chen's Field 7:</strong> Condo at 456 Park Avenue, Unit 12B, New York, NY 10022. Legal description: Unit 12B, Condominium Plan XYZ, New York County. Market value: $750,000. Tax assessment: $720,000.</li>
+      <li><strong>William Chen's Field 7:</strong> Condo at 789 Lexington Avenue, Unit 8C, New York, NY 10022. Legal description: Unit 8C, Condominium Plan ABC, New York County. Market value: $750,000. Tax assessment: $710,000.</li>
+      <li><strong>Field 8 (Encumbrances):</strong> Both: "Mortgage with Chase Bank, N.A. in original amount of $300,000, current balance approximately $180,000. Mortgage is current; no delinquencies." Attach mortgage statements showing current balance.</li>
+      <li><strong>Net Worth Calculation:</strong> Each condo has $750K value minus $180K mortgage = $570K equity. Combined equity: $1,140,000. This exceeds the $1M penal amount.</li>
+      <li><strong>Field 9 (Prior Pledges):</strong> Both: "None within the past three years."</li>
+      <li><strong>Notarization:</strong> Each brother must have his own affidavit notarized separately. They cannot share a single notarization.</li>
+    </ul>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Co-sureties must each file a separate SF 28. The "jointly and severally" language means each surety is individually liable for the full bond amount. Net worth calculations must account for ALL encumbrances, not just the pledged property. A mortgage reduces available equity.</div>
+  </div>
+
+  <div class="scenario-panel" id="sc-d">
+    <div class="scenario-meta">
+      <span class="scenario-tag">Foreign Contract</span>
+      <span class="scenario-tag">Permanent Resident</span>
+      <span class="scenario-tag">Guam</span>
+    </div>
+    <h4>Scenario D: Maria Santos — Contract in Guam</h4>
+    <p><strong>The Situation:</strong> Maria Santos is a permanent resident of Guam (a U.S. territory) but not a U.S. citizen. She holds a Green Card. A contracting officer in Guam awards a $300,000 construction contract to a local builder, and Maria is asked to serve as individual surety.</p>
+    <p><strong>SF 28 Walkthrough:</strong></p>
+    <ul>
+      <li><strong>Citizenship Exception:</strong> Because the contracting officer is located in an outlying area (Guam), Maria <strong>does not need to be a U.S. citizen</strong>. Her permanent residency in Guam satisfies the requirement per FAR 28.203 and SF 28 Instructions, Item 3.</li>
+      <li><strong>Field 1 (Name):</strong> Maria Elena Santos.</li>
+      <li><strong>Field 2A (Address):</strong> 123 Beach Road, Tamuning, GU 96913.</li>
+      <li><strong>Field 3 (Occupation):</strong> Small business owner, 15 years — operates a retail store in Guam.</li>
+      <li><strong>Field 7 (Assets):</strong> Commercial property at 456 Marine Drive, Tamuning, GU. Legal description per Guam Recorder of Deeds. Market value: $500,000 (certified appraisal). Tax assessment: $480,000.</li>
+      <li><strong>Field 8 (Encumbrances):</strong> "First mortgage with Bank of Guam in amount of $200,000, current balance $150,000. Current on all payments." Attach mortgage statement and payment history.</li>
+      <li><strong>Net Worth:</strong> $500,000 value - $150,000 mortgage = $350,000 equity. This exceeds the $300,000 penal amount.</li>
+      <li><strong>Field 9 (Prior Pledges):</strong> "This property was pledged as surety on a $100,000 bid bond for Guam Public Works Contract #2022-044, executed March 15, 2022. That contract closed successfully on June 30, 2022, and the bond was released."</li>
+      <li><strong>Notarization:</strong> Must be notarized by a Guam notary public or other authorized official.</li>
+    </ul>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> The citizenship requirement is relaxed for outlying areas and foreign countries — permanent residency suffices. However, all other requirements (original signatures, notarization, net worth verification, documentation) remain strict. Prior pledges within the 3-year lookback must be fully disclosed even if the bond was successfully released.</div>
+  </div>
+</div>
+
+<div class="mistakes-section" id="mistakes">
+  <div class="section-heading">Common Mistakes & How to Avoid Them</div>
+  <div class="mistake-card">
+    <h4>❌ Using a Scanned or Electronic Signature</h4>
+    <p>SF 28 Instructions, Item 4 explicitly states: "All signatures of the affidavit submitted must be originals. Affidavits bearing reproduced signatures are not acceptable." DocuSign, Adobe Sign, stamped signatures, and photocopies are all rejected. The surety must physically sign the form in the presence of a notary (or have the notary witness the signature).</p>
+  </div>
+  <div class="mistake-card">
+    <h4>❌ Failing to Disclose a Mortgage on Pledged Real Estate</h4>
+    <p>A $600,000 house with a $400,000 mortgage has only $200,000 in equity. If the bond penal amount is $250,000, the surety is under-capitalized. The contracting officer will reject the affidavit. Always calculate net equity (market value minus all liens and encumbrances) and ensure it exceeds the penal amount.</p>
+  </div>
+  <div class="mistake-card">
+    <h4>❌ Omitting the 3-Year Prior Pledge History</h4>
+    <p>Section 9 requires disclosure of ALL bonds for which the subject assets were pledged within three years prior. This includes bid bonds, performance bonds, payment bonds, and bid guarantees. Even if the prior bond was released or the contract completed, it must be disclosed. Failure to disclose is a false statement under 18 U.S.C. § 1001.</p>
+  </div>
+  <div class="mistake-card">
+    <h4>❌ Using Margin Account Securities</h4>
+    <p>Securities held in a margin account may be subject to the broker's security interest and can be liquidated without the surety's consent. DOD and GSA contracting officers typically reject margin-account securities. Use only fully paid, cash-account securities. Obtain a broker letter confirming the account type.</p>
+  </div>
+  <div class="mistake-card">
+    <h4>❌ Expired or Invalid Notary Commission</h4>
+    <p>The notary's commission must be current on the date the oath is administered (Field 12a). If the commission expires the next day, the notarization may still be valid, but if it expired before the oath date, the affidavit is void. Always verify the notary's commission expiration date in Field 12e.</p>
+  </div>
+  <div class="mistake-card">
+    <h4>❌ Pledging Assets with a Financial Interest in the Principal</h4>
+    <p>SF 28 Instructions, Item 2: "An individual surety will not include any financial interest in assets connected with the principal on the bond." A stockholder cannot pledge shares of the principal corporation as surety. An employee cannot pledge a company car. The pledged assets must be wholly independent of the principal's business.</p>
+  </div>
+</div>
+
+<div class="study-guide" id="study-guide">
+  <h3>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    Study Guide & Section-by-Section Checklist
+  </h3>
+  <div class="study-grid">
+    <div class="study-card">
+      <h4>Before You Start (Eligibility Verification)</h4>
+      <ul>
+        <li>Confirm the surety is a <strong>natural person</strong> — not a corporation, partnership, or LLC</li>
+        <li>Verify <strong>U.S. citizenship</strong> (or permanent residency for outlying areas/foreign contracts)</li>
+        <li>Confirm surety is of <strong>full age and legally competent</strong> (18+ and mentally capable)</li>
+        <li>Ensure surety has <strong>no financial interest</strong> in assets connected with the principal</li>
+        <li>Calculate <strong>net worth</strong> (total assets minus all liens/encumbrances) ≥ penal amount</li>
+        <li>Identify a <strong>qualified notary public</strong> with current commission</li>
+      </ul>
+    </div>
+    <div class="study-card">
+      <h4>Personal Information Checklist (Fields 1–6)</h4>
+      <ul>
+        <li>Field 1: Full legal name matches ID and property/deed records exactly</li>
+        <li>Field 2A: Home address is current and matches tax records</li>
+        <li>Field 3: Occupation and duration demonstrate financial stability</li>
+        <li>Field 4A: Employer name and address are current; if self-employed, state clearly</li>
+        <li>Field 5A: Surety broker information (if used) is complete with contact details</li>
+        <li>Field 6: Financial institution details include RTN and contact person</li>
+      </ul>
+    </div>
+    <div class="study-card">
+      <h4>Asset & Documentation Checklist (Fields 7–9)</h4>
+      <ul>
+        <li>Field 7: All CUSIP numbers are valid and securities are in a <strong>non-margin account</strong></li>
+        <li>Real estate: Legal description, street address, market value, and tax assessment attached</li>
+        <li>Certified appraisal for real estate (dated within 6 months)</li>
+        <li>Field 8: All liens, judgments, mortgages, and tax delinquencies fully disclosed</li>
+        <li>Field 9: Complete 3-year history of all prior bond pledges disclosed</li>
+        <li><strong>All supporting documentation physically attached</strong> to the affidavit</li>
+      </ul>
+    </div>
+    <div class="study-card">
+      <h4>Signature & Notary Checklist (Fields 10–12)</h4>
+      <ul>
+        <li>Field 10: <strong>Original ink signature only</strong> — no reproductions, scans, or e-signatures</li>
+        <li>Field 11: Bond and contract number clearly identified</li>
+        <li>Field 12a: Date of oath administration is complete (month, day, year)</li>
+        <li>Field 12b: City and state of notarization match notary's jurisdiction</li>
+        <li>Field 12c: Notary name and title are typed or printed legibly</li>
+        <li>Field 12d: Notary's original signature and <strong>official seal affixed</strong></li>
+        <li>Field 12e: Notary commission expiration date is <strong>current and valid</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="footer-info">
+      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
+      <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
+      <div class="footer-links">
+        <a href="https://www.gsa.gov/reference/forms" target="_blank" rel="noopener">GSA Forms</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.acquisition.gov/far/part-28" target="_blank" rel="noopener">FAR Part 28</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.gsa.gov/system/files/SF28-23a.pdf" target="_blank" rel="noopener">Original SF 28 PDF</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY
+════════════════════════════════════════════════════ -->
+
+<!-- how-to-use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <p>This guide merges the original GSA Standard Form 28 (Rev. 10/2023) with interactive definitions from the Federal Acquisition Regulation (FAR) and federal criminal statutes.</p>
+      <p><strong>How to navigate:</strong></p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between sections.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation with FAR citations and legal context.</li>
+        <li>Work through the <strong>Scenarios</strong> to see the form in realistic surety contexts.</li>
+        <li>Review the <strong>Red Flags</strong> and <strong>Common Mistakes</strong> before any real submission.</li>
+        <li>Use the <strong>Study Guide</strong> as a pre-submission checklist.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Work through the form sequentially. Each section builds on the previous. If you encounter an unfamiliar legal term, click it before moving on. The oath paragraph contains the most legally significant language.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SF28 -->
+<div class="modal-overlay" id="modal-sf28" role="dialog" aria-modal="true" aria-labelledby="modal-title-sf28">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sf28">Standard Form 28 (SF 28)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Form</div>
+        <div class="def-word">Standard Form 28 — Affidavit of Individual Surety</div>
+        <p>The official GSA-prescribed form used by individual sureties to provide sworn financial information and asset pledges in connection with government contract bonds. Current revision: October 2023.</p>
+      </div>
+      <p>SF 28 is required under FAR 28.203 whenever an individual (as opposed to a corporate surety company) serves as surety on a bid bond, performance bond, or payment bond for a federal government contract. The form serves as both a financial disclosure and a legal affidavit.</p>
+      <p>The October 2023 revision updated the form to include additional fields for email addresses, surety broker information, and financial institution contact details — reflecting modern communication practices.</p>
+      <div class="citation"><strong>Source:</strong> GSA Standard Forms; FAR 48 CFR 53.228(e); OMB Control No. 9000-0001. <a href="https://www.gsa.gov/reference/forms/affidavit-of-individual-surety">gsa.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAR 53.228(e) -->
+<div class="modal-overlay" id="modal-far-53-228e" role="dialog" aria-modal="true" aria-labelledby="modal-title-far-53-228e">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-far-53-228e">FAR 53.228(e) — Bond Forms</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Regulation</div>
+        <div class="def-word">48 CFR 53.228(e)</div>
+        <p>The Federal Acquisition Regulation provision that prescribes Standard Form 28 as the required affidavit for individual sureties on government contract bonds.</p>
+      </div>
+      <p>FAR 53.228(e) states that SF 28 "shall be used" for individual sureties. This is not optional — when an individual surety is used on a federal contract, the contracting officer must receive a completed SF 28.</p>
+      <p>The regulation works in conjunction with FAR 28.203, which establishes the requirements for individual sureties, and FAR 28.106-1, which lists all required bond forms.</p>
+      <div class="citation"><strong>Source:</strong> Federal Acquisition Regulation, 48 CFR 53.228(e); FAR 28.203. <a href="https://www.acquisition.gov/far/53.228">acquisition.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- State -->
+<div class="modal-overlay" id="modal-state" role="dialog" aria-modal="true" aria-labelledby="modal-title-state">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-state">State of Execution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Jurisdictional Field</div>
+        <div class="def-word">State</div>
+        <p>The U.S. state (or territory) in which the affidavit is executed and notarized. This determines the applicable notary laws and the jurisdiction for any legal proceedings.</p>
+      </div>
+      <p>The state entered here should match:</p>
+      <ul>
+        <li>The state where the notary public is commissioned</li>
+        <li>The state where the oath is administered</li>
+        <li>The state of the surety's residence (typically, though not strictly required)</li>
+      </ul>
+      <p>For contracts in outlying areas (Guam, Puerto Rico, Virgin Islands, etc.), enter the territory name. For foreign contracts, enter the foreign country.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Instructions, Item 3; FAR 28.203. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- County -->
+<div class="modal-overlay" id="modal-county" role="dialog" aria-modal="true" aria-labelledby="modal-title-county">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-county">County of Execution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Jurisdictional Field</div>
+        <div class="def-word">County</div>
+        <p>The county (or parish, borough, or equivalent subdivision) within the state where the affidavit is executed and notarized.</p>
+      </div>
+      <p>The county should match the notary's jurisdiction. In Louisiana, use "Parish." In Alaska, use "Borough." In independent cities (e.g., Baltimore, St. Louis), the city name may substitute for the county name.</p>
+      <p>This field is important because real estate records, lien searches, and notary commissions are typically organized by county. The contracting officer may verify the notary's commission in this county.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Form; standard notary practices. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Surety -->
+<div class="modal-overlay" id="modal-surety" role="dialog" aria-modal="true" aria-labelledby="modal-title-surety">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-surety">Surety — Individual Surety</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Role</div>
+        <div class="def-word">Individual Surety</div>
+        <p>A natural person who pledges personal assets to guarantee the performance of a government contract, as distinguished from a corporate surety (an insurance company licensed to issue bonds).</p>
+      </div>
+      <p>Individual sureties are an alternative to corporate surety companies (like Liberty Mutual, Travelers, or CNA). While corporate sureties are the norm for large contracts, individual sureties may be used for smaller contracts or when a corporate surety is unavailable.</p>
+      <p>Key restrictions on individual sureties:</p>
+      <ul>
+        <li>Must be a <strong>natural person</strong> — no corporations, LLCs, or partnerships</li>
+        <li>Must be a <strong>U.S. citizen</strong> (or permanent resident for outlying areas/foreign contracts)</li>
+        <li>Must be of <strong>full age and legally competent</strong></li>
+        <li>Net worth must be <strong>≥ penal amount</strong> of the bond</li>
+        <li>Cannot have a <strong>financial interest</strong> in the principal's assets</li>
+      </ul>
+      <div class="tip-box"><strong>Practical note:</strong> Many contracting officers prefer corporate sureties because they are regulated, rated, and have established claims procedures. Individual sureties require more due diligence and documentation.</div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203; SF 28 Instructions, Items 1–3. <a href="https://www.acquisition.gov/far/28.203">acquisition.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bond -->
+<div class="modal-overlay" id="modal-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-bond">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bond">Bond — Types of Government Contract Bonds</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Guarantee</div>
+        <div class="def-word">Bond</div>
+        <p>A legally binding guarantee that the principal (contractor) will fulfill its obligations under a government contract. If the principal defaults, the surety must complete the contract or pay damages up to the penal amount.</p>
+      </div>
+      <p class="modal-section-title">Types of Bonds Requiring SF 28</p>
+      <ul>
+        <li><strong>Bid Bond (SF 24):</strong> Guarantees that the bidder will enter into the contract if awarded. Typically 5–20% of bid price.</li>
+        <li><strong>Performance Bond (SF 25):</strong> Guarantees the contractor will complete the contract according to terms. Typically 100% of contract price.</li>
+        <li><strong>Payment Bond (SF 25A):</strong> Guarantees payment to subcontractors and suppliers. Typically 100% of contract price.</li>
+        <li><strong>Bid Guarantee:</strong> A narrower form of bid security — may be a bid bond, certified check, or irrevocable letter of credit.</li>
+      </ul>
+      <p class="modal-section-title">Penal Amount</p>
+      <p>The "penal amount" is the maximum liability of the surety. For performance bonds, it is typically the full contract price. The individual surety's net worth must equal or exceed this amount.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.101–28.106; Miller Act (40 U.S.C. § 3131 et seq.). <a href="https://www.acquisition.gov/far/part-28">acquisition.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Citizen -->
+<div class="modal-overlay" id="modal-citizen" role="dialog" aria-modal="true" aria-labelledby="modal-title-citizen">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-citizen">Citizen of the United States</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Eligibility Requirement</div>
+        <div class="def-word">U.S. Citizenship</div>
+        <p>A requirement that the individual surety be a citizen of the United States for contracts awarded within the United States. This ensures the surety is subject to U.S. jurisdiction and can be sued in U.S. courts.</p>
+      </div>
+      <p>SF 28 Instructions, Item 3 establishes the citizenship requirement:</p>
+      <ul>
+        <li><strong>Contracts in the United States:</strong> Surety must be a U.S. citizen.</li>
+        <li><strong>Contracts in outlying areas</strong> (Puerto Rico, Virgin Islands, Guam, etc.): Surety must be a permanent resident of that area.</li>
+        <li><strong>Contracts in foreign countries:</strong> Surety must be a permanent resident of that country.</li>
+      </ul>
+      <p>Proof of citizenship may include: U.S. passport, birth certificate, naturalization certificate, or certificate of citizenship. The contracting officer may request documentation.</p>
+      <div class="tip-box"><strong>Important:</strong> A Green Card (Lawful Permanent Resident status) does NOT satisfy the citizenship requirement for contracts in the 50 states. It only suffices for outlying areas and foreign contracts.</div>
+      <div class="citation"><strong>Source:</strong> SF 28 Instructions, Item 3; FAR 28.203. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Full Age -->
+<div class="modal-overlay" id="modal-full-age" role="dialog" aria-modal="true" aria-labelledby="modal-title-full-age">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-full-age">Full Age and Legally Competent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Capacity Requirement</div>
+        <div class="def-word">Full Age and Legally Competent</div>
+        <p>The surety must be at least 18 years old (the age of majority in most U.S. jurisdictions) and mentally capable of understanding and entering into a binding legal contract.</p>
+      </div>
+      <p>"Full age" means the surety has reached the age of majority — typically 18, though some states set it at 19 or 21. Minors cannot serve as individual sureties because contracts with minors are generally voidable.</p>
+      <p>"Legally competent" means the surety has the mental capacity to understand the nature and consequences of the surety obligation. A person under legal guardianship, or someone adjudicated incompetent, cannot serve as surety.</p>
+      <p>The notary public administering the oath implicitly verifies capacity by witnessing the surety's acknowledgment and signature.</p>
+      <div class="citation"><strong>Source:</strong> Contract law principles; SF 28 Oath Paragraph. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Co-Sureties -->
+<div class="modal-overlay" id="modal-co-sureties" role="dialog" aria-modal="true" aria-labelledby="modal-title-co-sureties">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-co-sureties">Co-Sureties</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Multiple Sureties</div>
+        <div class="def-word">Co-Sureties</div>
+        <p>Two or more individual sureties who jointly guarantee a single bond. Each co-surety must complete a separate SF 28, and their combined net worth must equal or exceed the penal amount.</p>
+      </div>
+      <p>When co-sureties act together:</p>
+      <ul>
+        <li><strong>Each surety files a separate SF 28</strong> — one form per surety</li>
+        <li>The oath paragraph is modified to reference "co-sureties"</li>
+        <li>Each surety binds themselves "jointly and severally" — the government can sue any one surety for the full amount</li>
+        <li>The combined pledged assets must cover the full penal amount</li>
+      </ul>
+      <p>Example: A $1,000,000 bond with two co-sureties. Surety A pledges assets worth $600,000; Surety B pledges assets worth $500,000. Combined: $1,100,000 (sufficient). The government can sue Surety A alone for $1,000,000 if Surety B becomes insolvent.</p>
+      <div class="tip-box"><strong>Best practice:</strong> When using co-sureties, ensure each has independently sufficient assets. Do not rely on one surety to "cover" for another — the government can pursue either for the full amount.</div>
+      <div class="citation"><strong>Source:</strong> SF 28 Oath Paragraph; FAR 28.203. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Jointly and Severally -->
+<div class="modal-overlay" id="modal-jointly-and-severally" role="dialog" aria-modal="true" aria-labelledby="modal-title-jointly-and-severally">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-jointly-and-severally">Jointly and Severally</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Liability</div>
+        <div class="def-word">Jointly and Severally</div>
+        <p>A legal term meaning that multiple obligors (sureties) are each individually liable for the entire debt, and the creditor (the government) can collect the full amount from any one of them. The creditor need not sue all obligors together.</p>
+      </div>
+      <p>"Jointly" means the sureties are liable together. "Severally" means each is liable individually. In practice:</p>
+      <ul>
+        <li>The government can sue <strong>all co-sureties together</strong> in one lawsuit</li>
+        <li>OR the government can sue <strong>any single surety</strong> for the full penal amount</li>
+        <li>If one surety pays the full amount, that surety can seek <strong>contribution</strong> from the other sureties</li>
+        <li>The government is not required to exhaust remedies against the principal before pursuing the surety</li>
+      </ul>
+      <p>SF 28 clarifies that the "jointly and severally" language applies "only for the purpose of allowing a joint action or actions against any or all of us." For all other purposes, each surety binds itself jointly and severally with the Principal.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Oath Paragraph; contract law principles. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Severally -->
+<div class="modal-overlay" id="modal-severally" role="dialog" aria-modal="true" aria-labelledby="modal-title-severally">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-severally">Severally</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Liability</div>
+        <div class="def-word">Severally</div>
+        <p>Individually; separately. When sureties bind themselves "severally," each is responsible for their own share of the obligation, as distinguished from being responsible for the entire obligation.</p>
+      </div>
+      <p>In the SF 28 oath, the term "severally" is used in contrast to "jointly and severally." The distinction:</p>
+      <ul>
+        <li><strong>"Jointly and severally"</strong> — for procedural purposes (allowing joint lawsuits), the sureties are treated as jointly liable</li>
+        <li><strong>"Severally"</strong> — for substantive liability, each surety is only responsible for their own share, unless the bond terms state otherwise</li>
+      </ul>
+      <p>This nuanced language protects co-sureties from being automatically liable for each other's shares, while still allowing the government to sue them together for efficiency.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Oath Paragraph; contract law principles. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Principal -->
+<div class="modal-overlay" id="modal-principal" role="dialog" aria-modal="true" aria-labelledby="modal-title-principal">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-principal">Principal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contract Party</div>
+        <div class="def-word">Principal</div>
+        <p>The contractor or bidder who is the primary obligor on the bond — the party whose performance or payment is being guaranteed by the surety.</p>
+      </div>
+      <p>In the surety-bond relationship, there are three parties:</p>
+      <ul>
+        <li><strong>Principal:</strong> The contractor who obtains the bond and is obligated to perform the contract</li>
+        <li><strong>Surety:</strong> The individual (or corporate entity) who guarantees the principal's performance</li>
+        <li><strong>Obligee:</strong> The government agency that is protected by the bond (the beneficiary)</li>
+      </ul>
+      <p>SF 28 Instructions, Item 2 prohibits the individual surety from having any "financial interest in assets connected with the principal on the bond." This prevents self-dealing and ensures the surety's assets are truly independent collateral.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Instructions, Item 2; FAR 28.203. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- False Statement -->
+<div class="modal-overlay" id="modal-false-statement" role="dialog" aria-modal="true" aria-labelledby="modal-title-false-statement">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-false-statement">False, Fictitious, or Fraudulent Statement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Crime</div>
+        <div class="def-word">False Statement</div>
+        <p>A material misrepresentation of fact made knowingly and willfully on a document submitted to a federal agency. Under 18 U.S.C. § 1001, such statements are punishable by up to 5 years in prison and fines.</p>
+      </div>
+      <p>The SF 28 oath explicitly warns the surety that false statements may subject them to prosecution under:</p>
+      <ul>
+        <li><strong>18 U.S.C. § 1001:</strong> False Statements — prohibits knowingly and willfully making false statements in matters within federal jurisdiction. Penalty: up to 5 years imprisonment and/or fines.</li>
+        <li><strong>18 U.S.C. § 494:</strong> Contractors' Bonds, Bids, and Public Records — specifically addresses false statements on bonds and bids for government contracts. Penalty: up to 5 years imprisonment and/or fines.</li>
+      </ul>
+      <p>Common false statements on SF 28 include:</p>
+      <ul>
+        <li>Overstating asset values or net worth</li>
+        <li>Failing to disclose existing liens or mortgages</li>
+        <li>Concealing prior bond pledges within the 3-year lookback</li>
+        <li>Claiming U.S. citizenship when not a citizen</li>
+        <li>Pledging assets that are not actually owned</li>
+      </ul>
+      <div class="tip-box"><strong>Warning:</strong> The false statement statute does not require the government to prove intent to defraud — only that the statement was made knowingly and willfully. Negligent errors (e.g., forgetting a small lien) may still trigger liability if they are material to the government's decision to accept the surety.</div>
+      <div class="citation"><strong>Source:</strong> 18 U.S.C. § 1001; 18 U.S.C. § 494; SF 28 Oath Paragraph. <a href="https://www.law.cornell.edu/uscode/text/18/1001">cornell.edu (18 U.S.C. § 1001)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Title 18 -->
+<div class="modal-overlay" id="modal-title-18" role="dialog" aria-modal="true" aria-labelledby="modal-title-title-18">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-title-18">Title 18, United States Code</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Criminal Code</div>
+        <div class="def-word">Title 18 U.S.C.</div>
+        <p>The portion of the United States Code that contains federal criminal statutes. Sections 1001 and 494 are the specific provisions cited in SF 28 that criminalize false statements on surety affidavits and government bonds.</p>
+      </div>
+      <p class="modal-section-title">18 U.S.C. § 1001 — False Statements</p>
+      <p>Prohibits knowingly and willfully making any materially false, fictitious, or fraudulent statement or representation in any matter within the jurisdiction of the executive, legislative, or judicial branch of the U.S. government.</p>
+      <p>Elements:</p>
+      <ul>
+        <li>The defendant made a statement</li>
+        <li>The statement was false</li>
+        <li>The statement was material (capable of influencing the government's decision)</li>
+        <li>The defendant acted knowingly and willfully</li>
+        <li>The statement concerned a matter within federal jurisdiction</li>
+      </ul>
+      <p class="modal-section-title">18 U.S.C. § 494 — Contractors' Bonds, Bids, and Public Records</p>
+      <p>Specifically criminalizes false statements on bonds, bids, and public records related to government contracts. This statute is tailored to the procurement context and carries the same penalties as § 1001.</p>
+      <div class="citation"><strong>Source:</strong> 18 U.S.C. § 1001; 18 U.S.C. § 494. <a href="https://www.law.cornell.edu/uscode/text/18">cornell.edu (Title 18)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSIP -->
+<div class="modal-overlay" id="modal-cusip" role="dialog" aria-modal="true" aria-labelledby="modal-title-cusip">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cusip">CUSIP — Committee on Uniform Securities Identification Procedures</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Securities Identifier</div>
+        <div class="def-word">CUSIP Number</div>
+        <p>A unique 9-character alphanumeric code used to identify securities (stocks, bonds, notes) in the U.S. and Canada. Administered by CUSIP Global Services (CGS), a division of S&P Global.</p>
+      </div>
+      <p>On SF 28, the surety must list the CUSIP number for each security being pledged. This allows the contracting officer to:</p>
+      <ul>
+        <li>Verify the security exists and is valid</li>
+        <li>Check current market value through financial data providers</li>
+        <li>Confirm the security type (U.S. Treasury, corporate bond, municipal bond, etc.)</li>
+        <li>Ensure the security is not already pledged or encumbered</li>
+      </ul>
+      <p><strong>Format:</strong> 9 characters (e.g., 912828XM6 for a U.S. Treasury note). The first 6 characters identify the issuer; characters 7–8 identify the specific issue; the 9th is a check digit.</p>
+      <p><strong>Where to find CUSIP numbers:</strong></p>
+      <ul>
+        <li>Brokerage account statements</li>
+        <li>Trade confirmations</li>
+        <li>SEC EDGAR filings (for corporate bonds)</li>
+        <li>TreasuryDirect.gov (for U.S. Treasuries)</li>
+        <li>CUSIP lookup services (e.g., Fidelity, Bloomberg)</li>
+      </ul>
+      <div class="tip-box"><strong>Important:</strong> If pledging U.S. Treasury securities held in TreasuryDirect, the CUSIP may not be immediately visible. Contact TreasuryDirect customer service or check the security detail page for the CUSIP.</div>
+      <div class="citation"><strong>Source:</strong> CUSIP Global Services; SF 28 Field 7. <a href="https://www.cusip.com">cusip.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Liens -->
+<div class="modal-overlay" id="modal-liens" role="dialog" aria-modal="true" aria-labelledby="modal-title-liens">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-liens">Liens</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Interest</div>
+        <div class="def-word">Lien</div>
+        <p>A legal claim or encumbrance against property (real or personal) that secures payment of a debt or performance of an obligation. A lien reduces the net equity available to secure the bond.</p>
+      </div>
+      <p>Common types of liens that must be disclosed on SF 28, Field 8:</p>
+      <ul>
+        <li><strong>Mortgages:</strong> The most common lien on real estate. The outstanding balance reduces the property's net equity.</li>
+        <li><strong>Home equity lines of credit (HELOCs):</strong> Even if unused, the available credit line represents a potential lien.</li>
+        <li><strong>Tax liens:</strong> Federal, state, or local tax liens for unpaid income, property, or other taxes.</li>
+        <li><strong>Mechanic's liens:</strong> Claims by contractors or suppliers for unpaid work on the property.</li>
+        <li><strong>Judgment liens:</strong> Court-ordered liens resulting from lawsuits.</li>
+        <li><strong>Child support liens:</strong> Liens imposed for unpaid child support obligations.</li>
+      </ul>
+      <p>To verify liens, the surety should obtain:</p>
+      <ul>
+        <li>A <strong>title search</strong> or title commitment from a title company</li>
+        <li>A <strong>UCC search</strong> (for personal property liens)</li>
+        <li>Current <strong>tax records</strong> showing no delinquencies</li>
+      </ul>
+      <div class="tip-box"><strong>Critical:</strong> Even a small, forgotten lien can render the surety's net worth insufficient. A $600,000 house with a $200,000 mortgage and a $50,000 tax lien has only $350,000 in equity — which may not cover a $400,000 bond.</div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 8; property law principles. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Judgments -->
+<div class="modal-overlay" id="modal-judgments" role="dialog" aria-modal="true" aria-labelledby="modal-title-judgments">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-judgments">Judgments</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Court Order</div>
+        <div class="def-word">Judgment</div>
+        <p>A formal decision by a court resolving a dispute and determining the rights and obligations of the parties. A money judgment can become a lien on the judgment debtor's property.</p>
+      </div>
+      <p>Judgments that must be disclosed on SF 28 include:</p>
+      <ul>
+        <li><strong>Money judgments:</strong> Court orders requiring payment of a specific sum. These may be recorded as liens on real property.</li>
+        <li><strong>Unsatisfied judgments:</strong> Even if not yet recorded as liens, they represent potential claims against the surety's assets.</li>
+        <li><strong>Pending litigation:</strong> While not yet a judgment, pending lawsuits that could result in a judgment against the surety should be disclosed as a matter of good faith.</li>
+      </ul>
+      <p>A judgment lien typically attaches to all real property owned by the judgment debtor in the county where the judgment is recorded. The lien remains until the judgment is paid or expires (usually 10–20 years, depending on state law).</p>
+      <p>To check for judgments:</p>
+      <ul>
+        <li>Search county court records in all counties where the surety owns property</li>
+        <li>Search federal court records (PACER)</li>
+        <li>Review credit reports (judgments appear on credit reports for 7 years)</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 8; civil procedure law. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Encumbrances -->
+<div class="modal-overlay" id="modal-encumbrances" role="dialog" aria-modal="true" aria-labelledby="modal-title-encumbrances">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-encumbrances">Encumbrances</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Restriction</div>
+        <div class="def-word">Encumbrance</div>
+        <p>Any claim, lien, charge, or liability attached to real or personal property that reduces its value or burdens it, but does not necessarily prevent transfer of title. A broader term than "lien."</p>
+      </div>
+      <p>Encumbrances include but are not limited to:</p>
+      <ul>
+        <li><strong>Liens:</strong> Mortgages, tax liens, judgment liens, mechanic's liens</li>
+        <li><strong>Easements:</strong> Rights of others to use the property (e.g., utility easements, access easements)</li>
+        <li><strong>Restrictions:</strong> Covenants, conditions, and restrictions (CC&Rs) in subdivisions</li>
+        <li><strong>Encroachments:</strong> Structures that extend onto neighboring property</li>
+        <li><strong>Zoning violations:</strong> Non-conforming uses that may require remediation</li>
+        <li><strong>Pending condemnation:</strong> Government proceedings to take the property</li>
+        <li><strong>Real estate taxes due and payable:</strong> Unpaid property taxes are a form of encumbrance</li>
+      </ul>
+      <p>SF 28 Field 8 requires disclosure of "all liens, judgments, or any other encumbrances." The phrase "any other encumbrances" is intentionally broad — when in doubt, disclose.</p>
+      <div class="tip-box"><strong>Best practice:</strong> Obtain a preliminary title report from a title company before completing SF 28. This will reveal all recorded encumbrances and provide a clean basis for Field 8 disclosures.</div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 8; property law principles. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bid Guarantees -->
+<div class="modal-overlay" id="modal-bid-guarantees" role="dialog" aria-modal="true" aria-labelledby="modal-title-bid-guarantees">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bid-guarantees">Bid Guarantees</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Security Instrument</div>
+        <div class="def-word">Bid Guarantee</div>
+        <p>A form of security that ensures the bidder will accept the contract if awarded. Common forms include bid bonds (SF 24), certified checks, and irrevocable letters of credit.</p>
+      </div>
+      <p>SF 28 Field 9 requires disclosure of <strong>all bonds, including bid guarantees</strong>, for which the subject assets have been pledged within the past three years. This includes:</p>
+      <ul>
+        <li>Bid bonds (SF 24)</li>
+        <li>Performance bonds (SF 25)</li>
+        <li>Payment bonds (SF 25A)</li>
+        <li>Annual bid bonds (SF 34)</li>
+        <li>Any other surety obligation to a government agency</li>
+      </ul>
+      <p>Even if the prior bond was released or the contract was completed successfully, it must still be disclosed. The 3-year lookback is absolute.</p>
+      <p>Why this matters: If the same assets were pledged on a prior bond that is still active, the surety may be over-pledged — meaning the assets cannot cover both obligations simultaneously.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 9; FAR 28.101. <a href="https://www.gsa.gov/system/files/SF28-23a.pdf">gsa.gov (SF 28)</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentModal = null;
+
+function openModal(id) {
+  if (currentModal) {
+    currentModal.classList.remove('active');
+  }
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.add('active');
+    currentModal = modal;
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal() {
+  if (currentModal) {
+    currentModal.classList.remove('active');
+    currentModal = null;
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+function toggleToc() {
+  document.getElementById('tocSidebar').classList.toggle('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const toc = document.getElementById('tocSidebar');
+    if (toc && toc.classList.contains('open')) {
+      toc.classList.remove('open');
+    }
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const toc = document.getElementById('tocSidebar');
+  const toggle = document.querySelector('.toc-toggle');
+  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+    toc.classList.remove('open');
+  }
+});
+
+function showScenario(id) {
+  document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.scenario-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  const panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.add('active');
+    const activeTab = Array.from(document.querySelectorAll('.scenario-tab')).find(t => t.getAttribute('onclick').includes(id));
+    if (activeTab) {
+      activeTab.classList.add('active');
+      activeTab.setAttribute('aria-selected', 'true');
+    }
+  }
+}
+</script>
+
+</body>
+</html>
