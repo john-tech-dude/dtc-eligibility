@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The DTC Documents: A Unified Biblical Exegesis — V4.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Noto+Serif+Hebrew:wght@100..900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #080808;
+  --bg-secondary: #0d0d0d;
+  --bg-tertiary: #121212;
+  --bg-card: #0f0f0f;
+  --bg-glass: rgba(10,10,10,0.92);
+  --text-primary: #ede5d3;
+  --text-secondary: #b09a7a;
+  --text-muted: #5a4e3a;
+  --text-gold-muted: #7a6a4a;
+  --accent-gold: #c8a84b;
+  --accent-gold-light: #e2cc82;
+  --accent-gold-dark: #9a7828;
+  --accent-gold-glow: rgba(200,168,75,0.18);
+  --accent-crimson: #7a2e2e;
+  --accent-crimson-light: #b05050;
+  --accent-crimson-glow: rgba(122,46,46,0.12);
+  --border-subtle: #1a1510;
+  --border-gold: #221c12;
+  --border-gold-bright: #352b18;
+  --shadow-gold: 0 0 60px rgba(200,168,75,0.07);
+  --shadow-deep: 0 24px 80px rgba(0,0,0,0.7);
+  --font-display: 'Cinzel', 'Trajan Pro', serif;
+  --font-body: 'EB Garamond', 'Georgia', serif;
+  --font-hebrew: 'Noto Serif Hebrew', 'David', serif;
+  --font-accent: 'Cormorant Garamond', 'Georgia', serif;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 18px; scroll-padding-top: 100px; }
+body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); line-height: 1.8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--accent-gold-dark); border-radius: 3px; }
+::selection { background: rgba(200,168,75,0.3); color: var(--text-primary); }
+
+/* ── LOADING ── */
+.loading-screen {
+  position: fixed; inset: 0; background: var(--bg-primary); z-index: 10000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 1.2s var(--ease), visibility 1.2s var(--ease);
+}
+.loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-seal { width: 140px; height: 140px; }
+.loading-ring-outer { animation: spin-slow 20s linear infinite; transform-origin: 70px 70px; }
+.loading-ring-middle { animation: spin-slow 14s linear infinite reverse; transform-origin: 70px 70px; }
+.loading-ring-inner { animation: spin-slow 8s linear infinite; transform-origin: 70px 70px; }
+.loading-text {
+  font-family: var(--font-display); font-size: 0.58rem; letter-spacing: 0.55em;
+  color: var(--accent-gold); margin-top: 2.5rem; text-transform: uppercase;
+  animation: breathe 2.4s ease-in-out infinite;
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes breathe { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+/* ── LAYOUT ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 2.5rem; }
+.container-wide { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── TYPOGRAPHY ── */
+h2 {
+  font-family: var(--font-display); font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 600; color: var(--accent-gold); margin: 5rem 0 1.8rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--border-gold-bright);
+  letter-spacing: 0.06em; line-height: 1.2; position: relative;
+}
+h2::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold), transparent);
+  animation: expand-line 2s var(--ease) forwards;
+}
+@keyframes expand-line { to { width: 100px; } }
+
+h3 {
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 500;
+  color: var(--text-primary); margin: 3.5rem 0 1.2rem; letter-spacing: 0.04em;
+  line-height: 1.3; position: relative; padding-left: 1.6rem;
+}
+h3::before {
+  content: ''; position: absolute; left: 0; top: 0.45em;
+  width: 8px; height: 8px;
+  background: var(--accent-gold-dark);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+h4 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+  color: var(--text-secondary); margin: 2.5rem 0 1rem; letter-spacing: 0.04em;
+}
+p { margin-bottom: 1.4rem; text-align: justify; hyphens: auto; }
+strong { color: var(--accent-gold-light); font-weight: 600; }
+em { color: var(--text-secondary); font-style: italic; }
+
+.hebrew { font-family: var(--font-hebrew); direction: rtl; display: inline-block; font-size: 1.2em; color: var(--accent-gold-light); vertical-align: middle; }
+.hebrew-inline { font-family: var(--font-hebrew); direction: rtl; display: inline; font-size: 1.1em; color: var(--accent-gold-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 6rem 2rem; position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(200,168,75,0.04) 0%, transparent 70%);
+}
+.hero-star-bg {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: min(700px, 95vw); height: min(700px, 95vw);
+  opacity: 1; pointer-events: none;
+}
+.hero-star-rotate { animation: star-turn 60s linear infinite; transform-origin: 350px 350px; }
+.hero-star-rotate-2 { animation: star-turn 90s linear infinite reverse; transform-origin: 350px 350px; }
+
+@keyframes star-turn { to { transform: rotate(360deg); } }
+
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero-label {
+  font-family: var(--font-display); font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.55em; text-transform: uppercase; color: var(--accent-gold);
+  margin-bottom: 3rem; display: inline-block;
+  border: 1px solid var(--border-gold-bright); padding: 0.75rem 2rem; border-radius: 2px;
+  position: relative; overflow: hidden;
+}
+.hero-label::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(200,168,75,0.08), transparent);
+  transform: translateX(-100%); animation: shimmer 3.5s ease-in-out infinite 1s;
+}
+@keyframes shimmer { 0%,100%{transform:translateX(-100%)} 60%{transform:translateX(100%)} }
+
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700; line-height: 1.08; color: var(--text-primary);
+  margin-bottom: 2rem; letter-spacing: 0.01em;
+}
+.hero h1 .accent { color: var(--accent-gold); font-weight: 800; }
+.hero-gematria {
+  font-family: var(--font-display); font-size: clamp(4rem, 10vw, 7rem); font-weight: 800;
+  color: transparent; letter-spacing: -0.02em; line-height: 1;
+  background: linear-gradient(135deg, var(--accent-gold-dark) 0%, var(--accent-gold) 40%, var(--accent-gold-light) 60%, var(--accent-gold) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  display: block; margin: 1.5rem 0;
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px rgba(200,168,75,0.3));
+}
+.hero-subtitle {
+  font-family: var(--font-accent); font-size: 1.15rem; font-style: italic;
+  color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;
+  max-width: 580px; margin-left: auto; margin-right: auto;
+}
+.hero-meta { font-family: var(--font-display); font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--text-muted); }
+.version-badge {
+  display: inline-block; margin-top: 2.5rem; padding: 0.55rem 1.8rem;
+  border: 1px solid var(--accent-gold); color: var(--accent-gold);
+  font-family: var(--font-display); font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+  border-radius: 2px; transition: all 0.4s var(--ease);
+}
+.version-badge:hover { background: var(--accent-gold); color: var(--bg-primary); box-shadow: 0 0 40px var(--accent-gold-glow); }
+
+.scroll-indicator {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+  color: var(--text-muted); font-family: var(--font-display); font-size: 0.58rem;
+  letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer;
+  animation: float-ud 3.5s ease-in-out infinite;
+}
+.scroll-indicator:hover { color: var(--accent-gold); }
+.scroll-indicator svg { width: 26px; height: 26px; stroke: var(--accent-gold-dark); }
+.scroll-indicator:hover svg { stroke: var(--accent-gold); }
+@keyframes float-ud { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
+
+/* ── MAIN CONTENT ── */
+main { padding: 6rem 0 9rem; }
+h1.main-title { display: none; }
+
+/* ── DIVIDERS ── */
+.ornament-line {
+  display: flex; align-items: center; justify-content: center; gap: 1.8rem; margin: 3.5rem 0;
+}
+.ornament-line::before, .ornament-line::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold-bright), transparent);
+  max-width: 220px;
+}
+.ornament-line span { color: var(--accent-gold-dark); font-size: 0.75rem; letter-spacing: 0.5em; }
+
+hr.section-divider {
+  border: none; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold-bright), transparent);
+  margin: 5rem 0; position: relative;
+}
+hr.section-divider::after {
+  content: '✦'; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%); color: var(--accent-gold-dark); font-size: 0.75rem;
+  background: var(--bg-primary); padding: 0 1rem;
+}
+
+/* ── BLOCKQUOTES ── */
+blockquote {
+  margin: 2.5rem 0; padding: 2rem 2.5rem 2rem 3.5rem;
+  background: var(--bg-card); border-left: 2px solid var(--accent-gold);
+  border-radius: 0 6px 6px 0; position: relative;
+  box-shadow: inset 4px 0 20px rgba(200,168,75,0.04), var(--shadow-deep);
+  transition: all 0.4s var(--ease);
+}
+blockquote:hover { box-shadow: inset 4px 0 30px rgba(200,168,75,0.07), 0 24px 60px rgba(0,0,0,0.5); transform: translateX(3px); }
+blockquote::before {
+  content: '"'; position: absolute; top: -0.5rem; left: 1rem;
+  font-family: var(--font-accent); font-size: 6rem; color: var(--accent-gold);
+  opacity: 0.12; line-height: 1;
+}
+blockquote p { margin-bottom: 0.8rem; font-style: italic; color: var(--text-secondary); text-align: left; }
+blockquote p:last-child { margin-bottom: 0; }
+
+/* ── LISTS ── */
+ul, ol { margin: 1.5rem 0; padding-left: 2rem; }
+li { margin-bottom: 0.8rem; color: var(--text-secondary); transition: color 0.3s ease; }
+li:hover { color: var(--text-primary); }
+li::marker { color: var(--accent-gold-dark); }
+
+/* ── TABLES ── */
+.table-wrapper {
+  margin: 2.5rem 0; overflow-x: auto;
+  border-radius: 6px; border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-deep); transition: border-color 0.4s ease;
+}
+.table-wrapper:hover { border-color: var(--border-gold-bright); }
+table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+thead { background: var(--bg-tertiary); }
+th {
+  font-family: var(--font-display); font-weight: 600; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-gold);
+  padding: 1.2rem 1.5rem; text-align: left; border-bottom: 2px solid var(--border-gold-bright);
+  white-space: nowrap;
+}
+td { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); vertical-align: top; transition: all 0.25s ease; }
+tr:hover td { background: rgba(200,168,75,0.03); color: var(--text-primary); }
+tbody tr:last-child td { border-bottom: none; }
+.hebrew-cell { font-family: var(--font-hebrew); font-size: 1.15rem; color: var(--accent-gold-light); text-align: center; }
+.value-cell { font-family: var(--font-display); color: var(--accent-gold); font-weight: 700; text-align: center; }
+
+/* ── CALLOUT BOXES ── */
+.note-box, .update-box, .correction-box {
+  background: var(--bg-card); border-radius: 6px; padding: 2rem 2.5rem;
+  margin: 2.5rem 0; position: relative;
+  box-shadow: var(--shadow-deep); transition: all 0.4s var(--ease);
+}
+.note-box { border: 1px solid var(--border-subtle); }
+.note-box:hover { border-color: var(--border-gold-bright); }
+.update-box { border: 1px solid var(--accent-gold-dark); box-shadow: 0 0 40px rgba(200,168,75,0.04); }
+.update-box:hover { box-shadow: 0 0 60px rgba(200,168,75,0.08); }
+.correction-box { border: 1px solid var(--accent-crimson); box-shadow: 0 0 40px rgba(122,46,46,0.04); }
+.correction-box:hover { box-shadow: 0 0 60px rgba(122,46,46,0.08); }
+.note-box::before, .update-box::before, .correction-box::before {
+  position: absolute; top: -0.65rem; left: 1.5rem;
+  background: var(--bg-primary); padding: 0 1rem;
+  font-family: var(--font-display); font-size: 0.6rem; letter-spacing: 0.2em;
+}
+.note-box::before { content: 'NOTE'; color: var(--accent-gold); border: 1px solid var(--border-gold-bright); }
+.update-box::before { content: 'V4.0 REVISED'; color: var(--accent-gold); border: 1px solid var(--accent-gold-dark); }
+.correction-box::before { content: 'EDITORIAL NOTE'; color: var(--accent-crimson-light); border: 1px solid var(--accent-crimson); }
+
+/* ── PART HEADERS ── */
+.part-header {
+  text-align: center; margin: 7rem 0 4rem; padding: 4rem 0;
+  border-top: 1px solid var(--border-gold-bright);
+  border-bottom: 1px solid var(--border-gold-bright);
+  position: relative; overflow: hidden;
+}
+.part-header::before, .part-header::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 2px;
+}
+.part-header::before { top: 0; background: linear-gradient(90deg, transparent, var(--accent-gold-dark), transparent); opacity: 0.6; }
+.part-header::after { bottom: 0; background: linear-gradient(90deg, transparent, var(--accent-gold-dark), transparent); opacity: 0.3; }
+.part-header .part-label {
+  font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.65em;
+  text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1.2rem;
+  display: block; opacity: 0.8;
+}
+.part-header h2 {
+  border: none; margin: 0; font-size: clamp(1.6rem, 4vw, 2.5rem);
+  padding-bottom: 0; letter-spacing: 0.04em;
+}
+.part-header h2::after { display: none; }
+
+/* ── LETTER CARDS ── */
+.letter-diagram { display: flex; justify-content: center; align-items: center; gap: 2rem; margin: 3rem 0; flex-wrap: wrap; }
+.letter-card {
+  text-align: center; padding: 3rem 2.5rem; min-width: 180px;
+  border: 2px solid var(--border-gold); border-radius: 12px; background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
+  transition: all 0.5s var(--ease); position: relative; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 rgba(200,168,75,0);
+}
+.letter-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(200,168,75,0.15) 0%, rgba(200,168,75,0.05) 50%, rgba(200,168,75,0.15) 100%);
+  opacity: 0; transition: opacity 0.5s ease;
+  z-index: 0;
+}
+.letter-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(200,168,75,0.1), transparent 70%);
+  opacity: 0; transition: opacity 0.5s ease;
+  z-index: 1;
+}
+.letter-card:hover::before { opacity: 1; }
+.letter-card:hover::after { opacity: 1; }
+.letter-card:hover { 
+  border-color: var(--accent-gold); 
+  transform: translateY(-12px) scale(1.05); 
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 rgba(200,168,75,0.2), 0 0 80px rgba(200,168,75,0.08);
+}
+.letter-card .letter-hebrew { 
+  font-family: var(--font-hebrew); 
+  font-size: 4rem; 
+  color: var(--accent-gold-light); 
+  margin-bottom: 0.8rem; 
+  transition: all 0.4s ease; 
+  display: block; 
+  position: relative; z-index: 2;
+  text-shadow: 0 0 20px rgba(200,168,75,0.3);
+}
+.letter-card:hover .letter-hebrew { 
+  transform: scale(1.15); 
+  color: var(--accent-gold);
+  text-shadow: 0 0 30px rgba(200,168,75,0.5);
+}
+.letter-card .letter-name { 
+  font-family: var(--font-display); 
+  font-size: 0.82rem; 
+  color: var(--accent-gold); 
+  letter-spacing: 0.2em; 
+  text-transform: uppercase; 
+  margin-bottom: 0.5rem; 
+  position: relative; z-index: 2;
+  font-weight: 600;
+}
+.letter-card .letter-value { 
+  font-family: var(--font-display); 
+  font-size: 2rem; 
+  color: var(--text-primary); 
+  font-weight: 800; 
+  position: relative; z-index: 2;
+  margin-bottom: 0.5rem;
+}
+.letter-card .letter-meaning { 
+  font-family: var(--font-body); 
+  font-size: 0.9rem; 
+  color: var(--text-secondary); 
+  margin-top: 0.8rem; 
+  font-style: italic; 
+  position: relative; z-index: 2;
+  line-height: 1.4;
+}
+
+.letter-sum {
+  display: flex; align-items: center; gap: 1.5rem; justify-content: center;
+  margin: 2.5rem auto; padding: 2rem 2.5rem;
+  border: 2px solid var(--accent-gold); border-radius: 10px;
+  background: rgba(200,168,75,0.04); max-width: 440px;
+  box-shadow: 0 0 40px rgba(200,168,75,0.05);
+}
+.letter-sum .sum-equals { font-family: var(--font-display); font-size: 2.2rem; color: var(--accent-gold); }
+.letter-sum .sum-value { font-family: var(--font-display); font-size: 2.8rem; color: var(--accent-gold); font-weight: 800; }
+.letter-sum .sum-label { font-family: var(--font-body); font-size: 0.92rem; color: var(--text-secondary); font-style: italic; line-height: 1.5; }
+
+/* ── NUMBER PROPERTY CARDS ── */
+.number-props { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 2rem 0; justify-content: center; }
+.number-prop {
+  flex: 1 1 210px; max-width: 270px; padding: 1.6rem;
+  border: 1px solid var(--border-subtle); border-radius: 8px; background: var(--bg-card);
+  transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+}
+.number-prop::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-gold), transparent); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left; }
+.number-prop:hover::before { transform: scaleX(1); }
+.number-prop:hover { border-color: var(--border-gold-bright); transform: translateY(-5px); box-shadow: 0 14px 45px rgba(0,0,0,0.45), 0 0 35px rgba(200,168,75,0.05); }
+.number-prop .prop-title { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.18em; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.6rem; }
+.number-prop .prop-value { font-family: var(--font-body); font-size: 1.05rem; color: var(--text-primary); line-height: 1.6; }
+
+/* ── FIBONACCI GRID ── */
+.fib-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 0.22em; color: var(--text-muted); text-align: center; margin-bottom: 0.8rem; text-transform: uppercase; }
+.fibonacci-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.55rem; margin: 1.5rem 0; text-align: center; font-family: var(--font-display); font-size: 0.88rem; }
+.fib-cell { padding: 0.75rem 0.3rem; border: 1px solid var(--border-subtle); border-radius: 4px; background: var(--bg-tertiary); color: var(--text-secondary); transition: all 0.3s ease; cursor: default; position: relative; }
+.fib-cell:hover { border-color: var(--accent-gold-dark); color: var(--accent-gold-light); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(200,168,75,0.08); }
+.fib-cell.highlight { background: rgba(200,168,75,0.14); border-color: var(--accent-gold); color: var(--accent-gold-light); box-shadow: 0 0 20px rgba(200,168,75,0.08); }
+.fib-cell.header { background: var(--bg-card); border-color: var(--border-gold-bright); color: var(--accent-gold); font-size: 0.68rem; letter-spacing: 0.1em; font-weight: 600; }
+
+/* ── TRIBES GRID ── */
+.tribes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; margin: 2rem auto; max-width: 520px; }
+.tribe-cell { padding: 0.9rem 0.5rem; border: 1px solid var(--border-subtle); border-radius: 6px; text-align: center; background: var(--bg-card); transition: all 0.3s ease; cursor: default; }
+.tribe-cell:hover { background: rgba(200,168,75,0.05); border-color: var(--accent-gold-dark); transform: scale(1.04); }
+.tribe-cell .tribe-name { font-family: var(--font-display); font-size: 0.68rem; color: var(--accent-gold); letter-spacing: 0.08em; }
+.tribe-cell .tribe-num { font-family: var(--font-body); font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem; }
+.tribe-cell.center { grid-column: 2/4; grid-row: 2/4; background: rgba(200,168,75,0.08); border-color: var(--accent-gold-dark); display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.tribe-cell.center .tribe-name { font-size: 0.95rem; color: var(--accent-gold-light); }
+.tribe-cell.center .tribe-num { font-size: 1.6rem; color: var(--accent-gold); font-weight: 700; }
+
+/* ── MIRROR DIAGRAM ── */
+.mirror-diagram { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 3rem 0; flex-wrap: wrap; }
+.mirror-box { text-align: center; padding: 2rem 2.5rem; border: 1px solid var(--border-subtle); border-radius: 10px; background: var(--bg-card); min-width: 170px; transition: all 0.4s var(--ease); }
+.mirror-box:hover { border-color: var(--accent-gold-dark); box-shadow: 0 0 40px rgba(200,168,75,0.08); transform: scale(1.03); }
+.mirror-box .mirror-num { font-family: var(--font-display); font-size: 2.8rem; color: var(--accent-gold); font-weight: 700; }
+.mirror-box .mirror-label { font-family: var(--font-body); font-size: 0.86rem; color: var(--text-secondary); margin-top: 0.6rem; line-height: 1.5; }
+.mirror-arrow { font-size: 2.2rem; color: var(--accent-gold-dark); animation: breathe 2.4s ease-in-out infinite; }
+
+/* ── PYRAMID ── */
+.pyramid-container { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin: 3rem 0; }
+.pyramid-level { display: flex; gap: 0.5rem; justify-content: center; }
+.pyramid-block { padding: 0.75rem 1.1rem; border: 1px solid var(--border-subtle); border-radius: 4px; background: var(--bg-card); font-family: var(--font-display); font-size: 0.75rem; color: var(--text-secondary); text-align: center; transition: all 0.3s ease; cursor: default; min-width: 75px; }
+.pyramid-block:hover { background: rgba(200,168,75,0.08); border-color: var(--accent-gold-dark); color: var(--accent-gold); transform: translateY(-2px); }
+.pyramid-block.gold { background: rgba(200,168,75,0.13); border-color: var(--accent-gold); color: var(--accent-gold-light); }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; margin: 3rem 0; padding-left: 3rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent-gold-dark), var(--accent-gold), var(--accent-gold-dark)); }
+.timeline-item { position: relative; margin-bottom: 2.5rem; padding: 1.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); transition: all 0.4s var(--ease); }
+.timeline-item:hover { border-color: var(--border-gold-bright); transform: translateX(8px); box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+.timeline-item::before { content: ''; position: absolute; left: -3.35rem; top: 1.9rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-gold); border: 3px solid var(--bg-primary); box-shadow: 0 0 0 2px var(--accent-gold-dark); transition: all 0.3s ease; }
+.timeline-item:hover::before { box-shadow: 0 0 0 4px var(--accent-gold-dark), 0 0 20px var(--accent-gold-glow); }
+.timeline-item .time-label { font-family: var(--font-display); font-size: 0.66rem; color: var(--accent-gold); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.timeline-item .time-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.4rem; }
+.timeline-item .time-desc { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── CONCLUSION BOX ── */
+.conclusion-box {
+  background: linear-gradient(140deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
+  border: 1px solid var(--border-gold-bright); border-radius: 8px;
+  padding: 4rem; margin: 4rem 0; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-gold);
+}
+.conclusion-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold), var(--accent-gold-light), var(--accent-gold), var(--accent-gold-dark)); animation: shimmer-line 5s ease-in-out infinite; }
+@keyframes shimmer-line { 0%,100%{opacity:0.4} 50%{opacity:1} }
+.conclusion-box ol { margin: 1.5rem 0 1.5rem 1.5rem; }
+.conclusion-box h2 { border: none; margin-bottom: 2rem; padding-bottom: 0; text-align: center; }
+.conclusion-box h2::after { display: none; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── NAV/TOC ── */
+.toc-toggle { position: fixed; left: 1.5rem; top: 1.5rem; width: 46px; height: 46px; background: var(--bg-card); border: 1px solid var(--border-gold-bright); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1001; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.toc-toggle:hover { background: rgba(200,168,75,0.1); border-color: var(--accent-gold); }
+.toc-toggle svg { width: 22px; height: 22px; stroke: var(--accent-gold); }
+
+.toc-sidebar { position: fixed; left: 0; top: 0; width: 295px; height: 100vh; background: var(--bg-glass); border-right: 1px solid var(--border-gold-bright); padding: 2.5rem 1.5rem; overflow-y: auto; z-index: 1000; transform: translateX(-100%); transition: transform 0.4s var(--ease); box-shadow: 6px 0 40px rgba(0,0,0,0.5); backdrop-filter: blur(24px); }
+.toc-sidebar.open { transform: translateX(0); }
+.toc-sidebar h3 { font-family: var(--font-display); font-size: 0.82rem; color: var(--accent-gold); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-gold-bright); letter-spacing: 0.16em; text-transform: uppercase; padding-left: 0; }
+.toc-sidebar h3::before { display: none; }
+.toc-sidebar ul { list-style: none; padding: 0; margin: 0; }
+.toc-sidebar li { margin-bottom: 0.3rem; }
+.toc-sidebar a { display: block; padding: 0.65rem 1rem; color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; border-radius: 5px; transition: all 0.2s ease; border-left: 2px solid transparent; font-family: var(--font-body); }
+.toc-sidebar a:hover { background: rgba(200,168,75,0.08); color: var(--accent-gold); border-left-color: var(--accent-gold); padding-left: 1.3rem; }
+.toc-sidebar a.active { background: rgba(200,168,75,0.13); color: var(--accent-gold-light); border-left-color: var(--accent-gold); }
+.toc-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; padding: 0.5rem; transition: color 0.2s ease; }
+.toc-close:hover { color: var(--accent-gold); }
+
+/* ── THEME / BACK-TO-TOP ── */
+.theme-toggle { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-gold-bright); background: var(--bg-card); color: var(--accent-gold); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: all 0.4s var(--ease); z-index: 9999; box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(12px); }
+.theme-toggle:hover { border-color: var(--accent-gold); box-shadow: 0 6px 32px rgba(200,168,75,0.2); transform: scale(1.08); }
+.theme-toggle .icon-sun, .theme-toggle .icon-moon { position: absolute; transition: opacity 0.3s ease, transform 0.3s ease; }
+.theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+.theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+body.light-mode .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+body.light-mode .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+
+.return-to-top { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-gold-bright); background: var(--bg-card); color: var(--accent-gold); cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.4s var(--ease); z-index: 9998; box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(12px); }
+.return-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.return-to-top:hover { transform: translateY(-4px); border-color: var(--accent-gold); box-shadow: 0 6px 32px rgba(200,168,75,0.2); }
+.return-to-top svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 2.5; fill: none; }
+
+/* ── FOOTER ── */
+footer { text-align: center; padding: 6rem 2rem 5rem; border-top: 1px solid var(--border-gold-bright); position: relative; }
+footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-gold), transparent); }
+footer .footer-ornament { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.55em; color: var(--accent-gold-dark); opacity: 0.45; margin-bottom: 2rem; display: block; animation: float-ud 5s ease-in-out infinite; }
+footer .footer-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.32em; color: var(--accent-gold); margin-bottom: 1rem; text-transform: uppercase; }
+footer .footer-subtitle { font-family: var(--font-accent); font-size: 0.95rem; font-style: italic; color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; text-align: justify; }
+
+/* ── LIGHT MODE ── */
+body.light-mode {
+  --bg-primary:#f5f0e6;--bg-secondary:#eee8d8;--bg-tertiary:#e6dfc8;
+  --bg-card:#faf6ee;--bg-glass:rgba(245,240,230,0.95);
+  --text-primary:#1a140a;--text-secondary:#4a3e2c;--text-muted:#8a7c66;
+  --accent-gold:#7a5a14;--accent-gold-light:#9a7a24;--accent-gold-dark:#5c4810;
+  --accent-gold-glow:rgba(122,90,20,0.08);--accent-crimson:#6b2424;
+  --accent-crimson-light:#8a3636;--accent-crimson-glow:rgba(107,36,36,0.06);
+  --border-subtle:#d0c8b0;--border-gold:#beb090;--border-gold-bright:#a89870;
+  --shadow-gold:0 0 30px rgba(122,90,20,0.05);--shadow-deep:0 10px 30px rgba(0,0,0,0.08);
+}
+body.light-mode blockquote { background: #eee8d8; }
+body.light-mode .note-box::before, body.light-mode .update-box::before, body.light-mode .correction-box::before { background: var(--bg-primary); }
+body.light-mode .conclusion-box { background: linear-gradient(140deg, #eee8d8 0%, #e6dfc8 100%); }
+body.light-mode .toc-sidebar { background: rgba(245,240,230,0.97); }
+body.light-mode .loading-screen { background: var(--bg-primary); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px) {
+  html { font-size: 16px; }
+  .container { padding: 0 1.5rem; }
+  h2 { font-size: 1.45rem; }
+  h3 { font-size: 1.1rem; }
+  blockquote { padding: 1.5rem 1.5rem 1.5rem 2.5rem; }
+  .conclusion-box { padding: 2.5rem 1.5rem; }
+  .fibonacci-grid { grid-template-columns: repeat(3, 1fr); }
+  .tribes-grid { grid-template-columns: repeat(3, 1fr); }
+  .number-props { flex-direction: column; align-items: stretch; }
+  .letter-diagram { gap: 1.5rem; }
+  .toc-sidebar { width: 100%; max-width: 300px; }
+  footer { padding: 3rem 1.5rem 2rem; }
+}
+@media(max-width:480px) {
+  .tribes-grid { grid-template-columns: repeat(2,1fr); }
+  .fibonacci-grid { grid-template-columns: repeat(2,1fr); }
+  .timeline { padding-left: 2rem; }
+  .timeline-item::before { left: -2.35rem; }
+  .letter-diagram { flex-direction: column; align-items: center; }
+}
+@media print {
+  body { background: white; color: black; }
+  .hero { min-height: auto; }
+  h2 { color: #333; }
+  .toc-sidebar, .theme-toggle, .return-to-top, .scroll-indicator { display: none; }
+}
+
+/* ── SVG SHARED ── */
+.svg-label { font-family: 'Cinzel', serif; fill: #c8a84b; text-anchor: middle; }
+.svg-text { font-family: 'EB Garamond', serif; fill: #b09a7a; text-anchor: middle; }
+.svg-text-sm { font-family: 'EB Garamond', serif; fill: #7a6a4a; text-anchor: middle; font-style: italic; }
+.svg-hebrew { font-family: 'Noto Serif Hebrew', serif; fill: #e2cc82; text-anchor: middle; }
+.svg-value { font-family: 'Cinzel', serif; fill: #c8a84b; font-weight: 700; text-anchor: middle; }
+.svg-diagram { margin: 2.5rem auto; display: block; max-width: 100%; height: auto; border-radius: 8px; }
+.svg-diagram-interactive { cursor: default; transition: filter 0.4s ease; }
+.svg-diagram-interactive:hover { filter: drop-shadow(0 0 16px rgba(200,168,75,0.15)); }
+
+/* ── ETZ CHAIM LIGHT MODE OVERRIDES ── */
+body.light-mode svg[viewBox="0 0 640 700"] rect {
+  fill: #f5f0e4 !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] rect[fill*="radialGradient"] {
+  fill: #f5f0e4 !important;
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] .svg-hebrew {
+  fill: #8a5c10 !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] line[stroke*="#c8a84b"] {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] circle {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[viewBox="0 0 640 700"] circle[fill*="radialGradient"] {
+  fill: #f5f0e4 !important;
+  stroke: #8a5c10 !important;
+}
+
+/* ── THEOLOGICAL SYNTHESIS LIGHT MODE ── */
+body.light-mode svg[data-diagram="theological-synthesis"] rect {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] rect[fill*="linearGradient"] {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] path {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] .theo-bg {
+  fill: #f5f0e6 !important;
+}
+body.light-mode svg[data-diagram="theological-synthesis"] .svg-label {
+  fill: #5a4a2a !important;
+}
+
+/* ── MAGEN DAVID LIGHT MODE ── */
+body.light-mode svg[data-diagram="magen-david"] rect {
+  fill: #f5f0e4 !important;
+}
+body.light-mode svg[data-diagram="magen-david"] polygon {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="magen-david"] polygon[fill*="rgba"] {
+  fill-opacity: 0.3 !important;
+}
+body.light-mode svg[data-diagram="magen-david"] circle {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="magen-david"] .svg-hebrew {
+  fill: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="magen-david"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="magen-david"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="magen-david"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+
+/* ── MISHKAN LIGHT MODE ── */
+body.light-mode svg[data-diagram="mishkan"] rect {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] rect[fill*="linearGradient"] {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="mishkan"] rect[fill*="rgba"] {
+  fill-opacity: 0.5 !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .svg-hebrew {
+  fill: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] path {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .mishkan-bg {
+  fill: #f5f0e6 !important;
+}
+body.light-mode svg[data-diagram="mishkan"] .outer-zone {
+  fill: #e6dfc8 !important;
+}
+body.light-mode svg[data-diagram="mishkan"] rect[fill*="linearGradient"] {
+  stroke: #8a5c10 !important;
+}
+
+/* ── CHIASMUS LIGHT MODE ── */
+body.light-mode svg[data-diagram="chiastic"] rect {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="chiastic"] rect[fill*="linearGradient"] {
+  fill-opacity: 0.6 !important;
+}
+body.light-mode svg[data-diagram="chiastic"] rect[fill*="rgba"] {
+  fill-opacity: 0.4 !important;
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="chiastic"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="chiastic"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="chiastic"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[data-diagram="chiastic"] .chiasm-bg {
+  fill: #f5f0e6 !important;
+}
+
+/* ── YHWH WORLDS LIGHT MODE ── */
+body.light-mode svg[data-diagram="yhwh-worlds"] rect {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] rect[fill*="linearGradient"] {
+  fill-opacity: 0.6 !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] .svg-hebrew {
+  fill: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="yhwh-worlds"] .yhwh-bg {
+  fill: #f5f0e6 !important;
+}
+
+/* ── COSMOLOGICAL SYNTHESIS LIGHT MODE ── */
+body.light-mode svg[data-diagram="cosmological-synthesis"] rect {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] rect[fill*="linearGradient"] {
+  fill-opacity: 0.5 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] rect[fill*="radialGradient"] {
+  fill-opacity: 0.3 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] ellipse {
+  fill-opacity: 0.3 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] circle {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] circle[fill*="rgba"] {
+  fill-opacity: 0.3 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] polygon {
+  stroke: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] polygon[fill*="rgba"] {
+  fill-opacity: 0.3 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] line {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] path {
+  stroke: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-label {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-text {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-text-sm {
+  fill: #7a6a4a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-hebrew {
+  fill: #8a5c10 !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-value {
+  fill: #5a4a2a !important;
+}
+body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
+  fill: #f5f0e6 !important;
+}
+
+/* diagram wrappers */
+.diagram-wrap { margin: 3rem auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; overflow: hidden; transition: border-color 0.4s ease, box-shadow 0.4s ease; }
+.diagram-wrap:hover { border-color: var(--border-gold-bright); box-shadow: 0 0 50px rgba(200,168,75,0.05); }
+.diagram-caption { font-family: var(--font-body); font-size: 0.82rem; color: var(--text-muted); text-align: center; font-style: italic; padding: 0.8rem 1.5rem 1.2rem; }
+
+/* gematria table */
+.gematria-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+.gematria-table th { background: var(--bg-tertiary); color: var(--accent-gold); padding: 0.85rem 1rem; text-align: left; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid var(--border-gold-bright); }
+.gematria-table td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
+.gematria-table tr:hover td { background: rgba(200,168,75,0.03); }
+
+/* ── READING PROGRESS ── */
+.reading-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 9999;
+  background: var(--border-subtle);
+}
+.reading-progress-bar {
+  height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold), var(--accent-gold-light));
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--accent-gold-glow);
+}
+
+/* ── SEFIROT NODE HOVER ── */
+.sefirah-node { cursor: default; transition: all 0.3s ease; }
+
+/* ── CHIASMUS LABELS ── */
+.chiasmus-label-a { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.2em; color: var(--accent-gold); text-transform: uppercase; }
+
+/* Ensure smooth reveal for new parts */
+.part-header + .reveal { transition-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- ── LOADING ── -->
+<div class="loading-screen" id="loadingScreen">
+  <svg class="loading-seal" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.9"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.3"/>
+      </linearGradient>
+    </defs>
+    <!-- Outer ring with tick marks -->
+    <g class="loading-ring-outer">
+      <circle cx="70" cy="70" r="64" fill="none" stroke="url(#lgrad)" stroke-width="0.8" stroke-dasharray="3 6"/>
+      <circle cx="70" cy="70" r="60" fill="none" stroke="url(#lgrad)" stroke-width="0.4"/>
+    </g>
+    <!-- Middle ring -->
+    <g class="loading-ring-middle">
+      <circle cx="70" cy="70" r="48" fill="none" stroke="url(#lgrad)" stroke-width="0.6" stroke-dasharray="5 5"/>
+    </g>
+    <!-- Star of David (Magen David) — static center -->
+    <g class="loading-ring-inner">
+      <!-- Triangle up -->
+      <polygon points="70,28 94,72 46,72" fill="none" stroke="#c8a84b" stroke-width="1.2" opacity="0.7"/>
+      <!-- Triangle down -->
+      <polygon points="70,112 46,68 94,68" fill="none" stroke="#c8a84b" stroke-width="1.2" opacity="0.7"/>
+    </g>
+    <!-- Center circle -->
+    <circle cx="70" cy="70" r="8" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.6"/>
+    <circle cx="70" cy="70" r="3" fill="#c8a84b" opacity="0.4"/>
+  </svg>
+  <div class="loading-text">Loading Sacred Architecture</div>
+</div>
+
+<!-- ── TOC SIDEBAR ── -->
+<button class="toc-toggle" onclick="toggleTOC()" aria-label="Toggle Table of Contents">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+<nav class="toc-sidebar" id="toc-sidebar">
+  <button class="toc-close" onclick="toggleTOC()">×</button>
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#part-i">I — The Name in Hebrew</a></li>
+    <li><a href="#part-ii">II — Sacred Numerology</a></li>
+    <li><a href="#part-iii">III — DTC as Mishkan</a></li>
+    <li><a href="#part-iv">IV — Hidden Codes</a></li>
+    <li><a href="#part-v">V — 2026: Year of the Law</a></li>
+    <li><a href="#part-vi">VI — Binary & Clean/Unclean</a></li>
+    <li><a href="#part-vii">VII — Liturgical Calendar</a></li>
+    <li><a href="#part-viii">VIII — Theological Synthesis</a></li>
+    <li><a href="#part-ix">IX — The 2026 Amendments</a></li>
+    <li><a href="#part-x">X — The Etz Chaim (Tree of Life)</a></li>
+    <li><a href="#part-xi">XI — Chiasmus &amp; Mirror Structures</a></li>
+    <li><a href="#part-xii">XII — The Covenant Formula</a></li>
+    <li><a href="#part-xiii">XIII — The Address as Oracle</a></li>
+    <li><a href="#part-xiv">XIV — YHWH in the Document Form</a></li>
+    <li><a href="#hebrew-appendix">Appendix: Gematria Tables</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<header class="hero">
+
+  <!-- Background Magen David / sacred geometry -->
+  <svg class="hero-star-bg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="hgold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.5"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.1"/>
+      </linearGradient>
+      <radialGradient id="hcenter" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.06"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Central glow -->
+    <circle cx="350" cy="350" r="300" fill="url(#hcenter)"/>
+
+    <!-- Concentric rings -->
+    <g opacity="0.25" class="hero-star-rotate-2">
+      <circle cx="350" cy="350" r="320" fill="none" stroke="url(#hgold)" stroke-width="0.6" stroke-dasharray="8 12"/>
+      <circle cx="350" cy="350" r="290" fill="none" stroke="url(#hgold)" stroke-width="0.4"/>
+      <circle cx="350" cy="350" r="260" fill="none" stroke="url(#hgold)" stroke-width="0.4" stroke-dasharray="4 8"/>
+    </g>
+
+    <!-- Large Magen David — outer -->
+    <g opacity="0.18" class="hero-star-rotate">
+      <polygon points="350,70 500,330 200,330" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+      <polygon points="350,630 200,370 500,370" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+    </g>
+
+    <!-- Medium Magen David — inner -->
+    <g opacity="0.22">
+      <polygon points="350,150 465,340 235,340" fill="none" stroke="#c8a84b" stroke-width="1"/>
+      <polygon points="350,550 235,360 465,360" fill="none" stroke="#c8a84b" stroke-width="1"/>
+    </g>
+
+    <!-- Inner circles -->
+    <g opacity="0.2">
+      <circle cx="350" cy="350" r="180" fill="none" stroke="#c8a84b" stroke-width="0.6"/>
+      <circle cx="350" cy="350" r="120" fill="none" stroke="#c8a84b" stroke-width="0.6" stroke-dasharray="3 6"/>
+      <circle cx="350" cy="350" r="60" fill="none" stroke="#c8a84b" stroke-width="0.8"/>
+    </g>
+
+    <!-- Axes -->
+    <line x1="350" y1="30" x2="350" y2="670" stroke="#c8a84b" stroke-width="0.4" opacity="0.12"/>
+    <line x1="30" y1="350" x2="670" y2="350" stroke="#c8a84b" stroke-width="0.4" opacity="0.12"/>
+    <line x1="98" y1="98" x2="602" y2="602" stroke="#c8a84b" stroke-width="0.4" opacity="0.08"/>
+    <line x1="602" y1="98" x2="98" y2="602" stroke="#c8a84b" stroke-width="0.4" opacity="0.08"/>
+  </svg>
+
+  <div class="hero-content">
+    <span class="hero-label">A Theological Exposition</span>
+    <h1>The <span class="accent">DTC</span> Documents<br>A Unified Biblical Exegesis</h1>
+    <span class="hero-gematria">424</span>
+    <p class="hero-subtitle">An examination of the Depository Trust Company through the lenses of Hebrew gematria, numerical pattern theology, and biblical typology — revealing the sacred architecture embedded within the secular machinery of securities clearance.</p>
+    <p class="hero-meta">Depository Trust &amp; Clearing Corporation · Operational Arrangements · Eligibility Questionnaire</p>
+    <span class="version-badge">Version 4.0 — June 2026</span>
+  </div>
+
+  <div class="scroll-indicator" onclick="document.querySelector('main').scrollIntoView({behavior:'smooth'})">
+    <span>Enter</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
+<main>
+<div class="container">
+<h1 class="main-title">The DTC Documents: A Unified Biblical Exegesis</h1>
+
+<div class="update-box reveal">
+  <p><strong>V4.0 Revisions (June 2026):</strong> This edition features redrawn SVG diagrams (Magen David cosmology, full Tabernacle cross-section with Hebrew annotations, orbital DTCC subsidiary tree, Fibonacci–Golden Ratio spiral), an improved Theological Synthesis flowchart, editorial corrections to the Kaf/Qof transliteration argument (now explicitly flagged as a deliberate choice rather than a philological claim), corrected addresses (570 Washington Blvd, Jersey City &amp; 140 58th St, Brooklyn, effective April 2023), and revised gematria footnotes. All Hebrew rendered in Noto Serif Hebrew; standard <em>mispar hechrechi</em> values applied throughout.</p>
+</div>
+
+<div class="ornament-line"><span>✦</span></div>
+
+<!-- ══════════════════════
+     INTRODUCTION
+══════════════════════ -->
+<h2 id="introduction" class="reveal">Introduction</h2>
+<p class="reveal">This analysis examines the Depository Trust Company (DTC) Eligibility Questionnaire and Operational Arrangements through three complementary lenses: Hebrew gematria and etymology, numerical pattern theology, and biblical typology. Together, these perspectives reveal a coherent sacred architecture embedded within the secular machinery of securities clearance.</p>
+<p class="reveal">The argument proceeds by analogy and correspondence, not by assertion of intent. The DTC did not design its forms to encode scripture. The claim is subtler and more interesting: that the structures of covenant — threshold, seal, custody, deadline, redemption — recur wherever human beings organize consequential obligations, because those structures are native to time-bound creatures who learned them first from a lawgiver.</p>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════
+     PART I
+══════════════════════ -->
+<div class="part-header" id="part-i">
+  <span class="part-label">Part I</span>
+  <h2>The Name — DTC in Hebrew Gematria</h2>
+</div>
+
+<h3 class="reveal">Letter-by-Letter Analysis</h3>
+
+<div class="letter-diagram reveal">
+  <div class="letter-card">
+    <span class="letter-hebrew">ד</span>
+    <div class="letter-name">Dalet</div>
+    <div class="letter-value">4</div>
+    <div class="letter-meaning">Door, Portal, Threshold</div>
+  </div>
+  <div class="letter-card">
+    <span class="letter-hebrew">ת</span>
+    <div class="letter-name">Tav</div>
+    <div class="letter-value">400</div>
+    <div class="letter-meaning">Seal, Sign, The End</div>
+  </div>
+  <div class="letter-card">
+    <span class="letter-hebrew">כ</span>
+    <div class="letter-name">Kaf</div>
+    <div class="letter-value">20</div>
+    <div class="letter-meaning">Palm of the Hand, Grasping</div>
+  </div>
+</div>
+
+<div class="letter-sum reveal">
+  <div>
+    <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--accent-gold);">DTC</div>
+    <div style="font-family:var(--font-body);font-size:0.85rem;color:var(--text-muted);">Dalet · Tav · Kaf</div>
+  </div>
+  <div class="sum-equals">=</div>
+  <div class="sum-value">424</div>
+  <div class="sum-label">Mashiach Ben David<br><span class="hebrew-inline">משיח בן דוד</span></div>
+</div>
+
+<h4 class="reveal">D — Dalet (ד) · Value: 4</h4>
+<p class="reveal">The letter <span class="hebrew">ד</span> (Dalet) derives from the Proto-Semitic word for "door" (<em>dal</em>) and is cognate with the Hebrew <span class="hebrew">דלת</span> (<em>delet</em>, "door"). Dalet is the threshold — the portal, the way in:</p>
+<blockquote class="reveal">
+  <p>"I am the door; if anyone enters through Me, he will be saved." (John 10:9)</p>
+</blockquote>
+<p class="reveal">In the DTC system, Dalet is the entry point — the Underwriting Department, the eligibility request, the moment a security crosses from the outside world into the depository. Just as the Passover blood was marked on the doorposts (Exodus 12:7), the Letter of Representations is the mark that permits entry.</p>
+
+<h4 class="reveal">T — Tav (ת) · Value: 400</h4>
+<p class="reveal">The letter <span class="hebrew">ת</span> (Tav) is the final letter of the Hebrew alphabet — the seal, the sign, the end of all things. In ancient Paleo-Hebrew script Tav was written as a cross (X or +), the sign of covenant. It is both salvation and judgment. In Ezekiel's vision the righteous are marked with a <span class="hebrew">תו</span> (<em>tav</em>, "mark"):</p>
+<blockquote class="reveal">
+  <p>"Set a mark [<span class="hebrew-inline">תו</span>] upon the foreheads of the men that sigh and that cry." (Ezekiel 9:4)</p>
+</blockquote>
+<p class="reveal">In the DTC, Tav is the CUSIP number — the final mark that seals identity. Without it, no entry. With it, the security is known, tracked, judged.</p>
+
+<h4 class="reveal">C — Kaf (כ) · Value: 20</h4>
+<p class="reveal">The letter <span class="hebrew">כ</span> (Kaf) means "palm of the hand" — grasping, holding, covering. It appears in the Psalms:</p>
+<blockquote class="reveal">
+  <p>"Hide me under the shadow [<span class="hebrew-inline">כף</span>] of Your wings." (Psalm 17:8)</p>
+</blockquote>
+<p class="reveal">Kaf is the hand that receives and holds. In the DTC, Kaf is the depository itself — the custody, the palm in which securities rest. The final form <span class="hebrew">ך</span> (Kaf sofit) retains its standard value of 20; mystical tradition (<em>mispar gadol</em>) assigns 500, the jubilee threshold. When Kaf closes into its final form it signals completion: the maximum single certificate before mandatory division.</p>
+
+<h3 class="reveal">The Full Word: DTC = 4 + 400 + 20 = 424</h3>
+<p class="reveal">424 = 4 × 106. More significantly: <strong>424 is the standard gematria of <span class="hebrew-inline">משיח בן דוד</span> (Mashiach Ben David)</strong> — Messiah Son of David.</p>
+
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>Expression</th><th>Hebrew</th><th>Gematria</th></tr></thead>
+    <tbody>
+      <tr><td>DTC (Dalet-Tav-Kaf)</td><td class="hebrew-cell"><span class="hebrew-inline">דתכ</span></td><td><strong>424</strong></td></tr>
+      <tr><td>Mashiach Ben David</td><td class="hebrew-cell"><span class="hebrew-inline">משיח בן דוד</span></td><td><strong>424</strong></td></tr>
+      <tr><td>Mashiach alone</td><td class="hebrew-cell"><span class="hebrew-inline">משיח</span></td><td>358</td></tr>
+      <tr><td>Ben David alone</td><td class="hebrew-cell"><span class="hebrew-inline">בן דוד</span></td><td>66</td></tr>
+      <tr><td>Dat-Kaf (alternate split)</td><td class="hebrew-cell"><span class="hebrew-inline">דת</span> + <span class="hebrew-inline">כ</span></td><td>404 + 20</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="reveal">The Ultimate Hebrew Reading: "Dat-Kaf" (<span class="hebrew-inline">דת-כ</span>)</h3>
+<p class="reveal">Split differently — D-T as one unit + C — yields <strong><span class="hebrew-inline">דת</span> (Dat) + <span class="hebrew-inline">כ</span> (Kaf)</strong>. <span class="hebrew-inline">דת</span> (<em>dat</em>) is the Persian/Aramaic loanword for "law, decree, edict," appearing in Esther and Daniel:</p>
+<blockquote class="reveal">
+  <p>"The law [<span class="hebrew-inline">דת</span>] of the Medes and Persians, which alters not." (Daniel 6:8, 12, 15)</p>
+</blockquote>
+<p class="reveal"><strong>DTC = "The Law Held in the Palm."</strong> The unchanging decree, lodged in the custody of the depository.</p>
+
+<h3 class="reveal">DTCC = 444 — The Parent Company</h3>
+<p class="reveal"><strong>DTCC = <span class="hebrew-inline">דתככ</span> = 4 + 400 + 20 + 20 = 444.</strong> 444 = 4 × 111. The number 111 is Aleph in triplicate — <em>echad</em> (one) made absolute: 4 is the world-number (four directions, four elements, four rivers of Eden), and 111 is its divine coefficient. 444 is the world made fully complete.</p>
+
+<!-- ── DTCC ORBITAL DIAGRAM ── -->
+<div class="diagram-wrap reveal" style="max-width:680px;">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="dtccGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.18"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0"/>
+      </radialGradient>
+      <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#9a7828;stop-opacity:0.5"/>
+        <stop offset="50%" style="stop-color:#c8a84b;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.5"/>
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Background orbit rings -->
+    <ellipse cx="340" cy="170" rx="280" ry="130" fill="none" stroke="#221c12" stroke-width="0.8"/>
+    <ellipse cx="340" cy="170" rx="200" ry="95" fill="none" stroke="#221c12" stroke-width="0.8" stroke-dasharray="4 6"/>
+
+    <!-- DTCC center -->
+    <circle cx="340" cy="170" r="55" fill="url(#dtccGlow)" stroke="#c8a84b" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="340" cy="170" r="42" fill="rgba(200,168,75,0.06)" stroke="#9a7828" stroke-width="0.8" stroke-dasharray="3 4"/>
+    <text x="340" y="162" class="svg-label" font-size="1rem" font-weight="700" filter="url(#glow)">DTCC</text>
+    <text x="340" y="178" class="svg-hebrew" font-size="0.85rem">דתככ</text>
+    <text x="340" y="194" class="svg-text-sm" font-size="0.7rem">= 444</text>
+
+    <!-- Orbit line to DTC -->
+    <line x1="285" y1="170" x2="140" y2="130" stroke="url(#goldLine)" stroke-width="1" stroke-dasharray="5 4"/>
+    <!-- DTC node -->
+    <circle cx="105" cy="120" r="38" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="1.2"/>
+    <text x="105" y="112" class="svg-label" font-size="0.88rem" font-weight="700">DTC</text>
+    <text x="105" y="127" class="svg-hebrew" font-size="0.8rem">דתכ</text>
+    <text x="105" y="142" class="svg-text-sm" font-size="0.65rem">= 424</text>
+    <text x="105" y="78" class="svg-text" font-size="0.68rem">Door · Seal · Hand</text>
+
+    <!-- Orbit line to NSCC -->
+    <line x1="370" y1="125" x2="380" y2="48" stroke="#3d3528" stroke-width="1" stroke-dasharray="5 4"/>
+    <!-- NSCC node -->
+    <circle cx="400" cy="42" r="32" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <text x="400" y="38" class="svg-label" font-size="0.8rem" fill="#b09a7a">NSCC</text>
+    <text x="400" y="53" class="svg-text-sm" font-size="0.62rem">Nun-Samekh-Kaf-Kaf</text>
+    <text x="400" y="65" class="svg-text-sm" font-size="0.62rem">= 50+60+20+20 = 150</text>
+
+    <!-- Orbit line to FICC -->
+    <line x1="390" y1="185" x2="535" y2="225" stroke="#3d3528" stroke-width="1" stroke-dasharray="5 4"/>
+    <!-- FICC node -->
+    <circle cx="567" cy="235" r="32" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <text x="567" y="231" class="svg-label" font-size="0.8rem" fill="#b09a7a">FICC</text>
+    <text x="567" y="246" class="svg-text-sm" font-size="0.62rem">Pe-Yod-Kaf-Kaf</text>
+    <text x="567" y="258" class="svg-text-sm" font-size="0.62rem">= 80+10+20+20 = 130</text>
+
+    <!-- 444 label -->
+    <text x="340" y="318" class="svg-label" font-size="0.72rem" opacity="0.7">The Parent: 444 = 4 × 111 = World × Absolute Unity</text>
+  </svg>
+  <div class="diagram-caption">DTCC and its principal subsidiaries, rendered as orbital bodies</div>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART II
+══════════════════════ -->
+<div class="part-header" id="part-ii">
+  <span class="part-label">Part II</span>
+  <h2>The Numbers — A Sacred Numerology</h2>
+</div>
+
+<h3 class="reveal">The Protagonist: 10 — The Complete Law</h3>
+<p class="reveal">The number 10 appears as the foundational recurring unit in the Eligibility Questionnaire and Exhibit B — the first requirement, the opening standard of the system:</p>
+<ul class="reveal">
+  <li>10 business days before closing — submission of the Questionnaire</li>
+  <li>10 business days — delivery of preliminary offering documents</li>
+  <li>10 business days — BEO Letter of Representations</li>
+  <li>10 business days — final documents after closing</li>
+</ul>
+<p class="reveal">Ten is the number of the Law. The Decalogue — the Ten Commandments — is the structural skeleton of covenant. Every ten-day requirement in the DTC system is a shadow of that skeleton: law given before eligibility is granted, law fulfilled before redemption is permitted.</p>
+
+<!-- NUMBER THEOLOGY PYRAMID -->
+<div class="pyramid-container reveal">
+  <div class="pyramid-level">
+    <div class="pyramid-block gold">1<br><span style="font-size:0.6rem;color:var(--text-muted);">Unity</span></div>
+  </div>
+  <div class="pyramid-level">
+    <div class="pyramid-block">2<br><span style="font-size:0.6rem;color:var(--text-muted);">Witness</span></div>
+    <div class="pyramid-block">3<br><span style="font-size:0.6rem;color:var(--text-muted);">Resurrection</span></div>
+  </div>
+  <div class="pyramid-level">
+    <div class="pyramid-block">5<br><span style="font-size:0.6rem;color:var(--text-muted);">Grace</span></div>
+    <div class="pyramid-block">7<br><span style="font-size:0.6rem;color:var(--text-muted);">Covenant</span></div>
+    <div class="pyramid-block">10<br><span style="font-size:0.6rem;color:var(--text-muted);">Law</span></div>
+  </div>
+  <div class="pyramid-level">
+    <div class="pyramid-block">12<br><span style="font-size:0.6rem;color:var(--text-muted);">Government</span></div>
+    <div class="pyramid-block">15<br><span style="font-size:0.6rem;color:var(--text-muted);">Passover</span></div>
+    <div class="pyramid-block">30<br><span style="font-size:0.6rem;color:var(--text-muted);">Maturity</span></div>
+    <div class="pyramid-block">60<br><span style="font-size:0.6rem;color:var(--text-muted);">Generation</span></div>
+    <div class="pyramid-block">100<br><span style="font-size:0.6rem;color:var(--text-muted);">Elect</span></div>
+  </div>
+  <div class="pyramid-level">
+    <div class="pyramid-block gold">144<br><span style="font-size:0.6rem;color:var(--text-muted);">Perfect Square</span></div>
+    <div class="pyramid-block">500<br><span style="font-size:0.6rem;color:var(--text-muted);">Jubilee</span></div>
+    <div class="pyramid-block">424<br><span style="font-size:0.6rem;color:var(--text-muted);">Mashiach</span></div>
+    <div class="pyramid-block">441<br><span style="font-size:0.6rem;color:var(--text-muted);">Emet / Truth</span></div>
+    <div class="pyramid-block">444<br><span style="font-size:0.6rem;color:var(--text-muted);">Completion</span></div>
+  </div>
+</div>
+
+<h3 class="reveal">The Number 144 — The Elect and the Perfect Square</h3>
+
+<div class="number-props reveal">
+  <div class="number-prop">
+    <div class="prop-title">Perfect Square</div>
+    <div class="prop-value">144 = 12 × 12 = 2⁴ × 3²<br>The square of governmental completeness</div>
+  </div>
+  <div class="number-prop">
+    <div class="prop-title">Fibonacci F(12)</div>
+    <div class="prop-value">The 12th Fibonacci number, and the <em>only</em> non-trivial perfect square in the infinite sequence</div>
+  </div>
+  <div class="number-prop">
+    <div class="prop-title">12 Tribes × 12 Apostles</div>
+    <div class="prop-value">Israel × Church = 144,000 sealed<br>(Revelation 7:4; 14:1–3)</div>
+  </div>
+  <div class="number-prop">
+    <div class="prop-title">Digital Mirror</div>
+    <div class="prop-value">144 reversed = 441 = 21²<br>1+4+4 = 9 = 3² &nbsp;|&nbsp; 1×4×4 = 16 = 4²</div>
+  </div>
+</div>
+
+<!-- FIBONACCI GRID -->
+<p class="fib-label reveal">Fibonacci Sequence — F(0) through F(15)</p>
+<div class="fibonacci-grid reveal">
+  <div class="fib-cell header">F(0)</div><div class="fib-cell header">F(1)</div><div class="fib-cell header">F(2)</div><div class="fib-cell header">F(3)</div><div class="fib-cell header">F(4)</div><div class="fib-cell header">F(5)</div>
+  <div class="fib-cell">0</div><div class="fib-cell">1</div><div class="fib-cell">1</div><div class="fib-cell">2</div><div class="fib-cell">3</div><div class="fib-cell">5</div>
+  <div class="fib-cell header">F(6)</div><div class="fib-cell header">F(7)</div><div class="fib-cell header">F(8)</div><div class="fib-cell header">F(9)</div><div class="fib-cell header">F(10)</div><div class="fib-cell header">F(11)</div>
+  <div class="fib-cell">8</div><div class="fib-cell">13</div><div class="fib-cell">21</div><div class="fib-cell">34</div><div class="fib-cell">55</div><div class="fib-cell">89</div>
+  <div class="fib-cell header highlight">F(12)</div><div class="fib-cell header">F(13)</div><div class="fib-cell header">F(14)</div><div class="fib-cell header">F(15)</div><div class="fib-cell header"></div><div class="fib-cell header"></div>
+  <div class="fib-cell highlight">144</div><div class="fib-cell">233</div><div class="fib-cell">377</div><div class="fib-cell">610</div><div class="fib-cell"></div><div class="fib-cell"></div>
+</div>
+
+<h4 class="reveal">144 = 12 × 12: The Tribal Grid</h4>
+<div class="tribes-grid reveal">
+  <div class="tribe-cell"><div class="tribe-name">Judah</div><div class="tribe-num">1</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Issachar</div><div class="tribe-num">2</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Zebulun</div><div class="tribe-num">3</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Reuben</div><div class="tribe-num">4</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Simeon</div><div class="tribe-num">5</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Gad</div><div class="tribe-num">6</div></div>
+  <div class="tribe-cell center">
+    <div class="tribe-name">144</div>
+    <div class="tribe-num">12 × 12</div>
+    <div style="font-size:0.68rem;color:var(--text-muted);margin-top:0.5rem;">The Sealed Elect</div>
+  </div>
+  <div class="tribe-cell"><div class="tribe-name">Ephraim</div><div class="tribe-num">7</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Manasseh</div><div class="tribe-num">8</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Benjamin</div><div class="tribe-num">9</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Dan</div><div class="tribe-num">10</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Asher</div><div class="tribe-num">11</div></div>
+  <div class="tribe-cell"><div class="tribe-name">Naphtali</div><div class="tribe-num">12</div></div>
+</div>
+
+<!-- EMET MIRROR -->
+<h4 class="reveal">The Emet Mirror: 144 ↔ 441</h4>
+<div class="mirror-diagram reveal">
+  <div class="mirror-box">
+    <div class="mirror-num">144</div>
+    <div class="mirror-label">12² = F(12)<br>Perfect Square of Government</div>
+  </div>
+  <div class="mirror-arrow">⇄</div>
+  <div class="mirror-box">
+    <div class="mirror-num">441</div>
+    <div class="mirror-label">21² = <span class="hebrew-inline">אמת</span><br><em>Emet</em> — Truth, the Seal of God</div>
+  </div>
+</div>
+
+<p class="reveal"><strong>441 is <span class="hebrew-inline">אמת</span> (Emet, "Truth").</strong> Aleph-Mem-Tav = 1 + 40 + 400 = 441. The Talmud names Truth the "seal of God" (Shabbat 104a), for its three letters span the entire Hebrew alphabet: Aleph is the first, Mem is the exact middle, Tav is the last. Together they say: from beginning to end, what is, is. 441 is therefore the mirror of 144 — government becomes truth, the square of administration becomes the seal of the divine. The numbers 12 and 21 are themselves mirror images; both are Fibonacci numbers. Their difference is 9, which is the digit-sum of 441 (4+4+1 = 9). Nine is the digit of absolute truth: any multiple of 9 has digits that sum to 9.</p>
+
+<!-- FIBONACCI SPIRAL -->
+<div class="diagram-wrap reveal" style="max-width:560px;">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 540 360" xmlns="http://www.w3.org/2000/svg" data-label="fibonacci">
+    <defs>
+      <linearGradient id="fibGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:1"/>
+        <stop offset="50%" style="stop-color:#e2cc82;stop-opacity:0.9"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.8"/>
+      </linearGradient>
+      <linearGradient id="fibSquare1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(200,168,75,0.12)"/>
+        <stop offset="100%" style="stop-color:rgba(200,168,75,0.05)"/>
+      </linearGradient>
+      <linearGradient id="fibSquare2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(200,168,75,0.10)"/>
+        <stop offset="100%" style="stop-color:rgba(200,168,75,0.04)"/>
+      </linearGradient>
+      <linearGradient id="fibSquare3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(200,168,75,0.08)"/>
+        <stop offset="100%" style="stop-color:rgba(200,168,75,0.03)"/>
+      </linearGradient>
+      <filter id="fibGlow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="fibGlowStrong">
+        <feGaussianBlur stdDeviation="5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="fibShadow">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+      </filter>
+    </defs>
+
+    <!-- FIBONACCI SQUARES - scaled by factor 1.3 -->
+    <!-- 144 = F(12) - largest square -->
+    <rect x="30" y="30" width="288" height="288" fill="url(#fibSquare1)" stroke="url(#fibGold)" stroke-width="1.5" rx="2" filter="url(#fibShadow)"/>
+    <!-- 89 = F(11) -->
+    <rect x="318" y="30" width="178" height="178" fill="url(#fibSquare2)" stroke="url(#fibGold)" stroke-width="1.3" rx="2"/>
+    <!-- 55 = F(10) -->
+    <rect x="318" y="208" width="110" height="110" fill="url(#fibSquare3)" stroke="url(#fibGold)" stroke-width="1.1" rx="1"/>
+    <!-- 34 = F(9) -->
+    <rect x="428" y="208" width="68" height="68" fill="url(#fibSquare3)" stroke="url(#fibGold)" stroke-width="1" rx="1"/>
+    <!-- 21 = F(8) -->
+    <rect x="428" y="276" width="42" height="42" fill="none" stroke="url(#fibGold)" stroke-width="0.9" rx="1"/>
+    <!-- 13 = F(7) -->
+    <rect x="470" y="276" width="26" height="26" fill="none" stroke="url(#fibGold)" stroke-width="0.8" rx="0.5"/>
+    <!-- 8 = F(6) -->
+    <rect x="470" y="302" width="16" height="16" fill="none" stroke="url(#fibGold)" stroke-width="0.7" rx="0.5"/>
+
+    <!-- GOLDEN SPIRAL - proper arc through each square -->
+    <path d="
+      M 496 318
+      A 144 144 0 0 1 30 174
+      A 89 89 0 0 1 318 30
+      A 89 89 0 0 1 496 208
+      A 55 55 0 0 1 428 318
+      A 34 34 0 0 1 496 276
+      A 21 21 0 0 1 470 318
+      A 13 13 0 0 1 496 302
+      A 8 8 0 0 1 486 318
+    "
+    fill="none" stroke="url(#fibGold)" stroke-width="3" stroke-linecap="round" filter="url(#fibGlowStrong)" opacity="0.9"/>
+
+    <!-- NUMBER LABELS -->
+    <!-- 144 -->
+    <text x="174" y="185" class="svg-value" font-size="2.8rem" filter="url(#fibGlow)" data-label="text">144</text>
+    <text x="174" y="208" class="svg-text-sm" font-size="0.8rem" data-label="text">F(12)</text>
+
+    <!-- 89 -->
+    <text x="407" y="128" class="svg-text" font-size="1.1rem" filter="url(#fibGlow)" data-label="text">89</text>
+    <text x="407" y="143" class="svg-text-sm" font-size="0.65rem" data-label="text">F(11)</text>
+
+    <!-- 55 -->
+    <text x="373" y="273" class="svg-text" font-size="0.95rem" filter="url(#fibGlow)" data-label="text">55</text>
+    <text x="383" y="260" class="svg-text-sm" font-size="0.58rem" data-label="text">F(10)</text>
+
+    <!-- 34 -->
+    <text x="462" y="252" class="svg-text" font-size="0.82rem" filter="url(#fibGlow)" data-label="text">34</text>
+
+    <!-- 21 -->
+    <text x="449" y="298" class="svg-text" font-size="0.72rem" filter="url(#fibGlow)" data-label="text">21</text>
+
+    <!-- 13 -->
+    <text x="478" y="293" class="svg-text" font-size="0.62rem" filter="url(#fibGlow)" data-label="text">13</text>
+
+    <!-- 8 -->
+    <text x="470" y="313" class="svg-text" font-size="0.55rem" filter="url(#fibGlow)" data-label="text">8</text>
+
+    <!-- PHI LABEL -->
+    <text x="270" y="340" class="svg-label" font-size="0.75rem" opacity="0.8" data-label="text">Golden Ratio φ = 1.618…</text>
+
+    <!-- CENTER POINT -->
+    <circle cx="496" cy="318" r="4" fill="url(#fibGold)" filter="url(#fibGlow)"/>
+  </svg>
+  <div class="diagram-caption">The Fibonacci–Golden Ratio spiral, with 144 = F(12) as its largest visible square</div>
+</div>
+
+<h3 class="reveal">The Number 500 — Jubilee and Liberation</h3>
+<p class="reveal">The DTC requires multiple certificates when an issue exceeds 500 million units (Section I.B.1.c.i). 500 = 50 × 10, a jubilee of the law. Jubilee occurs every 50 years (Leviticus 25:10–11) — the year of release, of return, of freedom from accumulated obligation. The 500 million threshold is a jubilee boundary: below it, one certificate suffices (unity); above it, division occurs. The unity of the one becomes the plurality of the many at the jubilee number.</p>
+
+<h3 class="reveal">3:00 p.m. ET — The Ninth Hour</h3>
+<p class="reveal">Three o'clock Eastern is the great recurring deadline — the pivot point of the entire system:</p>
+<blockquote class="reveal">
+  <p>"All Income Payments must be delivered… prior to 3:00 p.m. ET on the payable date." (Section III.C.1)</p>
+</blockquote>
+<p class="reveal">This is the ninth hour of the Roman day (counting from 6 a.m.), the hour that recurs in the passion narratives. Mark 15:34, 37: "At the ninth hour Jesus cried out… 'It is finished!'… and He breathed His last." The DTC system enacts this pattern daily: funds must be surrendered by 3:00 p.m. to be distributed same-day. Surrender precedes distribution; the ninth hour is simultaneously the hour of death and the hour of release.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART III — TABERNACLE
+══════════════════════ -->
+<div class="part-header" id="part-iii">
+  <span class="part-label">Part III</span>
+  <h2>The Architecture — DTC as Mishkan</h2>
+</div>
+
+<h3 class="reveal">The DTC as Mishkan — The Tabernacle</h3>
+<p class="reveal">The entire DTC system, read through Hebrew categories, is a type of the Tabernacle (<span class="hebrew">משכן</span>, <em>Mishkan</em>, "dwelling place"). Three concentric zones of increasing holiness correspond precisely to the three zones of the DTC process.</p>
+
+<!-- TABERNACLE SVG — fully redrawn -->
+<div class="diagram-wrap reveal" style="max-width:760px;">
+  <svg class="svg-diagram svg-diagram-interactive mishkan-diagram" viewBox="0 0 760 440" xmlns="http://www.w3.org/2000/svg" data-diagram="mishkan">
+    <defs>
+      <linearGradient id="outerZone" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#1a1510;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#0f0f0f;stop-opacity:1"/>
+      </linearGradient>
+      <linearGradient id="holyZone" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.12"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.04"/>
+      </linearGradient>
+      <linearGradient id="innerZone" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#7a2e2e;stop-opacity:0.18"/>
+        <stop offset="100%" style="stop-color:#7a2e2e;stop-opacity:0.06"/>
+      </linearGradient>
+      <linearGradient id="arkGold" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.15"/>
+      </linearGradient>
+      <filter id="glow3">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="softglow">
+        <feGaussianBlur stdDeviation="2" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect class="mishkan-bg" x="0" y="0" width="760" height="440" fill="#0a0a0a" rx="8"/>
+
+    <!-- ─── OUTER COURT ─── -->
+    <rect class="outer-zone" x="30" y="60" width="700" height="320" fill="url(#outerZone)" stroke="#352b18" stroke-width="1" stroke-dasharray="6 5" rx="4"/>
+    <!-- Outer court label top -->
+    <text x="380" y="45" class="svg-label" font-size="0.78rem" opacity="0.8">OUTER COURT  ·  חצר החיצונה</text>
+    <text x="380" y="395" class="svg-text-sm" font-size="0.68rem">The Eligibility Questionnaire  ·  Entry &amp; Evaluation</text>
+
+    <!-- Gate pillars left -->
+    <rect x="30" y="160" width="14" height="30" fill="#352b18" rx="2"/>
+    <rect x="30" y="250" width="14" height="30" fill="#352b18" rx="2"/>
+    <!-- Gate label -->
+    <text x="20" y="230" class="svg-text-sm" font-size="0.6rem" transform="rotate(-90 20 230)" text-anchor="middle">Gate · Dalet</text>
+    <!-- Gate symbol — ד -->
+    <text x="20" y="222" class="svg-hebrew" font-size="0.9rem" transform="rotate(-90 20 222)" text-anchor="middle">ד</text>
+
+    <!-- ─── HOLY PLACE ─── -->
+    <rect x="160" y="85" width="440" height="270" fill="url(#holyZone)" stroke="#c8a84b" stroke-width="1.2" rx="4"/>
+    <text x="380" y="105" class="svg-label" font-size="0.78rem">HOLY PLACE  ·  קודש</text>
+    <text x="380" y="375" class="svg-text-sm" font-size="0.68rem">Operational Arrangements  ·  The Binding Law</text>
+
+    <!-- Curtain left (entrance) — decorated -->
+    <line x1="160" y1="85" x2="160" y2="355" stroke="#c8a84b" stroke-width="2.5" stroke-dasharray="10 5" opacity="0.6"/>
+    <text x="148" y="230" class="svg-label" font-size="0.7rem" transform="rotate(-90 148 230)" text-anchor="middle">Curtain · ת</text>
+    <text x="148" y="222" class="svg-hebrew" font-size="0.9rem" transform="rotate(-90 148 222)" text-anchor="middle">ת</text>
+
+    <!-- Altar of incense -->
+    <rect x="190" y="188" width="50" height="64" fill="rgba(200,168,75,0.08)" stroke="#5a4e3a" stroke-width="1" rx="3"/>
+    <text x="215" y="215" class="svg-text" font-size="0.6rem">Altar of</text>
+    <text x="215" y="228" class="svg-text" font-size="0.6rem">Incense</text>
+    <text x="215" y="243" class="svg-text-sm" font-size="0.55rem">Prayers / Filings</text>
+
+    <!-- Menorah -->
+    <g transform="translate(270, 188)">
+      <line x1="20" y1="60" x2="20" y2="10" stroke="#9a7828" stroke-width="1.5"/>
+      <line x1="10" y1="40" x2="30" y2="40" stroke="#9a7828" stroke-width="1"/>
+      <line x1="10" y1="40" x2="10" y2="15" stroke="#9a7828" stroke-width="1"/>
+      <line x1="30" y1="40" x2="30" y2="15" stroke="#9a7828" stroke-width="1"/>
+      <line x1="5" y1="30" x2="5" y2="15" stroke="#9a7828" stroke-width="1"/>
+      <line x1="35" y1="30" x2="35" y2="15" stroke="#9a7828" stroke-width="1"/>
+      <line x1="10" y1="30" x2="5" y2="30" stroke="#9a7828" stroke-width="1"/>
+      <line x1="30" y1="30" x2="35" y2="30" stroke="#9a7828" stroke-width="1"/>
+      <text x="20" y="78" class="svg-text" font-size="0.6rem">Menorah</text>
+      <text x="20" y="90" class="svg-text-sm" font-size="0.55rem">CUSIP Light</text>
+    </g>
+
+    <!-- Table of shewbread -->
+    <rect x="445" y="188" width="50" height="64" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1" rx="3"/>
+    <text x="470" y="215" class="svg-text" font-size="0.6rem">Shew-</text>
+    <text x="470" y="228" class="svg-text" font-size="0.6rem">bread</text>
+    <text x="470" y="243" class="svg-text-sm" font-size="0.55rem">12 Securities</text>
+
+    <!-- ─── THE VEIL ─── -->
+    <line x1="510" y1="85" x2="510" y2="355" stroke="#c8a84b" stroke-width="3" opacity="0.8" filter="url(#softglow)"/>
+    <text x="525" y="230" class="svg-label" font-size="0.7rem" transform="rotate(90 525 230)" text-anchor="middle">The Veil · Parokhet</text>
+
+    <!-- ─── HOLY OF HOLIES ─── -->
+    <rect x="510" y="85" width="220" height="270" fill="url(#innerZone)" stroke="#b05050" stroke-width="1.5" rx="4" filter="url(#softglow)"/>
+    <text x="620" y="108" class="svg-label" font-size="0.78rem" fill="#c8a84b">HOLY OF HOLIES  ·  קודש הקדשים</text>
+    <text x="620" y="370" class="svg-text-sm" font-size="0.68rem">Cede &amp; Co.  ·  The Nominee Presence</text>
+
+    <!-- Shekinah glow -->
+    <ellipse cx="620" cy="220" rx="90" ry="70" fill="none" stroke="#c8a84b" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.25"/>
+    <ellipse cx="620" cy="220" rx="60" ry="46" fill="rgba(200,168,75,0.04)" stroke="#c8a84b" stroke-width="0.4" opacity="0.3"/>
+
+    <!-- THE ARK -->
+    <rect x="560" y="175" width="120" height="90" fill="url(#arkGold)" stroke="#c8a84b" stroke-width="2" rx="5" filter="url(#glow3)"/>
+    <!-- Ark lid / mercy seat -->
+    <rect x="555" y="170" width="130" height="14" fill="rgba(200,168,75,0.3)" stroke="#c8a84b" stroke-width="1.5" rx="3"/>
+    <!-- Cherubim wings (simplified) -->
+    <path d="M 570 170 Q 555 148 545 155 Q 548 170 570 170" fill="rgba(200,168,75,0.12)" stroke="#9a7828" stroke-width="0.8"/>
+    <path d="M 670 170 Q 685 148 695 155 Q 692 170 670 170" fill="rgba(200,168,75,0.12)" stroke="#9a7828" stroke-width="0.8"/>
+    <!-- Ark text -->
+    <text x="620" y="218" class="svg-label" font-size="0.78rem">The One Certificate</text>
+    <text x="620" y="236" class="svg-text" font-size="0.68rem">Book-Entry-Only</text>
+    <text x="620" y="254" class="svg-hebrew" font-size="0.95rem">אחד</text>
+
+    <!-- Kaf symbol -->
+    <text x="720" y="230" class="svg-hebrew" font-size="1.1rem" opacity="0.5">כ</text>
+    <text x="720" y="248" class="svg-text-sm" font-size="0.6rem">Hand · Kaf</text>
+  </svg>
+  <div class="diagram-caption">The Mishkan cross-section: Outer Court (Dalet/Door) → Holy Place (Tav/Seal) → Holy of Holies (Kaf/Hand) → The Ark (One Certificate)</div>
+</div>
+
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>Tabernacle Zone</th><th>Hebrew Letter</th><th>DTC Correspondence</th></tr></thead>
+    <tbody>
+      <tr><td>Outer court — the entry</td><td class="hebrew-cell"><span class="hebrew-inline">ד</span> Dalet</td><td>Eligibility Questionnaire — the door, the threshold request</td></tr>
+      <tr><td>Holy place — the law</td><td class="hebrew-cell"><span class="hebrew-inline">ת</span> Tav</td><td>Operational Arrangements — the seal, the binding decree</td></tr>
+      <tr><td>Holy of holies — the presence</td><td class="hebrew-cell"><span class="hebrew-inline">כ</span> Kaf</td><td>Cede &amp; Co. — the palm, the custody, the holding</td></tr>
+      <tr><td>The Ark</td><td class="hebrew-cell"><span class="hebrew-inline">אחד</span></td><td>The One Certificate — indivisible unity of the BEO system</td></tr>
+      <tr><td>The Shekinah (invisible presence)</td><td>—</td><td>The book-entry system — real but physically absent</td></tr>
+      <tr><td>The High Priest</td><td>—</td><td>The Participant — sole authorized mediator</td></tr>
+      <tr><td>The sacrifice</td><td>—</td><td>The security — yielded up, surrendered, ceded</td></tr>
+      <tr><td>The blood, by 3 p.m.</td><td class="hebrew-cell"><span class="hebrew-inline">השעה התשיעית</span></td><td>The payment — ninth-hour transfer, same-day settlement</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="reveal">The Biblical Narrative of DTC: A Hebrew Summary</h3>
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>DTC Element</th><th>Hebrew</th><th>Biblical Type</th></tr></thead>
+    <tbody>
+      <tr><td>DTC</td><td class="hebrew-cell"><span class="hebrew-inline">דתכ</span></td><td>The Door that Seals what the Hand holds</td></tr>
+      <tr><td>Door (Dalet)</td><td class="hebrew-cell"><span class="hebrew-inline">דלת</span></td><td>Christ, the entry (John 10:9)</td></tr>
+      <tr><td>Seal (Tav)</td><td class="hebrew-cell"><span class="hebrew-inline">תו</span></td><td>Mark of protection and judgment (Ezekiel 9:4)</td></tr>
+      <tr><td>Hand (Kaf)</td><td class="hebrew-cell"><span class="hebrew-inline">כף</span></td><td>The palm that holds (Psalm 17:8)</td></tr>
+      <tr><td>Trust / Faith</td><td class="hebrew-cell"><span class="hebrew-inline">אמונה</span></td><td>The just shall live by faith (Habakkuk 2:4)</td></tr>
+      <tr><td>Cede / hand over</td><td class="hebrew-cell"><span class="hebrew-inline">מסר</span></td><td>Delivered up (Matthew 27:50)</td></tr>
+      <tr><td>Cede &amp; Co.</td><td class="hebrew-cell"><span class="hebrew-inline">מסר וחבריו</span></td><td>The surrendered and his companions</td></tr>
+      <tr><td>DTCC (444)</td><td class="hebrew-cell"><span class="hebrew-inline">דתככ</span></td><td>The world made complete</td></tr>
+      <tr><td>10 business days</td><td class="hebrew-cell"><span class="hebrew-inline">עשרה ימי עסקים</span></td><td>The law given before the promised land entered</td></tr>
+      <tr><td>3:00 p.m. ET</td><td class="hebrew-cell"><span class="hebrew-inline">השעה התשיעית</span></td><td>The ninth hour — it is finished (John 19:30)</td></tr>
+      <tr><td>CUSIP number</td><td>—</td><td>The name written in the Book of Life</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART IV
+══════════════════════ -->
+<div class="part-header" id="part-iv">
+  <span class="part-label">Part IV</span>
+  <h2>The Hidden Codes — Addresses, Phones, and ZIPs</h2>
+</div>
+
+<h3 class="reveal">55 Water Street — The Legacy Address of Power</h3>
+<p class="reveal"><strong>55 is the sum of 1 through 10:</strong> 1+2+3+4+5+6+7+8+9+10 = 55. It is also F(10) in the Fibonacci sequence. The legacy address of DTC — 55 Water Street, New York — carried the entire Law within it: the complete sequence of the integers that constitute the Decalogue, summed, pointing to the water of the Word. The new addresses (570 Washington Boulevard, Jersey City, and 140 58th Street, Brooklyn) represent a dispersion: the 55 has been dissolved into its components and redistributed across two locations, as diaspora follows the end of the Temple.</p>
+
+<h3 class="reveal">212 / 813 — New York / Tampa — Two Cities</h3>
+<p class="reveal">212 → digit sum 2+1+2 = 5 (grace) — New York, the mercy seat. 813 → digit sum 8+1+3 = 12 (governmental perfection) — Tampa, the administrative enforcement center. Jerusalem and Babylon: grace in New York, government in Tampa. Every great system requires both.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART V
+══════════════════════ -->
+<div class="part-header" id="part-v">
+  <span class="part-label">Part V</span>
+  <h2>2026 — The Year of the Law</h2>
+</div>
+
+<h3 class="reveal">2012 — The Age of Grace</h3>
+<p class="reveal">2+0+1+2 = <strong style="font-family:var(--font-display);font-size:1.4rem;color:var(--accent-gold);">5</strong> — the number of grace.</p>
+<ul class="reveal">
+  <li>Five books of Moses — the Torah, the gift of law as grace</li>
+  <li>Five loaves feeding five thousand</li>
+  <li>Five wise virgins prepared, five foolish unprepared</li>
+</ul>
+
+<h3 class="reveal">2026 — The Age of the Law</h3>
+<p class="reveal">2+0+2+6 = <strong style="font-family:var(--font-display);font-size:1.4rem;color:var(--accent-gold);">10</strong> — the number of the Law.</p>
+<ul class="reveal">
+  <li>Ten Commandments — the moral skeleton of civilization</li>
+  <li>Ten plagues — judgment upon each Egyptian deity</li>
+  <li>Ten virgins — the complete reckoning of preparedness</li>
+</ul>
+
+<h3 class="reveal">The Divine Name</h3>
+<p class="reveal"><span class="hebrew">יהוה</span> — YHWH = Yod (10) + Heh (5) + Vav (6) + Heh (5) = <strong style="font-family:var(--font-display);font-size:1.4rem;color:var(--accent-gold);">26</strong></p>
+<p class="reveal">2026 = 2000 + 26 = double millennium + the gematria of the Divine Name. The Operational Arrangements dated 2026 are "The Law Held in the Palm" (<span class="hebrew-inline">דת-כ</span>, Dat-Kaf) now bearing the seal of <span class="hebrew-inline">יהוה</span>. The year is a name.</p>
+
+<!-- Magen David with 26 / 2026 -->
+<div class="diagram-wrap reveal" style="max-width:480px;">
+  <svg class="svg-diagram svg-diagram-interactive magen-david-diagram" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" data-diagram="magen-david">
+    <defs>
+      <linearGradient id="starG" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.7"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.2"/>
+      </linearGradient>
+      <filter id="starGlow">
+        <feGaussianBlur stdDeviation="5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <rect x="0" y="0" width="480" height="320" fill="#0a0a0a" rx="8"/>
+
+    <!-- Outer ring -->
+    <circle cx="240" cy="160" r="140" fill="none" stroke="#221c12" stroke-width="0.8" stroke-dasharray="5 8"/>
+    <circle cx="240" cy="160" r="115" fill="none" stroke="#221c12" stroke-width="0.6"/>
+
+    <!-- Star of David — Magen David -->
+    <!-- Upward triangle -->
+    <polygon points="240,42 318,178 162,178" fill="rgba(200,168,75,0.05)" stroke="url(#starG)" stroke-width="1.8" filter="url(#starGlow)"/>
+    <!-- Downward triangle -->
+    <polygon points="240,278 162,142 318,142" fill="rgba(122,46,46,0.05)" stroke="url(#starG)" stroke-width="1.8" filter="url(#starGlow)"/>
+
+    <!-- Center hexagon fill -->
+    <polygon points="240,112 275,130 275,165 240,183 205,165 205,130" fill="rgba(200,168,75,0.08)" stroke="#c8a84b" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- YHWH in center -->
+    <text x="240" y="148" class="svg-hebrew" font-size="1.3rem" filter="url(#starGlow)">יהוה</text>
+    <text x="240" y="170" class="svg-value" font-size="1.1rem">= 26</text>
+
+    <!-- Year label -->
+    <text x="240" y="210" class="svg-label" font-size="0.72rem">2026 = 2000 + 26</text>
+
+    <!-- Corner labels — six points of the star -->
+    <text x="240" y="30" class="svg-label" font-size="0.62rem">י · Yod · 10</text>
+    <text x="330" y="195" class="svg-text" font-size="0.62rem">ה · Heh · 5</text>
+    <text x="330" y="130" class="svg-text" font-size="0.62rem">ו · Vav · 6</text>
+    <text x="240" y="300" class="svg-label" font-size="0.62rem">ה · Heh · 5</text>
+    <text x="118" y="195" class="svg-text" font-size="0.62rem">Sum · 26</text>
+    <text x="118" y="130" class="svg-text" font-size="0.62rem">= 2026</text>
+  </svg>
+  <div class="diagram-caption">The Tetragrammaton at the center of the Magen David: YHWH = 26, and 2026 = millennium + name</div>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART VI
+══════════════════════ -->
+<div class="part-header" id="part-vi">
+  <span class="part-label">Part VI</span>
+  <h2>The Binary Code — Clean and Unclean</h2>
+</div>
+<p class="reveal">The Questionnaire is structured as a series of binary choices — checkboxes, yes/no determinations. This is Levitical taxonomy. Leviticus 11 divides the entire animal kingdom into two categories — clean and unclean — not by gradation but by binary decision: cloven hoof <em>and</em> chews cud, yes; only one, no. The DTC replicates this logic: each checkbox is a judgment. This security is eligible or it is not. There is no partial eligibility, just as there is no partial kashrus.</p>
+<p class="reveal">The binary structure also mirrors the divine speech-act of creation: "And God separated" — <span class="hebrew-inline">ויבדל</span> (<em>vayavdel</em>) — light from darkness, waters above from waters below, dry land from sea. Division is the first cognitive act, and the checkbox is its modern bureaucratic form.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART VII
+══════════════════════ -->
+<div class="part-header" id="part-vii">
+  <span class="part-label">Part VII</span>
+  <h2>The Liturgical Calendar</h2>
+</div>
+
+<div class="timeline reveal">
+  <div class="timeline-item">
+    <div class="time-label">30–60 Days Before Redemption</div>
+    <div class="time-title">Redemption Notice Filed</div>
+    <div class="time-desc">The generation's end — the announcement that the security's time is complete. Cf. Ecclesiastes 3:2: "A time to be born and a time to die."</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">10 Business Days Before Closing</div>
+    <div class="time-title">Questionnaire Submitted</div>
+    <div class="time-desc">Passover preparation — the lamb selected on the 10th of Nisan (Exodus 12:3), set apart and examined before the 14th.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">7 Days Before Closing</div>
+    <div class="time-title">CUSIP Assignment Confirmed</div>
+    <div class="time-desc">The seventh day — Sabbath rest, completion of naming. The animal is named before it is offered; the security receives its CUSIP before it enters the system.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">1 Day Before Closing</div>
+    <div class="time-title">BEO Letter of Representations Finalized</div>
+    <div class="time-desc">The Day of Preparation — Erev Pesach (John 19:31). The last administrative acts before the sacrifice. "They made ready" (Matthew 26:19).</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Noon — Closing Day</div>
+    <div class="time-title">Securities Delivered to DTC</div>
+    <div class="time-desc">The Passover slaughter begins "between the evenings" (Exodus 12:6), traditionally from noon. The security is surrendered into the depository's hands.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">3:00 p.m. ET — Closing Day</div>
+    <div class="time-title">All Payments Due</div>
+    <div class="time-desc">The ninth hour — "It is finished" (John 19:30). Settlement is complete; the life of the security in the outside world ends. Same-day distribution begins.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">10 Business Days After Closing</div>
+    <div class="time-title">Final Documents Filed</div>
+    <div class="time-desc">Post-resurrection appearance — the risen Lord appeared for forty days; the documents testify after the fact to what has already been completed.</div>
+  </div>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART VIII
+══════════════════════ -->
+<div class="part-header" id="part-viii">
+  <span class="part-label">Part VIII</span>
+  <h2>Theological Synthesis — DTC as Type of the Kingdom</h2>
+</div>
+<p class="reveal">The DTC system, read typologically, functions as a shadow of the heavenly economy. The correspondences are not imposed but discovered — they arise wherever a binding custodial covenant is established between an invisible sovereign, a mediating class, and a beneficial population that holds rights without direct title.</p>
+
+<!-- THEOLOGICAL SYNTHESIS FLOWCHART — upgraded -->
+<div class="diagram-wrap reveal" style="max-width:760px;">
+  <svg class="svg-diagram theological-synthesis-diagram" viewBox="0 0 760 580" xmlns="http://www.w3.org/2000/svg" data-diagram="theological-synthesis">
+    <defs>
+      <linearGradient id="dtcCol" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.18"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.06"/>
+      </linearGradient>
+      <linearGradient id="bibCol" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#7a2e2e;stop-opacity:0.1"/>
+        <stop offset="100%" style="stop-color:#7a2e2e;stop-opacity:0.04"/>
+      </linearGradient>
+      <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#5a4e3a"/>
+      </marker>
+    </defs>
+
+    <rect class="theo-bg" x="0" y="0" width="760" height="580" fill="#0a0a0a" rx="8" data-label="rect"/>
+
+    <!-- Column headers -->
+    <text x="175" y="28" class="svg-label" font-size="0.82rem">DTC Element</text>
+    <text x="530" y="28" class="svg-label" font-size="0.82rem">Biblical Type</text>
+    <!-- Header divider -->
+    <line x1="30" y1="38" x2="730" y2="38" stroke="#221c12" stroke-width="1"/>
+    <line x1="350" y1="38" x2="350" y2="560" stroke="#221c12" stroke-width="0.8" stroke-dasharray="4 6"/>
+
+    <!-- Rows -->
+    <!-- Row data: [y, dtc, biblical] -->
+    <g font-size="0.72rem">
+      <!-- Row 1 -->
+      <rect x="30" y="48" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="68" class="svg-text" font-size="0.74rem">Cede &amp; Co. (nominee)</text>
+      <text x="175" y="84" class="svg-text-sm" font-size="0.65rem">The single registered holder of all</text>
+      <line x1="320" y1="71" x2="370" y2="71" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="48" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="68" class="svg-text" font-size="0.74rem">Christ — in whom all believers are hidden</text>
+      <text x="555" y="84" class="svg-text-sm" font-size="0.65rem">Colossians 3:3</text>
+
+      <!-- Row 2 -->
+      <rect x="30" y="102" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="122" class="svg-text" font-size="0.74rem">Participants</text>
+      <text x="175" y="138" class="svg-text-sm" font-size="0.65rem">Licensed mediating institutions</text>
+      <line x1="320" y1="125" x2="370" y2="125" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="102" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="122" class="svg-text" font-size="0.74rem">Priests — mediating between nominee and owners</text>
+      <text x="555" y="138" class="svg-text-sm" font-size="0.65rem">1 Peter 2:5; Hebrews 8:6</text>
+
+      <!-- Row 3 -->
+      <rect x="30" y="156" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="176" class="svg-text" font-size="0.74rem">Beneficial Owners</text>
+      <text x="175" y="192" class="svg-text-sm" font-size="0.65rem">Real holders of economic interest</text>
+      <line x1="320" y1="179" x2="370" y2="179" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="156" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="176" class="svg-text" font-size="0.74rem">The faithful — known through the mediator</text>
+      <text x="555" y="192" class="svg-text-sm" font-size="0.65rem">1 Timothy 2:5</text>
+
+      <!-- Row 4 -->
+      <rect x="30" y="210" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="230" class="svg-text" font-size="0.74rem">Book-Entry-Only system</text>
+      <text x="175" y="246" class="svg-text-sm" font-size="0.65rem">No physical certificate exists</text>
+      <line x1="320" y1="233" x2="370" y2="233" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="210" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="230" class="svg-text" font-size="0.74rem">Faith, not works — no physical certificate</text>
+      <text x="555" y="246" class="svg-text-sm" font-size="0.65rem">Romans 4:3–5; 2 Corinthians 5:7</text>
+
+      <!-- Row 5 -->
+      <rect x="30" y="264" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="284" class="svg-text" font-size="0.74rem">FAST Program</text>
+      <text x="175" y="300" class="svg-text-sm" font-size="0.65rem">Rapid automated transfer</text>
+      <line x1="320" y1="287" x2="370" y2="287" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="264" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="284" class="svg-text" font-size="0.74rem">Grace — transfer without human effort</text>
+      <text x="555" y="300" class="svg-text-sm" font-size="0.65rem">Ephesians 2:8–9</text>
+
+      <!-- Row 6 -->
+      <rect x="30" y="318" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="338" class="svg-text" font-size="0.74rem">Letters of Representations</text>
+      <text x="175" y="354" class="svg-text-sm" font-size="0.65rem">The Issuer's binding written confession</text>
+      <line x1="320" y1="341" x2="370" y2="341" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="318" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="338" class="svg-text" font-size="0.74rem">Confession of faith — the binding agreement</text>
+      <text x="555" y="354" class="svg-text-sm" font-size="0.65rem">Romans 10:9–10</text>
+
+      <!-- Row 7 -->
+      <rect x="30" y="372" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="392" class="svg-text" font-size="0.74rem">CUSIP Numbers</text>
+      <text x="175" y="408" class="svg-text-sm" font-size="0.65rem">Unique identity assigned to each security</text>
+      <line x1="320" y1="395" x2="370" y2="395" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="372" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="392" class="svg-text" font-size="0.74rem">The Book of Life — unique names</text>
+      <text x="555" y="408" class="svg-text-sm" font-size="0.65rem">Revelation 20:12; 21:27</text>
+
+      <!-- Row 8 -->
+      <rect x="30" y="426" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="446" class="svg-text" font-size="0.74rem">Payment Deadlines (3 p.m.)</text>
+      <text x="175" y="462" class="svg-text-sm" font-size="0.65rem">The ninth hour, daily</text>
+      <line x1="320" y1="449" x2="370" y2="449" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="426" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="446" class="svg-text" font-size="0.74rem">The Day of the Lord — at an hour unknown</text>
+      <text x="555" y="462" class="svg-text-sm" font-size="0.65rem">Matthew 24:42–44</text>
+
+      <!-- Row 9 -->
+      <rect x="30" y="480" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="175" y="500" class="svg-text" font-size="0.74rem">Redemption</text>
+      <text x="175" y="516" class="svg-text-sm" font-size="0.65rem">The security called back at maturity</text>
+      <line x1="320" y1="503" x2="370" y2="503" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="480" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <text x="555" y="500" class="svg-text" font-size="0.74rem">Salvation — the calling back of what was issued</text>
+      <text x="555" y="516" class="svg-text-sm" font-size="0.65rem">Ephesians 1:7; Romans 3:24</text>
+    </g>
+  </svg>
+  <div class="diagram-caption">DTC operational elements and their biblical-typological correspondences</div>
+</div>
+
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>DTC Element</th><th>Biblical Type</th></tr></thead>
+    <tbody>
+      <tr><td>Cede &amp; Co. (nominee)</td><td>Christ — the one name in whom all believers are hidden (Colossians 3:3)</td></tr>
+      <tr><td>Participants</td><td>Priests — mediating between nominee and beneficial owners (1 Peter 2:5)</td></tr>
+      <tr><td>Beneficial Owners</td><td>The faithful — known to God through the mediator (1 Timothy 2:5)</td></tr>
+      <tr><td>Book-Entry-Only</td><td>Faith, not works — no physical certificate, only record (Romans 4:3–5)</td></tr>
+      <tr><td>FAST Program</td><td>Grace — rapid, automated transfer without human effort (Ephesians 2:8–9)</td></tr>
+      <tr><td>Letters of Representations</td><td>Confession of faith — the Issuer's binding agreement (Romans 10:9–10)</td></tr>
+      <tr><td>CUSIP numbers</td><td>The Book of Life — unique identifiers for each security (Revelation 20:12)</td></tr>
+      <tr><td>Payment deadlines</td><td>The Day of the Lord — at the ninth hour (Matthew 24:44)</td></tr>
+      <tr><td>Redemption</td><td>Salvation — the calling back of what was issued (Ephesians 1:7)</td></tr>
+      <tr><td>Indemnity letters</td><td>Atonement — covering for risk, substitutionary (Romans 3:25)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     APPENDIX
+══════════════════════ -->
+<div class="part-header" id="hebrew-appendix">
+  <span class="part-label">Appendix</span>
+  <h2>Hebrew Reference — Complete Gematria Table</h2>
+</div>
+
+<p class="reveal">The following table provides a complete reference for all Hebrew words, letters, and phrases used throughout this exegesis, with their standard gematria values. All figures use <em>mispar hechrechi</em> (standard gematria). Variant methods are noted in the "Notes" column.</p>
+
+<div class="table-wrapper reveal">
+  <table class="gematria-table">
+    <thead>
+      <tr><th>Hebrew</th><th>Transliteration</th><th>Meaning</th><th>Gematria</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">ד</span></td><td>Dalet</td><td>Door, threshold (letter)</td><td class="value-cell">4</td><td>4th letter</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">דלת</span></td><td>Delet</td><td>Door (word)</td><td class="value-cell">434</td><td>ד(4)+ל(30)+ת(400)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">ת</span></td><td>Tav</td><td>Seal, sign, the end</td><td class="value-cell">400</td><td>22nd and final letter</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">תו</span></td><td>Tav</td><td>Mark, sign (word)</td><td class="value-cell">406</td><td>ת(400)+ו(6)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">כ</span></td><td>Kaf</td><td>Palm of the hand (letter)</td><td class="value-cell">20</td><td>11th letter; final form ך = 20 standard, 500 <em>mispar gadol</em></td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">כף</span></td><td>Kaf</td><td>Palm, hollow of hand</td><td class="value-cell">100</td><td>כ(20)+ף(80)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">דתכ</span></td><td>Dalet-Tav-Kaf</td><td>DTC (acronym, deliberate rendering)</td><td class="value-cell">424</td><td>4+400+20; see editorial note on Kaf vs Qof</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">דתככ</span></td><td>Dalet-Tav-Kaf-Kaf</td><td>DTCC (acronym)</td><td class="value-cell">444</td><td>4+400+20+20 = 4 × 111</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">משיח</span></td><td>Mashiach</td><td>Messiah, Anointed One</td><td class="value-cell">358</td><td>מ(40)+ש(300)+י(10)+ח(8)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">בן דוד</span></td><td>Ben David</td><td>Son of David</td><td class="value-cell">66</td><td>ב(2)+ן(50)+ד(4)+ו(6)+ד(4)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">משיח בן דוד</span></td><td>Mashiach Ben David</td><td>Messiah Son of David</td><td class="value-cell">424</td><td>358 + 66 = 424</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">דת</span></td><td>Dat</td><td>Law, decree, edict</td><td class="value-cell">404</td><td>ד(4)+ת(400); Pers./Aram. loanword — Esther, Daniel</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">אמת</span></td><td>Emet</td><td>Truth</td><td class="value-cell">441</td><td>א(1)+מ(40)+ת(400); "seal of God" (Shabbat 104a)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">יהוה</span></td><td>YHWH</td><td>The Divine Name</td><td class="value-cell">26</td><td>י(10)+ה(5)+ו(6)+ה(5) = 26; cf. 2026</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">מסר</span></td><td>Masar</td><td>To hand over, deliver</td><td class="value-cell">300</td><td>מ(40)+ס(60)+ר(200)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">אחד</span></td><td>Echad</td><td>One</td><td class="value-cell">13</td><td>א(1)+ח(8)+ד(4)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">אמונה</span></td><td>Emunah</td><td>Trust, faith, faithfulness</td><td class="value-cell">102</td><td>א(1)+מ(40)+ו(6)+נ(50)+ה(5)</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">משכן</span></td><td>Mishkan</td><td>Tabernacle, dwelling place</td><td class="value-cell">410</td><td>מ(40)+ש(300)+כ(20)+ן(50)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="note-box reveal">
+  <p><strong>On Gematria Methods:</strong> This document uses <em>mispar hechrechi</em> (standard gematria) throughout, where each letter has a fixed numerical value unchanged by position. Alternative methods include <em>mispar gadol</em> (which assigns distinct values to final forms: ך=500, ם=600, ן=700, ף=800, ץ=900), <em>mispar katan</em> (which truncates zeros: י=1, כ=2, etc.), and <em>atbash</em> (which reverses the alphabet). The standard method is used in all classical gematria reference works and in the Talmud. Where alternative methods are referenced in the analysis (Kaf sofit = 500 in the jubilee discussion), this is explicitly noted.</p>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART IX — 2026 AMENDMENTS
+══════════════════════ -->
+<div class="part-header" id="part-ix">
+  <span class="part-label">Part IX</span>
+  <h2>The 2026 Amendments — The Law Made New</h2>
+</div>
+
+<p class="reveal">The year 2026 has brought a cascade of amendments to the DTC Operational Arrangements and Rules — seven SEC filings in the first five months alone, each one a new articulation of the law. The numeric sequence itself speaks: seven filings, seven months of covenantal refinement, the number of completion and rest.</p>
+
+<h3 class="reveal">The Seven Filings — A Covenantal Sequence</h3>
+<table class="sacred-table reveal">
+  <thead>
+    <tr><th>Filing</th><th>Date</th><th>Subject</th><th>Biblical Type</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="num-cell">SR-DTC-2026-001</td><td>Jan 2026</td><td>Limiting accessibility to Participant Terminal</td><td>The narrowing of the gate — Matthew 7:13</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-002</td><td>Mar 2026</td><td>Stress testing framework</td><td>The trial by fire — 1 Peter 1:7</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-003</td><td>Mar 2026</td><td>Separation of dissenters' shares</td><td>The wheat and the chaff — Matthew 3:12</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-004</td><td>Apr 2026</td><td>Corrections and clarifications</td><td>The refining of the law — Psalm 12:6</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-005</td><td>May 2026</td><td>Alignment with Rule 17ad-22(e)(19)</td><td>The harmonization with higher law — Romans 8:2</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-006</td><td>May 2026</td><td>Missed transfer adjustments</td><td>The accounting of debts — Matthew 6:12</td></tr>
+    <tr><td class="num-cell">SR-DTC-2026-007</td><td>May 2026</td><td>Amendments to OA and Redemptions Guide</td><td>The law made new — Jeremiah 31:33</td></tr>
+  </tbody>
+</table>
+
+<h3 class="reveal">Rapid Issuance — The New Creation</h3>
+<p class="reveal">Launched April 1, 2026, <strong>Rapid Issuance</strong> is a streamlined process for structured notes under a single "base prospectus" — a foundational document from which multiple CUSIP creations flow, like the Torah generating the mitzvot. The fee is <span class="num-pill">$180</span> per CUSIP — 180 = 18 × 10, where 18 is the gematria of <strong>חי</strong> (Chai — Life). Each new CUSIP is a new creation given life through the base prospectus.</p>
+<p class="reveal">The service enables closings within an hour of security submission — the "rapid" creation echoing the instantaneous fiat lux of Genesis 1:3. The base prospectus is the <em>logos</em>; the CUSIP is the <em>rhema</em> — the specific utterance that brings each particular creation into being.</p>
+
+<!-- RAPID ISSUANCE FEE STRUCTURE SVG -->
+<div class="diagram-wrap reveal" data-label="Rapid Issuance Fee Structure">
+  <svg width="100%" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="rapidGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(200,168,75,0.4)"/>
+        <stop offset="100%" stop-color="rgba(200,168,75,0.1)"/>
+      </linearGradient>
+      <linearGradient id="rapidGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(42,122,107,0.3)"/>
+        <stop offset="100%" stop-color="rgba(42,122,107,0.08)"/>
+      </linearGradient>
+      <linearGradient id="rapidGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(122,46,46,0.3)"/>
+        <stop offset="100%" stop-color="rgba(122,46,46,0.08)"/>
+      </linearGradient>
+    </defs>
+    <rect x="40" y="30" width="180" height="120" fill="url(#rapidGrad1)" stroke="#c8a84b" stroke-width="2" rx="4"/>
+    <text x="130" y="65" text-anchor="middle" fill="#e2cc82" font-size="28" font-weight="900" font-family="'Cinzel',serif">$180</text>
+    <text x="130" y="90" text-anchor="middle" fill="rgba(200,168,75,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">RAPID ISSUANCE FEE</text>
+    <text x="130" y="108" text-anchor="middle" fill="rgba(200,168,75,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">18 × 10 = Chai × Law</text>
+    <text x="130" y="125" text-anchor="middle" fill="rgba(200,168,75,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Life per CUSIP</text>
+
+    <rect x="260" y="30" width="180" height="120" fill="url(#rapidGrad2)" stroke="rgba(42,122,107,0.6)" stroke-width="1.5" rx="4"/>
+    <text x="350" y="65" text-anchor="middle" fill="#80d4c8" font-size="28" font-weight="900" font-family="'Cinzel',serif">$250</text>
+    <text x="350" y="90" text-anchor="middle" fill="rgba(128,212,200,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">ELIGIBILITY FEE</text>
+    <text x="350" y="108" text-anchor="middle" fill="rgba(128,212,200,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">2 × 5³ = Witness × Grace³</text>
+    <text x="350" y="125" text-anchor="middle" fill="rgba(128,212,200,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Block eligibility</text>
+
+    <rect x="480" y="30" width="180" height="120" fill="url(#rapidGrad3)" stroke="rgba(122,46,46,0.6)" stroke-width="1.5" rx="4"/>
+    <text x="570" y="65" text-anchor="middle" fill="#e8a0a0" font-size="28" font-weight="900" font-family="'Cinzel',serif">$300</text>
+    <text x="570" y="90" text-anchor="middle" fill="rgba(232,160,160,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">LATE SURCHARGE</text>
+    <text x="570" y="108" text-anchor="middle" fill="rgba(232,160,160,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">3 × 100 = Resurrection × Fullness</text>
+    <text x="570" y="125" text-anchor="middle" fill="rgba(232,160,160,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Same-day penalty</text>
+
+    <text x="350" y="168" text-anchor="middle" fill="rgba(200,168,75,0.25)" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="2">RAPID ISSUANCE · THE FEE THEOLOGY OF CREATION</text>
+  </svg>
+</div>
+
+<h3 class="reveal">The Noon Deadline — The Sixth Hour of Judgment</h3>
+<p class="reveal">The 2026 Operational Arrangements specify that payments of <strong>$1 Billion or more</strong> for Mandatory Reorganization events must be delivered by <strong>12:00 PM noon ET</strong> — the sixth hour. John 19:14 records: "It was the day of Preparation of the Passover; it was about noon." This is the hour Pilate delivers judgment: "Here is your king." The largest payments — those exceeding a billion — must be surrendered at the hour of sovereign judgment, not the ninth hour of completion. The hierarchy is precise: small payments at 3:00 p.m. (the individual's sacrifice), cosmic payments at noon (the state's judgment).</p>
+
+<h3 class="reveal">OFAC — The Book of the Excluded</h3>
+<p class="reveal">The Operational Arrangements explicitly require screening against the <strong>Office of Foreign Assets Control (OFAC) SDN List</strong> — the Specially Designated Nationals and Blocked Persons List. If an issuer is on this list, "the securities of such Issuer are not DTC eligible." This is the typology of the Book of Life in negative: names written in the SDN List are cast out, refused entry, made unclean. The OFAC screening is the Levitical inspection of the modern marketplace — the binary determination of eligibility that recapitulates the division of clean and unclean.</p>
+
+<h3 class="reveal">Tokenization — The Digital Shekinah (H2 2026)</h3>
+<p class="reveal">In December 2025, DTC received an SEC No-Action Letter authorizing a <strong>tokenization service</strong> for DTC-custodied assets, with rollout planned for the second half of 2026. The physical certificate — already reduced to a single nominee-held certificate in the Book-Entry-Only system — now dissolves entirely into pure digital record on distributed ledger technology.</p>
+<p class="reveal">This is the ultimate theology of the DTC system: <strong>no physical residue remains</strong>. The tokenized entitlement is the Shekinah made absolute — invisible, real, recorded only in the ledger. The asset becomes pure information, pure record, pure faith. The tokenization service covers the Russell 1000 (1,000 companies — 10³, the Law cubed), major index ETFs, and U.S. Treasury bills, bonds, and notes — the most liquid, most "holy" securities in the marketplace.</p>
+<p class="reveal">The three-year authorization period (2026–2029) maps onto the 3 = Resurrection: the system is resurrected into its digital form. The service enables "mobility" (transfer across jurisdictions without regard to time), "decentralization" (direct access), and "programmability" (smart contracts) — the three attributes of the resurrected body: unbounded, immediate, and obedient to higher law.</p>
+
+<h3 class="reveal">The Transfer Agent — The Living Mediator</h3>
+<p class="reveal">The exegesis has mentioned Participants as priests but underdeveloped the <strong>Transfer Agent</strong> — the living mediator who signs the Agent Attestation Form, authenticates transfers with a date stamp (the seal), provides OFAC certification (the purity declaration), and posts notices to LENS (the public proclamation). The Agent is the operational priest who stands between the issuer (the sovereign) and the DTC (the sanctuary), performing the daily service that keeps the system alive.</p>
+<p class="reveal">The Agent's "Authentication Date" is the seal of approval — the moment when the transfer is validated, analogous to the priest's laying on of hands. The Agent's OFAC certification is the inspection of the sacrifice: is it clean? Is it acceptable? The Agent's LENS posting is the trumpet blast that announces the law to the congregation.</p>
+
+<h3 class="reveal">The CUSIP as the True Name</h3>
+<p class="reveal">A CUSIP is a <strong>9-character identifier</strong> — 9, the digit of absolute truth. The CUSIP is assigned by the CUSIP Service Bureau (the naming authority). In the OA, "DTC requires separate CUSIP numbers for each component" of a Unit security — just as each creature in Genesis was named according to its kind. The CUSIP is the <strong>true name</strong> written in the book of the marketplace. Without the name, the security has no identity; without the CUSIP, the security cannot enter the sanctuary.</p>
+<p class="reveal">Under Rapid Issuance, a block of <strong>979 CUSIPs</strong> may be made eligible under a single base prospectus — 979 = 1000 − 21, where 1000 is the millennium (fullness) and 21 is the gematria of <strong>אהיה</strong> (Ehyeh — "I AM"). The base prospectus contains the name of the issuer; the 979 CUSIPs are the specific utterances that bring each creation into being.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART X — ETZ CHAIM
+══════════════════════ -->
+<div class="part-header" id="part-x">
+  <span class="part-label">Part X</span>
+  <h2>The Etz Chaim — DTC and the Tree of Life</h2>
+</div>
+
+<h3 class="reveal">The Ten Sefirot and the Operational Arrangement</h3>
+<p class="reveal">The Kabbalistic <em>Etz Chaim</em> (<span class="hebrew">עץ חיים</span>, "Tree of Life") organizes divine emanation into ten <em>sefirot</em> — ten spheres of attribute through which the infinite (<span class="hebrew">אין סוף</span>, <em>Ein Sof</em>) expresses itself in the finite world. They descend in three columns: right (Mercy), left (Judgment), center (Balance), united in a single root and a single crown.</p>
+<p class="reveal">The DTC's own structural skeleton mirrors this ten-fold pattern with remarkable precision. The ten recurring deadlines — all multiples or derivatives of 10 — are not merely administrative conveniences. In the Kabbalistic reading they are the ten points of contact between the infinite economy of God and the finite economy of man.</p>
+
+<!-- ETZ CHAIM SVG — full Sefirot diagram -->
+<div class="diagram-wrap reveal" style="max-width:640px;">
+  <svg class="svg-diagram svg-diagram-interactive etz-chaim-diagram" viewBox="0 0 640 700" xmlns="http://www.w3.org/2000/svg" data-diagram="etz-chaim">
+    <defs>
+      <radialGradient id="sefGold" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.08"/>
+      </radialGradient>
+      <radialGradient id="sefCrim" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#7a2e2e;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#3a0e0e;stop-opacity:0.08"/>
+      </radialGradient>
+      <radialGradient id="sefCenter" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.22"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.05"/>
+      </radialGradient>
+      <filter id="sefiGlow">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <rect x="0" y="0" width="640" height="700" fill="#080808" rx="8"/>
+
+    <!-- Column labels -->
+    <text x="160" y="25" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">Right Column · Mercy · חסד</text>
+    <text x="320" y="25" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">Center Column · Balance · תפארת</text>
+    <text x="480" y="25" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">Left Column · Judgment · דין</text>
+
+    <!-- Vertical axis line -->
+    <line x1="320" y1="40" x2="320" y2="670" stroke="#221c12" stroke-width="0.8"/>
+
+    <!-- PATH CONNECTIONS (drawn first, behind nodes) -->
+    <!-- Keter to Chokhmah -->
+    <line x1="320" y1="78" x2="175" y2="153" stroke="#352b18" stroke-width="1.2"/>
+    <!-- Keter to Binah -->
+    <line x1="320" y1="78" x2="465" y2="153" stroke="#352b18" stroke-width="1.2"/>
+    <!-- Chokhmah to Chesed -->
+    <line x1="175" y1="193" x2="175" y2="273" stroke="#352b18" stroke-width="1"/>
+    <!-- Binah to Gevurah -->
+    <line x1="465" y1="193" x2="465" y2="273" stroke="#352b18" stroke-width="1"/>
+    <!-- Chokhmah to Tiferet -->
+    <line x1="175" y1="193" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <!-- Binah to Tiferet -->
+    <line x1="465" y1="193" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <!-- Chesed to Tiferet -->
+    <line x1="175" y1="313" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <!-- Gevurah to Tiferet -->
+    <line x1="465" y1="313" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <!-- Chesed to Netzach -->
+    <line x1="175" y1="313" x2="175" y2="433" stroke="#352b18" stroke-width="1"/>
+    <!-- Gevurah to Hod -->
+    <line x1="465" y1="313" x2="465" y2="433" stroke="#352b18" stroke-width="1"/>
+    <!-- Tiferet to Netzach -->
+    <line x1="320" y1="388" x2="175" y2="433" stroke="#352b18" stroke-width="1"/>
+    <!-- Tiferet to Hod -->
+    <line x1="320" y1="388" x2="465" y2="433" stroke="#352b18" stroke-width="1"/>
+    <!-- Tiferet to Yesod -->
+    <line x1="320" y1="388" x2="320" y2="503" stroke="#352b18" stroke-width="1.2"/>
+    <!-- Netzach to Yesod -->
+    <line x1="175" y1="473" x2="320" y2="503" stroke="#352b18" stroke-width="1"/>
+    <!-- Hod to Yesod -->
+    <line x1="465" y1="473" x2="320" y2="503" stroke="#352b18" stroke-width="1"/>
+    <!-- Yesod to Malkhut -->
+    <line x1="320" y1="543" x2="320" y2="608" stroke="#c8a84b" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.6"/>
+    <!-- Da'at (hidden) connections -->
+    <line x1="320" y1="238" x2="175" y2="193" stroke="#221c12" stroke-width="0.8" stroke-dasharray="3 5"/>
+    <line x1="320" y1="238" x2="465" y2="193" stroke="#221c12" stroke-width="0.8" stroke-dasharray="3 5"/>
+
+    <!-- ── SEFIROT NODES ── -->
+
+    <!-- 1. Keter — Crown -->
+    <circle cx="320" cy="58" r="38" fill="url(#sefCenter)" stroke="#c8a84b" stroke-width="1.5" filter="url(#sefiGlow)"/>
+    <text x="320" y="52" class="svg-hebrew" font-size="0.8rem">כתר</text>
+    <text x="320" y="66" class="svg-label" font-size="0.65rem">Keter · Crown</text>
+    <text x="320" y="79" class="svg-text-sm" font-size="0.58rem">The One Certificate · Echad</text>
+
+    <!-- 2. Chokhmah — Wisdom (right) -->
+    <circle cx="175" cy="173" r="34" fill="url(#sefGold)" stroke="#c8a84b" stroke-width="1"/>
+    <text x="175" y="167" class="svg-hebrew" font-size="0.75rem">חכמה</text>
+    <text x="175" y="180" class="svg-label" font-size="0.62rem">Chokhmah · Wisdom</text>
+    <text x="175" y="193" class="svg-text-sm" font-size="0.55rem">The Eligibility Criteria</text>
+
+    <!-- 3. Binah — Understanding (left) -->
+    <circle cx="465" cy="173" r="34" fill="url(#sefCrim)" stroke="#7a2e2e" stroke-width="1"/>
+    <text x="465" y="167" class="svg-hebrew" font-size="0.75rem">בינה</text>
+    <text x="465" y="180" class="svg-label" font-size="0.62rem" fill="#b09a7a">Binah · Understanding</text>
+    <text x="465" y="193" class="svg-text-sm" font-size="0.55rem">The Operational Arrangements</text>
+
+    <!-- Da'at — hidden (center, dashed) -->
+    <circle cx="320" cy="238" r="22" fill="none" stroke="#352b18" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="320" y="234" class="svg-text-sm" font-size="0.6rem">Da'at</text>
+    <text x="320" y="248" class="svg-text-sm" font-size="0.52rem">Hidden · CUSIP</text>
+
+    <!-- 4. Chesed — Mercy (right) -->
+    <circle cx="175" cy="293" r="34" fill="url(#sefGold)" stroke="#c8a84b" stroke-width="1"/>
+    <text x="175" y="287" class="svg-hebrew" font-size="0.75rem">חסד</text>
+    <text x="175" y="300" class="svg-label" font-size="0.62rem">Chesed · Mercy</text>
+    <text x="175" y="313" class="svg-text-sm" font-size="0.55rem">FAST Program · Grace</text>
+
+    <!-- 5. Gevurah — Judgment (left) -->
+    <circle cx="465" cy="293" r="34" fill="url(#sefCrim)" stroke="#7a2e2e" stroke-width="1"/>
+    <text x="465" y="287" class="svg-hebrew" font-size="0.75rem">גבורה</text>
+    <text x="465" y="300" class="svg-label" font-size="0.62rem" fill="#b09a7a">Gevurah · Judgment</text>
+    <text x="465" y="313" class="svg-text-sm" font-size="0.55rem">Fines · Suspension · Curses</text>
+
+    <!-- 6. Tiferet — Beauty / Harmony (center) -->
+    <circle cx="320" cy="368" r="40" fill="url(#sefCenter)" stroke="#c8a84b" stroke-width="2" filter="url(#sefiGlow)"/>
+    <text x="320" y="360" class="svg-hebrew" font-size="0.85rem">תפארת</text>
+    <text x="320" y="374" class="svg-label" font-size="0.65rem">Tiferet · Beauty</text>
+    <text x="320" y="388" class="svg-text-sm" font-size="0.55rem">Cede &amp; Co. · The Nominee</text>
+
+    <!-- 7. Netzach — Eternity (right) -->
+    <circle cx="175" cy="453" r="32" fill="url(#sefGold)" stroke="#9a7828" stroke-width="1"/>
+    <text x="175" y="447" class="svg-hebrew" font-size="0.72rem">נצח</text>
+    <text x="175" y="460" class="svg-label" font-size="0.62rem">Netzach · Eternity</text>
+    <text x="175" y="473" class="svg-text-sm" font-size="0.55rem">Continual Settlements</text>
+
+    <!-- 8. Hod — Splendor (left) -->
+    <circle cx="465" cy="453" r="32" fill="url(#sefCrim)" stroke="#5a1e1e" stroke-width="1"/>
+    <text x="465" y="447" class="svg-hebrew" font-size="0.72rem">הוד</text>
+    <text x="465" y="460" class="svg-label" font-size="0.62rem" fill="#b09a7a">Hod · Splendor</text>
+    <text x="465" y="473" class="svg-text-sm" font-size="0.55rem">Regulatory Reporting</text>
+
+    <!-- 9. Yesod — Foundation (center) -->
+    <circle cx="320" cy="523" r="35" fill="url(#sefCenter)" stroke="#c8a84b" stroke-width="1.2"/>
+    <text x="320" y="517" class="svg-hebrew" font-size="0.78rem">יסוד</text>
+    <text x="320" y="530" class="svg-label" font-size="0.62rem">Yesod · Foundation</text>
+    <text x="320" y="543" class="svg-text-sm" font-size="0.55rem">The Participant · Mediator</text>
+
+    <!-- 10. Malkhut — Kingdom (center, bottom) -->
+    <circle cx="320" cy="628" r="38" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="2" filter="url(#sefiGlow)"/>
+    <text x="320" y="620" class="svg-hebrew" font-size="0.85rem">מלכות</text>
+    <text x="320" y="634" class="svg-label" font-size="0.65rem">Malkhut · Kingdom</text>
+    <text x="320" y="648" class="svg-text-sm" font-size="0.55rem">The Beneficial Owner · Israel</text>
+    <text x="320" y="661" class="svg-text-sm" font-size="0.52rem">The World Below</text>
+
+    <!-- Column guides -->
+    <text x="85" y="350" class="svg-text-sm" font-size="0.6rem" transform="rotate(-90 85 350)" text-anchor="middle" opacity="0.4">Pillar of Mercy</text>
+    <text x="555" y="350" class="svg-text-sm" font-size="0.6rem" transform="rotate(90 555 350)" text-anchor="middle" opacity="0.4">Pillar of Judgment</text>
+  </svg>
+  <div class="diagram-caption">The Ten Sefirot of the Etz Chaim, with each corresponding DTC operational element</div>
+</div>
+
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>#</th><th>Sefirah</th><th>Hebrew</th><th>Attribute</th><th>DTC Correspondence</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Keter</td><td class="hebrew-cell"><span class="hebrew-inline">כתר</span></td><td>Crown / Will</td><td>The One Certificate — the indivisible sovereign instrument</td></tr>
+      <tr><td>2</td><td>Chokhmah</td><td class="hebrew-cell"><span class="hebrew-inline">חכמה</span></td><td>Wisdom / Flash</td><td>The Eligibility Criteria — first flash of discernment: is this eligible?</td></tr>
+      <tr><td>3</td><td>Binah</td><td class="hebrew-cell"><span class="hebrew-inline">בינה</span></td><td>Understanding / Form</td><td>The Operational Arrangements — the detailed structure that gives form to wisdom</td></tr>
+      <tr><td>—</td><td>Da'at</td><td class="hebrew-cell"><span class="hebrew-inline">דעת</span></td><td>Hidden Knowledge</td><td>The CUSIP — hidden identity, the name that unlocks the system</td></tr>
+      <tr><td>4</td><td>Chesed</td><td class="hebrew-cell"><span class="hebrew-inline">חסד</span></td><td>Mercy / Expansion</td><td>The FAST Program — automated grace, frictionless transfer</td></tr>
+      <tr><td>5</td><td>Gevurah</td><td class="hebrew-cell"><span class="hebrew-inline">גבורה</span></td><td>Judgment / Contraction</td><td>Fines, suspension, refusal of service — the curses of the covenant</td></tr>
+      <tr><td>6</td><td>Tiferet</td><td class="hebrew-cell"><span class="hebrew-inline">תפארת</span></td><td>Beauty / Harmony</td><td>Cede &amp; Co. — the balancing point between mercy and judgment, nominee for all</td></tr>
+      <tr><td>7</td><td>Netzach</td><td class="hebrew-cell"><span class="hebrew-inline">נצח</span></td><td>Eternity / Victory</td><td>Continual daily settlement — the endless rhythm of same-day finality</td></tr>
+      <tr><td>8</td><td>Hod</td><td class="hebrew-cell"><span class="hebrew-inline">הוד</span></td><td>Splendor / Acknowledgment</td><td>Regulatory reporting, confirmations — the system acknowledging itself</td></tr>
+      <tr><td>9</td><td>Yesod</td><td class="hebrew-cell"><span class="hebrew-inline">יסוד</span></td><td>Foundation / Channel</td><td>The Participant — the channel through which all flows between above and below</td></tr>
+      <tr><td>10</td><td>Malkhut</td><td class="hebrew-cell"><span class="hebrew-inline">מלכות</span></td><td>Kingdom / Receiving</td><td>The Beneficial Owner — the world below, receiving what flows through all nine above</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">The Etz Chaim descends from <em>Ein Sof</em> (the Infinite) through Keter to Malkhut — from the absolute to the particular, from the One Certificate to the individual beneficial owner who holds a fractional interest without ever touching the paper. The DTC system is a functional Etz Chaim: the law flows downward through ten levels of mediation until it reaches the end-investor, who receives the benefit without ever approaching the Crown.</p>
+
+<h3 class="reveal">The Three Pillars: Mercy, Balance, Judgment</h3>
+<p class="reveal">The three columns of the Etz Chaim map precisely onto the three parties of every DTC transaction:</p>
+<ul class="reveal">
+  <li><strong>Pillar of Mercy (Right):</strong> The Issuer — who offers the security in good faith, seeking capital. Chesed flows from the one who gives.</li>
+  <li><strong>Pillar of Judgment (Left):</strong> The Regulator / DTC's compliance apparatus — who evaluates, restricts, fines, suspends. Gevurah contracts, disciplines, defines limits.</li>
+  <li><strong>Pillar of Balance (Center):</strong> The Participant — who mediates between the Issuer's offer and the Investor's receipt, between mercy and judgment, absorbing the tension of both.</li>
+</ul>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART XI — CHIASMUS
+══════════════════════ -->
+<div class="part-header" id="part-xi">
+  <span class="part-label">Part XI</span>
+  <h2>Chiasmus and Mirror Structures in the DTC Documents</h2>
+</div>
+
+<h3 class="reveal">The Chiastic Structure of the DTC Process</h3>
+<p class="reveal">Chiasmus — the literary device of mirrored parallel structure (A-B-C-B'-A') — is a defining feature of biblical Hebrew composition. It is not ornamental but architectural: the center of the chiasm holds the theological weight. The book of Leviticus, the entire structure of the Torah, the Psalms, and even individual verses are chiastically organized. The DTC process exhibits the same structure:</p>
+
+<!-- CHIASMUS DIAGRAM -->
+<div class="diagram-wrap reveal" style="max-width:700px;">
+  <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" data-diagram="chiastic">
+    <defs>
+      <linearGradient id="chias1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.22"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.06"/>
+      </linearGradient>
+      <linearGradient id="chias2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.14"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.04"/>
+      </linearGradient>
+      <linearGradient id="chiasCenter" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.4"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.2"/>
+      </linearGradient>
+    </defs>
+
+    <rect class="chiasm-bg" x="0" y="0" width="700" height="420" fill="#080808" rx="8"/>
+
+    <!-- Mirror axis line -->
+    <line x1="350" y1="20" x2="350" y2="400" stroke="#352b18" stroke-width="1" stroke-dasharray="6 5"/>
+    <text x="350" y="415" class="svg-label" font-size="0.65rem" opacity="0.6">Axis of Chiasm · The Closing Moment</text>
+
+    <!-- Row A / A' -->
+    <rect x="30" y="30" width="290" height="50" rx="5" fill="url(#chias1)" stroke="#c8a84b" stroke-width="1.2"/>
+    <text x="175" y="50" class="svg-label" font-size="0.75rem">A — Eligibility Questionnaire</text>
+    <text x="175" y="66" class="svg-text-sm" font-size="0.65rem">The door opens: will you be admitted?</text>
+    <rect x="380" y="30" width="290" height="50" rx="5" fill="url(#chias1)" stroke="#c8a84b" stroke-width="1.2"/>
+    <text x="525" y="50" class="svg-label" font-size="0.75rem">A' — Final Documents Filed</text>
+    <text x="525" y="66" class="svg-text-sm" font-size="0.65rem">The door closes: the record is sealed</text>
+    <!-- Horizontal mirror arrow -->
+    <line x1="320" y1="55" x2="380" y2="55" stroke="#5a4e3a" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+    <!-- Row B / B' -->
+    <rect x="55" y="100" width="265" height="50" rx="5" fill="url(#chias2)" stroke="#9a7828" stroke-width="1"/>
+    <text x="187" y="120" class="svg-label" font-size="0.72rem">B — CUSIP Assignment</text>
+    <text x="187" y="136" class="svg-text-sm" font-size="0.62rem">The name is given: identity sealed</text>
+    <rect x="380" y="100" width="265" height="50" rx="5" fill="url(#chias2)" stroke="#9a7828" stroke-width="1"/>
+    <text x="512" y="120" class="svg-label" font-size="0.72rem">B' — Redemption Notice</text>
+    <text x="512" y="136" class="svg-text-sm" font-size="0.62rem">The name is called back: identity ends</text>
+    <line x1="320" y1="125" x2="380" y2="125" stroke="#3d3528" stroke-width="1" stroke-dasharray="3 3"/>
+
+    <!-- Row C / C' -->
+    <rect x="80" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="#7a6b55" stroke-width="1"/>
+    <text x="200" y="190" class="svg-label" font-size="0.7rem">C — Letter of Representations</text>
+    <text x="200" y="206" class="svg-text-sm" font-size="0.6rem">The issuer confesses, commits</text>
+    <rect x="380" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="#7a6b55" stroke-width="1"/>
+    <text x="500" y="190" class="svg-label" font-size="0.7rem">C' — Indemnity Letters</text>
+    <text x="500" y="206" class="svg-text-sm" font-size="0.6rem">The issuer atones, covers risk</text>
+    <line x1="320" y1="195" x2="380" y2="195" stroke="#2a2218" stroke-width="1" stroke-dasharray="3 3"/>
+
+    <!-- Row D / D' -->
+    <rect x="105" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <text x="212" y="260" class="svg-label" font-size="0.68rem">D — Securities Delivered</text>
+    <text x="212" y="276" class="svg-text-sm" font-size="0.58rem">The lamb presented at noon</text>
+    <rect x="380" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <text x="487" y="260" class="svg-label" font-size="0.68rem">D' — Securities Redeemed</text>
+    <text x="487" y="276" class="svg-text-sm" font-size="0.58rem">The lamb recalled at maturity</text>
+    <line x1="320" y1="265" x2="380" y2="265" stroke="#221c12" stroke-width="1" stroke-dasharray="3 3"/>
+
+    <!-- CENTER: The Closing Moment -->
+    <rect x="200" y="315" width="300" height="60" rx="6" fill="url(#chiasCenter)" stroke="#c8a84b" stroke-width="2"/>
+    <text x="350" y="338" class="svg-label" font-size="0.82rem">✦ CENTER ✦</text>
+    <text x="350" y="354" class="svg-label" font-size="0.8rem">The Closing · 3:00 p.m.</text>
+    <text x="350" y="370" class="svg-text-sm" font-size="0.65rem">It is finished · תם</text>
+
+    <!-- Lines from D/D' to center -->
+    <line x1="212" y1="290" x2="280" y2="315" stroke="#352b18" stroke-width="0.8"/>
+    <line x1="487" y1="290" x2="420" y2="315" stroke="#352b18" stroke-width="0.8"/>
+  </svg>
+  <div class="diagram-caption">The chiastic A-B-C-D–CENTER–D'-C'-B'-A' structure of the DTC eligibility-to-redemption cycle</div>
+</div>
+
+<p class="reveal">In Hebrew literary chiasm, the center is not the middle in the sense of average — it is the hinge, the turning point, the locus of maximum theological significance. In the DTC system, the Closing is that hinge. Before it: all is preparation, anticipation, covenant-making. After it: all is aftermath, confirmation, covenant-fulfillment. At it: the irreversible transfer. The 3:00 p.m. deadline is the chiastic center — the moment that divides the entire liturgical calendar of a security's life.</p>
+
+<h3 class="reveal">Numerical Chiasmus: 424 and Its Mirror</h3>
+<p class="reveal">The number 424 is itself a palindrome in digit form: 4-2-4. It reads the same forward and backward. This is not coincidental in a system where the Messianic name both opens (Dalet/door) and closes (Kaf/hand). The security enters through a door and is held in a hand; its journey is a palindrome.</p>
+
+<div class="mirror-diagram reveal">
+  <div class="mirror-box">
+    <div class="mirror-num" style="font-size:2.2rem;letter-spacing:0.15em;">4 · 2 · 4</div>
+    <div class="mirror-label">Palindrome<br>Reads identical in both directions</div>
+  </div>
+  <div class="mirror-arrow">⇄</div>
+  <div class="mirror-box">
+    <div class="mirror-num"><span class="hebrew-inline" style="font-size:1.6rem;">ד · כ · ד</span></div>
+    <div class="mirror-label">Dalet · Kaf · Dalet<br>Door · Hand · Door — a closed circuit</div>
+  </div>
+</div>
+
+<p class="reveal">Note that 424's digit-reversal is itself — the same number. But its <em>letter</em> reversal (reading the Hebrew backwards) produces Kaf-Tav-Dalet: <span class="hebrew-inline">כתד</span> — a word related to <em>katad</em> (to crush, to beat down). Forward: the Messiah opens a door and holds in his hand. Backward: the crushing, the suffering that precedes Messianic arrival. The gematria encodes both aspects of the Messianic narrative within a single palindrome.</p>
+
+<h3 class="reveal">504 — The Road Not Taken (Qof Reading)</h3>
+<p class="reveal">As noted in the editorial correction to Part I, the alternate rendering DTC = Dalet-Tav-Qof yields 4 + 400 + 100 = <strong>504</strong>. This is not without significance. 504 = 7 × 72. The number 72 is the gematria of <span class="hebrew-inline">חסד</span> (<em>Chesed</em>, Mercy) and also corresponds to the 72 Names of God in the Kabbalistic tradition (derived from Exodus 14:19–21, three verses of 72 letters each). 504 = seven times mercy — a sevenfold outpouring of Chesed. The Qof reading would have opened a different but equally rich theological vein: not the Messianic King but the merciful overflow of divine grace, sevenfold. The choice between Kaf and Qof is therefore a choice between two genuine theological roads, not between a right answer and a wrong one.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART XII — COVENANT FORMULA
+══════════════════════ -->
+<div class="part-header" id="part-xii">
+  <span class="part-label">Part XII</span>
+  <h2>The Covenant Formula — DTC as Suzerain Treaty</h2>
+</div>
+
+<h3 class="reveal">The Ancient Near Eastern Suzerain Treaty</h3>
+<p class="reveal">Biblical scholars since the 1950s (Mendenhall, Kline, McCarthy) have identified the Mosaic covenant as structurally identical to the Hittite suzerain treaty of the Late Bronze Age. Such treaties follow a fixed six-part formula:</p>
+
+<div class="timeline reveal" style="margin-top:1.5rem;">
+  <div class="timeline-item">
+    <div class="time-label">Element I</div>
+    <div class="time-title">Preamble — Identification of the Sovereign</div>
+    <div class="time-desc"><em>Biblical:</em> "I am the LORD your God" (Exodus 20:2). <em>DTC:</em> "The Depository Trust Company, a New York limited purpose trust company..." — the opening identification clause of the Operational Arrangements, establishing the authority and legal identity of the sovereign party.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Element II</div>
+    <div class="time-title">Historical Prologue — What the Sovereign Has Done</div>
+    <div class="time-desc"><em>Biblical:</em> "...who brought you out of Egypt, out of the house of slavery." <em>DTC:</em> The recitals section of the OA, establishing the history of the depository's formation, the background of the relationship, and the services already rendered — why the vassal should trust this sovereign.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Element III</div>
+    <div class="time-title">Stipulations — The Laws the Vassal Must Obey</div>
+    <div class="time-desc"><em>Biblical:</em> The Ten Commandments and all subsequent law (Exodus 20–23). <em>DTC:</em> The Operational Arrangements themselves — hundreds of detailed requirements, deadlines, procedures, and prohibitions that the Participant must observe. The 10-day deadline is the Decalogue in miniature.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Element IV</div>
+    <div class="time-title">Document Clause — The Treaty Must Be Written and Read</div>
+    <div class="time-desc"><em>Biblical:</em> "Write these words" (Exodus 34:27); the copy deposited in the Ark and in the temple. <em>DTC:</em> The requirement for original signed Letters of Representations, copies deposited with DTC and with the trustee — the covenant document must exist in multiple physical exemplars.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Element V</div>
+    <div class="time-title">Witnesses — Divine Witnesses to the Treaty</div>
+    <div class="time-desc"><em>Biblical:</em> "Heaven and earth as witnesses" (Deuteronomy 30:19; 31:28). <em>DTC:</em> The required two original copies, the notarization, the counter-signature of the trustee — in the DTC system, the SEC and the Federal Reserve serve as the implicit "heaven and earth" of the financial order.</div>
+  </div>
+  <div class="timeline-item">
+    <div class="time-label">Element VI</div>
+    <div class="time-title">Blessings and Curses — Consequences of Obedience and Violation</div>
+    <div class="time-desc"><em>Biblical:</em> Deuteronomy 27–28, the entire catalog of blessing and curse. <em>DTC:</em> Section VII of the Operational Arrangements — the schedule of fines, the suspension of Participant status, the refusal of new eligibility requests. Blessings: FAST access, same-day settlement, book-entry efficiency. Curses: removal from the system entirely.</div>
+  </div>
+</div>
+
+<p class="reveal">The correspondence is complete and structural, not superficial. The DTC Operational Arrangements are a suzerain treaty. DTC is the sovereign. The Participant is the vassal. The Issuer is the tribute-bearer. The beneficial owner is the protected population within the vassal territory — the one for whom the treaty ultimately exists, yet who never signs it and never appears before the sovereign directly.</p>
+
+<div class="note-box reveal">
+  <p><strong>The Absentee Beneficiary:</strong> This is perhaps the deepest structural parallel. In the biblical covenant, the generation that benefits from the Exodus — the generation born in the wilderness and the generations after — never experienced Egypt, never stood at Sinai, never heard the thunder. They inherit the covenant without having made it. The beneficial owner of a book-entry security likewise inherits the benefits of the depository system without ever having entered it: no signature, no certificate, no direct access to the nominee. The covenant is inherited, not contracted. This is precisely the structure of grace in Protestant theology: the beneficiary receives what the mediator has obtained, through no act of the beneficiary's own.</p>
+</div>
+
+<!-- COVENANT FORMULA COMPARISON TABLE -->
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>Suzerain Treaty Element</th><th>Mosaic Covenant</th><th>DTC Operational Arrangements</th></tr></thead>
+    <tbody>
+      <tr><td>I. Preamble</td><td>"I am the LORD your God" (Ex. 20:2)</td><td>Opening identification of DTC as New York trust company</td></tr>
+      <tr><td>II. Historical Prologue</td><td>"Who brought you out of Egypt" (Ex. 20:2b)</td><td>Recitals: history of DTC's formation and prior services</td></tr>
+      <tr><td>III. Stipulations</td><td>The Decalogue + Covenant Code (Ex. 20–23)</td><td>The full Operational Arrangements: all 10-day and other requirements</td></tr>
+      <tr><td>IV. Document Clause</td><td>Written in stone, deposited in the Ark (Ex. 25:16)</td><td>Original signed Letters deposited with DTC and Trustee</td></tr>
+      <tr><td>V. Witnesses</td><td>Heaven and earth (Deut. 30:19)</td><td>SEC, Federal Reserve; two required original copies</td></tr>
+      <tr><td>VI. Blessings &amp; Curses</td><td>Deuteronomy 27–28</td><td>OA Section VII: fines, suspension, revocation of FAST access</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+
+
+<!-- ══════════════════════
+     PART XIII — ADDRESS AS ORACLE
+══════════════════════ -->
+<div class="part-header" id="part-xiii">
+  <span class="part-label">Part XIII</span>
+  <h2>The Address as Oracle — 570, 140, and the Geography of Holiness</h2>
+</div>
+
+<h3 class="reveal">570 Washington Boulevard, Jersey City</h3>
+<p class="reveal">The primary operational address of DTC since April 2023 is 570 Washington Boulevard, Jersey City, NJ 07310. Let us read this slowly.</p>
+
+<p class="reveal"><strong>570:</strong> 5 + 7 + 0 = 12. But more: 570 = 57 × 10. The number 57 is the gematria of <span class="hebrew-inline">הבל</span> (<em>Hevel</em>) — the name Abel, meaning "vapor, breath, vanity." It is also the gematria of <span class="hebrew-inline">גן</span> (<em>gan</em>), "garden" — the word used of Eden. 570 = Abel × Law: the breath of a life measured out in legal units. The address speaks of a garden placed under law, of transience administered by the Decalogue.</p>
+
+<p class="reveal">More structurally: 570 = 3 × 190. And 190 is the gematria of <span class="hebrew-inline">קול</span> (<em>kol</em>) — "voice, sound." Three voices: the Father who speaks, the Word spoken, and the Spirit who carries the sound. The address of the primary depository is a triadic voice.</p>
+
+<p class="reveal"><strong>Washington Boulevard:</strong> The name Washington derives from the Old English <em>Hwæsingatun</em> — "the settlement of Hwæsinga," a name whose Proto-Germanic root relates to washing (<em>hwascan</em>). A boulevard of washing. The primary securities depository of the United States sits on a road whose name means, in its etymological depth, a broad avenue of cleansing. Compare the laver of the Tabernacle — the bronze basin of washing that stood in the outer court, between the altar and the entrance to the Holy Place (Exodus 30:17–21). The priests washed before they entered. The depository on the washing boulevard is the laver before the sanctuary.</p>
+
+<p class="reveal"><strong>Jersey City, NJ:</strong> Jersey derives from the Norman French <em>Gersui</em>, ultimately from the Old Norse <em>Geirsœy</em> — "Gear Island" or "Spear Island." The spear is the weapon of the soldier, but in biblical typology the spear pierces the side (John 19:34), from which flows blood and water — atonement and cleansing together. The depository of the nation's securities sits in Spear City on the Washing Boulevard at the number of the garden-under-law.</p>
+
+<h3 class="reveal">140 — The Brooklyn Address</h3>
+<p class="reveal">The secondary facility at 140 58th Street, Brooklyn, NY introduces the number 140.</p>
+<p class="reveal"><strong>140</strong> = 14 × 10. The number 14 is the gematria of <span class="hebrew-inline">דוד</span> (<em>David</em>) — Dalet-Vav-Dalet = 4 + 6 + 4 = 14. This is the number Matthew uses to structure the genealogy of Jesus in three sets of 14 generations (Matthew 1:17), the triple David. 140 = David × Law: the royal lineage administered through the Decalogue. The backup facility in Brooklyn is not merely a disaster-recovery site. It is David × 10, the royal house multiplied by the Law.</p>
+
+<p class="reveal"><strong>58th Street:</strong> 58 = 50 + 8. Fifty is jubilee, the year of release. Eight is the number of resurrection — the eighth day, beyond the completed week, the new creation. 58 = Jubilee + Resurrection: the new life that follows the release. The street address of the secondary facility is Jubilee-Resurrection: what the depository ultimately promises is not merely safe custody but the eventual release, the calling back, the redemption that is itself a new beginning.</p>
+
+<p class="reveal"><strong>Brooklyn:</strong> The name comes from the Dutch <em>Breukelen</em> — "broken land," named after a town in the Netherlands. Broken land: the secondary facility of the nation's securities system resides in a place whose name means fragmentation, division, the land that has been broken apart. This is deeply apt. The secondary facility exists precisely for the moment of rupture — the disaster scenario — when the primary holding must be replicated, when the land of the primary system has "broken." Brooklyn is the contingency of fracture encoded in a place name.</p>
+
+<!-- ADDRESS COMPARISON TABLE -->
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>Address Element</th><th>Numerical / Etymological Reading</th><th>Biblical Resonance</th></tr></thead>
+    <tbody>
+      <tr><td>570 (primary)</td><td>57 × 10; digit sum 12; 3 × 190 (kol, "voice")</td><td>Abel's garden under law; triadic divine voice</td></tr>
+      <tr><td>Washington Blvd</td><td>Old English: "washing settlement"</td><td>The Bronze Laver — Exodus 30:17–21</td></tr>
+      <tr><td>Jersey City</td><td>Old Norse: "Spear Island"</td><td>The spear piercing the side — John 19:34</td></tr>
+      <tr><td>07310 (ZIP)</td><td>7+3+1+0 = 11; 7310 = 2 × 5 × 17 × 43</td><td>11 = judgment and disorder resolved; 17 = victory</td></tr>
+      <tr><td>140 (secondary)</td><td>14 × 10; 14 = David (דוד)</td><td>David × Law — Matthew's threefold genealogy</td></tr>
+      <tr><td>58th Street</td><td>50 + 8 = Jubilee + Resurrection</td><td>The release that becomes new life</td></tr>
+      <tr><td>Brooklyn</td><td>Dutch: "broken land"</td><td>The contingency of fracture; disaster recovery</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="reveal">The Spatial Theology: Primary and Secondary</h3>
+<p class="reveal">The two addresses form a theological pair. The primary facility (Jersey City) is the Jerusalem of the system: the laver of washing, the spear-point of sacrifice, the garden of law. The secondary facility (Brooklyn) is the Babylon: the broken land, the place of exile and contingency, the site that exists only because the primary may fail. This maps precisely onto the Deuteronomic theology of two places — the place God chooses for his Name to dwell (Jerusalem) and the place of exile that exists as the consequence of covenant failure (Babylon). The DTC, in relocating from 55 Water Street in Manhattan (the integer sum of the Law), has distributed itself across a Jerusalem-Babylon duality that is written into the Hebrew imagination at its deepest structural level.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     PART XIV — YHWH IN THE FORM
+══════════════════════ -->
+<div class="part-header" id="part-xiv">
+  <span class="part-label">Part XIV</span>
+  <h2>YHWH in the Document Form — The Hidden Name</h2>
+</div>
+
+<h3 class="reveal">The Four-Letter Structure of the Eligibility Questionnaire</h3>
+<p class="reveal">The Eligibility Questionnaire has four primary sections:</p>
+<ol class="reveal">
+  <li><strong>Section I</strong> — Identification of the Issuer and Issue (Who are you?)</li>
+  <li><strong>Section II</strong> — Description of the Securities (What are you offering?)</li>
+  <li><strong>Section III</strong> — Representations and Warranties (What do you promise?)</li>
+  <li><strong>Section IV</strong> — Signature and Authorization (Will you swear?)</li>
+</ol>
+<p class="reveal">These four sections correspond with unsettling precision to the four letters of the Tetragrammaton — <span class="hebrew">יהוה</span> — and to the four Kabbalistic worlds through which divinity descends into matter:</p>
+
+<!-- YHWH FOUR-WORLDS DIAGRAM -->
+<div class="diagram-wrap reveal" style="max-width:680px;">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" data-diagram="yhwh-worlds">
+    <defs>
+      <linearGradient id="atzilut" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.35"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.08"/>
+      </linearGradient>
+      <linearGradient id="beriah" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.25"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.05"/>
+      </linearGradient>
+      <linearGradient id="yetzirah" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.16"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0.04"/>
+      </linearGradient>
+      <linearGradient id="assiah" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#7a2e2e;stop-opacity:0.22"/>
+        <stop offset="100%" style="stop-color:#7a2e2e;stop-opacity:0.05"/>
+      </linearGradient>
+      <filter id="glow4">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <rect class="yhwh-bg" x="0" y="0" width="680" height="460" fill="#080808" rx="8"/>
+
+    <!-- Vertical flow arrow -->
+    <line x1="340" y1="20" x2="340" y2="440" stroke="#221c12" stroke-width="1" stroke-dasharray="4 6" marker-end="none"/>
+    <text x="360" y="430" class="svg-text-sm" font-size="0.6rem" text-anchor="start" opacity="0.5">↓ Descent into Matter</text>
+
+    <!-- Layer 1: Atzilut — Emanation -->
+    <rect x="30" y="30" width="590" height="88" rx="6" fill="url(#atzilut)" stroke="#c8a84b" stroke-width="1.8" filter="url(#glow4)"/>
+    <!-- Hebrew letter Yod -->
+    <text x="70" y="82" class="svg-hebrew" font-size="2.8rem" filter="url(#glow4)">י</text>
+    <text x="70" y="105" class="svg-label" font-size="0.62rem">Yod · 10</text>
+    <!-- World name -->
+    <text x="340" y="58" class="svg-label" font-size="0.78rem" text-anchor="middle">ATZILUT — World of Emanation</text>
+    <text x="340" y="75" class="svg-text" font-size="0.7rem" text-anchor="middle">Section I — Identification: "Who are you?"</text>
+    <text x="340" y="91" class="svg-text-sm" font-size="0.63rem" text-anchor="middle">The pure identity of the Issuer — undifferentiated being naming itself before the divine</text>
+    <text x="340" y="108" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Atzilut = pure divine light. The question of identity is asked at the level of essence.</text>
+    <!-- Right column: attribute -->
+    <text x="610" y="68" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Father</text>
+    <text x="610" y="82" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Will / Chokhmah</text>
+    <text x="610" y="96" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Pure Origin</text>
+
+    <!-- Layer 2: Beriah — Creation -->
+    <rect x="30" y="130" width="590" height="88" rx="6" fill="url(#beriah)" stroke="#9a7828" stroke-width="1.2"/>
+    <text x="70" y="182" class="svg-hebrew" font-size="2.8rem">ה</text>
+    <text x="70" y="205" class="svg-label" font-size="0.62rem">Heh · 5</text>
+    <text x="340" y="158" class="svg-label" font-size="0.78rem" text-anchor="middle">BERIAH — World of Creation</text>
+    <text x="340" y="175" class="svg-text" font-size="0.7rem" text-anchor="middle">Section II — Description: "What are you offering?"</text>
+    <text x="340" y="191" class="svg-text-sm" font-size="0.63rem" text-anchor="middle">The security's form takes shape — type, quantity, denomination, structure</text>
+    <text x="340" y="208" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Beriah = the realm where forms are first thought. The security is conceived here.</text>
+    <text x="610" y="168" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Mother</text>
+    <text x="610" y="182" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Understanding / Binah</text>
+    <text x="610" y="196" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Form Conceived</text>
+
+    <!-- Layer 3: Yetzirah — Formation -->
+    <rect x="30" y="230" width="590" height="88" rx="6" fill="url(#yetzirah)" stroke="#7a6b55" stroke-width="1"/>
+    <text x="70" y="282" class="svg-hebrew" font-size="2.8rem">ו</text>
+    <text x="70" y="305" class="svg-label" font-size="0.62rem">Vav · 6</text>
+    <text x="340" y="258" class="svg-label" font-size="0.78rem" text-anchor="middle">YETZIRAH — World of Formation</text>
+    <text x="340" y="275" class="svg-text" font-size="0.7rem" text-anchor="middle">Section III — Representations &amp; Warranties: "What do you promise?"</text>
+    <text x="340" y="291" class="svg-text-sm" font-size="0.63rem" text-anchor="middle">The legal obligations are formed and stated — the covenantal structure takes ethical shape</text>
+    <text x="340" y="308" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Yetzirah = where archetypes become patterns. The warranty is the moral skeleton.</text>
+    <text x="610" y="268" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Son</text>
+    <text x="610" y="282" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Six Sefirot / Tiferet</text>
+    <text x="610" y="296" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Ethical Pattern</text>
+
+    <!-- Layer 4: Assiah — Action -->
+    <rect x="30" y="330" width="590" height="88" rx="6" fill="url(#assiah)" stroke="#5a2020" stroke-width="1.2"/>
+    <text x="70" y="382" class="svg-hebrew" font-size="2.8rem">ה</text>
+    <text x="70" y="405" class="svg-label" font-size="0.62rem">Heh · 5</text>
+    <text x="340" y="358" class="svg-label" font-size="0.78rem" text-anchor="middle" fill="#c8a84b">ASSIAH — World of Action</text>
+    <text x="340" y="375" class="svg-text" font-size="0.7rem" text-anchor="middle">Section IV — Signature &amp; Authorization: "Will you swear?"</text>
+    <text x="340" y="391" class="svg-text-sm" font-size="0.63rem" text-anchor="middle">The pen touches paper. The abstract becomes concrete. The covenant is activated.</text>
+    <text x="340" y="408" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Assiah = the physical world of deed. The signature is the Name becoming flesh.</text>
+    <text x="610" y="368" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Daughter / Bride</text>
+    <text x="610" y="382" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Malkhut / Shekinah</text>
+    <text x="610" y="396" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Incarnation</text>
+  </svg>
+  <div class="diagram-caption">The four sections of the DTC Eligibility Questionnaire mapped to the four Kabbalistic worlds (Atzilut, Beriah, Yetzirah, Assiah) and the four letters of the Tetragrammaton (יהוה)</div>
+</div>
+
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>YHWH Letter</th><th>World</th><th>Attribute</th><th>DTC Section</th><th>The Question</th></tr></thead>
+    <tbody>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">י</span> Yod (10)</td><td>Atzilut — Emanation</td><td>Father / Pure Will</td><td>Section I — Identification</td><td>"Who are you?"</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">ה</span> Heh (5)</td><td>Beriah — Creation</td><td>Mother / Understanding</td><td>Section II — Description</td><td>"What are you offering?"</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">ו</span> Vav (6)</td><td>Yetzirah — Formation</td><td>Son / Six Sefirot</td><td>Section III — Representations</td><td>"What do you promise?"</td></tr>
+      <tr><td class="hebrew-cell"><span class="hebrew-inline">ה</span> Heh (5)</td><td>Assiah — Action</td><td>Daughter / Malkhut</td><td>Section IV — Signature</td><td>"Will you swear?"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">The sum of the Tetragrammaton — 10 + 5 + 6 + 5 = 26 — is the same as the final two digits of 2026, the year of the current Operational Arrangements. The form of the questionnaire spells out the divine Name in four movements of descent, from pure identity through form and ethics to the irreversible physical act of signing. Every eligibility questionnaire submitted to DTC is, in this reading, a hidden invocation of the Name.</p>
+
+<h3 class="reveal">The Vav as Connector — Section III as the Spine</h3>
+<p class="reveal">In Hebrew grammar, the letter Vav (<span class="hebrew-inline">ו</span>) functions primarily as a conjunction — "and" — the connector between clauses, between items, between narrative units. In the Tetragrammaton, Vav is the third letter: the connector between the two Hehs, between the upper world (Beriah) and the lower world (Assiah), between creation and action, between what is conceived and what is done.</p>
+<p class="reveal">Section III of the Eligibility Questionnaire — the Representations and Warranties — is precisely this connector. It bridges the abstract description of the security (Section II, Beriah) with the concrete act of signing (Section IV, Assiah). The representations are the Vav: the ethical connection that makes the signature meaningful. Without the Vav, the first Heh and the second Heh are disconnected — creation without action, form without consequence. Section III is the spine of the document, and the spine is Vav, and Vav is 6, and 6 is the number of the days of creation, and Section III creates the world in which the signature lives.</p>
+
+<h3 class="reveal">The Broken Vav and the Diminished Form</h3>
+<p class="reveal">In the Torah scroll at Numbers 25:12, the Vav in the word <span class="hebrew-inline">שלום</span> (<em>shalom</em>, peace) is written with a break in the middle — the "broken Vav" (<em>vav ketiah</em>). This deliberate scribal imperfection in the word "peace" is interpreted in the Talmud as signifying that peace purchased through zealous judgment is always fractured: the means breaks the end. When DTC rejects a representation — when the warranty in Section III is found deficient — it is the Vav that breaks. The peace of the transaction (the orderly completion of settlement) is shattered. The broken Vav of the DTC process is the rejected eligibility application: the form that reached the hinge and found it could not hold.</p>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     COSMOLOGICAL SYNTHESIS DIAGRAM
+══════════════════════ -->
+<h2 class="reveal" style="text-align:center; border:none; padding-bottom:0;">The Complete Cosmology of DTC</h2>
+<p class="reveal" style="text-align:center; font-style:italic; color:var(--text-secondary);">All structures, all correspondences, unified in a single diagram</p>
+
+<div class="diagram-wrap reveal" style="max-width:760px;">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 760 820" xmlns="http://www.w3.org/2000/svg" data-diagram="cosmological-synthesis">
+    <defs>
+      <radialGradient id="cosmoCenter" cx="50%" cy="40%" r="55%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.1"/>
+        <stop offset="100%" style="stop-color:#c8a84b;stop-opacity:0"/>
+      </radialGradient>
+      <linearGradient id="cosmoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.7"/>
+        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.2"/>
+      </linearGradient>
+      <linearGradient id="cosmoBlood" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#7a2e2e;stop-opacity:0.6"/>
+        <stop offset="100%" style="stop-color:#3a0e0e;stop-opacity:0.1"/>
+      </linearGradient>
+      <filter id="cglow">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="cglowsm">
+        <feGaussianBlur stdDeviation="2" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <rect class="cosmo-bg" x="0" y="0" width="760" height="820" fill="#060606" rx="8"/>
+    <!-- Background glow -->
+    <ellipse cx="380" cy="340" rx="320" ry="300" fill="url(#cosmoCenter)"/>
+
+    <!-- ── OUTERMOST RING: YHWH ── -->
+    <circle cx="380" cy="340" r="320" fill="none" stroke="#221c12" stroke-width="0.6" stroke-dasharray="6 10"/>
+    <text x="380" y="26" class="svg-hebrew" font-size="1.1rem" text-anchor="middle" filter="url(#cglowsm)">יהוה</text>
+    <text x="380" y="42" class="svg-label" font-size="0.6rem" text-anchor="middle" opacity="0.6">= 26 · The Year 2026</text>
+    <text x="380" y="660" class="svg-label" font-size="0.6rem" text-anchor="middle" opacity="0.6">The Ein Sof — The Infinite — ∞</text>
+
+    <!-- ── SECOND RING: DTCC / 444 ── -->
+    <circle cx="380" cy="340" r="260" fill="none" stroke="#2a2218" stroke-width="0.8"/>
+    <text x="643" y="280" class="svg-label" font-size="0.68rem" text-anchor="start">DTCC = 444</text>
+    <text x="643" y="294" class="svg-text-sm" font-size="0.58rem" text-anchor="start">World Made Complete</text>
+    <text x="116" y="280" class="svg-label" font-size="0.68rem" text-anchor="end">4 × 111</text>
+    <text x="116" y="294" class="svg-text-sm" font-size="0.58rem" text-anchor="end">Earth × God Absolute</text>
+
+    <!-- ── THIRD RING: DTC / 424 ── -->
+    <circle cx="380" cy="340" r="200" fill="none" stroke="#352b18" stroke-width="1" filter="url(#cglowsm)"/>
+    <text x="580" y="335" class="svg-label" font-size="0.72rem" text-anchor="start">DTC = 424</text>
+    <text x="580" y="350" class="svg-hebrew" font-size="0.8rem" text-anchor="start">משיח בן דוד</text>
+    <text x="180" y="335" class="svg-label" font-size="0.72rem" text-anchor="end">דתכ</text>
+    <text x="180" y="350" class="svg-text-sm" font-size="0.6rem" text-anchor="end">Dat-Kaf · The Law</text>
+    <text x="180" y="364" class="svg-text-sm" font-size="0.6rem" text-anchor="end">Held in the Palm</text>
+
+    <!-- ── MAGEN DAVID — Stars ── -->
+    <!-- Outer star of David -->
+    <polygon points="380,148 467,300 293,300" fill="rgba(200,168,75,0.04)" stroke="url(#cosmoGold)" stroke-width="1.2" filter="url(#cglowsm)"/>
+    <polygon points="380,532 293,380 467,380" fill="rgba(200,168,75,0.04)" stroke="url(#cosmoGold)" stroke-width="1.2" filter="url(#cglowsm)"/>
+
+    <!-- ── TABERNACLE ZONES (concentric rects) ── -->
+    <!-- Outer court -->
+    <rect x="220" y="200" width="320" height="280" rx="6" fill="none" stroke="#2a2218" stroke-width="1" stroke-dasharray="5 6"/>
+    <text x="380" y="192" class="svg-label" font-size="0.62rem" text-anchor="middle" opacity="0.6">Outer Court · Dalet · Eligibility</text>
+    <!-- Holy place -->
+    <rect x="255" y="230" width="250" height="220" rx="5" fill="rgba(200,168,75,0.03)" stroke="#352b18" stroke-width="1"/>
+    <text x="380" y="223" class="svg-text-sm" font-size="0.58rem" text-anchor="middle" opacity="0.7">Holy Place · Tav · Operational Arrangements</text>
+    <!-- Holy of holies -->
+    <rect x="295" y="265" width="170" height="150" rx="4" fill="rgba(122,46,46,0.06)" stroke="#5a2020" stroke-width="1.2"/>
+    <text x="380" y="258" class="svg-text-sm" font-size="0.58rem" text-anchor="middle" opacity="0.7">Holy of Holies · Kaf · Cede &amp; Co.</text>
+
+    <!-- ── THE ARK CENTER ── -->
+    <rect x="335" y="300" width="90" height="60" rx="4" fill="rgba(200,168,75,0.15)" stroke="#c8a84b" stroke-width="1.5" filter="url(#cglow)"/>
+    <text x="380" y="320" class="svg-label" font-size="0.68rem" text-anchor="middle">ONE</text>
+    <text x="380" y="334" class="svg-hebrew" font-size="0.85rem" text-anchor="middle">אחד</text>
+    <text x="380" y="350" class="svg-text-sm" font-size="0.55rem" text-anchor="middle">Certificate</text>
+
+    <!-- ── SEFIROT POINTS on the star ── -->
+    <!-- Keter (top) -->
+    <circle cx="380" cy="152" r="14" fill="rgba(200,168,75,0.15)" stroke="#c8a84b" stroke-width="1"/>
+    <text x="380" y="156" class="svg-hebrew" font-size="0.62rem" text-anchor="middle">כתר</text>
+    <!-- Chokhmah (upper right) -->
+    <circle cx="463" cy="202" r="12" fill="rgba(200,168,75,0.1)" stroke="#9a7828" stroke-width="1"/>
+    <text x="463" y="206" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">חכמה</text>
+    <!-- Binah (upper left) -->
+    <circle cx="297" cy="202" r="12" fill="rgba(122,46,46,0.15)" stroke="#5a2020" stroke-width="1"/>
+    <text x="297" y="206" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">בינה</text>
+    <!-- Chesed (right) -->
+    <circle cx="463" cy="340" r="12" fill="rgba(200,168,75,0.1)" stroke="#9a7828" stroke-width="1"/>
+    <text x="463" y="344" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">חסד</text>
+    <!-- Gevurah (left) -->
+    <circle cx="297" cy="340" r="12" fill="rgba(122,46,46,0.15)" stroke="#5a2020" stroke-width="1"/>
+    <text x="297" y="344" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">גבורה</text>
+    <!-- Tiferet (center) -->
+    <circle cx="380" cy="330" r="16" fill="rgba(200,168,75,0.2)" stroke="#c8a84b" stroke-width="1.2" filter="url(#cglowsm)"/>
+    <text x="380" y="334" class="svg-hebrew" font-size="0.62rem" text-anchor="middle">תפארת</text>
+    <!-- Netzach (lower right) -->
+    <circle cx="463" cy="478" r="12" fill="rgba(200,168,75,0.08)" stroke="#9a7828" stroke-width="1"/>
+    <text x="463" y="482" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">נצח</text>
+    <!-- Hod (lower left) -->
+    <circle cx="297" cy="478" r="12" fill="rgba(122,46,46,0.1)" stroke="#5a2020" stroke-width="1"/>
+    <text x="297" y="482" class="svg-hebrew" font-size="0.55rem" text-anchor="middle">הוד</text>
+    <!-- Yesod (bottom center) -->
+    <circle cx="380" cy="505" r="13" fill="rgba(200,168,75,0.12)" stroke="#9a7828" stroke-width="1"/>
+    <text x="380" y="509" class="svg-hebrew" font-size="0.58rem" text-anchor="middle">יסוד</text>
+    <!-- Malkhut (lowest) -->
+    <circle cx="380" cy="530" r="15" fill="rgba(200,168,75,0.08)" stroke="#c8a84b" stroke-width="1"/>
+    <text x="380" y="534" class="svg-hebrew" font-size="0.6rem" text-anchor="middle">מלכות</text>
+
+    <!-- ── CLOCK: 3PM MARKER ── -->
+    <circle cx="380" cy="340" r="35" fill="none" stroke="#352b18" stroke-width="0.6"/>
+    <!-- 12 o'clock -->
+    <line x1="380" y1="308" x2="380" y2="315" stroke="#5a4e3a" stroke-width="1.5"/>
+    <!-- 3 o'clock = 3pm marker -->
+    <line x1="412" y1="340" x2="406" y2="340" stroke="#c8a84b" stroke-width="2"/>
+    <circle cx="412" cy="340" r="3" fill="#c8a84b" filter="url(#cglowsm)"/>
+    <text x="420" y="344" class="svg-label" font-size="0.58rem" text-anchor="start" opacity="0.8">3 PM · Hour IX</text>
+
+    <!-- ── FIBONACCI SPIRAL (small) ── -->
+    <path d="M 380 490 A 110 110 0 0 1 270 380 A 68 68 0 0 1 338 312 A 42 42 0 0 1 380 354 A 26 26 0 0 1 354 380 A 16 16 0 0 1 370 364"
+      fill="none" stroke="#c8a84b" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+
+    <!-- ── KEY at bottom ── -->
+    <text x="380" y="690" class="svg-label" font-size="0.7rem" text-anchor="middle">THE COMPLETE COSMOLOGY OF DTC</text>
+    <text x="380" y="710" class="svg-text-sm" font-size="0.62rem" text-anchor="middle">Rings: Ein Sof (YHWH) → DTCC (444) → DTC (424) → Mishkan → Ark</text>
+    <text x="380" y="728" class="svg-text-sm" font-size="0.62rem" text-anchor="middle">Stars: Magen David · Points: Ten Sefirot · Center: Tiferet / Cede &amp; Co.</text>
+    <text x="380" y="746" class="svg-text-sm" font-size="0.62rem" text-anchor="middle">Clock: The 3:00 p.m. deadline · Spiral: Fibonacci / Golden Ratio</text>
+
+    <!-- ── 144 and 441 flanking labels ── -->
+    <text x="60" y="600" class="svg-value" font-size="1.3rem" text-anchor="middle">144</text>
+    <text x="60" y="618" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">12² · F(12)</text>
+    <text x="60" y="632" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">The Elect</text>
+    <line x1="90" y1="612" x2="130" y2="530" stroke="#352b18" stroke-width="0.8" stroke-dasharray="3 5"/>
+
+    <text x="700" y="600" class="svg-value" font-size="1.3rem" text-anchor="middle">441</text>
+    <text x="700" y="618" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">21² · אמת</text>
+    <text x="700" y="632" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Truth · Mirror</text>
+    <line x1="670" y1="612" x2="630" y2="530" stroke="#352b18" stroke-width="0.8" stroke-dasharray="3 5"/>
+  </svg>
+  <div class="diagram-caption">The complete cosmological map: all rings, correspondences, sefirot, clock, and numerical mirrors unified in a single sacred geometry</div>
+</div>
+
+<hr class="section-divider">
+<div class="ornament-line"><span>✦ ✦ ✦</span></div>
+
+<!-- ══════════════════════
+     CONCLUSION
+══════════════════════ -->
+<div class="conclusion-box reveal">
+  <h2 id="conclusion">Conclusion: The Documents as Sacred Text</h2>
+
+  <p>The DTC Operational Arrangements and Eligibility Questionnaire are, in their deep structure, covenantal documents. They establish:</p>
+  <ol>
+    <li>A <strong>law</strong> (the Operational Arrangements) — with blessings (eligibility, access, FAST transfers) and curses (fines, refusal of service, suspension)</li>
+    <li>A <strong>mediator</strong> (the Participant / Underwriter) — required between the sovereign (DTC / Cede &amp; Co.) and the subject (Issuer / Beneficial Owner)</li>
+    <li>A <strong>witness requirement</strong> — original signatures, 10-day windows, 2-copy rule</li>
+    <li>A <strong>redemption protocol</strong> — precise, announced, at appointed times only</li>
+  </ol>
+
+  <p>The numbers are not arbitrary. They form a theology of compliance:</p>
+
+  <div class="table-wrapper" style="margin:2rem 0;">
+    <table>
+      <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Unity — one certificate, one nominee, one name</td></tr>
+        <tr><td>2</td><td>Witness — two original copies, two parties</td></tr>
+        <tr><td>3</td><td>The resurrection payment — third-day structure, daily 3 p.m. settlement</td></tr>
+        <tr><td>5</td><td>Grace preparation — five-day notice, five business days</td></tr>
+        <tr><td>7</td><td>Covenant rest — seventh-day CUSIP completion</td></tr>
+        <tr><td>10</td><td>Complete law — the Decalogue as operational deadline</td></tr>
+        <tr><td>12</td><td>Government — noon, tribal fullness</td></tr>
+        <tr><td>15</td><td>Passover exchange — the 15th of Nisan</td></tr>
+        <tr><td>30</td><td>Price of maturity — 30 pieces, 30 days</td></tr>
+        <tr><td>60</td><td>Generation's end — 60-day redemption notice</td></tr>
+        <tr><td>100</td><td>Fullness of separation</td></tr>
+        <tr><td>144</td><td>The Elect — 12² = F(12), perfect square, mirror of Truth (441)</td></tr>
+        <tr><td>424</td><td><span class="hebrew-inline">משיח בן דוד</span> — Door-Seal-Hand</td></tr>
+        <tr><td>441</td><td><span class="hebrew-inline">אמת</span> — Truth, the seal of God, mirror of 144</td></tr>
+        <tr><td>444</td><td>The world made complete — 4 × 111</td></tr>
+        <tr><td>500</td><td>Jubilee division — the 50 × 10 threshold</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <blockquote>
+    <p>"For whatever was written in earlier times was written for our instruction." (Romans 15:4)</p>
+  </blockquote>
+
+  <p>Even the fine print of securities law, read with patient attention, reveals the fingerprints of the Lawgiver — not in the content (which is secular, and indifferent to the reading here proposed), but in the <em>form</em>: the structure of threshold, seal, custody, witness, and redemption that governs human obligations because it is native to creatures who live in time and cannot escape the grammar of covenant.</p>
+
+  <blockquote>
+    <p>"That which has been is that which will be, and that which has been done is that which will be done. So there is nothing new under the sun." (Ecclesiastes 1:9)</p>
+  </blockquote>
+
+  <p>The DTC believes it is managing securities. It is also, without knowing it, rehearsing a very old story.</p>
+</div>
+
+</div><!-- /.container -->
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <span class="footer-ornament">✦ ✦ ✦</span>
+    <div class="footer-title">The DTC Documents: A Unified Biblical Exegesis — V4.0</div>
+    <div class="footer-subtitle">An interactive theological exposition featuring corrected Hebrew gematria, sacred numerology, and biblical typology applied to the Depository Trust Company. All Hebrew rendered in Noto Serif Hebrew. Standard <em>mispar hechrechi</em> values applied throughout. Editorial note on the Kaf/Qof transliteration added. Addresses updated to 570 Washington Blvd, Jersey City, NJ and 140 58th St, Brooklyn, NY (effective April 2023).</div>
+  </div>
+</footer>
+
+<!-- ── READING PROGRESS ── -->
+<div class="reading-progress" aria-hidden="true">
+  <div class="reading-progress-bar" id="readingBar"></div>
+</div>
+
+<!-- ── CONTROLS ── -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+  <span class="icon-moon">☾</span>
+  <span class="icon-sun">☀</span>
+</button>
+<button class="return-to-top" id="returnToTop" aria-label="Return to top">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<script>
+// ── LOADING ──
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loadingScreen').classList.add('hidden'), 1800);
+});
+
+// ── THEME ──
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('themeToggle');
+  if (localStorage.getItem('dtc-theme') === 'light') document.body.classList.add('light-mode');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('dtc-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+});
+
+// ── BACK TO TOP ──
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('returnToTop');
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.pageYOffset > 400));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+});
+
+// ── TOC ──
+window.toggleTOC = function() {
+  document.getElementById('toc-sidebar').classList.toggle('open');
+};
+document.addEventListener('click', e => {
+  const s = document.getElementById('toc-sidebar');
+  const t = document.querySelector('.toc-toggle');
+  if (!s.contains(e.target) && !t.contains(e.target)) s.classList.remove('open');
+});
+
+// Active section in TOC
+const tocLinks = document.querySelectorAll('.toc-sidebar a');
+const sections = document.querySelectorAll('h2[id], .part-header[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (pageYOffset >= s.offsetTop - 120) cur = s.getAttribute('id'); });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href').slice(1) === cur);
+  });
+}, { passive: true });
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── READING PROGRESS BAR ──
+const readingBar = document.getElementById('readingBar');
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  if (readingBar && scrollHeight > 0) {
+    readingBar.style.width = ((scrollTop / scrollHeight) * 100) + '%';
+  }
+}, { passive: true });
+
+// ── HERO PARALLAX ──
+const heroBg = document.querySelector('.hero-star-bg');
+window.addEventListener('scroll', () => {
+  if (heroBg) heroBg.style.transform = `translate(-50%, calc(-50% + ${window.pageYOffset * 0.25}px))`;
+}, { passive: true });
+
+// ── SMOOTH ANCHOR SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('toc-sidebar').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
