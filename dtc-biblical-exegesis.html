@@ -294,74 +294,27 @@ tbody tr:last-child td { border-bottom: none; }
 .part-header h2::after { display: none; }
 
 /* ── LETTER CARDS ── */
-.letter-diagram { display: flex; justify-content: center; align-items: center; gap: 2rem; margin: 3rem 0; flex-wrap: wrap; }
+.letter-diagram { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 3rem 0; flex-wrap: wrap; }
 .letter-card {
-  text-align: center; padding: 3rem 2.5rem; min-width: 180px;
-  border: 2px solid var(--border-gold); border-radius: 12px; background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
-  transition: all 0.5s var(--ease); position: relative; overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 rgba(200,168,75,0);
+  text-align: center; padding: 2.5rem 2rem; min-width: 150px;
+  border: 1px solid var(--border-subtle); border-radius: 8px; background: var(--bg-card);
+  transition: all 0.4s var(--ease); position: relative; overflow: hidden;
 }
 .letter-card::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(200,168,75,0.15) 0%, rgba(200,168,75,0.05) 50%, rgba(200,168,75,0.15) 100%);
-  opacity: 0; transition: opacity 0.5s ease;
-  z-index: 0;
-}
-.letter-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(200,168,75,0.1), transparent 70%);
-  opacity: 0; transition: opacity 0.5s ease;
-  z-index: 1;
+  background: radial-gradient(circle at center, rgba(200,168,75,0.07), transparent 70%);
+  opacity: 0; transition: opacity 0.4s ease;
 }
 .letter-card:hover::before { opacity: 1; }
-.letter-card:hover::after { opacity: 1; }
-.letter-card:hover { 
-  border-color: var(--accent-gold); 
-  transform: translateY(-12px) scale(1.05); 
-  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 rgba(200,168,75,0.2), 0 0 80px rgba(200,168,75,0.08);
-}
-.letter-card .letter-hebrew { 
-  font-family: var(--font-hebrew); 
-  font-size: 4rem; 
-  color: var(--accent-gold-light); 
-  margin-bottom: 0.8rem; 
-  transition: all 0.4s ease; 
-  display: block; 
-  position: relative; z-index: 2;
-  text-shadow: 0 0 20px rgba(200,168,75,0.3);
-}
-.letter-card:hover .letter-hebrew { 
-  transform: scale(1.15); 
-  color: var(--accent-gold);
-  text-shadow: 0 0 30px rgba(200,168,75,0.5);
-}
-.letter-card .letter-name { 
-  font-family: var(--font-display); 
-  font-size: 0.82rem; 
-  color: var(--accent-gold); 
-  letter-spacing: 0.2em; 
-  text-transform: uppercase; 
-  margin-bottom: 0.5rem; 
-  position: relative; z-index: 2;
-  font-weight: 600;
-}
-.letter-card .letter-value { 
-  font-family: var(--font-display); 
-  font-size: 2rem; 
-  color: var(--text-primary); 
-  font-weight: 800; 
-  position: relative; z-index: 2;
-  margin-bottom: 0.5rem;
-}
-.letter-card .letter-meaning { 
-  font-family: var(--font-body); 
-  font-size: 0.9rem; 
-  color: var(--text-secondary); 
-  margin-top: 0.8rem; 
-  font-style: italic; 
-  position: relative; z-index: 2;
-  line-height: 1.4;
-}
+.letter-card:hover { border-color: var(--accent-gold-dark); transform: translateY(-8px) scale(1.02); box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 40px rgba(200,168,75,0.07); }
+.letter-card .letter-hebrew { font-family: var(--font-hebrew); font-size: 3.5rem; color: var(--accent-gold); margin-bottom: 0.6rem; transition: transform 0.3s ease; display: block; }
+.letter-card:hover .letter-hebrew { transform: scale(1.1); }
+.letter-card .letter-name { font-family: var(--font-display); font-size: 0.72rem; color: var(--accent-gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.letter-card .letter-value { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-primary); font-weight: 700; }
+.letter-card .letter-meaning { font-family: var(--font-body); font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.6rem; font-style: italic; }
+
+.letter-connector { width: 36px; height: 2px; background: linear-gradient(90deg, var(--accent-gold-dark), var(--accent-gold)); align-self: center; margin-top: -2rem; position: relative; flex-shrink: 0; }
+.letter-connector::after { content: '+'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--accent-gold); font-family: var(--font-display); font-size: 0.9rem; background: var(--bg-primary); padding: 0 0.4rem; }
 
 .letter-sum {
   display: flex; align-items: center; gap: 1.5rem; justify-content: center;
@@ -465,12 +418,6 @@ tbody tr:last-child td { border-bottom: none; }
 .toc-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; padding: 0.5rem; transition: color 0.2s ease; }
 .toc-close:hover { color: var(--accent-gold); }
 
-.toc-divider { margin: 1.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid var(--border-gold-bright); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; }
-.toc-external { list-style: none; padding: 0; margin: 0; }
-.toc-external li { margin-bottom: 0.3rem; }
-.toc-external a { font-style: italic; color: var(--accent-gold-tertiary); }
-.toc-external a:hover { color: var(--accent-gold-light); }
-
 /* ── THEME / BACK-TO-TOP ── */
 .theme-toggle { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--border-gold-bright); background: var(--bg-card); color: var(--accent-gold); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; transition: all 0.4s var(--ease); z-index: 9999; box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(12px); }
 .theme-toggle:hover { border-color: var(--accent-gold); box-shadow: 0 6px 32px rgba(200,168,75,0.2); transform: scale(1.08); }
@@ -530,6 +477,8 @@ body.light-mode .loading-screen { background: var(--bg-primary); }
   .timeline { padding-left: 2rem; }
   .timeline-item::before { left: -2.35rem; }
   .letter-diagram { flex-direction: column; align-items: center; }
+  .letter-connector { width: 2px; height: 36px; background: linear-gradient(to bottom, var(--accent-gold-dark), var(--accent-gold)); margin-top: 0; margin-left: -2rem; }
+  .letter-connector::after { content: '+'; top: 50%; left: 50%; }
 }
 @media print {
   body { background: white; color: black; }
@@ -539,238 +488,14 @@ body.light-mode .loading-screen { background: var(--bg-primary); }
 }
 
 /* ── SVG SHARED ── */
-.svg-label { font-family: 'Cinzel', serif; fill: #c8a84b; text-anchor: middle; }
-.svg-text { font-family: 'EB Garamond', serif; fill: #b09a7a; text-anchor: middle; }
-.svg-text-sm { font-family: 'EB Garamond', serif; fill: #7a6a4a; text-anchor: middle; font-style: italic; }
-.svg-hebrew { font-family: 'Noto Serif Hebrew', serif; fill: #e2cc82; text-anchor: middle; }
-.svg-value { font-family: 'Cinzel', serif; fill: #c8a84b; font-weight: 700; text-anchor: middle; }
+.svg-label { font-family: 'Cinzel', serif; fill: var(--svg-label-fill, #c8a84b); text-anchor: middle; }
+.svg-text { font-family: 'EB Garamond', serif; fill: var(--svg-text-fill, #b09a7a); text-anchor: middle; }
+.svg-text-sm { font-family: 'EB Garamond', serif; fill: var(--svg-text-muted, #7a6a4a); text-anchor: middle; font-style: italic; }
+.svg-hebrew { font-family: 'Noto Serif Hebrew', serif; fill: var(--accent-gold-light); text-anchor: middle; }
+.svg-value { font-family: 'Cinzel', serif; fill: var(--svg-label-fill, #c8a84b); font-weight: 700; text-anchor: middle; }
 .svg-diagram { margin: 2.5rem auto; display: block; max-width: 100%; height: auto; border-radius: 8px; }
 .svg-diagram-interactive { cursor: default; transition: filter 0.4s ease; }
 .svg-diagram-interactive:hover { filter: drop-shadow(0 0 16px rgba(200,168,75,0.15)); }
-
-/* ── ETZ CHAIM LIGHT MODE OVERRIDES ── */
-body.light-mode svg[viewBox="0 0 640 700"] rect {
-  fill: #f5f0e4 !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] rect[fill*="radialGradient"] {
-  fill: #f5f0e4 !important;
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] .svg-hebrew {
-  fill: #8a5c10 !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] line[stroke*="#c8a84b"] {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] circle {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[viewBox="0 0 640 700"] circle[fill*="radialGradient"] {
-  fill: #f5f0e4 !important;
-  stroke: #8a5c10 !important;
-}
-
-/* ── THEOLOGICAL SYNTHESIS LIGHT MODE ── */
-body.light-mode svg[data-diagram="theological-synthesis"] rect {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] rect[fill*="linearGradient"] {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] path {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] .theo-bg {
-  fill: #f5f0e6 !important;
-}
-body.light-mode svg[data-diagram="theological-synthesis"] .svg-label {
-  fill: #5a4a2a !important;
-}
-
-/* ── MAGEN DAVID LIGHT MODE ── */
-body.light-mode svg[data-diagram="magen-david"] rect {
-  fill: #f5f0e4 !important;
-}
-body.light-mode svg[data-diagram="magen-david"] polygon {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="magen-david"] polygon[fill*="rgba"] {
-  fill-opacity: 0.3 !important;
-}
-body.light-mode svg[data-diagram="magen-david"] circle {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="magen-david"] .svg-hebrew {
-  fill: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="magen-david"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="magen-david"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="magen-david"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-
-/* ── MISHKAN LIGHT MODE ── */
-body.light-mode svg[data-diagram="mishkan"] rect {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] rect[fill*="linearGradient"] {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="mishkan"] rect[fill*="rgba"] {
-  fill-opacity: 0.5 !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .svg-hebrew {
-  fill: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] path {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .mishkan-bg {
-  fill: #f5f0e6 !important;
-}
-body.light-mode svg[data-diagram="mishkan"] .outer-zone {
-  fill: #e6dfc8 !important;
-}
-body.light-mode svg[data-diagram="mishkan"] rect[fill*="linearGradient"] {
-  stroke: #8a5c10 !important;
-}
-
-/* ── CHIASMUS LIGHT MODE ── */
-body.light-mode svg[data-diagram="chiastic"] rect {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="chiastic"] rect[fill*="linearGradient"] {
-  fill-opacity: 0.6 !important;
-}
-body.light-mode svg[data-diagram="chiastic"] rect[fill*="rgba"] {
-  fill-opacity: 0.4 !important;
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="chiastic"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="chiastic"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="chiastic"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[data-diagram="chiastic"] .chiasm-bg {
-  fill: #f5f0e6 !important;
-}
-
-/* ── YHWH WORLDS LIGHT MODE ── */
-body.light-mode svg[data-diagram="yhwh-worlds"] rect {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] rect[fill*="linearGradient"] {
-  fill-opacity: 0.6 !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] .svg-hebrew {
-  fill: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="yhwh-worlds"] .yhwh-bg {
-  fill: #f5f0e6 !important;
-}
-
-/* ── COSMOLOGICAL SYNTHESIS LIGHT MODE ── */
-body.light-mode svg[data-diagram="cosmological-synthesis"] rect {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] rect[fill*="linearGradient"] {
-  fill-opacity: 0.5 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] rect[fill*="radialGradient"] {
-  fill-opacity: 0.3 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] ellipse {
-  fill-opacity: 0.3 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] circle {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] circle[fill*="rgba"] {
-  fill-opacity: 0.3 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] polygon {
-  stroke: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] polygon[fill*="rgba"] {
-  fill-opacity: 0.3 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] line {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] path {
-  stroke: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-label {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-text {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-text-sm {
-  fill: #7a6a4a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-hebrew {
-  fill: #8a5c10 !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .svg-value {
-  fill: #5a4a2a !important;
-}
-body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
-  fill: #f5f0e6 !important;
-}
 
 /* diagram wrappers */
 .diagram-wrap { margin: 3rem auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 10px; overflow: hidden; transition: border-color 0.4s ease, box-shadow 0.4s ease; }
@@ -782,6 +507,154 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 .gematria-table th { background: var(--bg-tertiary); color: var(--accent-gold); padding: 0.85rem 1rem; text-align: left; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 2px solid var(--border-gold-bright); }
 .gematria-table td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
 .gematria-table tr:hover td { background: rgba(200,168,75,0.03); }
+
+/* ── THEME-AWARE SVG VARIABLES ── */
+:root {
+  --svg-bg: #0c0c0c;
+  --svg-bg-alt: #080808;
+  --svg-grid: #252015;
+  --svg-grid-faint: #1a1510;
+  --svg-node-stroke: #352b18;
+  --svg-node-stroke-faint: #252015;
+  --svg-text-fill: #b09a7a;
+  --svg-text-muted: #7a6a4a;
+  --svg-label-fill: #c8a84b;
+
+  /* Fibonacci-specific */
+  --fib-sq-fill-1: rgba(200,168,75,0.06);
+  --fib-sq-fill-2: rgba(200,168,75,0.04);
+  --fib-sq-fill-3: rgba(200,168,75,0.025);
+  --fib-sq-stroke: rgba(200,168,75,0.35);
+  --fib-sq-stroke-faint: rgba(200,168,75,0.18);
+  --fib-phi-line: #c8a84b;
+  --fib-phi-bg: rgba(200,168,75,0.05);
+  --fib-tick: #c8a84b;
+}
+
+body.light-mode {
+  --svg-bg: #ede8d8;
+  --svg-bg-alt: #e6dfc8;
+  --svg-grid: #c8b890;
+  --svg-grid-faint: #d4c8a8;
+  --svg-node-stroke: #b09060;
+  --svg-node-stroke-faint: #c8b080;
+  --svg-text-fill: #5a4a30;
+  --svg-text-muted: #8a7050;
+  --svg-label-fill: #7a5a14;
+
+  --fib-sq-fill-1: rgba(122,90,20,0.1);
+  --fib-sq-fill-2: rgba(122,90,20,0.07);
+  --fib-sq-fill-3: rgba(122,90,20,0.04);
+  --fib-sq-stroke: rgba(122,90,20,0.5);
+  --fib-sq-stroke-faint: rgba(122,90,20,0.25);
+  --fib-phi-line: #9a7828;
+  --fib-phi-bg: rgba(122,90,20,0.06);
+  --fib-tick: #9a7828;
+}
+
+/* ── THEME-AWARE DIAGRAM BACKGROUNDS ── */
+/* All SVGs that had hard-coded dark backgrounds now use CSS */
+.svg-themed-bg { fill: var(--svg-bg); }
+.svg-themed-bg-alt { fill: var(--svg-bg-alt); }
+
+/* Fib diagram text inherits theme */
+.fib-diagram .svg-label { fill: var(--svg-label-fill); }
+.fib-diagram .svg-text-sm { fill: var(--svg-text-muted); }
+.fib-diagram .svg-value { fill: var(--svg-label-fill); }
+.fib-diagram .svg-text { fill: var(--svg-text-fill); }
+
+/* Light-mode SVG text overrides */
+body.light-mode .svg-label { fill: var(--svg-label-fill); }
+body.light-mode .svg-text { fill: var(--svg-text-fill); }
+body.light-mode .svg-text-sm { fill: var(--svg-text-muted); }
+body.light-mode .svg-value { fill: var(--svg-label-fill); }
+body.light-mode .svg-hebrew { fill: var(--svg-label-fill); }
+
+/* ── PREMIUM DESIGN UPGRADES ── */
+
+/* Enhanced typography */
+body { font-feature-settings: "liga" 1, "kern" 1, "onum" 1; }
+
+/* Premium blockquote refinement */
+blockquote { border-radius: 0 8px 8px 0; }
+
+/* Premium table rows with alternating subtle shading */
+tbody tr:nth-child(even) td { background: rgba(200,168,75,0.015); }
+body.light-mode tbody tr:nth-child(even) td { background: rgba(122,90,20,0.025); }
+
+/* Diagram wrap hover glow — more pronounced */
+.diagram-wrap:hover {
+  border-color: var(--accent-gold-dark);
+  box-shadow: 0 0 0 1px var(--border-gold-bright),
+              0 8px 40px rgba(0,0,0,0.4),
+              0 0 60px rgba(200,168,75,0.06);
+}
+body.light-mode .diagram-wrap {
+  background: var(--bg-card);
+  border-color: var(--border-subtle);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+body.light-mode .diagram-wrap:hover {
+  border-color: var(--accent-gold-dark);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1), 0 0 30px rgba(122,90,20,0.08);
+}
+
+/* Part header premium glow */
+.part-header {
+  background: linear-gradient(180deg, rgba(200,168,75,0.03) 0%, transparent 60%);
+}
+body.light-mode .part-header {
+  background: linear-gradient(180deg, rgba(122,90,20,0.04) 0%, transparent 60%);
+}
+
+/* Letter cards premium */
+body.light-mode .letter-card { background: var(--bg-card); border-color: var(--border-subtle); }
+body.light-mode .letter-card:hover { border-color: var(--accent-gold-dark); }
+body.light-mode .letter-card .letter-hebrew { color: var(--accent-gold); }
+
+/* Number prop cards */
+body.light-mode .number-prop { background: var(--bg-card); }
+body.light-mode .mirror-box { background: var(--bg-card); }
+
+/* Premium hr */
+hr.section-divider { opacity: 0.8; }
+
+/* Conclusion box light mode */
+body.light-mode .conclusion-box {
+  background: linear-gradient(140deg, #f0ebe0 0%, #e8e0cc 100%);
+  border-color: var(--border-gold-bright);
+}
+
+/* Premium reading progress */
+.reading-progress { box-shadow: 0 1px 0 rgba(0,0,0,0.2); }
+
+/* Fib diagram wrapper */
+.fib-diagram { background: transparent; border-color: var(--border-subtle); }
+.fib-diagram svg { display: block; }
+
+/* Premium hero gematria number */
+.hero-gematria {
+  letter-spacing: -0.03em;
+  margin: 1rem 0 1.8rem;
+}
+
+/* TOC polish */
+.toc-sidebar { border-right-color: var(--border-gold-bright); }
+body.light-mode .toc-sidebar { border-right-color: var(--border-gold); }
+
+/* Premium timeline dots */
+.timeline::before {
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    var(--accent-gold-dark) 8%,
+    var(--accent-gold) 50%,
+    var(--accent-gold-dark) 92%,
+    transparent 100%);
+}
+body.light-mode .timeline::before { background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent); }
+
+/* Light mode diagram caption */
+body.light-mode .diagram-caption { color: var(--text-muted); background: var(--bg-secondary); }
 
 /* ── READING PROGRESS ── */
 .reading-progress {
@@ -859,18 +732,12 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <li><a href="#part-viii">VIII — Theological Synthesis</a></li>
     <li><a href="#part-ix">IX — The 2026 Amendments</a></li>
     <li><a href="#part-x">X — The Etz Chaim (Tree of Life)</a></li>
-    <li><a href="#part-xi">XI — Chiasmus &amp; Mirror Structures</a></li>
+    <li><a href="#part-xi">XI — Chiasmus & Mirror Structures</a></li>
     <li><a href="#part-xii">XII — The Covenant Formula</a></li>
     <li><a href="#part-xiii">XIII — The Address as Oracle</a></li>
     <li><a href="#part-xiv">XIV — YHWH in the Document Form</a></li>
     <li><a href="#hebrew-appendix">Appendix: Gematria Tables</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
-  </ul>
-  <div class="toc-divider">Related Documents</div>
-  <ul class="toc-external">
-    <li><a href="dtc-eligibility-questionnaire.html">DTC Eligibility Questionnaire</a></li>
-    <li><a href="documents/treasury-international_bill_of_exchange.html">Treasury International Bill of Exchange</a></li>
-    <li><a href="sf28-teaching-guide.html">SF 28 — Affidavit of Individual Surety</a></li>
   </ul>
 </nav>
 
@@ -984,12 +851,14 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <div class="letter-value">4</div>
     <div class="letter-meaning">Door, Portal, Threshold</div>
   </div>
+  <div class="letter-connector"></div>
   <div class="letter-card">
     <span class="letter-hebrew">ת</span>
     <div class="letter-name">Tav</div>
     <div class="letter-value">400</div>
     <div class="letter-meaning">Seal, Sign, The End</div>
   </div>
+  <div class="letter-connector"></div>
   <div class="letter-card">
     <span class="letter-hebrew">כ</span>
     <div class="letter-name">Kaf</div>
@@ -1028,6 +897,10 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
   <p>"Hide me under the shadow [<span class="hebrew-inline">כף</span>] of Your wings." (Psalm 17:8)</p>
 </blockquote>
 <p class="reveal">Kaf is the hand that receives and holds. In the DTC, Kaf is the depository itself — the custody, the palm in which securities rest. The final form <span class="hebrew">ך</span> (Kaf sofit) retains its standard value of 20; mystical tradition (<em>mispar gadol</em>) assigns 500, the jubilee threshold. When Kaf closes into its final form it signals completion: the maximum single certificate before mandatory division.</p>
+
+<div class="correction-box reveal">
+  <p><strong>Editorial Note on Transliteration:</strong> The rendering of the English letter "C" as <span class="hebrew-inline">כ</span> (Kaf, value 20) rather than <span class="hebrew-inline">ק</span> (Qof, value 100) is a deliberate <em>theological</em> choice, not a philological claim. In standard Hebrew transliteration of English acronyms there is no single fixed rule for "C"; both Kaf and Qof are used depending on pronunciation and tradition. The choice of Kaf here yields the gematria sum 424 = <span class="hebrew-inline">משיח בן דוד</span> (Mashiach Ben David). Using Qof would yield 504, which has its own interpretive resonances but severs the Messianic typology. The argument is therefore circular at the level of letter selection, and the reader should hold this in mind: the analysis identifies a striking correspondence made possible by a deliberate choice, not a discovered fact. The theological aptness of Kaf — "the palm that grasps" — as a depository is independently compelling, which is why the choice is defensible; it is not, however, uniquely determined.</p>
+</div>
 
 <h3 class="reveal">The Full Word: DTC = 4 + 400 + 20 = 424</h3>
 <p class="reveal">424 = 4 × 106. More significantly: <strong>424 is the standard gematria of <span class="hebrew-inline">משיח בן דוד</span> (Mashiach Ben David)</strong> — Messiah Son of David.</p>
@@ -1075,8 +948,8 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     </defs>
 
     <!-- Background orbit rings -->
-    <ellipse cx="340" cy="170" rx="280" ry="130" fill="none" stroke="#221c12" stroke-width="0.8"/>
-    <ellipse cx="340" cy="170" rx="200" ry="95" fill="none" stroke="#221c12" stroke-width="0.8" stroke-dasharray="4 6"/>
+    <ellipse cx="340" cy="170" rx="280" ry="130" fill="none" stroke="var(--svg-grid)" stroke-width="0.8"/>
+    <ellipse cx="340" cy="170" rx="200" ry="95" fill="none" stroke="var(--svg-grid)" stroke-width="0.8" stroke-dasharray="4 6"/>
 
     <!-- DTCC center -->
     <circle cx="340" cy="170" r="55" fill="url(#dtccGlow)" stroke="#c8a84b" stroke-width="1.5" filter="url(#glow)"/>
@@ -1095,17 +968,17 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="105" y="78" class="svg-text" font-size="0.68rem">Door · Seal · Hand</text>
 
     <!-- Orbit line to NSCC -->
-    <line x1="370" y1="125" x2="380" y2="48" stroke="#3d3528" stroke-width="1" stroke-dasharray="5 4"/>
+    <line x1="370" y1="125" x2="380" y2="48" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="5 4"/>
     <!-- NSCC node -->
-    <circle cx="400" cy="42" r="32" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <circle cx="400" cy="42" r="32" fill="rgba(200,168,75,0.05)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="400" y="38" class="svg-label" font-size="0.8rem" fill="#b09a7a">NSCC</text>
     <text x="400" y="53" class="svg-text-sm" font-size="0.62rem">Nun-Samekh-Kaf-Kaf</text>
     <text x="400" y="65" class="svg-text-sm" font-size="0.62rem">= 50+60+20+20 = 150</text>
 
     <!-- Orbit line to FICC -->
-    <line x1="390" y1="185" x2="535" y2="225" stroke="#3d3528" stroke-width="1" stroke-dasharray="5 4"/>
+    <line x1="390" y1="185" x2="535" y2="225" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="5 4"/>
     <!-- FICC node -->
-    <circle cx="567" cy="235" r="32" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <circle cx="567" cy="235" r="32" fill="rgba(200,168,75,0.05)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="567" y="231" class="svg-label" font-size="0.8rem" fill="#b09a7a">FICC</text>
     <text x="567" y="246" class="svg-text-sm" font-size="0.62rem">Pe-Yod-Kaf-Kaf</text>
     <text x="567" y="258" class="svg-text-sm" font-size="0.62rem">= 80+10+20+20 = 130</text>
@@ -1236,108 +1109,159 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <p class="reveal"><strong>441 is <span class="hebrew-inline">אמת</span> (Emet, "Truth").</strong> Aleph-Mem-Tav = 1 + 40 + 400 = 441. The Talmud names Truth the "seal of God" (Shabbat 104a), for its three letters span the entire Hebrew alphabet: Aleph is the first, Mem is the exact middle, Tav is the last. Together they say: from beginning to end, what is, is. 441 is therefore the mirror of 144 — government becomes truth, the square of administration becomes the seal of the divine. The numbers 12 and 21 are themselves mirror images; both are Fibonacci numbers. Their difference is 9, which is the digit-sum of 441 (4+4+1 = 9). Nine is the digit of absolute truth: any multiple of 9 has digits that sum to 9.</p>
 
-<!-- FIBONACCI SPIRAL -->
-<div class="diagram-wrap reveal" style="max-width:600px;">
-  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 580 400" xmlns="http://www.w3.org/2000/svg" data-label="fibonacci">
+<!-- FIBONACCI SPIRAL — rebuilt -->
+<div class="diagram-wrap fib-diagram reveal" style="max-width:680px;">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" id="fibSVG">
     <defs>
-      <linearGradient id="fibGold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:1"/>
-        <stop offset="50%" style="stop-color:#e2cc82;stop-opacity:0.9"/>
-        <stop offset="100%" style="stop-color:#9a7828;stop-opacity:0.8"/>
+      <linearGradient id="spGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#e2cc82" stop-opacity="1"/>
+        <stop offset="40%" stop-color="#c8a84b" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#9a7828" stop-opacity="0.5"/>
       </linearGradient>
-      <linearGradient id="fibSquare1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:rgba(200,168,75,0.15)"/>
-        <stop offset="100%" style="stop-color:rgba(200,168,75,0.06)"/>
-      </linearGradient>
-      <linearGradient id="fibSquare2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:rgba(200,168,75,0.12)"/>
-        <stop offset="100%" style="stop-color:rgba(200,168,75,0.05)"/>
-      </linearGradient>
-      <linearGradient id="fibSquare3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:rgba(200,168,75,0.10)"/>
-        <stop offset="100%" style="stop-color:rgba(200,168,75,0.04)"/>
+      <linearGradient id="spGoldFade" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#c8a84b" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#9a7828" stop-opacity="0.1"/>
       </linearGradient>
       <filter id="fibGlow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
-      <filter id="fibGlowStrong">
-        <feGaussianBlur stdDeviation="5" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-      <filter id="fibShadow">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+      <filter id="fibGlowSm">
+        <feGaussianBlur stdDeviation="1.5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
     </defs>
 
-    <!-- FIBONACCI SQUARES - Classic spiral tiling (scale: 1.8) -->
-    <!-- 144 = F(12) - largest, at bottom-left -->
-    <rect x="40" y="130" width="259" height="259" fill="url(#fibSquare1)" stroke="url(#fibGold)" stroke-width="1.5" rx="2" filter="url(#fibShadow)"/>
+    <!-- ── GRID SQUARES ── -->
+    <!-- Each square is labelled with its Fibonacci number -->
+    <!-- Layout (origin at top-left of 144-square):
+         144-square: x=30, y=30, w=310, h=310
+         89-square:  x=340, y=30, w=191, h=191   (right of 144)
+         55-square:  x=340, y=221, w=191, h=119  — wait, need exact proportions -->
 
-    <!-- 89 = F(11) - to the right -->
-    <rect x="299" y="130" width="160" height="160" fill="url(#fibSquare2)" stroke="url(#fibGold)" stroke-width="1.3" rx="2"/>
+    <!-- Using a clean grid layout with true Fibonacci proportions scaled to fit 620x390 -->
+    <!-- Scale factor: 310/144 = 2.153 px per unit -->
+    <!-- 144 square: 310×310 at (30,60) -->
+    <rect class="fib-sq" id="sq144" x="30" y="60" width="310" height="310" rx="2"
+      fill="var(--fib-sq-fill-1)" stroke="var(--fib-sq-stroke)" stroke-width="1.2"/>
 
-    <!-- 55 = F(10) - above 89 -->
-    <rect x="299" y="75" width="99" height="99" fill="url(#fibSquare3)" stroke="url(#fibGold)" stroke-width="1.1" rx="1"/>
+    <!-- 89 square: 191×191 at (340,60) — to the right -->
+    <rect class="fib-sq" id="sq89" x="340" y="60" width="191" height="191" rx="2"
+      fill="var(--fib-sq-fill-2)" stroke="var(--fib-sq-stroke)" stroke-width="1"/>
 
-    <!-- 34 = F(9) - to the left of 55 -->
-    <rect x="171" y="75" width="61" height="61" fill="none" stroke="url(#fibGold)" stroke-width="1" rx="1"/>
+    <!-- 55 square: 118×118 at (340,251) — below 89 -->
+    <rect class="fib-sq" id="sq55" x="340" y="251" width="118" height="118" rx="2"
+      fill="var(--fib-sq-fill-3)" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.8"/>
 
-    <!-- 21 = F(8) - below 34 -->
-    <rect x="171" y="136" width="38" height="38" fill="none" stroke="url(#fibGold)" stroke-width="0.9" rx="1"/>
+    <!-- 34 square: 73×73 at (458,251) — right of 55 -->
+    <rect class="fib-sq" id="sq34" x="458" y="251" width="73" height="73" rx="2"
+      fill="var(--fib-sq-fill-3)" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.7"/>
 
-    <!-- 13 = F(7) - to the right of 21 -->
-    <rect x="209" y="136" width="23" height="23" fill="none" stroke="url(#fibGold)" stroke-width="0.8" rx="0.5"/>
+    <!-- 21 square: 45×45 at (458,324) — below 34 -->
+    <rect class="fib-sq" id="sq21" x="458" y="324" width="45" height="45" rx="2"
+      fill="var(--fib-sq-fill-3)" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.6"/>
 
-    <!-- 8 = F(6) - above 13 -->
-    <rect x="209" y="113" width="14" height="14" fill="none" stroke="url(#fibGold)" stroke-width="0.7" rx="0.5"/>
+    <!-- 13 square: 28×28 at (503,324) — right of 21 -->
+    <rect class="fib-sq" id="sq13" x="503" y="324" width="28" height="28" rx="2"
+      fill="none" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.5"/>
 
-    <!-- GOLDEN SPIRAL - smooth quarter-circle arcs -->
-    <path d="
-      M 216 113
-      A 8 8 0 0 1 223 121
-      A 13 13 0 0 1 232 136
-      A 21 21 0 0 1 209 159
-      A 34 34 0 0 1 171 174
-      A 55 55 0 0 1 299 130
-      A 89 89 0 0 1 299 290
-      A 144 144 0 0 1 40 259
-      A 144 144 0 0 0 40 130
-    "
-    fill="none" stroke="url(#fibGold)" stroke-width="3" stroke-linecap="round" filter="url(#fibGlowStrong)" opacity="0.9"/>
+    <!-- 8 square: 17×17 at (503,352) -->
+    <rect class="fib-sq" id="sq8" x="503" y="352" width="17" height="17" rx="1"
+      fill="none" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.4"/>
 
-    <!-- NUMBER LABELS -->
-    <!-- 144 -->
-    <text x="170" y="265" class="svg-value" font-size="2.8rem" filter="url(#fibGlow)" data-label="text">144</text>
-    <text x="170" y="288" class="svg-text-sm" font-size="0.8rem" data-label="text">F(12)</text>
+    <!-- 5 square: 11×11 at (520,352) -->
+    <rect class="fib-sq" id="sq5" x="520" y="352" width="11" height="11" rx="1"
+      fill="none" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.4"/>
 
-    <!-- 89 -->
-    <text x="379" y="215" class="svg-text" font-size="1.3rem" filter="url(#fibGlow)" data-label="text">89</text>
-    <text x="379" y="230" class="svg-text-sm" font-size="0.65rem" data-label="text">F(11)</text>
+    <!-- ── QUARTER-CIRCLE ARCS → GOLDEN SPIRAL ── -->
+    <!-- Arc for 144: center at bottom-right of 144-sq = (340,370), r=310 -->
+    <path d="M 30 370 A 310 310 0 0 1 340 60"
+      fill="none" stroke="url(#spGold)" stroke-width="3" stroke-linecap="round" filter="url(#fibGlow)"/>
 
-    <!-- 55 -->
-    <text x="348" y="128" class="svg-text" font-size="1.1rem" filter="url(#fibGlow)" data-label="text">55</text>
-    <text x="348" y="142" class="svg-text-sm" font-size="0.6rem" data-label="text">F(10)</text>
+    <!-- Arc for 89: center at bottom-left of 89-sq = (340,251), r=191 -->
+    <path d="M 340 60 A 191 191 0 0 1 531 251"
+      fill="none" stroke="url(#spGold)" stroke-width="2.8" stroke-linecap="round" filter="url(#fibGlow)"/>
 
-    <!-- 34 -->
-    <text x="201" y="108" class="svg-text" font-size="0.9rem" filter="url(#fibGlow)" data-label="text">34</text>
+    <!-- Arc for 55: center at top-right of 55-sq = (458,251), r=118 -->
+    <path d="M 531 251 A 118 118 0 0 1 458 369"
+      fill="none" stroke="url(#spGold)" stroke-width="2.5" stroke-linecap="round" filter="url(#fibGlow)"/>
 
-    <!-- 21 -->
-    <text x="190" y="158" class="svg-text" font-size="0.8rem" filter="url(#fibGlow)" data-label="text">21</text>
+    <!-- Arc for 34: center at bottom-right of 34-sq = (531,324), r=73 -->
+    <path d="M 458 369 A 73 73 0 0 1 458 251"
+      fill="none" stroke="url(#spGold)" stroke-width="2.2" stroke-linecap="round" filter="url(#fibGlowSm)"/>
 
-    <!-- 13 -->
-    <text x="220" y="152" class="svg-text" font-size="0.7rem" filter="url(#fibGlow)" data-label="text">13</text>
+    <!-- Arc for 21: center at bottom-left of 21-sq = (458,369), r=45 -->
+    <path d="M 458 251 A 45 45 0 0 1 503 369"
+      fill="none" stroke="url(#spGold)" stroke-width="1.8" stroke-linecap="round" filter="url(#fibGlowSm)"/>
+
+    <!-- Arc for 13: center at top-right of 13-sq = (531,324), r=28 -->
+    <path d="M 503 369 A 28 28 0 0 1 531 341"
+      fill="none" stroke="url(#spGold)" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Arc for 8 -->
+    <path d="M 531 341 A 17 17 0 0 1 520 369"
+      fill="none" stroke="url(#spGold)" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- ── GOLDEN RATIO DIAGONAL ── -->
+    <line x1="30" y1="60" x2="531" y2="369"
+      stroke="var(--fib-phi-line)" stroke-width="0.7" stroke-dasharray="6 8" opacity="0.5"/>
+    <!-- Phi arc overlay -->
+    <ellipse cx="185" cy="215" rx="155" ry="95" fill="none"
+      stroke="var(--fib-phi-line)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.25"/>
+
+    <!-- ── NUMBER LABELS ── -->
+    <!-- 144 — large, centered in its square -->
+    <text x="185" y="208" class="svg-value" font-size="2.4rem" text-anchor="middle" filter="url(#fibGlow)">144</text>
+    <text x="185" y="233" class="svg-text-sm" font-size="0.78rem" text-anchor="middle">F(12) · 12²</text>
+    <text x="185" y="250" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">The Perfect Square</text>
+
+    <!-- Corner tick marks for 144 square -->
+    <line x1="30" y1="70" x2="40" y2="70" stroke="var(--fib-tick)" stroke-width="1" opacity="0.6"/>
+    <line x1="30" y1="60" x2="30" y2="70" stroke="var(--fib-tick)" stroke-width="1" opacity="0.6"/>
+    <line x1="330" y1="60" x2="330" y2="70" stroke="var(--fib-tick)" stroke-width="1" opacity="0.6"/>
+    <line x1="320" y1="60" x2="330" y2="60" stroke="var(--fib-tick)" stroke-width="1" opacity="0.6"/>
+
+    <!-- 89 label -->
+    <text x="435" y="148" class="svg-label" font-size="1.1rem" text-anchor="middle">89</text>
+    <text x="435" y="163" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">F(11)</text>
+
+    <!-- 55 label -->
+    <text x="399" y="306" class="svg-label" font-size="0.88rem" text-anchor="middle">55</text>
+    <text x="399" y="320" class="svg-text-sm" font-size="0.56rem" text-anchor="middle">F(10)</text>
+
+    <!-- 34 label -->
+    <text x="494" y="286" class="svg-label" font-size="0.75rem" text-anchor="middle">34</text>
+    <text x="494" y="299" class="svg-text-sm" font-size="0.52rem" text-anchor="middle">F(9)</text>
+
+    <!-- 21 label -->
+    <text x="480" y="345" class="svg-label" font-size="0.65rem" text-anchor="middle">21</text>
+    <text x="480" y="357" class="svg-text-sm" font-size="0.48rem" text-anchor="middle">F(8)</text>
+
+    <!-- 13 label -->
+    <text x="517" y="337" class="svg-label" font-size="0.55rem" text-anchor="middle">13</text>
 
     <!-- 8 -->
-    <text x="216" y="122" class="svg-text" font-size="0.58rem" filter="url(#fibGlow)" data-label="text">8</text>
+    <text x="511" y="362" class="svg-label" font-size="0.48rem" text-anchor="middle">8</text>
 
-    <!-- PHI LABEL -->
-    <text x="290" y="380" class="svg-label" font-size="0.72rem" opacity="0.8" data-label="text">Golden Ratio φ = 1.618…</text>
+    <!-- ── PHI RATIO DISPLAY ── -->
+    <rect x="30" y="390" width="500" height="54" rx="6"
+      fill="var(--fib-phi-bg)" stroke="var(--fib-sq-stroke)" stroke-width="0.8"/>
+    <text x="280" y="411" class="svg-label" font-size="0.72rem" text-anchor="middle">φ = 1.6180339887… · F(n+1) ÷ F(n)</text>
+    <text x="280" y="432" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">144 ÷ 89 = 1.6179… · 233 ÷ 144 = 1.6180… · Convergence to the Divine Proportion</text>
 
-    <!-- CENTER POINT -->
-    <circle cx="223" cy="121" r="3" fill="url(#fibGold)" filter="url(#fibGlow)"/>
+    <!-- ── 441 MIRROR ANNOTATION ── -->
+    <text x="590" y="100" class="svg-value" font-size="1.1rem" text-anchor="middle" opacity="0.8">441</text>
+    <text x="590" y="116" class="svg-text-sm" font-size="0.58rem" text-anchor="middle">Mirror of 144</text>
+    <text x="590" y="130" class="svg-text-sm" font-size="0.56rem" text-anchor="middle">אמת · Truth</text>
+    <line x1="575" y1="105" x2="531" y2="105" stroke="var(--fib-sq-stroke-faint)" stroke-width="0.8" stroke-dasharray="3 4"/>
+
+    <!-- ── F(12) CALLOUT BADGE ── -->
+    <rect x="590" y="170" width="66" height="36" rx="4"
+      fill="rgba(200,168,75,0.12)" stroke="#c8a84b" stroke-width="1" filter="url(#fibGlowSm)"/>
+    <text x="623" y="185" class="svg-label" font-size="0.62rem" text-anchor="middle">Only non-</text>
+    <text x="623" y="198" class="svg-label" font-size="0.62rem" text-anchor="middle">trivial Fib²</text>
   </svg>
-  <div class="diagram-caption">The Fibonacci–Golden Ratio spiral, with 144 = F(12) as its largest visible square</div>
+  <div class="diagram-caption">The Fibonacci–Golden Ratio spiral · 144 = F(12) = 12² · the only perfect square in the infinite Fibonacci sequence</div>
 </div>
 
 <h3 class="reveal">The Number 500 — Jubilee and Liberation</h3>
@@ -1366,7 +1290,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- TABERNACLE SVG — fully redrawn -->
 <div class="diagram-wrap reveal" style="max-width:760px;">
-  <svg class="svg-diagram svg-diagram-interactive mishkan-diagram" viewBox="0 0 760 440" xmlns="http://www.w3.org/2000/svg" data-diagram="mishkan">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 760 440" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="outerZone" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" style="stop-color:#1a1510;stop-opacity:1"/>
@@ -1395,10 +1319,10 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     </defs>
 
     <!-- Background -->
-    <rect class="mishkan-bg" x="0" y="0" width="760" height="440" fill="#0a0a0a" rx="8"/>
+    <rect x="0" y="0" width="760" height="440" rx="8" class="svg-themed-bg"/>
 
     <!-- ─── OUTER COURT ─── -->
-    <rect class="outer-zone" x="30" y="60" width="700" height="320" fill="url(#outerZone)" stroke="#352b18" stroke-width="1" stroke-dasharray="6 5" rx="4"/>
+    <rect x="30" y="60" width="700" height="320" fill="url(#outerZone)" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="6 5" rx="4"/>
     <!-- Outer court label top -->
     <text x="380" y="45" class="svg-label" font-size="0.78rem" opacity="0.8">OUTER COURT  ·  חצר החיצונה</text>
     <text x="380" y="395" class="svg-text-sm" font-size="0.68rem">The Eligibility Questionnaire  ·  Entry &amp; Evaluation</text>
@@ -1422,7 +1346,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="148" y="222" class="svg-hebrew" font-size="0.9rem" transform="rotate(-90 148 222)" text-anchor="middle">ת</text>
 
     <!-- Altar of incense -->
-    <rect x="190" y="188" width="50" height="64" fill="rgba(200,168,75,0.08)" stroke="#5a4e3a" stroke-width="1" rx="3"/>
+    <rect x="190" y="188" width="50" height="64" fill="rgba(200,168,75,0.08)" stroke="var(--svg-node-stroke-faint)" stroke-width="1" rx="3"/>
     <text x="215" y="215" class="svg-text" font-size="0.6rem">Altar of</text>
     <text x="215" y="228" class="svg-text" font-size="0.6rem">Incense</text>
     <text x="215" y="243" class="svg-text-sm" font-size="0.55rem">Prayers / Filings</text>
@@ -1442,7 +1366,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     </g>
 
     <!-- Table of shewbread -->
-    <rect x="445" y="188" width="50" height="64" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1" rx="3"/>
+    <rect x="445" y="188" width="50" height="64" fill="rgba(200,168,75,0.05)" stroke="var(--svg-node-stroke-faint)" stroke-width="1" rx="3"/>
     <text x="470" y="215" class="svg-text" font-size="0.6rem">Shew-</text>
     <text x="470" y="228" class="svg-text" font-size="0.6rem">bread</text>
     <text x="470" y="243" class="svg-text-sm" font-size="0.55rem">12 Securities</text>
@@ -1565,7 +1489,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- Magen David with 26 / 2026 -->
 <div class="diagram-wrap reveal" style="max-width:480px;">
-  <svg class="svg-diagram svg-diagram-interactive magen-david-diagram" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg" data-diagram="magen-david">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="starG" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.7"/>
@@ -1577,11 +1501,11 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
       </filter>
     </defs>
 
-    <rect x="0" y="0" width="480" height="320" fill="#0a0a0a" rx="8"/>
+    <rect x="0" y="0" width="480" height="320" rx="8" class="svg-themed-bg"/>
 
     <!-- Outer ring -->
-    <circle cx="240" cy="160" r="140" fill="none" stroke="#221c12" stroke-width="0.8" stroke-dasharray="5 8"/>
-    <circle cx="240" cy="160" r="115" fill="none" stroke="#221c12" stroke-width="0.6"/>
+    <circle cx="240" cy="160" r="140" fill="none" stroke="var(--svg-grid)" stroke-width="0.8" stroke-dasharray="5 8"/>
+    <circle cx="240" cy="160" r="115" fill="none" stroke="var(--svg-grid)" stroke-width="0.6"/>
 
     <!-- Star of David — Magen David -->
     <!-- Upward triangle -->
@@ -1622,6 +1546,37 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 </div>
 <p class="reveal">The Questionnaire is structured as a series of binary choices — checkboxes, yes/no determinations. This is Levitical taxonomy. Leviticus 11 divides the entire animal kingdom into two categories — clean and unclean — not by gradation but by binary decision: cloven hoof <em>and</em> chews cud, yes; only one, no. The DTC replicates this logic: each checkbox is a judgment. This security is eligible or it is not. There is no partial eligibility, just as there is no partial kashrus.</p>
 <p class="reveal">The binary structure also mirrors the divine speech-act of creation: "And God separated" — <span class="hebrew-inline">ויבדל</span> (<em>vayavdel</em>) — light from darkness, waters above from waters below, dry land from sea. Division is the first cognitive act, and the checkbox is its modern bureaucratic form.</p>
+
+<div class="diagram-wrap reveal">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(42,122,107,0.25)"/>
+        <stop offset="100%" stop-color="rgba(42,122,107,0.08)"/>
+      </linearGradient>
+      <linearGradient id="uncleanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(139,26,26,0.25)"/>
+        <stop offset="100%" stop-color="rgba(139,26,26,0.08)"/>
+      </linearGradient>
+      <filter id="binaryGlow" x="-15%" y="-15%" width="130%" height="130%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
+    </defs>
+    <rect x="40" y="20" width="220" height="100" fill="url(#cleanGrad)" stroke="rgba(42,122,107,0.6)" stroke-width="2" rx="4"/>
+    <text x="150" y="55" text-anchor="middle" fill="#80d4c8" font-size="24" font-family="'Cinzel',serif" font-weight="900" filter="url(#binaryGlow)">&#9745; Eligible</text>
+    <text x="150" y="80" text-anchor="middle" fill="rgba(128,212,200,0.6)" font-size="13" font-family="'IM Fell English',serif" font-style="italic">טָהוֹר · Tahor (Clean)</text>
+    <text x="150" y="98" text-anchor="middle" fill="rgba(128,212,200,0.45)" font-size="10" class="svg-text-sm">Enter the Sanctuary</text>
+    <text x="300" y="75" text-anchor="middle" fill="rgba(201,168,76,0.3)" font-size="28" font-family="'Cinzel',serif">&#8853;</text>
+    <text x="300" y="95" text-anchor="middle" fill="rgba(201,168,76,0.2)" font-size="9" class="svg-text-sm">JUDGMENT</text>
+    <rect x="340" y="20" width="220" height="100" fill="url(#uncleanGrad)" stroke="rgba(139,26,26,0.6)" stroke-width="2" rx="4"/>
+    <text x="450" y="55" text-anchor="middle" fill="#e8a0a0" font-size="24" font-family="'Cinzel',serif" font-weight="900" filter="url(#binaryGlow)">&#9744; Refused</text>
+    <text x="450" y="80" text-anchor="middle" fill="rgba(232,160,160,0.6)" font-size="13" font-family="'IM Fell English',serif" font-style="italic">טָמֵא · Tamei (Unclean)</text>
+    <text x="450" y="98" text-anchor="middle" fill="rgba(232,160,160,0.45)" font-size="10" class="svg-text-sm">Refused Entry</text>
+    <text x="300" y="132" text-anchor="middle" fill="rgba(201,168,76,0.2)" font-size="8" class="svg-text-sm" letter-spacing="2">LEVITICAL BINARY · CLEAN AND UNCLEAN</text>
+  </svg>
+  <div class="diagram-caption">Levitical Binary — Clean and Unclean</div>
+</div>
 
 <hr class="section-divider">
 <div class="ornament-line"><span>✦ ✦ ✦</span></div>
@@ -1686,7 +1641,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- THEOLOGICAL SYNTHESIS FLOWCHART — upgraded -->
 <div class="diagram-wrap reveal" style="max-width:760px;">
-  <svg class="svg-diagram theological-synthesis-diagram" viewBox="0 0 760 580" xmlns="http://www.w3.org/2000/svg" data-diagram="theological-synthesis">
+  <svg class="svg-diagram" viewBox="0 0 760 580" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="dtcCol" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.18"/>
@@ -1701,96 +1656,96 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
       </marker>
     </defs>
 
-    <rect class="theo-bg" x="0" y="0" width="760" height="580" fill="#0a0a0a" rx="8" data-label="rect"/>
+    <rect x="0" y="0" width="760" height="580" rx="8" class="svg-themed-bg"/>
 
     <!-- Column headers -->
     <text x="175" y="28" class="svg-label" font-size="0.82rem">DTC Element</text>
     <text x="530" y="28" class="svg-label" font-size="0.82rem">Biblical Type</text>
     <!-- Header divider -->
-    <line x1="30" y1="38" x2="730" y2="38" stroke="#221c12" stroke-width="1"/>
-    <line x1="350" y1="38" x2="350" y2="560" stroke="#221c12" stroke-width="0.8" stroke-dasharray="4 6"/>
+    <line x1="30" y1="38" x2="730" y2="38" stroke="var(--svg-grid)" stroke-width="1"/>
+    <line x1="350" y1="38" x2="350" y2="560" stroke="var(--svg-grid)" stroke-width="0.8" stroke-dasharray="4 6"/>
 
     <!-- Rows -->
     <!-- Row data: [y, dtc, biblical] -->
     <g font-size="0.72rem">
       <!-- Row 1 -->
-      <rect x="30" y="48" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="48" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="68" class="svg-text" font-size="0.74rem">Cede &amp; Co. (nominee)</text>
       <text x="175" y="84" class="svg-text-sm" font-size="0.65rem">The single registered holder of all</text>
-      <line x1="320" y1="71" x2="370" y2="71" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="48" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="71" x2="370" y2="71" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="48" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="68" class="svg-text" font-size="0.74rem">Christ — in whom all believers are hidden</text>
       <text x="555" y="84" class="svg-text-sm" font-size="0.65rem">Colossians 3:3</text>
 
       <!-- Row 2 -->
-      <rect x="30" y="102" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="102" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="122" class="svg-text" font-size="0.74rem">Participants</text>
       <text x="175" y="138" class="svg-text-sm" font-size="0.65rem">Licensed mediating institutions</text>
-      <line x1="320" y1="125" x2="370" y2="125" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="102" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="125" x2="370" y2="125" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="102" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="122" class="svg-text" font-size="0.74rem">Priests — mediating between nominee and owners</text>
       <text x="555" y="138" class="svg-text-sm" font-size="0.65rem">1 Peter 2:5; Hebrews 8:6</text>
 
       <!-- Row 3 -->
-      <rect x="30" y="156" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="156" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="176" class="svg-text" font-size="0.74rem">Beneficial Owners</text>
       <text x="175" y="192" class="svg-text-sm" font-size="0.65rem">Real holders of economic interest</text>
-      <line x1="320" y1="179" x2="370" y2="179" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="156" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="179" x2="370" y2="179" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="156" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="176" class="svg-text" font-size="0.74rem">The faithful — known through the mediator</text>
       <text x="555" y="192" class="svg-text-sm" font-size="0.65rem">1 Timothy 2:5</text>
 
       <!-- Row 4 -->
-      <rect x="30" y="210" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="210" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="230" class="svg-text" font-size="0.74rem">Book-Entry-Only system</text>
       <text x="175" y="246" class="svg-text-sm" font-size="0.65rem">No physical certificate exists</text>
-      <line x1="320" y1="233" x2="370" y2="233" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="210" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="233" x2="370" y2="233" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="210" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="230" class="svg-text" font-size="0.74rem">Faith, not works — no physical certificate</text>
       <text x="555" y="246" class="svg-text-sm" font-size="0.65rem">Romans 4:3–5; 2 Corinthians 5:7</text>
 
       <!-- Row 5 -->
-      <rect x="30" y="264" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="264" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="284" class="svg-text" font-size="0.74rem">FAST Program</text>
       <text x="175" y="300" class="svg-text-sm" font-size="0.65rem">Rapid automated transfer</text>
-      <line x1="320" y1="287" x2="370" y2="287" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="264" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="287" x2="370" y2="287" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="264" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="284" class="svg-text" font-size="0.74rem">Grace — transfer without human effort</text>
       <text x="555" y="300" class="svg-text-sm" font-size="0.65rem">Ephesians 2:8–9</text>
 
       <!-- Row 6 -->
-      <rect x="30" y="318" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="318" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="338" class="svg-text" font-size="0.74rem">Letters of Representations</text>
       <text x="175" y="354" class="svg-text-sm" font-size="0.65rem">The Issuer's binding written confession</text>
-      <line x1="320" y1="341" x2="370" y2="341" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="318" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="341" x2="370" y2="341" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="318" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="338" class="svg-text" font-size="0.74rem">Confession of faith — the binding agreement</text>
       <text x="555" y="354" class="svg-text-sm" font-size="0.65rem">Romans 10:9–10</text>
 
       <!-- Row 7 -->
-      <rect x="30" y="372" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="372" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="392" class="svg-text" font-size="0.74rem">CUSIP Numbers</text>
       <text x="175" y="408" class="svg-text-sm" font-size="0.65rem">Unique identity assigned to each security</text>
-      <line x1="320" y1="395" x2="370" y2="395" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="372" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="395" x2="370" y2="395" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="372" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="392" class="svg-text" font-size="0.74rem">The Book of Life — unique names</text>
       <text x="555" y="408" class="svg-text-sm" font-size="0.65rem">Revelation 20:12; 21:27</text>
 
       <!-- Row 8 -->
-      <rect x="30" y="426" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="426" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="446" class="svg-text" font-size="0.74rem">Payment Deadlines (3 p.m.)</text>
       <text x="175" y="462" class="svg-text-sm" font-size="0.65rem">The ninth hour, daily</text>
-      <line x1="320" y1="449" x2="370" y2="449" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="426" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="449" x2="370" y2="449" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="426" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="446" class="svg-text" font-size="0.74rem">The Day of the Lord — at an hour unknown</text>
       <text x="555" y="462" class="svg-text-sm" font-size="0.65rem">Matthew 24:42–44</text>
 
       <!-- Row 9 -->
-      <rect x="30" y="480" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="#221c12" stroke-width="0.8"/>
+      <rect x="30" y="480" width="290" height="46" rx="4" fill="url(#dtcCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="175" y="500" class="svg-text" font-size="0.74rem">Redemption</text>
       <text x="175" y="516" class="svg-text-sm" font-size="0.65rem">The security called back at maturity</text>
-      <line x1="320" y1="503" x2="370" y2="503" stroke="#352b18" stroke-width="1" marker-end="url(#arr)"/>
-      <rect x="380" y="480" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="#221c12" stroke-width="0.8"/>
+      <line x1="320" y1="503" x2="370" y2="503" stroke="var(--svg-node-stroke)" stroke-width="1" marker-end="url(#arr)"/>
+      <rect x="380" y="480" width="350" height="46" rx="4" fill="url(#bibCol)" stroke="var(--svg-grid)" stroke-width="0.8"/>
       <text x="555" y="500" class="svg-text" font-size="0.74rem">Salvation — the calling back of what was issued</text>
       <text x="555" y="516" class="svg-text-sm" font-size="0.65rem">Ephesians 1:7; Romans 3:24</text>
     </g>
@@ -1865,7 +1820,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 <div class="ornament-line"><span>✦ ✦ ✦</span></div>
 
 <!-- ══════════════════════
-     PART IX — 2026 AMENDMENTS
+     PART IX — THE 2026 AMENDMENTS
 ══════════════════════ -->
 <div class="part-header" id="part-ix">
   <span class="part-label">Part IX</span>
@@ -1875,62 +1830,62 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 <p class="reveal">The year 2026 has brought a cascade of amendments to the DTC Operational Arrangements and Rules — seven SEC filings in the first five months alone, each one a new articulation of the law. The numeric sequence itself speaks: seven filings, seven months of covenantal refinement, the number of completion and rest.</p>
 
 <h3 class="reveal">The Seven Filings — A Covenantal Sequence</h3>
-<table class="sacred-table reveal">
-  <thead>
-    <tr><th>Filing</th><th>Date</th><th>Subject</th><th>Biblical Type</th></tr>
-  </thead>
-  <tbody>
-    <tr><td class="num-cell">SR-DTC-2026-001</td><td>Jan 2026</td><td>Limiting accessibility to Participant Terminal</td><td>The narrowing of the gate — Matthew 7:13</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-002</td><td>Mar 2026</td><td>Stress testing framework</td><td>The trial by fire — 1 Peter 1:7</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-003</td><td>Mar 2026</td><td>Separation of dissenters' shares</td><td>The wheat and the chaff — Matthew 3:12</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-004</td><td>Apr 2026</td><td>Corrections and clarifications</td><td>The refining of the law — Psalm 12:6</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-005</td><td>May 2026</td><td>Alignment with Rule 17ad-22(e)(19)</td><td>The harmonization with higher law — Romans 8:2</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-006</td><td>May 2026</td><td>Missed transfer adjustments</td><td>The accounting of debts — Matthew 6:12</td></tr>
-    <tr><td class="num-cell">SR-DTC-2026-007</td><td>May 2026</td><td>Amendments to OA and Redemptions Guide</td><td>The law made new — Jeremiah 31:33</td></tr>
-  </tbody>
-</table>
+<div class="table-wrapper reveal">
+  <table>
+    <thead><tr><th>Filing</th><th>Date</th><th>Subject</th><th>Biblical Type</th></tr></thead>
+    <tbody>
+      <tr><td>SR-DTC-2026-001</td><td>Jan 2026</td><td>Limiting accessibility to Participant Terminal</td><td>The narrowing of the gate — Matthew 7:13</td></tr>
+      <tr><td>SR-DTC-2026-002</td><td>Mar 2026</td><td>Stress testing framework</td><td>The trial by fire — 1 Peter 1:7</td></tr>
+      <tr><td>SR-DTC-2026-003</td><td>Mar 2026</td><td>Separation of dissenters' shares</td><td>The wheat and the chaff — Matthew 3:12</td></tr>
+      <tr><td>SR-DTC-2026-004</td><td>Apr 2026</td><td>Corrections and clarifications</td><td>The refining of the law — Psalm 12:6</td></tr>
+      <tr><td>SR-DTC-2026-005</td><td>May 2026</td><td>Alignment with Rule 17ad-22(e)(19)</td><td>The harmonization with higher law — Romans 8:2</td></tr>
+      <tr><td>SR-DTC-2026-006</td><td>May 2026</td><td>Missed transfer adjustments</td><td>The accounting of debts — Matthew 6:12</td></tr>
+      <tr><td>SR-DTC-2026-007</td><td>May 2026</td><td>Amendments to OA and Redemptions Guide</td><td>The law made new — Jeremiah 31:33</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <h3 class="reveal">Rapid Issuance — The New Creation</h3>
-<p class="reveal">Launched April 1, 2026, <strong>Rapid Issuance</strong> is a streamlined process for structured notes under a single "base prospectus" — a foundational document from which multiple CUSIP creations flow, like the Torah generating the mitzvot. The fee is <span class="num-pill">$180</span> per CUSIP — 180 = 18 × 10, where 18 is the gematria of <strong>חי</strong> (Chai — Life). Each new CUSIP is a new creation given life through the base prospectus.</p>
-<p class="reveal">The service enables closings within an hour of security submission — the "rapid" creation echoing the instantaneous fiat lux of Genesis 1:3. The base prospectus is the <em>logos</em>; the CUSIP is the <em>rhema</em> — the specific utterance that brings each particular creation into being.</p>
+<p class="reveal">Launched April 1, 2026, <strong>Rapid Issuance</strong> is a streamlined process for structured notes under a single "base prospectus" — a foundational document from which multiple CUSIP creations flow, like the Torah generating the mitzvot. The fee is $180 per CUSIP — 180 = 18 × 10, where 18 is the gematria of <span class="hebrew-inline">חי</span> (Chai — Life). Each new CUSIP is a new creation given life through the base prospectus.</p>
+<p class="reveal">The service enables closings within an hour of security submission — the "rapid" creation echoing the instantaneous fiat lux of Genesis 1:3. The base prospectus is the logos; the CUSIP is the rhema — the specific utterance that brings each particular creation into being.</p>
 
-<!-- RAPID ISSUANCE FEE STRUCTURE SVG -->
-<div class="diagram-wrap reveal" data-label="Rapid Issuance Fee Structure">
-  <svg width="100%" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+<div class="diagram-wrap reveal">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="rapidGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="rgba(200,168,75,0.4)"/>
-        <stop offset="100%" stop-color="rgba(200,168,75,0.1)"/>
+        <stop offset="0%" stop-color="rgba(201,168,76,0.4)"/>
+        <stop offset="100%" stop-color="rgba(201,168,76,0.1)"/>
       </linearGradient>
       <linearGradient id="rapidGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="rgba(42,122,107,0.3)"/>
         <stop offset="100%" stop-color="rgba(42,122,107,0.08)"/>
       </linearGradient>
       <linearGradient id="rapidGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="rgba(122,46,46,0.3)"/>
-        <stop offset="100%" stop-color="rgba(122,46,46,0.08)"/>
+        <stop offset="0%" stop-color="rgba(139,26,26,0.3)"/>
+        <stop offset="100%" stop-color="rgba(139,26,26,0.08)"/>
       </linearGradient>
     </defs>
-    <rect x="40" y="30" width="180" height="120" fill="url(#rapidGrad1)" stroke="#c8a84b" stroke-width="2" rx="4"/>
-    <text x="130" y="65" text-anchor="middle" fill="#e2cc82" font-size="28" font-weight="900" font-family="'Cinzel',serif">$180</text>
-    <text x="130" y="90" text-anchor="middle" fill="rgba(200,168,75,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">RAPID ISSUANCE FEE</text>
-    <text x="130" y="108" text-anchor="middle" fill="rgba(200,168,75,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">18 × 10 = Chai × Law</text>
-    <text x="130" y="125" text-anchor="middle" fill="rgba(200,168,75,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Life per CUSIP</text>
+    <rect x="40" y="30" width="180" height="120" fill="url(#rapidGrad1)" stroke="#c9a84c" stroke-width="2" rx="4"/>
+    <text x="130" y="65" text-anchor="middle" fill="#e8c96a" font-size="28" font-weight="900" font-family="'Cinzel',serif">$180</text>
+    <text x="130" y="90" text-anchor="middle" fill="rgba(201,168,76,0.7)" font-size="10" class="svg-text-sm">RAPID ISSUANCE FEE</text>
+    <text x="130" y="108" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-size="9" class="svg-text-sm">18 × 10 = Chai × Law</text>
+    <text x="130" y="125" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="9" class="svg-text-sm">Life per CUSIP</text>
 
     <rect x="260" y="30" width="180" height="120" fill="url(#rapidGrad2)" stroke="rgba(42,122,107,0.6)" stroke-width="1.5" rx="4"/>
     <text x="350" y="65" text-anchor="middle" fill="#80d4c8" font-size="28" font-weight="900" font-family="'Cinzel',serif">$250</text>
-    <text x="350" y="90" text-anchor="middle" fill="rgba(128,212,200,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">ELIGIBILITY FEE</text>
-    <text x="350" y="108" text-anchor="middle" fill="rgba(128,212,200,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">2 × 5³ = Witness × Grace³</text>
-    <text x="350" y="125" text-anchor="middle" fill="rgba(128,212,200,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Block eligibility</text>
+    <text x="350" y="90" text-anchor="middle" fill="rgba(128,212,200,0.7)" font-size="10" class="svg-text-sm">ELIGIBILITY FEE</text>
+    <text x="350" y="108" text-anchor="middle" fill="rgba(128,212,200,0.5)" font-size="9" class="svg-text-sm">2 × 5³ = Witness × Grace³</text>
+    <text x="350" y="125" text-anchor="middle" fill="rgba(128,212,200,0.4)" font-size="9" class="svg-text-sm">Block eligibility</text>
 
-    <rect x="480" y="30" width="180" height="120" fill="url(#rapidGrad3)" stroke="rgba(122,46,46,0.6)" stroke-width="1.5" rx="4"/>
+    <rect x="480" y="30" width="180" height="120" fill="url(#rapidGrad3)" stroke="rgba(139,26,26,0.6)" stroke-width="1.5" rx="4"/>
     <text x="570" y="65" text-anchor="middle" fill="#e8a0a0" font-size="28" font-weight="900" font-family="'Cinzel',serif">$300</text>
-    <text x="570" y="90" text-anchor="middle" fill="rgba(232,160,160,0.7)" font-size="10" font-family="'JetBrains Mono',monospace">LATE SURCHARGE</text>
-    <text x="570" y="108" text-anchor="middle" fill="rgba(232,160,160,0.5)" font-size="9" font-family="'IM Fell English',serif" font-style="italic">3 × 100 = Resurrection × Fullness</text>
-    <text x="570" y="125" text-anchor="middle" fill="rgba(232,160,160,0.4)" font-size="9" font-family="'JetBrains Mono',monospace">Same-day penalty</text>
+    <text x="570" y="90" text-anchor="middle" fill="rgba(232,160,160,0.7)" font-size="10" class="svg-text-sm">LATE SURCHARGE</text>
+    <text x="570" y="108" text-anchor="middle" fill="rgba(232,160,160,0.5)" font-size="9" class="svg-text-sm">3 × 100 = Resurrection × Fullness</text>
+    <text x="570" y="125" text-anchor="middle" fill="rgba(232,160,160,0.4)" font-size="9" class="svg-text-sm">Same-day penalty</text>
 
-    <text x="350" y="168" text-anchor="middle" fill="rgba(200,168,75,0.25)" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="2">RAPID ISSUANCE · THE FEE THEOLOGY OF CREATION</text>
+    <text x="350" y="168" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-size="9" class="svg-text-sm" letter-spacing="2">RAPID ISSUANCE · THE FEE THEOLOGY OF CREATION</text>
   </svg>
+  <div class="diagram-caption">Rapid Issuance Fee Structure</div>
 </div>
 
 <h3 class="reveal">The Noon Deadline — The Sixth Hour of Judgment</h3>
@@ -1950,7 +1905,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <h3 class="reveal">The CUSIP as the True Name</h3>
 <p class="reveal">A CUSIP is a <strong>9-character identifier</strong> — 9, the digit of absolute truth. The CUSIP is assigned by the CUSIP Service Bureau (the naming authority). In the OA, "DTC requires separate CUSIP numbers for each component" of a Unit security — just as each creature in Genesis was named according to its kind. The CUSIP is the <strong>true name</strong> written in the book of the marketplace. Without the name, the security has no identity; without the CUSIP, the security cannot enter the sanctuary.</p>
-<p class="reveal">Under Rapid Issuance, a block of <strong>979 CUSIPs</strong> may be made eligible under a single base prospectus — 979 = 1000 − 21, where 1000 is the millennium (fullness) and 21 is the gematria of <strong>אהיה</strong> (Ehyeh — "I AM"). The base prospectus contains the name of the issuer; the 979 CUSIPs are the specific utterances that bring each creation into being.</p>
+<p class="reveal">Under Rapid Issuance, a block of <strong>979 CUSIPs</strong> may be made eligible under a single base prospectus — 979 = 1000 − 21, where 1000 is the millennium (fullness) and 21 is the gematria of <span class="hebrew-inline">אהיה</span> (Ehyeh — "I AM"). The base prospectus contains the name of the issuer; the 979 CUSIPs are the specific utterances that bring each creation into being.</p>
 
 <hr class="section-divider">
 <div class="ornament-line"><span>✦ ✦ ✦</span></div>
@@ -1969,7 +1924,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- ETZ CHAIM SVG — full Sefirot diagram -->
 <div class="diagram-wrap reveal" style="max-width:640px;">
-  <svg class="svg-diagram svg-diagram-interactive etz-chaim-diagram" viewBox="0 0 640 700" xmlns="http://www.w3.org/2000/svg" data-diagram="etz-chaim">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 640 700" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="sefGold" cx="50%" cy="50%" r="50%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.35"/>
@@ -1989,7 +1944,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
       </filter>
     </defs>
 
-    <rect x="0" y="0" width="640" height="700" fill="#080808" rx="8"/>
+    <rect x="0" y="0" width="640" height="700" rx="8" class="svg-themed-bg-alt"/>
 
     <!-- Column labels -->
     <text x="160" y="25" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">Right Column · Mercy · חסד</text>
@@ -1997,44 +1952,44 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="480" y="25" class="svg-text-sm" font-size="0.65rem" text-anchor="middle">Left Column · Judgment · דין</text>
 
     <!-- Vertical axis line -->
-    <line x1="320" y1="40" x2="320" y2="670" stroke="#221c12" stroke-width="0.8"/>
+    <line x1="320" y1="40" x2="320" y2="670" stroke="var(--svg-grid)" stroke-width="0.8"/>
 
     <!-- PATH CONNECTIONS (drawn first, behind nodes) -->
     <!-- Keter to Chokhmah -->
-    <line x1="320" y1="78" x2="175" y2="153" stroke="#352b18" stroke-width="1.2"/>
+    <line x1="320" y1="78" x2="175" y2="153" stroke="var(--svg-node-stroke)" stroke-width="1.2"/>
     <!-- Keter to Binah -->
-    <line x1="320" y1="78" x2="465" y2="153" stroke="#352b18" stroke-width="1.2"/>
+    <line x1="320" y1="78" x2="465" y2="153" stroke="var(--svg-node-stroke)" stroke-width="1.2"/>
     <!-- Chokhmah to Chesed -->
-    <line x1="175" y1="193" x2="175" y2="273" stroke="#352b18" stroke-width="1"/>
+    <line x1="175" y1="193" x2="175" y2="273" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Binah to Gevurah -->
-    <line x1="465" y1="193" x2="465" y2="273" stroke="#352b18" stroke-width="1"/>
+    <line x1="465" y1="193" x2="465" y2="273" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Chokhmah to Tiferet -->
-    <line x1="175" y1="193" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <line x1="175" y1="193" x2="320" y2="348" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Binah to Tiferet -->
-    <line x1="465" y1="193" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <line x1="465" y1="193" x2="320" y2="348" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Chesed to Tiferet -->
-    <line x1="175" y1="313" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <line x1="175" y1="313" x2="320" y2="348" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Gevurah to Tiferet -->
-    <line x1="465" y1="313" x2="320" y2="348" stroke="#352b18" stroke-width="1"/>
+    <line x1="465" y1="313" x2="320" y2="348" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Chesed to Netzach -->
-    <line x1="175" y1="313" x2="175" y2="433" stroke="#352b18" stroke-width="1"/>
+    <line x1="175" y1="313" x2="175" y2="433" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Gevurah to Hod -->
-    <line x1="465" y1="313" x2="465" y2="433" stroke="#352b18" stroke-width="1"/>
+    <line x1="465" y1="313" x2="465" y2="433" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Tiferet to Netzach -->
-    <line x1="320" y1="388" x2="175" y2="433" stroke="#352b18" stroke-width="1"/>
+    <line x1="320" y1="388" x2="175" y2="433" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Tiferet to Hod -->
-    <line x1="320" y1="388" x2="465" y2="433" stroke="#352b18" stroke-width="1"/>
+    <line x1="320" y1="388" x2="465" y2="433" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Tiferet to Yesod -->
-    <line x1="320" y1="388" x2="320" y2="503" stroke="#352b18" stroke-width="1.2"/>
+    <line x1="320" y1="388" x2="320" y2="503" stroke="var(--svg-node-stroke)" stroke-width="1.2"/>
     <!-- Netzach to Yesod -->
-    <line x1="175" y1="473" x2="320" y2="503" stroke="#352b18" stroke-width="1"/>
+    <line x1="175" y1="473" x2="320" y2="503" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Hod to Yesod -->
-    <line x1="465" y1="473" x2="320" y2="503" stroke="#352b18" stroke-width="1"/>
+    <line x1="465" y1="473" x2="320" y2="503" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <!-- Yesod to Malkhut -->
     <line x1="320" y1="543" x2="320" y2="608" stroke="#c8a84b" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.6"/>
     <!-- Da'at (hidden) connections -->
-    <line x1="320" y1="238" x2="175" y2="193" stroke="#221c12" stroke-width="0.8" stroke-dasharray="3 5"/>
-    <line x1="320" y1="238" x2="465" y2="193" stroke="#221c12" stroke-width="0.8" stroke-dasharray="3 5"/>
+    <line x1="320" y1="238" x2="175" y2="193" stroke="var(--svg-grid)" stroke-width="0.8" stroke-dasharray="3 5"/>
+    <line x1="320" y1="238" x2="465" y2="193" stroke="var(--svg-grid)" stroke-width="0.8" stroke-dasharray="3 5"/>
 
     <!-- ── SEFIROT NODES ── -->
 
@@ -2057,7 +2012,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="465" y="193" class="svg-text-sm" font-size="0.55rem">The Operational Arrangements</text>
 
     <!-- Da'at — hidden (center, dashed) -->
-    <circle cx="320" cy="238" r="22" fill="none" stroke="#352b18" stroke-width="1" stroke-dasharray="4 4"/>
+    <circle cx="320" cy="238" r="22" fill="none" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="4 4"/>
     <text x="320" y="234" class="svg-text-sm" font-size="0.6rem">Da'at</text>
     <text x="320" y="248" class="svg-text-sm" font-size="0.52rem">Hidden · CUSIP</text>
 
@@ -2156,7 +2111,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- CHIASMUS DIAGRAM -->
 <div class="diagram-wrap reveal" style="max-width:700px;">
-  <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" data-diagram="chiastic">
+  <svg class="svg-diagram" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="chias1" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.22"/>
@@ -2172,10 +2127,10 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
       </linearGradient>
     </defs>
 
-    <rect class="chiasm-bg" x="0" y="0" width="700" height="420" fill="#080808" rx="8"/>
+    <rect x="0" y="0" width="700" height="420" rx="8" class="svg-themed-bg-alt"/>
 
     <!-- Mirror axis line -->
-    <line x1="350" y1="20" x2="350" y2="400" stroke="#352b18" stroke-width="1" stroke-dasharray="6 5"/>
+    <line x1="350" y1="20" x2="350" y2="400" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="6 5"/>
     <text x="350" y="415" class="svg-label" font-size="0.65rem" opacity="0.6">Axis of Chiasm · The Closing Moment</text>
 
     <!-- Row A / A' -->
@@ -2186,7 +2141,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="525" y="50" class="svg-label" font-size="0.75rem">A' — Final Documents Filed</text>
     <text x="525" y="66" class="svg-text-sm" font-size="0.65rem">The door closes: the record is sealed</text>
     <!-- Horizontal mirror arrow -->
-    <line x1="320" y1="55" x2="380" y2="55" stroke="#5a4e3a" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <line x1="320" y1="55" x2="380" y2="55" stroke="var(--svg-node-stroke-faint)" stroke-width="1.2" stroke-dasharray="3 3"/>
 
     <!-- Row B / B' -->
     <rect x="55" y="100" width="265" height="50" rx="5" fill="url(#chias2)" stroke="#9a7828" stroke-width="1"/>
@@ -2195,25 +2150,25 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <rect x="380" y="100" width="265" height="50" rx="5" fill="url(#chias2)" stroke="#9a7828" stroke-width="1"/>
     <text x="512" y="120" class="svg-label" font-size="0.72rem">B' — Redemption Notice</text>
     <text x="512" y="136" class="svg-text-sm" font-size="0.62rem">The name is called back: identity ends</text>
-    <line x1="320" y1="125" x2="380" y2="125" stroke="#3d3528" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="320" y1="125" x2="380" y2="125" stroke="var(--svg-node-stroke)" stroke-width="1" stroke-dasharray="3 3"/>
 
     <!-- Row C / C' -->
-    <rect x="80" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="#7a6b55" stroke-width="1"/>
+    <rect x="80" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="200" y="190" class="svg-label" font-size="0.7rem">C — Letter of Representations</text>
     <text x="200" y="206" class="svg-text-sm" font-size="0.6rem">The issuer confesses, commits</text>
-    <rect x="380" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="#7a6b55" stroke-width="1"/>
+    <rect x="380" y="170" width="240" height="50" rx="5" fill="rgba(200,168,75,0.08)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="500" y="190" class="svg-label" font-size="0.7rem">C' — Indemnity Letters</text>
     <text x="500" y="206" class="svg-text-sm" font-size="0.6rem">The issuer atones, covers risk</text>
-    <line x1="320" y1="195" x2="380" y2="195" stroke="#2a2218" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="320" y1="195" x2="380" y2="195" stroke="var(--svg-grid)" stroke-width="1" stroke-dasharray="3 3"/>
 
     <!-- Row D / D' -->
-    <rect x="105" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <rect x="105" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="212" y="260" class="svg-label" font-size="0.68rem">D — Securities Delivered</text>
     <text x="212" y="276" class="svg-text-sm" font-size="0.58rem">The lamb presented at noon</text>
-    <rect x="380" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="#5a4e3a" stroke-width="1"/>
+    <rect x="380" y="240" width="215" height="50" rx="5" fill="rgba(200,168,75,0.05)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="487" y="260" class="svg-label" font-size="0.68rem">D' — Securities Redeemed</text>
     <text x="487" y="276" class="svg-text-sm" font-size="0.58rem">The lamb recalled at maturity</text>
-    <line x1="320" y1="265" x2="380" y2="265" stroke="#221c12" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="320" y1="265" x2="380" y2="265" stroke="var(--svg-grid)" stroke-width="1" stroke-dasharray="3 3"/>
 
     <!-- CENTER: The Closing Moment -->
     <rect x="200" y="315" width="300" height="60" rx="6" fill="url(#chiasCenter)" stroke="#c8a84b" stroke-width="2"/>
@@ -2222,8 +2177,8 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="350" y="370" class="svg-text-sm" font-size="0.65rem">It is finished · תם</text>
 
     <!-- Lines from D/D' to center -->
-    <line x1="212" y1="290" x2="280" y2="315" stroke="#352b18" stroke-width="0.8"/>
-    <line x1="487" y1="290" x2="420" y2="315" stroke="#352b18" stroke-width="0.8"/>
+    <line x1="212" y1="290" x2="280" y2="315" stroke="var(--svg-node-stroke)" stroke-width="0.8"/>
+    <line x1="487" y1="290" x2="420" y2="315" stroke="var(--svg-node-stroke)" stroke-width="0.8"/>
   </svg>
   <div class="diagram-caption">The chiastic A-B-C-D–CENTER–D'-C'-B'-A' structure of the DTC eligibility-to-redemption cycle</div>
 </div>
@@ -2392,7 +2347,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
 <!-- YHWH FOUR-WORLDS DIAGRAM -->
 <div class="diagram-wrap reveal" style="max-width:680px;">
-  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" data-diagram="yhwh-worlds">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="atzilut" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.35"/>
@@ -2414,12 +2369,24 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
         <feGaussianBlur stdDeviation="3" result="b"/>
         <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
+      <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(42,122,107,0.25)"/>
+        <stop offset="100%" stop-color="rgba(42,122,107,0.08)"/>
+      </linearGradient>
+      <linearGradient id="uncleanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(139,26,26,0.25)"/>
+        <stop offset="100%" stop-color="rgba(139,26,26,0.08)"/>
+      </linearGradient>
+      <filter id="binaryGlow" x="-15%" y="-15%" width="130%" height="130%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
     </defs>
 
-    <rect class="yhwh-bg" x="0" y="0" width="680" height="460" fill="#080808" rx="8"/>
+    <rect x="0" y="0" width="680" height="460" rx="8" class="svg-themed-bg-alt"/>
 
     <!-- Vertical flow arrow -->
-    <line x1="340" y1="20" x2="340" y2="440" stroke="#221c12" stroke-width="1" stroke-dasharray="4 6" marker-end="none"/>
+    <line x1="340" y1="20" x2="340" y2="440" stroke="var(--svg-grid)" stroke-width="1" stroke-dasharray="4 6" marker-end="none"/>
     <text x="360" y="430" class="svg-text-sm" font-size="0.6rem" text-anchor="start" opacity="0.5">↓ Descent into Matter</text>
 
     <!-- Layer 1: Atzilut — Emanation -->
@@ -2450,7 +2417,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="610" y="196" class="svg-text-sm" font-size="0.62rem" text-anchor="end">Form Conceived</text>
 
     <!-- Layer 3: Yetzirah — Formation -->
-    <rect x="30" y="230" width="590" height="88" rx="6" fill="url(#yetzirah)" stroke="#7a6b55" stroke-width="1"/>
+    <rect x="30" y="230" width="590" height="88" rx="6" fill="url(#yetzirah)" stroke="var(--svg-node-stroke-faint)" stroke-width="1"/>
     <text x="70" y="282" class="svg-hebrew" font-size="2.8rem">ו</text>
     <text x="70" y="305" class="svg-label" font-size="0.62rem">Vav · 6</text>
     <text x="340" y="258" class="svg-label" font-size="0.78rem" text-anchor="middle">YETZIRAH — World of Formation</text>
@@ -2507,7 +2474,7 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 <p class="reveal" style="text-align:center; font-style:italic; color:var(--text-secondary);">All structures, all correspondences, unified in a single diagram</p>
 
 <div class="diagram-wrap reveal" style="max-width:760px;">
-  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 760 820" xmlns="http://www.w3.org/2000/svg" data-diagram="cosmological-synthesis">
+  <svg class="svg-diagram svg-diagram-interactive" viewBox="0 0 760 820" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="cosmoCenter" cx="50%" cy="40%" r="55%">
         <stop offset="0%" style="stop-color:#c8a84b;stop-opacity:0.1"/>
@@ -2531,25 +2498,25 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
       </filter>
     </defs>
 
-    <rect class="cosmo-bg" x="0" y="0" width="760" height="820" fill="#060606" rx="8"/>
+    <rect x="0" y="0" width="760" height="820" rx="8" class="svg-themed-bg-alt"/>
     <!-- Background glow -->
     <ellipse cx="380" cy="340" rx="320" ry="300" fill="url(#cosmoCenter)"/>
 
     <!-- ── OUTERMOST RING: YHWH ── -->
-    <circle cx="380" cy="340" r="320" fill="none" stroke="#221c12" stroke-width="0.6" stroke-dasharray="6 10"/>
+    <circle cx="380" cy="340" r="320" fill="none" stroke="var(--svg-grid)" stroke-width="0.6" stroke-dasharray="6 10"/>
     <text x="380" y="26" class="svg-hebrew" font-size="1.1rem" text-anchor="middle" filter="url(#cglowsm)">יהוה</text>
     <text x="380" y="42" class="svg-label" font-size="0.6rem" text-anchor="middle" opacity="0.6">= 26 · The Year 2026</text>
     <text x="380" y="660" class="svg-label" font-size="0.6rem" text-anchor="middle" opacity="0.6">The Ein Sof — The Infinite — ∞</text>
 
     <!-- ── SECOND RING: DTCC / 444 ── -->
-    <circle cx="380" cy="340" r="260" fill="none" stroke="#2a2218" stroke-width="0.8"/>
+    <circle cx="380" cy="340" r="260" fill="none" stroke="var(--svg-grid)" stroke-width="0.8"/>
     <text x="643" y="280" class="svg-label" font-size="0.68rem" text-anchor="start">DTCC = 444</text>
     <text x="643" y="294" class="svg-text-sm" font-size="0.58rem" text-anchor="start">World Made Complete</text>
     <text x="116" y="280" class="svg-label" font-size="0.68rem" text-anchor="end">4 × 111</text>
     <text x="116" y="294" class="svg-text-sm" font-size="0.58rem" text-anchor="end">Earth × God Absolute</text>
 
     <!-- ── THIRD RING: DTC / 424 ── -->
-    <circle cx="380" cy="340" r="200" fill="none" stroke="#352b18" stroke-width="1" filter="url(#cglowsm)"/>
+    <circle cx="380" cy="340" r="200" fill="none" stroke="var(--svg-node-stroke)" stroke-width="1" filter="url(#cglowsm)"/>
     <text x="580" y="335" class="svg-label" font-size="0.72rem" text-anchor="start">DTC = 424</text>
     <text x="580" y="350" class="svg-hebrew" font-size="0.8rem" text-anchor="start">משיח בן דוד</text>
     <text x="180" y="335" class="svg-label" font-size="0.72rem" text-anchor="end">דתכ</text>
@@ -2563,10 +2530,10 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
 
     <!-- ── TABERNACLE ZONES (concentric rects) ── -->
     <!-- Outer court -->
-    <rect x="220" y="200" width="320" height="280" rx="6" fill="none" stroke="#2a2218" stroke-width="1" stroke-dasharray="5 6"/>
+    <rect x="220" y="200" width="320" height="280" rx="6" fill="none" stroke="var(--svg-grid)" stroke-width="1" stroke-dasharray="5 6"/>
     <text x="380" y="192" class="svg-label" font-size="0.62rem" text-anchor="middle" opacity="0.6">Outer Court · Dalet · Eligibility</text>
     <!-- Holy place -->
-    <rect x="255" y="230" width="250" height="220" rx="5" fill="rgba(200,168,75,0.03)" stroke="#352b18" stroke-width="1"/>
+    <rect x="255" y="230" width="250" height="220" rx="5" fill="rgba(200,168,75,0.03)" stroke="var(--svg-node-stroke)" stroke-width="1"/>
     <text x="380" y="223" class="svg-text-sm" font-size="0.58rem" text-anchor="middle" opacity="0.7">Holy Place · Tav · Operational Arrangements</text>
     <!-- Holy of holies -->
     <rect x="295" y="265" width="170" height="150" rx="4" fill="rgba(122,46,46,0.06)" stroke="#5a2020" stroke-width="1.2"/>
@@ -2611,9 +2578,9 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="380" y="534" class="svg-hebrew" font-size="0.6rem" text-anchor="middle">מלכות</text>
 
     <!-- ── CLOCK: 3PM MARKER ── -->
-    <circle cx="380" cy="340" r="35" fill="none" stroke="#352b18" stroke-width="0.6"/>
+    <circle cx="380" cy="340" r="35" fill="none" stroke="var(--svg-node-stroke)" stroke-width="0.6"/>
     <!-- 12 o'clock -->
-    <line x1="380" y1="308" x2="380" y2="315" stroke="#5a4e3a" stroke-width="1.5"/>
+    <line x1="380" y1="308" x2="380" y2="315" stroke="var(--svg-node-stroke-faint)" stroke-width="1.5"/>
     <!-- 3 o'clock = 3pm marker -->
     <line x1="412" y1="340" x2="406" y2="340" stroke="#c8a84b" stroke-width="2"/>
     <circle cx="412" cy="340" r="3" fill="#c8a84b" filter="url(#cglowsm)"/>
@@ -2633,12 +2600,12 @@ body.light-mode svg[data-diagram="cosmological-synthesis"] .cosmo-bg {
     <text x="60" y="600" class="svg-value" font-size="1.3rem" text-anchor="middle">144</text>
     <text x="60" y="618" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">12² · F(12)</text>
     <text x="60" y="632" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">The Elect</text>
-    <line x1="90" y1="612" x2="130" y2="530" stroke="#352b18" stroke-width="0.8" stroke-dasharray="3 5"/>
+    <line x1="90" y1="612" x2="130" y2="530" stroke="var(--svg-node-stroke)" stroke-width="0.8" stroke-dasharray="3 5"/>
 
     <text x="700" y="600" class="svg-value" font-size="1.3rem" text-anchor="middle">441</text>
     <text x="700" y="618" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">21² · אמת</text>
     <text x="700" y="632" class="svg-text-sm" font-size="0.6rem" text-anchor="middle">Truth · Mirror</text>
-    <line x1="670" y1="612" x2="630" y2="530" stroke="#352b18" stroke-width="0.8" stroke-dasharray="3 5"/>
+    <line x1="670" y1="612" x2="630" y2="530" stroke="var(--svg-node-stroke)" stroke-width="0.8" stroke-dasharray="3 5"/>
   </svg>
   <div class="diagram-caption">The complete cosmological map: all rings, correspondences, sefirot, clock, and numerical mirrors unified in a single sacred geometry</div>
 </div>
