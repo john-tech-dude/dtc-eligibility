@@ -927,7 +927,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
     <div class="signature-block">
       <div><span class="hotspot" data-modal="good-aval" tabindex="0" role="button" onclick="openModal('modal-good-aval')">Good as Aval</span>. Without</div>
       <div class="sig-line"></div>
-      <div>Authorized Representative</div>
+      <div><span class="hotspot" data-modal="authorized-representative" tabindex="0" role="button" onclick="openModal('modal-authorized-representative')">Authorized Representative</span></div>
     </div>
     <div class="signature-block">
       <div><span class="hotspot" data-modal="endorsement" tabindex="0" role="button" onclick="openModal('modal-endorsement')">Endorsement</span></div>
@@ -1878,6 +1878,31 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <p>The documentary collection instructions specify how many copies of each document are required. Banks may present copies when originals are not needed or when multiple parties require documentation.</p>
       <div class="tip-box"><strong>Marking:</strong> Duplicates should be clearly marked "COPY" or "DUPLICATE" to avoid confusion with originals. However, ensure such markings don't interfere with required document formatting.</div>
       <div class="citation"><strong>Source:</strong> ICC Uniform Rules for Collections (URC 522); International Trade Documentation Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Authorized Representative -->
+<div class="modal-overlay" id="modal-authorized-representative" role="dialog" aria-modal="true" aria-labelledby="modal-title-authorized-representative">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-authorized-representative">Authorized Representative</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Authority</div>
+        <div class="def-word">Authorized Representative</div>
+        <p>An individual who has been granted legal authority by a company, organization, or principal to act on their behalf in signing documents, making commitments, and conducting transactions.</p>
+      </div>
+      <p class="modal-section-title">Role in Trade Finance</p>
+      <ul>
+        <li><strong>Signature authority:</strong> Can legally bind the company to obligations through their signature.</li>
+        <li><strong>Drawing authority:</strong> Authorized to sign bills of exchange, drafts, and other negotiable instruments.</li>
+        <li><strong>Bank mandates:</strong> Named in bank resolution documents as having authority to operate accounts.</li>
+        <li><strong>Legal representation:</strong> Acts as the company's agent in documentary collections and trade transactions.</li>
+      </ul>
+      <p class="modal-section-title">Requirements for Validity</p>
+      <p>An authorized representative must have proper documentation demonstrating their authority, such as a board resolution, power of attorney, or corporate secretary certificate. Banks typically verify this authority before accepting signed documents.</p>
+      <div class="tip-box"><strong>Bank Verification:</strong> When signing on behalf of a company, ensure your bank has current documentation of your authorization. Outdated or missing authorization documents can cause rejection of transactions.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3; Corporate Law Principles; UNCITRAL Convention on Bills of Exchange.</div>
     </div>
   </div>
 </div>

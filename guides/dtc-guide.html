@@ -612,7 +612,7 @@ NSCC's most important function is <span class="hotspot" data-modal="multilateral
 <h3 class="subsection-title">How NSCC Operates as Central Counterparty</h3>
 
 <p class="body-text">
-When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabindex="0" role="button" onclick="openModal('modal-central-counterparty')">central counterparty (CCP)</span>, it interposes itself between the buyer and seller in every trade it clears. NSCC becomes the buyer to every seller and the seller to every buyer — a process called <strong>novation</strong>. This eliminates bilateral counterparty risk: if one broker fails, NSCC steps in to ensure the trade completes, using its clearing fund and risk management tools to absorb the loss.
+When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabindex="0" role="button" onclick="openModal('modal-central-counterparty')">central counterparty (CCP)</span>, it interposes itself between the buyer and seller in every trade it clears. NSCC becomes the buyer to every seller and the seller to every buyer — a process called <span class="hotspot" data-modal="novation" tabindex="0" role="button" onclick="openModal('modal-novation')">novation</span>. This eliminates bilateral counterparty risk: if one broker fails, NSCC steps in to ensure the trade completes, using its clearing fund and risk management tools to absorb the loss.
 </p>
 
 <div class="diagram-box">
@@ -621,7 +621,7 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both sides report trade details to NSCC for comparison and validation.</div>
   <div class="flow-connector"></div>
-  <div class="flow-step"><span class="step-num">3</span><strong>Continuous Net Settlement (CNS)</strong> — NSCC novates the trade and begins tracking net positions throughout the day.</div>
+  <div class="flow-step"><span class="step-num">3</span><strong><span class="hotspot" data-modal="cns" tabindex="0" role="button" onclick="openModal('modal-cns')">Continuous Net Settlement (CNS)</span></strong> — NSCC novates the trade and begins tracking net positions throughout the day.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">4</span><strong>End-of-Day Netting</strong> — All of each participant's buys and sells are netted into a single obligation per security.</div>
   <div class="flow-connector"></div>
@@ -637,7 +637,7 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
     <th>Markets Covered</th>
   </tr>
   <tr>
-    <td><strong>Continuous Net Settlement (CNS)</strong></td>
+    <td><strong><span class="hotspot" data-modal="cns" tabindex="0" role="button" onclick="openModal('modal-cns')">Continuous Net Settlement (CNS)</span></strong></td>
     <td>Automated netting of trades into single daily settlement obligations per participant</td>
     <td>Equities, corporate bonds, municipal bonds, ADRs, ETFs, UITs</td>
   </tr>
@@ -670,18 +670,18 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
 <h3 class="subsection-title">NSCC Membership & Risk Framework</h3>
 
 <p class="body-text">
-NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post margin based on their trading activity and portfolio risk. NSCC collects margin at least daily and monitors intraday exposure, with the authority to make intraday margin calls when risk thresholds are breached or markets display elevated volatility.
+NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> based on their trading activity and portfolio risk. NSCC collects <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> at least daily and monitors intraday exposure, with the authority to make intraday <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> calls when risk thresholds are breached or markets display elevated volatility.
 </p>
 
 <p class="body-text">
-In the event of a member default, NSCC has a waterfall of resources: the defaulter's margin deposit, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
+In the event of a member default, NSCC has a waterfall of resources: the defaulter's <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin deposit</span>, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
 </p>
 
 <!-- SECTION: FICC -->
 <h2 class="section-title" id="ficc">Fixed Income Clearing Corporation (FICC)</h2>
 
 <p class="lead">
-The <span class="hotspot" data-modal="ficc" tabindex="0" role="button" onclick="openModal('modal-ficc')">Fixed Income Clearing Corporation (FICC)</span> is a DTCC subsidiary that provides central counterparty clearing, settlement, and risk management services for the U.S. government securities and mortgage-backed securities (MBS) markets. Established in 2003 through the merger of the Government Securities Clearing Corporation (GSCC, founded 1986) and the Mortgage-Backed Securities Clearing Corporation (MBSCC, founded 1979), FICC is designated as a <span class="hotspot" data-modal="sifmu" tabindex="0" role="button" onclick="openModal('modal-sifmu')">Systemically Important Financial Market Utility (SIFMU)</span> under Title VIII of the Dodd-Frank Act.
+The <span class="hotspot" data-modal="ficc" tabindex="0" role="button" onclick="openModal('modal-ficc')">Fixed Income Clearing Corporation (FICC)</span> is a DTCC subsidiary that provides central counterparty clearing, settlement, and risk management services for the U.S. government securities and mortgage-backed securities (MBS) markets. Established in 2003 through the merger of the Government Securities Clearing Corporation (GSCC, founded 1986) and the Mortgage-Backed Securities Clearing Corporation (MBSCC, founded 1979), FICC is designated as a <span class="hotspot" data-modal="sifmu" tabindex="0" role="button" onclick="openModal('modal-sifmu')">Systemically Important Financial Market Utility (SIFMU)</span> under Title VIII of the <span class="hotspot" data-modal="doddfrank" tabindex="0" role="button" onclick="openModal('modal-doddfrank')">Dodd-Frank Act</span>.
 </p>
 
 <p class="body-text">
@@ -731,7 +731,7 @@ FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, th
   </tr>
   <tr>
     <td><strong>Repo Services</strong></td>
-    <td>GCF Repo service for general collateral financing; CCIT for tri-party repo</td>
+    <td>GCF <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">Repo</span> service for general collateral financing; CCIT for tri-party <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repo</span></td>
     <td>—</td>
   </tr>
   <tr>
@@ -754,11 +754,11 @@ FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, th
 <h3 class="subsection-title">Risk Management & Margin</h3>
 
 <p class="body-text">
-FICC employs sophisticated risk-based margin systems that mark participant positions to market and collect margin at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday margin calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
+FICC employs sophisticated risk-based <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> systems that mark participant positions to market and collect <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
 </p>
 
 <p class="body-text">
-FICC's margin methodology includes several components: a value-at-risk (VaR) charge based on portfolio volatility, a mark-to-market charge for intraday price changes, a backtesting charge to cover risks not captured by the VaR model, and a supplemental fund deposit for concentrated or illiquid positions. Members may also be subject to additional charges based on their specific risk profiles.
+FICC's margin methodology includes several components: a value-at-risk (<span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span>) charge based on portfolio volatility, a mark-to-market charge for intraday price changes, a backtesting charge to cover risks not captured by the VaR model, and a supplemental fund deposit for concentrated or illiquid positions. Members may also be subject to additional charges based on their specific risk profiles.
 </p>
 
 <div class="warn-box">
@@ -806,14 +806,14 @@ While DTC, NSCC, and FICC are distinct entities with distinct functions, they op
   <tr>
     <td><strong>FICC-GSD</strong></td>
     <td>Government Securities CCP</td>
-    <td>U.S. Treasuries, agency securities, repos</td>
-    <td>VaR-based margin; intraday monitoring; CCLF liquidity facility</td>
+    <td>U.S. Treasuries, agency securities, <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repos</span></td>
+    <td><span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span>-based margin; intraday monitoring; CCLF liquidity facility</td>
   </tr>
   <tr>
     <td><strong>FICC-MBSD</strong></td>
     <td>MBS CCP</td>
     <td>Agency mortgage-backed securities (TBA, specified pools)</td>
-    <td>Real-time trade matching; VaR margin; pool notification</td>
+    <td>Real-time trade matching; <span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span> margin; pool notification</td>
   </tr>
 </table>
 
@@ -927,15 +927,9 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
 
 <div class="diagram-box">
   <div class="diagram-title">Dividend Processing Flow</div>
-  <div class="flow-step">
-    <span class="step-num">1</span>
-    <strong>Issuer declares dividend</strong> — Sets record date and payment date per operational requirements
-  </div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Issuer declares dividend</strong> — Sets <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> and payment date per operational requirements</div>
   <div class="flow-connector"></div>
-  <div class="flow-step">
-    <span class="step-num">2</span>
-    <strong>Record date notification</strong> — Issuer notifies DTC of record date and payment details
-  </div>
+  <div class="flow-step"><span class="step-num">2</span><strong><span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">Record date</span> notification</strong> — Issuer notifies DTC of <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> and payment details</div>
   <div class="flow-connector"></div>
   <div class="flow-step">
     <span class="step-num">3</span>
@@ -1180,10 +1174,10 @@ Investors have alternatives to holding securities in street name through DTC. Th
     <td>Direct from issuer</td>
   </tr>
   <tr>
-    <td><strong>SIPC Protection</strong></td>
+    <td><strong><span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> Protection</strong></td>
     <td>Yes (up to $500,000)</td>
-    <td>No SIPC needed (not held by broker)</td>
-    <td>No SIPC needed</td>
+    <td>No <span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> needed (not held by broker)</td>
+    <td>No <span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> needed</td>
   </tr>
 </table>
 
@@ -2524,6 +2518,307 @@ document.addEventListener('click', (e) => {
       <p class="modal-section-title">In Securities Settlement</p>
       <p>When a securities transaction settles in central bank money, the cash leg is transferred between accounts at the central bank rather than between commercial bank accounts. This is considered the safest form of settlement because it removes the risk that a commercial bank fails between trade and settlement. T2S mandates central bank money settlement for Eurozone securities; DTC settles through the Federal Reserve Bank of New York.</p>
       <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI); ECB.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Dodd-Frank Act -->
+<div class="modal-overlay" id="modal-doddfrank" role="dialog" aria-modal="true" aria-labelledby="modal-title-doddfrank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-doddfrank">Dodd-Frank Wall Street Reform and Consumer Protection Act</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Reform Law</div>
+        <div class="def-word">Dodd-Frank Act</div>
+        <p>A comprehensive financial reform law passed in 2010 in response to the 2008 financial crisis. The Act aimed to reduce systemic risk, prevent future bailouts, and protect consumers from abusive financial practices.</p>
+      </div>
+      <p class="modal-section-title">Title VIII - Financial Market Utilities</p>
+      <p>Title VIII established the framework for identifying and regulating Systemically Important Financial Market Utilities (SIFMUs). It created the Financial Stability Oversight Council (FSOC) to designate SIFMUs and gave the Federal Reserve enhanced oversight authority over these critical infrastructure institutions.</p>
+      <p class="modal-section-title">Key Provisions</p>
+      <ul>
+        <li><strong>FSOC Designation:</strong> Authority to designate financial market utilities as systemically important</li>
+        <li><strong>Enhanced Standards:</strong> Risk management, liquidity, and recovery/resolution planning requirements</li>
+        <li><strong>Fed Oversight:</strong> Federal Reserve supervision of designated SIFMUs</li>
+        <li><strong>Systemic Risk Monitoring:</strong> Continuous assessment of threats to financial stability</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> <a href="https://www.federalreserve.gov/supervisionregulation/topics/dodd-frank-act-wall-street-reform-consumer-protection-act.htm" target="_blank" rel="noopener">Federal Reserve - Dodd-Frank Act</a>; <a href="https://www.govinfo.gov/content/pkg/STATUTE-124/pdf/STATUTE-24-Pg1326.pdf" target="_blank" rel="noopener">Public Law 111-203</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Novation -->
+<div class="modal-overlay" id="modal-novation" role="dialog" aria-modal="true" aria-labelledby="modal-title-novation">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-novation">Novation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Process</div>
+        <div class="def-word">Novation</div>
+        <p>The legal process by which a central counterparty (CCP) substitutes itself for the original counterparty in a trade, becoming the buyer to every seller and the seller to every buyer.</p>
+      </div>
+      <p class="modal-section-title">How Novation Works</p>
+      <p>When two parties agree to a trade, the CCP novates the transaction: the original contract between the two parties is extinguished and replaced with two new contracts — one between the seller and the CCP, and one between the CCP and the buyer. The CCP becomes the legal counterparty to both parties.</p>
+      <p class="modal-section-title">Risk Benefits</p>
+      <p>Novation eliminates bilateral counterparty risk. If one party fails to perform, the CCP steps in to ensure completion using its clearing fund and risk management tools. Participants no longer need to worry about the creditworthiness of their trading counterparts.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI); DTCC Risk Management Disclosures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VaR -->
+<div class="modal-overlay" id="modal-var" role="dialog" aria-modal="true" aria-labelledby="modal-title-var">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-var">Value-at-Risk (VaR)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Metric</div>
+        <div class="def-word">VaR</div>
+        <p>A statistical measure of the potential loss in value of a risky asset or portfolio over a defined period for a given confidence interval. It estimates the maximum loss expected with a certain probability (e.g., 99% confidence over 1 day).</p>
+      </div>
+      <p class="modal-section-title">How VaR is Used in Clearing</p>
+      <p>CCPs like NSCC and FICC use VaR models to calculate how much margin members must post to cover potential losses from market movements. The VaR charge represents the worst-case loss expected under normal market conditions at a specified confidence level.</p>
+      <p class="modal-section-title">VaR Methodology Components</p>
+      <p>FICC's margin system includes VaR based on portfolio volatility, plus additional charges for mark-to-market movements, backtesting for model validation, and supplemental deposits for concentrated positions. This multi-layered approach ensures adequate coverage for various risk scenarios.</p>
+      <div class="citation"><strong>Source:</strong> Basel Committee on Banking Supervision; DTCC Margin Methodology Disclosures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CNS -->
+<div class="modal-overlay" id="modal-cns" role="dialog" aria-modal="true" aria-labelledby="modal-title-cns">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cns">Continuous Net Settlement (CNS)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">NSCC Service</div>
+        <div class="def-word">CNS</div>
+        <p>An automated system that nets securities trades throughout the trading day, reducing multiple settlement obligations between the same counterparties into a single net settlement obligation per security per participant.</p>
+      </div>
+      <p class="modal-section-title">How CNS Reduces Settlement</p>
+      <p>Without netting, each trade would need individual settlement. CNS continuously tracks all buy and sell orders, netting them throughout the day. By the end of trading, what might have been 100 separate settlements between two firms becomes one net settlement, reducing settlement obligations by approximately 98% on average.</p>
+      <p class="modal-section-title">Key Benefits</p>
+      <ul>
+        <li><strong>Dramatic Risk Reduction:</strong> Fewer settlements means fewer opportunities for failure</li>
+        <li><strong>Capital Efficiency:</strong> Less capital tied up in unsettled trades</li>
+        <li><strong>Operational Efficiency:</strong> Automated processing reduces manual intervention</li>
+        <li><strong>Cost Savings:</strong> Reduced fees for settlements and payments</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> NSCC Rule Book; DTCC CNS Fact Sheet.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIPC -->
+<div class="modal-overlay" id="modal-sipc" role="dialog" aria-modal="true" aria-labelledby="modal-title-sipc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sipc">SIPC — Securities Investor Protection Corporation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Investor Protection</div>
+        <div class="def-word">SIPC</div>
+        <p>A nonprofit corporation created by Congress in 1970 to protect investors when a brokerage firm fails. SIPC restores missing securities and cash up to $500,000 per customer (including $250,000 for cash claims).</p>
+      </div>
+      <p class="modal-section-title">When SIPC Protection Applies</p>
+      <p>SIPC steps in when a SIPC-member brokerage firm fails. Customers receive the securities and cash that were in their accounts, even if the firm commingled or misappropriated them. SIPC does not protect against market losses or fraud by the broker itself.</p>
+      <p class="modal-section-title">Coverage Limits</p>
+      <p>The standard protection is $500,000 per customer, including up to $250,000 for cash claims. Most brokerage firms carry additional "excess SIPC" insurance to provide coverage beyond these limits.</p>
+      <p class="modal-section-title">Street Name vs. DRS</p>
+      <p>SIPC protection applies to securities held through brokers (street name) but not to direct registration (DRS) since DRS securities are not held by a SIPC member. This is a key consideration when choosing between street name and direct registration.</p>
+      <div class="citation"><strong>Source:</strong> <a href="https://www.sipc.org" target="_blank" rel="noopener">SIPC.org</a>; Securities Investor Protection Act of 1970.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Margin -->
+<div class="modal-overlay" id="modal-margin" role="dialog" aria-modal="true" aria-labelledby="modal-title-margin">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-margin">Margin</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Management</div>
+        <div class="def-word">Margin</div>
+        <p>Cash or collateral that clearing participants must post to cover potential losses from market movements or member defaults. Margin acts as a financial cushion to ensure the CCP can complete trades even if a participant fails.</p>
+      </div>
+      <p class="modal-section-title">Types of Margin</p>
+      <ul>
+        <li><strong>Initial Margin:</strong> Posted when a position is opened or when risk increases</li>
+        <li><strong>Variation Margin:</strong> Posted daily to reflect mark-to-market gains/losses</li>
+        <li><strong>Intraday Margin:</strong> Additional margin called during trading when risk thresholds are breached</li>
+        <li><strong>Default Fund Contribution:</strong> Base contribution to the shared loss-absorbing fund</li>
+      </ul>
+      <p class="modal-section-title">Margin Calculation</p>
+      <p>CCPs use sophisticated models to calculate margin, including VaR-based charges, stress testing, backtesting, and supplemental charges for concentrated positions. Margin is collected at least daily, and sometimes intraday during volatile market conditions.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI); DTCC Margin Disclosures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Repo -->
+<div class="modal-overlay" id="modal-repo" role="dialog" aria-modal="true" aria-labelledby="modal-title-repo">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-repo">Repurchase Agreement (Repo)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Securities Financing</div>
+        <div class="def-word">Repo</div>
+        <p>A short-term collateralized loan where one party sells securities to another with an agreement to repurchase them at a specified future date at a higher price. The difference represents interest on the loan.</p>
+      </div>
+      <p class="modal-section-title">How Repo Works</p>
+      <p>In a typical repo, Party A sells securities to Party B for cash, promising to buy them back later at a predetermined price. Party B earns interest (the repo rate) while holding the securities as collateral. If Party A defaults, Party B keeps the securities.</p>
+      <p class="modal-section-title">Key Repo Types</p>
+      <ul>
+        <li><strong>Bilateral Repo:</strong> Direct agreement between two parties</li>
+        <li><strong>Tri-Party Repo:</strong> Uses a third-party agent to manage collateral</li>
+        <li><strong>GCF Repo:</strong> Government Securities Financing for broader market access</li>
+        <li><strong>General Collateral Repo:</strong> Accepts various high-quality securities as collateral</li>
+      </ul>
+      <p class="modal-section-title">Role in Financial System</p>
+      <p>Repos are crucial for managing liquidity, enabling institutions to finance securities holdings and obtain short-term funding. The repo market is the largest source of short-term funding in financial markets.</p>
+      <div class="citation"><strong>Source:</strong> Federal Reserve Bank of New York; DTCC FICC GCF Repo Documentation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Record Date -->
+<div class="modal-overlay" id="modal-record-date" role="dialog" aria-modal="true" aria-labelledby="modal-title-record-date">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-record-date">Record Date</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporate Action</div>
+        <div class="def-word">Record Date</div>
+        <p>The date established by an issuer's board of directors to determine which shareholders are entitled to receive dividends, participate in corporate actions, or exercise voting rights.</p>
+      </div>
+      <p class="modal-section-title">How Record Date Works</p>
+      <p>To be entitled to a dividend or other corporate action benefit, you must be the registered shareholder on the record date. In street name systems, DTC determines participant positions as of the close of business on the record date. Participants then determine which of their customers are entitled based on their own record dates.</p>
+      <p class="modal-section-title">Timing Requirements</p>
+      <p>DTC's operational arrangements require issuers to provide advance notice of record dates and detailed information about the upcoming payment or corporate action. This ensures DTC can allocate benefits correctly to participants and ultimately to beneficial owners.</p>
+      <p class="modal-section-title">Related Dates</p>
+      <ul>
+        <li><strong>Declaration Date:</strong> When the board announces the dividend/action</li>
+        <li><strong>Ex-Dividend Date:</strong> Trading day before the record date</li>
+        <li><strong>Payment Date:</strong> When dividends are actually paid</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements; Corporate Finance Institute.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Clearing Fund -->
+<div class="modal-overlay" id="modal-clearing-fund" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-fund">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clearing-fund">Clearing Fund</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Loss Absorption</div>
+        <div class="def-word">Clearing Fund</div>
+        <p>A pool of cash and eligible securities contributed by clearing members to absorb losses from a member default. The clearing fund is a critical layer of protection in the CCP's risk management waterfall.</p>
+      </div>
+      <p class="modal-section-title">How the Clearing Fund Works</p>
+      <p>When a member defaults, the CCP first uses the defaulter's own margin deposit and corporate contribution. If these are insufficient, the CCP accesses the non-defaulting members' clearing fund contributions according to a pre-determined allocation formula (typically by tier based on trading activity).</p>
+      <p class="modal-section-title">FICC Clearing Fund Sizes</p>
+      <p>As of year-end 2025, FICC's clearing funds hold substantial resources: the GSD clearing fund approximately $87 billion, and the MBSD clearing fund approximately $12.4 billion. These funds consist primarily of U.S. Treasuries and agency mortgage-backed securities.</p>
+      <p class="modal-section-title">Risk Sharing</p>
+      <p>The clearing fund represents collective mutualization of default risk. While each member's own contribution protects their own positions, the shared fund provides additional protection against systemic events. Cross-guaranty agreements between DTC, NSCC, FICC, and OCC provide further mutual support.</p>
+      <div class="citation"><strong>Source:</strong> DTCC Annual Risk Management Disclosures; FICC Default Procedures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- T1 -->
+<div class="modal-overlay" id="modal-t1" role="dialog" aria-modal="true" aria-labelledby="modal-title-t1">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-t1">T+1 Settlement Cycle</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Cycle</div>
+        <div class="def-word">T+1</div>
+        <p>The settlement cycle where securities trades must be settled one business day after the trade date. The U.S. moved from T+2 to T+1 in May 2024 to reduce counterparty risk and free up capital.</p>
+      </div>
+      <p class="modal-section-title">How T+1 Works</p>
+      <p>Under T+1, a trade executed on Monday must settle on Tuesday. This compressed timeline requires faster processing, better coordination between clearing and settlement systems, and more efficient margin calculations. The move was enabled by improvements in technology and straight-through processing.</p>
+      <p class="modal-section-title">Benefits of T+1</p>
+      <ul>
+        <li><strong>Reduced Counterparty Risk:</strong> Faster settlement means less time for default risk</li>
+        <li><strong>Capital Efficiency:</strong> Less capital tied up in unsettled trades</li>
+        <li><strong>Lower Margin Requirements:</strong> Shorter exposure period reduces margin needed</li>
+        <li><strong>Systemic Stability:</strong> Reduced liquidity strain during market stress</li>
+      </ul>
+      <p class="modal-section-title">Historical Context</p>
+      <p>The U.S. progressively shortened settlement cycles: T+5 (1970s), T+3 (1993), T+2 (2017), and now T+1 (2024). Each reduction brought efficiency gains and risk improvements, requiring corresponding enhancements to clearing and settlement infrastructure.</p>
+      <div class="citation"><strong>Source:</strong> SEC Rule 15c6-1; DTCC T+1 Implementation Guide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ATOP -->
+<div class="modal-overlay" id="modal-atop" role="dialog" aria-modal="true" aria-labelledby="modal-title-atop">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-atop">ATOP — Automated Tender Offer Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Program</div>
+        <div class="def-word">ATOP</div>
+        <p>A DTC system that processes voluntary tender offers and exchange offers with automated participant acceptance and surrender procedures. ATOP streamlines the processing of corporate actions where shareholders can choose to tender their securities.</p>
+      </div>
+      <p class="modal-section-title">How ATOP Works</p>
+      <p>When an issuer announces a tender offer, DTC sets up the offer in ATOP. Participants can elect to tender securities on behalf of their customers or choose not to participate. The system automates the surrender process for tendered securities and the allocation of the payment (cash, securities, or combination) to participants.</p>
+      <p class="modal-section-title">Key Features</p>
+      <ul>
+        <li><strong>Automated Processing:</strong> Reduces manual handling and errors</li>
+        <li><strong>Participant Election:</strong> Brokers can make election decisions on behalf of customers</li>
+        <li><strong>Guaranteed Settlement:</strong> DTC guarantees settlement of tendered securities</li>
+        <li><strong>Flexibility:</strong> Handles various offer structures and payment methods</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Corporate Action Services Guide; ATOP Processing Manual.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ASOP -->
+<div class="modal-overlay" id="modal-asop" role="dialog" aria-modal="true" aria-labelledby="modal-title-asop">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-asop">ASOP — Automated Subscription Offer Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Program</div>
+        <div class="def-word">ASOP</div>
+        <p>A DTC system that handles rights offerings and subscription offers with automated rights surrender and processing. ASOP facilitates corporate actions where shareholders can purchase additional shares at a specified price.</p>
+      </div>
+      <p class="modal-section-title">How ASOP Works</p>
+      <p>When a company conducts a rights offering, existing shareholders receive rights to purchase additional shares. ASOP allows participants to process these rights through the depository system, automating the subscription, payment, and new share allocation processes.</p>
+      <p class="modal-section-title">Processing Features</p>
+      <ul>
+        <li><strong>Rights Exercise:</strong> Automated processing of exercised rights</li>
+        <li><strong>Rights Trading:</strong> Trading of rights through the depository system</li>
+        <li><strong>Over-Subscription:</strong> Handling excess subscription demand</li>
+        <li><strong>Fractional Handling:</strong> Processing of fractional share entitlements</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Corporate Action Services Guide; ASOP Processing Manual.</div>
+    </div>
+  </div>
+</div>
+
+<!-- IVORS -->
+<div class="modal-overlay" id="modal-ivors" role="dialog" aria-modal="true" aria-labelledby="modal-title-ivors">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ivors">IVORS — Investor Voluntary Redemptions and Sales</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Program</div>
+        <div class="def-word">IVORS</div>
+        <p>A DTC system that processes voluntary redemptions for Unit Investment Trusts (UITs). IVORS allows investors to redeem their UIT shares through the depository system without requiring physical certificate presentation.</p>
+      </div>
+      <p class="modal-section-title">How IVORS Works</p>
+      <p>UIT investors can request redemptions through their brokers. IVORS processes these redemption requests, ensuring that the underlying securities are properly liquidated and that investors receive their proportional share of the proceeds. The system handles the accounting and settlement of redemption transactions.</p>
+      <p class="modal-section-title">Key Benefits</p>
+      <ul>
+        <li><strong>Automated Processing:</strong> Streamlines redemption workflow</li>
+        <li><strong>PWP Processing:</strong> Enables payment without presentation</li>
+        <li><strong>Participant Convenience:</strong> Brokers can process redemptions efficiently</li>
+        <li><strong>Accuracy:</strong> Ensures correct calculation of redemption proceeds</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Corporate Action Services Guide; UIT Industry Standards.</div>
     </div>
   </div>
 </div>
