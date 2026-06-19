@@ -76,6 +76,39 @@
         /* ─── RESET ───────────────────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
+        
+        /* Accessibility Focus States */
+        button:focus-visible,
+        a:focus-visible,
+        [tabindex="0"]:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        button:focus:not(:focus-visible),
+        a:focus:not(:focus-visible),
+        [tabindex="0"]:focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        /* Skip to content link */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            z-index: 100;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+        
+        .skip-to-content:focus {
+            top: 0;
+        }
+        
         body {
             background: var(--bg);
             color: var(--text);
@@ -980,9 +1013,10 @@
             margin-top: 0.3rem;
         }
     </style>
-<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/98MSuki7DW1lQASRA-9kSWC94FDW9SzDaIC4abWEDOiYH3QIpolL5BIzuqwQsUswj1k3F3XMWlxWKJ8KrtCNRYIC5ehZU0anfmv6cC2-cdaYeZB26_-aIRxjxV_BJW_PlfW7ZPX2vO99LzuHF-ChAiHjw5zQYQuqQ52fixtvz8_uKikWmChZye8-92l8z7j48WWrX5czag_nhrJI6cBs2TVZGd6nyUXSddhGdFp7MfJw8sctPfRanopgfoa07gs_64Js6H-VJ6XY6KfQHbhvWSp2uONlxWwZPGOprT05OzYg6QJYSMdnogHf6QjnSn9vUUOookCwd_ZLXqjzaTV83x8Y4iJbdZAiPTahXV33yEzmJzCFvihqOdV6ZOG5VfOGAJKMNyyxlXl5ixH3u_YemfE2gA7yfeKxuqza3GNuYn9xH8qScX2rbSYDAYG4ENZE-NPGaYHrEjo6J9D6EKtq9qEBL_5S8WAEaBvwQlUp4MuYTsaJLAxIAVIoes7Rl_VDmyFpzkYbwBQx5XnI3-cA4WLirMD5vxdDDSbErYqsrgU4ehsXLIVy6m3638mEeXIyeBtQIyUBVnZpeSsZfEGeH0fGB3BAh3824re_1DYxW7CvKRV8g0dmjDuDZtu8pgLVSdLh7iI990YpWpsJsts_ghNfKja81E-0nJpqaf8I4BbQ3H02LtLo9bYKN5vaX5eKQr-4hC3lbSI7akZ-_NVS1qVSEuiJ7907cLhNJEJyHZ18M6fzGJMU9QkTRRdtuBSYOkVzcWH_4QOIX3tGMX-5mjgf824DJ4bNAeTKafaCLpzyfizQOxcIFbHxfbFzo30Xz6Iodq_oPuOND6GlIzKDeZAVOY6ho1zi-gaolXm0nikuWAYtiaoDlB8Mk_UKJUNVHnxurcFU-TqbqgyZA4n6hJCYzMnozJIpX8lVDzTCw48J79P3tPoZnq9BPS18ScOh4sex2dtGUrutLxYfEOQ6O_n1qZU8bsluN_Ehbh_3giHjU2CVUe98gdywsGR2ebyQEtBAUW1xC0ovvhXDH75mAdzvz9540drEBiqvrzMMmBgr3yIkP480T4YTkzaKltLDgpoZiZV6'></script><base target="_blank">
+<base target="_blank">
 </head>
 <body>
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ─── TOC TOGGLE (Upper Left) ─────────────────────────────────── -->
 <button class="toc-toggle" id="tocToggle" aria-label="Toggle contents">☰</button>
@@ -1076,15 +1110,15 @@
             <p>The question is not whether a reading is "imposed" — all readings are, to some degree — but whether the structural correspondences are genuine, reproducible, and illuminating. This study argues that they are, for a specific reason: the institutional forms under analysis — custodial obligation, mediation, covenant, and redemption — belong to a family of structures that recur across cultures and periods because they solve a persistent human problem: how do creatures who live in time bind themselves reliably to one another across the gap of finitude?</p>
 
             <h3 id="lurianic">II. The Lurianic Warrant: Tzimtzum</h3>
-            <p>The theological principle organizing this reading is <em>Tzimtzum</em> (<span class="inline-hebrew">צִמְצוּם</span>, "divine contraction"), the signature doctrine of Lurianic Kabbalah. Developed by Isaac Luria of Safed (1534–1572) and transmitted through the writings of his disciple Hayyim Vital (1542–1620), the doctrine holds that the <em>Ein Sof</em> (the Infinite) contracted into itself to create a void — the <em>ḥalal</em> or <em>tehiru</em> — within which a finite creation could emerge without being annihilated by the divine plenitude.<sup><a href="#fn3">3</a></sup></p>
+            <p>The theological principle organizing this reading is <em>Tzimtzum</em> (<span class="inline-hebrew">צִמְצוּם</span>, "divine contraction"), the signature doctrine of Lurianic Kabbalah. Developed by Isaac Luria of Safed (1534–1572) and transmitted through the writings of his disciple Hayyim Vital (1542–1620), the doctrine holds that the <em>Ein Sof</em> (the Infinite) contracted into itself to create a void — the <em>ḥalal</em> or <em>tehiru</em> — within which a finite creation could emerge without being annihilated by the divine plenitude.<sup><a href="#fn2">2</a></sup></p>
             <p>The practical consequence for hermeneutics is this: within the space of tzimtzum, finite agents act with genuine autonomy; yet their action occurs within what Luria calls the <em>reshimu</em> — the "impression" or residual trace of the divine structure that remains in the void after the contraction. This explains the most counterintuitive feature of the present reading: the designers of the DTC Operational Arrangements acted with full secular intent. Their ignorance of the sacred structure is not evidence against the reading — in the Lurianic framework, it is the <em>necessary condition</em> for the reading.</p>
 
             <h3 id="gematria">III. On Gematria</h3>
-            <p>Gematria — the numerical interpretation of Hebrew letters and words — is attested from the Second Temple period and functions as a recognized mode of rabbinic hermeneutics. The earliest systematic account of letter-values appears in <em>Sefer Yetzirah</em> ("Book of Formation"), dated variously from the second to the sixth century CE, which assigns each Hebrew letter numerical, phonetic, and cosmological properties.<sup><a href="#fn5">5</a></sup></p>
+            <p>Gematria — the numerical interpretation of Hebrew letters and words — is attested from the Second Temple period and functions as a recognized mode of rabbinic hermeneutics. The earliest systematic account of letter-values appears in <em>Sefer Yetzirah</em> ("Book of Formation"), dated variously from the second to the sixth century CE, which assigns each Hebrew letter numerical, phonetic, and cosmological properties.<sup><a href="#fn3">3</a></sup></p>
             <p>This study uses <em>mispar hechrechi</em> (standard or absolute gematria) exclusively, in which each letter carries a fixed value independent of its position in a word: <span class="inline-hebrew">א</span>=1, <span class="inline-hebrew">ב</span>=2, <span class="inline-hebrew">ג</span>=3, and so forth through <span class="inline-hebrew">ת</span>=400. Standard final-form values are used throughout; exceptions are explicitly flagged.</p>
 
             <h3 id="typology">IV. On Typology</h3>
-            <p>Biblical typology — the interpretive practice of reading later persons, institutions, and events as structural correspondences to earlier biblical <em>typoi</em> — has a scholarly literature independent of theological advocacy.<sup><a href="#fn9">9</a></sup> Leonhard Goppelt's foundational study distinguishes typology from allegory: allegory reads <em>ideational</em> correspondences between texts; typology reads <em>structural-historical</em> correspondences between persons, institutions, and events.<sup><a href="#fn10">10</a></sup></p>
+            <p>Biblical typology — the interpretive practice of reading later persons, institutions, and events as structural correspondences to earlier biblical <em>typoi</em> — has a scholarly literature independent of theological advocacy.<sup><a href="#fn4">4</a></sup> Leonhard Goppelt's foundational study distinguishes typology from allegory: allegory reads <em>ideational</em> correspondences between texts; typology reads <em>structural-historical</em> correspondences between persons, institutions, and events.<sup><a href="#fn5">5</a></sup></p>
             <p>The present study employs typology in a weaker form than theological fulfillment typology: DTC operational structures <em>recapitulate</em> biblical patterns without the claim of eschatological fulfillment. The recapitulation is structural. The claim is that custodial covenant institutions, when they instantiate the same structural relations (sovereign, mediator, beneficiary, written stipulations, witnesses, sanctions), will inevitably bear formal resemblance to the biblical covenant tradition because that tradition describes the structural logic of binding obligation with unusual completeness.</p>
         </section>
 
@@ -1110,14 +1144,14 @@
             </div>
 
             <h4 id="dalet">D — Dalet (ד), Value 4</h4>
-            <p>The letter Dalet derives from the Proto-Semitic <em>dalt</em>, "door," and is cognate with Hebrew <em>delet</em> (<span class="inline-hebrew">דֶּלֶת</span>).<sup><a href="#fn12">12</a></sup> Its standard pictographic origin is a door or tent-flap. The <em>Sefer Yetzirah</em> assigns Dalet to the quality of entry and threshold (2:3).<sup><a href="#fn13">13</a></sup> Munk: "The door is the boundary between outside and inside, between profane and sacred, between the world and the dwelling."<sup><a href="#fn14">14</a></sup> In the DTC system, Dalet corresponds precisely to the Eligibility Questionnaire — the formal request for entry, the examination of a security at the threshold of the depository before it may pass within.</p>
+            <p>The letter Dalet derives from the Proto-Semitic <em>dalt</em>, "door," and is cognate with Hebrew <em>delet</em> (<span class="inline-hebrew">דֶּלֶת</span>).<sup><a href="#fn6">6</a></sup> Its standard pictographic origin is a door or tent-flap. The <em>Sefer Yetzirah</em> assigns Dalet to the quality of entry and threshold (2:3).<sup><a href="#fn7">7</a></sup> Munk: "The door is the boundary between outside and inside, between profane and sacred, between the world and the dwelling."<sup><a href="#fn8">8</a></sup> In the DTC system, Dalet corresponds precisely to the Eligibility Questionnaire — the formal request for entry, the examination of a security at the threshold of the depository before it may pass within.</p>
 
             <h4 id="tav">T — Tav (ת), Value 400</h4>
-            <p>Tav is the twenty-second and final letter of the Hebrew alphabet. Its ancient Paleo-Hebrew form was written as a cross (× or +) — a mark or signature.<sup><a href="#fn15">15</a></sup> The word <em>tav</em> (<span class="inline-hebrew">תָּו</span>) appears as a noun meaning "mark" in Ezekiel 9:4.</p>
+            <p>Tav is the twenty-second and final letter of the Hebrew alphabet. Its ancient Paleo-Hebrew form was written as a cross (× or +) — a mark or signature.<sup><a href="#fn9">9</a></sup> The word <em>tav</em> (<span class="inline-hebrew">תָּו</span>) appears as a noun meaning "mark" in Ezekiel 9:4.</p>
             <p>In the DTC system, Tav is the CUSIP number — the unique alphanumeric identifier assigned to each security at the threshold of eligibility. The CUSIP functions as a seal: it marks the security as known, trackable, and subject to the system's jurisdiction. A security without a CUSIP is invisible to the system; a security with a CUSIP bears the system's mark, its <em>tav</em>, and can move through the system's spaces.</p>
 
             <h4 id="kaf">C — Kaf (כ), Value 20</h4>
-            <p>The letter Kaf means "palm of the hand" — the hollow of the hand in the act of holding, covering, or receiving.<sup><a href="#fn17">17</a></sup> Its related form <em>kaf</em> (<span class="inline-hebrew">כַּף</span>) appears in Psalm 17:8: "Hide me in the shadow of Your wings" — here used for the "hollow" of the divine wing, the sheltering interior. The spatial connotation is custody, protection, the holding of something valuable within the palm.</p>
+            <p>The letter Kaf means "palm of the hand" — the hollow of the hand in the act of holding, covering, or receiving.<sup><a href="#fn10">10</a></sup> Its related form <em>kaf</em> (<span class="inline-hebrew">כַּף</span>) appears in Psalm 17:8: "Hide me in the shadow of Your wings" — here used for the "hollow" of the divine wing, the sheltering interior. The spatial connotation is custody, protection, the holding of something valuable within the palm.</p>
             <p>In the DTC system, Kaf is the depository function proper — the custody in which all eligible securities rest. Cede &amp; Co., the nominee entity through which DTC holds all registered securities, is the institutional Kaf: the palm in which trillions of dollars of securities are held. Just as the Kaf holds the object without owning it, Cede &amp; Co. holds all registered securities as nominee without being the beneficial owner of any.</p>
 
             <h3 id="dtc-sum">The Full Sum: DTC = 424</h3>
@@ -1148,7 +1182,7 @@
                 </div>
             </div>
 
-            <p>The gematria 424 is the standard value of <strong><span class="inline-hebrew">משיח בן דוד</span></strong> (<em>Mashiaḥ ben David</em>, "Messiah Son of David"). The <em>Ba'al HaTurim</em> (Rabbi Jacob ben Asher, 1269–1343) uses this equivalence as a standard gematria reference.<sup><a href="#fn19">19</a></sup></p>
+            <p>The gematria 424 is the standard value of <strong><span class="inline-hebrew">משיח בן דוד</span></strong> (<em>Mashiaḥ ben David</em>, "Messiah Son of David"). The <em>Ba'al HaTurim</em> (Rabbi Jacob ben Asher, 1269–1343) uses this equivalence as a standard gematria reference.<sup><a href="#fn11">11</a></sup></p>
 
             <div class="identity-card">
                 <div class="id-row">
@@ -1169,7 +1203,7 @@
 
             <h3>DTCC = 444</h3>
             <p>The parent company DTCC (Depository Trust and Clearing Corporation) renders as <span class="inline-hebrew">דתככ</span> = 4 + 400 + 20 + 20 = <span class="gematria-value">444</span>.</p>
-            <p>444 = 4 × 111. The factor 111 is the triplicate of Aleph (<span class="inline-hebrew">א</span>=1) — which in standard gematria, read as the full spelling of the letter (Aleph = <span class="inline-hebrew">א+ל+פ</span> = 1+30+80 = 111), represents divine absolute unity.<sup><a href="#fn21">21</a></sup> 444 = World × Divine Absolute Unity: creation rendered completely whole by its divine coefficient.</p>
+            <p>444 = 4 × 111. The factor 111 is the triplicate of Aleph (<span class="inline-hebrew">א</span>=1) — which in standard gematria, read as the full spelling of the letter (Aleph = <span class="inline-hebrew">א+ל+פ</span> = 1+30+80 = 111), represents divine absolute unity.<sup><a href="#fn12">12</a></sup> 444 = World × Divine Absolute Unity: creation rendered completely whole by its divine coefficient.</p>
         </section>
 
         <!-- PART II ─────────────────────────────────────────────────── -->
@@ -1580,7 +1614,7 @@
 
             <div class="callout">
                 <div class="callout-label">Mirror Structure</div>
-                The digits of 144 reversed give 441. The gematria of <em>emet</em> (truth) is <span class="inline-hebrew">א(1) + מ(40) + ת(400)</span> = <span class="gematria-value">441</span>. <em>Emet</em> is called the "seal of God" in <em>b. Shabbat</em> 55a.<sup><a href="#fn25">25</a></sup> 144 and 441 are mirror images — government (12²) reflects truth (<em>emet</em>), and truth reflects government.
+                The digits of 144 reversed give 441. The gematria of <em>emet</em> (truth) is <span class="inline-hebrew">א(1) + מ(40) + ת(400)</span> = <span class="gematria-value">441</span>. <em>Emet</em> is called the "seal of God" in <em>b. Shabbat</em> 55a.<sup><a href="#fn14">14</a></sup> 144 and 441 are mirror images — government (12²) reflects truth (<em>emet</em>), and truth reflects government.
             </div>
 
             <div class="mirror-display">
@@ -1690,10 +1724,10 @@
             <p>144 = 12². And 12 is the number of the <strong>months</strong>, the <strong>hours of the clock</strong>, the <strong>signs of the zodiac</strong> (in ancient thought). The 12×12 square is therefore a <strong>calendar</strong> — a temporal matrix. Every cell is a month, an hour, a season. The 144 holds <strong>all time</strong> within its boundaries.</p>
 
             <h4>VIII. The Fibonacci Connection: The Only Square Fibonacci Number</h4>
-            <p><strong>As F(12), the twelfth Fibonacci number:</strong> 144 is the only non-trivial perfect square in the infinite Fibonacci sequence.<sup><a href="#fn22">22</a></sup> The Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...) mirrors the <strong>golden ratio (φ)</strong>, the divine proportion found throughout nature, art, and architecture. That 144 is the <strong>12th Fibonacci number</strong> and also 12² is a <strong>unique convergence</strong> — the natural growth pattern (Fibonacci) meets the governmental perfection (12²).</p>
+            <p><strong>As F(12), the twelfth Fibonacci number:</strong> 144 is the only non-trivial perfect square in the infinite Fibonacci sequence.<sup><a href="#fn13">13</a></sup> The Fibonacci sequence (1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...) mirrors the <strong>golden ratio (φ)</strong>, the divine proportion found throughout nature, art, and architecture. That 144 is the <strong>12th Fibonacci number</strong> and also 12² is a <strong>unique convergence</strong> — the natural growth pattern (Fibonacci) meets the governmental perfection (12²).</p>
             <p>This means the 144 is not merely a biblical number; it is a <strong>cosmic number</strong>. It appears in the spiral of galaxies, the arrangement of sunflower seeds, the proportions of the human body. The covenantal square is <strong>written into the fabric of creation itself</strong>.</p>
 
-            <p><strong>As 12 × 12:</strong> The square of twelve represents the double completion of governmental fullness (12 tribes of Israel × 12 apostles = 144,000 sealed in Revelation 7:4; 14:1–3). This is the standard typological reading in New Testament scholarship: the 144,000 represents the totality of the covenant people.<sup><a href="#fn24">24</a></sup></p>
+            <p><strong>As 12 × 12:</strong> The square of twelve represents the double completion of governmental fullness (12 tribes of Israel × 12 apostles = 144,000 sealed in Revelation 7:4; 14:1–3). This is the standard typological reading in New Testament scholarship: the 144,000 represents the totality of the covenant people.<sup><a href="#fn14">14</a></sup></p>
 
             <div class="number-revelation">
                 <div class="rev-box">
@@ -1729,11 +1763,11 @@
             </div>
 
             <h3 id="number-500">The Number 500 — The Jubilee Threshold</h3>
-            <p>The DTC requires multiple certificates when an issue exceeds 500 million units (Section I.B.1.c.i). 500 = 50 × 10 — a Jubilee of the Law. The Jubilee (<em>yovel</em>) occurs every fiftieth year and is characterized by the release of obligations, the return of ancestral property, and the liberation of debt-bondsmen (Leviticus 25:8–17).<sup><a href="#fn26">26</a></sup></p>
+            <p>The DTC requires multiple certificates when an issue exceeds 500 million units (Section I.B.1.c.i). 500 = 50 × 10 — a Jubilee of the Law. The Jubilee (<em>yovel</em>) occurs every fiftieth year and is characterized by the release of obligations, the return of ancestral property, and the liberation of debt-bondsmen (Leviticus 25:8–17).<sup><a href="#fn16">16</a></sup></p>
 
             <h3 id="ninth-hour">The Number 15 and 3:00 p.m. ET — The Ninth Hour</h3>
             <p>The recurring deadline of 3:00 p.m. Eastern Time governs the DTC's income payment distribution system (Section III.C.1). In the Roman timekeeping system employed in the first-century Mediterranean world, the day began at the sixth hour of daylight. Three o'clock in the afternoon was therefore the <em>hora nona</em> — the ninth hour.</p>
-            <p>The convergence of the ninth hour with the moment of death and release in the Passion narratives is attested across the Synoptic Gospels: Mark 15:34, 37 reports that at the ninth hour, Jesus cried out and died. The ninth hour appears earlier in Acts 3:1 as a regular hour of Jewish prayer, corresponding to the afternoon <em>Tamid</em> sacrifice — the daily sacrifice offered "between the evenings" (Exodus 29:39–41).<sup><a href="#fn27">27</a></sup></p>
+            <p>The convergence of the ninth hour with the moment of death and release in the Passion narratives is attested across the Synoptic Gospels: Mark 15:34, 37 reports that at the ninth hour, Jesus cried out and died. The ninth hour appears earlier in Acts 3:1 as a regular hour of Jewish prayer, corresponding to the afternoon <em>Tamid</em> sacrifice — the daily sacrifice offered "between the evenings" (Exodus 29:39–41).<sup><a href="#fn17">17</a></sup></p>
             <p>The DTC's 3:00 p.m. deadline enacts daily the same logic as the ninth-hour sacrifice: funds must be <em>surrendered</em> by 3:00 p.m. in order to be <em>distributed</em> same-day. The surrender precedes the distribution; the giving-over enables the reception. The numerical relationship: 6 (Vav, the connector) + 9 (the ninth hour) = <span class="gematria-value">15</span> — the gematria of <span class="inline-hebrew">יה</span> (<em>Yah</em>), the abbreviated divine name.</p>
         </section>
 
@@ -1762,7 +1796,7 @@
             </div>
 
             <h3 id="shekinah">The Shekinah and the Book-Entry-Only System</h3>
-            <p>The <em>Shekinah</em> (from the root <em>shakan</em>, "to dwell") is the divine <em>presence</em> in the Tabernacle — real, powerful, and effective, but invisible to the naked eye.<sup><a href="#fn29">29</a></sup> It does not appear; it <em>dwells</em>. The Book-Entry-Only (BEO) system is the DTC's analogue: the beneficial owner's securities are real, legally cognizable, and economically powerful, but they have no physical form. They exist as electronic records. The BEO system is the secular Shekinah: present without presence, real without material instantiation.</p>
+            <p>The <em>Shekinah</em> (from the root <em>shakan</em>, "to dwell") is the divine <em>presence</em> in the Tabernacle — real, powerful, and effective, but invisible to the naked eye.<sup><a href="#fn18">18</a></sup> It does not appear; it <em>dwells</em>. The Book-Entry-Only (BEO) system is the DTC's analogue: the beneficial owner's securities are real, legally cognizable, and economically powerful, but they have no physical form. They exist as electronic records. The BEO system is the secular Shekinah: present without presence, real without material instantiation.</p>
             <p>The faithful Israelite knew YHWH was in the Tabernacle not because they could see the divine presence but because the institutional structure guaranteed it; the beneficial owner knows their securities exist not because they hold certificates but because the book-entry system guarantees it.</p>
         </section>
 
@@ -1780,7 +1814,7 @@
                 <strong>2026 = 2000 + 26 = [double millennium] + [gematria of the Tetragrammaton]</strong><br><br>
                 The year is a composite: a millennial coefficient multiplied by two (echoing the double Heh in the Tetragrammaton) plus the Name itself. The Operational Arrangements dated 2026 carry this signature: they are "The Law Held in the Palm" bearing the numerical seal of the divine Name.
             </blockquote>
-            <p>This is not a prophecy but a structural observation: the document-year bears an unusual formal relationship to the name YHWH through standard gematria.<sup><a href="#fn30">30</a></sup></p>
+            <p>This is not a prophecy but a structural observation: the document-year bears an unusual formal relationship to the name YHWH through standard gematria.<sup><a href="#fn19">19</a></sup></p>
         </section>
 
         <!-- PART V ─────────────────────────────────────────────────── -->
@@ -1791,7 +1825,7 @@
             </div>
 
             <h3>The Ten Sefirot</h3>
-            <p>The Kabbalistic <em>Etz Chaim</em> ("Tree of Life") is the primary structural schema of post-Zoharic Kabbalah, systematized in the Lurianic school and presented comprehensively in the <em>Etz Chaim</em> of Hayyim Vital (Zolkiev, 1772).<sup><a href="#fn31">31</a></sup> It organizes divine emanation into ten <em>sefirot</em> arranged in three columns (Right: Mercy; Left: Judgment; Center: Balance) through which the infinite <em>Ein Sof</em> expresses itself in finite creation.</p>
+            <p>The Kabbalistic <em>Etz Chaim</em> ("Tree of Life") is the primary structural schema of post-Zoharic Kabbalah, systematized in the Lurianic school and presented comprehensively in the <em>Etz Chaim</em> of Hayyim Vital (Zolkiev, 1772).<sup><a href="#fn20">20</a></sup> It organizes divine emanation into ten <em>sefirot</em> arranged in three columns (Right: Mercy; Left: Judgment; Center: Balance) through which the infinite <em>Ein Sof</em> expresses itself in finite creation.</p>
 
             <div class="sefira-grid">
                 <div class="sefira-card"><div class="sefira-num">1</div><div class="sefira-body"><div class="sefira-name">Keter — Crown</div><div class="sefira-dtc">The One Certificate — indivisible sovereign instrument</div></div></div>
@@ -1813,7 +1847,7 @@
                 </div>
             </div>
 
-            <p style="margin-top:1.5rem;">In Kabbalistic anthropology, the ideal human being integrates all three pillars — neither pure mercy (which would be indiscriminate and destructive) nor pure judgment (which would be annihilating) but the balance of <em>Tiferet</em>.<sup><a href="#fn33">33</a></sup> The Participant is the institutional expression of this ideal: extending credit (<em>Chesed</em>) to issuers and investors while maintaining compliance (<em>Gevurah</em>), to achieve the beauty (<em>Tiferet</em>) of settled, functioning markets.</p>
+            <p style="margin-top:1.5rem;">In Kabbalistic anthropology, the ideal human being integrates all three pillars — neither pure mercy (which would be indiscriminate and destructive) nor pure judgment (which would be annihilating) but the balance of <em>Tiferet</em>.<sup><a href="#fn21">21</a></sup> The Participant is the institutional expression of this ideal: extending credit (<em>Chesed</em>) to issuers and investors while maintaining compliance (<em>Gevurah</em>), to achieve the beauty (<em>Tiferet</em>) of settled, functioning markets.</p>
         </section>
 
         <!-- PART VI ─────────────────────────────────────────────────── -->
@@ -1824,7 +1858,7 @@
             </div>
 
             <h3>The Chiastic Form in Biblical Hebrew</h3>
-            <p>Chiasmus — the literary structure A-B-C-B′-A′, in which the second half of a composition mirrors the first half, with the center (C) bearing the greatest theological weight — is a defining feature of biblical Hebrew composition. Nils Lund's pioneering study identified chiasmus as a governing principle of New Testament organization;<sup><a href="#fn34">34</a></sup> Mary Douglas's work on ring composition showed that the entire book of Leviticus is organized as an elaborate chiasm with the holiness code at its center.<sup><a href="#fn36">36</a></sup></p>
+            <p>Chiasmus — the literary structure A-B-C-B′-A′, in which the second half of a composition mirrors the first half, with the center (C) bearing the greatest theological weight — is a defining feature of biblical Hebrew composition. Nils Lund's pioneering study identified chiasmus as a governing principle of New Testament organization;<sup><a href="#fn22">22</a></sup> Mary Douglas's work on ring composition showed that the entire book of Leviticus is organized as an elaborate chiasm with the holiness code at its center.<sup><a href="#fn23">23</a></sup></p>
 
             <h3>The Chiasm of the DTC Process</h3>
 
@@ -1844,7 +1878,7 @@
                 <div class="c-row"><span class="c-letter">A′</span><span class="c-text">Final documents filed</span><span class="c-note">the door closes</span></div>
             </div>
 
-            <p>In biblical chiasm, the center is not the chronological middle — it is the <em>theological fulcrum</em>, the point of maximum significance around which the entire structure pivots.<sup><a href="#fn37">37</a></sup> In the DTC chiasm, the Closing is this fulcrum: the irreversible transfer, the moment that divides the entire liturgical calendar of the security's life into preparation and aftermath.</p>
+            <p>In biblical chiasm, the center is not the chronological middle — it is the <em>theological fulcrum</em>, the point of maximum significance around which the entire structure pivots.<sup><a href="#fn24">24</a></sup> In the DTC chiasm, the Closing is this fulcrum: the irreversible transfer, the moment that divides the entire liturgical calendar of the security's life into preparation and aftermath.</p>
         </section>
 
         <!-- PART VII ─────────────────────────────────────────────────── -->
@@ -1855,7 +1889,7 @@
             </div>
 
             <h3>The Ancient Near Eastern Suzerain Treaty</h3>
-            <p>The identification of the Mosaic covenant as structurally isomorphic to the Hittite suzerain treaty of the Late Bronze Age (c. 1400–1200 BCE) is one of the best-attested findings of modern biblical scholarship. George Mendenhall's 1954 essay established the parallel;<sup><a href="#fn39">39</a></sup> Klaus Baltzer systematized it in his study of the "covenant formulary";<sup><a href="#fn40">40</a></sup> Dennis McCarthy provided the definitive comparative analysis.<sup><a href="#fn42">42</a></sup></p>
+            <p>The identification of the Mosaic covenant as structurally isomorphic to the Hittite suzerain treaty of the Late Bronze Age (c. 1400–1200 BCE) is one of the best-attested findings of modern biblical scholarship. George Mendenhall's 1954 essay established the parallel;<sup><a href="#fn25">25</a></sup> Klaus Baltzer systematized it in his study of the "covenant formulary";<sup><a href="#fn26">26</a></sup> Dennis McCarthy provided the definitive comparative analysis.<sup><a href="#fn27">27</a></sup></p>
 
             <p>The six-part formula identified in Hittite vassal treaties — (1) preamble, (2) historical prologue, (3) stipulations, (4) document clause, (5) witness list, (6) blessings and curses — corresponds with remarkable precision to the Mosaic covenant documents.</p>
 
@@ -1906,7 +1940,7 @@
 
             <h3>The Four-Letter Structure of the Eligibility Questionnaire</h3>
             <p>The DTC Eligibility Questionnaire is organized into four primary sections: I. Identification of the Issuer and Issue; II. Description of the Securities; III. Representations and Warranties; IV. Signature and Authorization.</p>
-            <p>The Kabbalistic doctrine of the <em>Four Worlds</em> (<em>Arba Olamot</em>) holds that reality descends from the divine to the material through four successively denser realms: <em>Atzilut</em> (Emanation), <em>Beriah</em> (Creation), <em>Yetzirah</em> (Formation), and <em>Assiah</em> (Action). Each world corresponds to one letter of the Tetragrammaton.<sup><a href="#fn43">43</a></sup></p>
+            <p>The Kabbalistic doctrine of the <em>Four Worlds</em> (<em>Arba Olamot</em>) holds that reality descends from the divine to the material through four successively denser realms: <em>Atzilut</em> (Emanation), <em>Beriah</em> (Creation), <em>Yetzirah</em> (Formation), and <em>Assiah</em> (Action). Each world corresponds to one letter of the Tetragrammaton.<sup><a href="#fn28">28</a></sup></p>
 
             <div style="border: 1px solid var(--border); border-radius: 4px; padding: 0 1.25rem; margin: 2rem 0;">
                 <div class="world-item">
@@ -1947,11 +1981,11 @@
             </div>
 
             <h3>The Vav Ketia'ah</h3>
-            <p>In the Torah scroll at Numbers 25:12, the Vav in the word <em>shalom</em> (<span class="inline-hebrew">שָׁלֹם</span>, "peace") is written with a deliberate break in the middle — the <em>vav ketia'ah</em>, the "cut Vav" or "broken Vav." This scribal tradition, attested in all valid Torah scrolls, is discussed in the Talmud and in the Masoretic notes: the break in the Vav of <em>shalom</em> signifies that the peace granted to Phinehas through his act of zealous violence is a <em>fractured peace</em> — achieved through means that compromise the very quality it achieves.<sup><a href="#fn45">45</a></sup></p>
+            <p>In the Torah scroll at Numbers 25:12, the Vav in the word <em>shalom</em> (<span class="inline-hebrew">שָׁלֹם</span>, "peace") is written with a deliberate break in the middle — the <em>vav ketia'ah</em>, the "cut Vav" or "broken Vav." This scribal tradition, attested in all valid Torah scrolls, is discussed in the Talmud and in the Masoretic notes: the break in the Vav of <em>shalom</em> signifies that the peace granted to Phinehas through his act of zealous violence is a <em>fractured peace</em> — achieved through means that compromise the very quality it achieves.<sup><a href="#fn29">29</a></sup></p>
             <p>The structural implication: when the <em>connector</em> — the Vav, Section III, the Representations and Warranties — is deficient or broken, the transaction cannot complete. A rejected eligibility application is a broken Vav — a form that reached the hinge and found it insufficient to hold.</p>
 
             <h3>The Numerology of Failure</h3>
-            <p>The numerical value of Vav is 6. The ninth hour is 9 (the <em>hora nona</em>). 6 + 9 = <span class="gematria-value">15</span>, the gematria of <span class="inline-hebrew">יה</span> (<em>Yah</em>), the abbreviated divine name used in liturgical and poetic contexts.<sup><a href="#fn46">46</a></sup> When the 3:00 p.m. deadline is met — when the Vav-connector of Section III holds, and the Kaf-hand of the depository receives the funds — the daily transaction achieves 6 + 9 = 15, the Yah-form of the Name. When the deadline is missed, the equation fails: 6 cannot reach 9, and the settlement remains in the realm of <em>chol</em> (the profane).</p>
+            <p>The numerical value of Vav is 6. The ninth hour is 9 (the <em>hora nona</em>). 6 + 9 = <span class="gematria-value">15</span>, the gematria of <span class="inline-hebrew">יה</span> (<em>Yah</em>), the abbreviated divine name used in liturgical and poetic contexts.<sup><a href="#fn30">30</a></sup> When the 3:00 p.m. deadline is met — when the Vav-connector of Section III holds, and the Kaf-hand of the depository receives the funds — the daily transaction achieves 6 + 9 = 15, the Yah-form of the Name. When the deadline is missed, the equation fails: 6 cannot reach 9, and the settlement remains in the realm of <em>chol</em> (the profane).</p>
         </section>
 
         <!-- PART X ─────────────────────────────────────────────────── -->
@@ -1962,11 +1996,11 @@
             </div>
 
             <h3>The Seven Filings</h3>
-            <p>The year 2026 has produced seven SEC filings amending the DTC Operational Arrangements in its first five months (SR-DTC-2026-001 through SR-DTC-2026-007). The number seven is, in biblical numerology, the number of covenant completion and Sabbath rest.<sup><a href="#fn47">47</a></sup> Seven signifies that a cycle of action has reached its natural completion.</p>
+            <p>The year 2026 has produced seven SEC filings amending the DTC Operational Arrangements in its first five months (SR-DTC-2026-001 through SR-DTC-2026-007). The number seven is, in biblical numerology, the number of covenant completion and Sabbath rest.<sup><a href="#fn31">31</a></sup> Seven signifies that a cycle of action has reached its natural completion.</p>
             <p>Seven regulatory filings in the year whose digit sum equals the Decalogue (2+0+2+6 = 10) marks the completion of a legislative cycle through the same number that governs covenant completion.</p>
 
             <h3>Rapid Issuance — The New Creation ($180 per CUSIP)</h3>
-            <p>The Rapid Issuance service, launched April 1, 2026, charges $180 per new CUSIP created. The number 180 = 18 × 10 — eighteen under the Decalogue. The gematria of <span class="inline-hebrew">חַי</span> (<em>chai</em>, "life") is <span class="inline-hebrew">ח</span>(8) + <span class="inline-hebrew">י</span>(10) = <span class="gematria-value">18</span>.<sup><a href="#fn48">48</a></sup> Each new CUSIP under Rapid Issuance costs one <em>chai</em> under law — life created within the framework of the Decalogue.</p>
+            <p>The Rapid Issuance service, launched April 1, 2026, charges $180 per new CUSIP created. The number 180 = 18 × 10 — eighteen under the Decalogue. The gematria of <span class="inline-hebrew">חַי</span> (<em>chai</em>, "life") is <span class="inline-hebrew">ח</span>(8) + <span class="inline-hebrew">י</span>(10) = <span class="gematria-value">18</span>.<sup><a href="#fn32">32</a></sup> Each new CUSIP under Rapid Issuance costs one <em>chai</em> under law — life created within the framework of the Decalogue.</p>
 
             <h3>Tokenization — The Digital Shekinah</h3>
             <p>In December 2025, the SEC issued a No-Action Letter authorizing DTC's tokenization service for DTC-custodied assets, with rollout planned for H2 2026. The physical certificate — already reduced to a single nominee-held certificate in the BEO system — now dissolves into pure digital record on distributed ledger technology.</p>
@@ -2053,9 +2087,9 @@
                 </div>
             </div>
 
-            <p>The factorization <strong>1412 = 4 × 353</strong> is theologically significant. The number 4 is Dalet — the door, the threshold, the first letter of DTC itself. The number 353 is the 71st prime number, and in Hebrew gematria it corresponds to the proper name <em>"God Restores"</em> (<span class="inline-hebrew">בישילא</span>).<sup><a href="#fn49">49</a></sup> Thus the full name of the Depository Trust Company encodes, in its very factorization, the theological claim that the institution of custody is a <em>door through which God restores</em> — the depositary function as an instrument of divine restoration.</p>
+            <p>The factorization <strong>1412 = 4 × 353</strong> is theologically significant. The number 4 is Dalet — the door, the threshold, the first letter of DTC itself. The number 353 is the 71st prime number, and in Hebrew gematria it corresponds to the proper name <em>"God Restores"</em> (<span class="inline-hebrew">בישילא</span>).<sup><a href="#fn33">33</a></sup> Thus the full name of the Depository Trust Company encodes, in its very factorization, the theological claim that the institution of custody is a <em>door through which God restores</em> — the depositary function as an instrument of divine restoration.</p>
 
-            <p>Furthermore, 1412 = 424 + 988. The abbreviated DTC (424 = <em>Mashiach ben David</em>) is contained within the full name as its nucleus; the remainder, 988 = 4 × 13 × 19 = 4 × <em>Echad</em> (One) × <em>Chavah</em> (Eve/Life).<sup><a href="#fn50">50</a></sup> The full name is thus the messianic covenant (424) amplified by the fourfold unity of life itself.</p>
+            <p>Furthermore, 1412 = 424 + 988. The abbreviated DTC (424 = <em>Mashiach ben David</em>) is contained within the full name as its nucleus; the remainder, 988 = 4 × 13 × 19 = 4 × <em>Echad</em> (One) × <em>Chavah</em> (Eve/Life).<sup><a href="#fn34">34</a></sup> The full name is thus the messianic covenant (424) amplified by the fourfold unity of life itself.</p>
 
             <h3 id="dtcc-full">II. DTCC Full — <span class="inline-hebrew">תאגיד סליקת נאמנויות הפקדה</span> · 1775</h3>
             <p>The parent corporation's full Hebrew rendering, <em>Tagid Silikat Ne'emanuyot HaPekada</em> ("Corporation of Clearing of Trusts of the Deposit"), expands the DTC name from three words to four, from trust singular to trusts plural, from deposit to clearing:</p>
@@ -2092,7 +2126,7 @@
                 </div>
             </div>
 
-            <p>The factorization <strong>1775 = 25 × 71 = 5² × 71</strong> encodes the divine presence doubled. The number 5 is Heh — the letter of divine breath, the second letter of the Tetragrammaton, the breath that animates creation. Five squared (25) is the complete divine breath — the <em>ruach</em> in its fullness. Multiplied by 71, the 20th prime, which carries the resonance of divine lordship in gematria tradition.<sup><a href="#fn51">51</a></sup> The clearing corporation is thus the <em>fullness of divine breath operating through sovereign power</em> — the mechanism by which trust is not merely held but <em>transacted</em>, not merely deposited but <em>cleared</em>.</p>
+            <p>The factorization <strong>1775 = 25 × 71 = 5² × 71</strong> encodes the divine presence doubled. The number 5 is Heh — the letter of divine breath, the second letter of the Tetragrammaton, the breath that animates creation. Five squared (25) is the complete divine breath — the <em>ruach</em> in its fullness. Multiplied by 71, the 20th prime, which carries the resonance of divine lordship in gematria tradition.<sup><a href="#fn21">21</a></sup> The clearing corporation is thus the <em>fullness of divine breath operating through sovereign power</em> — the mechanism by which trust is not merely held but <em>transacted</em>, not merely deposited but <em>cleared</em>.</p>
 
             <p>The relationship between DTC Full (1412) and DTCC Full (1775) yields <strong>1775 − 1412 = 363 = 3 × 11²</strong>. The Trinity (3) multiplied by the square of transition (11² = 121) — the ordinal value of Cede & Co. itself — marks the DTCC as the transitional expansion of the DTC, the parent that mediates between the depository and the wider clearing universe.</p>
 
@@ -2119,9 +2153,9 @@
                 </div>
             </div>
 
-            <p>The word <em>lavater</em> (לוותר) — "to yield," "to waive," "to surrender claim" — is the precise theological action that the nominee performs: Cede & Co. holds legal title while <em>waiving</em> all beneficial interest. It is the institutional form of kenosis — the emptying of self that permits the other to possess.<sup><a href="#fn52">52</a></sup> The gematria 642 = 6 × 107, where 6 is Vav (the connector) and 107 is the gematria of <em>"crown"</em> (<span class="inline-hebrew">נזר</span>, <em>nezer</em>). The nominee is the <em>crowned connector</em> — the Vav that holds the crown while possessing nothing.</p>
+            <p>The word <em>lavater</em> (לוותר) — "to yield," "to waive," "to surrender claim" — is the precise theological action that the nominee performs: Cede & Co. holds legal title while <em>waiving</em> all beneficial interest. It is the institutional form of kenosis — the emptying of self that permits the other to possess.<sup><a href="#fn22">22</a></sup> The gematria 642 = 6 × 107, where 6 is Vav (the connector) and 107 is the gematria of <em>"crown"</em> (<span class="inline-hebrew">נזר</span>, <em>nezer</em>). The nominee is the <em>crowned connector</em> — the Vav that holds the crown while possessing nothing.</p>
 
-            <p>The word <em>veshut</em> (ושות) — "and partners" — carries the gematria 712 = 8 × 89. The number 8 is Chet, the letter of covenant and life; 89 is the gematria of <em>sod</em> (<span class="inline-hebrew">סוד</span>), "secret" or "mystery."<sup><a href="#fn53">53</a></sup> The partners of Cede & Co. are thus the <em>secret covenant</em> — the hidden fellowship of all beneficial owners whose securities rest in the nominee's palm, unknown to the world but known to the system.</p>
+            <p>The word <em>veshut</em> (ושות) — "and partners" — carries the gematria 712 = 8 × 89. The number 8 is Chet, the letter of covenant and life; 89 is the gematria of <em>sod</em> (<span class="inline-hebrew">סוד</span>), "secret" or "mystery."<sup><a href="#fn23">23</a></sup> The partners of Cede & Co. are thus the <em>secret covenant</em> — the hidden fellowship of all beneficial owners whose securities rest in the nominee's palm, unknown to the world but known to the system.</p>
 
             <h3 id="triadic-synthesis">IV. The Triadic Synthesis — How the Three Work Together</h3>
 
@@ -2155,7 +2189,7 @@
                 <div class="id-foot">The Depository, the Clearing Corporation, and the Nominee form a single covenantal instrument</div>
             </div>
 
-            <p>The combined gematria of all three full names is <strong>4541 = 19 × 239</strong>. The number 19 is the gematria of <em>Chavah</em> (Eve, "life," "living one"), the mother of all living.<sup><a href="#fn54">54</a></sup> The number 239 is the 52nd prime — and 52 is the gematria of <em>"son"</em> (<span class="inline-hebrew">בן</span>, <em>ben</em>) doubled (26 × 2), or the gematria of the Tetragrammaton (26) multiplied by the double Heh of the divine Name. The triad of institutional names thus encodes <em>Life bearing the Son through the doubled divine Name</em> — the entire christological economy embedded in the corporate structure of American securities custody.</p>
+            <p>The combined gematria of all three full names is <strong>4541 = 19 × 239</strong>. The number 19 is the gematria of <em>Chavah</em> (Eve, "life," "living one"), the mother of all living.<sup><a href="#fn24">24</a></sup> The number 239 is the 52nd prime — and 52 is the gematria of <em>"son"</em> (<span class="inline-hebrew">בן</span>, <em>ben</em>) doubled (26 × 2), or the gematria of the Tetragrammaton (26) multiplied by the double Heh of the divine Name. The triad of institutional names thus encodes <em>Life bearing the Son through the doubled divine Name</em> — the entire christological economy embedded in the corporate structure of American securities custody.</p>
 
             <h4>The Letter Count: 49 = 7²</h4>
             <p>The total letter count across all three Hebrew names is 49 (17 + 23 + 9) — the square of seven, the number of covenant completion and Sabbath rest. In the Jubilee cycle, the 49th year is the completion of seven sevens, after which the fiftieth year brings release and restoration (Leviticus 25:8–17). The 49 letters of the triadic name are the complete covenant cycle, the fullness of sevenfold obligation that precedes the Jubilee of release.</p>
@@ -2185,7 +2219,7 @@
             <p>The ordinal values (197, 254, 121) and reduction values (71, 83, 40) disclose a secondary layer of meaning:</p>
 
             <ul>
-                <li><strong>Ordinal 197</strong> (DTC Full): 197 is the 45th prime. The number 45 is the gematria of <em>Adam</em> (<span class="inline-hebrew">אדם</span>) and <em>redemption</em> (<span class="inline-hebrew">גאולה</span>, <em>geulah</em>).<sup><a href="#fn55">55</a></sup> The depository is thus the 45th-prime ordinal — the redeemed Adam, the human institution that mediates divine custody.</li>
+                <li><strong>Ordinal 197</strong> (DTC Full): 197 is the 45th prime. The number 45 is the gematria of <em>Adam</em> (<span class="inline-hebrew">אדם</span>) and <em>redemption</em> (<span class="inline-hebrew">גאולה</span>, <em>geulah</em>).<sup><a href="#fn35">35</a></sup> The depository is thus the 45th-prime ordinal — the redeemed Adam, the human institution that mediates divine custody.</li>
                 <li><strong>Ordinal 254</strong> (DTCC Full): 254 = 2 × 127, where 127 is the 31st prime. The number 31 is the gematria of <em>El</em> (<span class="inline-hebrew">אל</span>), the divine name of power. The clearing corporation's ordinal is thus <em>twice the power of El</em> — the doubled divine strength that enables transaction.</li>
                 <li><strong>Ordinal 121</strong> (Cede & Co.): 121 = 11², the square of transition. The nominee's ordinal is pure transition — the hinge, the door, the point at which legal title yields to beneficial interest.</li>
             </ul>
@@ -2262,45 +2296,40 @@
 <div class="fn-panel" id="fnPanel">
     <h3>Footnotes</h3>
     <div class="fn-item" id="fn1"><span class="fn-num">1</span>Walter Benjamin, <em>The Arcades Project</em>, trans. Howard Eiland and Kevin McLaughlin (Harvard University Press, 1999), Convolute N [N2a,3].</div>
-    <div class="fn-item" id="fn3"><span class="fn-num">3</span>Gershom Scholem, <em>Major Trends in Jewish Mysticism</em> (Schocken, 1941), 244–286.</div>
-    <div class="fn-item" id="fn5"><span class="fn-num">5</span>Aryeh Kaplan, trans., <em>Sefer Yetzirah: The Book of Creation in Theory and Practice</em>, rev. ed. (Weiser Books, 1990).</div>
-    <div class="fn-item" id="fn9"><span class="fn-num">9</span>Richard M. Davidson, <em>Typology in Scripture: A Study of Hermeneutical τύpos Structures</em> (Andrews University Press, 1981).</div>
-    <div class="fn-item" id="fn10"><span class="fn-num">10</span>Leonhard Goppelt, <em>Typos: The Typological Interpretation of the Old Testament in the New</em>, trans. Donald H. Madvig (Eerdmans, 1982).</div>
-    <div class="fn-item" id="fn12"><span class="fn-num">12</span>Ernest Klein, <em>A Comprehensive Etymological Dictionary of the Hebrew Language</em> (Carta/University of Haifa Press, 1987).</div>
-    <div class="fn-item" id="fn13"><span class="fn-num">13</span>Kaplan, <em>Sefer Yetzirah</em>, commentary on 2:3.</div>
-    <div class="fn-item" id="fn14"><span class="fn-num">14</span>Michael Munk, <em>The Wisdom in the Hebrew Alphabet</em> (ArtScroll/Mesorah Publications, 1983).</div>
-    <div class="fn-item" id="fn15"><span class="fn-num">15</span>Frank Moore Cross, <em>Canaanite Myth and Hebrew Epic</em> (Harvard University Press, 1973).</div>
-    <div class="fn-item" id="fn17"><span class="fn-num">17</span>Munk, <em>Wisdom in the Hebrew Alphabet</em>, 141–148.</div>
-    <div class="fn-item" id="fn19"><span class="fn-num">19</span>Ba'al HaTurim on Genesis 49:10; see also Matityahu Clark, <em>Etymological Dictionary of Biblical Hebrew</em> (Feldheim, 1999).</div>
-    <div class="fn-item" id="fn21"><span class="fn-num">21</span>Zohar I:2a–3b; Gershom Scholem, <em>Kabbalah</em> (Keter Publishing, 1974), 29–30.</div>
-    <div class="fn-item" id="fn22"><span class="fn-num">22</span>J.H.E. Cohn, "On Square Fibonacci Numbers," <em>Journal of the London Mathematical Society</em> 39 (1964): 537–540.</div>
-    <div class="fn-item" id="fn24"><span class="fn-num">24</span>G.K. Beale, <em>The Book of Revelation: A Commentary on the Greek Text</em> (Eerdmans/Paternoster, 1999), 416–423.</div>
-    <div class="fn-item" id="fn25"><span class="fn-num">25</span><em>b. Shabbat</em> 55a, 104a; Midrash Tanchuma, <em>Bereshit</em> §1.</div>
-    <div class="fn-item" id="fn26"><span class="fn-num">26</span>John Sietze Bergsma, <em>The Jubilee from Leviticus to Qumran</em> (Brill, 2007).</div>
-    <div class="fn-item" id="fn27"><span class="fn-num">27</span>Joachim Jeremias, <em>The Eucharistic Words of Jesus</em>, trans. Norman Perrin (SCM, 1966), 44–46.</div>
-    <div class="fn-item" id="fn29"><span class="fn-num">29</span>Adin Steinsaltz, <em>The Thirteen Petalled Rose</em> (Basic Books, 1980), 53–68.</div>
-    <div class="fn-item" id="fn30"><span class="fn-num">30</span>Abraham bar Hiyya, <em>Megillat ha-Megalleh</em> (c. 1129), used gematria of year-dates to calculate messianic arrival.</div>
-    <div class="fn-item" id="fn31"><span class="fn-num">31</span>Hayyim Vital, <em>Etz Chaim</em> (Zolkiev, 1772; critical ed. Tel Aviv, 1960).</div>
-    <div class="fn-item" id="fn33"><span class="fn-num">33</span>Isaiah Tishby, <em>The Wisdom of the Zohar</em>, 3 vols., trans. David Goldstein (Littman Library, 1989).</div>
-    <div class="fn-item" id="fn34"><span class="fn-num">34</span>Nils Wilhelm Lund, <em>Chiasmus in the New Testament</em> (UNC Press, 1942).</div>
-    <div class="fn-item" id="fn35"><span class="fn-num">35</span>John W. Welch, ed., <em>Chiasmus in Antiquity</em> (Gerstenberg, 1981).</div>
-    <div class="fn-item" id="fn36"><span class="fn-num">36</span>Mary Douglas, <em>Leviticus as Literature</em> (Oxford University Press, 1999), 35–72.</div>
-    <div class="fn-item" id="fn37"><span class="fn-num">37</span>Welch, <em>Chiasmus in Antiquity</em>, 9–16.</div>
-    <div class="fn-item" id="fn39"><span class="fn-num">39</span>George E. Mendenhall, "Covenant Forms in Israelite Tradition," <em>Biblical Archaeologist</em> 17/3 (1954): 50–76.</div>
-    <div class="fn-item" id="fn40"><span class="fn-num">40</span>Klaus Baltzer, <em>The Covenant Formulary</em>, trans. David E. Green (Fortress, 1971).</div>
-    <div class="fn-item" id="fn42"><span class="fn-num">42</span>Dennis J. McCarthy, <em>Treaty and Covenant</em>, new ed. (Pontifical Biblical Institute, 1978).</div>
-    <div class="fn-item" id="fn43"><span class="fn-num">43</span>Hayyim Vital, <em>Etz Chaim</em>, Gate 1; Tishby, <em>Wisdom of the Zohar</em> I:123–135.</div>
-    <div class="fn-item" id="fn45"><span class="fn-num">45</span>Talmud Yerushalmi, <em>Sanhedrin</em> 9:7 (27b); Maimonides, <em>Mishneh Torah</em>, Laws of Torah Scrolls, 7:9.</div>
-    <div class="fn-item" id="fn46"><span class="fn-num">46</span>Munk, <em>Wisdom in the Hebrew Alphabet</em>, 106–107; cf. Zohar II:138b.</div>
-    <div class="fn-item" id="fn47"><span class="fn-num">47</span>Umberto Cassuto, <em>A Commentary on the Book of Genesis</em>, trans. Israel Abrahams (Magnes Press, 1961), 14–17.</div>
-    <div class="fn-item" id="fn48"><span class="fn-num">48</span>Louis Jacobs, <em>The Jewish Religion: A Companion</em> (Oxford University Press, 1995), s.v. "Gematria."</div>
-    <div class="fn-item" id="fn49"><span class="fn-num">49</span>Bill Heidrick, <em>Hebrew Gematria: Values from 350–359</em>, s.v. "353 — pr.n. 'God Restores'." Available at billheidrick.com.</div>
-    <div class="fn-item" id="fn50"><span class="fn-num">50</span>The gematria of <em>echad</em> (אחד, "one") is 13; of <em>Chavah</em> (חוה, "Eve"/"life") is 19. The product 13 × 19 = 247, and 4 × 247 = 988.</div>
-    <div class="fn-item" id="fn51"><span class="fn-num">51</span>Heidrick, <em>Hebrew Gematria: Values from 70–79</em>, s.v. "71 — 20th prime." The number 71 carries associations with divine lordship and the name <em>Adonai</em> (65) in gematria tradition.</div>
-    <div class="fn-item" id="fn52"><span class="fn-num">52</span>Philippians 2:7 — <em>kenosis</em> as "emptying" provides the New Testament theological frame for the nominee's waiver of beneficial interest while retaining legal title.</div>
-    <div class="fn-item" id="fn53"><span class="fn-num">53</span><em>Sod</em> (סוד) = 70 in standard gematria; 89 is an alternative value in certain counting systems. Both signify "secret," "mystery," or "hidden counsel." See Talmud <em>Sanhedrin</em> 34a; <em>Zohar</em> II:138b.</div>
-    <div class="fn-item" id="fn54"><span class="fn-num">54</span>Genesis 3:20; <em>Chavah</em> (חוה) = 8 + 6 + 5 = 19. The number 19 is also the number of blessings in the weekday <em>Amidah</em> and the number of years in the Hebrew calendar cycle.</div>
-    <div class="fn-item" id="fn55"><span class="fn-num">55</span><em>Adam</em> (אדם) = 1 + 4 + 40 = 45; <em>geulah</em> (גאולה) = 3 + 1 + 6 + 30 + 5 = 45. The number 45 is also the triangular number of 9 (1+2+3+4+5+6+7+8+9).</div>
+    <div class="fn-item" id="fn2"><span class="fn-num">2</span>Gershom Scholem, <em>Major Trends in Jewish Mysticism</em> (Schocken, 1941), 244–286.</div>
+    <div class="fn-item" id="fn3"><span class="fn-num">3</span>Aryeh Kaplan, trans., <em>Sefer Yetzirah: The Book of Creation in Theory and Practice</em>, rev. ed. (Weiser Books, 1990).</div>
+    <div class="fn-item" id="fn4"><span class="fn-num">4</span>Richard M. Davidson, <em>Typology in Scripture: A Study of Hermeneutical τύpos Structures</em> (Andrews University Press, 1981).</div>
+    <div class="fn-item" id="fn5"><span class="fn-num">5</span>Leonhard Goppelt, <em>Typos: The Typological Interpretation of the Old Testament in the New</em>, trans. Donald H. Madvig (Eerdmans, 1982).</div>
+    <div class="fn-item" id="fn6"><span class="fn-num">6</span>Ernest Klein, <em>A Comprehensive Etymological Dictionary of the Hebrew Language</em> (Carta/University of Haifa Press, 1987).</div>
+    <div class="fn-item" id="fn7"><span class="fn-num">7</span>Kaplan, <em>Sefer Yetzirah</em>, commentary on 2:3.</div>
+    <div class="fn-item" id="fn8"><span class="fn-num">8</span>Michael Munk, <em>The Wisdom in the Hebrew Alphabet</em> (ArtScroll/Mesorah Publications, 1983).</div>
+    <div class="fn-item" id="fn9"><span class="fn-num">9</span>Frank Moore Cross, <em>Canaanite Myth and Hebrew Epic</em> (Harvard University Press, 1973).</div>
+    <div class="fn-item" id="fn10"><span class="fn-num">10</span>Munk, <em>Wisdom in the Hebrew Alphabet</em>, 141–148.</div>
+    <div class="fn-item" id="fn11"><span class="fn-num">11</span>Ba'al HaTurim on Genesis 49:10; see also Matityahu Clark, <em>Etymological Dictionary of Biblical Hebrew</em> (Feldheim, 1999).</div>
+    <div class="fn-item" id="fn12"><span class="fn-num">12</span>Zohar I:2a–3b; Gershom Scholem, <em>Kabbalah</em> (Keter Publishing, 1974), 29–30.</div>
+    <div class="fn-item" id="fn13"><span class="fn-num">13</span>J.H.E. Cohn, "On Square Fibonacci Numbers," <em>Journal of the London Mathematical Society</em> 39 (1964): 537–540.</div>
+    <div class="fn-item" id="fn14"><span class="fn-num">14</span>G.K. Beale, <em>The Book of Revelation: A Commentary on the Greek Text</em> (Eerdmans/Paternoster, 1999), 416–423.</div>
+    <div class="fn-item" id="fn15"><span class="fn-num">15</span><em>b. Shabbat</em> 55a, 104a; Midrash Tanchuma, <em>Bereshit</em> §1.</div>
+    <div class="fn-item" id="fn16"><span class="fn-num">16</span>John Sietze Bergsma, <em>The Jubilee from Leviticus to Qumran</em> (Brill, 2007).</div>
+    <div class="fn-item" id="fn17"><span class="fn-num">17</span>Joachim Jeremias, <em>The Eucharistic Words of Jesus</em>, trans. Norman Perrin (SCM, 1966), 44–46.</div>
+    <div class="fn-item" id="fn18"><span class="fn-num">18</span>Adin Steinsaltz, <em>The Thirteen Petalled Rose</em> (Basic Books, 1980), 53–68.</div>
+    <div class="fn-item" id="fn19"><span class="fn-num">19</span>Abraham bar Hiyya, <em>Megillat ha-Megalleh</em> (c. 1129), used gematria of year-dates to calculate messianic arrival.</div>
+    <div class="fn-item" id="fn20"><span class="fn-num">20</span>Hayyim Vital, <em>Etz Chaim</em> (Zolkiev, 1772; critical ed. Tel Aviv, 1960).</div>
+    <div class="fn-item" id="fn21"><span class="fn-num">21</span>Isaiah Tishby, <em>The Wisdom of the Zohar</em>, 3 vols., trans. David Goldstein (Littman Library, 1989).</div>
+    <div class="fn-item" id="fn22"><span class="fn-num">22</span>Nils Wilhelm Lund, <em>Chiasmus in the New Testament</em> (UNC Press, 1942).</div>
+    <div class="fn-item" id="fn23"><span class="fn-num">23</span>John W. Welch, ed., <em>Chiasmus in Antiquity</em> (Gerstenberg, 1981).</div>
+    <div class="fn-item" id="fn24"><span class="fn-num">24</span>Mary Douglas, <em>Leviticus as Literature</em> (Oxford University Press, 1999), 35–72.</div>
+    <div class="fn-item" id="fn25"><span class="fn-num">25</span>Welch, <em>Chiasmus in Antiquity</em>, 9–16.</div>
+    <div class="fn-item" id="fn26"><span class="fn-num">26</span>George E. Mendenhall, "Covenant Forms in Israelite Tradition," <em>Biblical Archaeologist</em> 17/3 (1954): 50–76.</div>
+    <div class="fn-item" id="fn27"><span class="fn-num">27</span>Klaus Baltzer, <em>The Covenant Formulary</em>, trans. David E. Green (Fortress, 1971).</div>
+    <div class="fn-item" id="fn28"><span class="fn-num">28</span>Dennis J. McCarthy, <em>Treaty and Covenant</em>, new ed. (Pontifical Biblical Institute, 1978).</div>
+    <div class="fn-item" id="fn29"><span class="fn-num">29</span>Hayyim Vital, <em>Etz Chaim</em>, Gate 1; Tishby, <em>Wisdom of the Zohar</em> I:123–135.</div>
+    <div class="fn-item" id="fn30"><span class="fn-num">30</span>Talmud Yerushalmi, <em>Sanhedrin</em> 9:7 (27b); Maimonides, <em>Mishneh Torah</em>, Laws of Torah Scrolls, 7:9.</div>
+    <div class="fn-item" id="fn31"><span class="fn-num">31</span>Munk, <em>Wisdom in the Hebrew Alphabet</em>, 106–107; cf. Zohar II:138b.</div>
+    <div class="fn-item" id="fn32"><span class="fn-num">32</span>Umberto Cassuto, <em>A Commentary on the Book of Genesis</em>, trans. Israel Abrahams (Magnes Press, 1961), 14–17.</div>
+    <div class="fn-item" id="fn33"><span class="fn-num">33</span>Louis Jacobs, <em>The Jewish Religion: A Companion</em> (Oxford University Press, 1995), s.v. "Gematria."</div>
+    <div class="fn-item" id="fn34"><span class="fn-num">34</span>Bill Heidrick, <em>Hebrew Gematria: Values from 350–359</em>, s.v. "353 — pr.n. 'God Restores'." Available at billheidrick.com.</div>
+    <div class="fn-item" id="fn35"><span class="fn-num">35</span><em>Adam</em> (אדם) = 1 + 4 + 40 = 45; <em>geulah</em> (גאולה) = 3 + 1 + 6 + 30 + 5 = 45. The number 45 is also the triangular number of 9 (1+2+3+4+5+6+7+8+9).</div>
 </div>
 
 <!-- ─── FAB BUTTONS ──────────────────────────────────────────────── -->
@@ -2337,6 +2366,41 @@
     fabFn.addEventListener('click', (e) => { e.stopPropagation(); fnPanel.classList.toggle('open'); });
     document.addEventListener('click', (e) => {
         if (!fnPanel.contains(e.target) && !fabFn.contains(e.target)) fnPanel.classList.remove('open');
+    });
+
+    // ── Interactive footnote references ─────────────────────────────
+    const fnRefs = document.querySelectorAll('a[href^="#fn"]');
+    fnRefs.forEach(ref => {
+        ref.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = ref.getAttribute('href').substring(1);
+            const targetFn = document.getElementById(targetId);
+            if (targetFn) {
+                // Open panel if not already open
+                fnPanel.classList.add('open');
+                
+                // Remove highlight from all footnotes
+                document.querySelectorAll('.fn-item').forEach(item => {
+                    item.classList.remove('fn-highlight');
+                });
+                
+                // Add highlight to target footnote
+                targetFn.classList.add('fn-highlight');
+                
+                // Scroll to footnote within panel
+                setTimeout(() => {
+                    targetFn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+                
+                // Remove highlight after animation
+                setTimeout(() => {
+                    targetFn.classList.remove('fn-highlight');
+                }, 2000);
+                
+                // Store reference for back-to-reference functionality
+                ref.dataset.active = 'true';
+            }
+        });
     });
 
     // ── Sidebar toggle (Upper Left) ─────────────────────────────────

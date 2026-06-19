@@ -9,7 +9,7 @@
 
 :root {
   --ink: #0f1115; --ink-secondary: #2d3142; --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a; --ink-faint: #b8bac4; --border: #d0d2da;
+  --ink-muted: #5a5d6b; --ink-faint: #b8bac4; --border: #d0d2da;
   --border-light: #e6e7ec; --border-faint: #f0f1f5; --bg: #ffffff;
   --bg-warm: #faf9f6; --bg-cream: #f7f5f0; --bg-ivory: #fdfcfa;
   --accent: #1a3a5c; --accent-light: #e8f0f8; --accent-muted: #c5d6e8;
@@ -24,6 +24,20 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Accessibility Focus States */
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+[tabindex="0"]:focus:not(:focus-visible) {
+  outline: none;
+}
 body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-warm); color: var(--ink); line-height: 1.7;
@@ -267,6 +281,13 @@ body {
   transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.modal-overlay.loading .modal-card {
+  transform: translateY(20px) scale(0.98);
+}
 .modal-card {
   background: var(--bg); border-radius: var(--radius-lg);
   max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
@@ -453,14 +474,14 @@ body {
 <div class="wrap">
 
 <div class="update-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Document Guide:</strong> This is an interactive teaching guide to the U.S. securities depository and clearing infrastructure. Click any <strong>underlined term</strong> for definitions and explanations.</span>
 </div>
 
 <div class="doc-frame">
 
 <div class="teach-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
   <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. Hover for highlights, click for detailed definitions and securities infrastructure guidance.</span>
 </div>
 

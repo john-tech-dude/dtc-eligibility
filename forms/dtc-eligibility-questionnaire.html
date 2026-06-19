@@ -11,7 +11,7 @@
   --ink: #0f1115;
   --ink-secondary: #2d3142;
   --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a;
+  --ink-muted: #5a5d6b;
   --ink-faint: #b8bac4;
   --border: #d0d2da;
   --border-light: #e6e7ec;
@@ -47,6 +47,20 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Accessibility Focus States */
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+[tabindex="0"]:focus:not(:focus-visible) {
+  outline: none;
+}
 
 body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -829,6 +843,13 @@ body {
   transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.modal-overlay.loading .modal-card {
+  transform: translateY(20px) scale(0.98);
+}
 .modal-card {
   background: var(--bg); border-radius: var(--radius-lg);
   max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
@@ -1074,14 +1095,14 @@ body {
 <div class="wrap">
 
 <div class="update-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Content Updated:</strong> This guide reflects the <strong>June 2026 DTC Operational Arrangements</strong>. Obsolete references to PORTAL/NASD have been removed. Current requirements: UW SOURCE/UWC submission, Agent Confirmation (now due 10 business days after closing), OFAC compliance, and electronic signature guidance. <span class="legacy-tag">Legacy</span> tags mark original 2000 form fields that now have updated processes.</span>
 </div>
 
 <div class="doc-frame">
 
 <div class="teach-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
   <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. This guide combines the original DTC questionnaire with definitions, regulatory citations, scenario walkthroughs, and a study checklist. Use the ☰ menu to navigate.</span>
 </div>
 
@@ -1341,7 +1362,7 @@ body {
 <!-- ── RED FLAGS ── -->
 <div class="red-flags" id="red-flags">
   <h3>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-align"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-align" aria-label="Warning icon"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
     Red Flags: DTC's Discretionary Powers
   </h3>
   <div class="red-flags-grid">
@@ -1577,7 +1598,7 @@ body {
 <!-- ── OTHER ELIGIBILITY PATHS ── -->
 <div class="other-paths" id="other-paths">
   <h3>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-align"><path d="M9 18l6-6-6-6"/></svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-align" aria-label="Alternative paths icon"><path d="M9 18l6-6-6-6"/></svg>
     Other Eligibility Paths
   </h3>
   <p class="section-subtitle">
@@ -1745,7 +1766,7 @@ body {
 <!-- ── STUDY GUIDE ── -->
 <div class="study-guide" id="study-guide">
   <h3>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-align"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-align" aria-label="Document icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
     Study Guide & Section-by-Section Checklist
   </h3>
   <div class="study-grid">
