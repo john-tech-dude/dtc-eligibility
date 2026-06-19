@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securities Ownership Wizard — DTC, DTCC & Cede &amp; Co. Teaching Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  --ink: #0f1115; --ink-secondary: #2d3142; --ink-tertiary: #5a5d6b;
+  --ink-muted: #8a8d9a; --ink-faint: #b8bac4; --border: #d0d2da;
+  --border-light: #e6e7ec; --border-faint: #f0f1f5; --bg: #ffffff;
+  --bg-warm: #faf9f6; --bg-cream: #f7f5f0; --bg-ivory: #fdfcfa;
+  --accent: #1a3a5c; --accent-light: #e8f0f8; --accent-muted: #c5d6e8;
+  --accent-hover: #0f2640; --gold: #a67c00; --gold-light: #fbf6e8;
+  --gold-muted: #d4b84a; --gold-deep: #7a5c00; --green: #1a5c3a;
+  --green-light: #e8f8f0; --teal: #0d7377; --teal-light: #e6f7f7;
+  --red: #8c1a1a; --red-light: #fdf0f0; --red-muted: #d4a0a0;
+  --modal-overlay: rgba(10,12,18,0.65); --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06); --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16); --radius-sm: 4px;
+  --radius-md: 8px; --radius-lg: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-warm); color: var(--ink); line-height: 1.7;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+
+/* TOC Sidebar */
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.3s ease;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 16px; top: 80px; z-index: 70;
+  width: 40px; height: 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: all 0.2s;
+}
+.toc-toggle:hover { background: var(--accent-hover); }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.78rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: all 0.15s;
+}
+.toc-sidebar a:hover { color: var(--accent); padding-left: 4px; }
+.toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.toc-sidebar .toc-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; font-size: 1.4rem;
+  color: var(--ink-muted); cursor: pointer;
+}
+
+/* Page Header */
+.page-header {
+  background: var(--bg); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 24px 32px 20px; display: flex;
+  align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.header-text .sub {
+  font-size: 0.72rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 2px;
+}
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.15); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+/* Main Layout */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+/* Banners */
+.update-banner {
+  background: var(--accent-light); border: 1px solid var(--accent-muted);
+  border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.82rem; color: var(--accent);
+}
+.update-banner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.update-banner strong { color: var(--ink); }
+
+.teach-banner {
+  background: var(--teal-light); border: 1px solid rgba(13,115,119,0.15);
+  border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.84rem; color: var(--teal);
+}
+.teach-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.teach-banner strong { color: var(--ink); }
+
+/* Doc Frame */
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 48px 52px 56px; position: relative;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Section styling */
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem; font-weight: 600; color: var(--ink);
+  margin: 36px 0 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-faint);
+  letter-spacing: -0.01em;
+}
+.section-title:first-child { margin-top: 0; }
+
+.subsection-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ink-secondary);
+  margin: 24px 0 10px;
+}
+
+.lead {
+  font-size: 1.05rem; color: var(--ink-secondary); line-height: 1.75;
+  margin-bottom: 20px; max-width: 780px;
+}
+
+.body-text {
+  font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.85;
+  margin-bottom: 16px; max-width: 780px;
+}
+
+.body-text ul, .body-text ol {
+  margin: 12px 0 12px 24px; padding: 0;
+}
+.body-text li { margin-bottom: 8px; }
+
+/* Diagram Box */
+.diagram-box {
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 28px 32px; margin: 24px 0;
+}
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 16px;
+  text-align: center;
+}
+.flow-step {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+  font-size: 0.85rem; color: var(--ink-secondary);
+}
+.flow-step .step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-size: 0.75rem;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.flow-step .step-arrow {
+  margin-left: 7px; color: var(--ink-muted); font-size: 1.1rem;
+  line-height: 1;
+}
+.flow-connector {
+  width: 2px; height: 20px; background: var(--border);
+  margin-left: 13px; margin-top: -5px; margin-bottom: -5px;
+}
+
+/* Entity card */
+.entity-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.entity-card {
+  background: var(--bg-ivory); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 20px 22px;
+}
+.entity-card .entity-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.entity-card .entity-role {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.entity-card .entity-desc {
+  font-size: 0.82rem; color: var(--ink-tertiary); line-height: 1.65;
+}
+
+/* Comparison table */
+.comp-table {
+  width: 100%; border-collapse: collapse; margin: 20px 0;
+  font-size: 0.85rem; color: var(--ink-secondary);
+}
+.comp-table th, .comp-table td {
+  border: 1px solid var(--border-light); padding: 12px 14px;
+  text-align: left; vertical-align: top;
+}
+.comp-table th {
+  background: var(--bg-cream); font-weight: 600; color: var(--ink);
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.comp-table td { background: var(--bg); }
+
+/* Hotspot */
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: all 0.2s ease; padding: 0 1px;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 2px; outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.7; transition: opacity 0.2s;
+  display: inline-block; width: 12px; height: 12px;
+  line-height: 12px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* MODAL SYSTEM */
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: var(--bg-cream); border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 22px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.6rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: all 0.2s; margin-top: -4px;
+}
+.modal-close:hover { background: var(--border-light); color: var(--ink); }
+.modal-body {
+  padding: 24px 32px 32px; overflow-y: auto;
+  max-height: calc(88vh - 90px); font-size: 0.88rem;
+  line-height: 1.85; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 14px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 16px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body ul { margin: 12px 0 12px 24px; padding: 0; }
+.modal-body li { margin-bottom: 8px; line-height: 1.7; }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--ink); margin: 20px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.def-callout .def-type {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.tip-box {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: #0f3d24; line-height: 1.7;
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+.warn-box {
+  background: var(--red-light); border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: #3d0f0f; line-height: 1.7;
+}
+.warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
+
+/* Print */
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 20px 14px 48px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .modal-card { max-width: 100%; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-overlay.active .modal-card { transform: translateY(0); }
+  .toc-sidebar { width: 100%; }
+  .entity-grid { grid-template-columns: 1fr; }
+}
+
+/* Page Footer */
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 24px 20px 32px; margin-top: 32px;
+}
+.footer-content { max-width: 1100px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center; font-size: 0.8rem; color: var(--ink-secondary);
+}
+.footer-version { font-weight: 500; color: var(--ink-tertiary); }
+.footer-links { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.7rem; }
+.footer-legal { margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px; text-align: center; }
+
+@media (max-width: 768px) {
+  .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+</style>
+<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/Ye4_ZbPUDhT4Q4I52weVxNDqD5JvuFfmLEdqmYfRPDQNgIoblLBTvoz8WuzeMmLsgjZoiXwTyfc1_pMHKZvpCskCJATPhi0dofCnXFiFehgHK5EpUnlSGkEjM8x7Dw_mUAOePA6FQbITxqlR2ekAhzBLUMXoS1C12VxO7pfp_Tj8-oKNqCffXYjvnQqiPzPX80us3tUk7_yh3fhVz9rM-k8WOjWcoP2CYbmdDogrxRvDjqVCiqgI_JwbzmIpb_P25DqA59QAijeySZ8QCPZMvl3lAbNKIyGgGY8NjxejqPFC2QQARa5lBqJoUKkSxWjbvnBzVmcKIiJSqMMNGe1B__Q38tBerXWRYeXeTAo98SgtdzsNkuP8EENtd49QDA062ZiO4ErSAaizkUQGbrOQdBuKGg9xccYT1_euNWZJqAD18YBCGh_nGosMlB4cVeGICXNKr65J0qcTKnlGZiI8Hkym12N5zQd1NdN07GeKCMwnq9D-N989woL1Aw4PVhjVk0vWFuWT6CJztzq0ELUn71UCc-M-Wwg4onytSZ9MyT_vPsn9meTqCWRl85JszQne9vtJLAamOnHhlUkjsbB3xpDhyfhEQOyErKZKkf6LPBS0PLNM0xbyFfcQR3S1R9EBQ_4WUbEKT_htuQU0K8LL6jb9CHTEvizuCh__HqCHnvB0_BzXU-cfSP3WAwXJDXRLVIjO2uUr25jvlgoUEsfRaqNBChTTKsjxvQJznxDRDePXGwwmA92P6_bKZD43MbCtloi0l70W-ltw6X06oaR7JOEQidFMNPYa2D1dkOR8Vs5p55WbvsGUtOJD2XCuy3etHaqjB1XEbVomgJ9IB6QtvGisaZh4LlmoAp3BjTH62NOgfVsbJOwGRZl3TE-SrKcompkur3J0bpbDby1tdymag9dFgMzMxkS_4RE3ispsM49ene1PGgPImu5pWc2vz-VFMt3bbponghOo5hAzEA1n5GoZmVziuA0d_raRDLOJOznvoguNfIkvwWmLZ6nVbNsOo_tVqzPN_HON6g1OD5MIsI99sNfyb7bQaVitnpPY2U-MftNvAXGVTk1x_foUS6ioEqZD7yCzAYUW0e-3dojRaXL03WEJfvxkspIz2POS3hIl3g73Fil5MltOoabh-91VEdL3pA'></script><script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/WAxZp6ftsYkvRdgyplmZaFZxvlSOwXVg1lZFr1k8gU8Mb6ySmeUBOr4hZ7IFtiuGfWxXLHyFHbshbbP2OAqV_idCOs9KEBkvNPHy8pGQ7CvE2UrK_qGscg3YfUBY2-9v9cPMmxpOAwK8VGm34Ygb52whofPDvLuUovO_9hrWb0qIMxiKuFplTp_3t2KGF3cJpbqTr2XYBJoUTTh74uHWyDqY96xb1VZQF51oZTPt5-Xr_yFeyldZLYsCJY76P6QHy4q4wveErPs7LeDVOBS5NWfhS--vKxy6Oe2qDrC5t4ci8XjRM87Ha9XMERJBq5DIh5TUQkh7GC4tdL720jRN6xESxCQlQCar1eAxxHf7dz5oOnZFem49bur2CUfSKfS-nLIOcQxT_jAeRucKday8HLOpBGv5APVJFMuYrP69rlncuapKyDmmC7zcxC1W74UNUVVs3nVBI1DvlU1ULVMh1K2VvTCVobWP_FbbbyV6r7_TIHG4dFZ5I5_QS97LlU1-FK72WsBmNgcPT8WgnLG80GW7su-qTCAvw6O_JgYh6kIdZ7Bmc3DDig8jc53mXHC8mRNEU58ZmXv7tYaHg8M5IpZ1hCOLOlFxe9kj8z5AX-FyD29Y887kIiW4JiSV1OQ0HWYck-WM2GrAD9LximV8UFuC5rZf5fMlMmm3OpEyLq81QGI1FkKDC9QiZUNpDXzQzJ6mf0eBr5h8My17fQIhdMmL_YfZrDbzBbxFeD6CnP_CTXeID3DL5UWCO5WKDC2PCZloPdeaoiYWpjBai4vdYGguN_kSaoD7yXgp6-7sjdCnlYkiAVvaXVjvuS03a4vpZiNgYkHHkTNfvhs8cPo0FJQ6zO8yPr0VKH_IbXP9Lfi7uRwlYBQvfphbz9vX8NEfrdQ1JEEMch-hdU_Flfzk4RO733vVKDAku9_VZC6V0H2aoTWsPJxQ1H1JM6tLWkF0_TNo8m3hsXEQnX52ztGAwNLXW8qHm9HP577eaiObL6eog5y3qF-mbHCSydUGTyH5g3gj8DnGrV8TQ38Z6uRcOixgePa-gmlPzwSl_oMs9V-huMRREqe3ki9kRFxE-Af7ZOdtHfwsE6RuH1R659NIUyXM328bXmWcHL3SjyQ3_hW36Q'></script><script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/6CJ_1K7dxJxDZMZagoC2BWo04if9e7sVQfqkDpNoyctUGRRBmZnTmVtrJ37a2DeAMDdwSXy_TifBxsuwIl4zwaG_W5uMbDMf1gzYT5UGony-NFBOrv9x_f_h5HtIWp7nvlrrdqQp0yMjGnajXN_wNqJ05GQcC7CEvbiF1VLXuC7k9Q3mbEk8w_g5hnkDDfmVlk0rqicdv8wbKqYHxuX6UbHfdGoAwNe5tIMsjsEuNVcqLWklZBzPySiEusyaT_X7-y51E6lLySgZrzkqJMSNnMRGaqKPN9qw33mQ1D85bd72ScnBy2PFcVZu13JA-JGSn1r1rW0jCKtjlevF_VuSpzVbXgEGlFIMBbMpnlPqJ3c9WJ_sSvI9EqLEZj8dSsPfpJ_qVTU12TYYOXIKollIiHeAedowOeAciKgyD3LfqfDPYU3tXimRaXQNX5pxwNUaK8PB7QOapsXj1irh4Ro24AMY5ampzETt9VS2645--p_u3chGqtbeqmoZHmz2rM1_B_ScjOnNXJMBNvV0-wlp2iK7mr1CXwd64nYK2hLP-3WGFpMxUr0M0nng1-JQZGodeC-Rxfnh2lUGna3V4iE8X4dniChsNb3yEXZn-6ec2AQZUsHCRvAKHG9mWsPeO4SAZFaxCWm5B0rZZgZB50wV8JFu6cu6SD_uUfdC3QoToP1uJKntGykE1dBm8uce1uepuLLAExjsaFmVg-2rjJV4OZ7VgZKWzowESityRjgUJnx3Z2_0uwfAxo_5ClR-qhKapPjM-cf8XUM38NAN2lu0p3MYzzNKKpg6g1zJcfqmdWt2p0SaMccheWZe0boMBtDOUW6nuhz0F46YxqHNw956UAnwfD9sbyuubm9D_VgEfzM-vJ2-ptVqpNsFujJwgAhMoq3QGyk9K5jKvsTfFxgWWoBGxQoGBFgje8rAuJMDu3s34TlWJ17pEvSd635QM2-sbZwPfKKbMDZCLX29Jz44zIR86c8xtDkMFirCqjvohmAJJ2t4V4YWTPfmoMucFii6F_oAJTiPjZDdtda_fJly4XGTRIu62hT3pjhXCsy6h1LnsY_Yt679YtgesqBJwUpI2qjzPVo9RAKVHosKS9JfDDuXlvYrylMe'></script>
+</head>
+<body>
+
+<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#overview">Overview — The Modern Securities Infrastructure</a>
+  <a href="#overview" class="sub">Legal vs. Beneficial Ownership</a>
+  <a href="#dtc">The Depository Trust Company (DTC)</a>
+  <a href="#dtc" class="sub">Participants &amp; Eligibility</a>
+  <a href="#dtcc">DTCC — The Parent Organization</a>
+  <a href="#nscc">National Securities Clearing Corporation (NSCC)</a>
+  <a href="#nscc" class="sub">Multilateral Netting & CCP</a>
+  <a href="#nscc" class="sub">NSCC Services & Membership</a>
+  <a href="#ficc">Fixed Income Clearing Corporation (FICC)</a>
+  <a href="#ficc" class="sub">GSD — Government Securities Division</a>
+  <a href="#ficc" class="sub">MBSD — Mortgage-Backed Securities Division</a>
+  <a href="#ficc" class="sub">The DTCC Ecosystem</a>
+  <a href="#cede">Cede &amp; Co. — The Nominee</a>
+  <a href="#cede" class="sub">Why a Nominee Exists</a>
+  <a href="#operating">Operating Arrangements</a>
+  <a href="#operating" class="sub">The Flow of a Trade</a>
+  <a href="#settlement">Settlement &amp; Book-Entry</a>
+  <a href="#rights">Shareholder Rights &amp; Dividends</a>
+  <a href="#direct">Direct Registration vs. Street Name</a>
+    <a href="#euroclear">Euroclear — The European Counterpart</a>
+  <a href="#euroclear" class="sub">Euroclear Bank (ICSD)</a>
+  <a href="#euroclear" class="sub">National CSDs & ESES</a>
+  <a href="#euroclear" class="sub">TARGET2-Securities (T2S)</a>
+  <a href="#global-comparison">Global Comparison: DTC vs. Euroclear</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">SO</div>
+      <div class="header-text">
+        <h1>Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h1>
+        <div class="sub">Enhanced Teaching Guide to U.S. Securities Infrastructure · Interactive Definitions</div>
+      </div>
+    </div>
+    <div class="header-badge">Teaching Tool</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Document Guide:</strong> This is an interactive teaching guide to the U.S. securities depository and clearing infrastructure. Click any <strong>underlined term</strong> for definitions and explanations.</span>
+</div>
+
+<div class="doc-frame">
+
+<div class="teach-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. Hover for highlights, click for detailed definitions and securities infrastructure guidance.</span>
+</div>
+
+<!-- SECTION: OVERVIEW -->
+<h2 class="section-title" id="overview">Overview — The Modern Securities Infrastructure</h2>
+
+<p class="lead">
+When you buy a share of stock through your broker, you do not receive a paper certificate. Instead, your ownership is recorded electronically through a complex infrastructure of <span class="hotspot" data-modal="depositories" tabindex="0" role="button" onclick="openModal('modal-depositories')">depositories</span>, <span class="hotspot" data-modal="clearing-agencies" tabindex="0" role="button" onclick="openModal('modal-clearing-agencies')">clearing agencies</span>, and <span class="hotspot" data-modal="nominees" tabindex="0" role="button" onclick="openModal('modal-nominees')">nominee entities</span>. This guide explains how the <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">Depository Trust Company (DTC)</span>, its parent <span class="hotspot" data-modal="dtcc" tabindex="0" role="button" onclick="openModal('modal-dtcc')">DTCC</span>, and the nominee <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> work together to hold, transfer, and settle securities in the United States.
+</p>
+
+<p class="body-text">
+This system handles trillions of dollars in transactions daily. Understanding its mechanics is essential for investors, compliance professionals, corporate issuers, and anyone involved in capital markets. The infrastructure rests on a legal framework that separates <span class="hotspot" data-modal="legal-owner" tabindex="0" role="button" onclick="openModal('modal-legal-owner')">legal ownership</span> (who holds title) from <span class="hotspot" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')">beneficial ownership</span> (who enjoys the economic benefits).
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">DTC — Depository Trust Company</div>
+    <div class="entity-role">Securities Depository</div>
+    <div class="entity-desc">A limited-purpose trust company that acts as a central securities depository. It holds the vast majority of U.S. equity and debt securities in book-entry form and facilitates transfers between participants.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">DTCC — Depository Trust &amp; Clearing Corporation</div>
+    <div class="entity-role">Holding Company &amp; Clearing Utility</div>
+    <div class="entity-desc">The parent organization that owns DTC, NSCC, and FICC. It provides clearing, settlement, and data services for equities, corporate and municipal bonds, government securities, and derivatives.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Cede &amp; Co.</div>
+    <div class="entity-role">Nominee / Record Holder</div>
+    <div class="entity-desc">A partnership formed by DTC to serve as the registered owner of securities on the books of issuers. Cede &amp; Co. holds legal title; investors hold beneficial interests through their brokers.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">DTC Participants</div>
+    <div class="entity-role">Broker-Dealers &amp; Banks</div>
+    <div class="entity-desc">Broker-dealers, banks, and other financial institutions that maintain accounts at DTC. They are the intermediaries through which investors access the depository system.</div>
+  </div>
+</div>
+
+<!-- SECTION: DTC -->
+<h2 class="section-title" id="dtc">The Depository Trust Company (DTC)</h2>
+
+<p class="body-text">
+Founded in 1973, the <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">Depository Trust Company</span> is a <span class="hotspot" data-modal="central-securities-depository" tabindex="0" role="button" onclick="openModal('modal-central-securities-depository')">central securities depository</span> (CSD) and a <span class="hotspot" data-modal="nscc" tabindex="0" role="button" onclick="openModal('modal-nscc')">National Securities Clearing Corporation (NSCC)</span> participant. DTC is a member of the <span class="hotspot" data-modal="federal-reserve" tabindex="0" role="button" onclick="openModal('modal-federal-reserve')">Federal Reserve System</span> and is registered with the <span class="hotspot" data-modal="sec" tabindex="0" role="button" onclick="openModal('modal-sec')">Securities and Exchange Commission (SEC)</span> as a <span class="hotspot" data-modal="clearing-agency" tabindex="0" role="button" onclick="openModal('modal-clearing-agency')">clearing agency</span>.
+</p>
+
+<p class="body-text">
+DTC's core function is to eliminate the physical movement of securities certificates. Before DTC, brokers delivered millions of paper stock certificates daily. Today, DTC holds over $60 trillion in securities in <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry form</span> — meaning ownership is recorded electronically on DTC's books rather than through physical certificates.
+</p>
+
+<h3 class="subsection-title">How DTC Holds Securities</h3>
+
+<p class="body-text">
+When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent</span> deposits securities with DTC, the securities are registered in the name of <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> on the issuer's books. DTC then credits the securities to the account of the <span class="hotspot" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')">DTC participant</span> (typically the investor's broker-dealer). The participant, in turn, credits the investor's account. This creates a layered ownership structure:
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">Layered Ownership Chain</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Issuer</strong> — The corporation that issued the securities.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Cede &amp; Co.</strong> — Registered owner on the issuer's books (nominee for DTC).</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>DTC</strong> — Holds securities in its vault (or electronically) and maintains records of participant entitlements.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>Participant (Broker-Dealer / Bank)</strong> — Maintains a securities account at DTC and records positions in customer accounts.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Investor (You)</strong> — The beneficial owner who enjoys economic rights (dividends, voting, sale proceeds).</div>
+</div>
+
+<h3 class="subsection-title">DTC Eligibility &amp; Deposit Requirements</h3>
+
+<p class="body-text">
+Not all securities are automatically eligible for DTC services. Issuers must meet <span class="hotspot" data-modal="dtc-eligibility" tabindex="0" role="button" onclick="openModal('modal-dtc-eligibility')">DTC eligibility requirements</span>, which include having a <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent</span> that participates in DTC's <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST (Fast Automated Securities Transfer)</span> program and satisfying certain operational and legal criteria. Once eligible, securities can be deposited and held in book-entry form.
+</p>
+
+<!-- SECTION: DTCC -->
+<h2 class="section-title" id="dtcc">DTCC — The Depository Trust &amp; Clearing Corporation</h2>
+
+<p class="body-text">
+<span class="hotspot" data-modal="dtcc" tabindex="0" role="button" onclick="openModal('modal-dtcc')">DTCC</span> is the holding company that owns and operates DTC, <span class="hotspot" data-modal="nscc" tabindex="0" role="button" onclick="openModal('modal-nscc')">NSCC</span>, and <span class="hotspot" data-modal="ficc" tabindex="0" role="button" onclick="openModal('modal-ficc')">FICC (Fixed Income Clearing Corporation)</span>. While DTC handles custody and asset servicing, DTCC's subsidiaries manage the <span class="hotspot" data-modal="clearing" tabindex="0" role="button" onclick="openModal('modal-clearing')">clearing</span> and <span class="hotspot" data-modal="settlement" tabindex="0" role="button" onclick="openModal('modal-settlement')">settlement</span> of trades.
+</p>
+
+<p class="body-text">
+The distinction is important: <strong>DTC is the vault and registrar</strong>; <strong>NSCC is the clearinghouse</strong> that nets trades and calculates what each firm owes or is owed. Together, they form the backbone of U.S. post-trade infrastructure.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Entity</th>
+    <th>Primary Function</th>
+    <th>What It Handles</th>
+  </tr>
+  <tr>
+    <td><strong>DTC</strong></td>
+    <td>Custody &amp; Asset Servicing</td>
+    <td>Holding securities in book-entry form; transfers between participants; dividend and interest distributions; proxy materials</td>
+  </tr>
+  <tr>
+    <td><strong>NSCC</strong></td>
+    <td>Trade Clearing &amp; Netting</td>
+    <td>Matching and netting equity trades; calculating settlement obligations; risk management</td>
+  </tr>
+  <tr>
+    <td><strong>FICC</strong></td>
+    <td>Fixed Income Clearing</td>
+    <td>Government securities (GSD) and mortgage-backed securities (MBSD) clearing and netting</td>
+  </tr>
+  <tr>
+    <td><strong>DTCC Data</strong></td>
+    <td>Data &amp; Analytics</td>
+    <td>Trade reporting, reference data, and regulatory reporting services</td>
+  </tr>
+</table>
+
+<!-- SECTION: NSCC -->
+<h2 class="section-title" id="nscc">National Securities Clearing Corporation (NSCC)</h2>
+
+<p class="lead">
+The <span class="hotspot" data-modal="nscc" tabindex="0" role="button" onclick="openModal('modal-nscc')">National Securities Clearing Corporation (NSCC)</span> is a wholly-owned subsidiary of DTCC that provides centralized clearing, settlement, risk management, and central counterparty (CCP) services for virtually all broker-to-broker trades involving equities, corporate and municipal debt, American depositary receipts (ADRs), exchange-traded funds (ETFs), and unit investment trusts in the United States. Established in 1976, NSCC is the critical clearing layer that sits between trade execution and settlement.
+</p>
+
+<p class="body-text">
+NSCC's most important function is <span class="hotspot" data-modal="multilateral-netting" tabindex="0" role="button" onclick="openModal('modal-multilateral-netting')">multilateral netting</span>. Instead of settling each trade individually, NSCC nets all buy and sell obligations of each participant throughout the trading day, reducing the value of payments that need to be exchanged by an average of <strong>98% daily</strong>. This dramatic compression of settlement obligations reduces liquidity requirements, lowers capital costs, and minimizes systemic risk across the market.
+</p>
+
+<h3 class="subsection-title">How NSCC Operates as Central Counterparty</h3>
+
+<p class="body-text">
+When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabindex="0" role="button" onclick="openModal('modal-central-counterparty')">central counterparty (CCP)</span>, it interposes itself between the buyer and seller in every trade it clears. NSCC becomes the buyer to every seller and the seller to every buyer — a process called <strong>novation</strong>. This eliminates bilateral counterparty risk: if one broker fails, NSCC steps in to ensure the trade completes, using its clearing fund and risk management tools to absorb the loss.
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">NSCC Trade Clearing & Netting Flow</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Buyer and seller brokers execute a trade on an exchange or ATS.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both sides report trade details to NSCC for comparison and validation.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Continuous Net Settlement (CNS)</strong> — NSCC novates the trade and begins tracking net positions throughout the day.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>End-of-Day Netting</strong> — All of each participant's buys and sells are netted into a single obligation per security.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Settlement</strong> — On T+1, DTC transfers securities and the Federal Reserve settles cash based on NSCC's net instructions.</div>
+</div>
+
+<h3 class="subsection-title">Key NSCC Services</h3>
+
+<table class="comp-table">
+  <tr>
+    <th>Service</th>
+    <th>Description</th>
+    <th>Markets Covered</th>
+  </tr>
+  <tr>
+    <td><strong>Continuous Net Settlement (CNS)</strong></td>
+    <td>Automated netting of trades into single daily settlement obligations per participant</td>
+    <td>Equities, corporate bonds, municipal bonds, ADRs, ETFs, UITs</td>
+  </tr>
+  <tr>
+    <td><strong>Trade Guarantee</strong></td>
+    <td>NSCC guarantees completion of trades from the point of comparison until settlement</td>
+    <td>All CNS-eligible trades</td>
+  </tr>
+  <tr>
+    <td><strong>Risk Management</strong></td>
+    <td>Margin collection, stress testing, and backtesting to cover potential participant defaults</td>
+    <td>All cleared trades</td>
+  </tr>
+  <tr>
+    <td><strong>Mutual Fund Services</strong></td>
+    <td>Order routing, confirmation, and settlement for mutual fund transactions</td>
+    <td>Mutual funds, money market funds</td>
+  </tr>
+  <tr>
+    <td><strong>Insurance & Annuity Services</strong></td>
+    <td>Processing for variable insurance products and annuity contracts</td>
+    <td>Variable life, variable annuities</td>
+  </tr>
+</table>
+
+<div class="tip-box">
+  <strong>Teaching Note:</strong> The NSCC guarantee is what makes the T+1 settlement cycle feasible. Without a CCP guaranteeing trades, brokers would need to hold far more capital against the risk that their counterparty fails before settlement. NSCC's guarantee, backed by its clearing fund and loss allocation rules, allows the market to operate with dramatically less capital tied up in unsettled trades.
+</div>
+
+<h3 class="subsection-title">NSCC Membership & Risk Framework</h3>
+
+<p class="body-text">
+NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post margin based on their trading activity and portfolio risk. NSCC collects margin at least daily and monitors intraday exposure, with the authority to make intraday margin calls when risk thresholds are breached or markets display elevated volatility.
+</p>
+
+<p class="body-text">
+In the event of a member default, NSCC has a waterfall of resources: the defaulter's margin deposit, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
+</p>
+
+<!-- SECTION: FICC -->
+<h2 class="section-title" id="ficc">Fixed Income Clearing Corporation (FICC)</h2>
+
+<p class="lead">
+The <span class="hotspot" data-modal="ficc" tabindex="0" role="button" onclick="openModal('modal-ficc')">Fixed Income Clearing Corporation (FICC)</span> is a DTCC subsidiary that provides central counterparty clearing, settlement, and risk management services for the U.S. government securities and mortgage-backed securities (MBS) markets. Established in 2003 through the merger of the Government Securities Clearing Corporation (GSCC, founded 1986) and the Mortgage-Backed Securities Clearing Corporation (MBSCC, founded 1979), FICC is designated as a <span class="hotspot" data-modal="sifmu" tabindex="0" role="button" onclick="openModal('modal-sifmu')">Systemically Important Financial Market Utility (SIFMU)</span> under Title VIII of the Dodd-Frank Act.
+</p>
+
+<p class="body-text">
+FICC operates through two distinct divisions — the <span class="hotspot" data-modal="gsd" tabindex="0" role="button" onclick="openModal('modal-gsd')">Government Securities Division (GSD)</span> and the <span class="hotspot" data-modal="mbsd" tabindex="0" role="button" onclick="openModal('modal-mbsd')">Mortgage-Backed Securities Division (MBSD)</span> — each with its own membership rules, clearing funds, and risk models. Together, they clear and settle trillions of dollars in transactions daily, making FICC one of the most critical nodes in the global financial system.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">GSD — Government Securities Division</div>
+    <div class="entity-role">Treasury & Agency Securities</div>
+    <div class="entity-desc">Provides CCP clearing, netting, and settlement for U.S. Treasury bills, notes, bonds, strips, agency securities, and repurchase agreements (repos). Also offers sponsored membership and agent clearing services for broader market access.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">MBSD — Mortgage-Backed Securities Division</div>
+    <div class="entity-role">MBS & TBA Market</div>
+    <div class="entity-desc">Provides real-time trade matching, confirmation, netting, risk management, and settlement for to-be-announced (TBA) transactions, specified pool trades, and stipulated trades in agency MBS.</div>
+  </div>
+</div>
+
+<h3 class="subsection-title">FICC's Role as Central Counterparty</h3>
+
+<p class="body-text">
+Like NSCC, FICC acts as a central counterparty for the trades it clears. When two parties trade a Treasury security or MBS, FICC novates the trade at the point of comparison, becoming the buyer to the seller and the seller to the buyer. This guarantee of completion is unique and essential: <strong>FICC is the only entity that guarantees trade settlements in U.S. government securities</strong>, effectively substituting its own creditworthiness for that of the trading counterparties.
+</p>
+
+<p class="body-text">
+FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, the GSD clearing fund held approximately <strong>$87 billion</strong> in member deposits, while the MBSD clearing fund held approximately <strong>$12.4 billion</strong>. These funds consist of cash and eligible securities (primarily U.S. Treasuries and agency MBS) and serve as the first line of defense against member defaults.
+</p>
+
+<h3 class="subsection-title">Key FICC Services by Division</h3>
+
+<table class="comp-table">
+  <tr>
+    <th>Service</th>
+    <th>GSD</th>
+    <th>MBSD</th>
+  </tr>
+  <tr>
+    <td><strong>Real-Time Trade Matching (RTTM)</strong></td>
+    <td>Interactive platform for real-time trade comparison and status monitoring</td>
+    <td>Automated trade matching with immediate legal confirmation</td>
+  </tr>
+  <tr>
+    <td><strong>Netting & Settlement</strong></td>
+    <td>Centralized clearance for Treasuries, agencies, and repos; T+1 settlement</td>
+    <td>Netting for TBA, specified pool, and stipulated trades</td>
+  </tr>
+  <tr>
+    <td><strong>Repo Services</strong></td>
+    <td>GCF Repo service for general collateral financing; CCIT for tri-party repo</td>
+    <td>—</td>
+  </tr>
+  <tr>
+    <td><strong>Sponsored / Agent Clearing</strong></td>
+    <td>Sponsored Service for indirect participants; Agent Clearing Service (ACS) for client clearing</td>
+    <td>—</td>
+  </tr>
+  <tr>
+    <td><strong>Electronic Pool Notification</strong></td>
+    <td>—</td>
+    <td>Automated notification of pool assignments for TBA trades</td>
+  </tr>
+  <tr>
+    <td><strong>Auction Takedown</strong></td>
+    <td>Reduced settlement risk for Treasury auction purchases</td>
+    <td>—</td>
+  </tr>
+</table>
+
+<h3 class="subsection-title">Risk Management & Margin</h3>
+
+<p class="body-text">
+FICC employs sophisticated risk-based margin systems that mark participant positions to market and collect margin at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday margin calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
+</p>
+
+<p class="body-text">
+FICC's margin methodology includes several components: a value-at-risk (VaR) charge based on portfolio volatility, a mark-to-market charge for intraday price changes, a backtesting charge to cover risks not captured by the VaR model, and a supplemental fund deposit for concentrated or illiquid positions. Members may also be subject to additional charges based on their specific risk profiles.
+</p>
+
+<div class="warn-box">
+  <strong>Regulatory Note:</strong> Under SEC Treasury Clearing Rules, FICC is required to expand central clearing of U.S. Treasury cash transactions by the end of 2026 and Treasury repo transactions by mid-2027. This will significantly increase the volume of trades flowing through GSD and necessitate rule changes to accommodate new participant types and margin segregation requirements.
+</div>
+
+<h3 class="subsection-title">The DTCC Ecosystem: How DTC, NSCC, and FICC Work Together</h3>
+
+<p class="body-text">
+While DTC, NSCC, and FICC are distinct entities with distinct functions, they operate as an integrated ecosystem. Understanding their interplay is essential:
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">The DTCC Clearing & Settlement Ecosystem</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — A buyer and seller agree to trade equities (via NSCC), Treasuries (via FICC-GSD), or MBS (via FICC-MBSD).</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Clearing (NSCC / FICC)</strong> — The CCP novates the trade, nets obligations, collects margin, and guarantees completion.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Securities Settlement (DTC)</strong> — DTC executes the book-entry transfer of securities from seller's account to buyer's account.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>Cash Settlement (Federal Reserve)</strong> — The Fed debits the buyer's bank and credits the seller's bank simultaneously with the securities transfer.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Asset Servicing (DTC)</strong> — DTC handles dividends, interest, corporate actions, and proxy materials for the settled positions.</div>
+</div>
+
+<table class="comp-table">
+  <tr>
+    <th>Entity</th>
+    <th>Primary Role</th>
+    <th>What It Clears / Settles</th>
+    <th>Key Risk Tool</th>
+  </tr>
+  <tr>
+    <td><strong>DTC</strong></td>
+    <td>Securities Depository</td>
+    <td>Holds & transfers securities in book-entry form</td>
+    <td>Segregation of participant assets; DVP settlement</td>
+  </tr>
+  <tr>
+    <td><strong>NSCC</strong></td>
+    <td>Equity CCP & Clearinghouse</td>
+    <td>Equities, corporate bonds, municipal bonds, ETFs, ADRs, UITs</td>
+    <td>Multilateral netting; clearing fund; loss allocation</td>
+  </tr>
+  <tr>
+    <td><strong>FICC-GSD</strong></td>
+    <td>Government Securities CCP</td>
+    <td>U.S. Treasuries, agency securities, repos</td>
+    <td>VaR-based margin; intraday monitoring; CCLF liquidity facility</td>
+  </tr>
+  <tr>
+    <td><strong>FICC-MBSD</strong></td>
+    <td>MBS CCP</td>
+    <td>Agency mortgage-backed securities (TBA, specified pools)</td>
+    <td>Real-time trade matching; VaR margin; pool notification</td>
+  </tr>
+</table>
+
+<div class="tip-box">
+  <strong>Teaching Note:</strong> The distinction between "clearing" (NSCC/FICC) and "settlement" (DTC/Fed) is often blurred in casual discussion but is critical for understanding risk. Clearing establishes who owes what; settlement is the actual exchange of securities and cash. NSCC and FICC manage the risk that a counterparty fails between trade and settlement; DTC and the Fed ensure that when settlement occurs, both sides deliver simultaneously.
+</div>
+
+<!-- SECTION: CEDE -->
+<h2 class="section-title" id="cede">Cede &amp; Co. — The Nominee</h2>
+
+<p class="lead">
+<span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> is perhaps the most misunderstood entity in the U.S. securities markets. It is not a person, not a corporation, and not a shadowy third party. It is a <span class="hotspot" data-modal="nominee" tabindex="0" role="button" onclick="openModal('modal-nominee')">nominee partnership</span> created by DTC to hold legal title to securities on behalf of DTC participants and their customers.
+</p>
+
+<p class="body-text">
+The name "Cede" is deliberately chosen: it means "to give up" or "to transfer" — reflecting the function of transferring legal ownership to the depository so that the underlying securities can move electronically rather than physically.
+</p>
+
+<h3 class="subsection-title">Why Cede &amp; Co. Exists</h3>
+
+<p class="body-text">
+Before the depository system, every time a stock was sold, the seller's broker had to deliver the physical certificate to the buyer's broker. This created massive logistical burdens, delays, and risks (lost certificates, forgeries, "failures to deliver"). The <span class="hotspot" data-modal="securities-act-1933" tabindex="0" role="button" onclick="openModal('modal-securities-act-1933')">Securities Act of 1933</span> and subsequent amendments allowed for the creation of a centralized depository system.
+</p>
+
+<p class="body-text">
+By registering securities in the name of a single nominee — Cede &amp; Co. — issuers only need to recognize one registered owner on their books. All transfers of ownership among investors happen electronically within DTC's system, without the issuer ever needing to know who the current beneficial owners are. This is called the <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">"street name"</span> system.
+</p>
+
+<div class="warn-box">
+  <strong>Common Misconception:</strong> Some investors believe that because Cede &amp; Co. is the registered owner, DTC "owns" all the stock and investors have no rights. This is incorrect. Investors are <em>beneficial owners</em> with enforceable property rights. DTC and its participants are legally obligated to pass through all economic benefits (dividends, voting rights, sale proceeds) to the beneficial owners.
+</div>
+
+<h3 class="subsection-title">Legal Structure of Cede &amp; Co.</h3>
+
+<p class="body-text">
+Cede &amp; Co. is a <span class="hotspot" data-modal="general-partnership" tabindex="0" role="button" onclick="openModal('modal-general-partnership')">general partnership</span> formed under New York law. Its partners are officers or employees of DTC. It has no independent operations, no employees of its own, and no assets beyond the securities it holds as nominee. It exists solely as a legal fiction to satisfy the requirement that someone be listed as the registered owner on issuer records.
+</p>
+
+<!-- SECTION: OPERATING ARRANGEMENTS -->
+<h2 class="section-title" id="operating">Operating Arrangements</h2>
+
+<p class="lead">
+The relationship between DTC, its participants, issuers, and investors is governed by a web of <span class="hotspot" data-modal="operating-arrangements" tabindex="0" role="button" onclick="openModal('modal-operating-arrangements')">operating arrangements</span>, <span class="hotspot" data-modal="rules" tabindex="0" role="button" onclick="openModal('modal-rules')">DTC rules</span>, <span class="hotspot" data-modal="indemnification" tabindex="0" role="button" onclick="openModal('modal-indemnification')">indemnification agreements</span>, and <span class="hotspot" data-modal="depository-agreements" tabindex="0" role="button" onclick="openModal('modal-depository-agreements')">depository agreements</span>. These documents establish the rights, obligations, and liabilities of each party.
+</p>
+
+<h3 class="subsection-title">The Flow of a Trade: Step by Step</h3>
+
+<div class="diagram-box">
+  <div class="diagram-title">Trade Execution to Settlement (T+1)</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Investor places an order through Broker A. Order is matched on an exchange with Broker B.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both brokers report the trade to NSCC for clearing.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Clearing &amp; Netting</strong> — NSCC nets all trades among participants, calculating each firm's net settlement obligation at the end of the day.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>Book-Entry Transfer</strong> — DTC transfers securities electronically from Broker B's account to Broker A's account.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Cash Settlement</strong> — DTCC's settlement bank (a Federal Reserve Bank) debits Broker A's cash account and credits Broker B's cash account.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">6</span><strong>Customer Confirmation</strong> — Broker A updates the investor's account to reflect the new position. No certificate changes hands.</div>
+</div>
+
+<p class="body-text">
+This entire process now settles on a <span class="hotspot" data-modal="t1" tabindex="0" role="button" onclick="openModal('modal-t1')">T+1 basis</span> (trade date plus one business day), reduced from T+2 in May 2024. The move to T+1 reduces counterparty risk and frees up capital tied up in the settlement process.
+</p>
+
+<h3 class="subsection-title">Key Agreements &amp; Rules</h3>
+
+<p class="body-text">
+Several foundational documents govern these relationships:
+</p>
+
+<ul class="body-text">
+  <li><strong>DTC Rules:</strong> The operating rules that all participants must agree to. They cover eligibility, deposits, withdrawals, transfers, and liability.</li>
+  <li><strong>Participant Application:</strong> The agreement by which a broker-dealer or bank becomes a DTC participant, agreeing to abide by DTC rules and indemnify DTC.</li>
+  <li><strong>Indemnification Agreement:</strong> Participants agree to indemnify DTC and Cede &amp; Co. against claims arising from their role as nominee. This protects the depository from being dragged into disputes between beneficial owners.</li>
+  <li><strong>Issuer Letter of Representations:</strong> When an issuer deposits securities with DTC, it signs a letter agreeing to recognize DTC and Cede &amp; Co. as the registered owner and to follow DTC's procedures for distributions, proxies, and corporate actions.</li>
+  <li><strong>Uniform Practice Code:</strong> Industry standards developed by the Securities Industry and Financial Markets Association (SIFMA) that supplement DTC rules.</li>
+</ul>
+
+<!-- SECTION: SETTLEMENT -->
+<h2 class="section-title" id="settlement">Settlement &amp; Book-Entry Mechanics</h2>
+
+<p class="body-text">
+At the heart of the system is <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry settlement</span>. Rather than moving physical certificates, DTC adjusts the securities positions on its participants' accounts. This is done through DTC's <span class="hotspot" data-modal="dvp" tabindex="0" role="button" onclick="openModal('modal-dvp')">Delivery Versus Payment (DVP)</span> system, which ensures that securities are only delivered when payment is simultaneously made.
+</p>
+
+<p class="body-text">
+DVP eliminates <span class="hotspot" data-modal="settlement-risk" tabindex="0" role="button" onclick="openModal('modal-settlement-risk')">settlement risk</span> — the risk that one party delivers securities or cash but the other fails to perform. Under DVP Model 1 (the system used by DTC), both securities and cash move simultaneously through a central settlement bank.
+</p>
+
+<h3 class="subsection-title">The Role of the Federal Reserve</h3>
+
+<p class="body-text">
+DTC maintains an account at a <span class="hotspot" data-modal="federal-reserve-bank" tabindex="0" role="button" onclick="openModal('modal-federal-reserve-bank')">Federal Reserve Bank</span> for cash settlement. Participants also maintain accounts at the Fed or at correspondent banks. When DVP settlement occurs, the Fed debits and credits these accounts simultaneously, ensuring that no party is exposed to the other's default during settlement.
+</p>
+
+<!-- SECTION: RIGHTS -->
+<h2 class="section-title" id="rights">Shareholder Rights, Dividends &amp; Proxies</h2>
+
+<p class="body-text">
+Because Cede &amp; Co. is the registered owner, issuers send dividends, proxy materials, and other shareholder communications to Cede &amp; Co. DTC has operating arrangements to ensure these flow through to beneficial owners.
+</p>
+
+<h3 class="subsection-title">Dividends &amp; Distributions</h3>
+
+<p class="body-text">
+When an issuer pays a dividend, it sends the total payment to DTC (as registered owner). DTC then <span class="hotspot" data-modal="pro-rata" tabindex="0" role="button" onclick="openModal('modal-pro-rata')">allocates the payment pro-rata</span> to participants based on their positions. Participants then credit their customers' accounts. This chain typically completes within one business day of the issuer's payment.
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">Dividend Processing Flow</div>
+  <div class="flow-step">
+    <span class="step-num">1</span>
+    <strong>Issuer declares dividend</strong> — Sets record date and payment date per operational requirements
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <span class="step-num">2</span>
+    <strong>Record date notification</strong> — Issuer notifies DTC of record date and payment details
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <span class="step-num">3</span>
+    <strong>Payment processing</strong> — Issuer sends total payment to DTC for Cede & Co. as registered owner
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <span class="step-num">4</span>
+    <strong>DTC allocation</strong> — DTC allocates payment pro-rata to participants based on positions
+  </div>
+  <div class="flow-connector"></div>
+  <div class="flow-step">
+    <span class="step-num">5</span>
+    <strong>Participant distribution</strong> — Participants credit customer accounts
+  </div>
+</div>
+
+<div class="warn-box">
+  <strong>Operational Requirement:</strong> Issuers must provide DTC with complete and accurate dividend payment information including record date, payment date, rate, and payment instructions. Failure to provide timely notice can result in processing delays. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section IV</a>
+</div>
+
+<h4 class="subsection-title">Dividend Payment Standards</h4>
+
+<p class="body-text">
+DTC's operational arrangements specify detailed requirements for dividend processing:
+</p>
+
+<ul class="body-text">
+  <li><strong>Record Date Requirements:</strong> Issuers must establish record dates and provide DTC with advance notice of dividend declarations</li>
+  <li><strong>Payment Timing:</strong> Standard processing requires payment information to be received by DTC according to specified timelines before the payment date</li>
+  <li><strong>Income Payment Details:</strong> Must include payment rate, record date, payment date, and any special processing requirements</li>
+  <li><strong>Currency Provisions:</strong> Specific requirements for securities denominated in non-U.S. currencies with or without U.S. dollar payment options</li>
+</ul>
+
+<h4 class="subsection-title">Special Dividend Procedures</h4>
+
+<p class="body-text">
+Certain dividend types require additional processing:
+</p>
+
+<ul class="body-text">
+  <li><strong>Dividend Reinvestment:</strong> Securities with automatic or optional dividend reinvestment features require special processing</li>
+  <li><strong>Stock Dividends/PIK Distributions:</strong> Payments in kind require fractional share handling and restricted distribution processing</li>
+  <li><strong>Structured Securities:</strong> Multi-class securities have specific allocation and notification requirements</li>
+  <li><strong>ADR/GDR Payments:</strong> American/Global Depositary Receipts have additional currency conversion and distribution procedures</li>
+</ul>
+
+<div class="tip-box">
+  <strong>Processing Tip:</strong> For securities with dividend reinvestment features, issuers must specify whether reinvestment is automatic or optional, and how fractional shares are handled (cash in lieu or additional shares).
+</div>
+
+<h3 class="subsection-title">Corporate Action Processing</h3>
+
+<p class="body-text">
+Corporate actions include tender offers, mergers, stock splits, rights offerings, and other events that affect securities. DTC has established procedures for processing these events efficiently through its book-entry system.
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">Corporate Action Processing Categories</div>
+  <div class="flow-step">
+    <span class="step-num">VOL</span>
+    <strong>Voluntary Corporate Actions</strong> — Tender offers, rights offerings, optional exchanges (require shareholder election)
+  </div>
+  <div class="flow-step">
+    <span class="step-num">MAN</span>
+    <strong>Mandatory Corporate Actions</strong> — Mergers, stock splits, mandatory exchanges (automatic for all holders)
+  </div>
+  <div class="flow-step">
+    <span class="step-num">RED</span>
+    <strong>Redemption Events</strong> — Called bonds, matured securities, sinking fund redemptions
+  </div>
+  <div class="flow-step">
+    <span class="step-num">REO</span>
+    <strong>Reorganization Events</strong> — Spin-offs, recapitalizations, change of control transactions
+  </div>
+</div>
+
+<h4 class="subsection-title">Key Processing Programs</h4>
+
+<p class="body-text">
+DTC operates specialized programs to handle different types of corporate actions:
+</p>
+
+<ul class="body-text">
+  <li><strong>ATOP (Automated Tender Offer Program):</strong> Processes voluntary tender offers and exchange offers with automated participant acceptance and surrender procedures</li>
+  <li><strong>ASOP (Automated Subscription Offer Program):</strong> Handles rights offerings and subscription offers with automated rights surrender and processing</li>
+  <li><strong>IVORS (Investor Voluntary Redemptions and Sales):</strong> Processes voluntary redemptions for Unit Investment Trusts</li>
+</ul>
+
+<div class="warn-box">
+  <strong>Operational Requirement:</strong> Corporate action notices must be provided to DTC according to strict timelines. Voluntary offers require specific eligibility criteria and processing standards. Failure to comply with notice requirements can result in processing delays or inability to use automated programs. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section VI</a>
+</div>
+
+<h4 class="subsection-title">Fractional Share Handling</h4>
+
+<p class="body-text">
+Corporate actions often result in fractional entitlements. DTC's operational arrangements specify:
+</p>
+
+<ul class="body-text">
+  <li><strong>Cash in Lieu:</strong> Fractional shares can be paid out in cash based on market price</li>
+  <li><strong>Roundup Shares:</strong> Additional full shares may be issued to cover fractional entitlements</li>
+  <li><strong>Restricted Distributions:</strong> Special handling for restricted securities resulting from corporate actions</li>
+</ul>
+
+<h3 class="subsection-title">Proxy Voting</h3>
+
+<p class="body-text">
+Proxy materials follow a similar chain. The issuer sends proxy materials to Cede &amp; Co. / DTC. DTC forwards them to participants, who send them to beneficial owners. Under <span class="hotspot" data-modal="sec-rules" tabindex="0" role="button" onclick="openModal('modal-sec-rules')">SEC rules</span>, brokers must forward proxy materials and voting instructions to beneficial owners in a timely manner.
+</p>
+
+<p class="body-text">
+Beneficial owners vote through their brokers, who aggregate the votes and transmit them back through DTC to the issuer's <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent</span> or <span class="hotspot" data-modal="proxy-solicitor" tabindex="0" role="button" onclick="openModal('modal-proxy-solicitor')">proxy solicitor</span>. This system is known as the <span class="hotspot" data-modal="proxy-voting-system" tabindex="0" role="button" onclick="openModal('modal-proxy-voting-system')">beneficial owner proxy voting system</span>.
+</p>
+
+<div class="tip-box">
+  <strong>Investor Tip:</strong> If you want to receive proxy materials and annual reports directly from the issuer rather than through your broker, you can request to be treated as a "non-objecting beneficial owner" (NOBO). Some brokers default to "objecting beneficial owner" (OBO) status, which means the issuer cannot see your name or contact you directly.
+</div>
+
+<h3 class="subsection-title">Record Date & Payment Requirements</h3>
+
+<p class="body-text">
+Record dates determine which shareholders are entitled to dividends, corporate action benefits, or other rights. DTC's operational arrangements establish specific requirements for record date notifications and payment instructions.
+</p>
+
+<h4 class="subsection-title">Record Date Standards</h4>
+
+<ul class="body-text">
+  <li><strong>Advance Notice:</strong> Issuers must provide DTC with advance notice of record dates according to specified timelines</li>
+  <li><strong>Position Determination:</strong> DTC determines participant positions as of the close of business on the record date</li>
+  <li><strong>Beneficial Owner entitlement:</strong> Participants must determine which beneficial owners are entitled based on their own record dates</li>
+  <li><strong>Notification Chain:</strong> Record date information flows from issuer → DTC → participants → beneficial owners</li>
+</ul>
+
+<h4 class="subsection-title">Payment Instruction Standards</h4>
+
+<p class="body-text">
+DTC's operational arrangements specify detailed payment standards for different types of payments:
+</p>
+
+<ul class="body-text">
+  <li><strong>Income Payments:</strong> Dividends and interest payments require specific timing and formatting standards</li>
+  <li><strong>Redemption Payments:</strong> Maturity and call payments have separate processing requirements</li>
+  <li><strong>Reorganization Payments:</strong> Merger, exchange, and other reorganization payments have special handling procedures</li>
+  <li><strong>Payment Without Presentation (PWP):</strong> Certain redemptions can be processed without physical certificate presentation</li>
+</ul>
+
+<div class="warn-box">
+  <strong>Operational Requirement:</strong> Payment instructions must be received by DTC according to strict deadlines. Late or incomplete payment instructions can result in processing delays, failed payments, or additional charges. Issuers must provide complete payment details including amount, payment date, and any special handling requirements. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section III</a>
+</div>
+
+<div class="tip-box">
+  <strong>Timing Tip:</strong> Standard payment processing typically requires instructions to be received by DTC several business days before the payment date to ensure timely settlement. Emergency or same-day processing may be available but often incurs additional fees.
+</div>
+
+<h3 class="subsection-title">Redemption Notification Procedures</h3>
+
+<p class="body-text">
+When issuers redeem securities (through maturity, calls, or mandatory redemption), they must follow specific notification procedures to ensure DTC can process the redemption efficiently.
+</p>
+
+<h4 class="subsection-title">Types of Redemptions</h4>
+
+<ul class="body-text">
+  <li><strong>Maturity Redemptions:</strong> Securities reaching their scheduled maturity date</li>
+  <li><strong>Call Redemptions:</strong> Early redemption at the issuer's option, typically at a premium</li>
+  <li><strong>Sinking Fund Redemptions:</strong> Mandatory partial redemptions according to a schedule</li>
+  <li><strong>Put Redemptions:</strong> Holders have the option to sell securities back to the issuer</li>
+</ul>
+
+<h4 class="subsection-title">Notification Requirements</h4>
+
+<p class="body-text">
+DTC's operational arrangements specify detailed notification requirements:
+</p>
+
+<ul class="body-text">
+  <li><strong>Advance Notice:</strong> Redemption notices must be provided to DTC according to specified timelines before the redemption date</li>
+  <li><strong>Notice Content:</strong> Must include redemption date, payment amount, calculation methodology, and any special processing requirements</li>
+  <li><strong>Participant Notification:</strong> DTC forwards redemption notices to participants, who then notify beneficial owners</li>
+  <li><strong>Withdrawal Procedures:</strong> Procedures for participants to withdraw securities from DTC before redemption if needed</li>
+</ul>
+
+<h4 class="subsection-title">Special Processing</h4>
+
+<ul class="body-text">
+  <li><strong>Payment Without Presentation (PWP):</strong> Certain redemptions can be processed without requiring participants to present physical certificates</li>
+  <li><strong>Partial Redemptions:</strong> Special procedures for securities with partial redemption features (e.g., auction rate securities)</li>
+  <li><strong>Pro-Rata Distributions:</strong> Procedures for pro-rata pass-through of principal distributions</li>
+</ul>
+
+<div class="warn-box">
+  <strong>Operational Requirement:</strong> Redemption notices that do not meet DTC's content or timing requirements may be rejected, causing processing delays. Issuers must ensure notices include all required information and are submitted within specified timeframes. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section V</a>
+</div>
+
+<div class="tip-box">
+  <strong>Processing Tip:</strong> For securities with put features, additional requirements apply regarding notice timing, election procedures, and special processing. Issuers should review put notification standards carefully when structuring securities with embedded put options.
+</div>
+
+<!-- SECTION: DIRECT REGISTRATION -->
+<h2 class="section-title" id="direct">Direct Registration vs. Street Name</h2>
+
+<p class="body-text">
+Investors have alternatives to holding securities in street name through DTC. The <span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">Direct Registration System (DRS)</span> allows investors to hold securities directly on the books of the issuer or its transfer agent, without a physical certificate and without going through a broker.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>Street Name (DTC / Broker)</th>
+    <th>Direct Registration (DRS)</th>
+    <th>Physical Certificate</th>
+  </tr>
+  <tr>
+    <td><strong>Registered Owner</strong></td>
+    <td>Cede &amp; Co. (nominee)</td>
+    <td>Investor's own name</td>
+    <td>Investor's own name</td>
+  </tr>
+  <tr>
+    <td><strong>Transfer Speed</strong></td>
+    <td>Instant (T+1 settlement)</td>
+    <td>Slower (requires transfer agent)</td>
+    <td>Slowest (physical delivery)</td>
+  </tr>
+  <tr>
+    <td><strong>Cost</strong></td>
+    <td>Low / included in brokerage</td>
+    <td>Low or no fee</td>
+    <td>Higher (printing, handling, insurance)</td>
+  </tr>
+  <tr>
+    <td><strong>Liquidity</strong></td>
+    <td>High (easy to sell)</td>
+    <td>Must transfer to broker to sell</td>
+    <td>Must deposit with broker to sell</td>
+  </tr>
+  <tr>
+    <td><strong>Issuer Communication</strong></td>
+    <td>Through broker</td>
+    <td>Direct from issuer</td>
+    <td>Direct from issuer</td>
+  </tr>
+  <tr>
+    <td><strong>SIPC Protection</strong></td>
+    <td>Yes (up to $500,000)</td>
+    <td>No SIPC needed (not held by broker)</td>
+    <td>No SIPC needed</td>
+  </tr>
+</table>
+
+<p class="body-text">
+Most investors hold securities in street name because it is faster, cheaper, and more convenient for trading. However, direct registration offers the certainty of being the registered owner on the issuer's books and eliminates intermediary risk (the risk that a broker fails and its customer accounts are frozen during resolution).
+</p>
+
+<div class="tip-box">
+  <strong>Teaching Note:</strong> The existence of DRS does not undermine the legitimacy of the DTC/street name system. It is an alternative designed for investors who prefer direct registration. The vast majority of market participants — including institutional investors, mutual funds, and pension funds — use street name because the efficiency gains outweigh the theoretical risks.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY
+════════════════════════════════════════════════════ -->
+
+<!-- how-to-use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <p>This interactive guide explains the U.S. securities depository and clearing infrastructure with clickable definitions and securities infrastructure guidance.</p>
+      <p><strong>How to navigate:</strong></p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between sections.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation.</li>
+        <li>Use this guide to understand the roles of DTC, DTCC, Cede &amp; Co., and the operating arrangements that bind them.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Start with the Overview and work through each section sequentially. The diagrams illustrate how a single trade flows through the entire system.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Depositories -->
+<div class="modal-overlay" id="modal-depositories" role="dialog" aria-modal="true" aria-labelledby="modal-title-depositories">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-depositories">Depositories</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Infrastructure</div>
+        <div class="def-word">Securities Depository</div>
+        <p>An institution that holds securities in electronic form (book-entry) and facilitates their transfer through ledger entries rather than physical movement of certificates.</p>
+      </div>
+      <p class="modal-section-title">Major U.S. Depositories</p>
+      <ul>
+        <li><strong>DTC (Depository Trust Company):</strong> The primary depository for corporate equities, corporate debt, and municipal securities.</li>
+        <li><strong>Federal Reserve Banks:</strong> Hold government securities (Treasuries, agency securities) in book-entry form.</li>
+        <li><strong>Options Clearing Corporation (OCC):</strong> Clears and settles options and futures contracts.</li>
+      </ul>
+      <p class="modal-section-title">Major European Depositories</p>
+      <ul>
+        <li><strong>Euroclear Bank:</strong> International CSD for cross-border securities; €37.5+ trillion assets under custody; 2,000+ participants across 90+ countries.</li>
+        <li><strong>Euroclear France / Nederland / Belgium:</strong> National CSDs for Euronext markets; connected to T2S.</li>
+        <li><strong>Euroclear UK &amp; International:</strong> UK CSD operating the CREST settlement system.</li>
+        <li><strong>Clearstream Banking Luxembourg:</strong> The other major ICSD, owned by Deutsche Börse.</li>
+        <li><strong>Clearstream Banking Frankfurt:</strong> National CSD for German securities.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Regulation S-K; DTC Rules, Article 1; Euroclear Annual Report 2022; ESMA.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Clearing Agencies -->
+<div class="modal-overlay" id="modal-clearing-agencies" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-agencies">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clearing-agencies">Clearing Agencies</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Regulated Entity</div>
+        <div class="def-word">Clearing Agency</div>
+        <p>A financial institution registered with the SEC that provides clearing, settlement, or central counterparty services for securities transactions. Defined in Section 3(a)(23) of the Securities Exchange Act of 1934.</p>
+      </div>
+      <p class="modal-section-title">Registration &amp; Oversight</p>
+      <p>Clearing agencies must register with the SEC and comply with stringent financial responsibility, operational capability, and governance standards. The SEC reviews their rules and can disapprove proposed rule changes.</p>
+      <p class="modal-section-title">U.S. Clearing Agencies</p>
+      <ul>
+        <li><strong>NSCC:</strong> Equity trade clearing and netting.</li>
+        <li><strong>FICC:</strong> Fixed income and mortgage-backed securities clearing.</li>
+        <li><strong>OCC:</strong> Options and futures clearing.</li>
+        <li><strong>DTC:</strong> Securities depository and asset servicing.</li>
+      </ul>
+      <p class="modal-section-title">European Clearing Landscape</p>
+      <p>Unlike the U.S., Europe does not have a single clearing agency equivalent to NSCC. Clearing is fragmented across multiple CCPs:</p>
+      <ul>
+        <li><strong>LCH (London Clearing House):</strong> Clears interest rate swaps, equities, and some bonds.</li>
+        <li><strong>Euronext Clearing:</strong> CCP for Euronext equity and derivative markets.</li>
+        <li><strong>European Commodity Clearing (ECC):</strong> Energy and commodity derivatives.</li>
+        <li><strong>Bilateral Clearing:</strong> Many European bond trades clear bilaterally without a CCP.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 17A; SEC Rule 17Ad-22; ESMA; European Commission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Nominees -->
+<div class="modal-overlay" id="modal-nominees" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominees">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nominees">Nominees</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Concept</div>
+        <div class="def-word">Nominee</div>
+        <p>A person or entity designated to act as the legal owner of property on behalf of the true beneficial owner. The nominee holds legal title but has no economic interest and must act according to the beneficial owner's instructions.</p>
+      </div>
+      <p class="modal-section-title">In Securities Markets</p>
+      <p>Nominees allow for the aggregation of ownership. Instead of issuers tracking thousands of individual shareholders, they track one nominee (Cede &amp; Co.), and the depository tracks the participants, who in turn track their customers.</p>
+      <div class="citation"><strong>Source:</strong> New York Uniform Commercial Code, Article 8 (Investment Securities).</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTC -->
+<div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Central Securities Depository</div>
+        <div class="def-word">DTC</div>
+        <p>A limited-purpose trust company, central securities depository, and SEC-registered clearing agency. It holds the majority of U.S. equity and debt securities in book-entry form and provides asset servicing and settlement services.</p>
+      </div>
+      <p class="modal-section-title">Key Statistics</p>
+      <ul>
+        <li>Holds over $60 trillion in securities value.</li>
+        <li>Processes millions of transactions daily.</li>
+        <li>Has approximately 300 participants (broker-dealers and banks).</li>
+        <li>Founded in 1973; headquartered in New York.</li>
+      </ul>
+      <p class="modal-section-title">Functions</p>
+      <ul>
+        <li><strong>Custody:</strong> Maintains records of securities positions.</li>
+        <li><strong>Transfers:</strong> Facilitates book-entry transfers between participants.</li>
+        <li><strong>Corporate Actions:</strong> Processes dividends, stock splits, mergers, and redemptions.</li>
+        <li><strong>Proxy Services:</strong> Distributes proxy materials to participants for forwarding to beneficial owners.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832 (Clearing Agency Standards).</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTCC -->
+<div class="modal-overlay" id="modal-dtcc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtcc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtcc">DTCC — Depository Trust &amp; Clearing Corporation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Holding Company</div>
+        <div class="def-word">DTCC</div>
+        <p>The parent holding company of DTC, NSCC, and FICC. It provides post-trade clearing, settlement, custody, and information services for equities, corporate and municipal bonds, government securities, mortgage-backed securities, and over-the-counter derivatives.</p>
+      </div>
+      <p class="modal-section-title">Subsidiaries</p>
+      <ul>
+        <li><strong>DTC:</strong> Custody and asset servicing.</li>
+        <li><strong>NSCC:</strong> Equity trade clearing and netting.</li>
+        <li><strong>FICC:</strong> Fixed income and mortgage-backed securities clearing.</li>
+        <li><strong>DTCC Data:</strong> Reference data, trade reporting, and analytics.</li>
+      </ul>
+      <p class="modal-section-title">Ownership</p>
+      <p>DTCC is user-owned and user-governed. Its participants (broker-dealers, banks, and other financial institutions) are also its owners. It operates on a not-for-profit basis within its core clearing and settlement functions.</p>
+      <div class="citation"><strong>Source:</strong> DTCC Annual Report; SEC filings.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cede -->
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Nominee Partnership</div>
+        <div class="def-word">Cede &amp; Co.</div>
+        <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers. The name "Cede" derives from the Latin "cedere" — to yield or transfer.</p>
+      </div>
+      <p class="modal-section-title">Legal Structure</p>
+      <ul>
+        <li>Formed as a general partnership under New York partnership law.</li>
+        <li>Partners are DTC officers or employees.</li>
+        <li>Has no independent business operations or employees.</li>
+        <li>Exists solely to hold legal title to securities deposited with DTC.</li>
+      </ul>
+      <p class="modal-section-title">Role on Issuer Books</p>
+      <p>When securities are deposited with DTC, the issuer's transfer agent registers Cede &amp; Co. as the registered owner. All subsequent transfers among investors occur electronically within DTC's system. The issuer never knows the identity of the beneficial owners unless they opt out of the street name system.</p>
+      <div class="tip-box"><strong>Important:</strong> Cede &amp; Co. cannot sell, pledge, or otherwise deal with the securities for its own benefit. It is a bare nominee with a strict fiduciary duty to the beneficial owners.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Legal Owner -->
+<div class="modal-overlay" id="modal-legal-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-legal-owner">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legal-owner">Legal Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Law Concept</div>
+        <div class="def-word">Legal Owner</div>
+        <p>The person or entity recognized by law as holding title to property. The legal owner has the right to transfer, encumber, or dispose of the property, subject to the rights of beneficial owners.</p>
+      </div>
+      <p class="modal-section-title">In the DTC System</p>
+      <p>Cede &amp; Co. is the legal owner of securities on issuer records. However, under New York UCC Article 8 and DTC rules, the legal owner holds the securities subject to the rights of DTC participants and their customers. The legal owner cannot act contrary to the beneficial owner's interests.</p>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8, Section 8-501 et seq.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Beneficial Owner -->
+<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Law Concept</div>
+        <div class="def-word">Beneficial Owner</div>
+        <p>The person or entity that enjoys the economic benefits of property ownership — dividends, interest, capital appreciation, and voting rights — even though legal title is held by another (a nominee or trustee).</p>
+      </div>
+      <p class="modal-section-title">Rights of Beneficial Owners</p>
+      <ul>
+        <li>Right to receive dividends and distributions.</li>
+        <li>Right to sell the security and receive proceeds.</li>
+        <li>Right to vote (through the broker's proxy voting system).</li>
+        <li>Right to sue the issuer for securities law violations (in most cases).</li>
+        <li>SIPC protection if the broker fails (up to $500,000).</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Rule 14b-1 (OBO/NOBO rules); SIPC Act of 1970.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Central Securities Depository -->
+<div class="modal-overlay" id="modal-central-securities-depository" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-securities-depository">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-central-securities-depository">Central Securities Depository (CSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International Standard</div>
+        <div class="def-word">Central Securities Depository</div>
+        <p>An institution that holds securities in dematerialized or immobilized form and provides securities accounts, asset servicing, and settlement services to participants. CSDs are the foundational infrastructure layer of modern capital markets.</p>
+      </div>
+      <p class="modal-section-title">Types of CSDs</p>
+      <ul>
+        <li><strong>National CSD:</strong> Operates within a single country (e.g., DTC for U.S. equities; Euroclear France for French securities; Clearstream Frankfurt for German securities).</li>
+        <li><strong>International CSD (ICSD):</strong> Settles cross-border transactions in international securities (e.g., Euroclear Bank; Clearstream Banking Luxembourg).</li>
+      </ul>
+      <p class="modal-section-title">Global CSDs</p>
+      <ul>
+        <li><strong>United States:</strong> DTC (equities, corporate bonds); Federal Reserve (Treasuries).</li>
+        <li><strong>European Union:</strong> Euroclear Bank (ICSD); Euroclear France / Nederland / Belgium (ESES); Clearstream Banking Luxembourg (ICSD); Clearstream Banking Frankfurt (Germany).</li>
+        <li><strong>United Kingdom:</strong> Euroclear UK &amp; International (CREST).</li>
+        <li><strong>Asia-Pacific:</strong> Korea Securities Depository (KSD); Japan Securities Depository Center (JASDEC); Hong Kong Securities Clearing Company (HKSCC).</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Committee on Payment and Market Infrastructures (CPMI) — IOSCO Principles for Financial Market Infrastructures; ESMA; Euroclear Annual Report 2022.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NSCC -->
+<div class="modal-overlay" id="modal-nscc" role="dialog" aria-modal="true" aria-labelledby="modal-title-nscc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nscc">National Securities Clearing Corporation (NSCC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Clearing Corporation</div>
+        <div class="def-word">NSCC</div>
+        <p>A DTCC subsidiary that provides clearing, settlement, risk management, and central counterparty services for virtually all broker-to-broker equity, corporate debt, and municipal bond trades in the United States.</p>
+      </div>
+      <p class="modal-section-title">Netting Function</p>
+      <p>NSCC's most important function is <strong>trade netting</strong>. Instead of settling each trade individually, NSCC nets all buy and sell obligations of each participant at the end of the day, reducing the number of settlement obligations by over 98%. This dramatically reduces liquidity requirements and systemic risk.</p>
+      <div class="citation"><strong>Source:</strong> NSCC Rules and Procedures; SEC Release No. 34-86832.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Federal Reserve -->
+<div class="modal-overlay" id="modal-federal-reserve" role="dialog" aria-modal="true" aria-labelledby="modal-title-federal-reserve">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-federal-reserve">Federal Reserve System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Central Bank</div>
+        <div class="def-word">Federal Reserve</div>
+        <p>The central banking system of the United States. In the securities context, Federal Reserve Banks provide accounts and settlement services for DTC, government securities dealers, and depository institutions.</p>
+      </div>
+      <p class="modal-section-title">Role in Securities Settlement</p>
+      <p>The Federal Reserve operates the <strong>Fedwire Securities Service</strong>, which settles Treasury and agency securities in real-time, gross DVP. DTC maintains a settlement account at the Federal Reserve Bank of New York for cash settlement of DTC-eligible securities.</p>
+      <div class="citation"><strong>Source:</strong> Federal Reserve Act; Regulation J (Collection of Checks and Other Items).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC -->
+<div class="modal-overlay" id="modal-sec" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sec">Securities and Exchange Commission (SEC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Regulator</div>
+        <div class="def-word">SEC</div>
+        <p>The U.S. federal agency responsible for enforcing securities laws, regulating securities markets, and protecting investors. The SEC registers and oversees clearing agencies, transfer agents, broker-dealers, and securities exchanges.</p>
+      </div>
+      <p class="modal-section-title">Oversight of DTC &amp; DTCC</p>
+      <p>The SEC reviews and approves (or disapproves) rule changes proposed by DTC, NSCC, and FICC. It conducts examinations of their financial condition, operational capabilities, and risk management practices. The SEC also sets standards for clearing agency resilience and cyber security.</p>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 17A; SEC Rule 17Ad-22.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Clearing Agency -->
+<div class="modal-overlay" id="modal-clearing-agency" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-agency">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clearing-agency">Clearing Agency</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Statutory Definition</div>
+        <div class="def-word">Clearing Agency</div>
+        <p>Any person who acts as an intermediary in making payments or deliveries or both in connection with transactions in securities, or who provides facilities for comparison of data respecting the terms of settlement of securities transactions. Defined in Section 3(a)(23)(A) of the Exchange Act.</p>
+      </div>
+      <p class="modal-section-title">Types</p>
+      <ul>
+        <li><strong>Clearing Corporations:</strong> NSCC, FICC, OCC — they guarantee trades and manage counterparty risk.</li>
+        <li><strong>Depositories:</strong> DTC — holds securities and facilitates transfers.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 3(a)(23).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Book-Entry -->
+<div class="modal-overlay" id="modal-book-entry" role="dialog" aria-modal="true" aria-labelledby="modal-title-book-entry">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-book-entry">Book-Entry System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Record-Keeping Method</div>
+        <div class="def-word">Book-Entry</div>
+        <p>A system of tracking ownership of securities through electronic ledger entries rather than physical certificates. Ownership changes are effected by debiting one account and crediting another.</p>
+      </div>
+      <p class="modal-section-title">Advantages</p>
+      <ul>
+        <li><strong>Speed:</strong> Transfers occur in seconds rather than days.</li>
+        <li><strong>Cost:</strong> Eliminates printing, shipping, and handling of certificates.</li>
+        <li><strong>Security:</strong> Reduces risk of loss, theft, and forgery.</li>
+        <li><strong>Efficiency:</strong> Enables real-time position tracking and corporate action processing.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Release No. 33-7496 (Dematerialization of Securities).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Transfer Agent -->
+<div class="modal-overlay" id="modal-transfer-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-transfer-agent">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-transfer-agent">Transfer Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Securities Intermediary</div>
+        <div class="def-word">Transfer Agent</div>
+        <p>A company (often a bank or trust company) appointed by an issuer to maintain records of registered shareholders, process transfers of ownership, issue certificates (if any), and distribute dividends and proxy materials.</p>
+      </div>
+      <p class="modal-section-title">Role with DTC</p>
+      <p>When securities are DTC-eligible, the transfer agent registers Cede &amp; Co. as the registered owner and participates in the FAST program to process deposits and withdrawals of shares into/out of DTC. The transfer agent maintains the "master shareholder file" for the issuer.</p>
+      <div class="citation"><strong>Source:</strong> SEC Rule 17Ad-10 et seq.; Transfer Agent Rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Participant -->
+<div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Member Entity</div>
+        <div class="def-word">DTC Participant</div>
+        <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC and is a member of NSCC. Participants are the intermediaries through which investors access the depository system.</p>
+      </div>
+      <p class="modal-section-title">Requirements</p>
+      <ul>
+        <li>Must be a registered broker-dealer or bank.</li>
+        <li>Must meet DTC's net capital and operational requirements.</li>
+        <li>Must agree to DTC rules and indemnify DTC and Cede &amp; Co.</li>
+        <li>Must maintain connectivity to DTC's systems.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2 (Participant Application).</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTC Eligibility -->
+<div class="modal-overlay" id="modal-dtc-eligibility" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc-eligibility">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtc-eligibility">DTC Eligibility</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Operational Requirement</div>
+        <div class="def-word">DTC Eligibility</div>
+        <p>The status of a security that meets DTC's criteria for deposit and book-entry processing. Only DTC-eligible securities can be held in street name and transferred through DTC's electronic systems.</p>
+      </div>
+      <p class="modal-section-title">Requirements</p>
+      <ul>
+        <li>The issuer must have a transfer agent that participates in the FAST program.</li>
+        <li>The security must be registered under Section 12 of the Exchange Act or exempt therefrom.</li>
+        <li>The issuer must sign a Letter of Representations agreeing to DTC's procedures.</li>
+        <li>The security must be freely tradable (not restricted, unless eligible for deposit under Rule 144A or Regulation S).</li>
+      </ul>
+      <div class="tip-box"><strong>Issuer Note:</strong> If a security is not DTC-eligible, brokers cannot accept it in street name, severely limiting liquidity and marketability. Most public companies ensure DTC eligibility as a matter of course.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 3 (Deposits and Withdrawals); DTC Form of Letter of Representations.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAST -->
+<div class="modal-overlay" id="modal-fast" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-fast">FAST — Fast Automated Securities Transfer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Program</div>
+        <div class="def-word">FAST</div>
+        <p>A DTC program that allows transfer agents to electronically process deposits and withdrawals of securities directly with DTC, rather than through physical certificate movement. FAST agents hold a "balance certificate" registered in the name of Cede &amp; Co.</p>
+      </div>
+      <p class="modal-section-title">How It Works</p>
+      <p>Under FAST, the transfer agent maintains a single balance certificate representing the total shares held by DTC. When shares move into or out of DTC, the transfer agent adjusts its records electronically. This eliminates the need to print, sign, and deliver physical certificates for every transaction.</p>
+      <div class="citation"><strong>Source:</strong> DTC FAST Operational Procedures; DTC Rules, Article 3.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FICC -->
+<div class="modal-overlay" id="modal-ficc" role="dialog" aria-modal="true" aria-labelledby="modal-title-ficc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ficc">Fixed Income Clearing Corporation (FICC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Clearing Corporation</div>
+        <div class="def-word">FICC</div>
+        <p>A DTCC subsidiary that provides clearing and settlement services for U.S. government securities and mortgage-backed securities. It operates two divisions: the Government Securities Division (GSD) and the Mortgage-Backed Securities Division (MBSD).</p>
+      </div>
+      <p class="modal-section-title">Divisions</p>
+      <ul>
+        <li><strong>GSD:</strong> Clears and nets trades in U.S. Treasury securities, agency securities, and repurchase agreements.</li>
+        <li><strong>MBSD:</strong> Clears and nets trades in mortgage-backed securities issued by Fannie Mae, Freddie Mac, and Ginnie Mae.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> FICC Rules and Procedures; SEC Release No. 34-86832.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Clearing -->
+<div class="modal-overlay" id="modal-clearing" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clearing">Clearing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Post-Trade Process</div>
+        <div class="def-word">Clearing</div>
+        <p>The process of comparing, confirming, and netting trade details after execution but before settlement. Clearing establishes the final obligations of each party and often includes risk management functions such as margin collection.</p>
+      </div>
+      <p class="modal-section-title">Central Counterparty (CCP)</p>
+      <p>When a clearinghouse acts as a central counterparty, it interposes itself between the buyer and seller, becoming the buyer to every seller and the seller to every buyer. This eliminates bilateral counterparty risk and ensures that a default by one party does not cascade through the market.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Settlement -->
+<div class="modal-overlay" id="modal-settlement" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlement">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-settlement">Settlement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Post-Trade Process</div>
+        <div class="def-word">Settlement</div>
+        <p>The final exchange of securities for cash, discharging the obligations of both parties to a trade. Settlement completes the transaction and transfers ownership (or beneficial entitlement) from seller to buyer.</p>
+      </div>
+      <p class="modal-section-title">Settlement Cycles</p>
+      <ul>
+        <li><strong>T+1:</strong> Settlement occurs one business day after trade date (effective May 2024 for U.S. equities).</li>
+        <li><strong>T+2:</strong> Settlement occurs two business days after trade date (standard for European equities via T2S; also used for some fixed income and international trades).</li>
+        <li><strong>T+0:</strong> Same-day settlement (used for some money market instruments and blockchain-based systems).</li>
+      </ul>
+      <p class="modal-section-title">Settlement Models by Region</p>
+      <ul>
+        <li><strong>U.S. (DTC):</strong> Net settlement via NSCC; DVP through Federal Reserve Bank of New York.</li>
+        <li><strong>Europe (T2S):</strong> Real-time gross settlement (RTGS) in central bank money for Eurozone CSDs.</li>
+        <li><strong>Europe (Euroclear Bank):</strong> DVP in commercial bank money for international securities.</li>
+        <li><strong>UK (CREST):</strong> Real-time DVP for UK equities and gilts.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Rule 15c6-1 (Settlement Cycle); DTCC T+1 Implementation Guide; ECB T2S Framework.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Nominee -->
+<div class="modal-overlay" id="modal-nominee" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominee">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Concept</div>
+        <div class="def-word">Nominee</div>
+        <p>A person or entity designated to act as the registered holder of property on behalf of the true owner. The nominee has no beneficial interest and must follow the instructions of the beneficial owner or the entity that appointed them.</p>
+      </div>
+      <p class="modal-section-title">In Securities Markets</p>
+      <p>Nominees solve the administrative problem of tracking thousands of individual owners. By using a single nominee (Cede &amp; Co.), issuers deal with one registered owner on their books, while the depository and brokers track the beneficial interests underneath.</p>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8; Restatement (Third) of Trusts.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Securities Act 1933 -->
+<div class="modal-overlay" id="modal-securities-act-1933" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-act-1933">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-securities-act-1933">Securities Act of 1933</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Statute</div>
+        <div class="def-word">Securities Act of 1933</div>
+        <p>The primary federal law governing the offer and sale of securities in the United States. It requires registration of securities offerings (unless exempt) and prohibits fraud in connection with the sale of securities.</p>
+      </div>
+      <p class="modal-section-title">Connection to DTC</p>
+      <p>The Securities Act and subsequent amendments provided the legal framework for the immobilization and dematerialization of securities. Without this statutory basis, the book-entry system and the use of nominees like Cede &amp; Co. would lack legal certainty.</p>
+      <div class="citation"><strong>Source:</strong> Securities Act of 1933, 15 U.S.C. § 77a et seq.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Street Name -->
+<div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-street-name">Street Name</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Industry Term</div>
+        <div class="def-word">Street Name</div>
+        <p>The practice of registering securities in the name of a broker-dealer or its nominee (Cede &amp; Co.) rather than in the name of the beneficial owner. The term derives from Wall Street, where brokers historically held customer securities.</p>
+      </div>
+      <p class="modal-section-title">Prevalence</p>
+      <p>Over 99% of publicly traded U.S. equities are held in street name. This system is the default for retail and institutional investors because it enables efficient trading, lending, and corporate action processing.</p>
+      <div class="citation"><strong>Source:</strong> SEC Investor Bulletin: "Holding Your Securities" (2013).</div>
+    </div>
+  </div>
+</div>
+
+<!-- General Partnership -->
+<div class="modal-overlay" id="modal-general-partnership" role="dialog" aria-modal="true" aria-labelledby="modal-title-general-partnership">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-general-partnership">General Partnership</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Business Entity</div>
+        <div class="def-word">General Partnership</div>
+        <p>An association of two or more persons to carry on as co-owners a business for profit. Under New York law, a general partnership is not a separate legal entity from its partners, but it can hold property and sue or be sued in its firm name.</p>
+      </div>
+      <p class="modal-section-title">Cede &amp; Co. as Partnership</p>
+      <p>Cede &amp; Co. is a general partnership whose partners are DTC officers. This structure was chosen because it is simple, requires no corporate formalities, and allows DTC to control the partnership through its officers. The partnership has no purpose other than holding legal title as nominee.</p>
+      <div class="citation"><strong>Source:</strong> New York Partnership Law, Article 2; DTC organizational documents.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Operating Arrangements -->
+<div class="modal-overlay" id="modal-operating-arrangements" role="dialog" aria-modal="true" aria-labelledby="modal-title-operating-arrangements">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-operating-arrangements">Operating Arrangements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contractual Framework</div>
+        <div class="def-word">Operating Arrangements</div>
+        <p>The collective agreements, rules, and procedures that govern the relationship between DTC, its participants, issuers, transfer agents, and other parties in the securities depository system. They establish rights, obligations, liabilities, and operational procedures.</p>
+      </div>
+      <p class="modal-section-title">Key Documents</p>
+      <ul>
+        <li><strong>DTC Rules:</strong> The foundational operating rules binding all participants.</li>
+        <li><strong>Participant Application:</strong> The agreement to join DTC and accept its rules.</li>
+        <li><strong>Indemnification Agreement:</strong> Protects DTC and Cede &amp; Co. from liability.</li>
+        <li><strong>Issuer Letter of Representations:</strong> The issuer's agreement to recognize DTC and follow its procedures.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Preamble and Article 1; SEC Rule 17Ad-22.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Rules -->
+<div class="modal-overlay" id="modal-rules" role="dialog" aria-modal="true" aria-labelledby="modal-title-rules">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-rules">DTC Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Self-Regulatory Framework</div>
+        <div class="def-word">DTC Rules</div>
+        <p>The comprehensive set of rules adopted by DTC to govern its operations, participant conduct, deposits, withdrawals, transfers, corporate actions, and risk management. Participants contractually agree to abide by these rules as a condition of membership.</p>
+      </div>
+      <p class="modal-section-title">Rule Change Process</p>
+      <p>Under the Exchange Act, DTC must file proposed rule changes with the SEC. The SEC reviews them for consistency with the purposes of the Act and public interest. Significant rule changes are published for public comment before approval.</p>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 19(b); DTC Rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Indemnification -->
+<div class="modal-overlay" id="modal-indemnification" role="dialog" aria-modal="true" aria-labelledby="modal-title-indemnification">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-indemnification">Indemnification Agreement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Protection</div>
+        <div class="def-word">Indemnification</div>
+        <p>An agreement by which one party agrees to compensate another for losses or damages arising from a specified event or relationship. DTC participants agree to indemnify DTC and Cede &amp; Co. against claims arising from their role as nominee.</p>
+      </div>
+      <p class="modal-section-title">Why It Matters</p>
+      <p>Without indemnification, DTC and Cede &amp; Co. could be sued every time a beneficial owner had a dispute. The indemnification agreement ensures that participants — who know their customers and control the customer relationship — bear the cost of such disputes, allowing the depository to operate efficiently.</p>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1, Section 11; Participant Application.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Depository Agreements -->
+<div class="modal-overlay" id="modal-depository-agreements" role="dialog" aria-modal="true" aria-labelledby="modal-title-depository-agreements">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-depository-agreements">Depository Agreements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contract</div>
+        <div class="def-word">Depository Agreement</div>
+        <p>The agreement between an issuer (or its transfer agent) and DTC governing the deposit of securities, the registration of Cede &amp; Co. as owner, and the procedures for distributions, proxies, and corporate actions.</p>
+      </div>
+      <p class="modal-section-title">Issuer Letter of Representations</p>
+      <p>This standard-form letter is the primary depository agreement for most issuers. By signing it, the issuer agrees to recognize DTC and Cede &amp; Co., to make distributions to DTC for forwarding to participants, and to follow DTC's procedures for proxy voting and corporate actions.</p>
+      <div class="citation"><strong>Source:</strong> DTC Form of Letter of Representations; DTC Rules, Article 3.</div>
+    </div>
+  </div>
+</div>
+
+<!-- T+1 -->
+<div class="modal-overlay" id="modal-t1" role="dialog" aria-modal="true" aria-labelledby="modal-title-t1">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-t1">T+1 Settlement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Cycle</div>
+        <div class="def-word">T+1</div>
+        <p>A settlement cycle in which the exchange of securities and cash occurs one business day after the trade date (T). The U.S. securities industry moved from T+2 to T+1 for most equity trades on May 28, 2024.</p>
+      </div>
+      <p class="modal-section-title">Benefits</p>
+      <ul>
+        <li><strong>Reduced counterparty risk:</strong> Less time for a firm to fail between trade and settlement.</li>
+        <li><strong>Lower capital requirements:</strong> Firms need less capital to cover unsettled trades.</li>
+        <li><strong>Global alignment:</strong> Brings the U.S. closer to same-day or T+1 standards in other major markets.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Release No. 34-94062 (T+1 Settlement); DTCC T+1 Implementation Guide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DVP -->
+<div class="modal-overlay" id="modal-dvp" role="dialog" aria-modal="true" aria-labelledby="modal-title-dvp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dvp">Delivery Versus Payment (DVP)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Mechanism</div>
+        <div class="def-word">Delivery Versus Payment (DVP)</div>
+        <p>A settlement mechanism that ensures the delivery of securities occurs only if payment is made, and payment occurs only if securities are delivered. It eliminates principal risk — the risk of delivering securities without receiving payment, or vice versa.</p>
+      </div>
+      <p class="modal-section-title">DVP Models</p>
+      <ul>
+        <li><strong>Model 1:</strong> Both securities and cash settle on a gross basis in real time (RTGS). Used by DTC for same-day settlement.</li>
+        <li><strong>Model 2:</strong> Securities settle on a gross basis in real time; cash settles on a net basis at end of day.</li>
+        <li><strong>Model 3:</strong> Both securities and cash settle on a net basis at end of day. Used by NSCC for T+1 settlement.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO PFMI; DTC Rules, Article 9.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Settlement Risk -->
+<div class="modal-overlay" id="modal-settlement-risk" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlement-risk">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-settlement-risk">Settlement Risk</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Risk</div>
+        <div class="def-word">Settlement Risk</div>
+        <p>The risk that one party to a trade delivers securities or cash but the other party fails to deliver its side of the bargain. Also known as principal risk or Herstatt risk (after the 1974 failure of Bankhaus Herstatt).</p>
+      </div>
+      <p class="modal-section-title">Mitigation</p>
+      <p>DVP, central counterparty clearing, and shortening the settlement cycle are the primary tools for mitigating settlement risk. Netting (reducing many obligations to one net obligation) also reduces the total value at risk.</p>
+      <div class="citation"><strong>Source:</strong> BIS Committee on the Global Financial System (CGFS) — "Settlement Risk in Foreign Exchange Markets."</div>
+    </div>
+  </div>
+</div>
+
+<!-- Federal Reserve Bank -->
+<div class="modal-overlay" id="modal-federal-reserve-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-federal-reserve-bank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-federal-reserve-bank">Federal Reserve Bank</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Regional Central Bank</div>
+        <div class="def-word">Federal Reserve Bank</div>
+        <p>One of twelve regional banks that make up the Federal Reserve System. The Federal Reserve Bank of New York is particularly important in securities markets because it provides settlement services for DTC, primary dealers, and government securities.</p>
+      </div>
+      <p class="modal-section-title">Role in DTC Settlement</p>
+      <p>DTC maintains a settlement account at the Federal Reserve Bank of New York. When DVP settlement occurs, the Fed debits the buyer's bank account and credits the seller's bank account simultaneously with the book-entry transfer of securities within DTC.</p>
+      <div class="citation"><strong>Source:</strong> Federal Reserve Act, Section 13; Regulation J.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pro-Rata -->
+<div class="modal-overlay" id="modal-pro-rata" role="dialog" aria-modal="true" aria-labelledby="modal-title-pro-rata">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-pro-rata">Pro-Rata Allocation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Distribution Method</div>
+        <div class="def-word">Pro-Rata</div>
+        <p>Allocation in proportion to each party's share of the total. In the DTC context, dividends and other distributions are allocated to participants based on the number of shares held in their DTC accounts relative to the total shares held by DTC.</p>
+      </div>
+      <p class="modal-section-title">Example</p>
+      <p>If DTC holds 1 million shares of XYZ Corp. on behalf of all participants, and Broker A holds 100,000 shares in its DTC account, Broker A receives 10% of the total dividend payment. Broker A then allocates the dividend to its customers based on their holdings.</p>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 7 (Distributions).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC Rules -->
+<div class="modal-overlay" id="modal-sec-rules" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec-rules">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sec-rules">SEC Proxy Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Regulatory Framework</div>
+        <div class="def-word">SEC Proxy Rules</div>
+        <p>Rules adopted by the SEC under Section 14(a) of the Exchange Act governing the solicitation of proxies from shareholders. They require issuers and brokers to forward proxy materials to beneficial owners and to provide a mechanism for beneficial owners to vote.</p>
+      </div>
+      <p class="modal-section-title">OBO / NOBO</p>
+      <ul>
+        <li><strong>OBO (Objecting Beneficial Owner):</strong> A beneficial owner who objects to having their name and address shared with the issuer. The issuer cannot contact them directly.</li>
+        <li><strong>NOBO (Non-Objecting Beneficial Owner):</strong> A beneficial owner who does not object. The issuer can obtain their contact information and communicate directly.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Rule 14a-13; SEC Rule 14b-1; Exchange Act Section 14(b).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Proxy Solicitor -->
+<div class="modal-overlay" id="modal-proxy-solicitor" role="dialog" aria-modal="true" aria-labelledby="modal-title-proxy-solicitor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-proxy-solicitor">Proxy Solicitor</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Service Provider</div>
+        <div class="def-word">Proxy Solicitor</div>
+        <p>A firm hired by an issuer to manage the proxy voting process, including distributing materials, collecting votes, and tabulating results. Major proxy solicitors include Broadridge, Computershare, and Mediant.</p>
+      </div>
+      <p class="modal-section-title">Role in Street Name Voting</p>
+      <p>Proxy solicitors work with DTC and brokers to ensure that beneficial owners receive proxy materials and that votes are accurately transmitted back to the issuer. They reconcile the positions reported by DTC with the votes received from brokers.</p>
+      <div class="citation"><strong>Source:</strong> SEC Staff Legal Bulletin No. 20 (Proxy Voting).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Proxy Voting System -->
+<div class="modal-overlay" id="modal-proxy-voting-system" role="dialog" aria-modal="true" aria-labelledby="modal-title-proxy-voting-system">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-proxy-voting-system">Proxy Voting System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Operational Framework</div>
+        <div class="def-word">Beneficial Owner Proxy Voting System</div>
+        <p>The system by which beneficial owners (investors holding in street name) receive proxy materials from their brokers, vote their shares, and have those votes transmitted back to the issuer through DTC and the transfer agent.</p>
+      </div>
+      <p class="modal-section-title">Process</p>
+      <ol>
+        <li>Issuer sends proxy materials to DTC (registered owner).</li>
+        <li>DTC forwards to participants (brokers).</li>
+        <li>Brokers forward to beneficial owners.</li>
+        <li>Beneficial owners vote and return instructions to brokers.</li>
+        <li>Brokers aggregate votes and transmit to DTC/issuer.</li>
+        <li>Transfer agent or proxy solicitor tabulates all votes.</li>
+      </ol>
+      <div class="citation"><strong>Source:</strong> SEC Rule 14b-2; NYSE Rule 465.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DRS -->
+<div class="modal-overlay" id="modal-drs" role="dialog" aria-modal="true" aria-labelledby="modal-title-drs">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-drs">Direct Registration System (DRS)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Alternative Holding Method</div>
+        <div class="def-word">Direct Registration System (DRS)</div>
+        <p>A system that allows investors to hold securities in their own name on the books of the issuer or transfer agent, without receiving a physical certificate and without holding through a broker in street name. DRS was developed by the securities industry in the 1990s.</p>
+      </div>
+      <p class="modal-section-title">How It Works</p>
+      <p>Instead of Cede &amp; Co. being the registered owner, the investor's own name appears on the issuer's shareholder register. The investor receives a statement of ownership (like a bank statement) rather than a certificate. To sell, the investor must transfer the shares to a broker, which takes longer than selling street-name shares.</p>
+      <div class="tip-box"><strong>Investor Note:</strong> DRS eliminates broker intermediary risk but reduces liquidity. It is most suitable for long-term investors who do not trade frequently. Shares held in DRS are not protected by SIPC because they are not held by a broker.</div>
+      <div class="citation"><strong>Source:</strong> SEC Release No. 34-36935 (Direct Registration System); DTC DRS Procedures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Footer -->
+
+<!-- SECTION: EUROCLEAR -->
+<h2 class="section-title" id="euroclear">Euroclear — The European Counterpart</h2>
+
+<p class="lead">
+While DTC dominates the U.S. securities infrastructure, <span class="hotspot" data-modal="euroclear" tabindex="0" role="button" onclick="openModal('modal-euroclear')">Euroclear</span> is the leading post-trade infrastructure provider in Europe. Founded in 1968 by Morgan Guaranty (a predecessor of JPMorgan Chase) to settle trades on the then-developing Eurobond market, Euroclear has grown into a global financial market infrastructure group headquartered in Brussels, Belgium. With over <strong>€37.5 trillion</strong> in assets under custody and more than <strong>2,000</strong> financial institution participants across 90+ countries, Euroclear is the closest European equivalent to the DTCC ecosystem — though its structure and regulatory framework differ significantly.
+</p>
+
+<p class="body-text">
+Euroclear operates through two complementary layers: <span class="hotspot" data-modal="euroclear-bank" tabindex="0" role="button" onclick="openModal('modal-euroclear-bank')">Euroclear Bank</span>, an <span class="hotspot" data-modal="icsd" tabindex="0" role="button" onclick="openModal('modal-icsd')">International Central Securities Depository (ICSD)</span> with a banking license; and a network of <span class="hotspot" data-modal="national-csd" tabindex="0" role="button" onclick="openModal('modal-national-csd')">national Central Securities Depositories (CSDs)</span> serving Belgium, Finland, France, Ireland, the Netherlands, Sweden, and the United Kingdom. This dual structure allows Euroclear to handle both cross-border international securities and domestic settlement within individual European markets.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">Euroclear Bank</div>
+    <div class="entity-role">International CSD (ICSD)</div>
+    <div class="entity-desc">An ICSD with a banking license that settles cross-border transactions in international securities (Eurobonds, global bonds, equities, and investment funds). It also serves as the domestic CSD for Irish securities and operates branches in Hong Kong, Poland, Japan, and Singapore.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Euroclear France / Nederland / Belgium</div>
+    <div class="entity-role">National CSDs (ESES)</div>
+    <div class="entity-desc">The three ESES CSDs operate on a shared technical platform for securities traded on Euronext. Connected to TARGET2-Securities (T2S) since 2016, they settle domestic French, Dutch, and Belgian securities in central bank money.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Euroclear UK &amp; International</div>
+    <div class="entity-role">UK CSD (formerly CREST)</div>
+    <div class="entity-desc">The central securities depository for the United Kingdom, operating the CREST settlement system. Handles UK equities, gilts, and corporate bonds. The Irish depository function was transferred to Euroclear Bank in 2021 following Brexit.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Euroclear Sweden / Finland</div>
+    <div class="entity-role">Nordic CSDs</div>
+    <div class="entity-desc">Acquired in 2008, these CSDs serve the Swedish and Finnish domestic markets. They maintain their own settlement systems and are integrated into the broader Euroclear network for cross-border access.</div>
+  </div>
+</div>
+
+<h3 class="subsection-title">Euroclear Bank as an ICSD</h3>
+
+<p class="body-text">
+Euroclear Bank is one of only two major ICSDs worldwide — the other being <span class="hotspot" data-modal="clearstream" tabindex="0" role="button" onclick="openModal('modal-clearstream')">Clearstream Banking Luxembourg</span>. Unlike DTC, which primarily serves the U.S. domestic market, Euroclear Bank specializes in <strong>cross-border</strong> settlement. It holds over 1 million international securities, including Eurobonds, global bonds, equities, derivatives, and investment funds, denominated in approximately 50 settlement currencies.
+</p>
+
+<p class="body-text">
+Euroclear Bank operates under a banking license from the National Bank of Belgium and is regulated as a credit institution. This dual status as both CSD and bank allows it to offer <span class="hotspot" data-modal="triparty" tabindex="0" role="button" onclick="openModal('modal-triparty')">triparty collateral management</span>, securities lending, and liquidity services that pure CSDs like DTC cannot provide directly. In 2021, Euroclear acquired <strong>MFEX</strong>, a leading fund trading platform, expanding its capabilities into the global funds market.
+</p>
+
+<h3 class="subsection-title">TARGET2-Securities (T2S) Integration</h3>
+
+<p class="body-text">
+A critical difference between the U.S. and European settlement architectures is <span class="hotspot" data-modal="t2s" tabindex="0" role="button" onclick="openModal('modal-t2s')">TARGET2-Securities (T2S)</span>, a Eurosystem-operated platform that provides centralized securities settlement in <span class="hotspot" data-modal="central-bank-money" tabindex="0" role="button" onclick="openModal('modal-central-bank-money')">central bank money</span>. Launched in 2015 and fully operational by 2017, T2S allows national CSDs across the Eurozone to settle securities transactions on a single, shared technical platform using central bank accounts.
+</p>
+
+<p class="body-text">
+Euroclear's ESES CSDs (France, Netherlands, Belgium) connected to T2S in 2016. This means that when a French equity trades, settlement occurs not through Euroclear's proprietary cash system but through the <strong>Banque de France</strong> central bank accounts linked via T2S. This is analogous to DTC settling cash through Federal Reserve accounts, but with a pan-European rather than purely national scope. T2S operates on a <strong>T+2</strong> settlement cycle for most securities, though the EU is evaluating a move to T+1 to align with the U.S.
+</p>
+
+<div class="tip-box">
+  <strong>Teaching Note:</strong> T2S is often described as the "Eurosystem's DTC" — but this analogy is imperfect. DTC is a private utility owned by its participants; T2S is a public infrastructure operated by the Eurosystem (the ECB and national central banks). Both achieve DVP settlement, but T2S does so across multiple currencies and jurisdictions, while DTC operates within a single national framework.
+</div>
+
+<h3 class="subsection-title">The Euroclear Settlement Model</h3>
+
+<p class="body-text">
+Euroclear's settlement process shares conceptual similarities with DTC but differs in operational detail:
+</p>
+
+<div class="diagram-box">
+  <div class="diagram-title">Euroclear Settlement Flow (Cross-Border)</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Buyer and seller agree on a Eurobond trade, typically through EuroMTF or over-the-counter.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Trade Matching</strong> — Both parties submit trade details to Euroclear Bank for matching and validation.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Settlement Preparation</strong> — Euroclear Bank verifies that the seller has sufficient securities and the buyer has sufficient cash (or credit line).</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>DVP Settlement</strong> — On settlement date (typically T+2), Euroclear Bank simultaneously debits the seller's securities account and credits the buyer's, while debiting the buyer's cash account and crediting the seller's.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Cash Movement</strong> — Cash settles through commercial bank money (for Euroclear Bank) or central bank money (for T2S-connected CSDs).</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">6</span><strong>Confirmation</strong> — Both parties receive electronic confirmation of the settled transaction.</div>
+</div>
+
+<h3 class="subsection-title">Euroclear's Relationship with DTCC</h3>
+
+<p class="body-text">
+Euroclear and DTCC are not competitors in the traditional sense — they serve different geographic markets with limited overlap. However, they collaborate on several fronts. In <strong>May 2013</strong>, Euroclear and DTCC established a <strong>collateral bridge</strong> allowing participants to transfer collateral between the two systems automatically. This enables a U.S. broker-dealer to pledge U.S. Treasuries held at DTC as collateral for a Euroclear Bank margin call, and vice versa.
+</p>
+
+<p class="body-text">
+In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint initiative to develop a framework for <strong>tokenized assets and digital securities</strong>. The partnership aims to standardize distributed ledger technology (DLT) processes, ensure interoperability between traditional and blockchain-based systems, and reduce connectivity costs for market participants. This reflects a shared recognition that post-trade infrastructure must evolve to accommodate digital assets.
+</p>
+
+<div class="warn-box">
+  <strong>Regulatory Note:</strong> Following the Russian invasion of Ukraine, Euroclear Bank has been prominently involved in the management of frozen Russian central bank reserves — approximately <strong>€200 billion</strong> as of early 2025. In March 2025, Belgium authorized Euroclear to make payouts from the interest generated by these frozen assets (approximately €4 billion annually) to fund a G7 loan to Ukraine. This has raised complex legal questions about the status of immobilized assets and the role of CSDs in sanctions enforcement.
+</div>
+
+<!-- SECTION: GLOBAL COMPARISON -->
+<h2 class="section-title" id="global-comparison">Global Comparison: DTC / DTCC vs. Euroclear</h2>
+
+<p class="lead">
+Understanding the differences between the U.S. and European post-trade infrastructures is essential for anyone operating in global capital markets. While both systems achieve the same ultimate goal — safe, efficient settlement of securities transactions — their structures, regulatory frameworks, and operational models reflect distinct legal traditions and market structures.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>U.S. — DTC / DTCC</th>
+    <th>Europe — Euroclear</th>
+  </tr>
+  <tr>
+    <td><strong>Primary Entity</strong></td>
+    <td>DTC (depository) + NSCC/FICC (clearing)</td>
+    <td>Euroclear Bank (ICSD) + National CSDs</td>
+  </tr>
+  <tr>
+    <td><strong>Ownership</strong></td>
+    <td>User-owned (participants own DTCC)</td>
+    <td>Publicly held; top shareholders include Caisse des Dépôts (France), SFPI-FPIM (Belgium), NZ Super Fund, SAFE (China)</td>
+  </tr>
+  <tr>
+    <td><strong>Assets Under Custody</strong></td>
+    <td>~$60+ trillion (DTC only)</td>
+    <td>~€37.5 trillion (Euroclear group, 2024)</td>
+  </tr>
+  <tr>
+    <td><strong>Geographic Focus</strong></td>
+    <td>U.S. domestic market (with some global links)</td>
+    <td>European domestic + global cross-border</td>
+  </tr>
+  <tr>
+    <td><strong>Nominee Structure</strong></td>
+    <td>Cede &amp; Co. (single nominee for all DTC securities)</td>
+    <td>Varies by CSD; Euroclear Bank holds as nominee; national CSDs may use own nominees or direct registration</td>
+  </tr>
+  <tr>
+    <td><strong>Cash Settlement</strong></td>
+    <td>Federal Reserve Bank of New York (central bank money)</td>
+    <td>T2S (central bank money for Eurozone CSDs); commercial bank money for Euroclear Bank</td>
+  </tr>
+  <tr>
+    <td><strong>Settlement Cycle</strong></td>
+    <td>T+1 (since May 2024)</td>
+    <td>T+2 (most markets); T+1 under evaluation</td>
+  </tr>
+  <tr>
+    <td><strong>Regulatory Framework</strong></td>
+    <td>SEC (Exchange Act Section 17A); Federal Reserve oversight</td>
+    <td>ESMA / CSDR (Central Securities Depositories Regulation); ECB oversight for T2S; national regulators for CSDs</td>
+  </tr>
+  <tr>
+    <td><strong>CCP Services</strong></td>
+    <td>NSCC (equities); FICC (fixed income)</td>
+    <td>Euroclear does not operate CCPs; clearing handled by LCH, Euronext Clearing, or bilateral</td>
+  </tr>
+  <tr>
+    <td><strong>Netting</strong></td>
+    <td>Multilateral netting via NSCC/FICC (98% compression)</td>
+    <td>Netting varies by CSD and market; less centralized than U.S.</td>
+  </tr>
+  <tr>
+    <td><strong>Banking License</strong></td>
+    <td>DTC is a limited-purpose trust company (not a bank)</td>
+    <td>Euroclear Bank holds a full banking license; offers credit and liquidity services</td>
+  </tr>
+  <tr>
+    <td><strong>Digital Assets Initiative</strong></td>
+    <td>DTCC exploring DLT for tokenized securities</td>
+    <td>Joint initiative with DTCC and Clearstream (May 2024)</td>
+  </tr>
+</table>
+
+<div class="tip-box">
+  <strong>Teaching Note:</strong> The absence of a single European equivalent to NSCC is one of the most significant structural differences. In Europe, CCP services are fragmented across multiple entities (LCH for interest rate swaps and some equities, Euronext Clearing for Euronext markets, bilateral clearing for many bonds). The EU has proposed reforms to centralize Treasury clearing, but nothing comparable to NSCC's universal equity clearing exists. This fragmentation is both a weakness (higher complexity) and a strength (reduced single-point-of-failure risk).
+</div>
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="footer-info">
+      <div class="footer-version">Securities Infrastructure Teaching Guide v1.0</div>
+      <div class="footer-links">
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.sec.gov" rel="noopener">SEC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.federalreserve.gov" rel="noopener">Federal Reserve</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, investment, or regulatory advice. The information reflects the U.S. securities infrastructure as of 2024-2025. For official rules and procedures, consult DTCC, DTC, and SEC publications directly.</div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /doc-frame -->
+
+
+<script>
+/* ── Simple Modal System ── */
+let currentModal = null;
+
+function openModal(id) {
+  if (currentModal) {
+    currentModal.classList.remove('active');
+  }
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.classList.add('active');
+    currentModal = modal;
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal() {
+  if (currentModal) {
+    currentModal.classList.remove('active');
+    currentModal = null;
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+/* ── TOC Sidebar ── */
+function toggleToc() {
+  document.getElementById('tocSidebar').classList.toggle('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const toc = document.getElementById('tocSidebar');
+    if (toc && toc.classList.contains('open')) {
+      toc.classList.remove('open');
+    }
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const toc = document.getElementById('tocSidebar');
+  const toggle = document.querySelector('.toc-toggle');
+  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+    toc.classList.remove('open');
+  }
+});
+</script>
+
+<!-- Multilateral Netting -->
+<div class="modal-overlay" id="modal-multilateral-netting" role="dialog" aria-modal="true" aria-labelledby="modal-title-multilateral-netting">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-multilateral-netting">Multilateral Netting</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Reduction Mechanism</div>
+        <div class="def-word">Multilateral Netting</div>
+        <p>An arrangement among three or more parties to consolidate multiple offsetting obligations into a single net obligation per party. In securities clearing, it reduces the number and value of payments and deliveries required for settlement.</p>
+      </div>
+      <p class="modal-section-title">How NSCC Uses Netting</p>
+      <p>NSCC nets all of a participant's buy and sell trades in the same security into a single net settlement obligation. For example, if a broker buys 10,000 shares of XYZ and sells 8,000 shares of XYZ on the same day, NSCC nets this to a single obligation to receive 2,000 shares. This reduces settlement obligations by approximately 98% daily.</p>
+      <div class="citation"><strong>Source:</strong> NSCC Rules and Procedures; DTCC Annual Report.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Central Counterparty -->
+<div class="modal-overlay" id="modal-central-counterparty" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-counterparty">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-central-counterparty">Central Counterparty (CCP)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Management Entity</div>
+        <div class="def-word">Central Counterparty (CCP)</div>
+        <p>An entity that interposes itself between counterparties to contracts traded in one or more financial markets, becoming the buyer to every seller and the seller to every buyer. The CCP guarantees performance and manages counterparty risk through margin collection and default management procedures.</p>
+      </div>
+      <p class="modal-section-title">Novation</p>
+      <p>The legal process by which a CCP replaces the original counterparties in a trade. Once novation occurs, the buyer and seller no longer have obligations to each other — both now have obligations to the CCP. This is the foundation of CCP risk management.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI).</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIFMU -->
+<div class="modal-overlay" id="modal-sifmu" role="dialog" aria-modal="true" aria-labelledby="modal-title-sifmu">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sifmu">Systemically Important Financial Market Utility (SIFMU)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Regulatory Designation</div>
+        <div class="def-word">SIFMU</div>
+        <p>A financial market utility designated by the Financial Stability Oversight Council (FSOC) under Title VIII of the Dodd-Frank Wall Street Reform and Consumer Protection Act of 2010. SIFMUs are subject to enhanced risk management standards and oversight by the Federal Reserve and their primary regulators.</p>
+      </div>
+      <p class="modal-section-title">U.S. SIFMUs</p>
+      <ul>
+        <li><strong>The Depository Trust Company (DTC)</strong></li>
+        <li><strong>National Securities Clearing Corporation (NSCC)</strong></li>
+        <li><strong>Fixed Income Clearing Corporation (FICC)</strong></li>
+        <li><strong>Options Clearing Corporation (OCC)</strong></li>
+        <li><strong>Chicago Mercantile Exchange Inc. (CME)</strong></li>
+        <li><strong>ICE Clear Credit LLC</strong></li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Dodd-Frank Act, Title VIII; FSOC Designations.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GSD -->
+<div class="modal-overlay" id="modal-gsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-gsd">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-gsd">Government Securities Division (GSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">FICC Division</div>
+        <div class="def-word">GSD</div>
+        <p>The Government Securities Division of FICC provides central counterparty clearing, netting, and settlement services for U.S. government securities, including Treasury bills, notes, bonds, strips, agency securities, and repurchase agreements. GSD was established in 1986 as the Government Securities Clearing Corporation (GSCC) and merged into FICC in 2003.</p>
+      </div>
+      <p class="modal-section-title">Key Services</p>
+      <ul>
+        <li><strong>Netting & Settlement:</strong> Centralized clearance for eligible government securities with guaranteed settlement.</li>
+        <li><strong>GCF Repo Service:</strong> General collateral financing repo trading without intraday DVP settlement.</li>
+        <li><strong>CCIT Service:</strong> Central counterparty services for tri-party repo transactions.</li>
+        <li><strong>Sponsored Service:</strong> Allows Netting Members to sponsor institutional firms for indirect access.</li>
+        <li><strong>Agent Clearing Service (ACS):</strong> Client clearing model for prime brokerage and correspondent clearing.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> FICC GSD Rules and Procedures; DTCC.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MBSD -->
+<div class="modal-overlay" id="modal-mbsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-mbsd">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-mbsd">Mortgage-Backed Securities Division (MBSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">FICC Division</div>
+        <div class="def-word">MBSD</div>
+        <p>The Mortgage-Backed Securities Division of FICC provides real-time trade matching, confirmation, risk management, netting, and settlement services for the U.S. agency mortgage-backed securities market. MBSD was established in 1979 as the Mortgage-Backed Securities Clearing Corporation (MBSCC) and merged into FICC in 2003.</p>
+      </div>
+      <p class="modal-section-title">Key Services</p>
+      <ul>
+        <li><strong>Real-Time Trade Matching (RTTM):</strong> Immediate legal confirmation of trade executions.</li>
+        <li><strong>Netting & Settlement:</strong> Multilateral netting for TBA, specified pool, and stipulated trades.</li>
+        <li><strong>Electronic Pool Notification:</strong> Automated notification of pool assignments for TBA trades.</li>
+        <li><strong>Risk Management:</strong> VaR-based margin, intraday monitoring, and mark-to-market charges.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> FICC MBSD Clearing Rules; DTCC.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Euroclear -->
+<div class="modal-overlay" id="modal-euroclear" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-euroclear">Euroclear</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Market Infrastructure Group</div>
+        <div class="def-word">Euroclear</div>
+        <p>A Belgium-based financial market infrastructure group specializing in central securities depository (CSD) services. It operates Euroclear Bank (an International CSD) and national CSDs across Europe, providing settlement, safekeeping, and asset servicing for domestic and cross-border securities transactions.</p>
+      </div>
+      <p class="modal-section-title">Key Facts</p>
+      <ul>
+        <li><strong>Founded:</strong> 1968 (originally the Euro-clear System by Morgan Guaranty).</li>
+        <li><strong>Headquarters:</strong> Brussels, Belgium.</li>
+        <li><strong>Assets Under Custody:</strong> Over €37.5 trillion (2024).</li>
+        <li><strong>Participants:</strong> 2,000+ financial institutions across 90+ countries.</li>
+        <li><strong>Transactions:</strong> ~300 million transactions per year.</li>
+        <li><strong>Markets Served:</strong> 50 markets, 46 settlement currencies.</li>
+      </ul>
+      <p class="modal-section-title">Group Structure</p>
+      <ul>
+        <li><strong>Euroclear Holding SA/NV:</strong> Ultimate parent company (Belgian financial holding company).</li>
+        <li><strong>Euroclear Bank:</strong> International CSD with banking license; also domestic CSD for Ireland.</li>
+        <li><strong>Euroclear France / Nederland / Belgium:</strong> ESES CSDs on shared platform; connected to T2S.</li>
+        <li><strong>Euroclear UK &amp; International:</strong> UK CSD operating CREST settlement system.</li>
+        <li><strong>Euroclear Sweden / Finland:</strong> Nordic CSDs serving domestic markets.</li>
+        <li><strong>MFEX Group:</strong> Fund trading platform acquired in 2021.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Euroclear Holding SA/NV Annual Report 2022; Euroclear.com; Wikipedia — Euroclear.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Euroclear Bank -->
+<div class="modal-overlay" id="modal-euroclear-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear-bank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-euroclear-bank">Euroclear Bank</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International Central Securities Depository (ICSD)</div>
+        <div class="def-word">Euroclear Bank</div>
+        <p>An ICSD with a banking license, headquartered in Brussels. It settles cross-border transactions in international securities (Eurobonds, global bonds, equities, derivatives, and investment funds) and serves as the domestic CSD for Irish securities. One of only two major ICSDs worldwide, alongside Clearstream Banking Luxembourg.</p>
+      </div>
+      <p class="modal-section-title">Key Services</p>
+      <ul>
+        <li><strong>Settlement:</strong> DVP settlement for international securities in ~50 currencies.</li>
+        <li><strong>Custody:</strong> Safekeeping for over 1 million international securities.</li>
+        <li><strong>Collateral Management:</strong> Triparty collateral management and securities lending.</li>
+        <li><strong>Fund Services:</strong> Fund settlement via Fundsettle and MFEX integration.</li>
+        <li><strong>Issuer Services:</strong> New issuance, coupon payment, and redemption processing.</li>
+      </ul>
+      <p class="modal-section-title">Banking License</p>
+      <p>Unlike DTC (a limited-purpose trust company), Euroclear Bank holds a full banking license from the National Bank of Belgium. This allows it to offer credit facilities, liquidity services, and to hold client cash on its own balance sheet — functions that DTC delegates to the Federal Reserve and commercial banks.</p>
+      <div class="citation"><strong>Source:</strong> Euroclear Bank; National Bank of Belgium; Euroclear Annual Report 2022.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ICSD -->
+<div class="modal-overlay" id="modal-icsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-icsd">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-icsd">International Central Securities Depository (ICSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Market Infrastructure</div>
+        <div class="def-word">ICSD</div>
+        <p>A central securities depository that settles trades in international securities (typically cross-border transactions) and provides services to participants from multiple countries. The two major ICSDs are Euroclear Bank and Clearstream Banking Luxembourg.</p>
+      </div>
+      <p class="modal-section-title">Difference from National CSD</p>
+      <p>While a national CSD (like DTC or Euroclear France) settles domestic securities within a single jurisdiction, an ICSD specializes in cross-border settlement. ICSDs handle Eurobonds, global bonds, and international equities that trade across multiple markets and settle in various currencies. They typically hold securities in dematerialized form and maintain links with national CSDs for asset servicing.</p>
+      <div class="citation"><strong>Source:</strong> European Central Bank; CPMI-IOSCO Principles for Financial Market Infrastructures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- National CSD -->
+<div class="modal-overlay" id="modal-national-csd" role="dialog" aria-modal="true" aria-labelledby="modal-title-national-csd">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-national-csd">National Central Securities Depository (CSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Market Infrastructure</div>
+        <div class="def-word">National CSD</div>
+        <p>A central securities depository that operates within a single country or currency area, maintaining the definitive record of securities issued in that jurisdiction and settling transactions among domestic participants. Examples include DTC (U.S.), Euroclear France, Euroclear UK &amp; International, and Clearstream Banking Frankfurt.</p>
+      </div>
+      <p class="modal-section-title">Euroclear's National CSDs</p>
+      <ul>
+        <li><strong>Euroclear Belgium:</strong> Domestic CSD for Belgian securities; part of ESES.</li>
+        <li><strong>Euroclear France:</strong> Domestic CSD for French securities; part of ESES.</li>
+        <li><strong>Euroclear Nederland:</strong> Domestic CSD for Dutch securities; part of ESES.</li>
+        <li><strong>Euroclear UK &amp; International:</strong> UK CSD operating CREST; handles UK equities and gilts.</li>
+        <li><strong>Euroclear Sweden:</strong> Domestic CSD for Swedish securities.</li>
+        <li><strong>Euroclear Finland:</strong> Domestic CSD for Finnish securities.</li>
+        <li><strong>Euroclear Bank:</strong> Also serves as domestic CSD for Irish securities.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> European Securities and Markets Authority (ESMA); CSDR Regulation (EU) No 909/2014.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Clearstream -->
+<div class="modal-overlay" id="modal-clearstream" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearstream">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clearstream">Clearstream</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International CSD</div>
+        <div class="def-word">Clearstream</div>
+        <p>One of the two major International Central Securities Depositories (ICSDs), alongside Euroclear Bank. Headquartered in Luxembourg and owned by Deutsche Börse, Clearstream provides settlement, custody, and asset servicing for international securities. It operates Clearstream Banking Luxembourg (ICSD) and Clearstream Banking Frankfurt (national CSD for Germany).</p>
+      </div>
+      <p class="modal-section-title">Comparison with Euroclear</p>
+      <ul>
+        <li><strong>Assets Under Custody:</strong> €19+ trillion (vs. Euroclear's €37.5+ trillion).</li>
+        <li><strong>Markets:</strong> 60 markets (vs. Euroclear's 50).</li>
+        <li><strong>Transactions:</strong> ~260 million per year (vs. Euroclear's ~299 million).</li>
+        <li><strong>Ownership:</strong> Owned by Deutsche Börse (vs. Euroclear's diverse shareholder base).</li>
+      </ul>
+      <p class="modal-section-title">DTCC-Clearstream-Euroclear Collaboration</p>
+      <p>In May 2024, DTCC, Euroclear, and Clearstream announced a joint framework for tokenized digital assets, aiming to standardize DLT interoperability and reduce connectivity costs across the three major post-trade infrastructures.</p>
+      <div class="citation"><strong>Source:</strong> Clearstream; Deutsche Börse; Investopedia — Euroclear vs. Clearstream.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Triparty -->
+<div class="modal-overlay" id="modal-triparty" role="dialog" aria-modal="true" aria-labelledby="modal-title-triparty">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-triparty">Triparty Collateral Management</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collateral Service</div>
+        <div class="def-word">Triparty Collateral Management</div>
+        <p>A service where an agent (typically an ICSD like Euroclear Bank or a custodian bank) manages the selection, valuation, and movement of collateral assets between counterparties on an ongoing basis. The agent holds the collateral pool and allocates assets to cover exposures as they arise, eliminating the need for bilateral delivery for each transaction.</p>
+      </div>
+      <p class="modal-section-title">How It Works</p>
+      <p>Instead of delivering specific securities for each collateral call, a participant deposits a pool of eligible assets with the triparty agent. When collateral is needed (e.g., for a repo or derivatives margin call), the agent selects assets from the pool and moves them to the collateral receiver's account. This dramatically reduces operational complexity and settlement fails.</p>
+      <div class="citation"><strong>Source:</strong> Euroclear; BIS Committee on the Global Financial System.</div>
+    </div>
+  </div>
+</div>
+
+<!-- T2S -->
+<div class="modal-overlay" id="modal-t2s" role="dialog" aria-modal="true" aria-labelledby="modal-title-t2s">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-t2s">TARGET2-Securities (T2S)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Eurosystem Infrastructure</div>
+        <div class="def-word">TARGET2-Securities (T2S)</div>
+        <p>A single, pan-European platform for securities settlement in central bank money, operated by the Eurosystem (the European Central Bank and national central banks of Eurozone countries). T2S allows national CSDs to settle securities transactions on a shared technical platform using central bank accounts, harmonizing settlement across the Eurozone.</p>
+      </div>
+      <p class="modal-section-title">Key Features</p>
+      <ul>
+        <li><strong>Central Bank Money Settlement:</strong> Cash leg settles in central bank accounts, eliminating commercial bank settlement risk.</li>
+        <li><strong>Single Platform:</strong> Multiple CSDs share one technical infrastructure, reducing cross-border barriers.</li>
+        <li><strong>DVP Model 1:</strong> Real-time gross settlement of both securities and cash legs.</li>
+        <li><strong>Currencies:</strong> Primarily euro; also Danish krone (via Danmarks Nationalbank link).</li>
+        <li><strong>Launch:</strong> Phased rollout 2015–2017; Euroclear ESES CSDs connected in 2016.</li>
+      </ul>
+      <p class="modal-section-title">Comparison with U.S. Model</p>
+      <p>T2S is analogous to the Federal Reserve's role in DTC settlement, but with a critical difference: T2S is a shared platform for multiple CSDs across different countries, while the Fed's role is within a single national system. T2S enables a French investor to settle a German bond through their own CSD (Euroclear France) using the same platform and central bank money as a German investor settling through Clearstream Banking Frankfurt.</p>
+      <div class="citation"><strong>Source:</strong> European Central Bank; T2S Framework; ESMA.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Central Bank Money -->
+<div class="modal-overlay" id="modal-central-bank-money" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-bank-money">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-central-bank-money">Central Bank Money</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Asset</div>
+        <div class="def-word">Central Bank Money</div>
+        <p>Money held in accounts at a central bank (e.g., Federal Reserve accounts in the U.S., or ECB/Eurosystem accounts in the Eurozone). Settlement in central bank money eliminates credit risk because the central bank is the ultimate issuer of currency and cannot default on its own obligations.</p>
+      </div>
+      <p class="modal-section-title">In Securities Settlement</p>
+      <p>When a securities transaction settles in central bank money, the cash leg is transferred between accounts at the central bank rather than between commercial bank accounts. This is considered the safest form of settlement because it removes the risk that a commercial bank fails between trade and settlement. T2S mandates central bank money settlement for Eurozone securities; DTC settles through the Federal Reserve Bank of New York.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI); ECB.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+</body>
+</html>

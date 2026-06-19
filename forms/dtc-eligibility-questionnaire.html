@@ -1051,9 +1051,11 @@ body {
   <a href="#quiz">Comprehensive Knowledge Check</a>
   <a href="#footnotes">Footnotes</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="documents/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
-  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
-  <a href="dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
 </div>
 
 <div class="page-header">
@@ -1353,7 +1355,7 @@ body {
     </div>
     <div class="red-flag-card">
       <h4>Indemnity Letters for Restricted Issuers</h4>
-      <p>Issuers with ownership restrictions (REITs, NOL preservation provisions, maritime issuers) must provide an <strong>indemnity letter</strong> protecting DTC and Participants. DTC may require this even if not explicitly listed in the standard questionnaire.</p>
+      <p>Issuers with ownership restrictions (<span class="hotspot" data-modal="reit" tabindex="0" role="button" onclick="openModal('modal-reit')">REITs</span>, <span class="hotspot" data-modal="nol" tabindex="0" role="button" onclick="openModal('modal-nol')">NOL</span> preservation provisions, maritime issuers) must provide an <strong><span class="hotspot" data-modal="indemnity-letter" tabindex="0" role="button" onclick="openModal('modal-indemnity-letter')">indemnity letter</span></strong> protecting DTC and Participants. DTC may require this even if not explicitly listed in the standard questionnaire.</p>
     </div>
     <div class="red-flag-card">
       <h4>OFAC Sanctions Compliance</h4>
@@ -1365,7 +1367,7 @@ body {
     </div>
     <div class="red-flag-card">
       <h4>Foreign Issuer Legal Opinions</h4>
-      <p>For non-U.S. issuers, DTC may require a <strong>foreign legal opinion</strong> confirming that DTC's rights as nominee are enforceable under local law. This can add significant time and cost.</p>
+      <p>For non-U.S. issuers, DTC may require a <strong>foreign legal opinion</strong> confirming that DTC's rights as <span class="hotspot" data-modal="nominee" tabindex="0" role="button" onclick="openModal('modal-nominee')">nominee</span> are enforceable under local law. This can add significant time and cost.</p>
     </div>
     <div class="red-flag-card">
       <h4>DTC Can Discontinue Services Anytime</h4>
@@ -1399,7 +1401,7 @@ body {
       <span class="scenario-tag">BEO</span>
     </div>
     <h4>Scenario A: State of Franklin General Obligation Bonds, Series 2025A</h4>
-    <p><strong>The Offering:</strong> $250 million GO bond with serial maturities from 2026–2035, issued as Book-Entry-Only. Lead underwriter is a DTC Participant. Transfer Agent is U.S. Bank.</p>
+    <p><strong>The Offering:</strong> $250 million GO bond with <span class="hotspot" data-modal="serial-maturities" tabindex="0" role="button" onclick="openModal('modal-serial-maturities')">serial maturities</span> from 2026–2035, issued as Book-Entry-Only. Lead underwriter is a DTC Participant. Transfer Agent is U.S. Bank.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
       <li><strong>Issue Type:</strong> Check "Municipal." Do NOT check "Limited Underwriting" because principal exceeds $1 million.</li>
@@ -1411,7 +1413,7 @@ body {
       <li><strong>Put/Tender:</strong> No — standard GO bonds without optional redemption features.</li>
       <li><strong>Agent Confirmation:</strong> U.S. Bank (Transfer Agent) must submit confirmation via email within 10 business days after closing.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Serial maturities multiply your CUSIP workload. Each maturity is a separate security in DTC's system. Verify the issuer's BLOR status before closing to avoid last-minute LOR execution.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Serial maturities multiply your CUSIP workload. Each maturity is a separate security in DTC's system. Verify the issuer's <span class="hotspot" data-modal="blor" tabindex="0" role="button" onclick="openModal('modal-blor')">BLOR</span> status before closing to avoid last-minute LOR execution.</div>
   </div>
 
   <div class="scenario-panel" id="sc-b">
@@ -1421,13 +1423,13 @@ body {
       <span class="scenario-tag">Non-Investment Grade</span>
     </div>
     <h4>Scenario B: Acme Corp. 8.500% Senior Notes due 2030 (Rule 144A)</h4>
-    <p><strong>The Offering:</strong> $500 million high-yield notes sold only to QIBs under Rule 144A. Distinct CUSIP from any registered notes. Lead underwriter is a DTC Participant.</p>
+    <p><strong>The Offering:</strong> $500 million high-yield notes sold only to <span class="hotspot" data-modal="qib" tabindex="0" role="button" onclick="openModal('modal-qib')">QIBs</span> under Rule 144A. Distinct CUSIP from any registered notes. Lead underwriter is a DTC Participant.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
       <li><strong>Issue Type:</strong> Check "Corporate."</li>
       <li><strong>Registration:</strong> Check "Eligible for resale under Rule 144A of the '33 Act."</li>
-      <li><strong>CUSIP:</strong> Must be <strong>distinct</strong> from any registered Acme Corp. notes. The CUSIP table gets one row (term bond). Type code = "T" for Term.</li>
-      <li><strong>LOR Requirements:</strong> Because this is Rule 144A, a <strong>rider to the LOR</strong> is required. The rider confirms that the securities are legally restricted and that Cede &amp; Co. will be the registered owner of the restricted securities.</li>
+      <li><strong>CUSIP:</strong> Must be <strong>distinct</strong> from any registered Acme Corp. notes. The CUSIP table gets one row (<span class="hotspot" data-modal="term-bond" tabindex="0" role="button" onclick="openModal('modal-term-bond')">term bond</span>). Type code = "T" for Term.</li>
+      <li><strong>LOR Requirements:</strong> Because this is Rule 144A, a <strong>rider to the LOR</strong> is required. The rider confirms that the securities are legally restricted and that <span class="hotspot" data-modal="cede-co" tabindex="0" role="button" onclick="openModal('modal-cede-co')">Cede &amp; Co.</span> will be the registered owner of the restricted securities.</li>
       <li><strong>PORTAL:</strong> <span class="strike-through">Historically required for non-IG 144A issues.</span> Per current OA, only the distinct CUSIP and LOR rider are required. Private trading venues have replaced PORTAL.</li>
       <li><strong>Electronic Submission:</strong> Submit through UW SOURCE upon pricing. CUSIP info is due upon pricing (not 7 days pre-close).</li>
       <li><strong>Certificate Sizing:</strong> $500 million exactly — one certificate for the full amount is acceptable (threshold is <em>exceeding</em> $500M). If it were $500,000,001, you'd need two certificates.</li>
@@ -1607,7 +1609,7 @@ body {
       <h4>Money Market Instruments (MMI)</h4>
       <p>MMI are processed under <strong>dedicated DTC Rules</strong> with special form letters and a separate help line:</p>
       <ul class="compact-list">
-        <li>Commercial paper, banker's acceptances, and short-term notes</li>
+        <li><span class="hotspot" data-modal="commercial-paper" tabindex="0" role="button" onclick="openModal('modal-commercial-paper')">Commercial paper</span>, <span class="hotspot" data-modal="bankers-acceptance" tabindex="0" role="button" onclick="openModal('modal-bankers-acceptance')">banker's acceptances</span>, and short-term notes</li>
         <li>Dedicated customer help line: <strong>(866) 724-4402</strong></li>
         <li>Specialized <strong>MMI form letters</strong> instead of standard LORs</li>
         <li>Processing under DTC Rules rather than Operational Arrangements</li>
@@ -2131,10 +2133,11 @@ body {
       <div class="footer-version">June 2026 v1.0</div>
       <div>© 2026 DTC Eligibility Guide</div>
       <div class="footer-links">
-        <a href="https://www.dtcc.com" target="_blank" rel="noopener">DTCC</a>
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
         <span class="footer-divider">•</span>
-        <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" target="_blank" rel="noopener">Operational Arrangements</a>
+        <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">Operational Arrangements</a>
       </div>
+      <div class="footer-legal" style="margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px;">Legal Notice: This teaching guide is provided for educational purposes only. DTC materials are copyrighted by The Depository Trust Company and used here for educational analysis. For official use, consult the original sources. This guide does not constitute legal advice.</div>
     </div>
   </div>
 </footer>
@@ -2610,6 +2613,67 @@ function resetQuiz() {
   </div>
 </div>
 
+<!-- CERTIFICATE REQUIREMENTS -->
+<div class="modal-overlay" id="modal-certificate-req" role="dialog" aria-modal="true" aria-labelledby="modal-title-certificate-req">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-certificate-req">Certificate Requirements & Sizing Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Operational Requirement</div>
+        <div class="def-word">Certificate Format</div>
+        <p>DTC specifies detailed requirements for physical certificate format, sizing, and presentation for both certificated and Book-Entry-Only (BEO) securities.</p>
+      </div>
+      
+      <p class="modal-section-title">Certificate Sizing Rules</p>
+      <p>DTC enforces strict certificate sizing requirements to facilitate processing:</p>
+      <ul>
+        <li><strong>Standard Rule:</strong> Single maturities up to $500 million can be represented by one certificate</li>
+        <li><strong>Oversized Rule:</strong> Single maturities exceeding $500 million require multiple certificates — one per $500 million tranche plus remainder</li>
+        <li><strong>Example:</strong> A $750 million maturity requires two certificates ($500M + $250M)</li>
+        <li><strong>Boundary Case:</strong> Exactly $500 million = one certificate is acceptable (threshold is exceeding $500M)</li>
+        <li><strong>BEO Application:</strong> Sizing rules apply to both certificated and BEO issues (master certificate sizing)</li>
+      </ul>
+      
+      <p class="modal-section-title">Certificate Format Standards</p>
+      <p>Certificates must meet DTC's format and presentation requirements:</p>
+      <ul>
+        <li><strong>Registration:</strong> Must be properly registered in the name of the appropriate entity (Cede & Co. for BEO)</li>
+        <li><strong>Legends:</strong> Required legends must be included (restrictive legends, tax legends, etc.)</li>
+        <li><strong>Authentication:</strong> Must be properly authenticated by the transfer agent or trustee</li>
+        <li><strong>Denominations:</strong> Must be in authorized denominations per the indenture or offering document</li>
+        <li><strong>CUSIP Display:</strong> CUSIP number must be prominently displayed on the certificate</li>
+      </ul>
+      
+      <p class="modal-section-title">BEO Master Certificate Requirements</p>
+      <p>For Book-Entry-Only issues, a single master certificate is held at DTC:</p>
+      <ul>
+        <li>Registered in the name of Cede & Co. as nominee</li>
+        <li>Represents the entire issue amount</li>
+        <li>Must follow the same sizing rules as certificated issues</li>
+        <li>Must be properly immobilized at DTC or FAST Agent location</li>
+        <li>Cannot be withdrawn by individual investors</li>
+      </ul>
+      
+      <p class="modal-section-title">Special Certificate Types</p>
+      <ul>
+        <li><strong>Global Certificates:</strong> Single certificate representing entire issue, typically for Rule 144A/Reg S offerings</li>
+        <li><strong>Balance Certificates:</strong> Used in FAST program to represent total FAST agent position</li>
+        <li><strong>Retail CDs:</strong> Use Electronic Master Certificate BLOR for bank CD programs</li>
+      </ul>
+      
+      <div class="warn-box">
+        <strong>Operational Requirement:</strong> Certificates that do not meet sizing, format, or authentication requirements will be rejected by DTC, causing eligibility delays. Reissuing certificates takes time and can delay closing dates. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section II.A.2</a>
+      </div>
+      
+      <div class="tip-box">
+        <strong>Processing Tip:</strong> Always verify certificate sizing before printing. For complex issues with multiple maturities, create a certificate schedule showing each maturity, CUSIP, and certificate count to ensure compliance before closing.
+      </div>
+      
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2 - Certificate Format; DTC Underwriting FAQ. <a href="https://dtcclearning.com/documents/asset-services/underwriting/3453-underwriting-frequently-asked-questions.html">dtcclearning.com</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- MUNICIPAL -->
 <div class="modal-overlay" id="modal-municipal" role="dialog" aria-modal="true" aria-labelledby="modal-title-municipal">
   <div class="modal-card">
@@ -2724,7 +2788,7 @@ function resetQuiz() {
         <div class="def-word">New York Uniform Commercial Code</div>
         <p>New York's codification of the Uniform Commercial Code, the body of law governing commercial transactions. Article 8 (Investment Securities) provides the legal foundation for DTC's book-entry system.</p>
       </div>
-      <p>Article 8 of the NY UCC was substantially revised in 1994 to accommodate the indirect holding system, where securities are held through intermediaries rather than directly by beneficial owners. Under this system, DTC's nominee (Cede &amp; Co.) is the registered owner on the issuer's books, while beneficial owners hold their interests through DTC Participants. This is legally validated by NY UCC Section 8-503 and related provisions.</p>
+      <p>Article 8 of the NY UCC was substantially revised in 1994 to accommodate the indirect holding system, where securities are held through intermediaries rather than directly by <span class="hotspot" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')">beneficial owners</span>. Under this system, DTC's nominee (Cede &amp; Co.) is the registered owner on the issuer's books, while beneficial owners hold their interests through DTC Participants. This is legally validated by NY UCC Section 8-503 and related provisions.</p>
       <div class="citation"><strong>Source:</strong> NY UCC Article 8 (1994 Revised); DTC Operational Arrangements. <a href="https://www.law.cornell.edu/ucc/8">cornell.edu (UCC Article 8)</a></div>
     </div>
   </div>
@@ -2967,7 +3031,7 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Settlement Method</div>
         <div class="def-word">Book-Entry-Only (BEO)</div>
-        <p>Securities for which physical certificates are not available to investors. DTC, through its nominee Cede &amp; Co., holds the entire balance either at DTC or through a FAST Agent.</p>
+        <p>Securities for which physical certificates are not available to investors. DTC, through its nominee Cede &amp; Co., holds the entire balance either at DTC or through a <span class="hotspot" data-modal="fast-agent" tabindex="0" role="button" onclick="openModal('modal-fast-agent')">FAST Agent</span>.</p>
       </div>
       <p>For BEO securities, investors never receive physical certificates. Ownership is recorded only as a book-entry on the records of DTC Participants (broker-dealers, banks) who maintain accounts for beneficial owners.</p>
       <div class="tip-box"><strong>If answer is "Yes":</strong>
@@ -3201,6 +3265,38 @@ function resetQuiz() {
       </div>
       <p>Under FAST, physical certificates are immobilized at the FAST Agent's location or at DTC, and only book-entry movements occur. The FAST Agent must have on file with DTC a completed Operational Arrangements Agent Letter, a Balance Certificate Agreement, and an Operational Criteria for FAST Transfer Agent Processing agreement.</p>
       <p>FAST dramatically reduces settlement risk, processing time, and operational costs. Most modern DTC-eligible issues are FAST-eligible. If securities are <strong>not</strong> FAST-eligible, physical certificates must be delivered to DTC at least one business day before closing, by 12:00 noon ET.</p>
+      
+      <p class="modal-section-title">FAST Program Requirements</p>
+      <p>To participate in FAST, transfer agents must:</p>
+      <ul>
+        <li>Execute an Operational Arrangements Agent Letter with DTC</li>
+        <li>Execute a Balance Certificate Agreement for FAST processing</li>
+        <li>Meet operational criteria for FAST Transfer Agent Processing</li>
+        <li>Maintain a single balance certificate registered to Cede & Co.</li>
+        <li>Process electronic deposits and withdrawals per DTC specifications</li>
+      </ul>
+      
+      <p class="modal-section-title">FRAC (Fully Restricted Automated Certificate)</p>
+      <p>FRAC is similar to FAST but for restricted securities. The transfer agent immobilizes restricted certificates at its location and processes book-entry movements for restricted transactions.</p>
+      <ul>
+        <li>Used for securities with resale restrictions (Rule 144A, Reg S)</li>
+        <li>Requires additional compliance procedures</li>
+        <li>Transfer agent must verify restricted status before processing</li>
+      </ul>
+      
+      <p class="modal-section-title">DWAC (Deposit/Withdrawal at Custodian)</p>
+      <p>DWAC allows DTC participants to deposit and withdraw securities directly with a custodian rather than through physical movement.</p>
+      <ul>
+        <li>Enables same-day settlement for eligible securities</li>
+        <li>Requires custodian to be a DTC participant</li>
+        <li>Used primarily for book-entry-only (BEO) securities</li>
+        <li>Reduces physical certificate handling requirements</li>
+      </ul>
+      
+      <div class="warn-box">
+        <strong>Operational Requirement:</strong> Transfer agents must meet DTC's operational criteria and maintain required agreements to participate in FAST/FRAC/DWAC programs. Non-participation requires physical certificate delivery by 12:00 noon ET one business day before closing. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section II.B.2</a>
+      </div>
+      
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.B.2 - FAST Program; NABL "Demystifying DTC" (2023). <a href="https://www.nabl.org/wp-content/uploads/2023/02/20170331-NABL-Demystifying-DTC.pdf">nabl.org</a></div>
     </div>
   </div>
@@ -3709,6 +3805,375 @@ function resetQuiz() {
       <p>Per DTC's Operational Arrangements, underwriters should provide DTC with an <strong>initial indicative bid price in U.S. dollars</strong> prior to the Closing Date. This is separate from the offering price but serves a similar function for secondary market tracking.</p>
       <div class="tip-box"><strong>Formatting:</strong> Use percentage of par (preferred) or dollar price per $100 par. Be consistent across all CUSIPs in the same offering. Include two decimal places (e.g., "99.50" not "99.5").</div>
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A.5 — Market Values; DTC Fee Schedule. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- QIB -->
+<div class="modal-overlay" id="modal-qib" role="dialog" aria-modal="true" aria-labelledby="modal-title-qib">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-qib">Qualified Institutional Buyer (QIB)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Institutional Investor Category</div>
+        <div class="def-word">QIB</div>
+        <p>An institution that owns and invests on a discretionary basis at least $100 million in securities of unaffiliated issuers. QIBs include banks, insurance companies, investment companies, and certain registered investment advisers.</p>
+      </div>
+      <p class="modal-section-title">Rule 144A Requirements</p>
+      <ul>
+        <li><strong>Safe harbor:</strong> Rule 144A permits resale of restricted securities to QIBs without SEC registration.</li>
+        <li><strong>$100 million threshold:</strong> Must own and invest at least $100 million in non-affiliated securities (excludes affiliates' holdings).</li>
+        <li><strong>Qualified purchasers:</strong> Similar concept under the Investment Company Act — entities with $5+ million in investments.</li>
+      </ul>
+      <p class="modal-section-title">Types of QIBs</p>
+      <ul>
+        <li><strong>Banks:</strong> With at least $100 million in securities and audited financial statements.</li>
+        <li><strong>Insurance companies:</strong> Meeting the $100 million threshold and state regulatory requirements.</li>
+        <li><strong>Investment companies:</strong> Registered under the Investment Company Act of 1940.</li>
+        <li><strong>Investment advisers:</strong> Registered with the SEC, managing at least $100 million for QIB clients.</li>
+        <li><strong>Employee benefit plans:</strong> With at least $100 million in assets.</li>
+      </ul>
+      <div class="tip-box"><strong>DTC Impact:</strong> For Rule 144A issues, QIB trading occurs on private trading venues (successors to PORTAL). DTC requires a distinct CUSIP and LOR rider for 144A-eligible securities, but no separate PORTAL eligibility verification.</div>
+      <div class="citation"><strong>Source:</strong> SEC Rule 144A (17 CFR 240.144A); Securities Act of 1933. <a href="https://www.sec.gov/rules/final/33-7331.htm">sec.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOR -->
+<div class="modal-overlay" id="modal-blor" role="dialog" aria-modal="true" aria-labelledby="modal-title-blor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-blor">Blanket Letter of Representations (BLOR)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Agreement</div>
+        <div class="def-word">BLOR</div>
+        <p>A Blanket Letter of Representations that covers all DTC-eligible securities of a particular issuer. Once executed and filed with DTC, it does not expire and applies to all future issuances by that issuer.</p>
+      </div>
+      <p class="modal-section-title">How BLOR Differs from ILOR</p>
+      <ul>
+        <li><strong>BLOR:</strong> Covers all securities of the issuer. Ongoing coverage. Does not expire unless issuer name changes.</li>
+        <li><strong>ILOR:</strong> Issuer Letter of Representations for a specific issuance only. Single-issue coverage. May be used when BLOR unavailable.</li>
+      </ul>
+      <p class="modal-section-title">BLOR Advantages</p>
+      <ul>
+        <li><strong>Efficiency:</strong> No need to execute new LOR for each issuance.</li>
+        <li><strong>Speed:</strong> Reduces closing timeline — BLOR already on file.</li>
+        <li><strong>Cost:</strong> Avoids repeated legal counsel fees for LOR execution.</li>
+      </ul>
+      <p class="modal-section-title">When BLOR Doesn't Apply</p>
+      <ul>
+        <li>Issuer name change requires new BLOR.</li>
+        <li>Change in corporate structure may require update.</li>
+        <li>DTC may request new BLOR if material circumstances change.</li>
+        <li>Some specialized securities (MMI, E-CD) use dedicated forms.</li>
+      </ul>
+      <div class="tip-box"><strong>Verification:</strong> Before closing, verify with DTC whether the issuer has a BLOR on file. If not, an ILOR will be required. Check that the issuer name matches exactly — even minor discrepancies (e.g., "Inc." vs "Inc") can invalidate BLOR coverage.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; SEC Form of Letter of Representations. <a href="https://www.sec.gov/Archives/edgar/data/1173557/000119312505140329/dex99k4b.htm">sec.gov (BLOR form)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- REIT -->
+<div class="modal-overlay" id="modal-reit" role="dialog" aria-modal="true" aria-labelledby="modal-title-reit">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-reit">Real Estate Investment Trust (REIT)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporate Structure</div>
+        <div class="def-word">REIT</div>
+        <p>A company that owns, operates, or finances income-generating real estate. REITs are structured to avoid corporate income tax if they distribute at least 90% of taxable income to shareholders.</p>
+      </div>
+      <p class="modal-section-title">Ownership Restrictions</p>
+      <p>To maintain tax-advantaged status, REITs must comply with ownership concentration limits under the Internal Revenue Code:</p>
+      <ul>
+        <li><strong>5-50 rule:</strong> No five shareholders can own more than 50% of the REIT's shares.</li>
+        <li><strong>Diversity requirement:</strong> Must have at least 100 shareholders.</li>
+        <li><strong>Asset tests:</strong> At least 75% of assets must be in real estate, cash, or government securities.</li>
+        <li><strong>Income tests:</strong> At least 75% of income must come from real estate sources.</li>
+      </ul>
+      <p class="modal-section-title">DTC Eligibility Impact</p>
+      <p>Because REITs have ownership restrictions to preserve tax status, DTC requires an <strong>indemnity letter</strong> from the issuer. This letter protects DTC and its Participants in case the REIT's ownership restrictions are violated through DTC's book-entry system.</p>
+      <div class="tip-box"><strong>Seg 100 Option:</strong> REITs may use DTC's Segregation Account 100 (Seg 100) tool to track ownership for compliance. However, DTC does not monitor compliance — Seg 100 is a tracking tool only. The indemnity letter remains required.</div>
+      <div class="citation"><strong>Source:</strong> Internal Revenue Code §856; DTC Operational Arrangements, Section I.B.4. <a href="https://www.irs.gov/irb/2005-25_IRB/ar13.html">irs.gov</a> | <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOL -->
+<div class="modal-overlay" id="modal-nol" role="dialog" aria-modal="true" aria-labelledby="modal-title-nol">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nol">Net Operating Loss (NOL) Carryforwards</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Attribute</div>
+        <div class="def-word">NOL Carryforwards</div>
+        <p>Tax losses that a company can carry forward to offset future taxable income. NOLs are valuable tax assets that can be jeopardized if ownership changes trigger limitations under Section 382 of the Internal Revenue Code.</p>
+      </div>
+      <p class="modal-section-title">Section 382 Limitations</p>
+      <ul>
+        <li><strong>Ownership change:</strong> If one or more 5% shareholders increase their ownership by more than 50 percentage points over a 3-year period, an ownership change occurs.</li>
+        <li><strong>NOL limitation:</strong> After an ownership change, annual NOL usage is limited to a formula based on the company's value.</li>
+        <li><strong>Preservation concern:</strong> Companies with large NOLs may restrict ownership changes to preserve tax benefits.</li>
+      </ul>
+      <p class="modal-section-title">DTC Eligibility Impact</p>
+      <p>Issuers with NOL preservation provisions often have ownership restrictions similar to REITs. DTC requires an <strong>indemnity letter</strong> because:</p>
+      <ul>
+        <li>DTC's book-entry system could facilitate prohibited ownership concentrations.</li>
+        <li>The indemnity letter protects DTC if NOL limitations are inadvertently violated.</li>
+        <li>Ownership restrictions are not always visible in standard questionnaire responses.</li>
+      </ul>
+      <div class="tip-box"><strong>Identification:</strong> When reviewing issuer materials, check for references to "Section 382," "ownership limitations," or "change of control provisions." These indicators suggest NOL preservation concerns and the need for an indemnity letter.</div>
+      <div class="citation"><strong>Source:</strong> Internal Revenue Code §382; DTC Operational Arrangements, Section I.B.4. <a href="https://www.irs.gov/businesses/corporations/net-operating-losses-nols-for-corporations">irs.gov</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Indemnity Letter -->
+<div class="modal-overlay" id="modal-indemnity-letter" role="dialog" aria-modal="true" aria-labelledby="modal-title-indemnity-letter">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-indemnity-letter">Indemnity Letter</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Protection Document</div>
+        <div class="def-word">Indemnity Letter</div>
+        <p>A letter in which the issuer agrees to indemnify (compensate) DTC and its Participants for losses arising from the issuer's ownership restrictions or other special requirements. The letter protects DTC from liability when processing restricted securities.</p>
+      </div>
+      <p class="modal-section-title">When Required</p>
+      <p>DTC requires indemnity letters for issuers with ownership restrictions or special legal considerations:</p>
+      <ul>
+        <li><strong>REITs:</strong> Preserving tax-advantaged status requires ownership limits.</li>
+        <li><strong>NOL issuers:</strong> Companies with net operating loss carryforwards subject to Section 382 limitations.</li>
+        <li><strong>Maritime issuers:</strong> Subject to Jones Act ownership restrictions (U.S. citizenship requirements).</li>
+        <li><strong>Broadcast licensees:</strong> FCC ownership restrictions apply.</li>
+        <li><strong>Foreign issuers:</strong> May require indemnity for foreign legal opinion enforceability.</li>
+      </ul>
+      <p class="modal-section-title">Content of Indemnity Letter</p>
+      <ul>
+        <li><strong>Indemnification clause:</strong> Issuer agrees to indemnify DTC and Participants for losses.</li>
+        <li><strong>Ownership restriction acknowledgment:</strong> Issuer confirms restrictions exist.</li>
+        <li><strong>DTC protection:</strong> DTC is held harmless for processing through book-entry system.</li>
+        <li><strong>Counsel involvement:</strong> Typically drafted by issuer's counsel.</li>
+      </ul>
+      <div class="tip-box"><strong>Not on Standard Questionnaire:</strong> The indemnity letter requirement is not explicitly listed on the DTC eligibility questionnaire. DTC may request it based on issuer type, industry, or review of offering documents. Always check with DTC if the issuer has ownership restrictions.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.B.4; DTC Underwriting FAQ. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Commercial Paper -->
+<div class="modal-overlay" id="modal-commercial-paper" role="dialog" aria-modal="true" aria-labelledby="modal-title-commercial-paper">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-commercial-paper">Commercial Paper</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Short-Term Debt Instrument</div>
+        <div class="def-word">Commercial Paper</div>
+        <p>Unsecured, short-term debt instrument issued by corporations to meet short-term liabilities. Maturities typically range from 1 to 270 days. Commercial paper is usually issued at a discount from face value.</p>
+      </div>
+      <p class="modal-section-title">Characteristics</p>
+      <ul>
+        <li><strong>Unsecured:</strong> Not backed by collateral — relies on issuer's creditworthiness.</li>
+        <li><strong>Short maturity:</strong> Usually 270 days or less (to avoid SEC registration).</li>
+        <li><strong>Discount pricing:</strong> Sold at discount, redeemed at face value.</li>
+        <li><strong>Low cost:</strong> Interest rates typically lower than bank loans.</li>
+      </ul>
+      <p class="modal-section-title">DTC Processing</p>
+      <p>Commercial paper is processed under DTC's <strong>Money Market Instruments (MMI)</strong> program with special requirements:</p>
+      <ul>
+        <li><strong>MMI forms:</strong> Specialized form letters instead of standard LORs.</li>
+        <li><strong>Dedicated help line:</strong> (866) 724-4402 for MMI-specific questions.</li>
+        <li><strong>Separate rules:</strong> Processed under dedicated DTC Rules rather than Operational Arrangements.</li>
+        <li><strong>Banker's acceptances:</strong> Also processed under MMI program.</li>
+      </ul>
+      <div class="tip-box"><strong>Registration exemption:</strong> Commercial paper with maturity ≤ 270 days is exempt from SEC registration under Rule 3(a)(2) if it meets certain requirements. This exemption is why commercial paper programs can operate efficiently.</div>
+      <div class="citation"><strong>Source:</strong> SEC Rule 3(a)(2); DTC MMI Guidelines. <a href="https://www.sec.gov/rules/final/33-8497.htm">sec.gov</a> | <a href="https://www.dtcc.com">dtcc.com (MMI)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Banker's Acceptance -->
+<div class="modal-overlay" id="modal-bankers-acceptance" role="dialog" aria-modal="true" aria-labelledby="modal-title-bankers-acceptance">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bankers-acceptance">Banker's Acceptance</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Short-Term Credit Instrument</div>
+        <div class="def-word">Banker's Acceptance</div>
+        <p>A time draft drawn on and accepted by a bank, representing the bank's obligation to pay the stated amount at maturity. Used primarily in international trade to finance transactions.</p>
+      </div>
+      <p class="modal-section-title">How It Works</p>
+      <ul>
+        <li><strong>Import transaction:</strong> Buyer's bank accepts a time draft from the exporter.</li>
+        <li><strong>Bank guarantee:</strong> The bank's acceptance makes it a bank obligation, not just a corporate obligation.</li>
+        <li><strong>Discounting:</strong> The exporter can sell the acceptance in the secondary market at a discount.</li>
+        <li><strong>Maturity:</strong> Typically 30 to 180 days.</li>
+      </ul>
+      <p class="modal-section-title">DTC Processing</p>
+      <p>Like commercial paper, banker's acceptances are processed under DTC's <strong>Money Market Instruments (MMI)</strong> program:</p>
+      <ul>
+        <li><strong>MMI forms:</strong> Specialized documentation requirements.</li>
+        <li><strong>Bank involvement:</strong> The accepting bank must be a DTC Participant or have arrangements with one.</li>
+        <li><strong>Trade finance focus:</strong> Common in letters of credit and trade transactions.</li>
+      </ul>
+      <div class="tip-box"><strong>Credit quality:</strong> Banker's acceptances are considered high-quality short-term instruments because they carry the bank's credit rather than just the corporate credit. This makes them attractive to money market funds.</div>
+      <div class="citation"><strong>Source:</strong> DTC MMI Guidelines; Uniform Commercial Code Article 3. <a href="https://www.dtcc.com">dtcc.com (MMI)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- FAST Agent -->
+<div class="modal-overlay" id="modal-fast-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast-agent">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-fast-agent">FAST Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">DTC Program Participant</div>
+        <div class="def-word">FAST Agent</div>
+        <p>A transfer agent that has executed the necessary agreements with DTC to participate in the FAST (Fast Automated Securities Transfer) program, allowing electronic immobilization and transfer of securities without physical certificate movement.</p>
+      </div>
+      <p class="modal-section-title">FAST Program Requirements</p>
+      <p>To act as a FAST Agent, the transfer agent must have on file with DTC:</p>
+      <ul>
+        <li><strong>Operational Arrangements Agent Letter:</strong> Basic agreement to process DTC-eligible securities.</li>
+        <li><strong>Balance Certificate Agreement:</strong> Agreement regarding certificate balances and reconciliation.</li>
+        <li><strong>Operational Criteria for FAST Transfer Agent Processing:</strong> Technical and operational requirements.</li>
+      </ul>
+      <p class="modal-section-title">How FAST Works</p>
+      <ul>
+        <li><strong>Immobilization:</strong> Physical certificates are held at the FAST Agent or DTC.</li>
+        <li><strong>Book-entry transfer:</strong> Securities move electronically between DTC and FAST Agent.</li>
+        <li><strong>No physical movement:</strong> Eliminates risk and delay of certificate shipping.</li>
+        <li><strong>BEO eligibility:</strong> Book-Entry-Only securities typically use FAST Agents for certificate immobilization.</li>
+      </ul>
+      <div class="tip-box"><strong>Coordination:</strong> The Transfer Agent listed on the eligibility questionnaire must be a FAST Agent (or have executed the necessary agreements) for the issue to be eligible for FAST processing. If not, DTC may require physical certificate delivery.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.B; DTC FAST Program Guidelines. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Serial Maturities -->
+<div class="modal-overlay" id="modal-serial-maturities" role="dialog" aria-modal="true" aria-labelledby="modal-title-serial-maturities">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-serial-maturities">Serial Maturities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bond Structure</div>
+        <div class="def-word">Serial Maturities</div>
+        <p>A bond structure where principal is repaid in multiple installments over time, with different maturities for each installment. Each serial maturity typically has its own CUSIP and may have different interest rates.</p>
+      </div>
+      <p class="modal-section-title">Serial vs. Term Bonds</p>
+      <ul>
+        <li><strong>Serial bonds:</strong> Multiple maturity dates (e.g., 2026, 2027, 2028...2035). Principal amortizes over time.</li>
+        <li><strong>Term bonds:</strong> Single maturity date. Entire principal repaid at once (bullet maturity).</li>
+      </ul>
+      <p class="modal-section-title">DTC CUSIP Requirements</p>
+      <p>Each serial maturity receives its own CUSIP number and row in the CUSIP Information table:</p>
+      <ul>
+        <li><strong>Type code "S":</strong> Used for serial maturities in the CUSIP table.</li>
+        <li><strong>Individual interest rates:</strong> Each maturity may have its own interest rate.</li>
+        <li><strong>Separate principal amounts:</strong> Each maturity specifies the principal repayment amount.</li>
+        <li><strong>Example:</strong> A 2026–2035 serial issue requires 10 CUSIPs and 10 table rows.</li>
+      </ul>
+      <div class="tip-box"><strong>Municipal bonds:</strong> Serial structures are common for municipal bonds to match revenue streams with debt service. Corporate bonds typically use term structures, but serial bonds are used for project financing where cash flows match amortization schedules.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; CUSIP Services Manual. <a href="https://www.cusip.com">cusip.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Term Bond -->
+<div class="modal-overlay" id="modal-term-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-term-bond">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-term-bond">Term Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bond Structure</div>
+        <div class="def-word">Term Bond</div>
+        <p>A bond with a single maturity date when the entire principal amount is repaid. Unlike serial bonds, which amortize over time, term bonds are bullet maturities with one principal repayment date.</p>
+      </div>
+      <p class="modal-section-title">Characteristics</p>
+      <ul>
+        <li><strong>Single maturity:</strong> Entire principal due at one specified date.</li>
+        <li><strong>Type code "T":</strong> Used in DTC's CUSIP table for term bonds.</li>
+        <li><strong>One CUSIP:</strong> Term bonds typically require only one CUSIP (unless multiple tranches).</li>
+        <li><strong>Corporate bonds:</strong> Most corporate bonds are term structures.</li>
+      </ul>
+      <p class="modal-section-title">Advantages and Disadvantages</p>
+      <ul>
+        <li><strong>Issuer advantage:</strong> No principal payments until final maturity — full use of proceeds.</li>
+        <li><strong>Investor advantage:</strong> Known repayment date and full principal at maturity.</li>
+        <li><strong>Refinancing risk:</strong> Large balloon payment at maturity creates refinancing risk.</li>
+        <li><strong>Serial comparison:</strong> Serial bonds reduce refinancing risk but require ongoing principal payments.</li>
+      </ul>
+      <div class="tip-box"><strong>DTC efficiency:</strong> Term bonds are simpler for DTC processing — one CUSIP, one row in the CUSIP table, one set of certificates. Serial bonds multiply administrative workload because each maturity is treated as a separate security.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; Municipal Securities Rulemaking Board. <a href="https://www.msrb.org">msrb.org</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Beneficial Owner -->
+<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Ownership Concept</div>
+        <div class="def-word">Beneficial Owner</div>
+        <p>The person or entity that enjoys the benefits of ownership (economic interest, voting rights, dividend entitlement) even though the security may be registered in the name of another (such as Cede & Co. or a broker).</p>
+      </div>
+      <p class="modal-section-title">Indirect Holding System</p>
+      <p>Under the modern securities system (post-1994 UCC Article 8 revisions):</p>
+      <ul>
+        <li><strong>Registered owner:</strong> Cede & Co. appears on issuer's books as owner of record.</li>
+        <li><strong>Intermediaries:</strong> DTC Participants (brokers, banks) hold positions with DTC.</li>
+        <li><strong>Beneficial owners:</strong> Investors hold economic interests through their intermediaries.</li>
+        <li><strong>Chain of title:</strong> Issuer → Cede & Co. → DTC → Participants → Beneficial owners.</li>
+      </ul>
+      <p class="modal-section-title">Rights of Beneficial Owners</p>
+      <ul>
+        <li><strong>Economic benefits:</strong> Entitled to dividends, interest, and principal payments.</li>
+        <li><strong>Voting rights:</strong> Can vote through their intermediary (proxy voting chain).</li>
+        <li><strong>Corporate actions:</strong> Can participate in tender offers, exchanges, and rights offerings.</li>
+        <li><strong>Sale proceeds:</strong> Can sell their position through their broker.</li>
+      </ul>
+      <div class="tip-box"><strong>Legal protection:</strong> The 1994 revisions to NY UCC Article 8 specifically validated the rights of beneficial owners through intermediaries. Notice to Cede & Co. constitutes notice to all beneficial owners under §8-503.</div>
+      <div class="citation"><strong>Source:</strong> NY UCC Article 8 (1994 Revised); SEC Release No. 34-38067. <a href="https://www.law.cornell.edu/ucc/8">cornell.edu</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Nominee -->
+<div class="modal-overlay" id="modal-nominee" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominee">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Concept</div>
+        <div class="def-word">Nominee</div>
+        <p>A person or entity that holds legal title to securities on behalf of another, who is the beneficial owner. The nominee has no beneficial interest and holds the securities only as a matter of convenience or legal structure.</p>
+      </div>
+      <p class="modal-section-title">Cede & Co. as Nominee</p>
+      <p>DTC's nominee, Cede & Co., is the classic example:</p>
+      <ul>
+        <li><strong>Legal title:</strong> Cede & Co. is registered owner on issuer's books.</li>
+        <li><strong>No beneficial interest:</strong> Cede & Co. cannot benefit from ownership.</li>
+        <li><strong>Administrative convenience:</strong> Eliminates need to register millions of individual owners.</li>
+        <li><strong>Indirect holding system:</strong> Made possible by 1994 UCC Article 8 revisions.</li>
+      </ul>
+      <p class="modal-section-title">Other Nominee Arrangements</p>
+      <ul>
+        <li><strong>Street name registration:</strong> Brokers hold securities in "street name" (nominee) for customers.</li>
+        <li><strong>Trust nominees:</strong> Trust companies may hold assets as nominees for trusts.</li>
+        <li><strong>Custody nominees:</strong> Custodians may hold securities as nominees for asset managers.</li>
+      </ul>
+      <p class="modal-section-title">Foreign Issuers</p>
+      <p>For non-U.S. issuers, DTC may require a <strong>foreign legal opinion</strong> confirming that:</p>
+      <ul>
+        <li>DTC's rights as nominee are enforceable under local law.</li>
+        <li>The indirect holding system is recognized.</li>
+        <li>Beneficial owners' rights through intermediaries are protected.</li>
+      </ul>
+      <div class="tip-box"><strong>Legal distinction:</strong> The nominee holds legal title but not equitable title. Beneficial owners hold equitable title (economic interest). This separation is fundamental to modern securities holding systems.</div>
+      <div class="citation"><strong>Source:</strong> NY UCC Article 8 (1994 Revised); Uniform Commercial Code. <a href="https://www.law.cornell.edu/ucc/8">cornell.edu</a></div>
     </div>
   </div>
 </div>

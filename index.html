@@ -3,70 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DTC Documents Index — Premium Collection</title>
+<title>DTC Documents Index</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Cinzel:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Dark Theme (Default) */
   --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-tertiary: #1a1a25;
-  --bg-card: rgba(20, 20, 30, 0.8);
-  --bg-card-hover: rgba(25, 25, 40, 0.9);
-  --text-primary: #f5f2ed;
-  --text-secondary: #d4d0c5;
-  --text-muted: #8a8580;
+  --bg-secondary: #0d0d14;
+  --bg-tertiary: #12121c;
+  --bg-card: rgba(16, 16, 26, 0.65);
+  --bg-card-hover: rgba(22, 22, 36, 0.85);
+  --text-primary: #f0ece5;
+  --text-secondary: #c8c2b8;
+  --text-muted: #7a7468;
+  --text-faint: #4a453c;
   --accent-gold: #c9a84c;
   --accent-gold-light: #e8d5a3;
-  --accent-gold-dark: #a08430;
-  --accent-blue: #1a3a5c;
-  --accent-blue-light: #4a6a8c;
-  --border-subtle: rgba(201, 168, 76, 0.15);
-  --border-gold: rgba(201, 168, 76, 0.3);
-  --border-gold-bright: rgba(201, 168, 76, 0.5);
-  --shadow-gold: 0 0 60px rgba(201, 168, 76, 0.08);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 16px 48px rgba(201, 168, 76, 0.15);
+  --accent-gold-dim: #9a7e38;
+  --accent-gold-glow: rgba(201, 168, 76, 0.15);
+  --accent-blue: #1e3a5c;
+  --accent-blue-light: #3d6a9a;
+  --accent-blue-glow: rgba(30, 58, 95, 0.2);
+  --border-subtle: rgba(201, 168, 76, 0.08);
+  --border-gold: rgba(201, 168, 76, 0.2);
+  --border-gold-bright: rgba(201, 168, 76, 0.4);
+  --shadow-gold: 0 0 80px rgba(201, 168, 76, 0.06);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 20px 60px rgba(201, 168, 76, 0.12);
   --font-display: 'Cinzel', 'Trajan Pro', serif;
   --font-heading: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
-  --radius: 12px;
-  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-elegant: 'Playfair Display', Georgia, serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="light"] {
-  --bg-primary: #f8f6f1;
-  --bg-secondary: #ede9e2;
-  --bg-tertiary: #e2ddd4;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-primary: #f7f5f0;
+  --bg-secondary: #f0ece5;
+  --bg-tertiary: #e8e2d9;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.92);
   --text-primary: #1a1814;
   --text-secondary: #3d3830;
-  --text-muted: #7a7468;
+  --text-muted: #8a8478;
+  --text-faint: #b5afa3;
   --accent-gold: #8b6914;
   --accent-gold-light: #a07c1e;
-  --accent-gold-dark: #6b5010;
-  --accent-blue: #1e3a5f;
+  --accent-gold-dim: #6b5010;
+  --accent-gold-glow: rgba(139, 105, 20, 0.1);
+  --accent-blue: #1e3a5c;
   --accent-blue-light: #2d5a8a;
-  --border-subtle: rgba(139, 105, 20, 0.12);
-  --border-gold: rgba(139, 105, 20, 0.25);
-  --border-gold-bright: rgba(139, 105, 20, 0.45);
-  --shadow-gold: 0 0 60px rgba(139, 105, 20, 0.06);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --shadow-card-hover: 0 16px 48px rgba(139, 105, 20, 0.12);
+  --accent-blue-glow: rgba(30, 58, 95, 0.1);
+  --border-subtle: rgba(139, 105, 20, 0.08);
+  --border-gold: rgba(139, 105, 20, 0.18);
+  --border-gold-bright: rgba(139, 105, 20, 0.35);
+  --shadow-gold: 0 0 60px rgba(139, 105, 20, 0.04);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 20px 60px rgba(139, 105, 20, 0.08);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -74,196 +76,373 @@ body {
   color: var(--text-primary);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  transition: background 0.5s ease, color 0.5s ease;
+  transition: background 0.6s ease, color 0.6s ease;
 }
 
-/* Animated Background */
 body::before {
   content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 20%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(26, 58, 92, 0.04) 0%, transparent 50%);
+  z-index: -2;
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+[data-theme="light"] body::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 20%, rgba(139, 105, 20, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 80%, rgba(30, 58, 95, 0.05) 0%, transparent 50%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Navigation ─── */
+.nav-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(26, 58, 92, 0.03) 0%, transparent 50%);
-  z-index: -1;
-  pointer-events: none;
-  transition: background 0.5s ease;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  background: rgba(10, 10, 15, 0.6);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
 }
 
-[data-theme="light"] body::before {
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(139, 105, 20, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(30, 58, 95, 0.04) 0%, transparent 50%);
+[data-theme="light"] .nav-bar {
+  background: rgba(247, 245, 240, 0.7);
 }
 
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Theme Toggle — Bottom Right, Icon Only */
+.nav-logo svg { width: 20px; height: 20px; }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-gold);
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover { color: var(--accent-gold); }
+.nav-link:hover::after { width: 100%; }
+
+/* ─── Theme Toggle ─── */
 .theme-toggle {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 2rem;
+  right: 2rem;
   z-index: 1000;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card), 0 0 40px rgba(201, 168, 76, 0.05);
   cursor: pointer;
   transition: var(--transition);
 }
 
 .theme-toggle:hover {
   border-color: var(--border-gold);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover), 0 0 50px var(--accent-gold-glow);
+  transform: translateY(-3px) scale(1.05);
 }
 
-.theme-toggle:active {
-  transform: scale(0.95);
-}
+.theme-toggle:active { transform: scale(0.95); }
 
 .theme-toggle svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   color: var(--accent-gold);
   transition: var(--transition);
 }
 
-.theme-toggle:hover svg {
-  color: var(--accent-gold-light);
-}
-
-/* Premium Header */
-header {
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 6rem 0 4rem;
+/* ─── Hero Section ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   position: relative;
+  padding: 8rem 2rem 6rem;
   overflow: hidden;
-  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
-header::before {
-  content: '';
+.hero-bg-ornament {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  opacity: 0.04;
+  pointer-events: none;
+  animation: slowRotate 120s linear infinite;
+}
+
+@keyframes slowRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.hero-line-top {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  width: 1px;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, var(--accent-gold), transparent);
+  opacity: 0.4;
+}
+
+.hero-kicker {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--accent-gold-dim);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s forwards;
+}
+
+.hero-ornament {
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.hero-ornament svg {
+  width: 120px;
+  height: 40px;
+  color: var(--accent-gold);
   opacity: 0.5;
 }
 
-.header-content {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.header-ornament {
-  font-size: 2rem;
-  color: var(--accent-gold);
-  opacity: 0.6;
-  margin-bottom: 2rem;
-  letter-spacing: 0.5em;
-}
-
-.header-logo {
+.hero-title {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 400;
   color: var(--text-primary);
+  letter-spacing: 0.12em;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
-  letter-spacing: 0.15em;
-  text-shadow: 0 0 40px rgba(201, 168, 76, 0.2);
-  transition: color 0.5s ease, text-shadow 0.5s ease;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s forwards;
 }
 
-[data-theme="light"] .header-logo {
-  text-shadow: 0 0 30px rgba(139, 105, 20, 0.15);
-}
-
-.header-subtitle {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--accent-gold-light);
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.1em;
+.hero-title-accent {
+  display: block;
+  font-family: var(--font-elegant);
   font-style: italic;
+  font-weight: 400;
+  font-size: 0.55em;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold-light);
+  margin-top: 0.5rem;
 }
 
-.header-description {
-  font-size: 1.05rem;
+.hero-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
   color: var(--text-secondary);
-  line-height: 1.9;
-  max-width: 700px;
-  margin: 0 auto;
-  font-weight: 300;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s forwards;
 }
 
-main {
-  padding: 5rem 0;
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 1s forwards;
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  max-width: 560px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.6s forwards;
+}
+
+.hero-scroll-text {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--accent-gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.5); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Section Headers ─── */
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-gold-dim);
+  margin-bottom: 1.5rem;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 400;
-  text-align: center;
-  margin-bottom: 4rem;
   color: var(--text-primary);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  position: relative;
+  margin-bottom: 1.5rem;
 }
 
-.section-title::after {
-  content: '';
-  display: block;
-  width: 120px;
+.section-title-line {
+  width: 80px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-  margin: 1.5rem auto 0;
+  margin: 0 auto;
   opacity: 0.5;
+}
+
+/* ─── Documents Grid ─── */
+.documents-section {
+  padding: 6rem 0;
+  position: relative;
 }
 
 .documents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
   margin-bottom: 6rem;
 }
 
+@media (max-width: 900px) {
+  .documents-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero-title { font-size: 2.2rem; }
+}
+
+/* ─── Document Cards ─── */
 .document-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
-  padding: 3rem;
+  padding: 2.5rem;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .document-card::before {
@@ -272,21 +451,19 @@ main {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
   opacity: 0;
   transition: var(--transition);
 }
 
 .document-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-card-hover);
   border-color: var(--border-gold);
 }
 
-.document-card:hover::before {
-  opacity: 1;
-}
+.document-card:hover::before { opacity: 1; }
 
 .document-card.professional:hover::before {
   background: linear-gradient(90deg, transparent, var(--accent-blue-light), transparent);
@@ -296,456 +473,814 @@ main {
   background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
 }
 
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  opacity: 0.15;
+}
+
+.document-card.professional .card-icon::before { background: var(--accent-blue); }
+.document-card.theological .card-icon::before { background: var(--accent-gold); }
+
+.card-icon svg {
+  width: 26px;
+  height: 26px;
+  position: relative;
+  z-index: 1;
+}
+
+.document-card.professional .card-icon svg { color: var(--accent-blue-light); }
+.document-card.theological .card-icon svg { color: var(--accent-gold); }
+
 .document-tag {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
   border-radius: 30px;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: 2rem;
-  position: relative;
+  margin-bottom: 1.5rem;
+  width: fit-content;
 }
 
 .document-card.professional .document-tag {
-  background: rgba(26, 58, 92, 0.2);
-  color: var(--accent-blue-light);
-  border: 1px solid rgba(26, 58, 92, 0.3);
-}
-
-.document-card.theological .document-tag {
-  background: rgba(201, 168, 76, 0.15);
-  color: var(--accent-gold-light);
-  border: 1px solid rgba(201, 168, 76, 0.3);
-}
-
-[data-theme="light"] .document-card.professional .document-tag {
-  background: rgba(30, 58, 95, 0.08);
+  background: rgba(30, 58, 95, 0.12);
   color: var(--accent-blue-light);
   border: 1px solid rgba(30, 58, 95, 0.2);
 }
 
+.document-card.theological .document-tag {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+[data-theme="light"] .document-card.professional .document-tag {
+  background: rgba(30, 58, 95, 0.06);
+  border: 1px solid rgba(30, 58, 95, 0.15);
+}
+
 [data-theme="light"] .document-card.theological .document-tag {
-  background: rgba(139, 105, 20, 0.1);
-  color: var(--accent-gold-dark);
-  border: 1px solid rgba(139, 105, 20, 0.2);
+  background: rgba(139, 105, 20, 0.08);
+  border: 1px solid rgba(139, 105, 20, 0.15);
 }
 
 .document-title {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-primary);
   line-height: 1.3;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .document-description {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
   font-weight: 300;
+  flex-grow: 1;
 }
 
-.document-meta {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  transition: background 0.5s ease, border-color 0.5s ease;
+.document-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
-[data-theme="light"] .document-meta {
-  background: rgba(0, 0, 0, 0.02);
+.document-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.document-meta-item:last-child { border-bottom: none; }
+
+.document-meta-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-gold-dim);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .document-meta-label {
-  font-family: var(--font-display);
-  font-weight: 500;
-  color: var(--accent-gold);
-  margin-bottom: 0.75rem;
-  display: block;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+  color: var(--accent-gold-dim);
+  margin-bottom: 0.25rem;
+  display: block;
 }
 
-.document-meta-content {
+.document-meta-text {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.6;
   font-weight: 300;
 }
 
 .document-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: var(--accent-gold);
-  color: var(--bg-primary);
+  background: transparent;
+  color: var(--accent-gold);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   transition: var(--transition);
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   font-family: var(--font-display);
+  border: 1px solid var(--border-gold);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .document-button::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  inset: 0;
+  background: var(--accent-gold);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 0;
+}
+
+.document-button span,
+.document-button svg {
+  position: relative;
+  z-index: 1;
   transition: var(--transition);
 }
 
-.document-button:hover::before {
-  left: 100%;
-}
+.document-button svg { width: 16px; height: 16px; }
 
-.document-button:hover {
-  background: var(--accent-gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
-}
+.document-button:hover::before { opacity: 1; }
+.document-button:hover { color: var(--bg-primary); border-color: var(--accent-gold); }
+.document-button:hover svg { color: var(--bg-primary); transform: translateX(3px); }
 
 .document-card.professional .document-button {
-  background: var(--accent-blue);
+  color: var(--accent-blue-light);
+  border-color: rgba(30, 58, 92, 0.3);
 }
 
-.document-card.professional .document-button:hover {
-  background: var(--accent-blue-light);
-  box-shadow: 0 8px 24px rgba(26, 58, 92, 0.3);
-}
+.document-card.professional .document-button::before { background: var(--accent-blue); }
+.document-card.professional .document-button:hover { border-color: var(--accent-blue); }
 
-[data-theme="light"] .document-button:hover {
-  box-shadow: 0 8px 24px rgba(139, 105, 20, 0.25);
-}
+[data-theme="light"] .document-button:hover { color: #fff; }
+[data-theme="light"] .document-button:hover svg { color: #fff; }
 
-[data-theme="light"] .document-card.professional .document-button:hover {
-  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.25);
-}
-
+/* ─── Context Section ─── */
 .context-section {
+  padding: 6rem 0;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .context-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+.context-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
-  padding: 4rem;
-  margin-bottom: 5rem;
+  padding: 3rem;
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: background 0.5s ease, border-color 0.5s ease;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
+
+.context-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.context-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent-gold);
+  opacity: 0.5;
+}
+
+.context-card.professional::before { background: var(--accent-blue-light); }
+
+.context-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--accent-gold);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.context-card.professional .context-number { color: var(--accent-blue-light); }
+
+.context-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+}
+
+.context-card.professional .context-label { color: var(--accent-blue-light); }
 
 .context-title {
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   color: var(--text-primary);
-  letter-spacing: 0.05em;
+  line-height: 1.3;
 }
 
 .context-text {
   color: var(--text-secondary);
-  line-height: 1.9;
-  margin-bottom: 1.75rem;
+  line-height: 1.8;
   font-weight: 300;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
-.context-text:last-of-type {
-  margin-bottom: 0;
-}
-
+/* ─── Note Section ─── */
 .note-section {
-  background: rgba(26, 58, 92, 0.1);
-  border: 1px solid rgba(26, 58, 92, 0.2);
-  border-left: 4px solid var(--accent-blue);
-  padding: 2.5rem;
-  border-radius: 0 var(--radius) var(--radius) 0;
-  transition: background 0.5s ease, border-color 0.5s ease;
+  padding: 0 0 6rem;
 }
 
-[data-theme="light"] .note-section {
-  background: rgba(30, 58, 95, 0.06);
-  border: 1px solid rgba(30, 58, 95, 0.15);
-  border-left: 4px solid var(--accent-blue);
+.note-card {
+  background: linear-gradient(135deg, rgba(26, 58, 92, 0.08), rgba(201, 168, 76, 0.04));
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
 }
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-blue-glow), transparent 70%);
+  pointer-events: none;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.note-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(30, 58, 95, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-icon svg { width: 20px; height: 20px; color: var(--accent-blue-light); }
 
 .note-title {
   font-family: var(--font-display);
   font-weight: 500;
   color: var(--accent-blue-light);
-  margin-bottom: 1.25rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .note-content {
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.85;
   font-size: 1rem;
   font-weight: 300;
+  max-width: 900px;
 }
 
+/* ─── Footer ─── */
 footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
-  padding: 3rem 0;
+  padding: 4rem 0 3rem;
   text-align: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
   position: relative;
-  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+.footer-ornament {
+  margin-bottom: 2rem;
   opacity: 0.3;
 }
 
-.footer-link {
+.footer-ornament svg {
+  width: 80px;
+  height: 24px;
   color: var(--accent-gold);
-  text-decoration: none;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
   font-weight: 500;
-  transition: var(--transition);
-}
-
-.footer-link:hover {
-  color: var(--accent-gold-light);
-  text-decoration: underline;
-}
-
-.footer-text {
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 0.75rem;
 }
 
 .footer-subtext {
-  opacity: 0.7;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
-/* Decorative Elements */
-.divider {
-  text-align: center;
+.footer-line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent-gold);
+  opacity: 0.3;
+  margin: 1.5rem auto;
+}
+
+/* ─── Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Divider ─── */
+.fancy-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
   margin: 4rem 0;
-  color: var(--accent-gold);
-  font-size: 1.5rem;
-  letter-spacing: 0.8em;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
-@media (max-width: 900px) {
-  .header-logo {
-    font-size: 2.5rem;
-  }
+.fancy-divider-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
 
-  .documents-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .context-section,
-  .note-section {
-    padding: 2rem;
-  }
-
-  header {
-    padding: 4rem 0 3rem;
-  }
-
-  main {
-    padding: 3rem 0;
-  }
+.fancy-divider svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-gold);
 }
 </style>
-<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/B_gibqBG9BW9XPC5a3VwRbgclqhjG5Eko0O92DBAn7FKA73T0x7X_AZJk4_TjoNK8Uh4NZLEhl5Nr6zw4p8prdaDDV-MuPVpOmPDIEYzo_bHRXnmLgpI8zOvCFnUNtztvw3wzqtaetQKg65pyDpWj20m5GGoKYii5bDo7mwNJXfBG6hgxha8QeR2j0KlvHhcVWN1_4w3grjjaKrLEs9yP29p9Akdw8_nnkC_7LNi0EJ_lOaovOl-dcGKbjx1spzPXClGGMrzkSpV9bi6zzjGFk8cIePc7vtW7lz-PSlzhTzuLroxyv1kBmHqjUPobTdHbD2cAsRLYRhRfRosbe_9NXdoS_9DavSdCl_u0cgR-82jmKDNL8Ax9pswGk2oXd0zAbBqY6eECocWWd7cZK6hkglPo7PPWmWjWy6NAvCcy-ZftLzRersyJY0SOCIFKz4yU3hBiZ42LVHVkIuwGvcZEol_q8lrl1iCvCFEP3qquHMQuiIxvPXMWpUutEtdShPeKTKmCFMgJLQKEmAxh5LbRpyXgITQrFmPoV6soQIFxPU3VDoxsDo7so_8j6UYuuff0Tx-3tEenPLqmoYLOLEnSnxF4Af-PG4IYmWe5J-g718mQp29fmDqWfe0AJrQomhnwoHlTKcNeQFLvn2swWav-rNe6zuGIieb0RIRRmYw5bTdsuGEIKsLW3jXsYwr-ZbP9a_bPGg2IM8GVD7u9vY_IcMJN49Tw8mM0G2UlcDtEopalYSbZwoNGp7AyvDWhT2wXWxCoS07KjdbHwTfUdsEYInqcpn7hz39L1w1ZR0-zvce8wA3DEA9yVuxRu4R76eFoDP7UQoTluC4hUtVJ8viSiAd5IrPLIhVgZQiS2gBXsuB8yo8bSuQQn_-eiCCjrRhbe3mdYW3h-POxvSzXSCYEFyE-wXd7_eK-ofUBzyVyn-KUs4vyTWbKm3XS7LG8RIA90rRRd-Ei-KzxBoKJUpq6NuPTPEnRKrFUBvMaSaiRkrF4-QgavU6Xfy4q0mi40jROM7FKFgl_CVOhTys8vBzr9NBLIjGaJNfFNcmwh5lM0LkJXKYXwwahbpleJrCNA'></script><base target="_blank">
+<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/91gFZZsVOqnU5IdfJm9UiNSvH7Gq35pIYzLc5Jh4Ntur71SQALgOO0ktkwxnxKbfQrewaKfqMREvLhpEjB1XcPLoaEJLG5ZFxQ3kve5IVll_51LZ-rm-ETt4w8jXkoL8oXH4XJXZCvfhUtzqomZ68DF_dENVzurh2cExpk-Sm-us_3cu_lvGZbpu4cbCrISwjBxemhPasaorJxlD1VTiv22hb5ouIfzf-ytcwW3_L476VmStyUdsfW70DhusVWf6haRReXvz0l1Sja2VIYqXGru4R4wosuxOTxtKk7hlMvRHuQQ9HugOIkmIcQ2bvff78kyqUa8GRkejmg6mHINyUwUiNI8FjnfyFi23FO435yGfxjKTqd5KBFqRoQeEQXd0JpxtidO95hXYcqjXq71ThVl2svbOdXTCnKw1d3hS-VjoAcxet8Ozz6J2mghoDbArqnz3aatXTvU73IEkuU7VQNmHfdRhJ0TpOw9-M7WIDIYcvVC1GjRO689AFLCwXLraCePC7Jm98rZreTX2HIBfapx9vdAXqVpfqFvlf4kyKblU14pzHMHPbAbSYIL58PM9YKimNW-jW_yF8b9PuzAH5NnKx6mToQ-R0EKSM8LbfOUB6I3vn-gMGVEzRhEPB3WtoyVSva-CSjuNlFhnI_Jw_t1Wzw2boZawLVj3xAvjOFjWfh9evnNZO06dfDfvtDOP-Mj2QyHItZVRWuh3s5rjmo2Q4rmJovT8LeZmxxWLJp8nRgCtH9By0aufug3h_WWR_jQkkhgmXqO8sUbDP7MAWMDhzl8zOkuy4XUrDZvp3jleFkRy6zVzLg2GQqX4k8cA9z4rOkGL_zPe2XNHlDTAVBOqtYi4gNI3_2qKBT5y7ZZVZfIG_qGDRoLR_5biVpVm0t4_g3e4XudY-LsuNwnYCFAL9hZ6jsQ-cC2LMhoa5kYz2eUuHChIFC2b3TVDOK-nEilkQPWHk1OOB6_Kw9xLz-hdEaMMYzK_dfVhqpfpoNb12Tr-_lpD4cJ8npY1of8fnauwNmVF3ybPzHHFp4ntbXUbbydB-PaR3zbbXHoLhINZUvp9H0tP4mex'></script>
 </head>
 <body>
 
-<!-- Theme Toggle — Bottom Right, Icon Only -->
+<!-- ─── Navigation ─── -->
+<nav class="nav-bar">
+  <div class="nav-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+    DTC Collection
+  </div>
+  <div class="nav-links">
+    <a href="#collection" class="nav-link">Collection</a>
+    <a href="#context" class="nav-link">Context</a>
+    <a href="#guidance" class="nav-link">Guidance</a>
+  </div>
+</nav>
+
+<!-- ─── Theme Toggle ─── -->
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">
-  <!-- Moon icon (shown in light mode, hidden in dark) -->
-  <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+  <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none;">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
   </svg>
-  <!-- Sun icon (shown in dark mode, hidden in light) -->
-  <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <circle cx="12" cy="12" r="5"/>
     <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
   </svg>
 </button>
 
-<header>
-  <div class="container header-content">
-    <div class="header-ornament">✦ ✦ ✦</div>
-    <div class="header-logo">DTC Documents</div>
-    <div class="header-subtitle">A Premium Collection of Professional & Theological Perspectives</div>
-    <div class="header-description">
-      This distinguished archive presents two comprehensive examinations of DTC Eligibility Questionnaires and Operational Arrangements. Each document offers a unique lens through which to understand the intricate world of securities clearance and depository operations.
-    </div>
+<!-- ─── Hero ─── -->
+<header class="hero">
+  <div class="hero-line-top"></div>
+
+  <svg class="hero-bg-ornament" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="0.5" color="var(--accent-gold)">
+    <circle cx="200" cy="200" r="180"/>
+    <circle cx="200" cy="200" r="150"/>
+    <circle cx="200" cy="200" r="120"/>
+    <circle cx="200" cy="200" r="90"/>
+    <path d="M200 20 L200 380 M20 200 L380 200"/>
+    <path d="M72.68 72.68 L327.32 327.32 M72.68 327.32 L327.32 72.68"/>
+    <path d="M200 20 L327.32 72.68 L380 200 L327.32 327.32 L200 380 L72.68 327.32 L20 200 L72.68 72.68 Z" fill="none"/>
+    <path d="M200 50 L305 95 L350 200 L305 305 L200 350 L95 305 L50 200 L95 95 Z" fill="none"/>
+    <circle cx="200" cy="200" r="10" fill="currentColor" stroke="none"/>
+    <circle cx="200" cy="200" r="4" fill="var(--bg-primary)" stroke="none"/>
+  </svg>
+
+  <div class="hero-kicker">June 2026</div>
+
+  <div class="hero-ornament">
+    <svg viewBox="0 0 120 40" fill="none">
+      <path d="M0 20h45" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <path d="M75 20h45" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="60" cy="20" r="3" stroke="currentColor" stroke-width="0.5" fill="none"/>
+      <path d="M55 20h-2M67 20h2" stroke="currentColor" stroke-width="0.5"/>
+      <path d="M50 20l-3-3v6l3-3zM70 20l3-3v6l-3-3z" fill="currentColor" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">
+    DTC Documents
+    <span class="hero-title-accent">Reference & Analysis</span>
+  </h1>
+
+  <p class="hero-subtitle">Five documents, two disciplines, one subject</p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-description">
+    DTC eligibility, trade finance, government surety, and biblical exegesis. Each document examines a different facet of financial documentation — some from the inside, others from a distance.
+  </p>
+
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
   </div>
 </header>
 
+<!-- ─── Collection Section ─── -->
 <main class="container">
-  <div class="section-title">The Collection</div>
-  <div class="divider">— ✦ —</div>
-
-  <div class="documents-grid">
-    <!-- 1. Professional Document - DTC Eligibility -->
-    <div class="document-card professional">
-      <div class="document-tag">Professional Excellence</div>
-      <h3 class="document-title">DTC Eligibility Questionnaire — Enhanced Teaching Guide</h3>
-      <div class="document-description">
-        A distinguished educational resource crafted for financial professionals, underwriters, and compliance officers. This comprehensive guide delivers meticulous explanations, scenario-based learning, interactive assessments, and scholarly study materials for mastering DTC eligibility requirements with precision and confidence.
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Purpose</span>
-        <div class="document-meta-content">Advanced professional training and operational guidance for DTC eligibility processes</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Intended Audience</span>
-        <div class="document-meta-content">Financial professionals, underwriters, compliance officers, DTC Participants</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Features</span>
-        <div class="document-meta-content">• Interactive definitions and scholarly modals<br>• 20-question comprehensive assessment<br>• Four detailed scenario-based walkthroughs<br>• Common pitfalls and critical warnings<br>• Complete study guide and checklist</div>
-      </div>
-      <a href="dtc-eligibility-questionnaire.html" class="document-button">
-        <span>Access Teaching Guide</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-      </a>
+  <section class="documents-section" id="collection">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Index</div>
+      <h2 class="section-title">Documents</h2>
+      <div class="section-title-line"></div>
     </div>
 
-    <!-- 2. Trade Document - Treasury International Bill of Exchange -->
-    <div class="document-card professional">
-      <div class="document-tag">Trade Finance</div>
-      <h3 class="document-title">Treasury International Bill of Exchange</h3>
-      <div class="document-description">
-        A comprehensive trade payment wizard for international documentary collection and bill of exchange processing. This interactive tool facilitates the complex workflow of cross-border trade payments, providing guidance on documentary requirements, payment terms, and international banking protocols.
+    <div class="documents-grid">
+      <!-- Card 1: DTC Eligibility -->
+      <div class="document-card professional reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div class="document-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Professional
+        </div>
+        <h3 class="document-title">DTC Eligibility Questionnaire — Teaching Guide</h3>
+        <p class="document-description">
+          A training resource for financial professionals, underwriters, and compliance officers. Covers DTC eligibility requirements with explanations, scenarios, assessments, and study materials.
+        </p>
+        <div class="document-meta-list">
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="document-meta-label">Purpose</span>
+              <span class="document-meta-text">Training and operational guidance for DTC eligibility processes</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <span class="document-meta-label">Audience</span>
+              <span class="document-meta-text">Financial professionals, underwriters, compliance officers, DTC Participants</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div>
+              <span class="document-meta-label">Contents</span>
+              <span class="document-meta-text">Definitions, 20-question assessment, scenario walkthroughs, study guide</span>
+            </div>
+          </div>
+        </div>
+        <a href="forms/dtc-eligibility-questionnaire.html" class="document-button">
+          <span>Open Document</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Purpose</span>
-        <div class="document-meta-content">Streamlined processing of international trade payments and documentary collections</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Intended Audience</span>
-        <div class="document-meta-content">Trade finance professionals, international banking specialists, export-import managers</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Features</span>
-        <div class="document-meta-content">• Interactive payment wizard interface<br>• Documentary collection workflows<br>• International banking protocols<br>• Bill of exchange processing<br>• Cross-border compliance guidance</div>
-      </div>
-      <a href="documents/treasury-international_bill_of_exchange.html" class="document-button">
-        <span>Access Trade Wizard</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-      </a>
-    </div>
 
-    <!-- 3. Professional Document - SF 28 Affidavit -->
-    <div class="document-card professional">
-      <div class="document-tag">Legal & Compliance</div>
-      <h3 class="document-title">SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</h3>
-      <div class="document-description">
-        A comprehensive educational resource for understanding the SF 28 Affidavit of Individual Surety form. This guide provides detailed explanations of legal requirements, surety obligations, and proper completion procedures for federal government contracting and financial assurance processes.
+      <!-- Card 2: Treasury Bill of Exchange -->
+      <div class="document-card professional reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+            <path d="M7 15h.01M11 15h2"/>
+          </svg>
+        </div>
+        <div class="document-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Trade Finance
+        </div>
+        <h3 class="document-title">Treasury International Bill of Exchange</h3>
+        <p class="document-description">
+          A trade payment tool for international documentary collection and bill of exchange processing. Handles cross-border payment workflows, documentary requirements, and banking protocols.
+        </p>
+        <div class="document-meta-list">
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="document-meta-label">Purpose</span>
+              <span class="document-meta-text">Processing international trade payments and documentary collections</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <span class="document-meta-label">Audience</span>
+              <span class="document-meta-text">Trade finance professionals, international banking specialists, export-import managers</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div>
+              <span class="document-meta-label">Contents</span>
+              <span class="document-meta-text">Payment wizard, documentary workflows, banking protocols, compliance guidance</span>
+            </div>
+          </div>
+        </div>
+        <a href="docs/treasury-international_bill_of_exchange.html" class="document-button">
+          <span>Open Document</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Purpose</span>
-        <div class="document-meta-content">Training and guidance for individual surety affidavits and government contracting requirements</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Intended Audience</span>
-        <div class="document-meta-content">Contracting officers, surety providers, government contractors, compliance professionals</div>
-      </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Features</span>
-        <div class="document-meta-content">• Detailed form completion instructions<br>• Legal requirements and obligations<br>• Surety capacity explanations<br>• Common errors and compliance tips<br>• Interactive learning elements</div>
-      </div>
-      <a href="sf28-teaching-guide.html" class="document-button">
-        <span>Access SF 28 Guide</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-      </a>
-    </div>
 
-    <!-- 4. Theological Document - Biblical Exegesis -->
-    <div class="document-card theological">
-      <div class="document-tag">Sacred Scholarship</div>
-      <h3 class="document-title">The DTC Documents: A Unified Biblical Exegesis</h3>
-      <div class="document-description">
-        A profound theological examination of DTC documents through the sacred lenses of Hebrew gematria, biblical numerology, and divine typology. This distinguished work approaches the eligibility questionnaire and operational arrangements as texts worthy of spiritual analysis, illuminating hidden patterns, sacred numerology, and symbolic meanings embedded within the financial architecture.
+      <!-- Card 3: SF 28 -->
+      <div class="document-card professional reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="document-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+          Legal
+        </div>
+        <h3 class="document-title">SF 28 — Affidavit of Individual Surety</h3>
+        <p class="document-description">
+          A guide to the SF 28 Affidavit form. Covers legal requirements, surety obligations, and completion procedures for federal government contracting and financial assurance.
+        </p>
+        <div class="document-meta-list">
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="document-meta-label">Purpose</span>
+              <span class="document-meta-text">Training for individual surety affidavits and government contracting</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <span class="document-meta-label">Audience</span>
+              <span class="document-meta-text">Contracting officers, surety providers, government contractors, compliance professionals</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div>
+              <span class="document-meta-label">Contents</span>
+              <span class="document-meta-text">Form instructions, legal obligations, capacity explanations, compliance tips</span>
+            </div>
+          </div>
+        </div>
+        <a href="guides/sf28-teaching-guide.html" class="document-button">
+          <span>Open Document</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Purpose</span>
-        <div class="document-meta-content">Theological exploration and sacred interpretation of financial documents</div>
+
+      <!-- Card 4: Biblical Exegesis -->
+      <div class="document-card theological reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <div class="document-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Theology
+        </div>
+        <h3 class="document-title">The DTC Documents: A Biblical Exegesis</h3>
+        <p class="document-description">
+          A theological reading of DTC documents through Hebrew gematria, biblical numerology, and typology. Treats eligibility questionnaires and operational arrangements as texts open to symbolic interpretation.
+        </p>
+        <div class="document-meta-list">
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="document-meta-label">Purpose</span>
+              <span class="document-meta-text">Theological and symbolic interpretation of financial documents</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <span class="document-meta-label">Audience</span>
+              <span class="document-meta-text">Biblical scholars, gematria enthusiasts, students of theological symbolism</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div>
+              <span class="document-meta-label">Contents</span>
+              <span class="document-meta-text">Hebrew letter analysis, numerology, temple symbolism, typology</span>
+            </div>
+          </div>
+        </div>
+        <a href="docs/dtc-biblical-exegesis.html" class="document-button">
+          <span>Open Document</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Intended Audience</span>
-        <div class="document-meta-content">Scholars of biblical exegesis, gematria enthusiasts, students of theological symbolism</div>
+
+      <!-- Card 5: DTC Guide -->
+      <div class="document-card professional reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="document-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Professional
+        </div>
+        <h3 class="document-title">Securities Ownership Wizard — DTC, DTCC & Cede & Co. Teaching Guide</h3>
+        <p class="document-description">
+          A comprehensive guide to the modern securities infrastructure, covering DTC, DTCC, NSCC, FICC, and Cede & Co. Explains the flow of trades, settlement systems, and shareholder rights in the book-entry system.
+        </p>
+        <div class="document-meta-list">
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <span class="document-meta-label">Purpose</span>
+              <span class="document-meta-text">Educational guide to securities ownership and clearing infrastructure</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <span class="document-meta-label">Audience</span>
+              <span class="document-meta-text">Financial professionals, investors, securities industry participants</span>
+            </div>
+          </div>
+          <div class="document-meta-item">
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div>
+              <span class="document-meta-label">Contents</span>
+              <span class="document-meta-text">DTC/DTCC overview, settlement processes, Cede & Co. nominee system</span>
+            </div>
+          </div>
+        </div>
+        <a href="guides/dtc-guide.html" class="document-button">
+          <span>Open Document</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="document-meta">
-        <span class="document-meta-label">Features</span>
-        <div class="document-meta-content">• Hebrew letter-by-letter sacred analysis<br>• Biblical numerology and divine patterns<br>• Sacred architecture and temple symbolism<br>• Profound typology exploration<br>• Ceremonial premium presentation design</div>
-      </div>
-      <a href="dtc-biblical-exegesis.html" class="document-button">
-        <span>Explore Biblical Exegesis</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </a>
     </div>
+  </section>
+
+  <div class="fancy-divider reveal">
+    <div class="fancy-divider-line"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+    <div class="fancy-divider-line"></div>
   </div>
 
-  <div class="divider">— ✦ —</div>
+  <!-- ─── Context Section ─── -->
+  <section class="context-section" id="context">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">About</div>
+      <h2 class="section-title">Two Approaches</h2>
+      <div class="section-title-line"></div>
+    </div>
 
-  <div class="section-title">Scholarly Context</div>
-  <div class="divider">— ✦ —</div>
+    <div class="context-grid">
+      <div class="context-card professional reveal">
+        <div class="context-number">01</div>
+        <div class="context-label">Professional</div>
+        <h3 class="context-title">Operational Documents</h3>
+        <p class="context-text">
+          The first three documents are built for people who work with these forms. They explain what the forms require, how to fill them out, and what happens if you get it wrong. No mysticism — just the rules, the procedures, and the consequences of ignoring them.
+        </p>
+      </div>
 
-  <div class="context-section">
-    <h3 class="context-title">The Distinguished Dual Perspective</h3>
-    <div class="context-text">
-      Both documents examine the same venerable source materials — DTC Eligibility Questionnaires and Operational Arrangements — yet approach them from fundamentally distinct philosophical perspectives. They coexist in this distinguished collection because they share subject matter while serving entirely different purposes and audiences, each offering unique insights into the complex world of securities clearance.
+      <div class="context-card theological reveal">
+        <div class="context-number">02</div>
+        <div class="context-label">Theological</div>
+        <h3 class="context-title">Symbolic Reading</h3>
+        <p class="context-text">
+          The fourth document steps back and reads the same material through a different framework. It treats the text as something that might carry meaning beyond its stated purpose — not because it does, but because the exercise of reading it that way produces something worth reading.
+        </p>
+      </div>
     </div>
-    <div class="context-text">
-      The <strong>Professional Teaching Guide</strong> represents practical excellence in financial education. It empowers financial professionals to master requirements, circumvent potential errors, and navigate DTC processes with confidence and precision. The content remains rigorously operational, meticulously procedural, and sharply focused on regulatory compliance and operational efficiency.
-    </div>
-    <div class="context-text">
-      The <strong>Biblical Exegesis</strong> embodies creative theological scholarship of the highest order. It approaches the documents as sacred texts worthy of profound spiritual analysis, illuminating hidden meanings through the ancient wisdom of Hebrew gematria, biblical numerology, and divine typology. This work is not designed for practical DTC operations but rather for those who seek to explore the sacred intersection where finance, theology, and symbolic interpretation converge.
-    </div>
+  </section>
+
+  <div class="fancy-divider reveal">
+    <div class="fancy-divider-line"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+    <div class="fancy-divider-line"></div>
   </div>
 
-  <div class="note-section">
-    <div class="note-title">Scholarly Guidance</div>
-    <div class="note-content">
-      For those seeking practical mastery of DTC eligibility, operational excellence, or professional advancement, the Teaching Guide offers the appropriate path forward. For scholars drawn to theological analysis, biblical patterns, or sacred interpretation of financial documents, the Biblical Exegesis provides intellectual sustenance. These documents are not interchangeable — they represent distinct scholarly traditions designed for different audiences and purposes.
+  <!-- ─── Note Section ─── -->
+  <section class="note-section" id="guidance">
+    <div class="note-card reveal">
+      <div class="note-header">
+        <div class="note-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+        </div>
+        <h3 class="note-title">How to Use This Index</h3>
+      </div>
+      <p class="note-content">
+        If you are preparing a DTC eligibility filing, processing a trade payment, or completing an SF 28, use the operational documents. They contain the information you need. If you are interested in reading financial documents as religious texts, use the exegesis. It will not help you file anything, but it may give you something to think about. The two are not substitutes for each other.
+      </p>
     </div>
-  </div>
-
-  <div class="divider">— ✦ —</div>
+  </section>
 </main>
 
+<!-- ─── Footer ─── -->
 <footer>
-  <div class="container">
-    <p class="footer-text">DTC PREMIUM COLLECTION · JUNE 2026</p>
-    <p class="footer-subtext">Both documents reflect the June 2026 DTC Operational Arrangements and contemporary eligibility requirements</p>
+  <div class="footer-ornament">
+    <svg viewBox="0 0 80 24" fill="none">
+      <path d="M0 12h30" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <path d="M50 12h30" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="40" cy="12" r="4" stroke="currentColor" stroke-width="0.5" fill="none"/>
+      <circle cx="40" cy="12" r="1.5" fill="currentColor"/>
+    </svg>
   </div>
+  <p class="footer-title">DTC Collection</p>
+  <div class="footer-line"></div>
+  <p class="footer-subtext">June 2026 · DTC Operational Arrangements and eligibility requirements</p>
 </footer>
 
 <script>
@@ -773,11 +1308,32 @@ function toggleTheme() {
   setTheme(next);
 }
 
-// Load saved theme on page load
 (function() {
   const savedTheme = localStorage.getItem('dtc-theme') || 'dark';
   setTheme(savedTheme);
 })();
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 
 </body>

@@ -812,9 +812,11 @@ body {
   <a href="#mistakes">Common Mistakes</a>
   <a href="#study-guide">Study Guide & Checklist</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="documents/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
-  <a href="dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
 </div>
 
 <div class="page-header">
@@ -852,12 +854,12 @@ body {
 <div class="deadline-callout" id="instructions">
   <h4>⏱ Critical Requirements at a Glance</h4>
   <ul>
-    <li><strong>Must be a natural person:</strong> No corporation, partnership, or unincorporated association can serve as an individual surety.</li>
-    <li><strong>U.S. citizenship required:</strong> For contracts awarded in the United States. For outlying areas/foreign countries, permanent residency suffices.</li>
+    <li><strong>Must be a <span class="hotspot" data-modal="natural-person" tabindex="0" role="button" onclick="openModal('modal-natural-person')">natural person</span>:</strong> No corporation, partnership, or unincorporated association can serve as an individual surety.</li>
+    <li><strong>U.S. citizenship required:</strong> For contracts awarded in the United States. For outlying areas/foreign countries, <span class="hotspot" data-modal="permanent-resident" tabindex="0" role="button" onclick="openModal('modal-permanent-resident')">permanent residency</span> suffices.</li>
     <li><strong>Original signatures only:</strong> Reproduced or electronic signatures are <strong>not acceptable</strong>. The affidavit must be notarized.</li>
-    <li><strong>Net worth ≥ penal amount:</strong> The surety must demonstrate net worth not less than the penal amount of the bond.</li>
+    <li><strong>Net worth ≥ penal amount:</strong> The surety must demonstrate <span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span> not less than the <span class="hotspot" data-modal="penal-amount" tabindex="0" role="button" onclick="openModal('modal-penal-amount')">penal amount</span> of the bond.</li>
     <li><strong>No financial interest in principal:</strong> The surety cannot have any financial interest in assets connected with the principal on the bond.</li>
-    <li><strong>Documentation of pledged assets must be attached:</strong> Including CUSIP numbers, par amounts, certified evidence of title, and current tax assessments for real estate.</li>
+    <li><strong>Documentation of pledged assets must be attached:</strong> Including CUSIP numbers, par amounts, certified <span class="hotspot" data-modal="evidence-of-title" tabindex="0" role="button" onclick="openModal('modal-evidence-of-title')">evidence of title</span>, and current <span class="hotspot" data-modal="tax-assessment" tabindex="0" role="button" onclick="openModal('modal-tax-assessment')">tax assessments</span> for real estate.</li>
   </ul>
 </div>
 
@@ -914,7 +916,7 @@ body {
       <div class="sf28-field"></div>
     </div>
     <div class="sf28-cell">
-      <div class="sf28-label">5A. Name And Address Of Individual Surety Broker Used (Number, Street, City, State, ZIP Code)</div>
+      <div class="sf28-label">5A. Name And Address Of Individual <span class="hotspot" data-modal="surety-broker" tabindex="0" role="button" onclick="openModal('modal-surety-broker')">Surety Broker</span> Used (Number, Street, City, State, ZIP Code)</div>
       <div class="sf28-field"></div>
     </div>
   </div>
@@ -937,13 +939,13 @@ body {
       </div>
     </div>
     <div class="sf28-cell">
-      <div class="sf28-label">6A. Name And Address Of Financial Institution Submitting The Pledge Of Securities On Behalf Of Individual Surety (Number, Street, City, State, ZIP Code)</div>
+      <div class="sf28-label">6A. Name And Address Of <span class="hotspot" data-modal="financial-institution" tabindex="0" role="button" onclick="openModal('modal-financial-institution')">Financial Institution</span> Submitting The Pledge Of Securities On Behalf Of Individual Surety (Number, Street, City, State, ZIP Code)</div>
       <div class="sf28-field"></div>
     </div>
   </div>
   <div class="sf28-row">
     <div class="sf28-cell">
-      <div class="sf28-label">6B. Financial Institution Email Address &nbsp;&nbsp; 6C. Routing Transit Number (RTN)</div>
+      <div class="sf28-label">6B. Financial Institution Email Address &nbsp;&nbsp; 6C. <span class="hotspot" data-modal="routing-transit-number" tabindex="0" role="button" onclick="openModal('modal-routing-transit-number')">Routing Transit Number (RTN)</span></div>
       <div class="sf28-field-row">
         <div class="sf28-field"></div>
         <div class="sf28-field sf28-field-md"></div>
@@ -985,7 +987,7 @@ body {
     </tbody>
   </table>
   <div style="padding: 10px 12px; font-size: 0.72rem; color: var(--ink-muted); font-style: italic; border-top: 1px solid var(--border);">
-    <strong>Note:</strong> For real estate, include a legal description, street address and other identifying characteristics; the market value; attach supporting certified documents including recorded lien; evidence of title and the current tax assessment on the property. For market value approach, also provide a current appraisal.
+    <strong>Note:</strong> For real estate, include a legal description, street address and other identifying characteristics; the <span class="hotspot" data-modal="market-value" tabindex="0" role="button" onclick="openModal('modal-market-value')">market value</span>; attach supporting certified documents including <span class="hotspot" data-modal="recorded-lien" tabindex="0" role="button" onclick="openModal('modal-recorded-lien')">recorded lien</span>; evidence of title and the current tax assessment on the property. For market value approach, also provide a current appraisal.
   </div>
 </div>
 
@@ -1157,7 +1159,7 @@ body {
       <span class="scenario-tag">Broker-Held</span>
     </div>
     <h4>Scenario B: Jane Smith — Treasury Portfolio as Surety</h4>
-    <p><strong>The Situation:</strong> Jane Smith holds $400,000 in U.S. Treasury securities through her brokerage account at Fidelity. She is asked to serve as surety on a $250,000 payment bond for a software development contract.</p>
+    <p><strong>The Situation:</strong> Jane Smith holds $400,000 in U.S. Treasury securities through her brokerage account at Fidelity. She is asked to serve as surety on a $250,000 <span class="hotspot" data-modal="payment-bond" tabindex="0" role="button" onclick="openModal('modal-payment-bond')">payment bond</span> for a software development contract.</p>
     <p><strong>SF 28 Walkthrough:</strong></p>
     <ul>
       <li><strong>Field 1–6:</strong> Standard personal information. Jane is a U.S. citizen, software architect at TechCorp for 12 years.</li>
@@ -1221,7 +1223,7 @@ body {
       <li><strong>Field 9 (Prior Pledges):</strong> "This property was pledged as surety on a $100,000 bid bond for Guam Public Works Contract #2022-044, executed March 15, 2022. That contract closed successfully on June 30, 2022, and the bond was released."</li>
       <li><strong>Notarization:</strong> Must be notarized by a Guam notary public or other authorized official.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> The citizenship requirement is relaxed for outlying areas and foreign countries — permanent residency suffices. However, all other requirements (original signatures, notarization, net worth verification, documentation) remain strict. Prior pledges within the 3-year lookback must be fully disclosed even if the bond was successfully released.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> The citizenship requirement is relaxed for outlying areas and foreign countries — permanent residency suffices. However, all other requirements (original signatures, notarization, <span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span> verification, documentation) remain strict. Prior pledges within the 3-year lookback must be fully disclosed even if the bond was successfully released.</div>
   </div>
 </div>
 
@@ -1266,7 +1268,7 @@ body {
         <li>Verify <strong>U.S. citizenship</strong> (or permanent residency for outlying areas/foreign contracts)</li>
         <li>Confirm surety is of <strong>full age and legally competent</strong> (18+ and mentally capable)</li>
         <li>Ensure surety has <strong>no financial interest</strong> in assets connected with the principal</li>
-        <li>Calculate <strong>net worth</strong> (total assets minus all liens/encumbrances) ≥ penal amount</li>
+        <li>Calculate <strong><span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span></strong> (total assets minus all liens/encumbrances) ≥ penal amount</li>
         <li>Identify a <strong>qualified notary public</strong> with current commission</li>
       </ul>
     </div>
@@ -1315,12 +1317,13 @@ body {
       <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
       <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
       <div class="footer-links">
-        <a href="https://www.gsa.gov/reference/forms" target="_blank" rel="noopener">GSA Forms</a>
+        <a href="https://www.gsa.gov/reference/forms" rel="noopener">GSA Forms</a>
         <span class="footer-divider">•</span>
-        <a href="https://www.acquisition.gov/far/part-28" target="_blank" rel="noopener">FAR Part 28</a>
+        <a href="https://www.acquisition.gov/far/part-28" rel="noopener">FAR Part 28</a>
         <span class="footer-divider">•</span>
-        <a href="https://www.gsa.gov/system/files/SF28-23a.pdf" target="_blank" rel="noopener">Original SF 28 PDF</a>
+        <a href="https://www.gsa.gov/system/files/SF28-23a.pdf" rel="noopener">Original SF 28 PDF</a>
       </div>
+      <div class="footer-legal" style="margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px;">Legal Notice: This teaching guide is provided for educational purposes only. The SF 28 form is a U.S. government work in the public domain (17 U.S.C. § 105). For official use, consult the original sources. This guide does not constitute legal advice.</div>
     </div>
   </div>
 </footer>
@@ -1882,7 +1885,7 @@ body {
         <p>A bond that guarantees the principal (contractor) will complete the contract according to its terms. If the principal defaults or fails to perform, the surety must either complete the contract or pay damages up to the penal amount.</p>
       </div>
       <p><strong>Common in construction:</strong> Performance bonds are most frequently required on construction contracts, but they may also be used for service contracts, supply contracts, and other types of federal agreements.</p>
-      <p><strong>Relationship to payment bonds:</strong> On many federal construction contracts (under the Miller Act), a performance bond must be accompanied by a payment bond, which guarantees the principal will pay subcontractors, laborers, and material suppliers.</p>
+      <p><strong>Relationship to payment bonds:</strong> On many federal construction contracts (under the <span class="hotspot" data-modal="miller-act" tabindex="0" role="button" onclick="openModal('modal-miller-act')">Miller Act</span>), a performance bond must be accompanied by a payment bond, which guarantees the principal will pay subcontractors, laborers, and material suppliers.</p>
       <p><strong>Penal amount:</strong> Performance bonds are typically set at 100% of the contract price. For a $500,000 contract, the performance bond would be $500,000.</p>
       <div class="citation"><strong>Source:</strong> FAR 28.102-1; Miller Act (40 U.S.C. §§ 3131-3134). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_1">acquisition.gov (FAR 28.102-1)</a></div>
     </div>
@@ -1993,6 +1996,238 @@ body {
       <p><strong>Placement on form:</strong> The seal should be affixed in the designated seal box on SF 28 (Field 12). If the form has no seal box, the seal should be placed near the notary's signature without obscuring any text.</p>
       <p><strong>Importance:</strong> The seal proves the notarization was performed by a duly commissioned official. A notarization without a seal may be rejected as invalid by the contracting officer.</p>
       <div class="citation"><strong>Source:</strong> SF 28 Field 12 instructions; Model Notary Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Natural Person -->
+<div class="modal-overlay" id="modal-natural-person" role="dialog" aria-modal="true" aria-labelledby="modal-title-natural-person">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-natural-person">Natural Person</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Entity Type</div>
+        <div class="def-word">Natural Person</div>
+        <p>A living human being, as opposed to a legal entity such as a corporation, partnership, or LLC. In the context of SF 28, only natural persons can serve as individual sureties.</p>
+      </div>
+      <p><strong>Why this matters:</strong> FAR 28.101-2 explicitly states that corporations, partnerships, and unincorporated associations are not acceptable as individual sureties. This requirement prevents companies from serving as their own guarantors, which would defeat the purpose of having a third-party surety.</p>
+      <p><strong>Verification:</strong> The surety must provide personal information (name, home address, SSN/Tax ID) that demonstrates they are an individual. Business addresses or corporate information indicate the entity is not a natural person.</p>
+      <p><strong>Related restriction:</strong> Even if a natural person is used, they cannot have a financial interest in the principal (the contractor they are guaranteeing). Stockholders of corporate principals must have qualifications entirely independent of their stock ownership.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.101-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_101_2">acquisition.gov (FAR 28.101-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Permanent Resident -->
+<div class="modal-overlay" id="modal-permanent-resident" role="dialog" aria-modal="true" aria-labelledby="modal-title-permanent-resident">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-permanent-resident">Permanent Resident</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Citizenship Status</div>
+        <div class="def-word">Permanent Resident</div>
+        <p>A non-citizen who has been granted the right to live and work permanently in the United States, typically evidenced by a Green Card (Form I-551). Also known as a lawful permanent resident (LPR).</p>
+      </div>
+      <p><strong>Citizenship requirement:</strong> For federal contracts awarded in the 50 states and D.C., individual sureties must be U.S. citizens. However, FAR 28.102-2(b) provides an exception for outlying areas and foreign countries.</p>
+      <p><strong>Outlying area exception:</strong> When a contract is to be performed in an outlying area (Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, Northern Mariana Islands) or a foreign country, a permanent resident of that area may serve as an individual surety, even if they are not a U.S. citizen.</p>
+      <p><strong>Contracting officer location:</strong> The exception applies based on the contracting officer's location, not just where the contract will be performed. If the contracting officer is in an outlying area, permanent residency may suffice.</p>
+      <p><strong>Documentation:</strong> Permanent residents should be prepared to provide their Green Card or other permanent residency documentation if requested by the contracting officer.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Net Worth -->
+<div class="modal-overlay" id="modal-net-worth" role="dialog" aria-modal="true" aria-labelledby="modal-title-net-worth">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-net-worth">Net Worth</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Measure</div>
+        <div class="def-word">Net Worth</div>
+        <p>Total assets minus total liabilities (debts and encumbrances). For individual sureties, net worth must equal or exceed the penal amount of the bond.</p>
+      </div>
+      <p><strong>FAR requirement:</strong> FAR 28.102-2(a) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This is a strict requirement — the contracting officer will reject affidavits that show net worth below the bond amount.</p>
+      <p><strong>Calculation:</strong> Net Worth = (Real Estate + Securities + Cash + Other Assets) − (Mortgages + Liens + Loans + Credit Cards + Other Debts). All liabilities must be disclosed, even if they seem small.</p>
+      <p><strong>Example:</strong> If you have $1.2 million in assets (home, investments, savings) and $400,000 in liabilities (mortgage, student loans, credit cards), your net worth is $800,000. This qualifies you for bonds up to $800,000 in penal amount.</p>
+      <p><strong>Hidden liabilities:</strong> Tax liens, judgments, and undisclosed debts can suddenly reduce net worth below requirements. Always disclose all encumbrances in Field 8 of SF 28.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Bond -->
+<div class="modal-overlay" id="modal-payment-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-payment-bond">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-payment-bond">Payment Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contract Bond Type</div>
+        <div class="def-word">Payment Bond</div>
+        <p>A bond that guarantees the principal (contractor) will pay subcontractors, laborers, and material suppliers. If the principal fails to pay, the surety must pay these parties up to the penal amount.</p>
+      </div>
+      <p><strong>Miller Act requirement:</strong> On federal construction contracts exceeding $150,000, the Miller Act (40 U.S.C. §§ 3131-3134) requires both a performance bond and a payment bond. The payment bond protects the subcontractors and suppliers who work on the project.</p>
+      <p><strong>Penal amount:</strong> Payment bonds are typically set at 100% of the contract price, matching the performance bond amount. For a $500,000 contract, both bonds would be $500,000.</p>
+      <p><strong>Relationship to performance bonds:</strong> Performance bonds guarantee the work gets done; payment bonds guarantee the workers and suppliers get paid. Both are commonly required on construction projects.</p>
+      <p><strong>Individual surety eligibility:</strong> Individual sureties can guarantee payment bonds just as they can guarantee performance bonds, provided they meet all SF 28 requirements.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-1; Miller Act (40 U.S.C. §§ 3131-3134). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_1">acquisition.gov (FAR 28.102-1)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Market Value -->
+<div class="modal-overlay" id="modal-market-value" role="dialog" aria-modal="true" aria-labelledby="modal-title-market-value">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-market-value">Market Value</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Asset Valuation</div>
+        <div class="def-word">Market Value</div>
+        <p>The estimated price an asset would fetch in an open transaction between a willing buyer and a willing seller. For SF 28 purposes, market value determines the asset's contribution toward the surety's required net worth.</p>
+      </div>
+      <p><strong>Real estate market value:</strong> For real estate pledged as security, market value should be supported by a certified appraisal performed within the last 6 months. Tax assessments are not sufficient alone, as they may be outdated.</p>
+      <p><strong>Securities market value:</strong> For stocks, bonds, and Treasury securities, market value is based on current trading prices. Field 7 of SF 28 requires both par value and current market value.</p>
+      <p><strong>Why it matters:</strong> Net worth calculations use market value, not purchase price or tax assessment. A home purchased for $500,000 may now be worth $800,000 (good) or $400,000 (insufficient for larger bonds).</p>
+      <p><strong>Contracting officer review:</strong> Contracting officers may question market values that seem inconsistent with market conditions. Be prepared to support your valuations with recent appraisals or broker statements.</p>
+      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Field 7 instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tax Assessment -->
+<div class="modal-overlay" id="modal-tax-assessment" role="dialog" aria-modal="true" aria-labelledby="modal-title-tax-assessment">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-tax-assessment">Tax Assessment</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Government Valuation</div>
+        <div class="def-word">Tax Assessment</div>
+        <p>The value assigned to real property by local government for property tax purposes. Tax assessments are typically updated periodically (often annually) and may differ from actual market value.</p>
+      </div>
+      <p><strong>Required documentation:</strong> SF 28 requires attaching current tax assessments for real estate pledged as security. This provides government-verified property information that contracting officers can rely on.</p>
+      <p><strong>Limitations:</strong> Tax assessments may lag behind market changes. In rapidly appreciating markets, tax assessment may be lower than current market value. In declining markets, it may be higher. Use appraisals for current market value.</p>
+      <p><strong>What to attach:</strong> The most recent property tax bill or assessment notice from the county or municipal tax assessor's office. This should show the assessment value, property description, and tax amount due.</p>
+      <p><strong>Verification of clean title:</strong> Current tax assessments also help verify that property taxes are paid up to date. Unpaid property taxes represent a lien against the property that must be disclosed in Field 8.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Miller Act -->
+<div class="modal-overlay" id="modal-miller-act" role="dialog" aria-modal="true" aria-labelledby="modal-title-miller-act">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-miller-act">Miller Act</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Law</div>
+        <div class="def-word">Miller Act</div>
+        <p>A federal law (40 U.S.C. §§ 3131-3134) requiring performance and payment bonds for federal construction contracts exceeding $150,000. Enacted in 1935, it protects subcontractors and laborers on federal projects.</p>
+      </div>
+      <p><strong>Bond requirements:</strong> The Miller Act requires performance bonds (guaranteeing contract completion) and payment bonds (guaranteeing payment to subcontractors, laborers, and material suppliers) for construction contracts above the threshold.</p>
+      <p><strong>Penal amounts:</strong> Performance bonds must be for 100% of the contract price. Payment bonds must be for the amount of the performance bond, with a minimum determined by a formula based on contract size.</p>
+      <p><strong>Relationship to SF 28:</strong> When an individual (rather than a corporate surety company) provides the Miller Act-required bonds, they must complete SF 28 to demonstrate they meet the financial and citizenship requirements.</p>
+      <p><strong>Waiver for small contracts:</strong> Contracts of $150,000 or less may be performed without Miller Act bonds at the contracting officer's discretion, though other bond requirements may still apply.</p>
+      <div class="citation"><strong>Source:</strong> 40 U.S.C. §§ 3131-3134; FAR 28.102-1. <a href="https://www.law.cornell.edu/uscode/text/40/3131">Cornell Law (40 U.S.C. § 3131)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Evidence of Title -->
+<div class="modal-overlay" id="modal-evidence-of-title" role="dialog" aria-modal="true" aria-labelledby="modal-title-evidence-of-title">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-evidence-of-title">Evidence of Title</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Ownership Documentation</div>
+        <div class="def-word">Evidence of Title</div>
+        <p>Official documentation proving legal ownership of real property. For SF 28 purposes, evidence of title demonstrates that the surety actually owns the property they are pledging as security.</p>
+      </div>
+      <p><strong>Required documents:</strong> Current property deed, title abstract, or title insurance policy showing the surety as the legal owner. These documents should be certified copies from the county recorder's office or title company.</p>
+      <p><strong>Why it matters:</strong> The government must verify that the surety has clear ownership rights to the pledged asset. Evidence of title confirms the property can be legally used as collateral for the bond.</p>
+      <p><strong>Title insurance:</strong> A title insurance policy is particularly valuable evidence because it includes research into the property's ownership history and identifies any existing liens or encumbrances.</p>
+      <p><strong>Recording:</strong> Real estate ownership is recorded at the county level. The evidence of title should reference the official recording information (book, page, document number) for verification.</p>
+      <p><strong>Joint ownership:</strong> If property is jointly owned (e.g., married couple), all owners typically must consent to the pledge, and this should be reflected in the documentation.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Recorded Lien -->
+<div class="modal-overlay" id="modal-recorded-lien" role="dialog" aria-modal="true" aria-labelledby="modal-title-recorded-lien">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-recorded-lien">Recorded Lien</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Encumbrance Type</div>
+        <div class="def-word">Recorded Lien</div>
+        <p>A legal claim or encumbrance on property that has been officially filed with government authorities (typically the county recorder). Recorded liens publicly notify that the property owner owes money to a creditor.</p>
+      </div>
+      <p><strong>Common examples:</strong> Mortgages, home equity loans, tax liens, mechanics' liens, judgment liens. These must all be disclosed in Field 8 of SF 28 as encumbrances on pledged assets.</p>
+      <p><strong>Why disclosure is critical:</strong> Recorded liens reduce the surety's net worth and the government's ability to claim the asset. Failing to disclose a recorded lien constitutes a false statement under 18 U.S.C. § 1001.</p>
+      <p><strong>How to find recorded liens:</strong> Title searches, property records searches at the county recorder's office, and credit reports will reveal most recorded liens. These should be reviewed before completing SF 28.</p>
+      <p><strong>Impact on qualification:</strong> A property with substantial recorded liens may not provide sufficient unencumbered value to qualify as security. The equity (market value minus all liens) must still meet net worth requirements.</p>
+      <p><strong>Title insurance:</strong> Title insurance policies typically identify recorded liens and are excellent documentation for both the surety's review and the contracting officer's verification.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 8 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Routing Transit Number -->
+<div class="modal-overlay" id="modal-routing-transit-number" role="dialog" aria-modal="true" aria-labelledby="modal-title-routing-transit-number">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-routing-transit-number">Routing Transit Number (RTN)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Banking Identifier</div>
+        <div class="def-word">Routing Transit Number</div>
+        <p>A 9-digit code that identifies financial institutions in the United States. RTNs are used for processing electronic transfers, wire transfers, and direct deposits between banks.</p>
+      </div>
+      <p><strong>Purpose in SF 28:</strong> Field 6C requires the RTN of the financial institution submitting the pledge of securities on behalf of the individual surety. This enables the government to verify the securities pledge and transfer ownership if needed.</p>
+      <p><strong>Where to find it:</strong> RTNs are printed on checks (bottom left, first 9 digits), available on the bank's website, or can be obtained by contacting the financial institution directly.</p>
+      <p><strong>Verification:</strong> The RTN must correspond to the financial institution listed in Field 6A. Mismatched information may delay processing or raise questions about the validity of the securities pledge.</p>
+      <p><strong>Security note:</strong> RTNs are public information and can be freely shared. They are not sensitive account numbers like account numbers or passwords.</p>
+      <p><strong>International context:</strong> RTNs are U.S.-specific. For international financial institutions, equivalent codes (SWIFT/BIC codes) would be used, though SF 28 is primarily designed for domestic sureties.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 6C instructions; Federal Reserve Bank Services. <a href="https://www.frservices.org">Federal Reserve Routing Directory</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Financial Institution -->
+<div class="modal-overlay" id="modal-financial-institution" role="dialog" aria-modal="true" aria-labelledby="modal-title-financial-institution">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-financial-institution">Financial Institution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Banking Entity</div>
+        <div class="def-word">Financial Institution</div>
+        <p>A bank, credit union, brokerage firm, or other entity that holds securities and can pledge them on behalf of an individual surety to support a government bond.</p>
+      </div>
+      <p><strong>Role in SF 28:</strong> Field 6A-6F require detailed information about the financial institution that is submitting the pledge of securities. This includes name, address, contact person, and routing transit number.</p>
+      <p><strong>Securities pledging:</strong> When securities (stocks, bonds, Treasury bills) are used as surety assets, they are typically held by a financial institution in a brokerage or custodial account. The institution pledges these securities to the government on the surety's behalf.</p>
+      <p><strong>Documentation requirements:</strong> The financial institution must provide written confirmation of the pledge, including CUSIP numbers, par amounts, and current market values. This documentation is attached to the SF 28 affidavit.</p>
+      <p><strong>Government relationship:</strong> The financial institution essentially becomes a third-party custodian of the pledged assets, providing assurance that the securities exist and are properly held for the government's potential claim.</p>
+      <p><strong>Choice of institution:</strong> Sureties should use established financial institutions with experience in government securities pledging. The contracting officer may verify the institution's credentials.</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 6 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Surety Broker -->
+<div class="modal-overlay" id="modal-surety-broker" role="dialog" aria-modal="true" aria-labelledby="modal-title-surety-broker">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-surety-broker">Surety Broker</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Intermediary Role</div>
+        <div class="def-word">Surety Broker</div>
+        <p>An intermediary who assists in arranging surety bonds, including individual surety arrangements. Surety brokers help connect principals with suitable sureties and handle administrative aspects of bond procurement.</p>
+      </div>
+      <p><strong>Role in SF 28:</strong> Fields 5A-5D request information about the individual surety broker used, if applicable. This includes name, address, telephone numbers, and email address.</p>
+      <p><strong>When brokers are used:</strong> Contractors who need individual sureties often work with brokers to find qualified individuals willing to serve as sureties. Brokers may also help complete paperwork and ensure compliance with requirements.</p>
+      <p><strong>Distinction from corporate surety:</strong> A surety broker arranges bonds but does not issue them. Corporate surety companies (insurance companies) actually issue and back the bonds. Individual sureties provide their personal assets directly.</p>
+      <p><strong>Value to the process:</strong> Brokers can help ensure that SF 28 affidavits are completed correctly, that all required documentation is attached, and that the surety understands their obligations under the bond.</p>
+      <p><strong>Optional information:</strong> If no surety broker is involved (e.g., a direct arrangement between principal and surety), these fields can be left blank or marked "N/A".</p>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 5 instructions; surety industry practice. <a href="https://www.nasbp.org">National Association of Surety Bond Producers</a></div>
     </div>
   </div>
 </div>
