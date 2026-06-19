@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Map — DTC Eligibility Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/shared.css">
+<style>
+/* Sitemap-specific styles */
+.sitemap-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 28px;
+}
+
+.sitemap-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sitemap-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.sitemap-description {
+  font-size: 1.1rem;
+  color: var(--ink-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.sitemap-section {
+  margin-bottom: 48px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.section-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.sitemap-card {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.sitemap-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-tag {
+  background: var(--bg-warm);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.theological .card-tag {
+  color: var(--gold-deep);
+  background: var(--gold-light);
+}
+
+.professional .card-tag {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.sitemap-card.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sitemap-card.disabled:hover {
+  border-color: var(--border-light);
+  box-shadow: none;
+  transform: none;
+}
+
+.sitemap-card.disabled .card-title {
+  color: var(--ink-muted);
+}
+
+.sitemap-card.disabled .card-description {
+  color: var(--ink-faint);
+}
+
+.quick-links {
+  background: var(--accent-light);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.quick-links-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.quick-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-link {
+  background: var(--bg);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-light);
+}
+
+.quick-link:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .sitemap-title {
+    font-size: 2rem;
+  }
+  
+  .document-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sitemap-container">
+  <div class="sitemap-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="justify-content: center; margin-bottom: 16px;">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-current">Site Map</span>
+    </nav>
+    <h1 class="sitemap-title">Site Map</h1>
+    <p class="sitemap-description">
+      Complete overview of all DTC Eligibility documentation, teaching materials, and resources organized by category for easy navigation.
+    </p>
+  </div>
+
+  <!-- Quick Links -->
+  <div class="quick-links">
+    <h2 class="quick-links-title">Quick Links</h2>
+    <div class="quick-links-list">
+      <a href="index.html" class="quick-link">Document Index</a>
+      <a href="guides/dtc-guide.html" class="quick-link">DTC Guide</a>
+      <a href="forms/dtc-eligibility-questionnaire.html" class="quick-link">Eligibility Quiz</a>
+      <a href="docs/treasury-international_bill_of_exchange.html" class="quick-link">Bill of Exchange</a>
+    </div>
+  </div>
+
+  <!-- Teaching Guides -->
+  <div class="sitemap-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Book icon">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+      </div>
+      <h2 class="section-title">Teaching Guides</h2>
+    </div>
+    <div class="document-grid">
+      <a href="guides/dtc-guide.html" class="sitemap-card professional">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Infrastructure icon">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Securities Ownership Wizard — DTC Guide</h3>
+            <span class="card-tag">Infrastructure</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Comprehensive teaching guide for DTC, DTCC & Cede & Co. securities infrastructure with interactive definitions.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <span>📚 31 hotspots</span>
+          </div>
+          <div class="card-meta-item">
+            <span>⏱️ ~45 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="guides/sf28-teaching-guide.html" class="sitemap-card professional">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Document icon">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">SF 28 — Affidavit of Individual Surety</h3>
+            <span class="card-tag">Government Forms</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Enhanced teaching guide for SF 28 form with scenario-based learning and FAR compliance walkthroughs.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <span>📚 Interactive scenarios</span>
+          </div>
+          <div class="card-meta-item">
+            <span>⏱️ ~30 min read</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Forms & Questionnaires -->
+  <div class="sitemap-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Form icon">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <h2 class="section-title">Forms & Questionnaires</h2>
+    </div>
+    <div class="document-grid">
+      <a href="forms/dtc-eligibility-questionnaire.html" class="sitemap-card professional">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Quiz icon">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4"/>
+              <path d="M12 8h.01"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">DTC Eligibility Questionnaire</h3>
+            <span class="card-tag">Interactive Assessment</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Interactive eligibility assessment tool with comprehensive study guide and knowledge check quiz.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <span>📝 20 questions</span>
+          </div>
+          <div class="card-meta-item">
+            <span>⏱️ ~25 min completion</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Documentation -->
+  <div class="sitemap-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="File icon">
+          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+          <polyline points="13 2 13 9 20 9"/>
+        </svg>
+      </div>
+      <h2 class="section-title">Documentation</h2>
+    </div>
+    <div class="document-grid">
+      <a href="docs/treasury-international_bill_of_exchange.html" class="sitemap-card professional">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Payment icon">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Treasury International Bill of Exchange</h3>
+            <span class="card-tag">Trade Finance</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Technical documentation for international bill of exchange transactions and trade finance procedures.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <span>📖 Reference guide</span>
+          </div>
+          <div class="card-meta-item">
+            <span>⏱️ ~15 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="javascript:void(0)" class="sitemap-card theological disabled">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Lock icon">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">DTC Biblical Exegesis</h3>
+            <span class="card-tag">No Access</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Theological analysis of DTC documents through Hebrew gematria, biblical typology, and sacred architecture.
+        </p>
+        <div class="card-meta">
+          <div class="card-meta-item">
+            <span>� Access restricted</span>
+          </div>
+          <div class="card-meta-item">
+            <span>⏱️ ~60 min read</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PDF Resources -->
+  <div class="sitemap-section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="PDF icon">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <text x="8" y="18" font-size="6" fill="currentColor">PDF</text>
+        </svg>
+      </div>
+      <h2 class="section-title">PDF Resources</h2>
+    </div>
+    <div class="document-grid">
+      <a href="pdf/EligibilityQuestionnaire.pdf" class="sitemap-card professional" target="_blank" rel="noopener">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Download icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">DTC Eligibility Questionnaire</h3>
+            <span class="card-tag">Official Form</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Official PDF version of the DTC eligibility questionnaire for download and printing.
+        </p>
+      </a>
+
+      <a href="pdf/SF28-23a.pdf" class="sitemap-card professional" target="_blank" rel="noopener">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Download icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">SF 28-23a Form</h3>
+            <span class="card-tag">Government Form</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Standard Form 28 (Rev. 10/2023) for individual surety commitments.
+        </p>
+      </a>
+
+      <a href="pdf/Treasury-International-Bill ofExchange - blank.pdf" class="sitemap-card professional" target="_blank" rel="noopener">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Download icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Treasury International Bill of Exchange</h3>
+            <span class="card-tag">Blank Form</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Blank international bill of exchange form for trade finance transactions.
+        </p>
+      </a>
+
+      <a href="pdf/operational-arrangements.pdf" class="sitemap-card professional" target="_blank" rel="noopener">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Download icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-title">Operational Arrangements</h3>
+            <span class="card-tag">Documentation</span>
+          </div>
+        </div>
+        <p class="card-description">
+          DTC operational arrangements documentation for reference and compliance.
+        </p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-light);">
+    <p style="color: var(--ink-muted); font-size: 0.9rem;">
+      <a href="index.html" style="color: var(--accent); text-decoration: none;">← Return to Document Index</a>
+    </p>
+    <p style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 8px;">
+      DTC Eligibility Documentation Collection · June 2026
+    </p>
+  </footer>
+</div>
+
+</body>
+</html>

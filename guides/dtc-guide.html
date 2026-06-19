@@ -4,67 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Securities Ownership Wizard — DTC, DTCC & Cede &amp; Co. Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-:root {
-  --ink: #0f1115;
-  --ink-secondary: #2d3142;
-  --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a;
-  --ink-faint: #b8bac4;
-  --border: #d0d2da;
-  --border-light: #e6e7ec;
-  --border-faint: #f0f1f5;
-  --bg: #ffffff;
-  --bg-warm: #faf9f6;
-  --bg-cream: #f7f5f0;
-  --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c;
-  --accent-light: #e8f0f8;
-  --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640;
-  --gold: #a67c00;
-  --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a;
-  --gold-deep: #7a5c00;
-  --green: #1a5c3a;
-  --green-light: #e8f8f0;
-  --teal: #0d7377;
-  --teal-light: #e6f7f7;
-  --red: #8c1a1a;
-  --red-light: #fdf0f0;
-  --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* Accessibility Focus States */
-button:focus-visible,
-a:focus-visible,
-[tabindex="0"]:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-button:focus:not(:focus-visible),
-a:focus:not(:focus-visible),
-[tabindex="0"]:focus:not(:focus-visible) {
-  outline: none;
-}
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-warm); color: var(--ink); line-height: 1.7;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-}
+/* CSS variables and base styles moved to shared.css */
 
 /* TOC Sidebar */
 .toc-sidebar {
@@ -107,6 +53,30 @@ body {
   position: absolute; top: 16px; right: 16px;
   background: none; border: none; font-size: 1.4rem;
   color: var(--ink-muted); cursor: pointer;
+}
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
 }
 
 /* Page Header */
@@ -439,7 +409,6 @@ body {
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
 }
 </style>
-<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/Ye4_ZbPUDhT4Q4I52weVxNDqD5JvuFfmLEdqmYfRPDQNgIoblLBTvoz8WuzeMmLsgjZoiXwTyfc1_pMHKZvpCskCJATPhi0dofCnXFiFehgHK5EpUnlSGkEjM8x7Dw_mUAOePA6FQbITxqlR2ekAhzBLUMXoS1C12VxO7pfp_Tj8-oKNqCffXYjvnQqiPzPX80us3tUk7_yh3fhVz9rM-k8WOjWcoP2CYbmdDogrxRvDjqVCiqgI_JwbzmIpb_P25DqA59QAijeySZ8QCPZMvl3lAbNKIyGgGY8NjxejqPFC2QQARa5lBqJoUKkSxWjbvnBzVmcKIiJSqMMNGe1B__Q38tBerXWRYeXeTAo98SgtdzsNkuP8EENtd49QDA062ZiO4ErSAaizkUQGbrOQdBuKGg9xccYT1_euNWZJqAD18YBCGh_nGosMlB4cVeGICXNKr65J0qcTKnlGZiI8Hkym12N5zQd1NdN07GeKCMwnq9D-N989woL1Aw4PVhjVk0vWFuWT6CJztzq0ELUn71UCc-M-Wwg4onytSZ9MyT_vPsn9meTqCWRl85JszQne9vtJLAamOnHhlUkjsbB3xpDhyfhEQOyErKZKkf6LPBS0PLNM0xbyFfcQR3S1R9EBQ_4WUbEKT_htuQU0K8LL6jb9CHTEvizuCh__HqCHnvB0_BzXU-cfSP3WAwXJDXRLVIjO2uUr25jvlgoUEsfRaqNBChTTKsjxvQJznxDRDePXGwwmA92P6_bKZD43MbCtloi0l70W-ltw6X06oaR7JOEQidFMNPYa2D1dkOR8Vs5p55WbvsGUtOJD2XCuy3etHaqjB1XEbVomgJ9IB6QtvGisaZh4LlmoAp3BjTH62NOgfVsbJOwGRZl3TE-SrKcompkur3J0bpbDby1tdymag9dFgMzMxkS_4RE3ispsM49ene1PGgPImu5pWc2vz-VFMt3bbponghOo5hAzEA1n5GoZmVziuA0d_raRDLOJOznvoguNfIkvwWmLZ6nVbNsOo_tVqzPN_HON6g1OD5MIsI99sNfyb7bQaVitnpPY2U-MftNvAXGVTk1x_foUS6ioEqZD7yCzAYUW0e-3dojRaXL03WEJfvxkspIz2POS3hIl3g73Fil5MltOoabh-91VEdL3pA'></script><script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/WAxZp6ftsYkvRdgyplmZaFZxvlSOwXVg1lZFr1k8gU8Mb6ySmeUBOr4hZ7IFtiuGfWxXLHyFHbshbbP2OAqV_idCOs9KEBkvNPHy8pGQ7CvE2UrK_qGscg3YfUBY2-9v9cPMmxpOAwK8VGm34Ygb52whofPDvLuUovO_9hrWb0qIMxiKuFplTp_3t2KGF3cJpbqTr2XYBJoUTTh74uHWyDqY96xb1VZQF51oZTPt5-Xr_yFeyldZLYsCJY76P6QHy4q4wveErPs7LeDVOBS5NWfhS--vKxy6Oe2qDrC5t4ci8XjRM87Ha9XMERJBq5DIh5TUQkh7GC4tdL720jRN6xESxCQlQCar1eAxxHf7dz5oOnZFem49bur2CUfSKfS-nLIOcQxT_jAeRucKday8HLOpBGv5APVJFMuYrP69rlncuapKyDmmC7zcxC1W74UNUVVs3nVBI1DvlU1ULVMh1K2VvTCVobWP_FbbbyV6r7_TIHG4dFZ5I5_QS97LlU1-FK72WsBmNgcPT8WgnLG80GW7su-qTCAvw6O_JgYh6kIdZ7Bmc3DDig8jc53mXHC8mRNEU58ZmXv7tYaHg8M5IpZ1hCOLOlFxe9kj8z5AX-FyD29Y887kIiW4JiSV1OQ0HWYck-WM2GrAD9LximV8UFuC5rZf5fMlMmm3OpEyLq81QGI1FkKDC9QiZUNpDXzQzJ6mf0eBr5h8My17fQIhdMmL_YfZrDbzBbxFeD6CnP_CTXeID3DL5UWCO5WKDC2PCZloPdeaoiYWpjBai4vdYGguN_kSaoD7yXgp6-7sjdCnlYkiAVvaXVjvuS03a4vpZiNgYkHHkTNfvhs8cPo0FJQ6zO8yPr0VKH_IbXP9Lfi7uRwlYBQvfphbz9vX8NEfrdQ1JEEMch-hdU_Flfzk4RO733vVKDAku9_VZC6V0H2aoTWsPJxQ1H1JM6tLWkF0_TNo8m3hsXEQnX52ztGAwNLXW8qHm9HP577eaiObL6eog5y3qF-mbHCSydUGTyH5g3gj8DnGrV8TQ38Z6uRcOixgePa-gmlPzwSl_oMs9V-huMRREqe3ki9kRFxE-Af7ZOdtHfwsE6RuH1R659NIUyXM328bXmWcHL3SjyQ3_hW36Q'></script><script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/6CJ_1K7dxJxDZMZagoC2BWo04if9e7sVQfqkDpNoyctUGRRBmZnTmVtrJ37a2DeAMDdwSXy_TifBxsuwIl4zwaG_W5uMbDMf1gzYT5UGony-NFBOrv9x_f_h5HtIWp7nvlrrdqQp0yMjGnajXN_wNqJ05GQcC7CEvbiF1VLXuC7k9Q3mbEk8w_g5hnkDDfmVlk0rqicdv8wbKqYHxuX6UbHfdGoAwNe5tIMsjsEuNVcqLWklZBzPySiEusyaT_X7-y51E6lLySgZrzkqJMSNnMRGaqKPN9qw33mQ1D85bd72ScnBy2PFcVZu13JA-JGSn1r1rW0jCKtjlevF_VuSpzVbXgEGlFIMBbMpnlPqJ3c9WJ_sSvI9EqLEZj8dSsPfpJ_qVTU12TYYOXIKollIiHeAedowOeAciKgyD3LfqfDPYU3tXimRaXQNX5pxwNUaK8PB7QOapsXj1irh4Ro24AMY5ampzETt9VS2645--p_u3chGqtbeqmoZHmz2rM1_B_ScjOnNXJMBNvV0-wlp2iK7mr1CXwd64nYK2hLP-3WGFpMxUr0M0nng1-JQZGodeC-Rxfnh2lUGna3V4iE8X4dniChsNb3yEXZn-6ec2AQZUsHCRvAKHG9mWsPeO4SAZFaxCWm5B0rZZgZB50wV8JFu6cu6SD_uUfdC3QoToP1uJKntGykE1dBm8uce1uepuLLAExjsaFmVg-2rjJV4OZ7VgZKWzowESityRjgUJnx3Z2_0uwfAxo_5ClR-qhKapPjM-cf8XUM38NAN2lu0p3MYzzNKKpg6g1zJcfqmdWt2p0SaMccheWZe0boMBtDOUW6nuhz0F46YxqHNw956UAnwfD9sbyuubm9D_VgEfzM-vJ2-ptVqpNsFujJwgAhMoq3QGyk9K5jKvsTfFxgWWoBGxQoGBFgje8rAuJMDu3s34TlWJ17pEvSd635QM2-sbZwPfKKbMDZCLX29Jz44zIR86c8xtDkMFirCqjvohmAJJ2t4V4YWTPfmoMucFii6F_oAJTiPjZDdtda_fJly4XGTRIu62hT3pjhXCsy6h1LnsY_Yt679YtgesqBJwUpI2qjzPVo9RAKVHosKS9JfDDuXlvYrylMe'></script>
 </head>
 <body>
 
@@ -472,12 +441,14 @@ body {
   <a href="#euroclear" class="sub">National CSDs & ESES</a>
   <a href="#euroclear" class="sub">TARGET2-Securities (T2S)</a>
   <a href="#global-comparison">Global Comparison: DTC vs. Euroclear</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
-  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
-  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange <span class="toc-desc">↗ Trade finance & payment systems</span></a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment tool</span></a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety <span class="toc-desc">↗ Bond guarantee requirements</span></a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -487,6 +458,11 @@ body {
       <div class="header-text">
         <h1>Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h1>
         <div class="sub">Enhanced Teaching Guide to U.S. Securities Infrastructure · Interactive Definitions</div>
+        <div class="header-meta">
+          <span class="last-updated">Last updated: June 18, 2026</span>
+          <span class="header-meta-separator">·</span>
+          <span class="doc-type">Teaching Guide</span>
+        </div>
       </div>
     </div>
     <div class="header-badge">Teaching Tool</div>
@@ -495,17 +471,22 @@ body {
 
 <div class="wrap">
 
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../index.html">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Teaching Guides</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Securities Ownership Wizard</span>
+</nav>
+
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Document Guide:</strong> This is an interactive teaching guide to the U.S. securities depository and clearing infrastructure. Click any <strong>underlined term</strong> for definitions and explanations.</span>
 </div>
 
 <div class="doc-frame">
-
-<div class="teach-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-  <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. Hover for highlights, click for detailed definitions and securities infrastructure guidance.</span>
-</div>
 
 <!-- SECTION: OVERVIEW -->
 <h2 class="section-title" id="overview">Overview — The Modern Securities Infrastructure</h2>
@@ -696,7 +677,7 @@ NSCC members include broker-dealers, banks, and other financial institutions tha
 </p>
 
 <p class="body-text">
-In the event of a member default, NSCC has a waterfall of resources: the defaulter's margin deposit, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
+In the event of a member default, NSCC has a <span class="hotspot" data-modal="waterfall" tabindex="0" role="button" onclick="openModal('modal-waterfall')">waterfall</span> of resources: the defaulter's margin deposit, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains <span class="hotspot" data-modal="cross-guaranty" tabindex="0" role="button" onclick="openModal('modal-cross-guaranty')">cross-guaranty agreements</span> with DTC, FICC, and OCC for additional mutual support.
 </p>
 
 <!-- SECTION: FICC -->
@@ -719,7 +700,7 @@ FICC operates through two distinct divisions — the <span class="hotspot" data-
   <div class="entity-card">
     <div class="entity-name">MBSD — Mortgage-Backed Securities Division</div>
     <div class="entity-role">MBS & TBA Market</div>
-    <div class="entity-desc">Provides real-time trade matching, confirmation, netting, risk management, and settlement for to-be-announced (TBA) transactions, specified pool trades, and stipulated trades in agency MBS.</div>
+    <div class="entity-desc">Provides real-time trade matching, confirmation, netting, risk management, and settlement for to-be-announced (<span class="hotspot" data-modal="tba" tabindex="0" role="button" onclick="openModal('modal-tba')">TBA</span>) transactions, specified pool trades, and stipulated trades in agency MBS.</div>
   </div>
 </div>
 
@@ -753,7 +734,7 @@ FICC maintains separate <span class="hotspot" data-modal="clearing-fund" tabinde
   </tr>
   <tr>
     <td><strong>Repo Services</strong></td>
-    <td>GCF <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">Repo</span> service for general collateral financing; CCIT for tri-party repo</td>
+    <td><span class="hotspot" data-modal="gcf-repo" tabindex="0" role="button" onclick="openModal('modal-gcf-repo')">GCF Repo</span> service for general collateral financing; <span class="hotspot" data-modal="ccit" tabindex="0" role="button" onclick="openModal('modal-ccit')">CCIT</span> for tri-party repo</td>
     <td>—</td>
   </tr>
   <tr>
@@ -780,7 +761,7 @@ FICC employs sophisticated risk-based <span class="hotspot" data-modal="margin" 
 </p>
 
 <p class="body-text">
-FICC's margin methodology includes several components: a value-at-risk (<span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span>) charge based on portfolio volatility, a mark-to-market charge for intraday price changes, a backtesting charge to cover risks not captured by the VaR model, and a supplemental fund deposit for concentrated or illiquid positions. Members may also be subject to additional charges based on their specific risk profiles.
+FICC's margin methodology includes several components: a value-at-risk (<span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span>) charge based on portfolio volatility, a <span class="hotspot" data-modal="mark-to-market" tabindex="0" role="button" onclick="openModal('modal-mark-to-market')">mark-to-market</span> charge for intraday price changes, a <span class="hotspot" data-modal="backtesting" tabindex="0" role="button" onclick="openModal('modal-backtesting')">backtesting</span> charge to cover risks not captured by the VaR model, and a supplemental fund deposit for concentrated or illiquid positions. Members may also be subject to additional charges based on their specific risk profiles.
 </p>
 
 <div class="warn-box">
@@ -914,7 +895,7 @@ Several foundational documents govern these relationships:
   <li><strong>Participant Application:</strong> The agreement by which a broker-dealer or bank becomes a DTC participant, agreeing to abide by DTC rules and indemnify DTC.</li>
   <li><strong>Indemnification Agreement:</strong> Participants agree to indemnify DTC and Cede &amp; Co. against claims arising from their role as nominee. This protects the depository from being dragged into disputes between beneficial owners.</li>
   <li><strong>Issuer Letter of Representations:</strong> When an issuer deposits securities with DTC, it signs a letter agreeing to recognize DTC and Cede &amp; Co. as the registered owner and to follow DTC's procedures for distributions, proxies, and corporate actions.</li>
-  <li><strong>Uniform Practice Code:</strong> Industry standards developed by the Securities Industry and Financial Markets Association (SIFMA) that supplement DTC rules.</li>
+  <li><strong><span class="hotspot" data-modal="uniform-practice" tabindex="0" role="button" onclick="openModal('modal-uniform-practice')">Uniform Practice Code</span>:</strong> Industry standards developed by the <span class="hotspot" data-modal="sifma" tabindex="0" role="button" onclick="openModal('modal-sifma')">Securities Industry and Financial Markets Association (SIFMA)</span> that supplement DTC rules.</li>
 </ul>
 
 <!-- SECTION: SETTLEMENT -->
@@ -1006,7 +987,7 @@ Certain dividend types require additional processing:
 <h3 class="subsection-title">Corporate Action Processing</h3>
 
 <p class="body-text">
-Corporate actions include tender offers, mergers, stock splits, rights offerings, and other events that affect securities. DTC has established procedures for processing these events efficiently through its book-entry system.
+Corporate actions include <span class="hotspot" data-modal="tender-offer" tabindex="0" role="button" onclick="openModal('modal-tender-offer')">tender offers</span>, mergers, stock splits, <span class="hotspot" data-modal="rights-offering" tabindex="0" role="button" onclick="openModal('modal-rights-offering')">rights offerings</span>, and other events that affect securities. DTC has established procedures for processing these events efficiently through its book-entry system.
 </p>
 
 <div class="diagram-box">
@@ -1068,7 +1049,7 @@ Beneficial owners vote through their brokers, who aggregate the votes and transm
 </p>
 
 <div class="tip-box">
-  <strong>Investor Tip:</strong> If you want to receive proxy materials and annual reports directly from the issuer rather than through your broker, you can request to be treated as a "non-objecting beneficial owner" (NOBO). Some brokers default to "objecting beneficial owner" (OBO) status, which means the issuer cannot see your name or contact you directly.
+  <strong>Investor Tip:</strong> If you want to receive proxy materials and annual reports directly from the issuer rather than through your broker, you can request to be treated as a <span class="hotspot" data-modal="nobo-obo" tabindex="0" role="button" onclick="openModal('modal-nobo-obo')">"non-objecting beneficial owner" (NOBO)</span>. Some brokers default to <span class="hotspot" data-modal="nobo-obo" tabindex="0" role="button" onclick="openModal('modal-nobo-obo')">"objecting beneficial owner" (OBO)</span> status, which means the issuer cannot see your name or contact you directly.
 </div>
 
 <h3 class="subsection-title">Record Date & Payment Requirements</h3>
@@ -1096,7 +1077,7 @@ DTC's operational arrangements specify detailed payment standards for different 
   <li><strong>Income Payments:</strong> Dividends and interest payments require specific timing and formatting standards</li>
   <li><strong>Redemption Payments:</strong> Maturity and call payments have separate processing requirements</li>
   <li><strong>Reorganization Payments:</strong> Merger, exchange, and other reorganization payments have special handling procedures</li>
-  <li><strong>Payment Without Presentation (PWP):</strong> Certain redemptions can be processed without physical certificate presentation</li>
+  <li><strong><span class="hotspot" data-modal="pwp" tabindex="0" role="button" onclick="openModal('modal-pwp')">Payment Without Presentation (PWP)</span>:</strong> Certain redemptions can be processed without physical certificate presentation</li>
 </ul>
 
 <div class="warn-box">
@@ -1116,8 +1097,8 @@ When issuers redeem securities (through maturity, calls, or mandatory redemption
 <h4 class="subsection-title">Types of Redemptions</h4>
 
 <ul class="body-text">
-  <li><strong>Maturity Redemptions:</strong> Securities reaching their scheduled maturity date</li>
-  <li><strong>Call Redemptions:</strong> Early redemption at the issuer's option, typically at a premium</li>
+  <li><strong><span class="hotspot" data-modal="maturity-redemption" tabindex="0" role="button" onclick="openModal('modal-maturity-redemption')">Maturity Redemptions</span>:</strong> Securities reaching their scheduled maturity date</li>
+  <li><strong><span class="hotspot" data-modal="call-redemption" tabindex="0" role="button" onclick="openModal('modal-call-redemption')">Call Redemptions</span>:</strong> Early redemption at the issuer's option, typically at a premium</li>
   <li><strong>Sinking Fund Redemptions:</strong> Mandatory partial redemptions according to a schedule</li>
   <li><strong>Put Redemptions:</strong> Holders have the option to sell securities back to the issuer</li>
 </ul>
@@ -1218,7 +1199,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- how-to-use -->
 <div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <p>This interactive guide explains the U.S. securities depository and clearing infrastructure with clickable definitions and securities infrastructure guidance.</p>
       <p><strong>How to navigate:</strong></p>
@@ -1235,7 +1216,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Depositories -->
 <div class="modal-overlay" id="modal-depositories" role="dialog" aria-modal="true" aria-labelledby="modal-title-depositories">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-depositories">Depositories</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-depositories">Depositories</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Infrastructure</div>
@@ -1264,7 +1245,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Clearing Agencies -->
 <div class="modal-overlay" id="modal-clearing-agencies" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-agencies">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-clearing-agencies">Clearing Agencies</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-clearing-agencies">Clearing Agencies</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Regulated Entity</div>
@@ -1296,7 +1277,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Nominees -->
 <div class="modal-overlay" id="modal-nominees" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominees">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nominees">Nominees</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nominees">Nominees</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Concept</div>
@@ -1313,7 +1294,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- DTC -->
 <div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Central Securities Depository</div>
@@ -1342,7 +1323,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- DTCC -->
 <div class="modal-overlay" id="modal-dtcc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtcc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtcc">DTCC — Depository Trust &amp; Clearing Corporation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtcc">DTCC — Depository Trust &amp; Clearing Corporation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Holding Company</div>
@@ -1366,7 +1347,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Cede -->
 <div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Nominee Partnership</div>
@@ -1391,7 +1372,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Legal Owner -->
 <div class="modal-overlay" id="modal-legal-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-legal-owner">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-legal-owner">Legal Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-legal-owner">Legal Owner</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Property Law Concept</div>
@@ -1408,7 +1389,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Beneficial Owner -->
 <div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Property Law Concept</div>
@@ -1431,7 +1412,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Central Securities Depository -->
 <div class="modal-overlay" id="modal-central-securities-depository" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-securities-depository">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-central-securities-depository">Central Securities Depository (CSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-central-securities-depository">Central Securities Depository (CSD)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">International Standard</div>
@@ -1458,7 +1439,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- NSCC -->
 <div class="modal-overlay" id="modal-nscc" role="dialog" aria-modal="true" aria-labelledby="modal-title-nscc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nscc">National Securities Clearing Corporation (NSCC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nscc">National Securities Clearing Corporation (NSCC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Clearing Corporation</div>
@@ -1475,7 +1456,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Federal Reserve -->
 <div class="modal-overlay" id="modal-federal-reserve" role="dialog" aria-modal="true" aria-labelledby="modal-title-federal-reserve">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-federal-reserve">Federal Reserve System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-federal-reserve">Federal Reserve System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Central Bank</div>
@@ -1492,7 +1473,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- SEC -->
 <div class="modal-overlay" id="modal-sec" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sec">Securities and Exchange Commission (SEC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sec">Securities and Exchange Commission (SEC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Regulator</div>
@@ -1509,7 +1490,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Clearing Agency -->
 <div class="modal-overlay" id="modal-clearing-agency" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-agency">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-clearing-agency">Clearing Agency</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-clearing-agency">Clearing Agency</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Statutory Definition</div>
@@ -1529,7 +1510,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Book-Entry -->
 <div class="modal-overlay" id="modal-book-entry" role="dialog" aria-modal="true" aria-labelledby="modal-title-book-entry">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-book-entry">Book-Entry System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-book-entry">Book-Entry System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Record-Keeping Method</div>
@@ -1551,7 +1532,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Transfer Agent -->
 <div class="modal-overlay" id="modal-transfer-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-transfer-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-transfer-agent">Transfer Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-transfer-agent">Transfer Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Securities Intermediary</div>
@@ -1568,7 +1549,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Participant -->
 <div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Member Entity</div>
@@ -1590,7 +1571,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- DTC Eligibility -->
 <div class="modal-overlay" id="modal-dtc-eligibility" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc-eligibility">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtc-eligibility">DTC Eligibility</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtc-eligibility">DTC Eligibility</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Operational Requirement</div>
@@ -1613,7 +1594,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- FAST -->
 <div class="modal-overlay" id="modal-fast" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-fast">FAST — Fast Automated Securities Transfer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-fast">FAST — Fast Automated Securities Transfer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program</div>
@@ -1630,7 +1611,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- FICC -->
 <div class="modal-overlay" id="modal-ficc" role="dialog" aria-modal="true" aria-labelledby="modal-title-ficc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-ficc">Fixed Income Clearing Corporation (FICC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-ficc">Fixed Income Clearing Corporation (FICC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Clearing Corporation</div>
@@ -1650,7 +1631,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Clearing -->
 <div class="modal-overlay" id="modal-clearing" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-clearing">Clearing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-clearing">Clearing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Post-Trade Process</div>
@@ -1667,7 +1648,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Settlement -->
 <div class="modal-overlay" id="modal-settlement" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlement">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-settlement">Settlement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-settlement">Settlement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Post-Trade Process</div>
@@ -1695,7 +1676,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Nominee -->
 <div class="modal-overlay" id="modal-nominee" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominee">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Concept</div>
@@ -1712,7 +1693,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Securities Act 1933 -->
 <div class="modal-overlay" id="modal-securities-act-1933" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-act-1933">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-securities-act-1933">Securities Act of 1933</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-securities-act-1933">Securities Act of 1933</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Statute</div>
@@ -1729,7 +1710,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Street Name -->
 <div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-street-name">Street Name</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-street-name">Street Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Industry Term</div>
@@ -1746,7 +1727,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- General Partnership -->
 <div class="modal-overlay" id="modal-general-partnership" role="dialog" aria-modal="true" aria-labelledby="modal-title-general-partnership">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-general-partnership">General Partnership</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-general-partnership">General Partnership</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Business Entity</div>
@@ -1763,7 +1744,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Operating Arrangements -->
 <div class="modal-overlay" id="modal-operating-arrangements" role="dialog" aria-modal="true" aria-labelledby="modal-title-operating-arrangements">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-operating-arrangements">Operating Arrangements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-operating-arrangements">Operating Arrangements</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contractual Framework</div>
@@ -1785,7 +1766,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Rules -->
 <div class="modal-overlay" id="modal-rules" role="dialog" aria-modal="true" aria-labelledby="modal-title-rules">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-rules">DTC Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-rules">DTC Rules</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Self-Regulatory Framework</div>
@@ -1802,7 +1783,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Indemnification -->
 <div class="modal-overlay" id="modal-indemnification" role="dialog" aria-modal="true" aria-labelledby="modal-title-indemnification">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-indemnification">Indemnification Agreement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-indemnification">Indemnification Agreement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Protection</div>
@@ -1819,7 +1800,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Depository Agreements -->
 <div class="modal-overlay" id="modal-depository-agreements" role="dialog" aria-modal="true" aria-labelledby="modal-title-depository-agreements">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-depository-agreements">Depository Agreements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-depository-agreements">Depository Agreements</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contract</div>
@@ -1836,7 +1817,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- T+1 -->
 <div class="modal-overlay" id="modal-t1" role="dialog" aria-modal="true" aria-labelledby="modal-title-t1">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-t1">T+1 Settlement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-t1">T+1 Settlement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Settlement Cycle</div>
@@ -1857,7 +1838,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- DVP -->
 <div class="modal-overlay" id="modal-dvp" role="dialog" aria-modal="true" aria-labelledby="modal-title-dvp">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dvp">Delivery Versus Payment (DVP)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dvp">Delivery Versus Payment (DVP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Settlement Mechanism</div>
@@ -1878,7 +1859,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Settlement Risk -->
 <div class="modal-overlay" id="modal-settlement-risk" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlement-risk">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-settlement-risk">Settlement Risk</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-settlement-risk">Settlement Risk</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Risk</div>
@@ -1895,7 +1876,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Federal Reserve Bank -->
 <div class="modal-overlay" id="modal-federal-reserve-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-federal-reserve-bank">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-federal-reserve-bank">Federal Reserve Bank</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-federal-reserve-bank">Federal Reserve Bank</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Regional Central Bank</div>
@@ -1912,7 +1893,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Pro-Rata -->
 <div class="modal-overlay" id="modal-pro-rata" role="dialog" aria-modal="true" aria-labelledby="modal-title-pro-rata">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-pro-rata">Pro-Rata Allocation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-pro-rata">Pro-Rata Allocation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Distribution Method</div>
@@ -1929,7 +1910,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- SEC Rules -->
 <div class="modal-overlay" id="modal-sec-rules" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec-rules">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sec-rules">SEC Proxy Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sec-rules">SEC Proxy Rules</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Regulatory Framework</div>
@@ -1949,7 +1930,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Proxy Solicitor -->
 <div class="modal-overlay" id="modal-proxy-solicitor" role="dialog" aria-modal="true" aria-labelledby="modal-title-proxy-solicitor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-proxy-solicitor">Proxy Solicitor</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-proxy-solicitor">Proxy Solicitor</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Service Provider</div>
@@ -1966,7 +1947,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- Proxy Voting System -->
 <div class="modal-overlay" id="modal-proxy-voting-system" role="dialog" aria-modal="true" aria-labelledby="modal-title-proxy-voting-system">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-proxy-voting-system">Proxy Voting System</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-proxy-voting-system">Proxy Voting System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Operational Framework</div>
@@ -1990,7 +1971,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
 <!-- DRS -->
 <div class="modal-overlay" id="modal-drs" role="dialog" aria-modal="true" aria-labelledby="modal-title-drs">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-drs">Direct Registration System (DRS)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-drs">Direct Registration System (DRS)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Alternative Holding Method</div>
@@ -2198,69 +2179,12 @@ Understanding the differences between the U.S. and European post-trade infrastru
 </div><!-- /doc-frame -->
 
 
-<script>
-/* ── Simple Modal System ── */
-let currentModal = null;
-
-function openModal(id) {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-  }
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.classList.add('active');
-    currentModal = modal;
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal() {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-    currentModal = null;
-    document.body.style.overflow = '';
-  }
-}
-
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    closeModal();
-  }
-});
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-/* ── TOC Sidebar ── */
-function toggleToc() {
-  document.getElementById('tocSidebar').classList.toggle('open');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const toc = document.getElementById('tocSidebar');
-    if (toc && toc.classList.contains('open')) {
-      toc.classList.remove('open');
-    }
-  }
-});
-
-document.addEventListener('click', (e) => {
-  const toc = document.getElementById('tocSidebar');
-  const toggle = document.querySelector('.toc-toggle');
-  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
-    toc.classList.remove('open');
-  }
-});
-</script>
+<script src="../js/shared.js"></script>
 
 <!-- Multilateral Netting -->
 <div class="modal-overlay" id="modal-multilateral-netting" role="dialog" aria-modal="true" aria-labelledby="modal-title-multilateral-netting">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-multilateral-netting">Multilateral Netting</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-multilateral-netting">Multilateral Netting</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Reduction Mechanism</div>
@@ -2277,7 +2201,7 @@ document.addEventListener('click', (e) => {
 <!-- Central Counterparty -->
 <div class="modal-overlay" id="modal-central-counterparty" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-counterparty">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-central-counterparty">Central Counterparty (CCP)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-central-counterparty">Central Counterparty (CCP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Management Entity</div>
@@ -2294,7 +2218,7 @@ document.addEventListener('click', (e) => {
 <!-- SIFMU -->
 <div class="modal-overlay" id="modal-sifmu" role="dialog" aria-modal="true" aria-labelledby="modal-title-sifmu">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sifmu">Systemically Important Financial Market Utility (SIFMU)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sifmu">Systemically Important Financial Market Utility (SIFMU)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Regulatory Designation</div>
@@ -2318,7 +2242,7 @@ document.addEventListener('click', (e) => {
 <!-- GSD -->
 <div class="modal-overlay" id="modal-gsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-gsd">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-gsd">Government Securities Division (GSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-gsd">Government Securities Division (GSD)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">FICC Division</div>
@@ -2341,7 +2265,7 @@ document.addEventListener('click', (e) => {
 <!-- MBSD -->
 <div class="modal-overlay" id="modal-mbsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-mbsd">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-mbsd">Mortgage-Backed Securities Division (MBSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-mbsd">Mortgage-Backed Securities Division (MBSD)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">FICC Division</div>
@@ -2364,7 +2288,7 @@ document.addEventListener('click', (e) => {
 <!-- Euroclear -->
 <div class="modal-overlay" id="modal-euroclear" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-euroclear">Euroclear</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-euroclear">Euroclear</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Market Infrastructure Group</div>
@@ -2397,7 +2321,7 @@ document.addEventListener('click', (e) => {
 <!-- Euroclear Bank -->
 <div class="modal-overlay" id="modal-euroclear-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear-bank">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-euroclear-bank">Euroclear Bank</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-euroclear-bank">Euroclear Bank</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">International Central Securities Depository (ICSD)</div>
@@ -2422,7 +2346,7 @@ document.addEventListener('click', (e) => {
 <!-- ICSD -->
 <div class="modal-overlay" id="modal-icsd" role="dialog" aria-modal="true" aria-labelledby="modal-title-icsd">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-icsd">International Central Securities Depository (ICSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-icsd">International Central Securities Depository (ICSD)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Market Infrastructure</div>
@@ -2439,7 +2363,7 @@ document.addEventListener('click', (e) => {
 <!-- National CSD -->
 <div class="modal-overlay" id="modal-national-csd" role="dialog" aria-modal="true" aria-labelledby="modal-title-national-csd">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-national-csd">National Central Securities Depository (CSD)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-national-csd">National Central Securities Depository (CSD)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Market Infrastructure</div>
@@ -2464,7 +2388,7 @@ document.addEventListener('click', (e) => {
 <!-- Clearstream -->
 <div class="modal-overlay" id="modal-clearstream" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearstream">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-clearstream">Clearstream</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-clearstream">Clearstream</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">International CSD</div>
@@ -2488,7 +2412,7 @@ document.addEventListener('click', (e) => {
 <!-- Triparty -->
 <div class="modal-overlay" id="modal-triparty" role="dialog" aria-modal="true" aria-labelledby="modal-title-triparty">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-triparty">Triparty Collateral Management</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-triparty">Triparty Collateral Management</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collateral Service</div>
@@ -2505,7 +2429,7 @@ document.addEventListener('click', (e) => {
 <!-- T2S -->
 <div class="modal-overlay" id="modal-t2s" role="dialog" aria-modal="true" aria-labelledby="modal-title-t2s">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-t2s">TARGET2-Securities (T2S)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-t2s">TARGET2-Securities (T2S)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Eurosystem Infrastructure</div>
@@ -2530,7 +2454,7 @@ document.addEventListener('click', (e) => {
 <!-- Central Bank Money -->
 <div class="modal-overlay" id="modal-central-bank-money" role="dialog" aria-modal="true" aria-labelledby="modal-title-central-bank-money">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-central-bank-money">Central Bank Money</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-central-bank-money">Central Bank Money</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Settlement Asset</div>
@@ -2547,7 +2471,7 @@ document.addEventListener('click', (e) => {
 <!-- Dodd-Frank Act -->
 <div class="modal-overlay" id="modal-doddfrank" role="dialog" aria-modal="true" aria-labelledby="modal-title-doddfrank">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-doddfrank">Dodd-Frank Wall Street Reform and Consumer Protection Act</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-doddfrank">Dodd-Frank Wall Street Reform and Consumer Protection Act</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Reform Law</div>
@@ -2571,7 +2495,7 @@ document.addEventListener('click', (e) => {
 <!-- Novation -->
 <div class="modal-overlay" id="modal-novation" role="dialog" aria-modal="true" aria-labelledby="modal-title-novation">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-novation">Novation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-novation">Novation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Process</div>
@@ -2590,7 +2514,7 @@ document.addEventListener('click', (e) => {
 <!-- VaR -->
 <div class="modal-overlay" id="modal-var" role="dialog" aria-modal="true" aria-labelledby="modal-title-var">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-var">Value-at-Risk (VaR)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-var">Value-at-Risk (VaR)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Metric</div>
@@ -2609,7 +2533,7 @@ document.addEventListener('click', (e) => {
 <!-- CNS -->
 <div class="modal-overlay" id="modal-cns" role="dialog" aria-modal="true" aria-labelledby="modal-title-cns">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cns">Continuous Net Settlement (CNS)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cns">Continuous Net Settlement (CNS)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">NSCC Service</div>
@@ -2633,7 +2557,7 @@ document.addEventListener('click', (e) => {
 <!-- SIPC -->
 <div class="modal-overlay" id="modal-sipc" role="dialog" aria-modal="true" aria-labelledby="modal-title-sipc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sipc">SIPC — Securities Investor Protection Corporation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sipc">SIPC — Securities Investor Protection Corporation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Investor Protection</div>
@@ -2654,7 +2578,7 @@ document.addEventListener('click', (e) => {
 <!-- Margin -->
 <div class="modal-overlay" id="modal-margin" role="dialog" aria-modal="true" aria-labelledby="modal-title-margin">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-margin">Margin</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-margin">Margin</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Management</div>
@@ -2678,7 +2602,7 @@ document.addEventListener('click', (e) => {
 <!-- Repo -->
 <div class="modal-overlay" id="modal-repo" role="dialog" aria-modal="true" aria-labelledby="modal-title-repo">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-repo">Repurchase Agreement (Repo)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-repo">Repurchase Agreement (Repo)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Securities Financing</div>
@@ -2704,7 +2628,7 @@ document.addEventListener('click', (e) => {
 <!-- Record Date -->
 <div class="modal-overlay" id="modal-record-date" role="dialog" aria-modal="true" aria-labelledby="modal-title-record-date">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-record-date">Record Date</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-record-date">Record Date</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Corporate Action</div>
@@ -2729,7 +2653,7 @@ document.addEventListener('click', (e) => {
 <!-- Clearing Fund -->
 <div class="modal-overlay" id="modal-clearing-fund" role="dialog" aria-modal="true" aria-labelledby="modal-title-clearing-fund">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-clearing-fund">Clearing Fund</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-clearing-fund">Clearing Fund</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Loss Absorption</div>
@@ -2750,7 +2674,7 @@ document.addEventListener('click', (e) => {
 <!-- ATOP -->
 <div class="modal-overlay" id="modal-atop" role="dialog" aria-modal="true" aria-labelledby="modal-title-atop">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-atop">ATOP — Automated Tender Offer Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-atop">ATOP — Automated Tender Offer Program</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program</div>
@@ -2774,7 +2698,7 @@ document.addEventListener('click', (e) => {
 <!-- ASOP -->
 <div class="modal-overlay" id="modal-asop" role="dialog" aria-modal="true" aria-labelledby="modal-title-asop">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-asop">ASOP — Automated Subscription Offer Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-asop">ASOP — Automated Subscription Offer Program</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program</div>
@@ -2798,7 +2722,7 @@ document.addEventListener('click', (e) => {
 <!-- IVORS -->
 <div class="modal-overlay" id="modal-ivors" role="dialog" aria-modal="true" aria-labelledby="modal-title-ivors">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-ivors">IVORS — Investor Voluntary Redemptions and Sales</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-ivors">IVORS — Investor Voluntary Redemptions and Sales</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program</div>
@@ -2822,7 +2746,7 @@ document.addEventListener('click', (e) => {
 <!-- Mark-to-Market -->
 <div class="modal-overlay" id="modal-mark-to-market" role="dialog" aria-modal="true" aria-labelledby="modal-title-mark-to-market">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-mark-to-market">Mark-to-Market</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-mark-to-market">Mark-to-Market</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Valuation Method</div>
@@ -2841,7 +2765,7 @@ document.addEventListener('click', (e) => {
 <!-- Backtesting -->
 <div class="modal-overlay" id="modal-backtesting" role="dialog" aria-modal="true" aria-labelledby="modal-title-backtesting">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-backtesting">Backtesting</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-backtesting">Backtesting</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Validation</div>
@@ -2860,7 +2784,7 @@ document.addEventListener('click', (e) => {
 <!-- Cross-Guaranty Agreements -->
 <div class="modal-overlay" id="modal-cross-guaranty" role="dialog" aria-modal="true" aria-labelledby="modal-title-cross-guaranty">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cross-guaranty">Cross-Guaranty Agreements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cross-guaranty">Cross-Guaranty Agreements</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Risk Sharing</div>
@@ -2879,7 +2803,7 @@ document.addEventListener('click', (e) => {
 <!-- Waterfall -->
 <div class="modal-overlay" id="modal-waterfall" role="dialog" aria-modal="true" aria-labelledby="modal-title-waterfall">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-waterfall">Loss Allocation Waterfall</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-waterfall">Loss Allocation Waterfall</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Loss Allocation</div>
@@ -2905,7 +2829,7 @@ document.addEventListener('click', (e) => {
 <!-- GCF Repo -->
 <div class="modal-overlay" id="modal-gcf-repo" role="dialog" aria-modal="true" aria-labelledby="modal-title-gcf-repo">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-gcf-repo">GCF Repo — Government Securities Financing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-gcf-repo">GCF Repo — Government Securities Financing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">FICC Service</div>
@@ -2929,7 +2853,7 @@ document.addEventListener('click', (e) => {
 <!-- CCIT -->
 <div class="modal-overlay" id="modal-ccit" role="dialog" aria-modal="true" aria-labelledby="modal-title-ccit">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-ccit">CCIT — Commercial Collateral Improvement Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-ccit">CCIT — Commercial Collateral Improvement Program</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">FICC Service</div>
@@ -2953,7 +2877,7 @@ document.addEventListener('click', (e) => {
 <!-- TBA -->
 <div class="modal-overlay" id="modal-tba" role="dialog" aria-modal="true" aria-labelledby="modal-title-tba">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tba">TBA — To-Be-Announced</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tba">TBA — To-Be-Announced</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">MBS Market</div>
@@ -2979,7 +2903,7 @@ document.addEventListener('click', (e) => {
 <!-- Uniform Practice Code -->
 <div class="modal-overlay" id="modal-uniform-practice" role="dialog" aria-modal="true" aria-labelledby="modal-title-uniform-practice">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-uniform-practice">Uniform Practice Code</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-uniform-practice">Uniform Practice Code</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Industry Standard</div>
@@ -3005,7 +2929,7 @@ document.addEventListener('click', (e) => {
 <!-- SIFMA -->
 <div class="modal-overlay" id="modal-sifma" role="dialog" aria-modal="true" aria-labelledby="modal-title-sifma">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sifma">SIFMA — Securities Industry and Financial Markets Association</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sifma">SIFMA — Securities Industry and Financial Markets Association</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Industry Association</div>
@@ -3029,7 +2953,7 @@ document.addEventListener('click', (e) => {
 <!-- Tender Offers -->
 <div class="modal-overlay" id="modal-tender-offer" role="dialog" aria-modal="true" aria-labelledby="modal-title-tender-offer">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tender-offer">Tender Offer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tender-offer">Tender Offer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Corporate Action</div>
@@ -3060,7 +2984,7 @@ document.addEventListener('click', (e) => {
 <!-- Rights Offerings -->
 <div class="modal-overlay" id="modal-rights-offering" role="dialog" aria-modal="true" aria-labelledby="modal-title-rights-offering">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-rights-offering">Rights Offering</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-rights-offering">Rights Offering</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Corporate Action</div>
@@ -3091,7 +3015,7 @@ document.addEventListener('click', (e) => {
 <!-- NOBO/OBO -->
 <div class="modal-overlay" id="modal-nobo-obo" role="dialog" aria-modal="true" aria-labelledby="modal-title-nobo-obo">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nobo-obo">NOBO/OBO — Investor Privacy Preferences</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nobo-obo">NOBO/OBO — Investor Privacy Preferences</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Investor Status</div>
@@ -3117,7 +3041,7 @@ document.addEventListener('click', (e) => {
 <!-- PWP -->
 <div class="modal-overlay" id="modal-pwp" role="dialog" aria-modal="true" aria-labelledby="modal-title-pwp">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-pwp">PWP — Payment Without Presentation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-pwp">PWP — Payment Without Presentation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Processing Procedure</div>
@@ -3148,7 +3072,7 @@ document.addEventListener('click', (e) => {
 <!-- Maturity Redemptions -->
 <div class="modal-overlay" id="modal-maturity-redemption" role="dialog" aria-modal="true" aria-labelledby="modal-title-maturity-redemption">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-maturity-redemption">Maturity Redemption</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-maturity-redemption">Maturity Redemption</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Redemption Type</div>
@@ -3179,7 +3103,7 @@ document.addEventListener('click', (e) => {
 <!-- Call Redemptions -->
 <div class="modal-overlay" id="modal-call-redemption" role="dialog" aria-modal="true" aria-labelledby="modal-title-call-redemption">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-call-redemption">Call Redemption</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-call-redemption">Call Redemption</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Redemption Type</div>
@@ -3208,6 +3132,388 @@ document.addEventListener('click', (e) => {
     </div>
   </div>
 </div>
+
+<!-- Quiz Section -->
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">Securities Infrastructure Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of DTC, DTCC, and the U.S. securities infrastructure. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is the primary function of the Depository Trust Company (DTC)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>Trading stocks and bonds</span></label>
+          <label><input type="radio" name="q1" value="b"><span>Setting interest rates for securities</span></label>
+          <label><input type="radio" name="q1" value="c"><span>Safekeeping and transfer of securities in book-entry form</span></label>
+          <label><input type="radio" name="q1" value="d"><span>Providing insurance for investors</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q1"></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is Cede & Co.?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>DTC's parent company</span></label>
+          <label><input type="radio" name="q2" value="b"><span>DTC's nominee that holds legal title to securities</span></label>
+          <label><input type="radio" name="q2" value="c"><span>A DTC subsidiary that handles foreign securities</span></label>
+          <label><input type="radio" name="q2" value="d"><span>The regulatory body that oversees DTC</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q2"></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What does NSCC primarily do?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>Store physical certificates</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Clear and net equity trades</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Issue new securities</span></label>
+          <label><input type="radio" name="q3" value="d"><span>Regulate stock exchanges</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q3"></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the difference between legal owner and beneficial owner?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>Legal owner receives dividends, beneficial owner votes</span></label>
+          <label><input type="radio" name="q4" value="b"><span>Legal owner holds title, beneficial owner receives economic benefits</span></label>
+          <label><input type="radio" name="q4" value="c"><span>Legal owner is the broker, beneficial owner is the issuer</span></label>
+          <label><input type="radio" name="q4" value="d"><span>There is no difference in book-entry systems</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q4"></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is DVP (Delivery Versus Payment)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>Same-day settlement of securities trades</span></label>
+          <label><input type="radio" name="q5" value="b"><span>Simultaneous exchange of securities and cash to eliminate settlement risk</span></label>
+          <label><input type="radio" name="q5" value="c"><span>Method for pricing derivatives</span></label>
+          <label><input type="radio" name="q5" value="d"><span>Type of bond that can be converted to stock</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q5"></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What does FAST stand for and what is its purpose?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>Federal Automated Securities Transfer - regulates DTC</span></label>
+          <label><input type="radio" name="q6" value="b"><span>Federal Automated Securities Tracking - tracks investor holdings</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Fedwire Automated Securities Transfer - wire transfer system</span></label>
+          <label><input type="radio" name="q6" value="d"><span>Faster Automated Settlement Transfer - T+1 settlement</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q6"></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is the main purpose of multilateral netting?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>To increase trading volume</span></label>
+          <label><input type="radio" name="q7" value="b"><span>To reduce settlement obligations and risk</span></label>
+          <label><input type="radio" name="q7" value="c"><span>To provide insurance against default</span></label>
+          <label><input type="radio" name="q7" value="d"><span>To track market prices in real time</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q7"></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is a Central Counterparty (CCP)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>A bank that holds customer cash</span></label>
+          <label><input type="radio" name="q8" value="b"><span>An entity that becomes the buyer to every seller and seller to every buyer</span></label>
+          <label><input type="radio" name="q8" value="c"><span>A regulatory agency for exchanges</span></label>
+          <label><input type="radio" name="q8" value="d"><span>A type of mutual fund</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q8"></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is the primary role of the Federal Reserve Bank of New York in securities settlement?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>Issue new securities</span></label>
+          <label><input type="radio" name="q9" value="b"><span>Provide central bank money settlement services</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Regulate the stock market</span></label>
+          <label><input type="radio" name="q9" value="d"><span>Provide insurance for investors</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q9"></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of a clearing fund?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>To pay for building maintenance</span></label>
+          <label><input type="radio" name="q10" value="b"><span>To provide loans to clearing members</span></label>
+          <label><input type="radio" name="q10" value="c"><span>To absorb losses from a member default</span></label>
+          <label><input type="radio" name="q10" value="d"><span>To purchase government securities</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q10"></div>
+      </div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is CNS (Continuous Net Settlement)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="a"><span>A type of bond</span></label>
+          <label><input type="radio" name="q11" value="b"><span>A system that nets trades throughout the day to reduce settlement obligations</span></label>
+          <label><input type="radio" name="q11" value="c"><span>A regulatory agency</span></label>
+          <label><input type="radio" name="q11" value="d"><span>A trading platform</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q11"></div>
+      </div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is T+1 settlement?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="a"><span>Settlement occurs 1 second after trade</span></label>
+          <label><input type="radio" name="q12" value="b"><span>Settlement occurs 1 minute after trade</span></label>
+          <label><input type="radio" name="q12" value="c"><span>Settlement occurs 1 business day after trade</span></label>
+          <label><input type="radio" name="q12" value="d"><span>Settlement occurs 1 week after trade</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q12"></div>
+      </div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is a DTC Participant?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="a"><span>Individual investors</span></label>
+          <label><input type="radio" name="q13" value="b"><span>Broker-dealers and banks that have accounts with DTC</span></label>
+          <label><input type="radio" name="q13" value="c"><span>Government regulators</span></label>
+          <label><input type="radio" name="q13" value="d"><span>Insurance companies</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q13"></div>
+      </div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is the primary difference between Euroclear and DTC?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q14" value="a"><span>Euroclear is for bonds, DTC is for stocks</span></label>
+          <label><input type="radio" name="q14" value="b"><span>Euroclear is European, DTC is American</span></label>
+          <label><input type="radio" name="q14" value="c"><span>Euroclear is government-owned, DTC is private</span></label>
+          <label><input type="radio" name="q14" value="d"><span>There is no difference</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q14"></div>
+      </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of SIPC (Securities Investor Protection Corporation)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q15" value="a"><span>To protect investors from market losses</span></label>
+          <label><input type="radio" name="q15" value="b"><span>To insure customer accounts up to $500,000 if a broker fails</span></label>
+          <label><input type="radio" name="q15" value="c"><span>To regulate stock exchanges</span></label>
+          <label><input type="radio" name="q15" value="d"><span>To provide loans to investors</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q15"></div>
+      </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is a Central Securities Depository (CSD)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q16" value="a"><span>A bank that holds cash deposits</span></label>
+          <label><input type="radio" name="q16" value="b"><span>An institution that holds securities in electronic form and facilitates settlement</span></label>
+          <label><input type="radio" name="q16" value="c"><span>A regulatory agency</span></label>
+          <label><input type="radio" name="q16" value="d"><span>A type of investment fund</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q16"></div>
+      </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the main purpose of the DTCC as a parent company?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q17" value="a"><span>To trade stocks directly</span></label>
+          <label><input type="radio" name="q17" value="b"><span>To oversee and coordinate subsidiaries like DTC, NSCC, and FICC</span></label>
+          <label><input type="radio" name="q17" value="c"><span>To issue government regulations</span></label>
+          <label><input type="radio" name="q17" value="d"><span>To provide investment advice</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q17"></div>
+      </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is a SIFMU (Systemically Important Financial Market Utility)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q18" value="a"><span>A small bank</span></label>
+          <label><input type="radio" name="q18" value="b"><span>A financial institution whose failure could threaten financial stability</span></label>
+          <label><input type="radio" name="q18" value="c"><span>A type of mutual fund</span></label>
+          <label><input type="radio" name="q18" value="d"><span>A government department</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q18"></div>
+      </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of proxy voting in the securities system?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q19" value="a"><span>To count votes for elections</span></label>
+          <label><input type="radio" name="q19" value="b"><span>To allow shareholders to vote on corporate matters through DTC participants</span></label>
+          <label><input type="radio" name="q19" value="c"><span>To elect DTC board members</span></label>
+          <label><input type="radio" name="q19" value="d"><span>To regulate stock prices</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q19"></div>
+      </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the primary benefit of the book-entry system over physical certificates?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q20" value="a"><span>Certificates look better on paper</span></label>
+          <label><input type="radio" name="q20" value="b"><span>Electronic records are more efficient and reduce physical handling risks</span></label>
+          <label><input type="radio" name="q20" value="c"><span>Certificates are more secure</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Book-entry systems are more expensive to maintain</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/quiz.js"></script>
+<script>
+// DTC Guide Quiz Answers
+const dtcGuideAnswers = {
+  q1: { correct: 'c', explanation: 'DTC\'s primary function is safekeeping and transfer of securities in book-entry (electronic) form, eliminating physical certificate movement and enabling efficient settlement.' },
+  q2: { correct: 'b', explanation: 'Cede & Co. is DTC\'s nominee that holds legal title to all securities deposited in the depository. Beneficial owners retain economic rights while Cede & Co. holds legal title for book-entry purposes.' },
+  q3: { correct: 'b', explanation: 'NSCC (National Securities Clearing Corporation) primarily clears and nets equity trades, reducing multiple settlement obligations between the same counterparties into single net settlements.' },
+  q4: { correct: 'b', explanation: 'Legal owner (Cede & Co.) holds title to securities, while beneficial owners (investors through participants) receive economic benefits like dividends and price appreciation.' },
+  q5: { correct: 'b', explanation: 'DVP (Delivery Versus Payment) ensures simultaneous exchange of securities and cash, eliminating the risk that one party delivers securities without receiving payment or vice versa.' },
+  q6: { correct: 'c', explanation: 'FAST stands for Fedwire Automated Securities Transfer, which is the Federal Reserve\'s wire transfer system for moving securities between accounts in exchange for cash settlement.' },
+  q7: { correct: 'b', explanation: 'Multilateral netting reduces settlement obligations by netting trades between the same counterparties throughout the day, dramatically reducing the number of actual settlements needed.' },
+  q8: { correct: 'b', explanation: 'A CCP becomes the buyer to every seller and seller to every buyer in trades it clears, reducing counterparty risk by guaranteeing settlement even if one party defaults.' },
+  q9: { correct: 'b', explanation: 'The Federal Reserve Bank of New York provides central bank money settlement services, which is the safest form of settlement because it removes commercial bank credit risk.' },
+  q10: { correct: 'c', explanation: 'The clearing fund is a pool of cash and securities contributed by clearing members to absorb losses if a member defaults, protecting the system and surviving members.' },
+  q11: { correct: 'b', explanation: 'CNS (Continuous Net Settlement) nets trades throughout the day, reducing what might be 100 separate settlements between two firms to a single net settlement, reducing settlement obligations by about 98%.' },
+  q12: { correct: 'c', explanation: 'T+1 settlement means securities trades settle one business day after the trade date, reducing the time between trade and settlement compared to the traditional T+2.' },
+  q13: { correct: 'b', explanation: 'DTC Participants are broker-dealers, banks, and other financial institutions that maintain accounts with DTC to hold and transfer securities on behalf of their customers.' },
+  q14: { correct: 'b', explanation: 'Euroclear is a major international CSD serving European markets, while DTC is the primary CSD for U.S. markets. Both provide similar services but in different jurisdictions.' },
+  q15: { correct: 'b', explanation: 'SIPC protects investors if a broker-dealer fails, insuring customer accounts up to $500,000 (including up to $250,000 for cash claims) to replace missing securities and cash.' },
+  q16: { correct: 'b', explanation: 'A Central Securities Depository (CSD) is an institution that holds securities in electronic form and facilitates settlement, book-entry transfers, and related services for its participants.' },
+  q17: { correct: 'b', explanation: 'DTCC is the parent company that coordinates subsidiaries like DTC (depository), NSCC (equity clearing), and FICC (fixed income clearing), providing integrated services for the U.S. securities industry.' },
+  q18: { correct: 'b', explanation: 'SIFMUs are institutions like DTC and NSCC whose failure could pose systemic risk to the financial system, subject to enhanced regulatory oversight and risk management requirements.' },
+  q19: { correct: 'b', explanation: 'Proxy voting allows shareholders to vote on corporate matters like director elections and mergers through their DTC participants, even though Cede & Co. holds legal title.' },
+  q20: { correct: 'b', explanation: 'The book-entry system is more efficient than physical certificates because it eliminates physical handling risks, reduces operational costs, and enables instant electronic transfers between participants.' }
+};
+
+function resetQuiz() {
+  const currentScore = 0;
+  const answeredQuestions = new Set();
+  
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  
+  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
+    input.checked = false;
+  });
+  
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    card.classList.remove('correct', 'incorrect');
+  });
+  
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+}
+
+// Initialize quiz when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    setupQuiz(dtcGuideAnswers, 20);
+  });
+} else {
+  setupQuiz(dtcGuideAnswers, 20);
+}
+</script>
 
 </div><!-- /wrap -->
 

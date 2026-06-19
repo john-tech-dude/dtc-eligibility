@@ -7,70 +7,160 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/shared.css">
 <style>
-:root {
-  --ink: #0f1115;
-  --ink-secondary: #2d3142;
-  --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a;
-  --ink-faint: #b8bac4;
-  --border: #d0d2da;
-  --border-light: #e6e7ec;
-  --border-faint: #f0f1f5;
-  --bg: #ffffff;
-  --bg-warm: #faf9f6;
-  --bg-cream: #f7f5f0;
-  --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c;
-  --accent-light: #e8f0f8;
-  --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640;
-  --gold: #a67c00;
-  --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a;
-  --gold-deep: #7a5c00;
-  --green: #1a5c3a;
-  --green-light: #e8f8f0;
-  --teal: #0d7377;
-  --teal-light: #e6f7f7;
-  --red: #8c1a1a;
-  --red-light: #fdf0f0;
-  --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
+/* CSS variables and base styles moved to shared.css */
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-/* Accessibility Focus States */
+/* Index-specific focus override */
 button:focus-visible,
 a:focus-visible,
 [tabindex="0"]:focus-visible {
-  outline: 2px solid var(--accent-gold);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
-button:focus:not(:focus-visible),
-a:focus:not(:focus-visible),
-[tabindex="0"]:focus:not(:focus-visible) {
-  outline: none;
+/* ─── Search Section ─── */
+.search-section {
+  margin-bottom: 40px;
 }
 
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-warm);
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 58, 92, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 40px 8px 44px;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
   color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: var(--ink-muted);
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: var(--border-light);
+  border: none;
+  border-radius: 50%;
+  color: var(--ink-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.search-clear:hover {
+  background: var(--border);
+  color: var(--ink);
+}
+
+.search-clear.hidden {
+  display: none;
+}
+
+.search-results {
+  margin-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-result-item {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-result-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.search-result-title a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.search-result-title a:hover {
+  color: var(--accent-hover);
+}
+
+.search-result-description {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.search-result-meta {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.search-result-keywords {
+  font-style: italic;
+}
+
+.search-no-results {
+  text-align: center;
+  padding: 32px;
+  color: var(--ink-muted);
+}
+
+.search-no-results p {
+  font-size: 0.95rem;
 }
 
 /* Accessibility Focus States */
@@ -570,6 +660,29 @@ footer {
 
 <!-- ─── Main Content ─── -->
 <main class="wrap">
+  
+  <!-- Search Section -->
+  <section class="search-section">
+    <h2 class="section-title">Search Documentation</h2>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Search icon" role="img">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search documents, topics, keywords..."
+          aria-label="Search documentation"
+        />
+        <button class="search-clear" id="search-clear" aria-label="Clear search">&times;</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+  </section>
+
   <section class="documents-section">
     <h2 class="section-title">Teaching Materials</h2>
 
@@ -577,7 +690,7 @@ footer {
       <!-- Card 1: DTC Eligibility -->
       <div class="document-card professional">
         <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Document icon" role="img">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
             <polyline points="14 2 14 8 20 8"/>
             <line x1="16" y1="13" x2="8" y2="13"/>
@@ -586,7 +699,7 @@ footer {
           </svg>
         </div>
         <div class="document-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Updated badge" role="img"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Eligibility
         </div>
         <h3 class="document-title">DTC Eligibility Questionnaire</h3>
@@ -595,21 +708,21 @@ footer {
         </p>
         <div class="document-meta-list">
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Time icon" role="img"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
               <span class="document-meta-label">Learning Focus</span>
               <span class="document-meta-text">DTC eligibility requirements and assessment criteria</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Users icon" role="img"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <div>
               <span class="document-meta-label">For Learners</span>
               <span class="document-meta-text">Financial professionals, underwriters, compliance officers</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Star rating icon" role="img"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <div>
               <span class="document-meta-label">Includes</span>
               <span class="document-meta-text">Definitions, 20-question assessment, scenario walkthroughs</span>
@@ -618,21 +731,21 @@ footer {
         </div>
         <a href="forms/dtc-eligibility-questionnaire.html" class="document-button">
           Start Learning
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Arrow right icon" role="img"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- Card 2: Treasury Bill of Exchange -->
       <div class="document-card professional">
         <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Credit card icon" role="img">
             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
             <line x1="1" y1="10" x2="23" y2="10"/>
             <path d="M7 15h.01M11 15h2"/>
           </svg>
         </div>
         <div class="document-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Shield icon" role="img"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Trade Finance
         </div>
         <h3 class="document-title">Treasury International Bill of Exchange</h3>
@@ -641,21 +754,21 @@ footer {
         </p>
         <div class="document-meta-list">
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Time icon" role="img"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
               <span class="document-meta-label">Learning Focus</span>
               <span class="document-meta-text">International trade payments and documentary collections</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Users icon" role="img"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <div>
               <span class="document-meta-label">For Learners</span>
               <span class="document-meta-text">Trade finance professionals, international banking specialists</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Star rating icon" role="img"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <div>
               <span class="document-meta-label">Includes</span>
               <span class="document-meta-text">Payment wizard, documentary workflows, banking protocols</span>
@@ -664,20 +777,20 @@ footer {
         </div>
         <a href="docs/treasury-international_bill_of_exchange.html" class="document-button">
           Start Learning
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Arrow right icon" role="img"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- Card 3: SF 28 -->
       <div class="document-card professional">
         <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Shield check icon" role="img">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="M9 12l2 2 4-4"/>
           </svg>
         </div>
         <div class="document-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Close icon" role="img"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
           Government
         </div>
         <h3 class="document-title">SF 28 — Affidavit of Individual Surety</h3>
@@ -686,21 +799,21 @@ footer {
         </p>
         <div class="document-meta-list">
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Time icon" role="img"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
               <span class="document-meta-label">Learning Focus</span>
               <span class="document-meta-text">Individual surety affidavits and government contracting</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Users icon" role="img"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <div>
               <span class="document-meta-label">For Learners</span>
               <span class="document-meta-text">Contracting officers, surety providers, government contractors</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Star rating icon" role="img"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <div>
               <span class="document-meta-label">Includes</span>
               <span class="document-meta-text">Form instructions, legal obligations, capacity explanations</span>
@@ -709,20 +822,20 @@ footer {
         </div>
         <a href="guides/sf28-teaching-guide.html" class="document-button">
           Start Learning
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Arrow right icon" role="img"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- Card 4: Biblical Exegesis -->
       <div class="document-card theological">
         <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Book icon" role="img">
             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
           </svg>
         </div>
         <div class="document-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Layers icon" role="img"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           Scholarship
         </div>
         <h3 class="document-title">The DTC Documents: A Biblical Exegesis</h3>
@@ -731,21 +844,21 @@ footer {
         </p>
         <div class="document-meta-list">
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Time icon" role="img"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
               <span class="document-meta-label">Learning Focus</span>
               <span class="document-meta-text">Theological and symbolic interpretation of financial documents</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Users icon" role="img"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <div>
               <span class="document-meta-label">For Learners</span>
               <span class="document-meta-text">Biblical scholars, gematria enthusiasts, theology students</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Star rating icon" role="img"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <div>
               <span class="document-meta-label">Includes</span>
               <span class="document-meta-text">Hebrew letter analysis, numerology, temple symbolism, typology</span>
@@ -754,21 +867,21 @@ footer {
         </div>
         <a href="javascript:void(0)" class="document-button disabled">
           No Access
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Lock icon" role="img"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </a>
       </div>
 
       <!-- Card 5: Securities Ownership Wizard -->
       <div class="document-card professional">
         <div class="card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Layers icon" role="img">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
             <path d="M2 17l10 5 10-5"/>
             <path d="M2 12l10 5 10-5"/>
           </svg>
         </div>
         <div class="document-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-label="Check circle icon" role="img"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Securities
         </div>
         <h3 class="document-title">Securities Ownership Wizard — DTC, DTCC & Cede & Co.</h3>
@@ -777,21 +890,21 @@ footer {
         </p>
         <div class="document-meta-list">
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Time icon" role="img"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             <div>
               <span class="document-meta-label">Learning Focus</span>
               <span class="document-meta-text">Securities ownership and clearing infrastructure</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Users icon" role="img"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <div>
               <span class="document-meta-label">For Learners</span>
               <span class="document-meta-text">Financial professionals, investors, securities industry participants</span>
             </div>
           </div>
           <div class="document-meta-item">
-            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Star rating icon" role="img"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <div>
               <span class="document-meta-label">Includes</span>
               <span class="document-meta-text">DTC/DTCC overview, settlement processes, Cede & Co. system</span>
@@ -800,7 +913,7 @@ footer {
         </div>
         <a href="guides/dtc-guide.html" class="document-button">
           Start Learning
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Arrow right icon" role="img"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -811,7 +924,7 @@ footer {
     <div class="note-card">
       <div class="note-header">
         <div class="note-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Info icon" role="img">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="16" x2="12" y2="12"/>
             <line x1="12" y1="8" x2="12.01" y2="8"/>
@@ -830,8 +943,36 @@ footer {
 <footer>
   <p class="footer-title">DTC Documents Collection</p>
   <p class="footer-subtext">June 2026 · Teaching materials for financial infrastructure and regulatory processes</p>
+  <p style="margin: 8px 0; text-align: center;">
+    <a href="sitemap.html" style="color: var(--accent); text-decoration: none;">View Site Map</a>
+  </p>
   <p class="footer-disclaimer">Educational materials for learning purposes only. Not legal or financial advice.</p>
 </footer>
+
+<script src="js/search.js"></script>
+<script>
+// Clear search functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+  const searchResults = document.getElementById('search-results');
+  
+  if (searchInput && searchClear) {
+    // Toggle clear button visibility
+    searchInput.addEventListener('input', function() {
+      searchClear.classList.toggle('hidden', this.value === '');
+    });
+    
+    // Clear search on button click
+    searchClear.addEventListener('click', function() {
+      searchInput.value = '';
+      searchClear.classList.add('hidden');
+      searchResults.innerHTML = '';
+      searchInput.focus();
+    });
+  }
+});
+</script>
 
 </body>
 </html><!-- Test deployment -->

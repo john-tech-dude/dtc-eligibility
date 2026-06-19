@@ -4,72 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DTC Eligibility Questionnaire — Enhanced Teaching Guide (June 2026 OA)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-:root {
-  --ink: #0f1115;
-  --ink-secondary: #2d3142;
-  --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a;
-  --ink-faint: #b8bac4;
-  --border: #d0d2da;
-  --border-light: #e6e7ec;
-  --border-faint: #f0f1f5;
-  --bg: #ffffff;
-  --bg-warm: #faf9f6;
-  --bg-cream: #f7f5f0;
-  --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c;
-  --accent-light: #e8f0f8;
-  --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640;
-  --gold: #a67c00;
-  --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a;
-  --gold-deep: #7a5c00;
-  --green: #1a5c3a;
-  --green-light: #e8f8f0;
-  --teal: #0d7377;
-  --teal-light: #e6f7f7;
-  --red: #8c1a1a;
-  --red-light: #fdf0f0;
-  --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* Accessibility Focus States */
-button:focus-visible,
-a:focus-visible,
-[tabindex="0"]:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
-
-button:focus:not(:focus-visible),
-a:focus:not(:focus-visible),
-[tabindex="0"]:focus:not(:focus-visible) {
-  outline: none;
-}
-
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-warm);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* CSS variables and base styles moved to shared.css */
 
 /* ── TOC Sidebar ── */
 .toc-sidebar {
@@ -104,7 +45,7 @@ body {
   transition: all 0.2s;
 }
 .toc-toggle:hover { background: var(--accent-hover); }
-.toc-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.toc-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
@@ -140,6 +81,30 @@ body {
   color: var(--ink-muted); cursor: pointer;
 }
 .toc-close:focus-visible { outline: 2px solid var(--accent); border-radius: 2px; }
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
+}
 
 /* ── Page Header ── */
 .page-header {
@@ -1072,11 +1037,11 @@ body {
   <a href="#quiz">Comprehensive Knowledge Check</a>
   <a href="#footnotes">Footnotes</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
-  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
-  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
-  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide <span class="toc-desc">↗ Infrastructure & processes</span></a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange <span class="toc-desc">↗ Trade finance & payment systems</span></a>
+  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety <span class="toc-desc">↗ Bond guarantee requirements</span></a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -1086,6 +1051,11 @@ body {
       <div class="header-text">
         <h1>Eligibility Questionnaire — Enhanced Teaching Guide</h1>
         <div class="sub">Updated for June 2026 Operational Arrangements · Interactive definitions · Scenario walkthroughs</div>
+        <div class="header-meta">
+          <span class="last-updated">Last updated: June 18, 2026</span>
+          <span class="header-meta-separator">·</span>
+          <span class="doc-type">Interactive Assessment</span>
+        </div>
       </div>
     </div>
     <div class="header-badge">Teaching Tool</div>
@@ -1093,6 +1063,16 @@ body {
 </div>
 
 <div class="wrap">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../index.html">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Forms & Questionnaires</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Eligibility Questionnaire</span>
+</nav>
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -2449,7 +2429,7 @@ function resetQuiz() {
 <!-- how-to-use -->
 <div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <p>This guide merges the original DTC Eligibility Questionnaire (dated June 2000) with interactive definitions from the June 2026 Operational Arrangements and SEC regulations.</p>
       <p><strong>How to navigate:</strong></p>
@@ -2469,7 +2449,7 @@ function resetQuiz() {
 <!-- DTC -->
 <div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtc">The Depository Trust Company (DTC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtc">The Depository Trust Company (DTC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Definition</div>
@@ -2487,7 +2467,7 @@ function resetQuiz() {
 <!-- DTCC -->
 <div class="modal-overlay" id="modal-dtcc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtcc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtcc">The Depository Trust &amp; Clearing Corporation (DTCC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtcc">The Depository Trust &amp; Clearing Corporation (DTCC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Parent Organization</div>
@@ -2508,7 +2488,7 @@ function resetQuiz() {
 <!-- DTC ELIGIBLE -->
 <div class="modal-overlay" id="modal-dtc-eligible" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc-eligible">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtc-eligible">What does "DTC Eligible" mean?</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtc-eligible">What does "DTC Eligible" mean?</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Eligibility Standard</div>
@@ -2528,7 +2508,7 @@ function resetQuiz() {
 <!-- UW SOURCE -->
 <div class="modal-overlay" id="modal-uw-source" role="dialog" aria-modal="true" aria-labelledby="modal-title-uw-source">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-uw-source">UW SOURCE / Underwriting Central (UWC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-uw-source">UW SOURCE / Underwriting Central (UWC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Electronic Submission Platform</div>
@@ -2551,7 +2531,7 @@ function resetQuiz() {
 <!-- AGENT CONFIRMATION -->
 <div class="modal-overlay" id="modal-agent-confirmation" role="dialog" aria-modal="true" aria-labelledby="modal-title-agent-confirmation">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-agent-confirmation">Agent Confirmation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-agent-confirmation">Agent Confirmation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Updated Requirement (June 2026 OA)</div>
@@ -2575,7 +2555,7 @@ function resetQuiz() {
 <!-- UNDERWRITING DEPT -->
 <div class="modal-overlay" id="modal-underwriting-dept" role="dialog" aria-modal="true" aria-labelledby="modal-title-underwriting-dept">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-underwriting-dept">DTC Underwriting Department</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-underwriting-dept">DTC Underwriting Department</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Department</div>
@@ -2598,7 +2578,7 @@ function resetQuiz() {
 <!-- CLOSING DATE -->
 <div class="modal-overlay" id="modal-closing-date" role="dialog" aria-modal="true" aria-labelledby="modal-title-closing-date">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-closing-date">Closing Date</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-closing-date">Closing Date</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Transaction Milestone</div>
@@ -2615,7 +2595,7 @@ function resetQuiz() {
 <!-- CUSIP -->
 <div class="modal-overlay" id="modal-cusip" role="dialog" aria-modal="true" aria-labelledby="modal-title-cusip">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cusip">CUSIP — Committee on Uniform Securities Identification Procedures</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cusip">CUSIP — Committee on Uniform Securities Identification Procedures</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Identifier System</div>
@@ -2682,7 +2662,7 @@ function resetQuiz() {
 <!-- CERTIFICATE REQUIREMENTS -->
 <div class="modal-overlay" id="modal-certificate-req" role="dialog" aria-modal="true" aria-labelledby="modal-title-certificate-req">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-certificate-req">Certificate Requirements & Sizing Rules</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-certificate-req">Certificate Requirements & Sizing Rules</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Operational Requirement</div>
@@ -2743,7 +2723,7 @@ function resetQuiz() {
 <!-- MUNICIPAL -->
 <div class="modal-overlay" id="modal-municipal" role="dialog" aria-modal="true" aria-labelledby="modal-title-municipal">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-municipal">Municipal Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-municipal">Municipal Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Security Type</div>
@@ -2759,7 +2739,7 @@ function resetQuiz() {
 <!-- CORPORATE -->
 <div class="modal-overlay" id="modal-corporate" role="dialog" aria-modal="true" aria-labelledby="modal-title-corporate">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-corporate">Corporate Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-corporate">Corporate Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Security Type</div>
@@ -2776,7 +2756,7 @@ function resetQuiz() {
 <!-- LIMITED UNDERWRITING -->
 <div class="modal-overlay" id="modal-limited-underwriting" role="dialog" aria-modal="true" aria-labelledby="modal-title-limited-underwriting">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-limited-underwriting">Limited Underwriting</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-limited-underwriting">Limited Underwriting</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Service</div>
@@ -2792,7 +2772,7 @@ function resetQuiz() {
 <!-- ABS -->
 <div class="modal-overlay" id="modal-abs" role="dialog" aria-modal="true" aria-labelledby="modal-title-abs">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-abs">ABS — Asset-Backed Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-abs">ABS — Asset-Backed Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Structured Product</div>
@@ -2808,7 +2788,7 @@ function resetQuiz() {
 <!-- CMO -->
 <div class="modal-overlay" id="modal-cmo" role="dialog" aria-modal="true" aria-labelledby="modal-title-cmo">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cmo">CMO — Collateralized Mortgage Obligation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cmo">CMO — Collateralized Mortgage Obligation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Structured Product</div>
@@ -2824,7 +2804,7 @@ function resetQuiz() {
 <!-- ARTICLE 8 -->
 <div class="modal-overlay" id="modal-article8" role="dialog" aria-modal="true" aria-labelledby="modal-title-article8">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-article8">Article 8 of the NY UCC — "Security" Definition</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-article8">Article 8 of the NY UCC — "Security" Definition</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Framework</div>
@@ -2847,7 +2827,7 @@ function resetQuiz() {
 <!-- NY UCC -->
 <div class="modal-overlay" id="modal-ny-ucc" role="dialog" aria-modal="true" aria-labelledby="modal-title-ny-ucc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-ny-ucc">New York Uniform Commercial Code (NY UCC)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-ny-ucc">New York Uniform Commercial Code (NY UCC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">State Law</div>
@@ -2863,7 +2843,7 @@ function resetQuiz() {
 <!-- UK ENTITY -->
 <div class="modal-overlay" id="modal-uk-entity" role="dialog" aria-modal="true" aria-labelledby="modal-title-uk-entity">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-uk-entity">United Kingdom Entity</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-uk-entity">United Kingdom Entity</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Jurisdictional Classification</div>
@@ -2881,7 +2861,7 @@ function resetQuiz() {
 <!-- SECURITIES ACT 33 -->
 <div class="modal-overlay" id="modal-securities-act-33" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-act-33">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-securities-act-33">Securities Act of 1933</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-securities-act-33">Securities Act of 1933</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Statute</div>
@@ -2897,7 +2877,7 @@ function resetQuiz() {
 <!-- INVESTMENT COMPANY ACT 40 -->
 <div class="modal-overlay" id="modal-investment-company-act-40" role="dialog" aria-modal="true" aria-labelledby="modal-title-investment-company-act-40">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-investment-company-act-40">Investment Company Act of 1940</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-investment-company-act-40">Investment Company Act of 1940</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Statute</div>
@@ -2917,7 +2897,7 @@ function resetQuiz() {
 <!-- SEC REGISTERED -->
 <div class="modal-overlay" id="modal-sec-registered" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec-registered">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sec-registered">SEC Registered Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sec-registered">SEC Registered Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Registration Status</div>
@@ -2933,7 +2913,7 @@ function resetQuiz() {
 <!-- RULE 144A -->
 <div class="modal-overlay" id="modal-rule144a" role="dialog" aria-modal="true" aria-labelledby="modal-title-rule144a">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-rule144a">Rule 144A — Private Resale to QIBs</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-rule144a">Rule 144A — Private Resale to QIBs</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">SEC Safe Harbor</div>
@@ -2955,7 +2935,7 @@ function resetQuiz() {
 <!-- REGULATION S -->
 <div class="modal-overlay" id="modal-regs" role="dialog" aria-modal="true" aria-labelledby="modal-title-regs">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-regs">Regulation S — Offshore Offerings</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-regs">Regulation S — Offshore Offerings</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">SEC Safe Harbor</div>
@@ -2985,7 +2965,7 @@ function resetQuiz() {
 <!-- 3(C)(7) -->
 <div class="modal-overlay" id="modal-3c7" role="dialog" aria-modal="true" aria-labelledby="modal-title-3c7">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-3c7">Section 3(c)(7) of the Investment Company Act</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-3c7">Section 3(c)(7) of the Investment Company Act</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Exemption</div>
@@ -3001,7 +2981,7 @@ function resetQuiz() {
 <!-- OFAC -->
 <div class="modal-overlay" id="modal-ofac" role="dialog" aria-modal="true" aria-labelledby="modal-title-ofac">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-ofac">OFAC Compliance — Sanctions Screening</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-ofac">OFAC Compliance — Sanctions Screening</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Treasury Department</div>
@@ -3030,7 +3010,7 @@ function resetQuiz() {
 <!-- RULE 3(A)(2) -->
 <div class="modal-overlay" id="modal-rule3a2" role="dialog" aria-modal="true" aria-labelledby="modal-title-rule3a2">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-rule3a2">Rule 3(a)(2) — Exempt Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-rule3a2">Rule 3(a)(2) — Exempt Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Exemption</div>
@@ -3054,7 +3034,7 @@ function resetQuiz() {
 <!-- STATE OF INCORPORATION -->
 <div class="modal-overlay" id="modal-state-of-incorporation" role="dialog" aria-modal="true" aria-labelledby="modal-title-state-of-incorporation">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-state-of-incorporation">State of Incorporation or Municipality</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-state-of-incorporation">State of Incorporation or Municipality</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Jurisdictional Field</div>
@@ -3075,7 +3055,7 @@ function resetQuiz() {
 <!-- PRINCIPAL -->
 <div class="modal-overlay" id="modal-principal" role="dialog" aria-modal="true" aria-labelledby="modal-title-principal">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-principal">Issue Principal / Offering Amount</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-principal">Issue Principal / Offering Amount</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Offering Size</div>
@@ -3092,7 +3072,7 @@ function resetQuiz() {
 <!-- BEO -->
 <div class="modal-overlay" id="modal-beo" role="dialog" aria-modal="true" aria-labelledby="modal-title-beo">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-beo">Book-Entry-Only (BEO) Securities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-beo">Book-Entry-Only (BEO) Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Settlement Method</div>
@@ -3111,7 +3091,7 @@ function resetQuiz() {
 <!-- LOR -->
 <div class="modal-overlay" id="modal-lor" role="dialog" aria-modal="true" aria-labelledby="modal-title-lor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-lor">Letter of Representations (LOR)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-lor">Letter of Representations (LOR)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Agreement</div>
@@ -3135,7 +3115,7 @@ function resetQuiz() {
 <!-- NON-U.S. CURRENCY RIDER -->
 <div class="modal-overlay" id="modal-non-us-currency" role="dialog" aria-modal="true" aria-labelledby="modal-title-non-us-currency">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-non-us-currency">Non-U.S. Currency LOR Rider</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-non-us-currency">Non-U.S. Currency LOR Rider</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Specialized LOR Addendum</div>
@@ -3171,7 +3151,7 @@ function resetQuiz() {
 <!-- CORRESPONDENT RELATIONSHIP -->
 <div class="modal-overlay" id="modal-correspondent" role="dialog" aria-modal="true" aria-labelledby="modal-title-correspondent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-correspondent">Approved Correspondent Relationship</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-correspondent">Approved Correspondent Relationship</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Eligibility Path</div>
@@ -3200,7 +3180,7 @@ function resetQuiz() {
 <!-- PUT/TENDER -->
 <div class="modal-overlay" id="modal-put-tender" role="dialog" aria-modal="true" aria-labelledby="modal-title-put-tender">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-put-tender">Put / Tender Feature</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-put-tender">Put / Tender Feature</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Security Feature</div>
@@ -3219,7 +3199,7 @@ function resetQuiz() {
 <!-- TENDER LOR -->
 <div class="modal-overlay" id="modal-tender-lor" role="dialog" aria-modal="true" aria-labelledby="modal-title-tender-lor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tender-lor">Tender Letter of Representations</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tender-lor">Tender Letter of Representations</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Specialized Addendum</div>
@@ -3240,7 +3220,7 @@ function resetQuiz() {
 <!-- DTC PARTICIPANT -->
 <div class="modal-overlay" id="modal-dtc-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc-participant">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dtc-participant">DTC Participant</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dtc-participant">DTC Participant</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Membership Category</div>
@@ -3257,7 +3237,7 @@ function resetQuiz() {
 <!-- TRANSFER AGENT -->
 <div class="modal-overlay" id="modal-transfer-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-transfer-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-transfer-agent">Transfer Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-transfer-agent">Transfer Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Service Provider</div>
@@ -3313,7 +3293,7 @@ function resetQuiz() {
 <!-- PAYING AGENT -->
 <div class="modal-overlay" id="modal-paying-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-paying-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-paying-agent">Paying Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-paying-agent">Paying Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Service Provider</div>
@@ -3329,7 +3309,7 @@ function resetQuiz() {
 <!-- REMARKETING AGENT -->
 <div class="modal-overlay" id="modal-remarketing-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-remarketing-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-remarketing-agent">Remarketing Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-remarketing-agent">Remarketing Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Service Provider</div>
@@ -3345,7 +3325,7 @@ function resetQuiz() {
 <!-- TENDER AGENT -->
 <div class="modal-overlay" id="modal-tender-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-tender-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tender-agent">Tender Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tender-agent">Tender Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Service Provider</div>
@@ -3361,7 +3341,7 @@ function resetQuiz() {
 <!-- FAST -->
 <div class="modal-overlay" id="modal-fast" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-fast">FAST — Fast Automated Securities Transfer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-fast">FAST — Fast Automated Securities Transfer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program</div>
@@ -3410,7 +3390,7 @@ function resetQuiz() {
 <!-- INTERFACE DEPT -->
 <div class="modal-overlay" id="modal-interface-dept" role="dialog" aria-modal="true" aria-labelledby="modal-title-interface-dept">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-interface-dept">DTC Interface / Underwriting Department</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-interface-dept">DTC Interface / Underwriting Department</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Department</div>
@@ -3433,7 +3413,7 @@ function resetQuiz() {
 <!-- UNDERWRITER -->
 <div class="modal-overlay" id="modal-underwriter" role="dialog" aria-modal="true" aria-labelledby="modal-title-underwriter">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-underwriter">Underwriter</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-underwriter">Underwriter</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Role</div>
@@ -3452,7 +3432,7 @@ function resetQuiz() {
 <!-- FINANCIAL ADVISOR -->
 <div class="modal-overlay" id="modal-financial-advisor" role="dialog" aria-modal="true" aria-labelledby="modal-title-financial-advisor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-financial-advisor">Financial Advisor</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-financial-advisor">Financial Advisor</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Role</div>
@@ -3468,7 +3448,7 @@ function resetQuiz() {
 <!-- CEDE & CO. -->
 <div class="modal-overlay" id="modal-cede-co" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede-co">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cede-co">Cede &amp; Co. — DTC's Nominee</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cede-co">Cede &amp; Co. — DTC's Nominee</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Nominee Name</div>
@@ -3507,7 +3487,7 @@ function resetQuiz() {
 <!-- ISSUER NAME -->
 <div class="modal-overlay" id="modal-issuer-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-issuer-name">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-issuer-name">Issuer Name / Issue Description</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-issuer-name">Issuer Name / Issue Description</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3543,7 +3523,7 @@ function resetQuiz() {
 <!-- SHARE QUANTITY -->
 <div class="modal-overlay" id="modal-share-quantity" role="dialog" aria-modal="true" aria-labelledby="modal-title-share-quantity">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-share-quantity">Share Quantity</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-share-quantity">Share Quantity</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3573,7 +3553,7 @@ function resetQuiz() {
 <!-- CLOSING DATE LABEL -->
 <div class="modal-overlay" id="modal-closing-date-label" role="dialog" aria-modal="true" aria-labelledby="modal-title-closing-date-label">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-closing-date-label">Closing Date — Form Field</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-closing-date-label">Closing Date — Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3603,7 +3583,7 @@ function resetQuiz() {
 <!-- LEAD UNDERWRITER -->
 <div class="modal-overlay" id="modal-lead-underwriter" role="dialog" aria-modal="true" aria-labelledby="modal-title-lead-underwriter">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-lead-underwriter">Lead Underwriter — Form Field</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-lead-underwriter">Lead Underwriter — Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3634,7 +3614,7 @@ function resetQuiz() {
 <!-- LEAD UNDERWRITER CONTACT -->
 <div class="modal-overlay" id="modal-lead-underwriter-contact" role="dialog" aria-modal="true" aria-labelledby="modal-title-lead-underwriter-contact">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-lead-underwriter-contact">Lead Underwriter Contact — Form Field</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-lead-underwriter-contact">Lead Underwriter Contact — Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3669,7 +3649,7 @@ function resetQuiz() {
 <!-- ISSUER'S COUNSEL -->
 <div class="modal-overlay" id="modal-issuers-counsel" role="dialog" aria-modal="true" aria-labelledby="modal-title-issuers-counsel">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-issuers-counsel">Issuer's Counsel — Form Field</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-issuers-counsel">Issuer's Counsel — Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -3709,7 +3689,7 @@ function resetQuiz() {
 <!-- CUSIP NUMBER COLUMN -->
 <div class="modal-overlay" id="modal-cusip-number-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-cusip-number-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cusip-number-col">CUSIP Number — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cusip-number-col">CUSIP Number — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3734,7 +3714,7 @@ function resetQuiz() {
 <!-- INTEREST RATE COLUMN -->
 <div class="modal-overlay" id="modal-interest-rate-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-interest-rate-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-interest-rate-col">Interest Rate — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-interest-rate-col">Interest Rate — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3760,7 +3740,7 @@ function resetQuiz() {
 <!-- FINAL MATURITY COLUMN -->
 <div class="modal-overlay" id="modal-maturity-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-maturity-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-maturity-col">Final Maturity / Expiration Date — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-maturity-col">Final Maturity / Expiration Date — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3787,7 +3767,7 @@ function resetQuiz() {
 <!-- PRINCIPAL / OFFERING AMOUNT COLUMN -->
 <div class="modal-overlay" id="modal-principal-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-principal-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-principal-col">Principal / Offering Amount — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-principal-col">Principal / Offering Amount — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3814,7 +3794,7 @@ function resetQuiz() {
 <!-- TYPE OF ISSUE COLUMN -->
 <div class="modal-overlay" id="modal-issue-type-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-issue-type-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-issue-type-col">Type of Issue — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-issue-type-col">Type of Issue — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3847,7 +3827,7 @@ function resetQuiz() {
 <!-- ISSUE TYPE LEGEND -->
 <div class="modal-overlay" id="modal-issue-type-legend" role="dialog" aria-modal="true" aria-labelledby="modal-title-issue-type-legend">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-issue-type-legend">Type of Issue Legend — C, P, S, T</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-issue-type-legend">Type of Issue Legend — C, P, S, T</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legend Reference</div>
@@ -3883,7 +3863,7 @@ function resetQuiz() {
 <!-- INITIAL OFFERING PRICE COLUMN -->
 <div class="modal-overlay" id="modal-offering-price-col" role="dialog" aria-modal="true" aria-labelledby="modal-title-offering-price-col">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-offering-price-col">Initial Offering Price (To the Public) — Column Explained</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-offering-price-col">Initial Offering Price (To the Public) — Column Explained</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Column Field</div>
@@ -3917,7 +3897,7 @@ function resetQuiz() {
 <!-- QIB -->
 <div class="modal-overlay" id="modal-qib" role="dialog" aria-modal="true" aria-labelledby="modal-title-qib">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-qib">Qualified Institutional Buyer (QIB)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-qib">Qualified Institutional Buyer (QIB)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Institutional Investor Category</div>
@@ -3947,7 +3927,7 @@ function resetQuiz() {
 <!-- BLOR -->
 <div class="modal-overlay" id="modal-blor" role="dialog" aria-modal="true" aria-labelledby="modal-title-blor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-blor">Blanket Letter of Representations (BLOR)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-blor">Blanket Letter of Representations (BLOR)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Agreement</div>
@@ -3981,7 +3961,7 @@ function resetQuiz() {
 <!-- REIT -->
 <div class="modal-overlay" id="modal-reit" role="dialog" aria-modal="true" aria-labelledby="modal-title-reit">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-reit">Real Estate Investment Trust (REIT)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-reit">Real Estate Investment Trust (REIT)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Corporate Structure</div>
@@ -4007,7 +3987,7 @@ function resetQuiz() {
 <!-- NOL -->
 <div class="modal-overlay" id="modal-nol" role="dialog" aria-modal="true" aria-labelledby="modal-title-nol">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nol">Net Operating Loss (NOL) Carryforwards</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nol">Net Operating Loss (NOL) Carryforwards</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Tax Attribute</div>
@@ -4036,7 +4016,7 @@ function resetQuiz() {
 <!-- Indemnity Letter -->
 <div class="modal-overlay" id="modal-indemnity-letter" role="dialog" aria-modal="true" aria-labelledby="modal-title-indemnity-letter">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-indemnity-letter">Indemnity Letter</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-indemnity-letter">Indemnity Letter</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Protection Document</div>
@@ -4068,7 +4048,7 @@ function resetQuiz() {
 <!-- Commercial Paper -->
 <div class="modal-overlay" id="modal-commercial-paper" role="dialog" aria-modal="true" aria-labelledby="modal-title-commercial-paper">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-commercial-paper">Commercial Paper</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-commercial-paper">Commercial Paper</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Short-Term Debt Instrument</div>
@@ -4099,7 +4079,7 @@ function resetQuiz() {
 <!-- Banker's Acceptance -->
 <div class="modal-overlay" id="modal-bankers-acceptance" role="dialog" aria-modal="true" aria-labelledby="modal-title-bankers-acceptance">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bankers-acceptance">Banker's Acceptance</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bankers-acceptance">Banker's Acceptance</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Short-Term Credit Instrument</div>
@@ -4129,7 +4109,7 @@ function resetQuiz() {
 <!-- FAST Agent -->
 <div class="modal-overlay" id="modal-fast-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast-agent">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-fast-agent">FAST Agent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-fast-agent">FAST Agent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">DTC Program Participant</div>
@@ -4159,7 +4139,7 @@ function resetQuiz() {
 <!-- Serial Maturities -->
 <div class="modal-overlay" id="modal-serial-maturities" role="dialog" aria-modal="true" aria-labelledby="modal-title-serial-maturities">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-serial-maturities">Serial Maturities</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-serial-maturities">Serial Maturities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bond Structure</div>
@@ -4188,7 +4168,7 @@ function resetQuiz() {
 <!-- Term Bond -->
 <div class="modal-overlay" id="modal-term-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-term-bond">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-term-bond">Term Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-term-bond">Term Bond</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bond Structure</div>
@@ -4218,7 +4198,7 @@ function resetQuiz() {
 <!-- Beneficial Owner -->
 <div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Ownership Concept</div>
@@ -4249,7 +4229,7 @@ function resetQuiz() {
 <!-- Nominee -->
 <div class="modal-overlay" id="modal-nominee" role="dialog" aria-modal="true" aria-labelledby="modal-title-nominee">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nominee">Nominee</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Concept</div>
@@ -4283,82 +4263,9 @@ function resetQuiz() {
   </div>
 </div>
 
+<script src="../js/shared.js"></script>
 <script>
-/* ── Simple Modal System ── */
-let currentModal = null;
-
-function openModal(id) {
-  // Close any open modal first
-  if (currentModal) {
-    currentModal.classList.remove('active');
-  }
-  
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.classList.add('active');
-    currentModal = modal;
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal() {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-    currentModal = null;
-    document.body.style.overflow = '';
-  }
-}
-
-// Close modal when clicking outside
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    closeModal();
-  }
-});
-
-// Close modal on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-// ── TOC Sidebar ──
-function toggleToc() {
-  document.getElementById('tocSidebar').classList.toggle('open');
-}
-
-// Close TOC on Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const toc = document.getElementById('tocSidebar');
-    if (toc && toc.classList.contains('open')) {
-      toc.classList.remove('open');
-    }
-  }
-});
-
-// Close TOC when clicking outside
-document.addEventListener('click', (e) => {
-  const toc = document.getElementById('tocSidebar');
-  const toggle = document.querySelector('.toc-toggle');
-  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
-    toc.classList.remove('open');
-  }
-});
-
-// Swipe to close TOC on mobile
-document.addEventListener('DOMContentLoaded', function() {
-  let touchStartX = 0;
-  const toc = document.getElementById('tocSidebar');
-  if (toc) {
-    toc.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
-    toc.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].screenX;
-      if (touchStartX - touchEndX > 50) { toc.classList.remove('open'); }
-    });
-  }
-});
+/* Document-specific JavaScript */
 
 // ── Scenario Tabs ──
 function showScenario(id) {

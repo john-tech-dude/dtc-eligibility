@@ -4,45 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trade Payment Wizard — International Documentary Collection & Bill of Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-:root {
-  --ink: #0f1115; --ink-secondary: #2d3142; --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a; --ink-faint: #b8bac4; --border: #d0d2da;
-  --border-light: #e6e7ec; --border-faint: #f0f1f5; --bg: #ffffff;
-  --bg-warm: #faf9f6; --bg-cream: #f7f5f0; --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c; --accent-light: #e8f0f8; --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640; --gold: #a67c00; --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a; --gold-deep: #7a5c00; --green: #1a5c3a;
-  --green-light: #e8f8f0; --teal: #0d7377; --teal-light: #e6f7f7;
-  --red: #8c1a1a; --red-light: #fdf0f0; --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65); --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06); --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16); --radius-sm: 4px;
-  --radius-md: 8px; --radius-lg: 12px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* Accessibility Focus States */
-button:focus-visible,
-a:focus-visible,
-[tabindex="0"]:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-button:focus:not(:focus-visible),
-a:focus:not(:focus-visible),
-[tabindex="0"]:focus:not(:focus-visible) {
-  outline: none;
-}
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-warm); color: var(--ink); line-height: 1.7;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-}
+/* CSS variables and base styles moved to shared.css */
 
 /* TOC Sidebar */
 .toc-sidebar {
@@ -85,6 +53,30 @@ body {
   position: absolute; top: 16px; right: 16px;
   background: none; border: none; font-size: 1.4rem;
   color: var(--ink-muted); cursor: pointer;
+}
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
 }
 
 
@@ -367,7 +359,6 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 }
 </style>
 
-<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/RjCMBkK8jyhq9VVZpK29IYJLyL8HYCINW7YuDsa5wQyMjJjmm5U4q6AnJx_GDGnT3eBmMiZ9iQ6JN-BcHHm4t-lc-pcyOUTsl0nMkKsTGBqihmHXoknOkCPd-xzPSzzg0WuJx84e1GA7Y3zKMkdttLG-cWTz02DhWEOidwpZRo4ALKagYJginXMCLjVed6H7A9aGNOY3f5rAbz2wC8zQbaGkHaC4di19ALHgY-S1h0KV070a9PNXU8w4i5jbSjdecrmr1l0-9pKPye8McHfGab8F2l7ic1JkxvjwFXahPwFDbzIbze8RHDy7e64qTTjfMJKQc1t_L7Hc8kxVcSKGvGV7yX7i4HDVk4liW8BpOM0OfNwr6hmZ3eL5zQwy7spZzbO2M7cLHvDNhDfa8IryDbpFQoN_2jvZU3ysbjUbra-n7K6lUrOdmva-lHjLa015soYYUqbc987kIbUqIrXUXgucvDyYVjq5yIK4Q8GZZNvPKlm-EwS4srzs9JzTaGfNQnkk34qRrqK3KnZL_QkrlVt-6nVQ-TYTJSs-_fFvW_6EQDamWXcp1BsuDaH6lsdS6a2fmyZLBuGnW8kcrDMtpvDT8xiOkUBCf1XjNBUYyuayj2-4bOcchxIBXblo01f0CYJALxWGSZsRYjzxpSs6eWF7932dFGf63J27eVSSvhz5C9jDcqgNCynjSUXUaEpZ7QsOdho8H1scshxZ3faHj5fefX6g3JCouV87K08xBzbcSJy0jr5X84qMO3-yNY9O8Uy1Khh22oZT5vpxMYcjVsQvq5EnocdxVIuXW6aAvEFqDubg1bLhg2BbuX-7pziuyiL7eXJbaN3Tz-AncRi1WRIdd_PoP9FUEEgvh_BQrTD99DeeJgkIAlIcO5amcCXX8QYbwNt-mcv4Qz0acGhB1tHJGPDv2eL1x9s9sJK0sVbF0ysg6QgXCvFx1sinOn3iA14-Z3MucYCERtk0_h96OzhuGu2zLR9xcv3diD9vjrHRUCxOMBQb8yGHgLiVrLCaBYbK1yWG-gMHxnVraf47kDYyqbP0aOrX4ZhZ90LYGu_MmCWeWOvgmTls2kSoC3znHQ4MGd338qk7NuoBOapLpLo3SNlXqrUxvPyi9TSQ_TCpHeA3mH0'></script>
 </head>
 <body>
 
@@ -385,12 +376,14 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   <a href="#page3">Page 3 — Bill of Exchange</a>
   <a href="#page3" class="sub">UNCITRAL Convention</a>
   <a href="#page3" class="sub">Endorsement & Signature</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
-  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
-  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
-  <a href="dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide <span class="toc-desc">↗ Infrastructure & processes</span></a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment tool</span></a>
+  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety <span class="toc-desc">↗ Bond guarantee requirements</span></a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -400,6 +393,11 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <div class="header-text">
         <h1>Trade Payment Wizard — International Documentary Collection</h1>
         <div class="sub">Enhanced Teaching Guide with Interactive Definitions · Zions Bank</div>
+        <div class="header-meta">
+          <span class="last-updated">Last updated: June 18, 2026</span>
+          <span class="header-meta-separator">·</span>
+          <span class="doc-type">Documentation</span>
+        </div>
       </div>
     </div>
     <div class="header-badge">Teaching Tool</div>
@@ -408,17 +406,22 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 
 <div class="wrap">
 
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../index.html">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Documentation</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Treasury International Bill of Exchange</span>
+</nav>
+
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Document Guide:</strong> This is an interactive version of the Zions Bank International Documentary Collection form and Bill of Exchange. Click any <strong>underlined term</strong> for definitions and explanations.</span>
 </div>
 
 <div class="doc-frame">
-
-<div class="teach-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-  <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. Hover for highlights, click for detailed definitions and trade finance guidance.</span>
-</div>
 
 <!-- PAGE 1 -->
 <div class="page page1" id="page1">
@@ -950,7 +953,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- how-to-use -->
 <div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <p>This interactive guide presents the Zions Bank International Documentary Collection form and Bill of Exchange with clickable definitions and trade finance guidance.</p>
       <p><strong>How to navigate:</strong></p>
@@ -967,7 +970,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Bill of Exchange -->
 <div class="modal-overlay" id="modal-bill-of-exchange" role="dialog" aria-modal="true" aria-labelledby="modal-title-bill-of-exchange">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bill-of-exchange">Bill of Exchange (Draft)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bill-of-exchange">Bill of Exchange (Draft)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Negotiable Instrument</div>
@@ -995,7 +998,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Zions Bank -->
 <div class="modal-overlay" id="modal-zions-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-zions-bank">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-zions-bank">Zions Bank — International Trade Finance</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-zions-bank">Zions Bank — International Trade Finance</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collecting Bank / Remitting Bank</div>
@@ -1016,7 +1019,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Drawer -->
 <div class="modal-overlay" id="modal-drawer" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawer">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-drawer">Drawer (Customer / Seller)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-drawer">Drawer (Customer / Seller)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Party to the Draft</div>
@@ -1045,7 +1048,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Drawee -->
 <div class="modal-overlay" id="modal-drawee" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawee">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-drawee">Drawee (Buyer)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-drawee">Drawee (Buyer)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Party to the Draft</div>
@@ -1068,7 +1071,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Drawee Bank -->
 <div class="modal-overlay" id="modal-drawee-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawee-bank">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-drawee-bank">Drawee Bank (Buyer's Bank)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-drawee-bank">Drawee Bank (Buyer's Bank)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collecting Bank / Presenting Bank</div>
@@ -1093,7 +1096,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Draft Document -->
 <div class="modal-overlay" id="modal-draft-doc" role="dialog" aria-modal="true" aria-labelledby="modal-title-draft-doc">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-draft-doc">Draft — Document in Collection</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-draft-doc">Draft — Document in Collection</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collection Document</div>
@@ -1115,7 +1118,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Bill of Lading -->
 <div class="modal-overlay" id="modal-bol" role="dialog" aria-modal="true" aria-labelledby="modal-title-bol">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bol">Bill of Lading (BoL)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bol">Bill of Lading (BoL)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Transport Document</div>
@@ -1140,7 +1143,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Tenor -->
 <div class="modal-overlay" id="modal-tenor" role="dialog" aria-modal="true" aria-labelledby="modal-title-tenor">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tenor">Tenor — Payment Timing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tenor">Tenor — Payment Timing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Draft Term</div>
@@ -1165,7 +1168,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Tenor Term (Page 2) -->
 <div class="modal-overlay" id="modal-tenor-term" role="dialog" aria-modal="true" aria-labelledby="modal-title-tenor-term">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tenor-term">TENOR — Collection Form Field</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tenor-term">TENOR — Collection Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Form Field</div>
@@ -1187,7 +1190,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- D/A -->
 <div class="modal-overlay" id="modal-da" role="dialog" aria-modal="true" aria-labelledby="modal-title-da">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-da">Documents Against Acceptance (D/A)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-da">Documents Against Acceptance (D/A)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collection Type</div>
@@ -1219,7 +1222,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Credit Account -->
 <div class="modal-overlay" id="modal-credit-account" role="dialog" aria-modal="true" aria-labelledby="modal-title-credit-account">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-credit-account">Credit Our Commercial Account</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-credit-account">Credit Our Commercial Account</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Settlement Instruction</div>
@@ -1243,7 +1246,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- ABA -->
 <div class="modal-overlay" id="modal-aba" role="dialog" aria-modal="true" aria-labelledby="modal-title-aba">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-aba">ABA / Bank Transit Number</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-aba">ABA / Bank Transit Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Identifier</div>
@@ -1272,7 +1275,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- UNCITRAL -->
 <div class="modal-overlay" id="modal-uncitral" role="dialog" aria-modal="true" aria-labelledby="modal-title-uncitral">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-uncitral">UNCITRAL Convention on International Bills of Exchange</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-uncitral">UNCITRAL Convention on International Bills of Exchange</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">International Convention</div>
@@ -1298,7 +1301,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Drawer on Bill of Exchange -->
 <div class="modal-overlay" id="modal-drawer-boe" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawer-boe">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-drawer-boe">Drawer — Bill of Exchange</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-drawer-boe">Drawer — Bill of Exchange</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bill of Exchange Party</div>
@@ -1318,7 +1321,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Air Waybill -->
 <div class="modal-overlay" id="modal-air-waybill" role="dialog" aria-modal="true" aria-labelledby="modal-title-air-waybill">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-air-waybill">Air Waybill (AWB)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-air-waybill">Air Waybill (AWB)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Transport Document</div>
@@ -1342,7 +1345,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- N/N BoL -->
 <div class="modal-overlay" id="modal-nn-bol" role="dialog" aria-modal="true" aria-labelledby="modal-title-nn-bol">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-nn-bol">Non-Negotiable Bill of Lading (N/N BoL)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-nn-bol">Non-Negotiable Bill of Lading (N/N BoL)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Transport Document</div>
@@ -1365,7 +1368,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Invoice -->
 <div class="modal-overlay" id="modal-invoice" role="dialog" aria-modal="true" aria-labelledby="modal-title-invoice">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-invoice">Commercial Invoice</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-invoice">Commercial Invoice</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Trade Document</div>
@@ -1391,7 +1394,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Packing List -->
 <div class="modal-overlay" id="modal-packing-list" role="dialog" aria-modal="true" aria-labelledby="modal-title-packing-list">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-packing-list">Packing List</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-packing-list">Packing List</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Trade Document</div>
@@ -1416,7 +1419,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Certificate of Origin -->
 <div class="modal-overlay" id="modal-certificate-origin" role="dialog" aria-modal="true" aria-labelledby="modal-title-certificate-origin">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-certificate-origin">Certificate of Origin</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-certificate-origin">Certificate of Origin</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Trade Document</div>
@@ -1440,7 +1443,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Insurance -->
 <div class="modal-overlay" id="modal-insurance" role="dialog" aria-modal="true" aria-labelledby="modal-title-insurance">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-insurance">Insurance Certificate / Policy</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-insurance">Insurance Certificate / Policy</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Trade Document</div>
@@ -1464,7 +1467,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Courier Receipt -->
 <div class="modal-overlay" id="modal-courier-receipt" role="dialog" aria-modal="true" aria-labelledby="modal-title-courier-receipt">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-courier-receipt">Courier Receipt</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-courier-receipt">Courier Receipt</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Transport Document</div>
@@ -1488,7 +1491,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- D/P -->
 <div class="modal-overlay" id="modal-dp" role="dialog" aria-modal="true" aria-labelledby="modal-title-dp">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-dp">Documents Against Payment (D/P)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-dp">Documents Against Payment (D/P)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Collection Type</div>
@@ -1516,7 +1519,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- SIGHT -->
 <div class="modal-overlay" id="modal-sight" role="dialog" aria-modal="true" aria-labelledby="modal-title-sight">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sight">Sight Draft / At Sight</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sight">Sight Draft / At Sight</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Draft Type</div>
@@ -1540,7 +1543,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- PROTEST -->
 <div class="modal-overlay" id="modal-protest" role="dialog" aria-modal="true" aria-labelledby="modal-title-protest">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-protest">Protest (of a Draft)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-protest">Protest (of a Draft)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Action</div>
@@ -1564,7 +1567,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Place of Drawing -->
 <div class="modal-overlay" id="modal-place-drawing" role="dialog" aria-modal="true" aria-labelledby="modal-title-place-drawing">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-place-drawing">Place of Drawing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-place-drawing">Place of Drawing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bill of Exchange Field</div>
@@ -1588,7 +1591,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Pay To The Order Of -->
 <div class="modal-overlay" id="modal-pay-order" role="dialog" aria-modal="true" aria-labelledby="modal-title-pay-order">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-pay-order">Pay To The Order Of</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-pay-order">Pay To The Order Of</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Negotiable Instrument Language</div>
@@ -1616,7 +1619,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Value Received -->
 <div class="modal-overlay" id="modal-value-received" role="dialog" aria-modal="true" aria-labelledby="modal-title-value-received">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-value-received">Value Received</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-value-received">Value Received</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bill of Exchange Clause</div>
@@ -1640,7 +1643,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Good as Aval -->
 <div class="modal-overlay" id="modal-good-aval" role="dialog" aria-modal="true" aria-labelledby="modal-title-good-aval">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-good-aval">Aval</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-good-aval">Aval</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Guarantee</div>
@@ -1664,7 +1667,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Endorsement -->
 <div class="modal-overlay" id="modal-endorsement" role="dialog" aria-modal="true" aria-labelledby="modal-title-endorsement">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-endorsement">Endorsement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-endorsement">Endorsement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Negotiable Instrument Action</div>
@@ -1689,7 +1692,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Account Name -->
 <div class="modal-overlay" id="modal-account-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-account-name">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-account-name">Account Name</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-account-name">Account Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Account Field</div>
@@ -1713,7 +1716,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Account Number -->
 <div class="modal-overlay" id="modal-account-number" role="dialog" aria-modal="true" aria-labelledby="modal-title-account-number">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-account-number">Account Number</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-account-number">Account Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Account Field</div>
@@ -1737,7 +1740,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Bank Name -->
 <div class="modal-overlay" id="modal-bank-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-name">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bank-name">Bank Name</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bank-name">Bank Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Account Field</div>
@@ -1761,7 +1764,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Bank Address -->
 <div class="modal-overlay" id="modal-bank-address" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-address">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bank-address">Bank Address</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bank-address">Bank Address</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Account Field</div>
@@ -1785,7 +1788,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Bank ABA/Transit No -->
 <div class="modal-overlay" id="modal-bank-aba" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-aba">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bank-aba">Bank ABA/Transit Number</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bank-aba">Bank ABA/Transit Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bank Routing Identifier</div>
@@ -1809,7 +1812,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Other Documents -->
 <div class="modal-overlay" id="modal-other-documents" role="dialog" aria-modal="true" aria-labelledby="modal-title-other-documents">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-other-documents">Other Documents</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-other-documents">Other Documents</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Trade Document Category</div>
@@ -1835,7 +1838,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Originals -->
 <div class="modal-overlay" id="modal-originals" role="dialog" aria-modal="true" aria-labelledby="modal-title-originals">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-originals">Originals</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-originals">Originals</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Document Classification</div>
@@ -1860,7 +1863,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Duplicates -->
 <div class="modal-overlay" id="modal-duplicates" role="dialog" aria-modal="true" aria-labelledby="modal-title-duplicates">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-duplicates">Duplicates (Copies)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-duplicates">Duplicates (Copies)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Document Classification</div>
@@ -1885,7 +1888,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <!-- Authorized Representative -->
 <div class="modal-overlay" id="modal-authorized-representative" role="dialog" aria-modal="true" aria-labelledby="modal-title-authorized-representative">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-authorized-representative">Authorized Representative</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-authorized-representative">Authorized Representative</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Authority</div>
@@ -1907,6 +1910,388 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   </div>
 </div>
 
+<!-- Quiz Section -->
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">International Bill of Exchange Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of international bills of exchange, documentary collections, and trade finance procedures. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>A government tax document</span></label>
+          <label><input type="radio" name="q1" value="b"><span>A written order to pay a specified amount of money</span></label>
+          <label><input type="radio" name="q1" value="c"><span>A type of insurance policy</span></label>
+          <label><input type="radio" name="q1" value="d"><span>A bank account statement</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q1"></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is documentary collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>Collecting old documents</span></label>
+          <label><input type="radio" name="q2" value="b"><span>A payment method where banks handle documents in exchange for payment</span></label>
+          <label><input type="radio" name="q2" value="c"><span>A library service</span></label>
+          <label><input type="radio" name="q2" value="d"><span>A tax collection system</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q2"></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a bill of exchange and a promissory note?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q3" value="b"><span>A bill is an order to pay; a note is a promise to pay</span></label>
+          <label><input type="radio" name="q3" value="c"><span>A bill is for international use only</span></label>
+          <label><input type="radio" name="q3" value="d"><span>A note requires witnesses</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q3"></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the role of the drawer in a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>The person who pays the bill</span></label>
+          <label><input type="radio" name="q4" value="b"><span>The person who creates the bill and orders payment</span></label>
+          <label><input type="radio" name="q4" value="c"><span>The bank that processes the bill</span></label>
+          <label><input type="radio" name="q4" value="d"><span>The government regulator</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q4"></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is the drawee?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>The person who draws the bill</span></label>
+          <label><input type="radio" name="q5" value="b"><span>The person or entity ordered to pay the bill</span></label>
+          <label><input type="radio" name="q5" value="c"><span>The bank that receives payment</span></label>
+          <label><input type="radio" name="q5" value="d"><span>The person who receives payment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q5"></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What is a documentary collection with payment at sight?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>Payment is made when documents are presented</span></label>
+          <label><input type="radio" name="q6" value="b"><span>Payment is made 30 days later</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Payment is made upon acceptance</span></label>
+          <label><input type="radio" name="q6" value="d"><span>Payment is made upon shipment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q6"></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is acceptance on a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>Refusing to pay the bill</span></label>
+          <label><input type="radio" name="q7" value="b"><span>The drawee's written agreement to pay the bill</span></label>
+          <label><input type="radio" name="q7" value="c"><span>The bank's approval of the transaction</span></label>
+          <label><input type="radio" name="q7" value="d"><span>The government's authorization</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q7"></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is the difference between D/P and D/A in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q8" value="b"><span>D/P requires payment for documents; D/A requires acceptance</span></label>
+          <label><input type="radio" name="q8" value="c"><span>D/P is for domestic use; D/A is international</span></label>
+          <label><input type="radio" name="q8" value="d"><span>D/P requires acceptance; D/A requires payment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q8"></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is the role of the collecting bank in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>To provide loans to the buyer</span></label>
+          <label><input type="radio" name="q9" value="b"><span>To present documents and collect payment from the drawee</span></label>
+          <label><input type="radio" name="q9" value="c"><span>To insure the shipment</span></label>
+          <label><input type="radio" name="q9" value="d"><span>To regulate international trade</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q9"></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the bill of lading in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>To prove ownership of goods</span></label>
+          <label><input type="radio" name="q10" value="b"><span>To document the shipping terms and title to goods</span></label>
+          <label><input type="radio" name="q10" value="c"><span>To calculate shipping costs</span></label>
+          <label><input type="radio" name="q10" value="d"><span>To prove insurance coverage</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q10"></div>
+      </div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is the beneficiary in a documentary collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="a"><span>The bank that receives payment</span></label>
+          <label><input type="radio" name="q11" value="b"><span>The seller/exporter who will receive payment</span></label>
+          <label><input type="radio" name="q11" value="c"><span>The government authority</span></label>
+          <label><input type="radio" name="q11" value="d"><span>The insurance company</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q11"></div>
+      </div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is a usance bill?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="a"><span>A bill payable immediately upon presentation</span></label>
+          <label><input type="radio" name="q12" value="b"><span>A bill payable at a specified future date</span></label>
+          <label><input type="radio" name="q12" value="c"><span>A bill that is not legally valid</span></label>
+          <label><input type="radio" name="q12" value="d"><span>A bill used only in domestic trade</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q12"></div>
+      </div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the commercial invoice in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="a"><span>To calculate customs duties and describe the goods</span></label>
+          <label><input type="radio" name="q13" value="b"><span>To prove insurance coverage</span></label>
+          <label><input type="radio" name="q13" value="c"><span>To document shipping terms</span></label>
+          <label><input type="radio" name="q13" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q13"></div>
+      </div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a documentary collection and a letter of credit?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q14" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q14" value="b"><span>LC involves bank guarantee; collection does not</span></label>
+          <label><input type="radio" name="q14" value="c"><span>Collection involves bank guarantee; LC does not</span></label>
+          <label><input type="radio" name="q14" value="d"><span>LC is for domestic use only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q14"></div>
+      </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is the role of the remitting bank in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q15" value="a"><span>The bank that receives payment from the buyer</span></label>
+          <label><input type="radio" name="q15" value="b"><span>The seller's bank that forwards documents to the collecting bank</span></label>
+          <label><input type="radio" name="q15" value="c"><span>The bank that provides insurance</span></label>
+          <label><input type="radio" name="q15" value="d"><span>The government regulatory bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q15"></div>
+      </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is a clean collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q16" value="a"><span>A collection that is error-free</span></label>
+          <label><input type="radio" name="q16" value="b"><span>A collection of financial documents without commercial documents</span></label>
+          <label><input type="radio" name="q16" value="c"><span>A collection that has been approved by regulators</span></label>
+          <label><input type="radio" name="q16" value="d"><span>A collection that uses electronic documents only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q16"></div>
+      </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the insurance certificate in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q17" value="a"><span>To prove the shipment was made</span></label>
+          <label><input type="radio" name="q17" value="b"><span>To provide insurance coverage for the goods during transit</span></label>
+          <label><input type="radio" name="q17" value="c"><span>To calculate customs duties</span></label>
+          <label><input type="radio" name="q17" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q17"></div>
+      </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is the difference between an endorsed bill and a bearer bill?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q18" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q18" value="b"><span>Endorsed bill requires transfer endorsement; bearer bill is payable to holder</span></label>
+          <label><input type="radio" name="q18" value="c"><span>Endorsed bill is for international use only</span></label>
+          <label><input type="radio" name="q18" value="d"><span>Bearer bill requires witnesses</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q18"></div>
+      </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the certificate of origin in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q19" value="a"><span>To prove where the goods were manufactured</span></label>
+          <label><input type="radio" name="q19" value="b"><span>To prove insurance coverage</span></label>
+          <label><input type="radio" name="q19" value="c"><span>To calculate shipping costs</span></label>
+          <label><input type="radio" name="q19" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q19"></div>
+      </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the primary advantage of documentary collection for the seller?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q20" value="a"><span>Lower bank fees than letters of credit</span></label>
+          <label><input type="radio" name="q20" value="b"><span>Bank guarantee of payment</span></label>
+          <label><input type="radio" name="q20" value="c"><span>No paperwork required</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Immediate payment upon shipment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/quiz.js"></script>
+<script>
+// Treasury Bill of Exchange Quiz Answers
+const treasuryAnswers = {
+  q1: { correct: 'b', explanation: 'A bill of exchange is a written, unconditional order by one party (the drawer) to another party (the drawee) to pay a specified amount of money on demand or at a specified future date.' },
+  q2: { correct: 'b', explanation: 'Documentary collection is a payment method in international trade where banks handle the exchange of documents for payment or acceptance, without providing a bank guarantee like letters of credit.' },
+  q3: { correct: 'b', explanation: 'A bill of exchange is an order to pay (three-party instrument), while a promissory note is a promise to pay (two-party instrument). Bills involve drawer, drawee, and payee; notes involve maker and payee.' },
+  q4: { correct: 'b', explanation: 'The drawer is the party that creates the bill of exchange and orders the drawee to pay the specified amount to the payee. In international trade, this is typically the exporter.' },
+  q5: { correct: 'b', explanation: 'The drawee is the party ordered to pay the bill of exchange. In documentary collections, this is typically the buyer/importer who must pay to receive shipping documents.' },
+  q6: { correct: 'a', explanation: 'In documentary collection with payment at sight (D/P), documents are released to the buyer only upon immediate payment. The buyer must pay to receive the commercial documents needed to claim the goods.' },
+  q7: { correct: 'b', explanation: 'Acceptance is the drawee\'s written agreement to pay the bill of exchange at maturity. For usance bills, acceptance is required before documents are released, with payment due at a future date.' },
+  q8: { correct: 'b', explanation: 'D/P (Documents against Payment) requires payment before documents are released, while D/A (Documents against Acceptance) requires acceptance of a bill of exchange before documents are released.' },
+  q9: { correct: 'b', explanation: 'The collecting bank presents documents to the drawee for payment or acceptance according to the seller\'s instructions, and collects payment on the seller\'s behalf, typically for a fee.' },
+  q10: { correct: 'b', explanation: 'The bill of lading serves as a receipt for goods, evidence of the contract of carriage, and document of title. In documentary collections, it is a critical document that controls possession of the goods.' },
+  q11: { correct: 'b', explanation: 'The beneficiary is the seller/exporter who will receive payment through the documentary collection process. They are the party entitled to receive payment when the buyer pays or accepts the bill.' },
+  q12: { correct: 'b', explanation: 'A usance bill (or time bill) is payable at a specified future date rather than immediately upon presentation. It allows the buyer deferred payment, typically 30, 60, or 90 days from acceptance or bill date.' },
+  q13: { correct: 'a', explanation: 'The commercial invoice describes the goods, their value, and terms of sale. It is essential for customs authorities to assess duties and taxes, and for the buyer to understand what they are purchasing.' },
+  q14: { correct: 'b', explanation: 'A letter of credit involves a bank\'s guarantee of payment, providing security for both parties. Documentary collection does not provide a bank guarantee; payment risk remains with the buyer.' },
+  q15: { correct: 'b', explanation: 'The remitting bank is the seller\'s bank that receives documents and payment instructions from the seller and forwards them to the collecting bank in the buyer\'s country for processing.' },
+  q16: { correct: 'b', explanation: 'A clean collection involves only financial documents (bills, drafts) without commercial documents (shipping documents). This is less common in trade, typically used for services or debt collection.' },
+  q17: { correct: 'b', explanation: 'The insurance certificate provides evidence of insurance coverage for the goods during transit, protecting against loss or damage. It is often required under Incoterms that place insurance responsibility on the seller.' },
+  q18: { correct: 'b', explanation: 'An endorsed bill requires a transfer endorsement to be negotiated, transferring rights to a specific party. A bearer bill is payable to whoever holds it, requiring no endorsement for transfer.' },
+  q19: { correct: 'a', explanation: 'The certificate of origin certifies the country where the goods were manufactured or produced. It may be required for customs purposes, trade agreements, or import quotas, and is often issued by chambers of commerce.' },
+  q20: { correct: 'a', explanation: 'Documentary collection typically has lower bank fees than letters of credit since banks provide fewer services and take on less risk. However, it also provides less security for the seller since there is no bank guarantee.' }
+};
+
+function resetQuiz() {
+  const currentScore = 0;
+  const answeredQuestions = new Set();
+  
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  
+  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
+    input.checked = false;
+  });
+  
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    card.classList.remove('correct', 'incorrect');
+  });
+  
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+}
+
+// Initialize quiz when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    setupQuiz(treasuryAnswers, 20);
+  });
+} else {
+  setupQuiz(treasuryAnswers, 20);
+}
+</script>
+
 <!-- Page Footer -->
 <footer class="page-footer">
   <div class="footer-content">
@@ -1922,64 +2307,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   </div>
 </footer>
 
-<script>
-/* ── Simple Modal System ── */
-let currentModal = null;
-
-function openModal(id) {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-  }
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.classList.add('active');
-    currentModal = modal;
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal() {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-    currentModal = null;
-    document.body.style.overflow = '';
-  }
-}
-
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    closeModal();
-  }
-});
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-/* ── TOC Sidebar ── */
-function toggleToc() {
-  document.getElementById('tocSidebar').classList.toggle('open');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const toc = document.getElementById('tocSidebar');
-    if (toc && toc.classList.contains('open')) {
-      toc.classList.remove('open');
-    }
-  }
-});
-
-document.addEventListener('click', (e) => {
-  const toc = document.getElementById('tocSidebar');
-  const toggle = document.querySelector('.toc-toggle');
-  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
-    toc.classList.remove('open');
-  }
-});
-</script>
+<script src="../js/shared.js"></script>
 
 </body>
 </html>

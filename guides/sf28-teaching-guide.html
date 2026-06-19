@@ -4,72 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-:root {
-  --ink: #0f1115;
-  --ink-secondary: #2d3142;
-  --ink-tertiary: #5a5d6b;
-  --ink-muted: #8a8d9a;
-  --ink-faint: #b8bac4;
-  --border: #d0d2da;
-  --border-light: #e6e7ec;
-  --border-faint: #f0f1f5;
-  --bg: #ffffff;
-  --bg-warm: #faf9f6;
-  --bg-cream: #f7f5f0;
-  --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c;
-  --accent-light: #e8f0f8;
-  --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640;
-  --gold: #a67c00;
-  --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a;
-  --gold-deep: #7a5c00;
-  --green: #1a5c3a;
-  --green-light: #e8f8f0;
-  --teal: #0d7377;
-  --teal-light: #e6f7f7;
-  --red: #8c1a1a;
-  --red-light: #fdf0f0;
-  --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
-  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* Accessibility Focus States */
-button:focus-visible,
-a:focus-visible,
-[tabindex="0"]:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
-
-button:focus:not(:focus-visible),
-a:focus:not(:focus-visible),
-[tabindex="0"]:focus:not(:focus-visible) {
-  outline: none;
-}
-
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-warm);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* CSS variables and base styles moved to shared.css */
 
 .toc-sidebar {
   position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
@@ -86,7 +27,7 @@ body {
   box-shadow: var(--shadow-md); transition: all 0.2s;
 }
 .toc-toggle:hover { background: var(--accent-hover); }
-.toc-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.toc-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
   color: var(--ink); margin-bottom: 16px; padding-bottom: 8px;
@@ -114,6 +55,30 @@ body {
   border: none; font-size: 1.4rem; color: var(--ink-muted); cursor: pointer;
 }
 .toc-close:focus-visible { outline: 2px solid var(--accent); border-radius: 2px; }
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
+}
 
 
 .page-header {
@@ -812,7 +777,6 @@ body {
 }
 </style>
 
-<script type='text/javascript' src='https://prod-chat-kimi.tos-cn-beijing.volces.com/OJa96yBLdsASD6AkpCb_8XWAdXjh07zPMPIPLOTaEaZ1Xc0A6_l95CYWEOyxhRFnGcUKpWcyyxRyGp2V5aqrCUSVq3wHG81UQfWdQszxUS8osigxTilHhemdF_nTZ3c6yjwkH-zUgul6aUURLrwZD1G8AmFMmDnmPsVrgxb9esoltdz28Mk3cFDpfuhnvBNXMAo1pzOVQd1fVJ7d4KJL2ZMr6Vg0GsmMRnKxmUEqqeDCGq7xQXM6xmT3XkjEffN5hk8Hx0Vk_g_l7u713-qGrimDng-EmczICwdeuqPdmU1I0qUyciFLXaMj64_1HIdqoH-BwT5eTqU-a2MV4S1OCX42Tlqwpb3QcPbq9IpVPbqIf9L_ZT9mSrU8uhX6zy0z-JyBS1oTYnc7Fb-8dC7_WKbzYOKncbkXtHRjNSmxVMcD86_fRRSYkkHrgaxnpK7oT3Kw-o7HEEa5TKlmOBTza43H9UyszdLP_Mq02HtG1NivYozZkD6uzuPzK7QgpySt3K_QQgPZMPXlBRU-M6yQT4J5I5GE-J5GPpMysVLUK25_tYuS1KXYSmTMEFIGybX3mHMbxMtgm6L9C6WmGCIS0XvhTQMQ-T11AurLc2s8_ZcvN6pR3FGJ59hDulWrV-yIpII9RYEBst8X6EAOka_CO3i0BaGTjqU5cAAdm_4h8dxkAdHWXXfsh5ePQ6m7eOB8H8ORQAezTar-sVX7VTF4QgXk0lQUSHQx82i7gOPJWUr7YoOoOgRkTv3ax3E1WGkiZMuGe_eJmJabGFnGVv09Gj9LTInufMuu6WhEqyTF2uAxH3bkMZdU6Tq3poqTN4tIHzBzwwcEtTind9n76ssQYvGXX5BbgAEiUuvvhGjULq-jhcRQRUv1bqGHZ-kU8wFfDF1ODuEIZoJ_NFKUgzQ9MwqQOWKWWYPNoJ2lEOFKNj4fW5rjQu6nR8erPVAw7ltxvHQ8kVKi6pJkLPYZq2FfqAgLuzrV0X8CQqDXVpqZyLESmVyPPNdI6GRKsZu7pFdKI7cqZv2lP3Pz3A1eTmxa-bhV2nfHES6ZmnMtd_y7Xs_jF93gxOMD0CQ_KRKGpg'></script>
 </head>
 <body>
 
@@ -832,12 +796,14 @@ body {
   <a href="#scenarios">Scenario-Based Learning</a>
   <a href="#mistakes">Common Mistakes</a>
   <a href="#study-guide">Study Guide & Checklist</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
-  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
-  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
-  <a href="../docs/dtc-biblical-exegesis.html" class="external">DTC Biblical Exegesis</a>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide <span class="toc-desc">↗ Infrastructure & processes</span></a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment tool</span></a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange <span class="toc-desc">↗ Trade finance & payment systems</span></a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -847,6 +813,11 @@ body {
       <div class="header-text">
         <h1>SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</h1>
         <div class="sub">Standard Form 28 (Rev. 10/2023) · Interactive definitions · FAR 28.203 compliance walkthroughs</div>
+        <div class="header-meta">
+          <span class="last-updated">Last updated: June 18, 2026</span>
+          <span class="header-meta-separator">·</span>
+          <span class="doc-type">Teaching Guide</span>
+        </div>
       </div>
     </div>
     <div class="header-badge">Teaching Tool</div>
@@ -855,17 +826,22 @@ body {
 
 <div class="wrap">
 
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../index.html">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Teaching Guides</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">SF 28 — Affidavit of Individual Surety</span>
+</nav>
+
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Content Updated:</strong> This guide reflects the <strong>October 2023 Revision</strong> of SF 28. All fields match the current GSA form. <span class="legacy-tag">Rev. 10/2023</span></span>
 </div>
 
 <div class="doc-frame">
-
-<div class="teach-banner">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-  <span><strong>Teaching Mode:</strong> Every <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" aria-label="Learn how to use this guide" onclick="openModal('modal-how-to-use')">underlined term</span> is clickable. This guide combines the original GSA form with definitions, FAR regulatory citations, scenario walkthroughs, and a study checklist. Use the ☰ menu to navigate.</span>
-</div>
 
 <div class="title-block">
   <h2>Affidavit of Individual Surety <span class="hotspot" data-modal="sf28" tabindex="0" role="button" onclick="openModal('modal-sf28')">(SF 28)</span></h2>
@@ -1356,7 +1332,7 @@ body {
 <!-- how-to-use -->
 <div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <p>This guide merges the original GSA Standard Form 28 (Rev. 10/2023) with interactive definitions from the Federal Acquisition Regulation (FAR) and federal criminal statutes.</p>
       <p><strong>How to navigate:</strong></p>
@@ -1375,7 +1351,7 @@ body {
 <!-- SF28 -->
 <div class="modal-overlay" id="modal-sf28" role="dialog" aria-modal="true" aria-labelledby="modal-title-sf28">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-sf28">Standard Form 28 (SF 28)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-sf28">Standard Form 28 (SF 28)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Form</div>
@@ -1392,7 +1368,7 @@ body {
 <!-- FAR 53.228(e) -->
 <div class="modal-overlay" id="modal-far-53-228e" role="dialog" aria-modal="true" aria-labelledby="modal-title-far-53-228e">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-far-53-228e">FAR 53.228(e) — Bond Forms</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-far-53-228e">FAR 53.228(e) — Bond Forms</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Regulation</div>
@@ -1409,7 +1385,7 @@ body {
 <!-- State -->
 <div class="modal-overlay" id="modal-state" role="dialog" aria-modal="true" aria-labelledby="modal-title-state">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-state">State of Execution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-state">State of Execution</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Jurisdictional Field</div>
@@ -1431,7 +1407,7 @@ body {
 <!-- County -->
 <div class="modal-overlay" id="modal-county" role="dialog" aria-modal="true" aria-labelledby="modal-title-county">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-county">County of Execution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-county">County of Execution</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Jurisdictional Field</div>
@@ -1448,7 +1424,7 @@ body {
 <!-- Surety -->
 <div class="modal-overlay" id="modal-surety" role="dialog" aria-modal="true" aria-labelledby="modal-title-surety">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-surety">Surety — Individual Surety</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-surety">Surety — Individual Surety</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Role</div>
@@ -1473,7 +1449,7 @@ body {
 <!-- Bond -->
 <div class="modal-overlay" id="modal-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-bond">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bond">Bond — Types of Government Contract Bonds</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bond">Bond — Types of Government Contract Bonds</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Guarantee</div>
@@ -1497,7 +1473,7 @@ body {
 <!-- Citizen -->
 <div class="modal-overlay" id="modal-citizen" role="dialog" aria-modal="true" aria-labelledby="modal-title-citizen">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-citizen">Citizen of the United States</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-citizen">Citizen of the United States</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Eligibility Requirement</div>
@@ -1520,7 +1496,7 @@ body {
 <!-- Full Age -->
 <div class="modal-overlay" id="modal-full-age" role="dialog" aria-modal="true" aria-labelledby="modal-title-full-age">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-full-age">Full Age and Legally Competent</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-full-age">Full Age and Legally Competent</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Capacity Requirement</div>
@@ -1538,7 +1514,7 @@ body {
 <!-- Co-Sureties -->
 <div class="modal-overlay" id="modal-co-sureties" role="dialog" aria-modal="true" aria-labelledby="modal-title-co-sureties">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-co-sureties">Co-Sureties</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-co-sureties">Co-Sureties</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Multiple Sureties</div>
@@ -1562,7 +1538,7 @@ body {
 <!-- Jointly and Severally -->
 <div class="modal-overlay" id="modal-jointly-and-severally" role="dialog" aria-modal="true" aria-labelledby="modal-title-jointly-and-severally">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-jointly-and-severally">Jointly and Severally</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-jointly-and-severally">Jointly and Severally</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Liability</div>
@@ -1585,7 +1561,7 @@ body {
 <!-- Severally -->
 <div class="modal-overlay" id="modal-severally" role="dialog" aria-modal="true" aria-labelledby="modal-title-severally">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-severally">Severally</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-severally">Severally</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Liability</div>
@@ -1606,7 +1582,7 @@ body {
 <!-- Principal -->
 <div class="modal-overlay" id="modal-principal" role="dialog" aria-modal="true" aria-labelledby="modal-title-principal">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-principal">Principal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-principal">Principal</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contract Party</div>
@@ -1628,7 +1604,7 @@ body {
 <!-- False Statement -->
 <div class="modal-overlay" id="modal-false-statement" role="dialog" aria-modal="true" aria-labelledby="modal-title-false-statement">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-false-statement">False, Fictitious, or Fraudulent Statement</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-false-statement">False, Fictitious, or Fraudulent Statement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Crime</div>
@@ -1657,7 +1633,7 @@ body {
 <!-- Title 18 -->
 <div class="modal-overlay" id="modal-title-18" role="dialog" aria-modal="true" aria-labelledby="modal-title-title-18">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-title-18">Title 18, United States Code</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-title-18">Title 18, United States Code</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Criminal Code</div>
@@ -1684,7 +1660,7 @@ body {
 <!-- CUSIP -->
 <div class="modal-overlay" id="modal-cusip" role="dialog" aria-modal="true" aria-labelledby="modal-title-cusip">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-cusip">CUSIP — Committee on Uniform Securities Identification Procedures</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-cusip">CUSIP — Committee on Uniform Securities Identification Procedures</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Securities Identifier</div>
@@ -1716,7 +1692,7 @@ body {
 <!-- Liens -->
 <div class="modal-overlay" id="modal-liens" role="dialog" aria-modal="true" aria-labelledby="modal-title-liens">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-liens">Liens</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-liens">Liens</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Property Interest</div>
@@ -1747,7 +1723,7 @@ body {
 <!-- Judgments -->
 <div class="modal-overlay" id="modal-judgments" role="dialog" aria-modal="true" aria-labelledby="modal-title-judgments">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-judgments">Judgments</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-judgments">Judgments</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Court Order</div>
@@ -1775,7 +1751,7 @@ body {
 <!-- Encumbrances -->
 <div class="modal-overlay" id="modal-encumbrances" role="dialog" aria-modal="true" aria-labelledby="modal-title-encumbrances">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-encumbrances">Encumbrances</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-encumbrances">Encumbrances</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Property Restriction</div>
@@ -1802,7 +1778,7 @@ body {
 <!-- Bid Guarantees -->
 <div class="modal-overlay" id="modal-bid-guarantees" role="dialog" aria-modal="true" aria-labelledby="modal-title-bid-guarantees">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-bid-guarantees">Bid Guarantees</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-bid-guarantees">Bid Guarantees</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Security Instrument</div>
@@ -1827,7 +1803,7 @@ body {
 <!-- Stockholders -->
 <div class="modal-overlay" id="modal-stockholders" role="dialog" aria-modal="true" aria-labelledby="modal-title-stockholders">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-stockholders">Stockholders</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-stockholders">Stockholders</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Corporate Ownership</div>
@@ -1844,7 +1820,7 @@ body {
 <!-- Penal Amount -->
 <div class="modal-overlay" id="modal-penal-amount" role="dialog" aria-modal="true" aria-labelledby="modal-title-penal-amount">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-penal-amount">Penal Amount</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-penal-amount">Penal Amount</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Bond Liability</div>
@@ -1862,7 +1838,7 @@ body {
 <!-- Contracting Officer -->
 <div class="modal-overlay" id="modal-contracting-officer" role="dialog" aria-modal="true" aria-labelledby="modal-title-contracting-officer">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-contracting-officer">Contracting Officer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-contracting-officer">Contracting Officer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Government Official</div>
@@ -1880,7 +1856,7 @@ body {
 <!-- Outlying Area -->
 <div class="modal-overlay" id="modal-outlying-area" role="dialog" aria-modal="true" aria-labelledby="modal-title-outlying-area">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-outlying-area">Outlying Area</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-outlying-area">Outlying Area</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Geographic Exception</div>
@@ -1898,7 +1874,7 @@ body {
 <!-- Performance Bond -->
 <div class="modal-overlay" id="modal-performance-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-performance-bond">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-performance-bond">Performance Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-performance-bond">Performance Bond</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contract Bond Type</div>
@@ -1916,7 +1892,7 @@ body {
 <!-- Construction Company -->
 <div class="modal-overlay" id="modal-construction-company" role="dialog" aria-modal="true" aria-labelledby="modal-title-construction-company">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-construction-company">Construction Company</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-construction-company">Construction Company</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contractor Type</div>
@@ -1934,7 +1910,7 @@ body {
 <!-- Legal Description -->
 <div class="modal-overlay" id="modal-legal-description" role="dialog" aria-modal="true" aria-labelledby="modal-title-legal-description">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-legal-description">Legal Description</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-legal-description">Legal Description</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Property Documentation</div>
@@ -1952,7 +1928,7 @@ body {
 <!-- Title Insurance -->
 <div class="modal-overlay" id="modal-title-insurance" role="dialog" aria-modal="true" aria-labelledby="modal-title-title-insurance">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-title-insurance">Title Insurance</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-title-insurance">Title Insurance</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Insurance Product</div>
@@ -1970,7 +1946,7 @@ body {
 <!-- Appraisal -->
 <div class="modal-overlay" id="modal-appraisal" role="dialog" aria-modal="true" aria-labelledby="modal-title-appraisal">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-appraisal">Appraisal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-appraisal">Appraisal</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Valuation Document</div>
@@ -1988,7 +1964,7 @@ body {
 <!-- Notary Commission -->
 <div class="modal-overlay" id="modal-notary-commission" role="dialog" aria-modal="true" aria-labelledby="modal-title-notary-commission">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-notary-commission">Notary Commission</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-notary-commission">Notary Commission</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Official Authorization</div>
@@ -2006,7 +1982,7 @@ body {
 <!-- Notary Seal -->
 <div class="modal-overlay" id="modal-notary-seal" role="dialog" aria-modal="true" aria-labelledby="modal-title-notary-seal">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-notary-seal">Notary Seal</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-notary-seal">Notary Seal</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Notarization Element</div>
@@ -2024,7 +2000,7 @@ body {
 <!-- Natural Person -->
 <div class="modal-overlay" id="modal-natural-person" role="dialog" aria-modal="true" aria-labelledby="modal-title-natural-person">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-natural-person">Natural Person</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-natural-person">Natural Person</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legal Entity Type</div>
@@ -2042,7 +2018,7 @@ body {
 <!-- Permanent Resident -->
 <div class="modal-overlay" id="modal-permanent-resident" role="dialog" aria-modal="true" aria-labelledby="modal-title-permanent-resident">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-permanent-resident">Permanent Resident</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-permanent-resident">Permanent Resident</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Citizenship Status</div>
@@ -2061,7 +2037,7 @@ body {
 <!-- Net Worth -->
 <div class="modal-overlay" id="modal-net-worth" role="dialog" aria-modal="true" aria-labelledby="modal-title-net-worth">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-net-worth">Net Worth</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-net-worth">Net Worth</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Financial Measure</div>
@@ -2080,7 +2056,7 @@ body {
 <!-- Payment Bond -->
 <div class="modal-overlay" id="modal-payment-bond" role="dialog" aria-modal="true" aria-labelledby="modal-title-payment-bond">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-payment-bond">Payment Bond</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-payment-bond">Payment Bond</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Contract Bond Type</div>
@@ -2099,7 +2075,7 @@ body {
 <!-- Market Value -->
 <div class="modal-overlay" id="modal-market-value" role="dialog" aria-modal="true" aria-labelledby="modal-title-market-value">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-market-value">Market Value</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-market-value">Market Value</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Asset Valuation</div>
@@ -2118,7 +2094,7 @@ body {
 <!-- Tax Assessment -->
 <div class="modal-overlay" id="modal-tax-assessment" role="dialog" aria-modal="true" aria-labelledby="modal-title-tax-assessment">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-tax-assessment">Tax Assessment</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-tax-assessment">Tax Assessment</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Government Valuation</div>
@@ -2137,7 +2113,7 @@ body {
 <!-- Miller Act -->
 <div class="modal-overlay" id="modal-miller-act" role="dialog" aria-modal="true" aria-labelledby="modal-title-miller-act">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-miller-act">Miller Act</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-miller-act">Miller Act</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Federal Law</div>
@@ -2156,7 +2132,7 @@ body {
 <!-- Evidence of Title -->
 <div class="modal-overlay" id="modal-evidence-of-title" role="dialog" aria-modal="true" aria-labelledby="modal-title-evidence-of-title">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-evidence-of-title">Evidence of Title</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-evidence-of-title">Evidence of Title</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Ownership Documentation</div>
@@ -2176,7 +2152,7 @@ body {
 <!-- Recorded Lien -->
 <div class="modal-overlay" id="modal-recorded-lien" role="dialog" aria-modal="true" aria-labelledby="modal-title-recorded-lien">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-recorded-lien">Recorded Lien</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-recorded-lien">Recorded Lien</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Encumbrance Type</div>
@@ -2196,7 +2172,7 @@ body {
 <!-- Routing Transit Number -->
 <div class="modal-overlay" id="modal-routing-transit-number" role="dialog" aria-modal="true" aria-labelledby="modal-title-routing-transit-number">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-routing-transit-number">Routing Transit Number (RTN)</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-routing-transit-number">Routing Transit Number (RTN)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Banking Identifier</div>
@@ -2216,7 +2192,7 @@ body {
 <!-- Financial Institution -->
 <div class="modal-overlay" id="modal-financial-institution" role="dialog" aria-modal="true" aria-labelledby="modal-title-financial-institution">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-financial-institution">Financial Institution</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-financial-institution">Financial Institution</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Banking Entity</div>
@@ -2236,7 +2212,7 @@ body {
 <!-- Surety Broker -->
 <div class="modal-overlay" id="modal-surety-broker" role="dialog" aria-modal="true" aria-labelledby="modal-title-surety-broker">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-surety-broker">Surety Broker</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-surety-broker">Surety Broker</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Intermediary Role</div>
@@ -2253,62 +2229,392 @@ body {
   </div>
 </div>
 
+<!-- Quiz Section -->
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">SF 28 Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of SF 28 requirements, bond surety concepts, and related regulations. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+  </p>
 
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>A federal tax form</span></label>
+          <label><input type="radio" name="q1" value="b"><span>An affidavit of individual surety for government contracts</span></label>
+          <label><input type="radio" name="q1" value="c"><span>A corporate surety bond application</span></label>
+          <label><input type="radio" name="q1" value="d"><span>A construction contract form</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q1"></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is the minimum net worth requirement for an individual surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>$50,000</span></label>
+          <label><input type="radio" name="q2" value="b"><span>$100,000</span></label>
+          <label><input type="radio" name="q2" value="c"><span>$500,000</span></label>
+          <label><input type="radio" name="q2" value="d"><span>$1,000,000</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q2"></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What is the citizenship requirement for individual sureties?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>Must be a U.S. citizen</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Must be a U.S. citizen or U.S. national</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Must be a permanent resident</span></label>
+          <label><input type="radio" name="q3" value="d"><span>No citizenship requirement</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q3"></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the False Statements Act in relation to SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>It regulates bond pricing</span></label>
+          <label><input type="radio" name="q4" value="b"><span>It makes false statements on government forms a criminal offense</span></label>
+          <label><input type="radio" name="q4" value="c"><span>It requires bond disclosure</span></label>
+          <label><input type="radio" name="q4" value="d"><span>It sets contract thresholds</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q4"></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is the Miller Act threshold for requiring performance bonds on federal construction contracts?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>$100,000</span></label>
+          <label><input type="radio" name="q5" value="b"><span>$150,000</span></label>
+          <label><input type="radio" name="q5" value="c"><span>$250,000</span></label>
+          <label><input type="radio" name="q5" value="d"><span>$500,000</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q5"></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What is a corporate surety company?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>A large corporation acting as a surety</span></label>
+          <label><input type="radio" name="q6" value="b"><span>An insurance company authorized to issue surety bonds</span></label>
+          <label><input type="radio" name="q6" value="c"><span>A government agency that provides bonds</span></label>
+          <label><input type="radio" name="q6" value="d"><span>A type of bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q6"></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is the difference between an individual surety and a corporate surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q7" value="b"><span>Individual sureties use personal assets; corporate sureties use company resources</span></label>
+          <label><input type="radio" name="q7" value="c"><span>Corporate sureties are cheaper</span></label>
+          <label><input type="radio" name="q7" value="d"><span>Individual sureties require more paperwork</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q7"></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the certification statement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>To certify citizenship</span></label>
+          <label><input type="radio" name="q8" value="b"><span>To certify financial statements</span></label>
+          <label><input type="radio" name="q8" value="c"><span>To certify that all information is true and correct under penalty of law</span></label>
+          <label><input type="radio" name="q8" value="d"><span>To certify net worth</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q8"></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What types of assets can be pledged as security for an individual surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>Cash only</span></label>
+          <label><input type="radio" name="q9" value="b"><span>Real estate and securities</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Personal property only</span></label>
+          <label><input type="radio" name="q9" value="d"><span>Business assets only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q9"></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the current version of SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>Rev. 10/2019</span></label>
+          <label><input type="radio" name="q10" value="b"><span>Rev. 10/2021</span></label>
+          <label><input type="radio" name="q10" value="c"><span>Rev. 10/2023</span></label>
+          <label><input type="radio" name="q10" value="d"><span>Rev. 10/2025</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q10"></div>
+      </div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the disclosure section on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="a"><span>To disclose financial history</span></label>
+          <label><input type="radio" name="q11" value="b"><span>To disclose any potential conflicts of interest</span></label>
+          <label><input type="radio" name="q11" value="c"><span>To disclose any liens, claims, or encumbrances on pledged assets</span></label>
+          <label><input type="radio" name="q11" value="d"><span>To disclose citizenship status</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q11"></div>
+      </div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is a routing transit number (RTN) used for on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="a"><span>To identify the surety's tax ID</span></label>
+          <label><input type="radio" name="q12" value="b"><span>To identify the financial institution submitting securities pledge</span></label>
+          <label><input type="radio" name="q12" value="c"><span>To route the contract payment</span></label>
+          <label><input type="radio" name="q12" value="d"><span>To identify the contracting officer</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q12"></div>
+      </div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the notarization requirement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="a"><span>To verify citizenship</span></label>
+          <label><input type="radio" name="q13" value="b"><span>To verify the identity of the surety and witness the signature</span></label>
+          <label><input type="radio" name="q13" value="c"><span>To verify financial statements</span></label>
+          <label><input type="radio" name="q13" value="d"><span>To verify asset ownership</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q13"></div>
+      </div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is FAR 28.102-2?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q14" value="a"><span>Regulation about bond pricing</span></label>
+          <label><input type="radio" name="q14" value="b"><span>Regulation about individual surety qualifications</span></label>
+          <label><input type="radio" name="q14" value="c"><span>Regulation about contract awards</span></label>
+          <label><input type="radio" name="q14" value="d"><span>Regulation about contract termination</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q14"></div>
+      </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is a surety broker?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q15" value="a"><span>A person who sells bonds</span></label>
+          <label><input type="radio" name="q15" value="b"><span>An intermediary who helps arrange surety bonds</span></label>
+          <label><input type="radio" name="q15" value="c"><span>A government regulator</span></label>
+          <label><input type="radio" name="q15" value="d"><span>A type of bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q15"></div>
+      </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a performance bond and a payment bond?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q16" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q16" value="b"><span>Performance bonds guarantee contract completion; payment bonds guarantee payment to subcontractors</span></label>
+          <label><input type="radio" name="q16" value="c"><span>Payment bonds are for construction, performance bonds are for services</span></label>
+          <label><input type="radio" name="q16" value="d"><span>Performance bonds are larger than payment bonds</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q16"></div>
+      </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the evidence of title requirement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q17" value="a"><span>To prove citizenship</span></label>
+          <label><input type="radio" name="q17" value="b"><span>To prove ownership of pledged assets</span></label>
+          <label><input type="radio" name="q17" value="c"><span>To prove net worth</span></label>
+          <label><input type="radio" name="q17" value="d"><span>To prove contract eligibility</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q17"></div>
+      </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is a recorded lien?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q18" value="a"><span>A type of tax</span></label>
+          <label><input type="radio" name="q18" value="b"><span>A legal claim against property that appears in public records</span></label>
+          <label><input type="radio" name="q18" value="c"><span>A government contract</span></label>
+          <label><input type="radio" name="q18" value="d"><span>A type of insurance</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q18"></div>
+      </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the relationship between SF 28 and the Little Miller Act?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q19" value="a"><span>They are identical</span></label>
+          <label><input type="radio" name="q19" value="b"><span>Little Miller Act applies to state contracts, SF 28 is federal</span></label>
+          <label><input type="radio" name="q19" value="c"><span>SF 28 applies to state contracts, Little Miller Act is federal</span></label>
+          <label><input type="radio" name="q19" value="d"><span>They are unrelated</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q19"></div>
+      </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the maximum penalty for making false statements on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q20" value="a"><span>Fine only</span></label>
+          <label><input type="radio" name="q20" value="b"><span>Imprisonment only</span></label>
+          <label><input type="radio" name="q20" value="c"><span>Fine and/or imprisonment up to 8 years</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Loss of citizenship</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script src="../js/shared.js"></script>
+<script src="../js/quiz.js"></script>
 <script>
-let currentModal = null;
+// SF 28 Quiz Answers
+const sf28Answers = {
+  q1: { correct: 'b', explanation: 'SF 28 is the Standard Form 28 Affidavit of Individual Surety, used when an individual (rather than a corporate surety company) provides a bond for a government contract.' },
+  q2: { correct: 'b', explanation: 'The minimum net worth requirement for individual sureties is $100,000, though contracting officers may require higher amounts based on contract size and risk.' },
+  q3: { correct: 'b', explanation: 'Individual sureties must be U.S. citizens or U.S. nationals, as defined by the Immigration and Nationality Act. Permanent residents and foreign nationals do not qualify.' },
+  q4: { correct: 'b', explanation: 'The False Statements Act (18 U.S.C. § 1001) makes it a criminal offense to knowingly and willfully make false statements on government forms, punishable by fine and/or imprisonment.' },
+  q5: { correct: 'b', explanation: 'The Miller Act requires performance and payment bonds for federal construction contracts exceeding $150,000, protecting subcontractors and laborers on federal projects.' },
+  q6: { correct: 'b', explanation: 'Corporate surety companies are insurance companies authorized by state insurance commissioners to issue surety bonds, using their corporate assets rather than personal assets.' },
+  q7: { correct: 'b', explanation: 'Individual sureties pledge their personal assets, exposing them to personal liability if the bond is called. Corporate sureties use company resources and spread risk across many bonds.' },
+  q8: { correct: 'c', explanation: 'The certification statement is a legally binding declaration that all information provided on SF 28 is true and correct, made under penalty of perjury under 18 U.S.C. § 1001.' },
+  q9: { correct: 'b', explanation: 'Individual sureties can pledge real estate (with evidence of title) and securities (through financial institutions) as security, among other asset types that meet net worth requirements.' },
+  q10: { correct: 'c', explanation: 'The current version of SF 28 is Revision 10/2023, which updated the form with current regulatory requirements and clarified instructions for completion.' },
+  q11: { correct: 'c', explanation: 'The disclosure section requires sureties to reveal any liens, claims, or encumbrances on pledged assets, ensuring the government understands any limitations on the security.' },
+  q12: { correct: 'b', explanation: 'The RTN identifies the financial institution submitting the securities pledge, enabling the government to verify the pledge and potentially transfer ownership if the bond is called.' },
+  q13: { correct: 'b', explanation: 'Notarization verifies the identity of the surety and witnesses their signature, preventing forgery and ensuring the person signing is who they claim to be.' },
+  q14: { correct: 'b', explanation: 'FAR 28.102-2 establishes the qualifications and requirements for individual sureties, including citizenship, net worth, and asset requirements for federal contracts.' },
+  q15: { correct: 'b', explanation: 'Surety brokers are intermediaries who help arrange surety bonds, connecting principals with suitable sureties and handling administrative aspects of bond procurement.' },
+  q16: { correct: 'b', explanation: 'Performance bonds guarantee the principal will complete the contract according to terms, while payment bonds guarantee the principal will pay subcontractors, laborers, and material suppliers.' },
+  q17: { correct: 'b', explanation: 'Evidence of title proves ownership of real estate pledged as security, ensuring the surety actually owns the property being offered to guarantee the bond.' },
+  q18: { correct: 'b', explanation: 'A recorded lien is a legal claim against property that appears in public records, such as mortgages, tax liens, or judgment liens that reduce the property\'s unencumbered value.' },
+  q19: { correct: 'b', explanation: 'The Little Miller Act refers to state laws that mirror the federal Miller Act for state construction contracts, while SF 28 applies to federal contracts.' },
+  q20: { correct: 'c', explanation: 'False statements on government forms under 18 U.S.C. § 1001 are punishable by fine and/or imprisonment up to 8 years, making accurate completion of SF 28 critically important.' }
+};
 
-function openModal(id) {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-  }
-  const modal = document.getElementById(id);
-  if (modal) {
-    modal.classList.add('active');
-    currentModal = modal;
-    document.body.style.overflow = 'hidden';
-  }
+function resetQuiz() {
+  const currentScore = 0;
+  const answeredQuestions = new Set();
+  
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  
+  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
+    input.checked = false;
+  });
+  
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    card.classList.remove('correct', 'incorrect');
+  });
+  
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
 }
 
-function closeModal() {
-  if (currentModal) {
-    currentModal.classList.remove('active');
-    currentModal = null;
-    document.body.style.overflow = '';
-  }
+// Initialize quiz when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    setupQuiz(sf28Answers, 20);
+  });
+} else {
+  setupQuiz(sf28Answers, 20);
 }
+</script>
 
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    closeModal();
-  }
-});
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeModal();
-  }
-});
-
-function toggleToc() {
-  document.getElementById('tocSidebar').classList.toggle('open');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const toc = document.getElementById('tocSidebar');
-    if (toc && toc.classList.contains('open')) {
-      toc.classList.remove('open');
-    }
-  }
-});
-
-document.addEventListener('click', (e) => {
-  const toc = document.getElementById('tocSidebar');
-  const toggle = document.querySelector('.toc-toggle');
-  if (toc && toggle && toc.classList.contains('open') && !toc.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
-    toc.classList.remove('open');
-  }
-});
+<script src="../js/shared.js"></script>
+<script>
+/* Document-specific JavaScript */
 
 function showScenario(id) {
   document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
