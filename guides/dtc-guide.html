@@ -8,19 +8,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 :root {
-  --ink: #0f1115; --ink-secondary: #2d3142; --ink-tertiary: #5a5d6b;
-  --ink-muted: #5a5d6b; --ink-faint: #b8bac4; --border: #d0d2da;
-  --border-light: #e6e7ec; --border-faint: #f0f1f5; --bg: #ffffff;
-  --bg-warm: #faf9f6; --bg-cream: #f7f5f0; --bg-ivory: #fdfcfa;
-  --accent: #1a3a5c; --accent-light: #e8f0f8; --accent-muted: #c5d6e8;
-  --accent-hover: #0f2640; --gold: #a67c00; --gold-light: #fbf6e8;
-  --gold-muted: #d4b84a; --gold-deep: #7a5c00; --green: #1a5c3a;
-  --green-light: #e8f8f0; --teal: #0d7377; --teal-light: #e6f7f7;
-  --red: #8c1a1a; --red-light: #fdf0f0; --red-muted: #d4a0a0;
-  --modal-overlay: rgba(10,12,18,0.65); --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 20px rgba(0,0,0,0.06); --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16); --radius-sm: 4px;
-  --radius-md: 8px; --radius-lg: 12px;
+  --ink: #0f1115;
+  --ink-secondary: #2d3142;
+  --ink-tertiary: #5a5d6b;
+  --ink-muted: #8a8d9a;
+  --ink-faint: #b8bac4;
+  --border: #d0d2da;
+  --border-light: #e6e7ec;
+  --border-faint: #f0f1f5;
+  --bg: #ffffff;
+  --bg-warm: #faf9f6;
+  --bg-cream: #f7f5f0;
+  --bg-ivory: #fdfcfa;
+  --accent: #1a3a5c;
+  --accent-light: #e8f0f8;
+  --accent-muted: #c5d6e8;
+  --accent-hover: #0f2640;
+  --gold: #a67c00;
+  --gold-light: #fbf6e8;
+  --gold-muted: #d4b84a;
+  --gold-deep: #7a5c00;
+  --green: #1a5c3a;
+  --green-light: #e8f8f0;
+  --teal: #0d7377;
+  --teal-light: #e6f7f7;
+  --red: #8c1a1a;
+  --red-light: #fdf0f0;
+  --red-muted: #d4a0a0;
+  --modal-overlay: rgba(10,12,18,0.65);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-xl: 0 32px 80px rgba(0,0,0,0.16);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -670,11 +692,11 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
 <h3 class="subsection-title">NSCC Membership & Risk Framework</h3>
 
 <p class="body-text">
-NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> based on their trading activity and portfolio risk. NSCC collects <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> at least daily and monitors intraday exposure, with the authority to make intraday <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> calls when risk thresholds are breached or markets display elevated volatility.
+NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post margin based on their trading activity and portfolio risk. NSCC collects margin at least daily and monitors intraday exposure, with the authority to make intraday margin calls when risk thresholds are breached or markets display elevated volatility.
 </p>
 
 <p class="body-text">
-In the event of a member default, NSCC has a waterfall of resources: the defaulter's <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin deposit</span>, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
+In the event of a member default, NSCC has a waterfall of resources: the defaulter's margin deposit, the corporate contribution, non-defaulting members' clearing fund contributions (allocated by tier), and — if necessary — assessments on surviving members. NSCC also maintains cross-guaranty agreements with DTC, FICC, and OCC for additional mutual support.
 </p>
 
 <!-- SECTION: FICC -->
@@ -708,7 +730,7 @@ Like NSCC, FICC acts as a central counterparty for the trades it clears. When tw
 </p>
 
 <p class="body-text">
-FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, the GSD clearing fund held approximately <strong>$87 billion</strong> in member deposits, while the MBSD clearing fund held approximately <strong>$12.4 billion</strong>. These funds consist of cash and eligible securities (primarily U.S. Treasuries and agency MBS) and serve as the first line of defense against member defaults.
+FICC maintains separate <span class="hotspot" data-modal="clearing-fund" tabindex="0" role="button" onclick="openModal('modal-clearing-fund')">clearing funds</span> for GSD and MBSD. As of year-end 2025, the GSD clearing fund held approximately <strong>$87 billion</strong> in member deposits, while the MBSD clearing fund held approximately <strong>$12.4 billion</strong>. These funds consist of cash and eligible securities (primarily U.S. Treasuries and agency MBS) and serve as the first line of defense against member defaults.
 </p>
 
 <h3 class="subsection-title">Key FICC Services by Division</h3>
@@ -731,7 +753,7 @@ FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, th
   </tr>
   <tr>
     <td><strong>Repo Services</strong></td>
-    <td>GCF <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">Repo</span> service for general collateral financing; CCIT for tri-party <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repo</span></td>
+    <td>GCF <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">Repo</span> service for general collateral financing; CCIT for tri-party repo</td>
     <td>—</td>
   </tr>
   <tr>
@@ -754,7 +776,7 @@ FICC maintains separate clearing funds for GSD and MBSD. As of year-end 2025, th
 <h3 class="subsection-title">Risk Management & Margin</h3>
 
 <p class="body-text">
-FICC employs sophisticated risk-based <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> systems that mark participant positions to market and collect <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
+FICC employs sophisticated risk-based <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> systems that mark participant positions to market and collect margin at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday margin calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
 </p>
 
 <p class="body-text">
@@ -806,7 +828,7 @@ While DTC, NSCC, and FICC are distinct entities with distinct functions, they op
   <tr>
     <td><strong>FICC-GSD</strong></td>
     <td>Government Securities CCP</td>
-    <td>U.S. Treasuries, agency securities, <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repos</span></td>
+    <td>U.S. Treasuries, agency securities, repos</td>
     <td><span class="hotspot" data-modal="var" tabindex="0" role="button" onclick="openModal('modal-var')">VaR</span>-based margin; intraday monitoring; CCLF liquidity facility</td>
   </tr>
   <tr>
@@ -927,9 +949,9 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
 
 <div class="diagram-box">
   <div class="diagram-title">Dividend Processing Flow</div>
-  <div class="flow-step"><span class="step-num">1</span><strong>Issuer declares dividend</strong> — Sets <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> and payment date per operational requirements</div>
+  <div class="flow-step"><span class="step-num">1</span><strong>Issuer declares dividend</strong> — Sets record date and payment date per operational requirements</div>
   <div class="flow-connector"></div>
-  <div class="flow-step"><span class="step-num">2</span><strong><span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">Record date</span> notification</strong> — Issuer notifies DTC of <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> and payment details</div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Record date notification</strong> — Issuer notifies DTC of record date and payment details</div>
   <div class="flow-connector"></div>
   <div class="flow-step">
     <span class="step-num">3</span>
@@ -1014,9 +1036,9 @@ DTC operates specialized programs to handle different types of corporate actions
 </p>
 
 <ul class="body-text">
-  <li><strong>ATOP (Automated Tender Offer Program):</strong> Processes voluntary tender offers and exchange offers with automated participant acceptance and surrender procedures</li>
-  <li><strong>ASOP (Automated Subscription Offer Program):</strong> Handles rights offerings and subscription offers with automated rights surrender and processing</li>
-  <li><strong>IVORS (Investor Voluntary Redemptions and Sales):</strong> Processes voluntary redemptions for Unit Investment Trusts</li>
+  <li><strong><span class="hotspot" data-modal="atop" tabindex="0" role="button" onclick="openModal('modal-atop')">ATOP</span> (Automated Tender Offer Program):</strong> Processes voluntary tender offers and exchange offers with automated participant acceptance and surrender procedures</li>
+  <li><strong><span class="hotspot" data-modal="asop" tabindex="0" role="button" onclick="openModal('modal-asop')">ASOP</span> (Automated Subscription Offer Program):</strong> Handles rights offerings and subscription offers with automated rights surrender and processing</li>
+  <li><strong><span class="hotspot" data-modal="ivors" tabindex="0" role="button" onclick="openModal('modal-ivors')">IVORS</span> (Investor Voluntary Redemptions and Sales):</strong> Processes voluntary redemptions for Unit Investment Trusts</li>
 </ul>
 
 <div class="warn-box">
@@ -1052,7 +1074,7 @@ Beneficial owners vote through their brokers, who aggregate the votes and transm
 <h3 class="subsection-title">Record Date & Payment Requirements</h3>
 
 <p class="body-text">
-Record dates determine which shareholders are entitled to dividends, corporate action benefits, or other rights. DTC's operational arrangements establish specific requirements for record date notifications and payment instructions.
+<span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">Record dates</span> determine which shareholders are entitled to dividends, corporate action benefits, or other rights. DTC's operational arrangements establish specific requirements for <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> notifications and payment instructions.
 </p>
 
 <h4 class="subsection-title">Record Date Standards</h4>
@@ -1176,8 +1198,8 @@ Investors have alternatives to holding securities in street name through DTC. Th
   <tr>
     <td><strong><span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> Protection</strong></td>
     <td>Yes (up to $500,000)</td>
-    <td>No <span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> needed (not held by broker)</td>
-    <td>No <span class="hotspot" data-modal="sipc" tabindex="0" role="button" onclick="openModal('modal-sipc')">SIPC</span> needed</td>
+    <td>No SIPC needed (not held by broker)</td>
+    <td>No SIPC needed</td>
   </tr>
 </table>
 
@@ -2725,32 +2747,6 @@ document.addEventListener('click', (e) => {
   </div>
 </div>
 
-<!-- T1 -->
-<div class="modal-overlay" id="modal-t1" role="dialog" aria-modal="true" aria-labelledby="modal-title-t1">
-  <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-t1">T+1 Settlement Cycle</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
-    <div class="modal-body">
-      <div class="def-callout">
-        <div class="def-type">Settlement Cycle</div>
-        <div class="def-word">T+1</div>
-        <p>The settlement cycle where securities trades must be settled one business day after the trade date. The U.S. moved from T+2 to T+1 in May 2024 to reduce counterparty risk and free up capital.</p>
-      </div>
-      <p class="modal-section-title">How T+1 Works</p>
-      <p>Under T+1, a trade executed on Monday must settle on Tuesday. This compressed timeline requires faster processing, better coordination between clearing and settlement systems, and more efficient margin calculations. The move was enabled by improvements in technology and straight-through processing.</p>
-      <p class="modal-section-title">Benefits of T+1</p>
-      <ul>
-        <li><strong>Reduced Counterparty Risk:</strong> Faster settlement means less time for default risk</li>
-        <li><strong>Capital Efficiency:</strong> Less capital tied up in unsettled trades</li>
-        <li><strong>Lower Margin Requirements:</strong> Shorter exposure period reduces margin needed</li>
-        <li><strong>Systemic Stability:</strong> Reduced liquidity strain during market stress</li>
-      </ul>
-      <p class="modal-section-title">Historical Context</p>
-      <p>The U.S. progressively shortened settlement cycles: T+5 (1970s), T+3 (1993), T+2 (2017), and now T+1 (2024). Each reduction brought efficiency gains and risk improvements, requiring corresponding enhancements to clearing and settlement infrastructure.</p>
-      <div class="citation"><strong>Source:</strong> SEC Rule 15c6-1; DTCC T+1 Implementation Guide.</div>
-    </div>
-  </div>
-</div>
-
 <!-- ATOP -->
 <div class="modal-overlay" id="modal-atop" role="dialog" aria-modal="true" aria-labelledby="modal-title-atop">
   <div class="modal-card">
@@ -2819,6 +2815,396 @@ document.addEventListener('click', (e) => {
         <li><strong>Accuracy:</strong> Ensures correct calculation of redemption proceeds</li>
       </ul>
       <div class="citation"><strong>Source:</strong> DTC Corporate Action Services Guide; UIT Industry Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Mark-to-Market -->
+<div class="modal-overlay" id="modal-mark-to-market" role="dialog" aria-modal="true" aria-labelledby="modal-title-mark-to-market">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-mark-to-market">Mark-to-Market</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Valuation Method</div>
+        <div class="def-word">Mark-to-Market</div>
+        <p>The process of revaluing financial instruments at current market prices rather than historical cost. This provides a real-time assessment of portfolio value and exposure.</p>
+      </div>
+      <p class="modal-section-title">How It Works in Clearing</p>
+      <p>CCPs continuously mark participant positions to market throughout the trading day. When prices move, they calculate the resulting gains or losses for each participant and adjust margin requirements accordingly. This ensures that margin always reflects current market conditions and potential default risk.</p>
+      <p class="modal-section-title">Margin Implications</p>
+      <p>Mark-to-market movements trigger variation margin calls: participants who have lost money must post additional margin, while participants who have gained may receive margin rebates. This daily (or intraday) process keeps clearing funds properly funded.</p>
+      <div class="citation"><strong>Source:</strong> Basel Committee on Banking Supervision; DTCC Margin Methodology Disclosures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Backtesting -->
+<div class="modal-overlay" id="modal-backtesting" role="dialog" aria-modal="true" aria-labelledby="modal-title-backtesting">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-backtesting">Backtesting</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Validation</div>
+        <div class="def-word">Backtesting</div>
+        <p>The process of testing a risk model against historical data to validate its accuracy and effectiveness. Backtesting compares model predictions to actual outcomes to assess performance.</p>
+      </div>
+      <p class="modal-section-title">How Backtesting Works in Margin Systems</p>
+      <p>CCPs backtest their VaR models by comparing predicted losses to actual market movements over historical periods. If the model underestimates losses more frequently than expected, the CCP adds a backtesting charge to margin requirements to compensate for model uncertainty.</p>
+      <p class="modal-section-title">Model Validation</p>
+      <p>Backtesting helps ensure that risk models are neither too conservative (wasting capital on excessive margin) nor too liberal (underestimating risk). Regulatory bodies require regular backtesting and model validation for systemically important financial market utilities.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures; DTCC Risk Management Disclosures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cross-Guaranty Agreements -->
+<div class="modal-overlay" id="modal-cross-guaranty" role="dialog" aria-modal="true" aria-labelledby="modal-title-cross-guaranty">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cross-guaranty">Cross-Guaranty Agreements</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Risk Sharing</div>
+        <div class="def-word">Cross-Guaranty</div>
+        <p>Formal agreements between clearing entities that provide mutual support in the event of default. These agreements create a broader safety net by pooling resources across multiple clearinghouses.</p>
+      </div>
+      <p class="modal-section-title">How Cross-Guaranty Works</p>
+      <p>DTC, NSCC, FICC, and OCC maintain cross-guaranty agreements. If one clearinghouse faces a member default that exceeds its own resources, the other clearinghouses provide support according to pre-determined formulas. This mutualization reduces the probability that any single CCP failure could cascade through the financial system.</p>
+      <p class="modal-section-title">Risk Benefits</p>
+      <p>Cross-guaranty agreements provide additional loss-absorbing capacity beyond each CCP's own clearing fund. They recognize that defaults often affect multiple clearinghouses simultaneously (e.g., a failing broker may participate in equity, fixed income, and derivatives clearing).</p>
+      <div class="citation"><strong>Source:</strong> DTCC Risk Management Disclosures; CPMI-IOSCO PFMI Principles.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Waterfall -->
+<div class="modal-overlay" id="modal-waterfall" role="dialog" aria-modal="true" aria-labelledby="modal-title-waterfall">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-waterfall">Loss Allocation Waterfall</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Loss Allocation</div>
+        <div class="def-word">Waterfall</div>
+        <p>A pre-determined sequence of resources used to absorb losses from a member default. Each layer of the waterfall is exhausted before moving to the next, ensuring orderly loss allocation.</p>
+      </div>
+      <p class="modal-section-title">Typical CCP Waterfall Structure</p>
+      <ul>
+        <li><strong>Layer 1:</strong> Defaulter's own margin deposit</li>
+        <li><strong>Layer 2:</strong> Defaulter's corporate contribution</li>
+        <li><strong>Layer 3:</strong> Non-defaulting members' clearing fund contributions (by tier)</li>
+        <li><strong>Layer 4:</strong> Assessments on surviving members</li>
+        <li><strong>Layer 5:</strong> Cross-guaranty support from other CCPs</li>
+        <li><strong>Layer 6:</strong> CCP's own capital and equity</li>
+      </ul>
+      <p class="modal-section-title">Risk Management Purpose</p>
+      <p>The waterfall structure ensures that losses are allocated fairly (defaulter pays first) and that surviving members are protected from catastrophic losses. It also provides certainty about how defaults will be handled, reducing uncertainty in stressful market conditions.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI); FICC Default Procedures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GCF Repo -->
+<div class="modal-overlay" id="modal-gcf-repo" role="dialog" aria-modal="true" aria-labelledby="modal-title-gcf-repo">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-gcf-repo">GCF Repo — Government Securities Financing</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">FICC Service</div>
+        <div class="def-word">GCF Repo</div>
+        <p>A service operated by FICC's Government Securities Division (GSD) that provides anonymous repo trading for U.S. government securities. GCF Repo facilitates general collateral financing among a broad range of market participants.</p>
+      </div>
+      <p class="modal-section-title">How GCF Repo Works</p>
+      <p>GCF Repo acts as an anonymous marketplace where participants can borrow and lend cash against U.S. Treasury and agency securities as collateral. The system matches borrowers and lenders, nets positions, and provides settlement through DTC. Participants don't need to know their counterparty's identity — FICC guarantees the trades.</p>
+      <p class="modal-section-title">Key Benefits</p>
+      <ul>
+        <li><strong>Anonymous Trading:</strong> Participants don't disclose their identity to counterparties</li>
+        <li><strong>Broader Access:</strong> Non-GSD members can participate through sponsored membership</li>
+        <li><strong>Netting:</strong> Positions are netted to reduce settlement requirements</li>
+        <li><strong>CCP Guarantee:</strong> FICC guarantees completion of repo transactions</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTCC FICC GCF Repo Documentation; Federal Reserve Bank of New York.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CCIT -->
+<div class="modal-overlay" id="modal-ccit" role="dialog" aria-modal="true" aria-labelledby="modal-title-ccit">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ccit">CCIT — Commercial Collateral Improvement Program</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">FICC Service</div>
+        <div class="def-word">CCIT</div>
+        <p>A FICC service that provides tri-party repo processing for U.S. government securities. CCIT manages collateral for both borrowers and lenders through a third-party agent.</p>
+      </div>
+      <p class="modal-section-title">How Tri-Party Repo Works</p>
+      <p>In tri-party repo, a third-party agent (typically a custodian bank) holds the collateral for both the borrower and lender. The agent ensures that collateral remains adequate throughout the repo transaction, automatically replacing or revaluing collateral as needed. This reduces operational and credit risk for both parties.</p>
+      <p class="modal-section-title">CCIT vs. GCF Repo</p>
+      <ul>
+        <li><strong>CCIT:</strong> Tri-party with collateral management, for more complex transactions</li>
+        <li><strong>GCF Repo:</strong> Bilateral-style trading with anonymity, for general collateral needs</li>
+      </ul>
+      <p class="modal-section-title">Risk Management</p>
+      <p>The tri-party structure reduces counterparty risk by ensuring collateral is properly managed and valued. The agent also provides operational support for collateral substitution and cash management, making the repo process more efficient and safer.</p>
+      <div class="citation"><strong>Source:</strong> DTCC FICC Tri-Party Repo Services; Federal Reserve Bank of New York.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TBA -->
+<div class="modal-overlay" id="modal-tba" role="dialog" aria-modal="true" aria-labelledby="modal-title-tba">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-tba">TBA — To-Be-Announced</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">MBS Market</div>
+        <div class="def-word">TBA</div>
+        <p>A forward market for agency mortgage-backed securities where specific pool details are announced shortly before settlement. TBAs allow trading of MBS without knowing the exact pools that will be delivered.</p>
+      </div>
+      <p class="modal-section-title">How TBA Trading Works</p>
+      <p>When participants trade TBA MBS, they agree to buy or sell a specific face amount of agency MBS (e.g., Fannie Mae 30-year mortgages) for a future settlement date. The specific mortgage pools to be delivered are announced (typically 48 hours before settlement) by the seller, subject to program guidelines.</p>
+      <p class="modal-section-title">Why TBAs Matter</p>
+      <ul>
+        <li><strong>Liquidity:</strong> TBAs provide deep liquidity for MBS trading</li>
+        <li><strong>Hedging:</strong> Market participants can hedge positions without specifying pools</li>
+        <li><strong>Standardization:</strong> Uniform contracts make pricing and comparison easier</li>
+        <li><strong>FICC Clearing:</strong> FICC's MBSD clears and settles TBA trades</li>
+      </ul>
+      <p class="modal-section-title">FICC MBSD Role</p>
+      <p>FICC's Mortgage-Backed Securities Division provides real-time trade matching, netting, and risk management for TBA transactions. The system handles pool notifications, ensures compliance with TBA guidelines, and guarantees settlement.</p>
+      <div class="citation"><strong>Source:</strong> FICC MBSD Documentation; SIFMA TBA Market Practices.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Uniform Practice Code -->
+<div class="modal-overlay" id="modal-uniform-practice" role="dialog" aria-modal="true" aria-labelledby="modal-title-uniform-practice">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-uniform-practice">Uniform Practice Code</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Industry Standard</div>
+        <div class="def-word">Uniform Practice Code</div>
+        <p>Industry-standard procedures developed by SIFMA for securities settlement and corporate actions. These codes supplement DTC rules and provide uniform guidance for market participants.</p>
+      </div>
+      <p class="modal-section-title">Purpose and Scope</p>
+      <p>The Uniform Practice Code establishes consistent practices for processing securities transactions, handling corporate actions, and managing operational exceptions. It reduces disputes between firms by providing clear, agreed-upon procedures for common scenarios.</p>
+      <p class="modal-section-title">Key Areas Covered</p>
+      <ul>
+        <li><strong>Settlement Procedures:</strong> Standard practices for trade settlement</li>
+        <li><strong>Corporate Actions:</strong> Processing of dividends, splits, mergers, and other events</li>
+        <li><strong>Failed Trades:</strong> Procedures for handling settlement failures</li>
+        <li><strong>Market Exchanges:</strong> Standards for trading and clearing across markets</li>
+      </ul>
+      <p class="modal-section-title">Relationship to DTC Rules</p>
+      <p>While DTC establishes binding rules for participants, the Uniform Practice Code provides industry guidance that fills gaps and offers flexibility for situations not specifically addressed by DTC rules. Together, they create a comprehensive operational framework.</p>
+      <div class="citation"><strong>Source:</strong> SIFMA Uniform Practice Code; DTC Operational Arrangements.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIFMA -->
+<div class="modal-overlay" id="modal-sifma" role="dialog" aria-modal="true" aria-labelledby="modal-title-sifma">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sifma">SIFMA — Securities Industry and Financial Markets Association</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Industry Association</div>
+        <div class="def-word">SIFMA</div>
+        <p>The leading trade association for the U.S. securities industry, representing securities firms, banks, and asset managers. SIFMA develops industry standards, advocates for market participants, and provides market data and analysis.</p>
+      </div>
+      <p class="modal-section-title">Key Functions</p>
+      <ul>
+        <li><strong>Standard Setting:</strong> Develops industry practices like the Uniform Practice Code</li>
+        <li><strong>Advocacy:</strong> Represents industry interests with regulators and policymakers</li>
+        <li><strong>Market Data:</strong> Provides statistics and analysis on market activity</li>
+        <li><strong>Education:</strong> Offers training and certification programs</li>
+      </ul>
+      <p class="modal-section-title">Role in Clearing and Settlement</p>
+      <p>SIFMA works closely with clearing organizations, regulators, and market participants to develop and maintain standards for securities processing. The Uniform Practice Code, maintained by SIFMA, is widely used alongside DTC rules to guide operational practices.</p>
+      <div class="citation"><strong>Source:</strong> <a href="https://www.sifma.org" target="_blank" rel="noopener">SIFMA.org</a>; SIFMA Industry Publications.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tender Offers -->
+<div class="modal-overlay" id="modal-tender-offer" role="dialog" aria-modal="true" aria-labelledby="modal-title-tender-offer">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-tender-offer">Tender Offer</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporate Action</div>
+        <div class="def-word">Tender Offer</div>
+        <p>A corporate action where a company or third party offers to purchase shares from existing shareholders at a specified price and for a limited time. Shareholders choose whether to tender their shares.</p>
+      </div>
+      <p class="modal-section-title">Types of Tender Offers</p>
+      <ul>
+        <li><strong>Going-Private:</strong> Company buys back shares to delist from public markets</li>
+        <li><strong>Acquisition:</strong> Third party acquires control of target company</li>
+        <li><strong>Exchange Offer:</strong> Shareholders can exchange shares for different securities</li>
+        <li><strong>Partial:</strong> Offer to purchase only a portion of outstanding shares</li>
+      </ul>
+      <p class="modal-section-title">Processing through DTC</p>
+      <p>DTC's ATOP (Automated Tender Offer Program) processes tender offers efficiently. Participants can elect to tender shares on behalf of their customers, and DTC automates the surrender process and allocation of consideration (cash, shares, or combination).</p>
+      <p class="modal-section-title">Investor Considerations</p>
+        <ul>
+        <li><strong>Voluntary:</strong> Shareholders choose whether to participate</li>
+        <li><strong>Price Premium:</strong> Tender offers typically offer a premium to market price</li>
+        <li><strong>Time Sensitivity:</strong> Offers expire if not accepted by deadline</li>
+        <li><strong>Proration:</strong> Oversubscribed offers may be prorated</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Tender Offer Rules; DTC ATOP Processing Guide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Rights Offerings -->
+<div class="modal-overlay" id="modal-rights-offering" role="dialog" aria-modal="true" aria-labelledby="modal-title-rights-offering">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-rights-offering">Rights Offering</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporate Action</div>
+        <div class="def-word">Rights Offering</div>
+        <p>A corporate action where a company offers existing shareholders the right to purchase additional shares, typically at a discount to market price. Rights offerings allow companies to raise capital while giving existing shareholders the opportunity to maintain their proportional ownership.</p>
+      </div>
+      <p class="modal-section-title">How Rights Offerings Work</p>
+      <ul>
+        <li><strong> Rights Distribution:</strong> Shareholders receive rights based on current holdings</li>
+        <li><strong>Subscription Price:</strong> Rights can be exercised to buy shares at discount</li>
+        <li><strong>Expiration:</strong> Rights expire if not exercised by deadline</li>
+        <li><strong>Transferable:</strong> Rights can often be traded in the market</li>
+      </ul>
+      <p class="modal-section-title">Processing through DTC</p>
+      <p>DTC's ASOP (Automated Subscription Offer Program) handles rights offerings through the depository system. The program automates rights exercise, subscription payments, and new share allocation, reducing manual processing and ensuring accurate accounting.</p>
+      <p class="modal-section-title">Investor Considerations</p>
+      <ul>
+        <li><strong>Ownership Protection:</strong> Allows maintaining proportional ownership stake</li>
+        <li><strong>Discount Pricing:</strong> Subscription price typically below market</li>
+        <li><strong>Rights Trading:</strong> Rights can be sold if not planning to subscribe</li>
+        <li><strong>Oversubscription:</strong> May be able to purchase additional shares beyond rights</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Rights Offering Rules; DTC ASOP Processing Guide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOBO/OBO -->
+<div class="modal-overlay" id="modal-nobo-obo" role="dialog" aria-modal="true" aria-labelledby="modal-title-nobo-obo">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nobo-obo">NOBO/OBO — Investor Privacy Preferences</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Investor Status</div>
+        <div class="def-word">NOBO/OBO</div>
+        <p>NOBO (Non-Objecting Beneficial Owner) and OBO (Objecting Beneficial Owner) are designations that determine whether shareholders choose to receive communications directly from issuers or prefer to maintain privacy through their brokers.</p>
+      </div>
+      <p class="modal-section-title">NOBO — Non-Objecting Beneficial Owner</p>
+      <p>Investors who choose NOBO status allow their name and contact information to be provided to issuers. This means they can receive annual reports, proxy materials, and other corporate communications directly from the company rather than through their broker.</p>
+      <p class="modal-section-title">OBO — Objecting Beneficial Owner</p>
+      <p>Investors who choose OBO status prefer that their contact information not be shared with issuers. They receive corporate communications through their broker, who may provide summarized information or forward materials. This provides privacy but may delay access to some issuer communications.</p>
+      <p class="modal-section-title">Why It Matters</p>
+      <ul>
+        <li><strong>Direct Communication:</strong> NOBO shareholders receive direct issuer communications</li>
+        <li><strong>Proxy Voting:</strong> OBO shareholders vote through broker; NOBO can vote directly</li>
+        <li><strong>Privacy:</strong> OBO provides confidentiality of investor identity</li>
+        <li><strong>Control:</strong> Brokers may default to OBO unless investor requests NOBO status</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Rule 14b-2; DTC Proxy Voting Procedures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PWP -->
+<div class="modal-overlay" id="modal-pwp" role="dialog" aria-modal="true" aria-labelledby="modal-title-pwp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-pwp">PWP — Payment Without Presentation</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Processing Procedure</div>
+        <div class="def-word">PWP</div>
+        <p>A DTC procedure that allows payment processing without requiring physical certificate presentation. PWP is used for certain types of securities and transactions where physical certificates are not readily available or practical to present.</p>
+      </div>
+      <p class="modal-section-title">When PWP Applies</p>
+      <ul>
+        <li><strong>Redemptions:</strong> Certain bond redemptions and maturities</li>
+        <li><strong>IVORS:</strong> UIT voluntary redemptions processed without certificates</li>
+        <li><strong>Corporate Actions:</strong> Some exchange offers and reorganizations</li>
+        <li><strong>Global Securities:</strong> Securities held in global certificate form</li>
+      </ul>
+      <p class="modal-section-title">Benefits of PWP</p>
+      <ul>
+        <li><strong>Efficiency:</strong> Eliminates need to locate and present physical certificates</li>
+        <li><strong>Speed:</strong> Faster processing for transactions involving held securities</li>
+        <li><strong>Convenience:</strong> Reduces operational burden for participants</li>
+        <li><strong>Risk Reduction:</strong> Eliminates certificate delivery and handling risks</li>
+      </ul>
+      <p class="modal-section-title">Processing Requirements</p>
+      <p>DTC's operational arrangements specify which transactions qualify for PWP and the procedures for requesting PWP processing. Participants must ensure they have proper authorization and that the securities are properly held in book-entry form.</p>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements; DTC Corporate Action Services Guide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Maturity Redemptions -->
+<div class="modal-overlay" id="modal-maturity-redemption" role="dialog" aria-modal="true" aria-labelledby="modal-title-maturity-redemption">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-maturity-redemption">Maturity Redemption</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Redemption Type</div>
+        <div class="def-word">Maturity Redemption</div>
+        <p>The scheduled repayment of principal on a fixed-income security when it reaches its maturity date. This is the normal end-of-life event for bonds and other debt securities.</p>
+      </div>
+      <p class="modal-section-title">How Maturity Redemption Works</p>
+      <p>When a bond reaches its maturity date, the issuer repays the principal (face value) to the bondholders. For book-entry securities held through DTC, the issuer deposits the payment amount with DTC, which allocates it pro-rata to participants based on their positions. Participants then credit their customers' accounts.</p>
+      <p class="modal-section-title">Processing Requirements</p>
+      <ul>
+        <li><strong>Notice:</strong> Issuers must provide advance notice of maturity payment details</li>
+        <li><strong>Payment Instructions:</strong> Complete payment instructions must be provided to DTC</li>
+        <li><strong>Timing:</strong> Payment typically settles on the maturity date</li>
+        <li><strong>PWP:</strong> Maturity payments may qualify for Payment Without Presentation</li>
+      </ul>
+      <p class="modal-section-title">Investor Considerations</p>
+      <ul>
+        <li><strong>Predictable:</strong> Maturity dates are known at issuance</li>
+        <li><strong>Capital Return:</strong> Principal is returned at maturity</li>
+        <li><strong>Reinvestment Risk:</strong> May need to reinvest proceeds at prevailing rates</li>
+        <li><strong>Final Interest:</strong> Final coupon payment typically included</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements; Bond Market Association Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Call Redemptions -->
+<div class="modal-overlay" id="modal-call-redemption" role="dialog" aria-modal="true" aria-labelledby="modal-title-call-redemption">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-call-redemption">Call Redemption</h3><button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Redemption Type</div>
+        <div class="def-word">Call Redemption</div>
+        <p>The early repayment of principal on a callable bond or other debt security at the issuer's option. Call redemptions allow issuers to retire debt before maturity, typically when interest rates fall.</p>
+      </div>
+      <p class="modal-section-title">How Call Redemption Works</p>
+      <p>Callable bonds include call provisions that specify when and at what price the issuer can redeem the securities. When the issuer decides to call the bonds, they provide notice to bondholders and pay the call price (typically par value plus any call premium) on the call date.</p>
+      <p class="modal-section-title">Types of Call Features</p>
+      <ul>
+        <li><strong>American Call:</strong> Callable at any time after call protection period</li>
+        <li><strong>European Call:</strong> Callable only on specified call date</li>
+        <li><strong>Bermudan Call:</strong> Callable on specified dates after protection period</li>
+        <li><strong>Make-Whole Call:</strong> Call price includes present value of remaining payments</li>
+      </ul>
+      <p class="modal-section-title">Investor Considerations</p>
+      <ul>
+        <li><strong>Reinvestment Risk:</strong> Proceeds may need reinvestment at lower rates</li>
+        <li><strong>Call Premium:</strong> Typically receive premium over par value</li>
+        <li><strong>Price Ceiling:</strong> Callable bond prices typically capped near call price</li>
+        <li><strong>Yield Considerations:</strong> Callable bonds typically offer higher yield to compensate for call risk</li>
+      </ul>
+      <p class="modal-section-title">Processing through DTC</p>
+      <p>DTC processes call redemptions through its corporate action systems. Issuers provide advance notice of call details, and DTC notifies participants. Participants then inform their customers and process the redemption according to the issuer's instructions.</p>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements; Bond Market Association Standards.</div>
     </div>
   </div>
 </div>
