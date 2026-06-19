@@ -76,7 +76,7 @@ body {
 .toc-toggle {
   position: fixed;
   left: 16px;
-  top: 80px;
+  top: 44px;
   z-index: 70;
   width: 40px; height: 40px;
   background: var(--accent);
@@ -2601,13 +2601,58 @@ function resetQuiz() {
         <div class="def-word">CUSIP Number</div>
         <p>A unique 9-character alphanumeric identifier assigned to each security issue, enabling standardized tracking across the U.S. financial system. Administered by CUSIP Global Services (CGS), a division of S&amp;P Global.</p>
       </div>
-      <p>For DTC eligibility, complete CUSIP information must be provided at least seven business days before the closing date. For corporate issues, this is triggered upon pricing.</p>
+      <p>For DTC eligibility, complete CUSIP information must be provided according to specific timing requirements. For corporate issues, this is triggered upon pricing rather than a fixed pre-closing deadline.</p>
       <div class="def-callout">
         <div class="def-type">CUSIP Format</div>
         <div class="def-word">9-character code (e.g. "037833100")</div>
         <p>First 6 characters: Issuer code · Characters 7–8: Security type and issue identifier · Character 9: Check digit</p>
       </div>
-      <p>For Rule 144A and Regulation S securities, DTC requires that restricted securities carry a <strong>different CUSIP or CINS number</strong> from any unrestricted securities of the same class.</p>
+      
+      <p class="modal-section-title">CUSIP Assignment Procedures</p>
+      <p>DTC's operational arrangements specify detailed CUSIP assignment requirements:</p>
+      <ul>
+        <li><strong>Municipal Securities:</strong> CUSIP information due 7 business days before closing</li>
+        <li><strong>Corporate Securities:</strong> CUSIP information due upon pricing (no fixed pre-closing deadline)</li>
+        <li><strong>MMI Securities:</strong> Special CUSIP assignment for Money Market Instruments</li>
+        <li><strong>Rapid Issuance:</strong> Expedited CUSIP assignment for certain programmatic issuances</li>
+      </ul>
+      
+      <p class="modal-section-title">Special CUSIP Requirements</p>
+      <p>Certain security types have special CUSIP assignment requirements:</p>
+      <ul>
+        <li><strong>Rule 144A Securities:</strong> Must use different CUSIP/CINS from unrestricted securities of same class</li>
+        <li><strong>Regulation S Securities:</strong> Must use different CUSIP/CINS from U.S. registered securities</li>
+        <li><strong>Dual 144A/Reg S:</strong> May require single or multiple CUSIPs depending on structure</li>
+        <li><strong>Serial Maturities:</strong> Each maturity requires separate CUSIP (e.g., 10-year serial = 10 CUSIPs)</li>
+        <li><strong>Unit Securities:</strong> Components may have separate CUSIPs from the unit itself</li>
+      </ul>
+      
+      <p class="modal-section-title">CUSIP Assignment Timing</p>
+      <ul>
+        <li><strong>Standard Assignment:</strong> Typically 2-3 business days after application to CUSIP Services</li>
+        <li><strong>Expedited Assignment:</strong> Available for urgent issuances (may incur additional fees)</li>
+        <li><strong>Program Assignment:</strong> Pre-assigned CUSIP ranges for frequent issuers</li>
+        <li><strong>MMI Assignment:</strong> Special procedures for money market instruments</li>
+      </ul>
+      
+      <p class="modal-section-title">CUSIP Information Required</p>
+      <p>For DTC eligibility, the following CUSIP information must be provided:</p>
+      <ul>
+        <li><strong>Full CUSIP Number:</strong> Complete 9-character identifier</li>
+        <li><strong>Security Description:</strong> Full name of security as it will appear on certificate</li>
+        <li><strong>Issue Amount:</strong> Principal or par amount of the issue</li>
+        <li><strong>Maturity Dates:</strong> For serial bonds, all maturity dates</li>
+        <li><strong>Interest Rates:</strong> Coupon rates for each maturity/CUSIP</li>
+      </ul>
+      
+      <div class="warn-box">
+        <strong>Operational Requirement:</strong> CUSIP information that is incomplete, incorrect, or late can result in eligibility denial or processing delays. For Rule 144A and Regulation S securities, failure to use distinct CUSIPs from registered securities is a common cause of rejection. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section II.A.1</a>
+      </div>
+      
+      <div class="tip-box">
+        <strong>Assignment Tip:</strong> For complex issues with multiple maturities or features, create a CUSIP schedule early in the process. Verify CUSIP distinctness for restricted securities before submitting eligibility questionnaire.
+      </div>
+      
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.1.b. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>
@@ -3200,6 +3245,45 @@ function resetQuiz() {
       </div>
       <p>The Transfer Agent must have executed an Operational Arrangements Agent Letter with DTC before it can act as a FAST Agent or process transfers through DTC's systems. The Transfer Agent is a required contact on the eligibility questionnaire because DTC needs direct coordination with them to process book-entry movements.</p>
       <p><strong>Current requirement:</strong> The Transfer Agent must submit an <strong>Agent Confirmation</strong> via email to DTC's Underwriting Department within 10 business days after the Closing Date, per the June 2026 OA. This timing was changed from pre-closing to post-closing.</p>
+      
+      <p class="modal-section-title">Transfer Agent Compliance Requirements</p>
+      <p>DTC's operational arrangements specify detailed compliance requirements for transfer agents:</p>
+      <ul>
+        <li><strong>Operational Arrangements Agent Letter:</strong> Must execute this agreement with DTC before processing any DTC-eligible securities</li>
+        <li><strong>Agent Confirmation:</strong> Must confirm within 10 business days after closing that they have executed required agreements and are prepared to perform duties</li>
+        <li><strong>Authentication Dates:</strong> Must properly date all certificate authentications and transfer processing</li>
+        <li><strong>Notice Requirements:</strong> Must provide required notices to DTC for name changes, address changes, and other corporate events</li>
+        <li><strong>Legal/Tax Notices:</strong> Must post legal and tax notices to DTC's LENS system when required</li>
+        <li><strong>Trustee Notices:</strong> Must coordinate with trustees to provide required notices for trust-held securities</li>
+      </ul>
+      
+      <p class="modal-section-title">Transfer Turnaround Times</p>
+      <p>Transfer agents must meet DTC's specified turnaround times for different types of transfers:</p>
+      <ul>
+        <li><strong>Standard Transfers:</strong> Must be processed within specified business day timeframe</li>
+        <li><strong>FAST Transfers:</strong> Same-day processing for electronic movements</li>
+        <li><strong>Restricted Transfers:</strong> Additional compliance verification required</li>
+        <li><strong>Book-Entry Movements:</strong> Must follow DTC's electronic processing standards</li>
+      </ul>
+      
+      <p class="modal-section-title">LENS Posting Requirements</p>
+      <p>Transfer agents must post certain notices to DTC's Legal Entity Notification System (LENS):</p>
+      <ul>
+        <li><strong>Name Changes:</strong> When the transfer agent changes its corporate name</li>
+        <li><strong>Address Changes:</strong> When the transfer agent's contact information changes</li>
+        <li><strong>Mergers/Acquisitions:</strong> When the transfer agent undergoes corporate restructuring</li>
+        <li><strong>Legal Notices:</strong> Legal proceedings affecting the transfer agent's operations</li>
+        <li><strong>Tax Notices:</strong> Tax-related notifications affecting securities processing</li>
+      </ul>
+      
+      <div class="warn-box">
+        <strong>Operational Requirement:</strong> Transfer agents that fail to meet DTC's compliance requirements may be suspended from FAST processing or other DTC programs. Issuers must ensure their transfer agents maintain current agreements and compliance status. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section II.B.4</a>
+      </div>
+      
+      <div class="tip-box">
+        <strong>Compliance Tip:</strong> Before selecting a transfer agent for a DTC-eligible issue, confirm they have current DTC agreements in place and experience with the specific security type (corporate, municipal, structured products).
+      </div>
+      
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.B - Agent Requirements. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>

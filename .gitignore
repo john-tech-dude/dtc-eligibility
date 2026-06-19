@@ -15,3 +15,5 @@ __pycache__/
 *$py.class
 venv/
 env/
+.vercel
+.env*
