@@ -985,10 +985,217 @@
 
         .grid-cell {
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .grid-cell:hover {
             filter: brightness(1.2);
+        }
+
+        /* Special cell styles */
+        .grid-cell[data-cell="1"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="7"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="10"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="12"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width, opacity;
+        }
+
+        .grid-cell[data-cell="40"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="70"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="72"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width, opacity;
+        }
+
+        .grid-cell[data-cell="100"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="120"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="125"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="126"] {
+            stroke: var(--gold) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width;
+        }
+
+        .grid-cell[data-cell="144"] {
+            stroke: var(--accent) !important;
+            stroke-width: 1.5 !important;
+            transform-origin: center;
+            will-change: fill, filter, stroke-width, opacity;
+        }
+
+        /* Hover effects for special cells */
+        .grid-cell[data-cell="1"]:hover {
+            fill: var(--gold) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="7"]:hover {
+            fill: var(--accent) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="10"]:hover {
+            fill: var(--gold) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="12"]:hover {
+            fill: var(--accent) !important;
+            stroke-width: 2.5 !important;
+            animation: glow-pulse 1.5s ease-in-out infinite;
+        }
+
+        .grid-cell[data-cell="40"]:hover {
+            fill: var(--gold) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="70"]:hover {
+            fill: var(--accent) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="72"]:hover {
+            fill: var(--gold) !important;
+            stroke-width: 3 !important;
+            animation: pulse-center 2s ease-in-out infinite;
+        }
+
+        .grid-cell[data-cell="100"]:hover {
+            fill: var(--accent) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="120"]:hover {
+            fill: var(--gold) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="125"]:hover {
+            fill: var(--accent) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="126"]:hover {
+            fill: var(--gold) !important;
+            filter: brightness(1.2) !important;
+            stroke-width: 2.5 !important;
+        }
+
+        .grid-cell[data-cell="144"]:hover {
+            fill: var(--accent) !important;
+            stroke-width: 2.5 !important;
+            animation: glow-complete 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 1; filter: brightness(1.1); }
+            50% { opacity: 0.8; filter: brightness(1.4); }
+        }
+
+        @keyframes pulse-center {
+            0%, 100% { opacity: 1; filter: brightness(1.1); }
+            50% { opacity: 0.85; filter: brightness(1.5); }
+        }
+
+        @keyframes glow-complete {
+            0%, 100% { opacity: 1; filter: brightness(1.1); }
+            50% { opacity: 0.8; filter: brightness(1.5); }
+        }
+
+        /* Tooltip styles */
+        .grid-tooltip {
+            position: fixed;
+            background: var(--bg);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            max-width: 200px;
+        }
+
+        .grid-tooltip.visible {
+            opacity: 1;
+        }
+
+        .grid-tooltip .tooltip-title {
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .grid-tooltip .tooltip-text {
+            font-size: 0.85rem;
+            color: var(--ink-secondary);
         }
 
         @media (max-width: 640px) {
@@ -1013,6 +1220,76 @@
             color: var(--gold);
             margin-top: 0.3rem;
         }
+
+        /* ─── FILINGS WIDGET ──────────────────────────────────────────── */
+        .filings-widget {
+            margin: 2rem 0;
+            border: 1px solid var(--border-s);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-2);
+        }
+        .filings-header {
+            background: var(--accent-dim);
+            color: var(--parch-2);
+            padding: 1rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--border-s);
+        }
+        .filings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0;
+        }
+        .filing-card {
+            padding: 1.25rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
+        }
+        .filing-card:last-child { border-right: none; }
+        .filing-card:hover {
+            background: var(--accent-dim);
+            border-color: var(--accent-2);
+        }
+        .filing-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-2);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .filing-release {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+        .filing-desc {
+            font-size: 0.85rem;
+            color: var(--text-2);
+            line-height: 1.4;
+        }
+        .filings-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-s);
+            background: var(--bg-3);
+        }
+        .filings-sec-link {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+        .filings-sec-link:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
     </style>
 <base target="_blank">
 </head>
@@ -1036,7 +1313,6 @@
         <div class="header-meta">
             <span><span class="meta-dot"></span> June 2026</span>
             <span><span class="meta-dot"></span> Standard Mispar Hechrechi Throughout</span>
-            <span><span class="meta-dot"></span> Chicago Author-Date Citations</span>
         </div>
     </header>
 
@@ -1112,7 +1388,7 @@
 
             <h3 id="lurianic">II. The Lurianic Warrant: Tzimtzum</h3>
             <p>The theological principle organizing this reading is <em>Tzimtzum</em> (<span class="inline-hebrew">צִמְצוּם</span>, "divine contraction"), the signature doctrine of Lurianic Kabbalah. Developed by Isaac Luria of Safed (1534–1572) and transmitted through the writings of his disciple Hayyim Vital (1542–1620), the doctrine holds that the <em>Ein Sof</em> (the Infinite) contracted into itself to create a void — the <em>ḥalal</em> or <em>tehiru</em> — within which a finite creation could emerge without being annihilated by the divine plenitude.<sup><a href="#fn2">2</a></sup></p>
-            <p>The practical consequence for hermeneutics is this: within the space of tzimtzum, finite agents act with genuine autonomy; yet their action occurs within what Luria calls the <em>reshimu</em> — the "impression" or residual trace of the divine structure that remains in the void after the contraction. This explains the most counterintuitive feature of the present reading: the designers of the DTC Operational Arrangements acted with full secular intent. Their ignorance of the sacred structure is not evidence against the reading — in the Lurianic framework, it is the <em>necessary condition</em> for the reading.</p>
+            <p>The practical consequence for hermeneutics is this: within the space of tzimtzum, finite agents act with genuine autonomy; yet their action occurs within what Luria calls the <em>reshimu</em> — the "impression" or residual trace of the divine structure that remains in the void after the contraction. This explains the most counterintuitive feature of the present reading: the designers of the <a href="https://www.dtcc.com/-/media/Files/Downloads/2024/09/dtc-operational-arrangements.pdf" target="_blank" rel="noopener">DTC Operational Arrangements</a> acted with full secular intent. Their ignorance of the sacred structure is not evidence against the reading — in the Lurianic framework, it is the <em>necessary condition</em> for the reading.</p>
 
             <h3 id="gematria">III. On Gematria</h3>
             <p>Gematria — the numerical interpretation of Hebrew letters and words — is attested from the Second Temple period and functions as a recognized mode of rabbinic hermeneutics. The earliest systematic account of letter-values appears in <em>Sefer Yetzirah</em> ("Book of Formation"), dated variously from the second to the sixth century CE, which assigns each Hebrew letter numerical, phonetic, and cosmological properties.<sup><a href="#fn3">3</a></sup></p>
@@ -1145,10 +1421,10 @@
             </div>
 
             <h4 id="dalet">D — Dalet (ד), Value 4</h4>
-            <p>The letter Dalet derives from the Proto-Semitic <em>dalt</em>, "door," and is cognate with Hebrew <em>delet</em> (<span class="inline-hebrew">דֶּלֶת</span>).<sup><a href="#fn6">6</a></sup> Its standard pictographic origin is a door or tent-flap. The <em>Sefer Yetzirah</em> assigns Dalet to the quality of entry and threshold (2:3).<sup><a href="#fn7">7</a></sup> Munk: "The door is the boundary between outside and inside, between profane and sacred, between the world and the dwelling."<sup><a href="#fn8">8</a></sup> In the DTC system, Dalet corresponds precisely to the Eligibility Questionnaire — the formal request for entry, the examination of a security at the threshold of the depository before it may pass within.</p>
+            <p>The letter Dalet derives from the Proto-Semitic <em>dalt</em>, "door," and is cognate with Hebrew <em>delet</em> (<span class="inline-hebrew">דֶּלֶת</span>).<sup><a href="#fn6">6</a></sup> Its standard pictographic origin is a door or tent-flap. The <em>Sefer Yetzirah</em> assigns Dalet to the quality of entry and threshold (2:3).<sup><a href="#fn7">7</a></sup> Munk: "The door is the boundary between outside and inside, between profane and sacred, between the world and the dwelling."<sup><a href="#fn8">8</a></sup> In the DTC system, Dalet corresponds precisely to the <a href="../forms/dtc-eligibility-questionnaire.html" target="_blank" rel="noopener">Eligibility Questionnaire</a> — the formal request for entry, the examination of a security at the threshold of the depository before it may pass within.</p>
 
             <h4 id="tav">T — Tav (ת), Value 400</h4>
-            <p>Tav is the twenty-second and final letter of the Hebrew alphabet. Its ancient Paleo-Hebrew form was written as a cross (× or +) — a mark or signature.<sup><a href="#fn9">9</a></sup> The word <em>tav</em> (<span class="inline-hebrew">תָּו</span>) appears as a noun meaning "mark" in Ezekiel 9:4.</p>
+            <p>Tav is the twenty-second and final letter of the Hebrew alphabet. Its ancient Paleo-Hebrew form was written as a cross (× or +) — a mark or signature.<sup><a href="#fn9">9</a></sup> The word <em>tav</em> (<span class="inline-hebrew">תָּו</span>) appears as a noun meaning "mark" in <a href="https://www.sefaria.org/Ezekiel.9.4" target="_blank" rel="noopener">Ezekiel 9:4</a>.</p>
             <p>In the DTC system, Tav is the CUSIP number — the unique alphanumeric identifier assigned to each security at the threshold of eligibility. The CUSIP functions as a seal: it marks the security as known, trackable, and subject to the system's jurisdiction. A security without a CUSIP is invisible to the system; a security with a CUSIP bears the system's mark, its <em>tav</em>, and can move through the system's spaces.</p>
 
             <h4 id="kaf">C — Kaf (כ), Value 20</h4>
@@ -1215,8 +1491,8 @@
             </div>
 
             <h3 id="number-10">The Number 10 — The Decalogue</h3>
-            <p>The number 10 is the foundational recurring unit in the DTC Eligibility Questionnaire and Exhibit B: 10 business days before closing for Questionnaire submission; 10 for preliminary offering documents; 10 for the BEO Letter of Representations; 10 for final documents after closing.</p>
-            <p>The theological significance of 10 as the number of the Law requires no special argument: the Decalogue is the normative instance of divine-human covenant stipulation in the Hebrew Bible (Exodus 20:1–17; Deuteronomy 5:6–21). What requires argument is the typological claim that the ten-day deadline <em>recapitulates</em> this Decalogue structure rather than coincidentally sharing a number.</p>
+            <p>The number 10 is the foundational recurring unit in the <a href="https://www.dtcc.com/-/media/Files/Downloads/2024/09/eligibility-questionnaire.pdf" target="_blank" rel="noopener">DTC Eligibility Questionnaire</a> and Exhibit B: 10 business days before closing for Questionnaire submission; 10 for preliminary offering documents; 10 for the BEO Letter of Representations; 10 for final documents after closing.</p>
+            <p>The theological significance of 10 as the number of the Law requires no special argument: the Decalogue is the normative instance of divine-human covenant stipulation in the Hebrew Bible (<a href="https://www.sefaria.org/Exodus.20.1-17" target="_blank" rel="noopener">Exodus 20:1–17</a>; <a href="https://www.sefaria.org/Deuteronomy.5.6-21" target="_blank" rel="noopener">Deuteronomy 5:6–21</a>). What requires argument is the typological claim that the ten-day deadline <em>recapitulates</em> this Decalogue structure rather than coincidentally sharing a number.</p>
 
             <h3 id="number-144">The Number 144 — The Perfect Square Holds Everything</h3>
 
@@ -1609,13 +1885,13 @@
 
             <h4>IV. The Mirror: 441 = Emet = Truth — The Seal of God</h4>
             <p><span class="inline-hebrew">אמת</span> = Aleph (1) + Mem (40) + Tav (400) = 441</p>
-            <p>The word <strong>Emet</strong> (Truth) is the <strong>seal of God</strong> (Talmud Shabbat 104a). Its three letters span the entire Hebrew alphabet: <strong>Aleph</strong> (first), <strong>Mem</strong> (middle, 13th of 27 letters), <strong>Tav</strong> (last). This means truth contains <strong>the beginning, the middle, and the end of all things</strong> — it is the alpha and omega in Hebrew.</p>
-            <p>441 = 21². And 21 = <strong>Ehyeh</strong> (<span class="inline-hebrew">אהיה</span> = "I AM THAT I AM" — Exodus 3:14). So the mirror of 144 reveals that the covenant structure is founded on the <strong>Name of God Himself</strong>. The square (144) is the container; the Name (441) is the content.</p>
+            <p>The word <strong>Emet</strong> (Truth) is the <strong>seal of God</strong> (<a href="https://www.sefaria.org/Shabbat.104a" target="_blank" rel="noopener">Talmud Shabbat 104a</a>). Its three letters span the entire Hebrew alphabet: <strong>Aleph</strong> (first), <strong>Mem</strong> (middle, 13th of 27 letters), <strong>Tav</strong> (last). This means truth contains <strong>the beginning, the middle, and the end of all things</strong> — it is the alpha and omega in Hebrew.</p>
+            <p>441 = 21². And 21 = <strong>Ehyeh</strong> (<span class="inline-hebrew">אהיה</span> = "I AM THAT I AM" — <a href="https://www.sefaria.org/Exodus.3.14" target="_blank" rel="noopener">Exodus 3:14</a>). So the mirror of 144 reveals that the covenant structure is founded on the <strong>Name of God Himself</strong>. The square (144) is the container; the Name (441) is the content.</p>
             <p>Moreover, 441 reduces to <strong>9</strong> (4+4+1=9), and 9 is the "sturdy number" — any number multiplied by 9 reduces back to 9. This is the mathematical signature of <strong>eternal truth</strong>: it never changes, never degrades, always returns to itself.</p>
 
             <div class="callout">
                 <div class="callout-label">Mirror Structure</div>
-                The digits of 144 reversed give 441. The gematria of <em>emet</em> (truth) is <span class="inline-hebrew">א(1) + מ(40) + ת(400)</span> = <span class="gematria-value">441</span>. <em>Emet</em> is called the "seal of God" in <em>b. Shabbat</em> 55a.<sup><a href="#fn14">14</a></sup> 144 and 441 are mirror images — government (12²) reflects truth (<em>emet</em>), and truth reflects government.
+                The digits of 144 reversed give 441. The gematria of <em>emet</em> (truth) is <span class="inline-hebrew">א(1) + מ(40) + ת(400)</span> = <span class="gematria-value">441</span>. <em>Emet</em> is called the "seal of God" in <a href="https://www.sefaria.org/Shabbat.55a" target="_blank" rel="noopener"><em>b. Shabbat</em> 55a</a>.<sup><a href="#fn14">14</a></sup> 144 and 441 are mirror images — government (12²) reflects truth (<em>emet</em>), and truth reflects government.
             </div>
 
             <div class="mirror-display">
@@ -1716,7 +1992,7 @@
 
             <h4>VI. The 12×12 Grid as the DNA of Scripture</h4>
             <p>The first verse of Genesis (Bereshit) has a gematria of <strong>2701</strong>. 2701 = 37 × 73 — both prime numbers, and 37 is the <strong>heart of the Bible's numerical structure</strong>. But 2701 is also the <strong>73rd triangular number</strong>. When you arrange 2701 dots as a triangle, the top sub-triangle contains <strong>703</strong> dots, and the base contains <strong>1998</strong> dots.</p>
-            <p>703 = "Ve'et Haaretz" (and the earth) — the last two words of Genesis 1:1. 1998 = the first five words. And 1998 contains <strong>Truth (Emet = 441)</strong> hidden within it multiple times. The Zohar states: "Truth is the middle pillar of the world, and through it the building of the world stands."</p>
+            <p>703 = "Ve'et Haaretz" (and the earth) — the last two words of <a href="https://www.sefaria.org/Genesis.1.1" target="_blank" rel="noopener">Genesis 1:1</a>. 1998 = the first five words. And 1998 contains <strong>Truth (Emet = 441)</strong> hidden within it multiple times. The Zohar states: "Truth is the middle pillar of the world, and through it the building of the world stands."</p>
             <p>The 144 is the <strong>compressed form</strong> of this entire structure. It is the square that contains the triangle, the 2D that implies the 3D, the finite that points to the infinite. The 12×12 grid is the <strong>blueprint</strong> — the architectural plan of the New Jerusalem, which is itself the <strong>final form of creation</strong>.</p>
 
             <h4>VII. The 6 Days and the 7th: 144 as the Completion of Time</h4>
@@ -1747,7 +2023,7 @@
                 </div>
                 <div class="rev-box">
                     <div class="big-num">2701</div>
-                    <div class="label">Bereshit — Genesis 1:1</div>
+                    <div class="label"><a href="https://www.sefaria.org/Genesis.1.1" target="_blank" rel="noopener">Bereshit — Genesis 1:1</a></div>
                     <div class="meaning">37 × 73 = The triangular number that contains Truth (441) hidden within its first five words.</div>
                 </div>
                 <div class="rev-box">
@@ -1762,12 +2038,17 @@
                 </div>
             </div>
 
+            <h4>IX. The Regulatory Convergence: Rule 144A</h4>
+            <p>In the secular sphere, the number 144 appears as <strong>Rule 144A</strong> under the Securities Act of 1933 — a provision that allows for the private resale of restricted securities to qualified institutional buyers. The rule permits securities that were originally sold in private placements to be traded among institutional investors without full registration, effectively creating a <strong>controlled secondary market</strong> for otherwise restricted instruments.</p>
+            <p>The typological correspondence is striking: just as 144,000 in Revelation represents the <strong>sealed community</strong> with special access to divine covenant, Rule 144A creates a <strong>qualified institutional community</strong> with special access to restricted securities. Both involve: (1) a numerical seal (144), (2) a restricted community (sealed tribes/qualified institutions), and (3) controlled access to what would otherwise be unavailable (divine covenant/public markets).</p>
+            <p>The regulatory 144A thus mirrors the theological 144 — both are <strong>systems of controlled access</strong> where the few (qualified institutions, sealed tribes) gain entry to realms (private securities markets, divine covenant) closed to the many. The secular regulation unintentionally recapitulates the sacred structure: a number-governed boundary between the inside and the outside, the qualified and the unqualified, the sealed and the unsealed.</p>
+
             <h3 id="number-500">The Number 500 — The Jubilee Threshold</h3>
-            <p>The DTC requires multiple certificates when an issue exceeds 500 million units (Section I.B.1.c.i). 500 = 50 × 10 — a Jubilee of the Law. The Jubilee (<em>yovel</em>) occurs every fiftieth year and is characterized by the release of obligations, the return of ancestral property, and the liberation of debt-bondsmen (Leviticus 25:8–17).<sup><a href="#fn16">16</a></sup></p>
+            <p>The DTC requires multiple certificates when an issue exceeds 500 million units (Section I.B.1.c.i). 500 = 50 × 10 — a Jubilee of the Law. The Jubilee (<em>yovel</em>) occurs every fiftieth year and is characterized by the release of obligations, the return of ancestral property, and the liberation of debt-bondsmen (<a href="https://www.sefaria.org/Leviticus.25.8-17" target="_blank" rel="noopener">Leviticus 25:8–17</a>).<sup><a href="#fn16">16</a></sup></p>
 
             <h3 id="ninth-hour">The Number 15 and 3:00 p.m. ET — The Ninth Hour</h3>
             <p>The recurring deadline of 3:00 p.m. Eastern Time governs the DTC's income payment distribution system (Section III.C.1). In the Roman timekeeping system employed in the first-century Mediterranean world, the day began at the sixth hour of daylight. Three o'clock in the afternoon was therefore the <em>hora nona</em> — the ninth hour.</p>
-            <p>The convergence of the ninth hour with the moment of death and release in the Passion narratives is attested across the Synoptic Gospels: Mark 15:34, 37 reports that at the ninth hour, Jesus cried out and died. The ninth hour appears earlier in Acts 3:1 as a regular hour of Jewish prayer, corresponding to the afternoon <em>Tamid</em> sacrifice — the daily sacrifice offered "between the evenings" (Exodus 29:39–41).<sup><a href="#fn17">17</a></sup></p>
+            <p>The convergence of the ninth hour with the moment of death and release in the Passion narratives is attested across the Synoptic Gospels: <a href="https://biblehub.com/mark/15-34.htm" target="_blank" rel="noopener">Mark 15:34, 37</a> reports that at the ninth hour, Jesus cried out and died. The ninth hour appears earlier in <a href="https://biblehub.com/acts/3-1.htm" target="_blank" rel="noopener">Acts 3:1</a> as a regular hour of Jewish prayer, corresponding to the afternoon <em>Tamid</em> sacrifice — the daily sacrifice offered "between the evenings" (<a href="https://www.sefaria.org/Exodus.29.39" target="_blank" rel="noopener">Exodus 29:39–41</a>).<sup><a href="#fn17">17</a></sup></p>
             <p>The DTC's 3:00 p.m. deadline enacts daily the same logic as the ninth-hour sacrifice: funds must be <em>surrendered</em> by 3:00 p.m. in order to be <em>distributed</em> same-day. The surrender precedes the distribution; the giving-over enables the reception. The numerical relationship: 6 (Vav, the connector) + 9 (the ninth hour) = <span class="gematria-value">15</span> — the gematria of <span class="inline-hebrew">יה</span> (<em>Yah</em>), the abbreviated divine name.</p>
         </section>
 
@@ -1919,11 +2200,11 @@
                 <div class="treaty-item">
                     <div class="treaty-n">V</div>
                     <div class="treaty-mosaic">"Heaven and earth as witnesses"</div>
-                    <div class="treaty-dtc">Two copies; notarization; SEC and Federal Reserve as witnesses</div>
+                    <div class="treaty-dtc">Two copies; notarization; <a href="https://www.sec.gov/" target="_blank" rel="noopener">SEC</a> and Federal Reserve as witnesses</div>
                 </div>
                 <div class="treaty-item">
                     <div class="treaty-n">VI</div>
-                    <div class="treaty-mosaic">Deuteronomy 27–28 (entire catalog)</div>
+                    <div class="treaty-mosaic"><a href="https://www.sefaria.org/Deuteronomy.27-28" target="_blank" rel="noopener">Deuteronomy 27–28</a> (entire catalog)</div>
                     <div class="treaty-dtc">Fines, suspension, refusal of service, revocation</div>
                 </div>
             </div>
@@ -1981,7 +2262,7 @@
             </div>
 
             <h3>The Vav Ketia'ah</h3>
-            <p>In the Torah scroll at Numbers 25:12, the Vav in the word <em>shalom</em> (<span class="inline-hebrew">שָׁלֹם</span>, "peace") is written with a deliberate break in the middle — the <em>vav ketia'ah</em>, the "cut Vav" or "broken Vav." This scribal tradition, attested in all valid Torah scrolls, is discussed in the Talmud and in the Masoretic notes: the break in the Vav of <em>shalom</em> signifies that the peace granted to Phinehas through his act of zealous violence is a <em>fractured peace</em> — achieved through means that compromise the very quality it achieves.<sup><a href="#fn29">29</a></sup></p>
+            <p>In the Torah scroll at <a href="https://www.sefaria.org/Numbers.25.12" target="_blank" rel="noopener">Numbers 25:12</a>, the Vav in the word <em>shalom</em> (<span class="inline-hebrew">שָׁלֹם</span>, "peace") is written with a deliberate break in the middle — the <em>vav ketia'ah</em>, the "cut Vav" or "broken Vav." This scribal tradition, attested in all valid Torah scrolls, is discussed in the Talmud and in the Masoretic notes: the break in the Vav of <em>shalom</em> signifies that the peace granted to Phinehas through his act of zealous violence is a <em>fractured peace</em> — achieved through means that compromise the very quality it achieves.<sup><a href="#fn29">29</a></sup></p>
             <p>The structural implication: when the <em>connector</em> — the Vav, Section III, the Representations and Warranties — is deficient or broken, the transaction cannot complete. A rejected eligibility application is a broken Vav — a form that reached the hinge and found it insufficient to hold.</p>
 
             <h3>The Numerology of Failure</h3>
@@ -1999,11 +2280,55 @@
             <p>The year 2026 has produced seven SEC filings amending the DTC Operational Arrangements in its first five months (SR-DTC-2026-001 through SR-DTC-2026-007). The number seven is, in biblical numerology, the number of covenant completion and Sabbath rest.<sup><a href="#fn31">31</a></sup> Seven signifies that a cycle of action has reached its natural completion.</p>
             <p>Seven regulatory filings in the year whose digit sum equals the Decalogue (2+0+2+6 = 10) marks the completion of a legislative cycle through the same number that governs covenant completion.</p>
 
+            <div class="filings-widget">
+                <div class="filings-header">SEC Filings — SR-DTC-2026 Series</div>
+                <div class="filings-grid">
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-104680.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-001</div>
+                        <div class="filing-release">Release 34-104680</div>
+                        <div class="filing-desc">Limit Accessibility to DTC's Participant Terminal System</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-104922.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-002</div>
+                        <div class="filing-release">Release 34-104922</div>
+                        <div class="filing-desc">Clearing Agency Stress Testing Framework</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-104999.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-003</div>
+                        <div class="filing-release">Release 34-104999</div>
+                        <div class="filing-desc">Operational Arrangements Amendments</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-105164.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-004</div>
+                        <div class="filing-release">Release 34-105164</div>
+                        <div class="filing-desc">DTC Eligibility Questionnaire Updates</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-105373.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-005</div>
+                        <div class="filing-release">Release 34-105373</div>
+                        <div class="filing-desc">Rapid Issuance Fee Structure</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-105414.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-006</div>
+                        <div class="filing-release">Release 34-105414</div>
+                        <div class="filing-desc">Tokenization Service Authorization</div>
+                    </a>
+                    <a href="https://www.sec.gov/files/rules/sro/dtc/2026/34-105522.pdf" target="_blank" rel="noopener" class="filing-card">
+                        <div class="filing-number">SR-DTC-2026-007</div>
+                        <div class="filing-release">Release 34-105522</div>
+                        <div class="filing-desc">OFAC Compliance Framework</div>
+                    </a>
+                </div>
+                <div class="filings-footer">
+                    <a href="https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/dtc" target="_blank" rel="noopener" class="filings-sec-link">View all DTC filings on SEC.gov →</a>
+                </div>
+            </div>
+
             <h3>Rapid Issuance — The New Creation ($180 per CUSIP)</h3>
             <p>The Rapid Issuance service, launched April 1, 2026, charges $180 per new CUSIP created. The number 180 = 18 × 10 — eighteen under the Decalogue. The gematria of <span class="inline-hebrew">חַי</span> (<em>chai</em>, "life") is <span class="inline-hebrew">ח</span>(8) + <span class="inline-hebrew">י</span>(10) = <span class="gematria-value">18</span>.<sup><a href="#fn32">32</a></sup> Each new CUSIP under Rapid Issuance costs one <em>chai</em> under law — life created within the framework of the Decalogue.</p>
 
             <h3>Tokenization — The Digital Shekinah</h3>
-            <p>In December 2025, the SEC issued a No-Action Letter authorizing DTC's tokenization service for DTC-custodied assets, with rollout planned for H2 2026. The physical certificate — already reduced to a single nominee-held certificate in the BEO system — now dissolves into pure digital record on distributed ledger technology.</p>
+            <p>In December 2025, the <a href="https://www.sec.gov/" target="_blank" rel="noopener">SEC</a> issued a No-Action Letter authorizing DTC's tokenization service for DTC-custodied assets, with rollout planned for H2 2026. The physical certificate — already reduced to a single nominee-held certificate in the BEO system — now dissolves into pure digital record on distributed ledger technology.</p>
             <p>The theological structure of this development is the completion of the trajectory analyzed throughout this study. The BEO system was already a form of the Shekinah — real presence without material instantiation. Tokenization is the absolute completion of this logic: no physical residue whatsoever. The asset is pure information, pure record, pure faith — the very form of the Shekinah in its most complete expression.</p>
         </section>
 
@@ -2288,7 +2613,7 @@
     <!-- ─── FOOTER ──────────────────────────────────────────────────── -->
     <footer class="page-footer">
         <span><span class="inline-hebrew" style="font-size:1em;">DTC · דתכ · 424</span> — Kabbalistic and Typological Exegesis, V6.0</span>
-        <span>Standard mispar hechrechi · Chicago author-date · June 2026</span>
+        <span>Standard mispar hechrechi · June 2026</span>
     </footer>
 </div>
 
@@ -2309,7 +2634,7 @@
     <div class="fn-item" id="fn12"><span class="fn-num">12</span>Zohar I:2a–3b; Gershom Scholem, <em>Kabbalah</em> (Keter Publishing, 1974), 29–30.</div>
     <div class="fn-item" id="fn13"><span class="fn-num">13</span>J.H.E. Cohn, "On Square Fibonacci Numbers," <em>Journal of the London Mathematical Society</em> 39 (1964): 537–540.</div>
     <div class="fn-item" id="fn14"><span class="fn-num">14</span>G.K. Beale, <em>The Book of Revelation: A Commentary on the Greek Text</em> (Eerdmans/Paternoster, 1999), 416–423.</div>
-    <div class="fn-item" id="fn15"><span class="fn-num">15</span><em>b. Shabbat</em> 55a, 104a; Midrash Tanchuma, <em>Bereshit</em> §1.</div>
+    <div class="fn-item" id="fn15"><span class="fn-num">15</span><a href="https://www.sefaria.org/Shabbat.55a" target="_blank" rel="noopener"><em>b. Shabbat</em> 55a</a>, <a href="https://www.sefaria.org/Shabbat.104a" target="_blank" rel="noopener">104a</a>; Midrash Tanchuma, <em>Bereshit</em> §1.</div>
     <div class="fn-item" id="fn16"><span class="fn-num">16</span>John Sietze Bergsma, <em>The Jubilee from Leviticus to Qumran</em> (Brill, 2007).</div>
     <div class="fn-item" id="fn17"><span class="fn-num">17</span>Joachim Jeremias, <em>The Eucharistic Words of Jesus</em>, trans. Norman Perrin (SCM, 1966), 44–46.</div>
     <div class="fn-item" id="fn18"><span class="fn-num">18</span>Adin Steinsaltz, <em>The Thirteen Petalled Rose</em> (Basic Books, 1980), 53–68.</div>
@@ -2324,7 +2649,7 @@
     <div class="fn-item" id="fn27"><span class="fn-num">27</span>Klaus Baltzer, <em>The Covenant Formulary</em>, trans. David E. Green (Fortress, 1971).</div>
     <div class="fn-item" id="fn28"><span class="fn-num">28</span>Dennis J. McCarthy, <em>Treaty and Covenant</em>, new ed. (Pontifical Biblical Institute, 1978).</div>
     <div class="fn-item" id="fn29"><span class="fn-num">29</span>Hayyim Vital, <em>Etz Chaim</em>, Gate 1; Tishby, <em>Wisdom of the Zohar</em> I:123–135.</div>
-    <div class="fn-item" id="fn30"><span class="fn-num">30</span>Talmud Yerushalmi, <em>Sanhedrin</em> 9:7 (27b); Maimonides, <em>Mishneh Torah</em>, Laws of Torah Scrolls, 7:9.</div>
+    <div class="fn-item" id="fn30"><span class="fn-num">30</span><a href="https://www.sefaria.org/Jerusalem_Talmud_Sanhedrin.9.7" target="_blank" rel="noopener">Talmud Yerushalmi, <em>Sanhedrin</em> 9:7 (27b)</a>; Maimonides, <em>Mishneh Torah</em>, Laws of Torah Scrolls, 7:9.</div>
     <div class="fn-item" id="fn31"><span class="fn-num">31</span>Munk, <em>Wisdom in the Hebrew Alphabet</em>, 106–107; cf. Zohar II:138b.</div>
     <div class="fn-item" id="fn32"><span class="fn-num">32</span>Umberto Cassuto, <em>A Commentary on the Book of Genesis</em>, trans. Israel Abrahams (Magnes Press, 1961), 14–17.</div>
     <div class="fn-item" id="fn33"><span class="fn-num">33</span>Louis Jacobs, <em>The Jewish Religion: A Companion</em> (Oxford University Press, 1995), s.v. "Gematria."</div>
@@ -2459,6 +2784,160 @@
         });
     }, { threshold: 0.05 });
     glyphs.forEach(g => observer.observe(g.closest('section')));
+
+    // ── 144 Grid Interactivity ───────────────────────────────────────
+    const theologicalMeanings = {
+        1: {
+            title: "Cell 1: The Beginning",
+            text: "Aleph (א) — The first letter, unity with God, the origin of all creation."
+        },
+        7: {
+            title: "Cell 7: Divine Perfection",
+            text: "Seven days of creation, Sabbath rest, the number of covenant completion."
+        },
+        10: {
+            title: "Cell 10: The Decalogue",
+            text: "Ten Commandments, complete divine order, the foundation of covenant law."
+        },
+        12: {
+            title: "Cell 12: Governmental Perfection",
+            text: "Twelve tribes, twelve apostles — divine government and covenant authority."
+        },
+        40: {
+            title: "Cell 40: Testing and Preparation",
+            text: "Forty days in wilderness, forty years of testing — preparation for divine promise."
+        },
+        70: {
+            title: "Cell 70: Fullness of Nations",
+            text: "Seventy elders, seventy nations — completeness of divine authority."
+        },
+        72: {
+            title: "Cell 72: The Fulcrum",
+            text: "The center point — balance between beginning and end, earthly and heavenly."
+        },
+        100: {
+            title: "Cell 100: Complete Measure",
+            text: "Full measure, completeness — the established standard of divine perfection."
+        },
+        120: {
+            title: "Cell 120: Governmental Completeness",
+            text: "12 × 10 = perfect government multiplied by divine law."
+        },
+        125: {
+            title: "Cell 125: Divine Grace Cubed",
+            text: "5³ = grace raised to divine completeness — the perfect manifestation of unmerited favor."
+        },
+        126: {
+            title: "Cell 126: Double Chai",
+            text: "2 × 63 = 2 × (7 × 9) — double life force through divine completion and finality."
+        },
+        144: {
+            title: "Cell 144: Completion",
+            text: "The perfect square — 12×12, the New Jerusalem, divine fulfillment."
+        }
+    };
+
+    // Create tooltip element
+    const tooltip = document.createElement('div');
+    tooltip.className = 'grid-tooltip';
+    tooltip.innerHTML = '<div class="tooltip-title"></div><div class="tooltip-text"></div>';
+    document.body.appendChild(tooltip);
+
+    const tooltipTitle = tooltip.querySelector('.tooltip-title');
+    const tooltipText = tooltip.querySelector('.tooltip-text');
+
+    // Add data attributes to special cells and attach event listeners
+    function setupGridInteractivity() {
+        const gridCells = document.querySelectorAll('#grid144 .grid-cell');
+        
+        gridCells.forEach((cell, index) => {
+            const cellNumber = index + 1;
+            
+            // Add data attributes to special cells
+            if ([1, 7, 10, 12, 40, 70, 72, 100, 120, 125, 126, 144].includes(cellNumber)) {
+                cell.setAttribute('data-cell', cellNumber);
+                
+                // Add hover events
+                cell.addEventListener('mouseenter', (e) => {
+                    const meaning = theologicalMeanings[cellNumber];
+                    if (meaning) {
+                        tooltipTitle.textContent = meaning.title;
+                        tooltipText.textContent = meaning.text;
+                        tooltip.classList.add('visible');
+                    }
+                });
+
+                cell.addEventListener('mousemove', (e) => {
+                    // Position tooltip near cursor
+                    const xOffset = 15;
+                    const yOffset = 15;
+                    let left = e.clientX + xOffset;
+                    let top = e.clientY + yOffset;
+                    
+                    // Prevent tooltip from going off screen
+                    if (left + 200 > window.innerWidth) {
+                        left = e.clientX - 215;
+                    }
+                    if (top + 80 > window.innerHeight) {
+                        top = e.clientY - 95;
+                    }
+                    
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                });
+
+                cell.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+
+                // Add click event for persistent highlight
+                cell.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    // Remove highlight from all cells
+                    document.querySelectorAll('#grid144 .grid-cell').forEach(c => {
+                        c.style.filter = '';
+                    });
+                    
+                    // Add persistent glow to clicked cell
+                    const meaning = theologicalMeanings[cellNumber];
+                    if (meaning) {
+                        cell.style.filter = 'url(#centerGlow)';
+                        
+                        // Show tooltip in a fixed position
+                        const rect = cell.getBoundingClientRect();
+                        tooltipTitle.textContent = meaning.title;
+                        tooltipText.textContent = meaning.text;
+                        tooltip.classList.add('visible');
+                        tooltip.style.left = (rect.right + 10) + 'px';
+                        tooltip.style.top = (rect.top) + 'px';
+                        
+                        // Hide tooltip after 3 seconds
+                        setTimeout(() => {
+                            tooltip.classList.remove('visible');
+                            cell.style.filter = '';
+                        }, 3000);
+                    }
+                });
+            }
+        });
+
+        // Hide tooltip when clicking outside
+        document.addEventListener('click', () => {
+            tooltip.classList.remove('visible');
+            document.querySelectorAll('#grid144 .grid-cell').forEach(c => {
+                c.style.filter = '';
+                c.style.strokeWidth = '';
+            });
+        });
+    }
+
+    // Initialize grid interactivity when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupGridInteractivity);
+    } else {
+        setupGridInteractivity();
+    }
 </script>
 </body>
 </html>
