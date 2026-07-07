@@ -80,6 +80,21 @@
   color: var(--ink-faint);
 }
 
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
 
 .page-header {
   background: var(--bg); border-bottom: 1px solid var(--border-light);
@@ -91,6 +106,20 @@
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
 .header-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   background: var(--accent); display: flex; align-items: center; justify-content: center;
@@ -554,7 +583,7 @@
 .scenario-panel .scenario-tip {
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 12px 16px; margin-top: 14px; font-size: 0.8rem; color: #0f3d24;
+  padding: 12px 16px; margin-top: 14px; font-size: 0.8rem; color: var(--ink-secondary);
 }
 .scenario-panel .scenario-tip strong { color: var(--green); }
 
@@ -717,7 +746,7 @@
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
-  color: #0f3d24; line-height: 1.7;
+  color: var(--ink-secondary); line-height: 1.7;
 }
 .tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
 
@@ -780,10 +809,12 @@
 </head>
 <body>
 
-<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
-  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
+  <button class="toc-close" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#form">SF 28 Form</a>
   <a href="#oath" class="sub">Oath & Affirmation</a>
@@ -813,14 +844,27 @@
       <div class="header-text">
         <h1>SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide</h1>
         <div class="sub">Standard Form 28 (Rev. 10/2023) · Interactive definitions · FAR 28.203 compliance walkthroughs</div>
-        <div class="header-meta">
-          <span class="last-updated">Last updated: June 18, 2026</span>
-          <span class="header-meta-separator">·</span>
-          <span class="doc-type">Teaching Guide</span>
-        </div>
       </div>
     </div>
-    <div class="header-badge">Teaching Tool</div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1311,7 +1355,7 @@
 <footer class="page-footer">
   <div class="footer-content">
     <div class="footer-info">
-      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
+      <div class="footer-version">July 2026 · SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
       <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
       <div class="footer-links">
         <a href="https://www.gsa.gov/reference/forms" rel="noopener">GSA Forms</a>

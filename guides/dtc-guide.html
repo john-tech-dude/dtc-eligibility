@@ -79,6 +79,21 @@
   color: var(--ink-faint);
 }
 
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
 /* Page Header */
 .page-header {
   background: var(--bg); border-bottom: 1px solid var(--border-light);
@@ -91,6 +106,20 @@
   align-items: center; justify-content: space-between; gap: 24px;
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
 .header-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   background: var(--accent); display: flex; align-items: center; justify-content: center;
@@ -352,14 +381,14 @@
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
-  color: #0f3d24; line-height: 1.7;
+  color: var(--ink-secondary); line-height: 1.7;
 }
 .tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
 .warn-box {
   background: var(--red-light); border-left: 3px solid var(--red);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
-  color: #3d0f0f; line-height: 1.7;
+  color: var(--ink-secondary); line-height: 1.7;
 }
 .warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
 
@@ -412,10 +441,12 @@
 </head>
 <body>
 
-<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
-  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
+  <button class="toc-close" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#overview">Overview — The Modern Securities Infrastructure</a>
   <a href="#overview" class="sub">Legal vs. Beneficial Ownership</a>
@@ -458,14 +489,27 @@
       <div class="header-text">
         <h1>Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h1>
         <div class="sub">Enhanced Teaching Guide to U.S. Securities Infrastructure · Interactive Definitions</div>
-        <div class="header-meta">
-          <span class="last-updated">Last updated: June 18, 2026</span>
-          <span class="header-meta-separator">·</span>
-          <span class="doc-type">Teaching Guide</span>
-        </div>
       </div>
     </div>
-    <div class="header-badge">Teaching Tool</div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -480,6 +524,20 @@
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Securities Ownership Wizard</span>
 </nav>
+
+<div class="quick-nav">
+  <div class="quick-nav-title">Jump to Section</div>
+  <div class="quick-nav-links">
+    <a href="#dtc" class="quick-nav-link">DTC Eligibility</a>
+    <a href="#dtcc" class="quick-nav-link">DTCC</a>
+    <a href="#nscc" class="quick-nav-link">NSCC</a>
+    <a href="#ficc" class="quick-nav-link">FICC</a>
+    <a href="#cede" class="quick-nav-link">Cede & Co.</a>
+    <a href="#operations" class="quick-nav-link">Operations</a>
+    <a href="#corporate" class="quick-nav-link">Corporate Actions</a>
+    <a href="#quiz" class="quick-nav-link">Quiz</a>
+  </div>
+</div>
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -2163,7 +2221,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
 <footer class="page-footer">
   <div class="footer-content">
     <div class="footer-info">
-      <div class="footer-version">Securities Infrastructure Teaching Guide v1.0</div>
+      <div class="footer-version">July 2026 · Securities Infrastructure Teaching Guide v1.0</div>
       <div class="footer-links">
         <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
         <span class="footer-divider">•</span>

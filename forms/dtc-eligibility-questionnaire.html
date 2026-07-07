@@ -27,6 +27,12 @@
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
+.toc-sidebar.sticky {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 100px);
+  transform: translateX(0);
+}
 .toc-sidebar.open { transform: translateX(0); }
 .toc-toggle {
   position: fixed;
@@ -82,6 +88,21 @@
 }
 .toc-close:focus-visible { outline: 2px solid var(--accent); border-radius: 2px; }
 
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
 .toc-desc {
   font-size: 0.65rem;
   color: var(--ink-muted);
@@ -127,6 +148,20 @@
   gap: 24px;
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
 .header-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   background: var(--accent); display: flex; align-items: center; justify-content: center;
@@ -565,7 +600,7 @@
   padding: 12px 16px;
   margin-top: 14px;
   font-size: 0.8rem;
-  color: #0f3d24;
+  color: var(--ink-secondary);
 }
 .scenario-panel .scenario-tip strong { color: var(--green); }
 
@@ -895,9 +930,17 @@
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
-  color: #0f3d24; line-height: 1.7;
+  color: var(--ink-secondary); line-height: 1.7;
 }
 .tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+
+.warn-box {
+  background: var(--red-light); border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
 
 /* ── Utility Classes for Inline Styles ── */
 .pad-left-28 { padding-left: 28px; }
@@ -1016,10 +1059,12 @@
 </head>
 <body>
 
-<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
-  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
+  <button class="toc-close" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#instructions">Instructions & Deadlines</a>
   <a href="#issue-info" class="sub">Issue Information</a>
@@ -1051,14 +1096,27 @@
       <div class="header-text">
         <h1>Eligibility Questionnaire — Enhanced Teaching Guide</h1>
         <div class="sub">Updated for June 2026 Operational Arrangements · Interactive definitions · Scenario walkthroughs</div>
-        <div class="header-meta">
-          <span class="last-updated">Last updated: June 18, 2026</span>
-          <span class="header-meta-separator">·</span>
-          <span class="doc-type">Interactive Assessment</span>
-        </div>
       </div>
     </div>
-    <div class="header-badge">Teaching Tool</div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1073,6 +1131,21 @@
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Eligibility Questionnaire</span>
 </nav>
+
+<div class="quick-nav">
+  <div class="quick-nav-title">Jump to Section</div>
+  <div class="quick-nav-links">
+    <a href="#instructions" class="quick-nav-link">Instructions</a>
+    <a href="#issue-info" class="quick-nav-link">Issue Information</a>
+    <a href="#delivery" class="quick-nav-link">Delivery</a>
+    <a href="#certificate" class="quick-nav-link">Certificates</a>
+    <a href="#lor" class="quick-nav-link">Letter of Reps</a>
+    <a href="#scenarios" class="quick-nav-link">Scenarios</a>
+    <a href="#mistakes" class="quick-nav-link">Common Mistakes</a>
+    <a href="#study-guide" class="quick-nav-link">Study Guide</a>
+    <a href="#quiz" class="quick-nav-link">Quiz</a>
+  </div>
+</div>
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -2131,7 +2204,7 @@
 <footer class="page-footer">
   <div class="footer-content">
     <div class="footer-info">
-      <div class="footer-version">June 2026 v1.0</div>
+      <div class="footer-version">July 2026 v1.0</div>
       <div>© 2026 DTC Eligibility Guide</div>
       <div class="footer-links">
         <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
