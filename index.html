@@ -966,6 +966,9 @@
 
     <!-- ─── SCRIPTS ─── -->
 
+    <!-- Search Index -->
+    <script src="js/search-index.js"></script>
+
     <!-- 1. shared.js – theme, scroll‑top, search clear -->
     <script>
         // ── Theme ──
@@ -1016,40 +1019,81 @@
                 input.focus();
             });
 
-            // Simple search over cards
+            // Advanced search over the loaded searchIndex
             function performSearch(query) {
                 if (!results) return;
                 const q = query.trim().toLowerCase();
                 if (!q) { results.innerHTML = ''; return; }
 
-                const cards = document.querySelectorAll('.document-card');
+                if (typeof searchIndex === 'undefined') {
+                    results.innerHTML = `<div style="text-align:center;padding:16px;color:var(--ink-muted);">Search index not loaded.</div>`;
+                    return;
+                }
+
+                // Filter items matching the query
                 let matches = [];
-                cards.forEach(card => {
-                    const text = card.textContent.toLowerCase();
-                    if (text.includes(q)) {
-                        const title = card.querySelector('.document-title')?.textContent || 'Document';
-                        const desc = card.querySelector('.document-description')?.textContent || '';
-                        const link = card.querySelector('.document-button');
-                        const href = link?.getAttribute('href') || '#';
-                        matches.push({ title, desc: desc.slice(0, 120), href });
+                searchIndex.forEach(item => {
+                    const titleMatch = item.title.toLowerCase().includes(q);
+                    const descMatch = item.description.toLowerCase().includes(q);
+                    const keywordMatch = item.keywords.some(k => k.toLowerCase().includes(q));
+
+                    if (titleMatch || descMatch || keywordMatch) {
+                        let score = 0;
+                        if (titleMatch) score += 10;
+                        if (item.title.toLowerCase().startsWith(q)) score += 5;
+                        if (descMatch) score += 3;
+                        if (keywordMatch) score += 2;
+                        
+                        matches.push({ ...item, score });
                     }
                 });
 
-                if (matches.length === 0) {
+                // Sort matches by relevance score
+                matches.sort((a, b) => b.score - a.score);
+
+                // Limit results to top 15 matches for clean display
+                const displayMatches = matches.slice(0, 15);
+
+                if (displayMatches.length === 0) {
                     results.innerHTML = `<div class="search-no-results" style="text-align:center;padding:32px;color:var(--ink-muted);"><p>No results found for “${query}”</p></div>`;
                     return;
                 }
 
                 results.innerHTML = `
               <div class="search-results-list" style="display:flex;flex-direction:column;gap:12px;">
-                ${matches.map(m => `
-                  <div class="search-result-item" style="background:var(--bg);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px;transition:all var(--transition);">
-                    <div class="search-result-title" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:8px;">
-                      <a href="${m.href}" style="color:var(--accent);text-decoration:none;">${m.title}</a>
+                ${displayMatches.map(m => {
+                    let badgeColor = 'var(--accent)';
+                    let badgeBg = 'var(--accent-light)';
+                    let badgeText = 'Page';
+                    
+                    if (m.type === 'term') {
+                        badgeColor = 'var(--gold-deep)';
+                        badgeBg = 'var(--gold-light)';
+                        badgeText = '📖 Definition';
+                    }
+
+                    // Source label
+                    let sourceLabel = '';
+                    if (m.type === 'term') {
+                        if (m.url.includes('dtc-guide.html')) sourceLabel = 'in DTC Guide';
+                        else if (m.url.includes('sf28-teaching-guide.html')) sourceLabel = 'in SF 28 Guide';
+                        else if (m.url.includes('dtc-eligibility-questionnaire.html')) sourceLabel = 'in Questionnaire';
+                        else if (m.url.includes('treasury-international_bill_of_exchange.html')) sourceLabel = 'in Bill of Exchange';
+                        else if (m.url.includes('dtc-biblical-exegesis.html')) sourceLabel = 'in Biblical Exegesis';
+                    }
+
+                    return `
+                  <div class="search-result-item" style="background:var(--bg);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:16px;transition:all var(--transition); display:flex; flex-direction:column; gap:6px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                      <div class="search-result-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin:0;">
+                        <a href="${m.url}" style="color:var(--accent);text-decoration:none;">${m.title}</a>
+                        ${sourceLabel ? `<span style="font-size:0.75rem; color:var(--ink-muted); font-family:'DM Sans',sans-serif; font-weight:normal; margin-left:6px;">${sourceLabel}</span>` : ''}
+                      </div>
+                      <span style="font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:${badgeColor}; background:${badgeBg}; padding:3px 8px; border-radius:100px;">${badgeText}</span>
                     </div>
-                    <div class="search-result-description" style="font-size:0.9rem;color:var(--ink-secondary);line-height:1.5;margin-bottom:8px;">${m.desc}…</div>
+                    <div class="search-result-description" style="font-size:0.88rem;color:var(--ink-secondary);line-height:1.5;margin:0;">${m.description}</div>
                   </div>
-                `).join('')}
+                `;}).join('')}
               </div>
             `;
             }

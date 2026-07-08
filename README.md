@@ -137,23 +137,6 @@ The biblical exegesis applies traditional biblical hermeneutics:
 - **No Dependencies**: Pure HTML/CSS/JS — no external frameworks
 - **Responsive**: Mobile-optimized design
 
-## Methodology
-
-This analysis applies traditional biblical hermeneutics:
-
-- **Gematria**: Hebrew letter-numerology system
-- **Typology**: Biblical patterns and symbols
-- **Numerology**: Sacred mathematics and biblical numbers
-- **Architecture**: Tabernacle/Temple symbolism
-- **Hebrew Calendar**: Liturgical time patterns
-
-## Technical Details
-
-- **Format**: Single HTML file with embedded CSS and JavaScript
-- **Fonts**: Google Fonts (IM Fell English, Cinzel, JetBrains Mono, Lato)
-- **Browser Support**: Modern browsers (Chrome, Firefox, Safari, Edge)
-- **No Dependencies**: Pure HTML/CSS/JS — no external frameworks
-
 ## Key Themes and Symbolism
 
 ### Biblical Numerical Patterns

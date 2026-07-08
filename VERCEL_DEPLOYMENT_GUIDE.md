@@ -34,7 +34,7 @@ This will open a browser window where you:
 ### 3. Navigate to Project Directory
 
 ```bash
-cd /Users/g/Desktop/dtc_eligibility
+cd /Users/g/Desktop/dtc_teaching_tool
 ```
 
 ### 4. Deploy to Vercel (First Time)

@@ -8,11 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles/shared.css">
-<style>
-
-/* CSS variables and base styles moved to shared.css */
-
-.toc-sidebar {
+<link rel="stylesheet" href="../styles/document-specific.css">
   position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
   background: var(--bg); border-right: 1px solid var(--border-light);
   padding: 24px 20px; overflow-y: auto; z-index: 60;
@@ -801,10 +797,6 @@
 
 @media (max-width: 720px) {
   .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
-  .footer-info { gap: 6px; }
-  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-}
-</style>
 
 </head>
 <body>

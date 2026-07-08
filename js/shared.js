@@ -21,7 +21,6 @@ function initTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
-      console.log('Toggling theme from', currentTheme, 'to', newTheme);
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('dtc-theme', newTheme);
     });
@@ -275,6 +274,17 @@ function initHotspots() {
   });
 }
 
+// Check URL hash to automatically open modals
+function checkUrlHash() {
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#modal-')) {
+    const modalId = hash.substring(1);
+    setTimeout(() => {
+      openModal(modalId);
+    }, 150);
+  }
+}
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
@@ -282,10 +292,14 @@ if (document.readyState === 'loading') {
     initTOCSidebar();
     initHotspots();
     initReturnToTop();
+    checkUrlHash();
   });
 } else {
   initTheme();
   initTOCSidebar();
   initHotspots();
   initReturnToTop();
+  checkUrlHash();
 }
+
+window.addEventListener('hashchange', checkUrlHash);
