@@ -8,7 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles/shared.css">
-<link rel="stylesheet" href="../styles/document-specific.css">
+<style>
+
+/* CSS variables and base styles moved to shared.css */
+
+.toc-sidebar {
   position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
   background: var(--bg); border-right: 1px solid var(--border-light);
   padding: 24px 20px; overflow-y: auto; z-index: 60;
@@ -76,21 +80,6 @@
   color: var(--ink-faint);
 }
 
-.sidebar-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 55;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.sidebar-backdrop.active {
-  display: block;
-  opacity: 1;
-}
-
 
 .page-header {
   background: var(--bg); border-bottom: 1px solid var(--border-light);
@@ -102,20 +91,6 @@
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
-
-/* Theme Toggle Button */
-.theme-toggle {
-  background: transparent; border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
-  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
-  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
-}
-.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
-.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
-.theme-toggle .sun-icon { display: block; }
-.theme-toggle .moon-icon { display: none; }
-[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
-[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
 .header-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   background: var(--accent); display: flex; align-items: center; justify-content: center;
@@ -579,7 +554,7 @@
 .scenario-panel .scenario-tip {
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 12px 16px; margin-top: 14px; font-size: 0.8rem; color: var(--ink-secondary);
+  padding: 12px 16px; margin-top: 14px; font-size: 0.8rem; color: #0f3d24;
 }
 .scenario-panel .scenario-tip strong { color: var(--green); }
 
@@ -742,7 +717,7 @@
   background: var(--green-light); border-left: 3px solid var(--green);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
-  color: var(--ink-secondary); line-height: 1.7;
+  color: #0f3d24; line-height: 1.7;
 }
 .tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
 
@@ -797,16 +772,17 @@
 
 @media (max-width: 720px) {
   .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
-
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+</style>
 </head>
 <body>
 
-<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
-
-<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<button class="toc-toggle" onclick="toggleToc()" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
-  <button class="toc-close" aria-label="Close navigation">×</button>
+  <button class="toc-close" onclick="toggleToc()" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#form">SF 28 Form</a>
   <a href="#oath" class="sub">Oath & Affirmation</a>
@@ -838,25 +814,7 @@
         <div class="sub">Standard Form 28 (Rev. 10/2023) · Interactive definitions · FAR 28.203 compliance walkthroughs</div>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <div class="header-badge">Teaching Tool</div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-    </div>
+    <div class="header-badge">Teaching Tool</div>
   </div>
 </div>
 
@@ -1342,12 +1300,337 @@
   </div>
 </div>
 
+<!-- Quiz Section (single instance, inside doc-frame) -->
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">SF 28 Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of SF 28 requirements, bond surety concepts, and related regulations. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>A federal tax form</span></label>
+          <label><input type="radio" name="q1" value="b"><span>An affidavit of individual surety for government contracts</span></label>
+          <label><input type="radio" name="q1" value="c"><span>A corporate surety bond application</span></label>
+          <label><input type="radio" name="q1" value="d"><span>A construction contract form</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q1"></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is the minimum net worth requirement for an individual surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>$50,000</span></label>
+          <label><input type="radio" name="q2" value="b"><span>$100,000</span></label>
+          <label><input type="radio" name="q2" value="c"><span>$500,000</span></label>
+          <label><input type="radio" name="q2" value="d"><span>$1,000,000</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q2"></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What is the citizenship requirement for individual sureties?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>Must be a U.S. citizen</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Must be a U.S. citizen or U.S. national</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Must be a permanent resident</span></label>
+          <label><input type="radio" name="q3" value="d"><span>No citizenship requirement</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q3"></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the False Statements Act in relation to SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>It regulates bond pricing</span></label>
+          <label><input type="radio" name="q4" value="b"><span>It makes false statements on government forms a criminal offense</span></label>
+          <label><input type="radio" name="q4" value="c"><span>It requires bond disclosure</span></label>
+          <label><input type="radio" name="q4" value="d"><span>It sets contract thresholds</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q4"></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is the Miller Act threshold for requiring performance bonds on federal construction contracts?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>$100,000</span></label>
+          <label><input type="radio" name="q5" value="b"><span>$150,000</span></label>
+          <label><input type="radio" name="q5" value="c"><span>$250,000</span></label>
+          <label><input type="radio" name="q5" value="d"><span>$500,000</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q5"></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What is a corporate surety company?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>A large corporation acting as a surety</span></label>
+          <label><input type="radio" name="q6" value="b"><span>An insurance company authorized to issue surety bonds</span></label>
+          <label><input type="radio" name="q6" value="c"><span>A government agency that provides bonds</span></label>
+          <label><input type="radio" name="q6" value="d"><span>A type of bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q6"></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is the difference between an individual surety and a corporate surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q7" value="b"><span>Individual sureties use personal assets; corporate sureties use company resources</span></label>
+          <label><input type="radio" name="q7" value="c"><span>Corporate sureties are cheaper</span></label>
+          <label><input type="radio" name="q7" value="d"><span>Individual sureties require more paperwork</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q7"></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the certification statement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>To certify citizenship</span></label>
+          <label><input type="radio" name="q8" value="b"><span>To certify financial statements</span></label>
+          <label><input type="radio" name="q8" value="c"><span>To certify that all information is true and correct under penalty of law</span></label>
+          <label><input type="radio" name="q8" value="d"><span>To certify net worth</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q8"></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What types of assets can be pledged as security for an individual surety?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>Cash only</span></label>
+          <label><input type="radio" name="q9" value="b"><span>Real estate and securities</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Personal property only</span></label>
+          <label><input type="radio" name="q9" value="d"><span>Business assets only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q9"></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the current version of SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>Rev. 10/2019</span></label>
+          <label><input type="radio" name="q10" value="b"><span>Rev. 10/2021</span></label>
+          <label><input type="radio" name="q10" value="c"><span>Rev. 10/2023</span></label>
+          <label><input type="radio" name="q10" value="d"><span>Rev. 10/2025</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q10"></div>
+      </div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the disclosure section on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="a"><span>To disclose financial history</span></label>
+          <label><input type="radio" name="q11" value="b"><span>To disclose any potential conflicts of interest</span></label>
+          <label><input type="radio" name="q11" value="c"><span>To disclose any liens, claims, or encumbrances on pledged assets</span></label>
+          <label><input type="radio" name="q11" value="d"><span>To disclose citizenship status</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q11"></div>
+      </div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is a routing transit number (RTN) used for on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="a"><span>To identify the surety's tax ID</span></label>
+          <label><input type="radio" name="q12" value="b"><span>To identify the financial institution submitting securities pledge</span></label>
+          <label><input type="radio" name="q12" value="c"><span>To route the contract payment</span></label>
+          <label><input type="radio" name="q12" value="d"><span>To identify the contracting officer</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q12"></div>
+      </div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the notarization requirement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="a"><span>To verify citizenship</span></label>
+          <label><input type="radio" name="q13" value="b"><span>To verify the identity of the surety and witness the signature</span></label>
+          <label><input type="radio" name="q13" value="c"><span>To verify financial statements</span></label>
+          <label><input type="radio" name="q13" value="d"><span>To verify asset ownership</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q13"></div>
+      </div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is FAR 28.102-2?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q14" value="a"><span>Regulation about bond pricing</span></label>
+          <label><input type="radio" name="q14" value="b"><span>Regulation about individual surety qualifications</span></label>
+          <label><input type="radio" name="q14" value="c"><span>Regulation about contract awards</span></label>
+          <label><input type="radio" name="q14" value="d"><span>Regulation about contract termination</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q14"></div>
+      </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is a surety broker?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q15" value="a"><span>A person who sells bonds</span></label>
+          <label><input type="radio" name="q15" value="b"><span>An intermediary who helps arrange surety bonds</span></label>
+          <label><input type="radio" name="q15" value="c"><span>A government regulator</span></label>
+          <label><input type="radio" name="q15" value="d"><span>A type of bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q15"></div>
+      </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a performance bond and a payment bond?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q16" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q16" value="b"><span>Performance bonds guarantee contract completion; payment bonds guarantee payment to subcontractors</span></label>
+          <label><input type="radio" name="q16" value="c"><span>Payment bonds are for construction, performance bonds are for services</span></label>
+          <label><input type="radio" name="q16" value="d"><span>Performance bonds are larger than payment bonds</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q16"></div>
+      </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the evidence of title requirement on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q17" value="a"><span>To prove citizenship</span></label>
+          <label><input type="radio" name="q17" value="b"><span>To prove ownership of pledged assets</span></label>
+          <label><input type="radio" name="q17" value="c"><span>To prove net worth</span></label>
+          <label><input type="radio" name="q17" value="d"><span>To prove contract eligibility</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q17"></div>
+      </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is a recorded lien?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q18" value="a"><span>A type of tax</span></label>
+          <label><input type="radio" name="q18" value="b"><span>A legal claim against property that appears in public records</span></label>
+          <label><input type="radio" name="q18" value="c"><span>A government contract</span></label>
+          <label><input type="radio" name="q18" value="d"><span>A type of insurance</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q18"></div>
+      </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the relationship between SF 28 and the Little Miller Act?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q19" value="a"><span>They are identical</span></label>
+          <label><input type="radio" name="q19" value="b"><span>Little Miller Act applies to state contracts, SF 28 is federal</span></label>
+          <label><input type="radio" name="q19" value="c"><span>SF 28 applies to state contracts, Little Miller Act is federal</span></label>
+          <label><input type="radio" name="q19" value="d"><span>They are unrelated</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q19"></div>
+      </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the maximum penalty for making false statements on SF 28?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q20" value="a"><span>Fine only</span></label>
+          <label><input type="radio" name="q20" value="b"><span>Imprisonment only</span></label>
+          <label><input type="radio" name="q20" value="c"><span>Fine and/or imprisonment up to 8 years</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Loss of citizenship</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
 </div>
+
+</div><!-- /.doc-frame -->
+
+</div><!-- /.wrap -->
 
 <footer class="page-footer">
   <div class="footer-content">
     <div class="footer-info">
-      <div class="footer-version">July 2026 · SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
+      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
       <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
       <div class="footer-links">
         <a href="https://www.gsa.gov/reference/forms" rel="noopener">GSA Forms</a>
@@ -1356,13 +1639,13 @@
         <span class="footer-divider">•</span>
         <a href="https://www.gsa.gov/system/files/SF28-23a.pdf" rel="noopener">Original SF 28 PDF</a>
       </div>
-      <div class="footer-legal" style="margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px;">Legal Notice: This teaching guide is provided for educational purposes only. The SF 28 form is a U.S. government work in the public domain (17 U.S.C. § 105). For official use, consult the original sources. This guide does not constitute legal advice.</div>
+      <div style="margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px;">Legal Notice: This teaching guide is provided for educational purposes only. The SF 28 form is a U.S. government work in the public domain (17 U.S.C. § 105). For official use, consult the original sources. This guide does not constitute legal advice.</div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════════════════════════════════════════
-     MODAL LIBRARY
+     MODAL LIBRARY (all modals are below)
 ════════════════════════════════════════════════════ -->
 
 <!-- how-to-use -->
@@ -2265,329 +2548,6 @@
   </div>
 </div>
 
-<!-- Quiz Section -->
-<div class="quiz-section" id="quiz">
-  <div class="section-heading">SF 28 Knowledge Check</div>
-  <p class="quiz-intro">
-    Test your understanding of SF 28 requirements, bond surety concepts, and related regulations. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
-  </p>
-
-  <div class="quiz-score-bar">
-    <div class="quiz-score-fill" id="quizScoreFill"></div>
-  </div>
-  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
-
-  <div class="quiz-container">
-
-    <!-- Question 1 -->
-    <div class="quiz-card" data-q="1">
-      <div class="quiz-num">1</div>
-      <div class="quiz-content">
-        <h4>What is SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q1" value="a"><span>A federal tax form</span></label>
-          <label><input type="radio" name="q1" value="b"><span>An affidavit of individual surety for government contracts</span></label>
-          <label><input type="radio" name="q1" value="c"><span>A corporate surety bond application</span></label>
-          <label><input type="radio" name="q1" value="d"><span>A construction contract form</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q1"></div>
-      </div>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="quiz-card" data-q="2">
-      <div class="quiz-num">2</div>
-      <div class="quiz-content">
-        <h4>What is the minimum net worth requirement for an individual surety?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q2" value="a"><span>$50,000</span></label>
-          <label><input type="radio" name="q2" value="b"><span>$100,000</span></label>
-          <label><input type="radio" name="q2" value="c"><span>$500,000</span></label>
-          <label><input type="radio" name="q2" value="d"><span>$1,000,000</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q2"></div>
-      </div>
-    </div>
-
-    <!-- Question 3 -->
-    <div class="quiz-card" data-q="3">
-      <div class="quiz-num">3</div>
-      <div class="quiz-content">
-        <h4>What is the citizenship requirement for individual sureties?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q3" value="a"><span>Must be a U.S. citizen</span></label>
-          <label><input type="radio" name="q3" value="b"><span>Must be a U.S. citizen or U.S. national</span></label>
-          <label><input type="radio" name="q3" value="c"><span>Must be a permanent resident</span></label>
-          <label><input type="radio" name="q3" value="d"><span>No citizenship requirement</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q3"></div>
-      </div>
-    </div>
-
-    <!-- Question 4 -->
-    <div class="quiz-card" data-q="4">
-      <div class="quiz-num">4</div>
-      <div class="quiz-content">
-        <h4>What is the purpose of the False Statements Act in relation to SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q4" value="a"><span>It regulates bond pricing</span></label>
-          <label><input type="radio" name="q4" value="b"><span>It makes false statements on government forms a criminal offense</span></label>
-          <label><input type="radio" name="q4" value="c"><span>It requires bond disclosure</span></label>
-          <label><input type="radio" name="q4" value="d"><span>It sets contract thresholds</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q4"></div>
-      </div>
-    </div>
-
-    <!-- Question 5 -->
-    <div class="quiz-card" data-q="5">
-      <div class="quiz-num">5</div>
-      <div class="quiz-content">
-        <h4>What is the Miller Act threshold for requiring performance bonds on federal construction contracts?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q5" value="a"><span>$100,000</span></label>
-          <label><input type="radio" name="q5" value="b"><span>$150,000</span></label>
-          <label><input type="radio" name="q5" value="c"><span>$250,000</span></label>
-          <label><input type="radio" name="q5" value="d"><span>$500,000</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q5"></div>
-      </div>
-    </div>
-
-    <!-- Question 6 -->
-    <div class="quiz-card" data-q="6">
-      <div class="quiz-num">6</div>
-      <div class="quiz-content">
-        <h4>What is a corporate surety company?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q6" value="a"><span>A large corporation acting as a surety</span></label>
-          <label><input type="radio" name="q6" value="b"><span>An insurance company authorized to issue surety bonds</span></label>
-          <label><input type="radio" name="q6" value="c"><span>A government agency that provides bonds</span></label>
-          <label><input type="radio" name="q6" value="d"><span>A type of bank</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q6"></div>
-      </div>
-    </div>
-
-    <!-- Question 7 -->
-    <div class="quiz-card" data-q="7">
-      <div class="quiz-num">7</div>
-      <div class="quiz-content">
-        <h4>What is the difference between an individual surety and a corporate surety?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q7" value="a"><span>No difference</span></label>
-          <label><input type="radio" name="q7" value="b"><span>Individual sureties use personal assets; corporate sureties use company resources</span></label>
-          <label><input type="radio" name="q7" value="c"><span>Corporate sureties are cheaper</span></label>
-          <label><input type="radio" name="q7" value="d"><span>Individual sureties require more paperwork</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q7"></div>
-      </div>
-    </div>
-
-    <!-- Question 8 -->
-    <div class="quiz-card" data-q="8">
-      <div class="quiz-num">8</div>
-      <div class="quiz-content">
-        <h4>What is the purpose of the certification statement on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q8" value="a"><span>To certify citizenship</span></label>
-          <label><input type="radio" name="q8" value="b"><span>To certify financial statements</span></label>
-          <label><input type="radio" name="q8" value="c"><span>To certify that all information is true and correct under penalty of law</span></label>
-          <label><input type="radio" name="q8" value="d"><span>To certify net worth</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q8"></div>
-      </div>
-    </div>
-
-    <!-- Question 9 -->
-    <div class="quiz-card" data-q="9">
-      <div class="quiz-num">9</div>
-      <div class="quiz-content">
-        <h4>What types of assets can be pledged as security for an individual surety?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q9" value="a"><span>Cash only</span></label>
-          <label><input type="radio" name="q9" value="b"><span>Real estate and securities</span></label>
-          <label><input type="radio" name="q9" value="c"><span>Personal property only</span></label>
-          <label><input type="radio" name="q9" value="d"><span>Business assets only</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q9"></div>
-      </div>
-    </div>
-
-    <!-- Question 10 -->
-    <div class="quiz-card" data-q="10">
-      <div class="quiz-num">10</div>
-      <div class="quiz-content">
-        <h4>What is the current version of SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q10" value="a"><span>Rev. 10/2019</span></label>
-          <label><input type="radio" name="q10" value="b"><span>Rev. 10/2021</span></label>
-          <label><input type="radio" name="q10" value="c"><span>Rev. 10/2023</span></label>
-          <label><input type="radio" name="q10" value="d"><span>Rev. 10/2025</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q10"></div>
-      </div>
-    </div>
-
-    <!-- Question 11 -->
-    <div class="quiz-card" data-q="11">
-      <div class="quiz-num">11</div>
-      <div class="quiz-content">
-        <h4>What is the purpose of the disclosure section on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q11" value="a"><span>To disclose financial history</span></label>
-          <label><input type="radio" name="q11" value="b"><span>To disclose any potential conflicts of interest</span></label>
-          <label><input type="radio" name="q11" value="c"><span>To disclose any liens, claims, or encumbrances on pledged assets</span></label>
-          <label><input type="radio" name="q11" value="d"><span>To disclose citizenship status</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q11"></div>
-      </div>
-    </div>
-
-    <!-- Question 12 -->
-    <div class="quiz-card" data-q="12">
-      <div class="quiz-num">12</div>
-      <div class="quiz-content">
-        <h4>What is a routing transit number (RTN) used for on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q12" value="a"><span>To identify the surety's tax ID</span></label>
-          <label><input type="radio" name="q12" value="b"><span>To identify the financial institution submitting securities pledge</span></label>
-          <label><input type="radio" name="q12" value="c"><span>To route the contract payment</span></label>
-          <label><input type="radio" name="q12" value="d"><span>To identify the contracting officer</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q12"></div>
-      </div>
-    </div>
-
-    <!-- Question 13 -->
-    <div class="quiz-card" data-q="13">
-      <div class="quiz-num">13</div>
-      <div class="quiz-content">
-        <h4>What is the purpose of the notarization requirement on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q13" value="a"><span>To verify citizenship</span></label>
-          <label><input type="radio" name="q13" value="b"><span>To verify the identity of the surety and witness the signature</span></label>
-          <label><input type="radio" name="q13" value="c"><span>To verify financial statements</span></label>
-          <label><input type="radio" name="q13" value="d"><span>To verify asset ownership</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q13"></div>
-      </div>
-    </div>
-
-    <!-- Question 14 -->
-    <div class="quiz-card" data-q="14">
-      <div class="quiz-num">14</div>
-      <div class="quiz-content">
-        <h4>What is FAR 28.102-2?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q14" value="a"><span>Regulation about bond pricing</span></label>
-          <label><input type="radio" name="q14" value="b"><span>Regulation about individual surety qualifications</span></label>
-          <label><input type="radio" name="q14" value="c"><span>Regulation about contract awards</span></label>
-          <label><input type="radio" name="q14" value="d"><span>Regulation about contract termination</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q14"></div>
-      </div>
-    </div>
-
-    <!-- Question 15 -->
-    <div class="quiz-card" data-q="15">
-      <div class="quiz-num">15</div>
-      <div class="quiz-content">
-        <h4>What is a surety broker?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q15" value="a"><span>A person who sells bonds</span></label>
-          <label><input type="radio" name="q15" value="b"><span>An intermediary who helps arrange surety bonds</span></label>
-          <label><input type="radio" name="q15" value="c"><span>A government regulator</span></label>
-          <label><input type="radio" name="q15" value="d"><span>A type of bank</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q15"></div>
-      </div>
-    </div>
-
-    <!-- Question 16 -->
-    <div class="quiz-card" data-q="16">
-      <div class="quiz-num">16</div>
-      <div class="quiz-content">
-        <h4>What is the difference between a performance bond and a payment bond?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q16" value="a"><span>No difference</span></label>
-          <label><input type="radio" name="q16" value="b"><span>Performance bonds guarantee contract completion; payment bonds guarantee payment to subcontractors</span></label>
-          <label><input type="radio" name="q16" value="c"><span>Payment bonds are for construction, performance bonds are for services</span></label>
-          <label><input type="radio" name="q16" value="d"><span>Performance bonds are larger than payment bonds</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q16"></div>
-      </div>
-    </div>
-
-    <!-- Question 17 -->
-    <div class="quiz-card" data-q="17">
-      <div class="quiz-num">17</div>
-      <div class="quiz-content">
-        <h4>What is the purpose of the evidence of title requirement on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q17" value="a"><span>To prove citizenship</span></label>
-          <label><input type="radio" name="q17" value="b"><span>To prove ownership of pledged assets</span></label>
-          <label><input type="radio" name="q17" value="c"><span>To prove net worth</span></label>
-          <label><input type="radio" name="q17" value="d"><span>To prove contract eligibility</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q17"></div>
-      </div>
-    </div>
-
-    <!-- Question 18 -->
-    <div class="quiz-card" data-q="18">
-      <div class="quiz-num">18</div>
-      <div class="quiz-content">
-        <h4>What is a recorded lien?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q18" value="a"><span>A type of tax</span></label>
-          <label><input type="radio" name="q18" value="b"><span>A legal claim against property that appears in public records</span></label>
-          <label><input type="radio" name="q18" value="c"><span>A government contract</span></label>
-          <label><input type="radio" name="q18" value="d"><span>A type of insurance</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q18"></div>
-      </div>
-    </div>
-
-    <!-- Question 19 -->
-    <div class="quiz-card" data-q="19">
-      <div class="quiz-num">19</div>
-      <div class="quiz-content">
-        <h4>What is the relationship between SF 28 and the Little Miller Act?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q19" value="a"><span>They are identical</span></label>
-          <label><input type="radio" name="q19" value="b"><span>Little Miller Act applies to state contracts, SF 28 is federal</span></label>
-          <label><input type="radio" name="q19" value="c"><span>SF 28 applies to state contracts, Little Miller Act is federal</span></label>
-          <label><input type="radio" name="q19" value="d"><span>They are unrelated</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q19"></div>
-      </div>
-    </div>
-
-    <!-- Question 20 -->
-    <div class="quiz-card" data-q="20">
-      <div class="quiz-num">20</div>
-      <div class="quiz-content">
-        <h4>What is the maximum penalty for making false statements on SF 28?</h4>
-        <div class="quiz-options">
-          <label><input type="radio" name="q20" value="a"><span>Fine only</span></label>
-          <label><input type="radio" name="q20" value="b"><span>Imprisonment only</span></label>
-          <label><input type="radio" name="q20" value="c"><span>Fine and/or imprisonment up to 8 years</span></label>
-          <label><input type="radio" name="q20" value="d"><span>Loss of citizenship</span></label>
-        </div>
-        <div class="quiz-feedback" id="fb-q20"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="quiz-actions">
-    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
-  </div>
-
-  <div class="quiz-result" id="quizResult"></div>
-</div>
-
 <script src="../js/shared.js"></script>
 <script src="../js/quiz.js"></script>
 <script>
@@ -2616,9 +2576,6 @@ const sf28Answers = {
 };
 
 function resetQuiz() {
-  const currentScore = 0;
-  const answeredQuestions = new Set();
-  
   document.getElementById('quizScoreFill').style.width = '0%';
   document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
   document.getElementById('quizResult').className = 'quiz-result';
@@ -2645,12 +2602,14 @@ if (document.readyState === 'loading') {
 } else {
   setupQuiz(sf28Answers, 20);
 }
-</script>
 
+// TOC toggle
+function toggleToc() {
+  const sidebar = document.getElementById('tocSidebar');
+  sidebar.classList.toggle('open');
+}
 
-<script>
-/* Document-specific JavaScript */
-
+// Show scenario panels
 function showScenario(id) {
   document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.scenario-tab').forEach(t => {
@@ -2660,13 +2619,60 @@ function showScenario(id) {
   const panel = document.getElementById(id);
   if (panel) {
     panel.classList.add('active');
-    const activeTab = Array.from(document.querySelectorAll('.scenario-tab')).find(t => t.getAttribute('onclick').includes(id));
+    const activeTab = Array.from(document.querySelectorAll('.scenario-tab')).find(t => t.textContent.trim() === panel.querySelector('h4')?.textContent?.trim());
     if (activeTab) {
       activeTab.classList.add('active');
       activeTab.setAttribute('aria-selected', 'true');
     }
   }
 }
+
+// Modal functions (to ensure compatibility with shared.js)
+if (typeof openModal === 'undefined') {
+  window.openModal = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.add('active');
+    }
+  };
+  window.closeModal = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove('active');
+    }
+  };
+  // Close modal on backdrop click
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.classList.remove('active');
+    }
+  });
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(el => el.classList.remove('active'));
+    }
+  });
+}
+
+// Theme toggle (if not in shared.js)
+(function() {
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+    // Restore theme
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  }
+})();
 </script>
 
 </body>
