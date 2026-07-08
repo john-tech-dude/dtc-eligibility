@@ -2,6 +2,12 @@
 /* This file contains common functionality used across multiple documents */
 
 // Theme Management
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.toggle('light', theme === 'light');
+  localStorage.setItem('dtc-theme', theme);
+}
+
 function initTheme() {
   // Check for saved theme preference or default to system preference
   const savedTheme = localStorage.getItem('dtc-theme');
@@ -9,9 +15,9 @@ function initTheme() {
 
   // Apply the appropriate theme
   if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    applyTheme('dark');
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
+    applyTheme('light');
   }
 
   const themeToggle = document.getElementById('themeToggle');
@@ -19,10 +25,7 @@ function initTheme() {
     // Toggle theme on button click
     themeToggle.addEventListener('click', function() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('dtc-theme', newTheme);
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
   }
 
@@ -30,8 +33,7 @@ function initTheme() {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
     // Only auto-switch if user hasn't manually set a preference
     if (!localStorage.getItem('dtc-theme')) {
-      const newTheme = e.matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
+      applyTheme(e.matches ? 'dark' : 'light');
     }
   });
 }
@@ -96,32 +98,44 @@ document.addEventListener('click', function(e) {
 // TOC Sidebar functionality (for documents that have sidebar)
 function initTOCSidebar() {
   const tocToggle = document.querySelector('.toc-toggle');
-  const tocSidebar = document.querySelector('.toc-sidebar');
-  const sidebarClose = document.querySelector('.toc-close');
+  const tocSidebar = document.querySelector('.toc-sidebar, .page-sidebar');
   const sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  const tocClose = document.querySelector('.toc-close, .sidebar-close');
 
   if (!tocToggle || !tocSidebar) return;
 
-  function openSidebar() {
-    tocSidebar.classList.add('open');
-    if (sidebarBackdrop) {
-      sidebarBackdrop.classList.add('active');
-    }
-    document.body.style.overflow = 'hidden';
+  function setBackdropVisible(visible) {
+    if (!sidebarBackdrop) return;
+    sidebarBackdrop.classList.toggle('active', visible);
+    sidebarBackdrop.classList.toggle('show', visible);
   }
 
   function closeSidebar() {
     tocSidebar.classList.remove('open');
-    if (sidebarBackdrop) {
-      sidebarBackdrop.classList.remove('active');
-    }
+    setBackdropVisible(false);
     document.body.style.overflow = '';
+    tocToggle.classList.remove('open');
   }
 
-  tocToggle.addEventListener('click', openSidebar);
+  function openSidebar() {
+    tocSidebar.classList.add('open');
+    setBackdropVisible(true);
+    document.body.style.overflow = 'hidden';
+    tocToggle.classList.add('open');
+  }
 
-  if (sidebarClose) {
-    sidebarClose.addEventListener('click', closeSidebar);
+  function toggleSidebar() {
+    if (tocSidebar.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
+
+  tocToggle.addEventListener('click', toggleSidebar);
+
+  if (tocClose) {
+    tocClose.addEventListener('click', closeSidebar);
   }
 
   if (sidebarBackdrop) {
@@ -132,6 +146,11 @@ function initTOCSidebar() {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && tocSidebar.classList.contains('open')) {
       closeSidebar();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      toggleSidebar();
     }
   });
 
@@ -224,6 +243,13 @@ function initTOCSidebar() {
 
 // Return to Top Button functionality
 function initReturnToTop() {
+  if (
+    document.getElementById('scrollTop') ||
+    document.querySelector('.scroll-top, #fab-top, .return-to-top')
+  ) {
+    return;
+  }
+
   const returnToTopButton = document.createElement('button');
   returnToTopButton.className = 'return-to-top';
   returnToTopButton.setAttribute('aria-label', 'Return to top');

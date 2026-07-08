@@ -11,59 +11,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
     <!-- ─── Styles ─── -->
-    <link rel="stylesheet" href="shared.css" />
-    <link rel="stylesheet" href="print.css" media="print" />
+    <script src="js/theme-init.js"></script>
+    <link rel="stylesheet" href="styles/shared.css" />
 
     <style>
         /* ─── CSS Variables ─── */
         :root {
-            --accent: #1a3a5c;
-            --accent-hover: #0f2a44;
-            --accent-light: #e8eef5;
-            --accent-muted: rgba(26, 58, 92, 0.15);
-            --gold: #a67c00;
-            --gold-deep: #7a5d00;
-            --gold-light: #f5edda;
-            --ink: #1e1e2a;
-            --ink-secondary: #3d3d4a;
-            --ink-tertiary: #5a5a6a;
-            --ink-muted: #8a8a9a;
-            --ink-faint: #b0b0c0;
+            /* Premium High Contrast Text */
+            --accent: #0a2a4a;
+            --accent-hover: #051a30;
+            --accent-light: #e0e8f5;
+            --accent-muted: rgba(10, 42, 74, 0.12);
+            
+            /* Richer Premium Gold */
+            --gold: #b8860b;
+            --gold-deep: #8b6914;
+            --gold-light: #faf5e8;
+            
+            /* Enhanced Contrast Text */
+            --ink: #0a0a0a;
+            --ink-secondary: #1a1a2e;
+            --ink-tertiary: #4a4a5a;
+            --ink-muted: #6a6a7a;
+            --ink-faint: #9a9aaa;
+            
+            /* Premium Backgrounds */
             --bg: #ffffff;
-            --bg-cream: #f8f7f4;
-            --border: #d0d0da;
-            --border-light: #e4e4ea;
-            --border-faint: #f0f0f4;
+            --bg-cream: #f5f3ef;
+            
+            /* Stronger Borders */
+            --border: #c0c0ca;
+            --border-light: #d8d8e2;
+            --border-faint: #e8e8f2;
+            
+            /* Refined Border Radius */
             --radius-sm: 6px;
-            --radius-md: 10px;
+            --radius-md: 12px;
             --radius-lg: 16px;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.10);
+            
+            /* Premium Depth Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16), 0 8px 16px rgba(0, 0, 0, 0.12);
+            
+            /* Premium colored shadows */
+            --shadow-accent: 0 4px 16px rgba(10,42,74,0.15);
+            --shadow-gold: 0 4px 16px rgba(184,134,11,0.12);
+            
             --transition: 0.25s ease;
-        }
-
-        [data-theme="dark"] {
-            --accent: #4a8ab5;
-            --accent-hover: #5a9ac5;
-            --accent-light: #1a2a3a;
-            --accent-muted: rgba(74, 138, 181, 0.2);
-            --gold: #c9a84c;
-            --gold-deep: #b8983a;
-            --gold-light: #2a2418;
-            --ink: #e8e8f0;
-            --ink-secondary: #c0c0d0;
-            --ink-tertiary: #9898a8;
-            --ink-muted: #707080;
-            --ink-faint: #505060;
-            --bg: #14141e;
-            --bg-cream: #1c1c28;
-            --border: #3a3a4a;
-            --border-light: #2a2a38;
-            --border-faint: #222230;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
         }
 
         /* ─── Reset & Base ─── */
@@ -86,6 +81,39 @@
             line-height: 1.6;
             transition: background var(--transition), color var(--transition);
             -webkit-font-smoothing: antialiased;
+        }
+
+        [data-theme="dark"] body {
+            background-color: var(--bg-warm);
+            background-image:
+                radial-gradient(ellipse 100% 60% at 50% -10%, rgba(90, 159, 212, 0.07), transparent 55%),
+                radial-gradient(ellipse 70% 50% at 100% 80%, rgba(212, 175, 55, 0.04), transparent 50%);
+        }
+
+        [data-theme="dark"] .page-header {
+            background: rgba(20, 20, 31, 0.88);
+        }
+
+        [data-theme="dark"] .header-icon,
+        [data-theme="dark"] .card-icon,
+        [data-theme="dark"] .scroll-top,
+        [data-theme="dark"] .document-button {
+            color: #0e0e16;
+        }
+
+        [data-theme="dark"] .header-badge,
+        [data-theme="dark"] .document-card.theological .document-tag {
+            border-color: rgba(212, 175, 55, 0.28);
+        }
+
+        [data-theme="dark"] .document-card {
+            box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-faint);
+        }
+
+        [data-theme="dark"] .card-completion-badge.done {
+            color: var(--green);
+            border-color: rgba(92, 184, 122, 0.35);
+            background: var(--green-light);
         }
 
         a {
@@ -750,6 +778,27 @@
 </head>
 <body>
 
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" aria-label="Close navigation">×</button>
+  <h4>Navigation</h4>
+  <a href="#mainContent">Overview</a>
+  <a href="#search" class="sub">Search Documentation</a>
+  <a href="#documents" class="sub">Teaching Materials</a>
+  <a href="#how-to-use" class="sub">How to Use</a>
+  <div class="toc-divider">Documents</div>
+  <a href="forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
+  <div class="toc-divider">Site</div>
+  <a href="sitemap.html" class="external">Site Map</a>
+</div>
+
     <!-- ─── HEADER ─── -->
     <header class="page-header" role="banner">
         <div class="header-inner">
@@ -778,7 +827,7 @@
     <main class="wrap" id="mainContent">
 
         <!-- ─── SEARCH ─── -->
-        <section class="search-section" aria-label="Search documentation">
+        <section class="search-section" id="search" aria-label="Search documentation">
             <h2 class="section-title">Search Documentation</h2>
             <div class="search-container" style="max-width:600px;margin:0 auto;">
                 <div class="search-input-wrapper" style="position:relative;display:flex;align-items:center;background:var(--bg);border:2px solid var(--border);border-radius:var(--radius-md);padding:12px 16px;transition:all var(--transition);">
@@ -791,7 +840,7 @@
         </section>
 
         <!-- ─── TEACHING MATERIALS ─── -->
-        <section class="documents-section" aria-label="Teaching materials">
+        <section class="documents-section" id="documents" aria-label="Teaching materials">
             <h2 class="section-title">Teaching Materials</h2>
 
             <!-- Learning Objectives (global for the index) -->
@@ -939,7 +988,7 @@
         </section>
 
         <!-- ─── NOTE ─── -->
-        <section class="note-section" aria-label="How to use these materials">
+        <section class="note-section" id="how-to-use" aria-label="How to use these materials">
             <div class="note-card">
                 <div class="note-header">
                     <div class="note-icon" aria-hidden="true">
@@ -968,26 +1017,9 @@
 
     <!-- Search Index -->
     <script src="js/search-index.js"></script>
+    <script src="js/shared.js"></script>
 
-    <!-- 1. shared.js – theme, scroll‑top, search clear -->
     <script>
-        // ── Theme ──
-        (function initTheme() {
-            const stored = localStorage.getItem('dtc-theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = stored || (prefersDark ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
-            const toggle = document.getElementById('themeToggle');
-            if (toggle) {
-                toggle.addEventListener('click', () => {
-                    const current = document.documentElement.getAttribute('data-theme');
-                    const next = current === 'dark' ? 'light' : 'dark';
-                    document.documentElement.setAttribute('data-theme', next);
-                    localStorage.setItem('dtc-theme', next);
-                });
-            }
-        })();
-
         // ── Scroll to top ──
         (function initScrollTop() {
             const btn = document.getElementById('scrollTop');

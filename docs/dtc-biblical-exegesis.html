@@ -6,7 +6,9 @@
     <title>DTC: A Kabbalistic and Typological Exegesis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <script src="../js/theme-init.js"></script>
+    <script>(function(){if(document.documentElement.getAttribute('data-theme')==='light')document.documentElement.classList.add('light');})();</script>
     <style>
         /* ─── TOKENS ──────────────────────────────────────────────── */
         :root {
@@ -101,7 +103,7 @@
             padding: 8px 16px;
             z-index: 100;
             text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.85rem;
         }
         
@@ -112,7 +114,7 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Source Serif 4', 'Georgia', serif;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: 1.0625rem;
             line-height: 1.85;
             font-weight: 300;
@@ -200,7 +202,7 @@
             border-top: 1px solid var(--border);
             font-size: 0.82rem;
             color: var(--text-dim);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -233,7 +235,7 @@
         }
 
         .header-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.72rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -252,7 +254,7 @@
         }
 
         h1 {
-            font-family: 'EB Garamond', 'Georgia', serif;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: clamp(2.4rem, 5vw, 4.2rem);
             font-weight: 400;
             line-height: 1.1;
@@ -275,7 +277,7 @@
             margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.72rem;
             letter-spacing: 0.06em;
             color: var(--text-dim);
@@ -285,7 +287,7 @@
 
         /* ─── SIDEBAR ─────────────────────────────────────────────── */
         .sidebar-heading {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.68rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
@@ -356,7 +358,7 @@
         section:hover .section-glyph-bg { opacity: 0.1; }
 
         h2 {
-            font-family: 'EB Garamond', 'Georgia', serif;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: 1.85rem;
             font-weight: 400;
             line-height: 1.2;
@@ -366,7 +368,7 @@
         }
         h2 .part-num {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -383,7 +385,7 @@
         }
 
         h3 {
-            font-family: 'EB Garamond', 'Georgia', serif;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: 1.25rem;
             font-weight: 500;
             font-style: italic;
@@ -392,7 +394,7 @@
         }
 
         h4 {
-            font-family: 'Source Serif 4', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 0.95rem;
             font-weight: 500;
             letter-spacing: 0.04em;
@@ -406,7 +408,7 @@
         sup a {
             color: var(--accent-2);
             text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.65em;
             padding: 1px 3px;
             border: 1px solid var(--border-s);
@@ -419,7 +421,7 @@
         .hebrew-display {
             display: block;
             text-align: center;
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 4.5rem;
             line-height: 1;
             color: var(--gold);
@@ -429,7 +431,7 @@
         .hebrew-label {
             display: block;
             text-align: center;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.7rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -437,13 +439,13 @@
             margin-bottom: 2rem;
         }
         .inline-hebrew {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.3em;
             color: var(--gold);
             direction: rtl;
         }
         .gematria-value {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.85em;
             color: var(--gold-2);
             background: var(--amber-dim);
@@ -462,7 +464,7 @@
             border-bottom: 2px solid var(--border-s);
         }
         th {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.67rem;
             letter-spacing: 0.14em;
             text-transform: uppercase;
@@ -480,9 +482,9 @@
         }
         tbody tr:last-child td { border-bottom: none; }
         tbody tr:hover td { background: rgba(124,92,191,0.04); }
-        .td-hebrew { color: var(--gold); font-size: 1.15em; font-family: 'EB Garamond', serif; }
-        .td-value { font-family: 'JetBrains Mono', monospace; color: var(--gold-2); }
-        .td-strong { font-family: 'JetBrains Mono', monospace; color: var(--accent-3); font-weight: 500; }
+        .td-hebrew { color: var(--gold); font-size: 1.15em; font-family: 'Cormorant Garamond', serif; }
+        .td-value { font-family: 'DM Sans', monospace; color: var(--gold-2); }
+        .td-strong { font-family: 'DM Sans', monospace; color: var(--accent-3); font-weight: 500; }
 
         /* ─── BLOCKQUOTE ──────────────────────────────────────────── */
         blockquote {
@@ -498,7 +500,7 @@
         blockquote strong {
             font-style: normal;
             color: var(--accent-3);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.82em;
         }
 
@@ -511,7 +513,7 @@
             background: rgba(124,92,191,0.04);
         }
         .callout-label {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -539,7 +541,7 @@
             min-width: 120px;
         }
         .geq-letter {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             line-height: 1;
             color: var(--gold);
@@ -547,7 +549,7 @@
             margin-bottom: 0.25rem;
         }
         .geq-name {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.65rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -556,14 +558,14 @@
             margin-bottom: 0.35rem;
         }
         .geq-val {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.75rem;
             color: var(--accent-3);
             display: block;
             line-height: 1.4;
         }
         .geq-op {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             color: var(--text-dim);
             line-height: 1;
@@ -581,7 +583,7 @@
 
         /* ─── PRE / CHIASM ────────────────────────────────────────── */
         pre {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.8rem;
             line-height: 1.9;
             padding: 2rem;
@@ -619,14 +621,14 @@
         }
         .sefira-card:hover { border-color: var(--border-s); }
         .sefira-num {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.65rem;
             color: var(--text-dim);
             min-width: 1.2rem;
             padding-top: 0.15rem;
         }
         .sefira-name {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             color: var(--accent-3);
             font-style: italic;
@@ -661,7 +663,7 @@
         }
         .fn-panel.open { transform: translateX(0); }
         .fn-panel h3 {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.68rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -679,7 +681,7 @@
         }
         .fn-item:last-child { border-bottom: none; }
         .fn-num {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             color: var(--accent-2);
             font-size: 0.7rem;
             margin-right: 0.4rem;
@@ -716,6 +718,39 @@
             bottom: 1.5rem; left: 1.5rem;
             z-index: 70;
         }
+
+        /* Theme toggle for exegesis page */
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 90;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border-s);
+            background: var(--bg-2);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            padding: 0;
+        }
+        .theme-toggle:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.08);
+        }
+        .theme-toggle svg { width: 20px; height: 20px; flex-shrink: 0; }
+        .theme-toggle .sun-icon { display: block; }
+        .theme-toggle .moon-icon { display: none; }
+        html.light .theme-toggle .sun-icon,
+        [data-theme="light"] .theme-toggle .sun-icon { display: none; }
+        html.light .theme-toggle .moon-icon,
+        [data-theme="light"] .theme-toggle .moon-icon { display: block; }
 
         /* ─── TOC TOGGLE (Upper Left) ─────────────────────────────── */
         .toc-toggle {
@@ -769,7 +804,7 @@
         .id-side:first-child { border-right: 1px solid var(--border); }
         .id-side:last-child { border-left: 1px solid var(--border); }
         .id-label {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.62rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
@@ -777,19 +812,19 @@
             margin-bottom: 0.5rem;
         }
         .id-glyph {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             line-height: 1;
             color: var(--gold);
         }
         .id-value {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 2.5rem;
             color: var(--accent-3);
             line-height: 1;
         }
         .id-name {
-            font-family: 'Source Serif 4', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 0.85rem;
             font-style: italic;
             color: var(--text-dim);
@@ -797,7 +832,7 @@
         }
         .id-eq {
             padding: 0 1.25rem;
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             color: var(--border-s);
         }
@@ -818,7 +853,7 @@
             border-radius: 4px;
             padding: 2rem;
             margin: 2rem 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.78rem;
             line-height: 2;
         }
@@ -862,7 +897,7 @@
         }
         .treaty-item:last-child { border-bottom: none; }
         .treaty-n {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             color: var(--accent-2);
             font-size: 0.72rem;
             padding-top: 0.1rem;
@@ -882,18 +917,18 @@
         }
         .world-item:last-child { border-bottom: none; }
         .w-letter {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             color: var(--gold);
             text-align: center;
             line-height: 1;
         }
         .w-val {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.78rem;
             color: var(--gold-2);
         }
-        .w-world { color: var(--accent-3); font-style: italic; font-family: 'EB Garamond', serif; font-size: 1.05rem; }
+        .w-world { color: var(--accent-3); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; }
         .w-sec { color: var(--text-dim); font-size: 0.82rem; }
 
         @media (max-width: 640px) {
@@ -938,7 +973,7 @@
         }
 
         .rev-box .big-num {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             color: var(--gold);
             font-weight: 300;
@@ -970,7 +1005,7 @@
         }
 
         .mirror-number {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 300;
             color: var(--text);
@@ -1172,7 +1207,7 @@
             border: 1px solid var(--gold);
             border-radius: 8px;
             padding: 12px 16px;
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
             color: var(--ink);
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
@@ -1233,7 +1268,7 @@
             background: var(--accent-dim);
             color: var(--parch-2);
             padding: 1rem 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.85rem;
             letter-spacing: 0.1em;
             border-bottom: 1px solid var(--border-s);
@@ -1257,14 +1292,14 @@
             border-color: var(--accent-2);
         }
         .filing-number {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.9rem;
             color: var(--accent-2);
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
         .filing-release {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.75rem;
             color: var(--text-dim);
             margin-bottom: 0.75rem;
@@ -1282,7 +1317,7 @@
         .filings-sec-link {
             color: var(--accent-2);
             text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
             font-size: 0.8rem;
             transition: color 0.2s ease;
         }
@@ -1298,6 +1333,23 @@
 
 <!-- ─── TOC TOGGLE (Upper Left) ─────────────────────────────────── -->
 <button class="toc-toggle" id="tocToggle" aria-label="Toggle contents">☰</button>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" style="position:fixed;top:1.5rem;right:1.5rem;z-index:90;">
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
 
 <!-- ─── HEADER ──────────────────────────────────────────────────────── -->
 <div class="page">
@@ -1530,293 +1582,293 @@
                     <g id="grid144">
                         <!-- Generated 144 cells -->
                         <rect class="grid-cell" x="22.5" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">1</text>
+                        <text x="37.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">1</text>
                         <rect class="grid-cell" x="55.8" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">2</text>
+                        <text x="70.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">2</text>
                         <rect class="grid-cell" x="89.2" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">3</text>
+                        <text x="104.2" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">3</text>
                         <rect class="grid-cell" x="122.5" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">4</text>
+                        <text x="137.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">4</text>
                         <rect class="grid-cell" x="155.8" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">5</text>
+                        <text x="170.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">5</text>
                         <rect class="grid-cell" x="189.1" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">6</text>
+                        <text x="204.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">6</text>
                         <rect class="grid-cell" x="222.5" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">7</text>
+                        <text x="237.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">7</text>
                         <rect class="grid-cell" x="255.8" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">8</text>
+                        <text x="270.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">8</text>
                         <rect class="grid-cell" x="289.1" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">9</text>
+                        <text x="304.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">9</text>
                         <rect class="grid-cell" x="322.5" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">10</text>
+                        <text x="337.5" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">10</text>
                         <rect class="grid-cell" x="355.8" y="22.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">11</text>
+                        <text x="370.8" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">11</text>
                         <rect class="grid-cell" x="389.1" y="22.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">12</text>
+                        <text x="404.1" y="40.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">12</text>
                         <rect class="grid-cell" x="22.5" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">13</text>
+                        <text x="37.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">13</text>
                         <rect class="grid-cell" x="55.8" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">14</text>
+                        <text x="70.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">14</text>
                         <rect class="grid-cell" x="89.2" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">15</text>
+                        <text x="104.2" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">15</text>
                         <rect class="grid-cell" x="122.5" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">16</text>
+                        <text x="137.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">16</text>
                         <rect class="grid-cell" x="155.8" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">17</text>
+                        <text x="170.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">17</text>
                         <rect class="grid-cell" x="189.1" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">18</text>
+                        <text x="204.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">18</text>
                         <rect class="grid-cell" x="222.5" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">19</text>
+                        <text x="237.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">19</text>
                         <rect class="grid-cell" x="255.8" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">20</text>
+                        <text x="270.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">20</text>
                         <rect class="grid-cell" x="289.1" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">21</text>
+                        <text x="304.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">21</text>
                         <rect class="grid-cell" x="322.5" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">22</text>
+                        <text x="337.5" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">22</text>
                         <rect class="grid-cell" x="355.8" y="55.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">23</text>
+                        <text x="370.8" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">23</text>
                         <rect class="grid-cell" x="389.1" y="55.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">24</text>
+                        <text x="404.1" y="73.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">24</text>
                         <rect class="grid-cell" x="22.5" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">25</text>
+                        <text x="37.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">25</text>
                         <rect class="grid-cell" x="55.8" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">26</text>
+                        <text x="70.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">26</text>
                         <rect class="grid-cell" x="89.2" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">27</text>
+                        <text x="104.2" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">27</text>
                         <rect class="grid-cell" x="122.5" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">28</text>
+                        <text x="137.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">28</text>
                         <rect class="grid-cell" x="155.8" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">29</text>
+                        <text x="170.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">29</text>
                         <rect class="grid-cell" x="189.1" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">30</text>
+                        <text x="204.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">30</text>
                         <rect class="grid-cell" x="222.5" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">31</text>
+                        <text x="237.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">31</text>
                         <rect class="grid-cell" x="255.8" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">32</text>
+                        <text x="270.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">32</text>
                         <rect class="grid-cell" x="289.1" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">33</text>
+                        <text x="304.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">33</text>
                         <rect class="grid-cell" x="322.5" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">34</text>
+                        <text x="337.5" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">34</text>
                         <rect class="grid-cell" x="355.8" y="89.2" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">35</text>
+                        <text x="370.8" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">35</text>
                         <rect class="grid-cell" x="389.1" y="89.2" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">36</text>
+                        <text x="404.1" y="107.2" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">36</text>
                         <rect class="grid-cell" x="22.5" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">37</text>
+                        <text x="37.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">37</text>
                         <rect class="grid-cell" x="55.8" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">38</text>
+                        <text x="70.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">38</text>
                         <rect class="grid-cell" x="89.2" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">39</text>
+                        <text x="104.2" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">39</text>
                         <rect class="grid-cell" x="122.5" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">40</text>
+                        <text x="137.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">40</text>
                         <rect class="grid-cell" x="155.8" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">41</text>
+                        <text x="170.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">41</text>
                         <rect class="grid-cell" x="189.1" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">42</text>
+                        <text x="204.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">42</text>
                         <rect class="grid-cell" x="222.5" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">43</text>
+                        <text x="237.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">43</text>
                         <rect class="grid-cell" x="255.8" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">44</text>
+                        <text x="270.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">44</text>
                         <rect class="grid-cell" x="289.1" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">45</text>
+                        <text x="304.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">45</text>
                         <rect class="grid-cell" x="322.5" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">46</text>
+                        <text x="337.5" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">46</text>
                         <rect class="grid-cell" x="355.8" y="122.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">47</text>
+                        <text x="370.8" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">47</text>
                         <rect class="grid-cell" x="389.1" y="122.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">48</text>
+                        <text x="404.1" y="140.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">48</text>
                         <rect class="grid-cell" x="22.5" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">49</text>
+                        <text x="37.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">49</text>
                         <rect class="grid-cell" x="55.8" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">50</text>
+                        <text x="70.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">50</text>
                         <rect class="grid-cell" x="89.2" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">51</text>
+                        <text x="104.2" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">51</text>
                         <rect class="grid-cell" x="122.5" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">52</text>
+                        <text x="137.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">52</text>
                         <rect class="grid-cell" x="155.8" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">53</text>
+                        <text x="170.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">53</text>
                         <rect class="grid-cell" x="189.1" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">54</text>
+                        <text x="204.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">54</text>
                         <rect class="grid-cell" x="222.5" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">55</text>
+                        <text x="237.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">55</text>
                         <rect class="grid-cell" x="255.8" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">56</text>
+                        <text x="270.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">56</text>
                         <rect class="grid-cell" x="289.1" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">57</text>
+                        <text x="304.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">57</text>
                         <rect class="grid-cell" x="322.5" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">58</text>
+                        <text x="337.5" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">58</text>
                         <rect class="grid-cell" x="355.8" y="155.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">59</text>
+                        <text x="370.8" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">59</text>
                         <rect class="grid-cell" x="389.1" y="155.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">60</text>
+                        <text x="404.1" y="173.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">60</text>
                         <rect class="grid-cell" x="22.5" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">61</text>
+                        <text x="37.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">61</text>
                         <rect class="grid-cell" x="55.8" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">62</text>
+                        <text x="70.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">62</text>
                         <rect class="grid-cell" x="89.2" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">63</text>
+                        <text x="104.2" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">63</text>
                         <rect class="grid-cell" x="122.5" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">64</text>
+                        <text x="137.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">64</text>
                         <rect class="grid-cell" x="155.8" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">65</text>
+                        <text x="170.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">65</text>
                         <rect class="grid-cell" x="189.1" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">66</text>
+                        <text x="204.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">66</text>
                         <rect class="grid-cell" x="222.5" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">67</text>
+                        <text x="237.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">67</text>
                         <rect class="grid-cell" x="255.8" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">68</text>
+                        <text x="270.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">68</text>
                         <rect class="grid-cell" x="289.1" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">69</text>
+                        <text x="304.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">69</text>
                         <rect class="grid-cell" x="322.5" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">70</text>
+                        <text x="337.5" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">70</text>
                         <rect class="grid-cell" x="355.8" y="189.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">71</text>
+                        <text x="370.8" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">71</text>
                         <rect class="grid-cell" x="389.1" y="189.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">72</text>
+                        <text x="404.1" y="207.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">72</text>
                         <rect class="grid-cell" x="22.5" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">73</text>
+                        <text x="37.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">73</text>
                         <rect class="grid-cell" x="55.8" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">74</text>
+                        <text x="70.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">74</text>
                         <rect class="grid-cell" x="89.2" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">75</text>
+                        <text x="104.2" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">75</text>
                         <rect class="grid-cell" x="122.5" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">76</text>
+                        <text x="137.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">76</text>
                         <rect class="grid-cell" x="155.8" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">77</text>
+                        <text x="170.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">77</text>
                         <rect class="grid-cell" x="189.1" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">78</text>
+                        <text x="204.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">78</text>
                         <rect class="grid-cell" x="222.5" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">79</text>
+                        <text x="237.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">79</text>
                         <rect class="grid-cell" x="255.8" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">80</text>
+                        <text x="270.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">80</text>
                         <rect class="grid-cell" x="289.1" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">81</text>
+                        <text x="304.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">81</text>
                         <rect class="grid-cell" x="322.5" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">82</text>
+                        <text x="337.5" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">82</text>
                         <rect class="grid-cell" x="355.8" y="222.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">83</text>
+                        <text x="370.8" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">83</text>
                         <rect class="grid-cell" x="389.1" y="222.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">84</text>
+                        <text x="404.1" y="240.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">84</text>
                         <rect class="grid-cell" x="22.5" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">85</text>
+                        <text x="37.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">85</text>
                         <rect class="grid-cell" x="55.8" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">86</text>
+                        <text x="70.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">86</text>
                         <rect class="grid-cell" x="89.2" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">87</text>
+                        <text x="104.2" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">87</text>
                         <rect class="grid-cell" x="122.5" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">88</text>
+                        <text x="137.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">88</text>
                         <rect class="grid-cell" x="155.8" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">89</text>
+                        <text x="170.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">89</text>
                         <rect class="grid-cell" x="189.1" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">90</text>
+                        <text x="204.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">90</text>
                         <rect class="grid-cell" x="222.5" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">91</text>
+                        <text x="237.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">91</text>
                         <rect class="grid-cell" x="255.8" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">92</text>
+                        <text x="270.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">92</text>
                         <rect class="grid-cell" x="289.1" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">93</text>
+                        <text x="304.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">93</text>
                         <rect class="grid-cell" x="322.5" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">94</text>
+                        <text x="337.5" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">94</text>
                         <rect class="grid-cell" x="355.8" y="255.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">95</text>
+                        <text x="370.8" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">95</text>
                         <rect class="grid-cell" x="389.1" y="255.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">96</text>
+                        <text x="404.1" y="273.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">96</text>
                         <rect class="grid-cell" x="22.5" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">97</text>
+                        <text x="37.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">97</text>
                         <rect class="grid-cell" x="55.8" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">98</text>
+                        <text x="70.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">98</text>
                         <rect class="grid-cell" x="89.2" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">99</text>
+                        <text x="104.2" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">99</text>
                         <rect class="grid-cell" x="122.5" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">100</text>
+                        <text x="137.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">100</text>
                         <rect class="grid-cell" x="155.8" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">101</text>
+                        <text x="170.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">101</text>
                         <rect class="grid-cell" x="189.1" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">102</text>
+                        <text x="204.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">102</text>
                         <rect class="grid-cell" x="222.5" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">103</text>
+                        <text x="237.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">103</text>
                         <rect class="grid-cell" x="255.8" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">104</text>
+                        <text x="270.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">104</text>
                         <rect class="grid-cell" x="289.1" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">105</text>
+                        <text x="304.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">105</text>
                         <rect class="grid-cell" x="322.5" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">106</text>
+                        <text x="337.5" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">106</text>
                         <rect class="grid-cell" x="355.8" y="289.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">107</text>
+                        <text x="370.8" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">107</text>
                         <rect class="grid-cell" x="389.1" y="289.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">108</text>
+                        <text x="404.1" y="307.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">108</text>
                         <rect class="grid-cell" x="22.5" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">109</text>
+                        <text x="37.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">109</text>
                         <rect class="grid-cell" x="55.8" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">110</text>
+                        <text x="70.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">110</text>
                         <rect class="grid-cell" x="89.2" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">111</text>
+                        <text x="104.2" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">111</text>
                         <rect class="grid-cell" x="122.5" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">112</text>
+                        <text x="137.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">112</text>
                         <rect class="grid-cell" x="155.8" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">113</text>
+                        <text x="170.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">113</text>
                         <rect class="grid-cell" x="189.1" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">114</text>
+                        <text x="204.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">114</text>
                         <rect class="grid-cell" x="222.5" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">115</text>
+                        <text x="237.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">115</text>
                         <rect class="grid-cell" x="255.8" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">116</text>
+                        <text x="270.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">116</text>
                         <rect class="grid-cell" x="289.1" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">117</text>
+                        <text x="304.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">117</text>
                         <rect class="grid-cell" x="322.5" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">118</text>
+                        <text x="337.5" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">118</text>
                         <rect class="grid-cell" x="355.8" y="322.5" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">119</text>
+                        <text x="370.8" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">119</text>
                         <rect class="grid-cell" x="389.1" y="322.5" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">120</text>
+                        <text x="404.1" y="340.5" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">120</text>
                         <rect class="grid-cell" x="22.5" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">121</text>
+                        <text x="37.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">121</text>
                         <rect class="grid-cell" x="55.8" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">122</text>
+                        <text x="70.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">122</text>
                         <rect class="grid-cell" x="89.2" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">123</text>
+                        <text x="104.2" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">123</text>
                         <rect class="grid-cell" x="122.5" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">124</text>
+                        <text x="137.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">124</text>
                         <rect class="grid-cell" x="155.8" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">125</text>
+                        <text x="170.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">125</text>
                         <rect class="grid-cell" x="189.1" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">126</text>
+                        <text x="204.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">126</text>
                         <rect class="grid-cell" x="222.5" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">127</text>
+                        <text x="237.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">127</text>
                         <rect class="grid-cell" x="255.8" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">128</text>
+                        <text x="270.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">128</text>
                         <rect class="grid-cell" x="289.1" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">129</text>
+                        <text x="304.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">129</text>
                         <rect class="grid-cell" x="322.5" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">130</text>
+                        <text x="337.5" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">130</text>
                         <rect class="grid-cell" x="355.8" y="355.8" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">131</text>
+                        <text x="370.8" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">131</text>
                         <rect class="grid-cell" x="389.1" y="355.8" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">132</text>
+                        <text x="404.1" y="373.8" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">132</text>
                         <rect class="grid-cell" x="22.5" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="37.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">133</text>
+                        <text x="37.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">133</text>
                         <rect class="grid-cell" x="55.8" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="70.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">134</text>
+                        <text x="70.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">134</text>
                         <rect class="grid-cell" x="89.2" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="104.2" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">135</text>
+                        <text x="104.2" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">135</text>
                         <rect class="grid-cell" x="122.5" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="137.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">136</text>
+                        <text x="137.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">136</text>
                         <rect class="grid-cell" x="155.8" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="170.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">137</text>
+                        <text x="170.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">137</text>
                         <rect class="grid-cell" x="189.1" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="204.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">138</text>
+                        <text x="204.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">138</text>
                         <rect class="grid-cell" x="222.5" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="237.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">139</text>
+                        <text x="237.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">139</text>
                         <rect class="grid-cell" x="255.8" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="270.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">140</text>
+                        <text x="270.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">140</text>
                         <rect class="grid-cell" x="289.1" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="304.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">141</text>
+                        <text x="304.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">141</text>
                         <rect class="grid-cell" x="322.5" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="337.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">142</text>
+                        <text x="337.5" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">142</text>
                         <rect class="grid-cell" x="355.8" y="389.1" width="30" height="30" fill="url(#sappGrad)" stroke="var(--accent)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="370.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">143</text>
+                        <text x="370.8" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">143</text>
                         <rect class="grid-cell" x="389.1" y="389.1" width="30" height="30" fill="url(#goldGrad)" stroke="var(--gold)" stroke-width="0.5" rx="3" filter="url(#cellShadow)"/>
-                        <text x="404.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="JetBrains Mono,monospace" font-weight="400">144</text>
+                        <text x="404.1" y="407.1" text-anchor="middle" font-size="6.5" fill="var(--text-dim)" font-family="DM Sans,monospace" font-weight="400">144</text>
                     </g>
 
                     <!-- Center Cross -->
@@ -1959,29 +2011,29 @@
 
                         <!-- 12 Foundation stones in clean ellipse -->
                         <rect x="-14.0" y="7.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="0.0" y="21.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">1</text>
+                        <text x="0.0" y="21.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">1</text>
                         <rect x="63.5" y="12.1" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="77.5" y="26.1" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">2</text>
+                        <text x="77.5" y="26.1" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">2</text>
                         <rect x="120.2" y="26.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="134.2" y="40.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">3</text>
+                        <text x="134.2" y="40.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">3</text>
                         <rect x="141.0" y="45.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="155.0" y="59.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">4</text>
+                        <text x="155.0" y="59.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">4</text>
                         <rect x="120.2" y="64.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="134.2" y="78.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">5</text>
+                        <text x="134.2" y="78.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">5</text>
                         <rect x="63.5" y="77.9" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="77.5" y="91.9" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">6</text>
+                        <text x="77.5" y="91.9" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">6</text>
                         <rect x="-14.0" y="83.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="0.0" y="97.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">7</text>
+                        <text x="0.0" y="97.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">7</text>
                         <rect x="-91.5" y="77.9" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="-77.5" y="91.9" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">8</text>
+                        <text x="-77.5" y="91.9" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">8</text>
                         <rect x="-148.2" y="64.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="-134.2" y="78.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">9</text>
+                        <text x="-134.2" y="78.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">9</text>
                         <rect x="-169.0" y="45.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="-155.0" y="59.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">10</text>
+                        <text x="-155.0" y="59.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">10</text>
                         <rect x="-148.2" y="26.0" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="-134.2" y="40.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">11</text>
+                        <text x="-134.2" y="40.0" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">11</text>
                         <rect x="-91.5" y="12.1" width="28" height="20" fill="url(#foundGrad)" stroke="var(--accent)" stroke-width="1" rx="3" filter="url(#foundShadow)"/>
-                        <text x="-77.5" y="26.1" text-anchor="middle" font-size="7" fill="var(--text)" font-family="JetBrains Mono,monospace">12</text>
+                        <text x="-77.5" y="26.1" text-anchor="middle" font-size="7" fill="var(--text)" font-family="DM Sans,monospace">12</text>
 
                         <polygon points="-70,-50 70,-50 90,50 -90,50" fill="rgba(200,144,42,0.06)" stroke="var(--gold)" stroke-width="1.5" rx="4"/>
                         <text x="0" y="-20" text-anchor="middle" font-size="14" fill="var(--text)" font-family="EB Garamond,serif" font-weight="600" letter-spacing="2">NEW JERUSALEM</text>

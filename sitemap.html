@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/shared.css">
+<script src="js/theme-init.js"></script>
 <style>
 /* Sitemap-specific styles */
 .sitemap-container {
@@ -36,6 +37,36 @@
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+}
+
+/* Sitemap-specific breadcrumb override */
+.sitemap-breadcrumbs {
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Sitemap footer */
+.sitemap-footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.sitemap-footer-text {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.sitemap-footer-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.sitemap-footer-meta {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  margin-top: 8px;
 }
 
 /* Theme Toggle Button */
@@ -260,6 +291,23 @@
 </head>
 <body>
 
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" aria-label="Close navigation">×</button>
+  <h4>Navigation</h4>
+  <a href="#sitemap-top">Overview</a>
+  <a href="#quick-links" class="sub">Quick Links</a>
+  <a href="#teaching-guides" class="sub">Teaching Guides</a>
+  <a href="#forms" class="sub">Forms & Questionnaires</a>
+  <a href="#documentation" class="sub">Documentation</a>
+  <a href="#pdf-resources" class="sub">PDF Resources</a>
+  <div class="toc-divider">Site</div>
+  <a href="index.html" class="external">Document Index</a>
+</div>
+
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
   <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="5"></circle>
@@ -277,9 +325,9 @@
   </svg>
 </button>
 
-<div class="sitemap-container">
+<div class="sitemap-container" id="sitemap-top">
   <div class="sitemap-header">
-    <nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="justify-content: center; margin-bottom: 16px;">
+    <nav class="breadcrumbs sitemap-breadcrumbs" aria-label="Breadcrumb navigation">
       <a href="index.html">Home</a>
       <span class="breadcrumb-separator">›</span>
       <span class="breadcrumb-current">Site Map</span>
@@ -291,7 +339,7 @@
   </div>
 
   <!-- Quick Links -->
-  <div class="quick-links">
+  <div class="quick-links" id="quick-links">
     <h2 class="quick-links-title">Quick Links</h2>
     <div class="quick-links-list">
       <a href="index.html" class="quick-link">Document Index</a>
@@ -302,7 +350,7 @@
   </div>
 
   <!-- Teaching Guides -->
-  <div class="sitemap-section">
+  <div class="sitemap-section" id="teaching-guides">
     <div class="section-header">
       <div class="section-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Book icon">
@@ -368,7 +416,7 @@
   </div>
 
   <!-- Forms & Questionnaires -->
-  <div class="sitemap-section">
+  <div class="sitemap-section" id="forms">
     <div class="section-header">
       <div class="section-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Form icon">
@@ -412,7 +460,7 @@
   </div>
 
   <!-- Documentation -->
-  <div class="sitemap-section">
+  <div class="sitemap-section" id="documentation">
     <div class="section-header">
       <div class="section-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="File icon">
@@ -478,7 +526,7 @@
   </div>
 
   <!-- PDF Resources -->
-  <div class="sitemap-section">
+  <div class="sitemap-section" id="pdf-resources">
     <div class="section-header">
       <div class="section-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="PDF icon">
@@ -569,11 +617,11 @@
   </div>
 
   <!-- Footer -->
-  <footer style="text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-light);">
-    <p style="color: var(--ink-muted); font-size: 0.9rem;">
-      <a href="index.html" style="color: var(--accent); text-decoration: none;">← Return to Document Index</a>
+  <footer class="sitemap-footer">
+    <p class="sitemap-footer-text">
+      <a href="index.html" class="sitemap-footer-link">← Return to Document Index</a>
     </p>
-    <p style="color: var(--ink-muted); font-size: 0.8rem; margin-top: 8px;">
+    <p class="sitemap-footer-meta">
       DTC Eligibility Documentation Collection · June 2026
     </p>
   </footer>
