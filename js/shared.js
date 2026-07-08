@@ -3,14 +3,8 @@
 
 // Theme Management
 function initTheme() {
-  const themeToggle = document.getElementById('themeToggle');
-  if (!themeToggle) {
-    console.log('Theme toggle button not found');
-    return;
-  }
-
   // Check for saved theme preference or default to system preference
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = localStorage.getItem('dtc-theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // Apply the appropriate theme
@@ -20,20 +14,23 @@ function initTheme() {
     document.documentElement.setAttribute('data-theme', 'light');
   }
 
-  // Toggle theme on button click
-  themeToggle.addEventListener('click', function() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    console.log('Toggling theme from', currentTheme, 'to', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      console.log('Toggling theme from', currentTheme, 'to', newTheme);
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('dtc-theme', newTheme);
+    });
+  }
 
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
     // Only auto-switch if user hasn't manually set a preference
-    if (!localStorage.getItem('theme')) {
+    if (!localStorage.getItem('dtc-theme')) {
       const newTheme = e.matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', newTheme);
     }
