@@ -234,6 +234,152 @@
   margin-left: 13px; margin-top: -5px; margin-bottom: -5px;
 }
 
+/* Concept Maps (relationship SVGs) */
+.diagram-box.concept-map {
+  padding: 24px 16px 18px;
+  overflow-x: auto;
+}
+.concept-map-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.06);
+}
+.concept-map-svg .cm-node:focus {
+  outline: none;
+}
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static {
+  cursor: default;
+}
+.cm-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-tertiary);
+  margin: 14px auto 0;
+  line-height: 1.55;
+  max-width: 560px;
+}
+.cm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.cm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cm-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--ink-muted);
+  flex-shrink: 0;
+}
+.cm-legend-line.dashed {
+  border-top-style: dashed;
+  border-color: var(--ink-faint);
+}
+.cm-legend-line.pass {
+  border-top-style: dashed;
+  border-color: var(--green);
+}
+.cm-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  font-style: italic;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .diagram-box.concept-map { padding: 18px 8px 14px; }
+  .concept-map-svg { min-width: 300px; }
+}
+
 /* Entity card */
 .entity-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -446,7 +592,9 @@
   <h4>Contents</h4>
   <a href="#overview">Overview — The Modern Securities Infrastructure</a>
   <a href="#overview" class="sub">Legal vs. Beneficial Ownership</a>
+  <a href="#concept-map-overview" class="sub">Concept Map — Entity Relationships</a>
   <a href="#dtc">The Depository Trust Company (DTC)</a>
+  <a href="#concept-map-ownership" class="sub">Concept Map — Ownership Stack</a>
   <a href="#dtc" class="sub">Participants &amp; Eligibility</a>
   <a href="#dtcc">DTCC — The Parent Organization</a>
   <a href="#nscc">National Securities Clearing Corporation (NSCC)</a>
@@ -458,6 +606,7 @@
   <a href="#ficc" class="sub">The DTCC Ecosystem</a>
   <a href="#cede">Cede &amp; Co. — The Nominee</a>
   <a href="#cede" class="sub">Why a Nominee Exists</a>
+  <a href="#concept-map-legal-beneficial" class="sub">Concept Map — Legal vs Beneficial</a>
   <a href="#operating">Operating Arrangements</a>
   <a href="#operating" class="sub">The Flow of a Trade</a>
   <a href="#settlement">Settlement &amp; Book-Entry</a>
@@ -576,6 +725,127 @@ This system handles trillions of dollars in transactions daily. Understanding it
   </div>
 </div>
 
+<!-- Concept Map 1: Entity Relationship Overview -->
+<div class="diagram-box concept-map" id="concept-map-overview" role="img" aria-labelledby="cm1-title" aria-describedby="cm1-desc">
+  <div class="diagram-title" id="cm1-title">Concept Map — Entity Relationships</div>
+  <p id="cm1-desc" class="visually-hidden">
+    Diagram of U.S. securities infrastructure: SEC and Federal Reserve oversee DTCC.
+    DTCC owns NSCC, DTC, and FICC. Cede and Co. is DTC&apos;s nominee on issuer books.
+    Issuers register title to Cede. DTC maintains participant accounts.
+    Participants hold customer accounts for investors who are beneficial owners.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm-arrow-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-faint)"/>
+      </marker>
+    </defs>
+
+    <!-- Ownership-chain grouping -->
+    <rect x="48" y="228" width="624" height="210" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="4 3" opacity="0.9"/>
+    <text x="64" y="248" class="cm-zone-label" fill="var(--ink-muted)">Ownership chain</text>
+
+    <!-- Edges (drawn under nodes) -->
+    <!-- Oversight → DTCC -->
+    <line class="cm-edge-dashed" x1="360" y1="52" x2="360" y2="72" marker-end="url(#cm-arrow-faint)"/>
+    <!-- DTCC → subsidiaries -->
+    <path class="cm-edge" d="M300 118 L220 148" marker-end="url(#cm-arrow)"/>
+    <path class="cm-edge" d="M360 118 L360 148" marker-end="url(#cm-arrow)"/>
+    <path class="cm-edge" d="M420 118 L500 148" marker-end="url(#cm-arrow)"/>
+    <!-- DTC → Cede -->
+    <line class="cm-edge" x1="360" y1="196" x2="360" y2="258" marker-end="url(#cm-arrow)"/>
+    <!-- Issuer → Cede -->
+    <path class="cm-edge" d="M168 290 L250 290" marker-end="url(#cm-arrow)"/>
+    <!-- DTC → Participant (via Cede area) -->
+    <line class="cm-edge" x1="360" y1="310" x2="360" y2="338" marker-end="url(#cm-arrow)"/>
+    <!-- Participant → Investor -->
+    <line class="cm-edge" x1="360" y1="386" x2="360" y2="404" marker-end="url(#cm-arrow)"/>
+
+    <!-- Edge labels -->
+    <text class="cm-edge-label" x="372" y="66" text-anchor="start">oversight</text>
+    <text class="cm-edge-label" x="248" y="138" text-anchor="middle">owns</text>
+    <text class="cm-edge-label" x="372" y="142" text-anchor="start">owns</text>
+    <text class="cm-edge-label" x="472" y="138" text-anchor="middle">owns</text>
+    <text class="cm-edge-label" x="372" y="236" text-anchor="start">nominee of</text>
+    <text class="cm-edge-label" x="210" y="282" text-anchor="middle">registers title</text>
+    <text class="cm-edge-label" x="372" y="332" text-anchor="start">securities account</text>
+    <text class="cm-edge-label" x="372" y="400" text-anchor="start">customer of</text>
+
+    <!-- SEC / Fed oversight -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="250" y="18" width="220" height="34" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <text class="cm-node-title" x="360" y="40" text-anchor="middle" fill="var(--ink-muted)" font-size="12">SEC · Federal Reserve</text>
+    </g>
+
+    <!-- DTCC -->
+    <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
+      <rect class="cm-node-shape" x="270" y="74" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="360" y="93" text-anchor="middle" fill="#fff">DTCC</text>
+      <text class="cm-node-sub" x="360" y="108" text-anchor="middle" fill="var(--accent-muted)">Parent holding company</text>
+    </g>
+
+    <!-- NSCC -->
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
+      <rect class="cm-node-shape" x="140" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="200" y="170" text-anchor="middle" fill="var(--accent)">NSCC</text>
+      <text class="cm-node-sub" x="200" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Equity CCP</text>
+    </g>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="300" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="360" y="170" text-anchor="middle" fill="var(--accent)">DTC</text>
+      <text class="cm-node-sub" x="360" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Depository (CSD)</text>
+    </g>
+
+    <!-- FICC -->
+    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
+      <rect class="cm-node-shape" x="460" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="520" y="170" text-anchor="middle" fill="var(--accent)">FICC</text>
+      <text class="cm-node-sub" x="520" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Fixed income CCP</text>
+    </g>
+
+    <!-- Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="60" y="268" width="108" height="44" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="114" y="288" text-anchor="middle" fill="var(--ink)">Issuer</text>
+      <text class="cm-node-sub" x="114" y="302" text-anchor="middle" fill="var(--ink-tertiary)">Corporation</text>
+    </g>
+
+    <!-- Cede & Co. -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="278" y="260" width="164" height="50" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <text class="cm-node-title" x="360" y="282" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="360" y="298" text-anchor="middle" fill="var(--gold)">Nominee · legal title</text>
+    </g>
+
+    <!-- Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
+      <rect class="cm-node-shape" x="268" y="340" width="184" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="360" y="360" text-anchor="middle" fill="var(--accent)">Participant</text>
+      <text class="cm-node-sub" x="360" y="375" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank</text>
+    </g>
+
+    <!-- Investor -->
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
+      <rect class="cm-node-shape" x="278" y="406" width="164" height="44" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <text class="cm-node-title" x="360" y="426" text-anchor="middle" fill="var(--green)">Investor</text>
+      <text class="cm-node-sub" x="360" y="440" text-anchor="middle" fill="var(--ink-tertiary)">Beneficial owner</text>
+    </g>
+  </svg>
+  <p class="cm-caption">Legal title concentrates at <strong>Cede &amp; Co.</strong> on the issuer&apos;s books; economic rights stay with the <strong>investor</strong> through the participant.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Parent / org</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Nominee (legal title)</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial owner</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Regulatory oversight</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
 <!-- SECTION: DTC -->
 <h2 class="section-title" id="dtc">The Depository Trust Company (DTC)</h2>
 
@@ -593,8 +863,99 @@ DTC's core function is to eliminate the physical movement of securities certific
 When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent</span> deposits securities with DTC, the securities are registered in the name of <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> on the issuer's books. DTC then credits the securities to the account of the <span class="hotspot" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')">DTC participant</span> (typically the investor's broker-dealer). The participant, in turn, credits the investor's account. This creates a layered ownership structure:
 </p>
 
-<div class="diagram-box">
-  <div class="diagram-title">Layered Ownership Chain</div>
+<div class="diagram-box concept-map" id="concept-map-ownership" role="img" aria-labelledby="cm2-title" aria-describedby="cm2-desc">
+  <div class="diagram-title" id="cm2-title">Concept Map — Layered Ownership Stack</div>
+  <p id="cm2-desc" class="visually-hidden">
+    Vertical ownership stack from top to bottom: Issuer lists Cede and Co. as registered owner;
+    Cede holds legal title as nominee for DTC; DTC credits book-entry positions to Participants;
+    Participants credit customer accounts for Investors who hold beneficial ownership.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 640 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:640px">
+    <defs>
+      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Domain side rails + labels (left) -->
+    <rect x="24" y="36" width="8" height="52" rx="3" fill="var(--border)" opacity="0.55"/>
+    <text x="38" y="58" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Issuer</text>
+    <text x="38" y="70" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">books</text>
+
+    <rect x="24" y="150" width="8" height="160" rx="3" fill="var(--accent-muted)" opacity="0.7"/>
+    <text x="38" y="220" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">DTC</text>
+    <text x="38" y="232" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">system</text>
+
+    <rect x="24" y="400" width="8" height="90" rx="3" fill="var(--green)" opacity="0.45"/>
+    <text x="38" y="436" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Broker</text>
+    <text x="38" y="448" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">books</text>
+
+    <!-- Edges -->
+    <line class="cm-edge" x1="240" y1="88" x2="240" y2="118" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="240" y1="188" x2="240" y2="218" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="240" y1="288" x2="240" y2="318" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="240" y1="388" x2="240" y2="418" marker-end="url(#cm2-arrow)"/>
+
+    <!-- Edge labels to the right of the stack -->
+    <text class="cm-edge-label" x="410" y="108" text-anchor="start">lists registered owner</text>
+    <text class="cm-edge-label" x="410" y="208" text-anchor="start">holds as nominee for</text>
+    <text class="cm-edge-label" x="410" y="308" text-anchor="start">credits book-entry to</text>
+    <text class="cm-edge-label" x="410" y="408" text-anchor="start">credits customer account</text>
+
+    <!-- 1 Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="240" y="58" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
+      <text class="cm-node-sub" x="240" y="74" text-anchor="middle" fill="var(--ink-tertiary)">Corporation that issued the securities</text>
+    </g>
+
+    <!-- 2 Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
+      <rect x="148" y="128" width="184" height="16" rx="4" fill="var(--gold)"/>
+      <text class="cm-badge-text" x="240" y="140" text-anchor="middle" fill="#fff">Legal title</text>
+      <text class="cm-node-title" x="240" y="162" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="240" y="178" text-anchor="middle" fill="var(--gold)">Registered owner on issuer books</text>
+    </g>
+
+    <!-- 3 DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="240" y="248" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
+      <text class="cm-node-sub" x="240" y="266" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault · participant records</text>
+    </g>
+
+    <!-- 4 Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
+      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="240" y="348" text-anchor="middle" fill="var(--accent)">4 · Participant</text>
+      <text class="cm-node-sub" x="240" y="366" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank at DTC</text>
+    </g>
+
+    <!-- 5 Investor -->
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
+      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <rect x="136" y="428" width="208" height="16" rx="4" fill="var(--green)"/>
+      <text class="cm-badge-text" x="240" y="440" text-anchor="middle" fill="#fff">Beneficial ownership</text>
+      <text class="cm-node-title" x="240" y="462" text-anchor="middle" fill="var(--green)">5 · Investor (You)</text>
+      <text class="cm-node-sub" x="240" y="478" text-anchor="middle" fill="var(--ink-tertiary)">Dividends · voting · sale proceeds</text>
+    </g>
+
+    <!-- UCC note -->
+    <text class="cm-edge-label" x="320" y="520" text-anchor="middle" fill="var(--ink-muted)">Street-name system · UCC Article 8 entitlement structure</text>
+  </svg>
+  <p class="cm-caption">Title sits at the top of the stack (<strong>Cede &amp; Co.</strong>); economic rights sit at the bottom (<strong>you</strong>). Intermediate layers only record and pass through entitlements.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Legal title</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial ownership</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Intermediary records</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<!-- Text fallback for sequential reading / accessibility -->
+<div class="diagram-box" aria-label="Ownership chain as numbered list">
+  <div class="diagram-title">Layered Ownership Chain — Step Summary</div>
   <div class="flow-step"><span class="step-num">1</span><strong>Issuer</strong> — The corporation that issued the securities.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Cede &amp; Co.</strong> — Registered owner on the issuer's books (nominee for DTC).</div>
@@ -901,6 +1262,105 @@ By registering securities in the name of a single nominee — Cede &amp; Co. —
 
 <div class="warn-box">
   <strong>Common Misconception:</strong> Some investors believe that because Cede &amp; Co. is the registered owner, DTC "owns" all the stock and investors have no rights. This is incorrect. Investors are <em>beneficial owners</em> with enforceable property rights. DTC and its participants are legally obligated to pass through all economic benefits (dividends, voting rights, sale proceeds) to the beneficial owners.
+</div>
+
+<!-- Concept Map 4: Legal Title vs Beneficial Interest -->
+<div class="diagram-box concept-map" id="concept-map-legal-beneficial" role="img" aria-labelledby="cm4-title" aria-describedby="cm4-desc">
+  <div class="diagram-title" id="cm4-title">Concept Map — Legal Title vs Beneficial Interest</div>
+  <p id="cm4-desc" class="visually-hidden">
+    Two-column diagram. Left: legal title on the issuer register — Cede and Co. as nominee of DTC.
+    Right: economic rights — investor as customer of participant.
+    A pass-through link carries dividends, proxies, and sale proceeds from left to right.
+    Myth that DTC owns the stock is false; investors are beneficial owners with enforceable rights.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm4-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+    </defs>
+
+    <!-- Column backgrounds -->
+    <rect x="28" y="42" width="300" height="280" rx="14" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.2" opacity="0.55"/>
+    <rect x="392" y="42" width="300" height="280" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.45"/>
+
+    <text class="cm-zone-label" x="178" y="66" text-anchor="middle" fill="var(--gold-deep)">Legal title</text>
+    <text class="cm-edge-label" x="178" y="82" text-anchor="middle" fill="var(--gold)">Issuer&apos;s register</text>
+
+    <text class="cm-zone-label" x="542" y="66" text-anchor="middle" fill="var(--green)">Economic rights</text>
+    <text class="cm-edge-label" x="542" y="82" text-anchor="middle" fill="var(--ink-tertiary)">Enforceable property interest</text>
+
+    <!-- Left stack edges -->
+    <line class="cm-edge" x1="178" y1="148" x2="178" y2="172" marker-end="url(#cm4-arrow)"/>
+    <line class="cm-edge" x1="178" y1="238" x2="178" y2="262" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="190" y="166" text-anchor="start">registers</text>
+    <text class="cm-edge-label" x="190" y="256" text-anchor="start">nominee of</text>
+
+    <!-- Right stack edges -->
+    <line class="cm-edge" x1="542" y1="200" x2="542" y2="224" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="554" y="218" text-anchor="start">customer of</text>
+
+    <!-- Pass-through bridge -->
+    <path class="cm-edge-pass" d="M330 200 C380 200 400 200 450 200" marker-end="url(#cm4-arrow-green)"/>
+    <text class="cm-edge-label" x="390" y="188" text-anchor="middle" fill="var(--green)">pass-through</text>
+    <text class="cm-edge-label" x="390" y="218" text-anchor="middle" fill="var(--ink-tertiary)">dividends · proxies · proceeds</text>
+
+    <!-- Left: Issuer books -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="88" y="100" width="180" height="48" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="178" y="122" text-anchor="middle" fill="var(--ink)">Issuer books</text>
+      <text class="cm-node-sub" x="178" y="138" text-anchor="middle" fill="var(--ink-tertiary)">One registered owner</text>
+    </g>
+
+    <!-- Left: Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="88" y="174" width="180" height="64" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
+      <text class="cm-node-title" x="178" y="200" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="178" y="218" text-anchor="middle" fill="var(--gold)">Registered owner</text>
+    </g>
+
+    <!-- Left: DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="88" y="264" width="180" height="42" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="178" y="290" text-anchor="middle" fill="var(--accent)">DTC</text>
+    </g>
+
+    <!-- Right: Investor -->
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
+      <rect class="cm-node-shape" x="452" y="120" width="180" height="80" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <rect x="478" y="128" width="128" height="16" rx="4" fill="var(--green)"/>
+      <text class="cm-badge-text" x="542" y="140" text-anchor="middle" fill="#fff">Beneficial owner</text>
+      <text class="cm-node-title" x="542" y="168" text-anchor="middle" fill="var(--green)">Investor</text>
+      <text class="cm-node-sub" x="542" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Economic rights</text>
+    </g>
+
+    <!-- Right: Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
+      <rect class="cm-node-shape" x="452" y="226" width="180" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="542" y="250" text-anchor="middle" fill="var(--accent)">Participant</text>
+      <text class="cm-node-sub" x="542" y="268" text-anchor="middle" fill="var(--ink-tertiary)">Broker books</text>
+    </g>
+
+    <!-- Myth vs truth callouts -->
+    <g class="cm-node-static">
+      <rect x="60" y="340" width="280" height="36" rx="8" fill="var(--red-light)" stroke="var(--red-muted)" stroke-width="1"/>
+      <text class="cm-node-title" x="200" y="363" text-anchor="middle" fill="var(--red)" font-size="12">✗ Myth: “DTC owns the stock”</text>
+    </g>
+    <g class="cm-node-static">
+      <rect x="380" y="340" width="280" height="36" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1"/>
+      <text class="cm-node-title" x="520" y="363" text-anchor="middle" fill="var(--green)" font-size="12">✓ Truth: investor is beneficial owner</text>
+    </g>
+  </svg>
+  <p class="cm-caption">Cede &amp; Co. holds <strong>legal title</strong> so the market can move shares electronically. You keep <strong>beneficial ownership</strong> — the right to value, income, and voting that intermediaries must pass through.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Legal title column</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Economic rights column</span>
+    <span class="cm-legend-item"><span class="cm-legend-line pass"></span> Pass-through obligation</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
 </div>
 
 <h3 class="subsection-title">Legal Structure of Cede &amp; Co.</h3>

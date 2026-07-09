@@ -298,6 +298,21 @@ function initHotspots() {
       }
     });
   });
+
+  // Concept-map SVG nodes (data-modal="dtc" opens modal-dtc)
+  document.querySelectorAll('.cm-node[data-modal]').forEach(node => {
+    const openFromNode = function() {
+      const modalId = node.getAttribute('data-modal');
+      if (modalId) openModal('modal-' + modalId);
+    };
+    node.addEventListener('click', openFromNode);
+    node.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFromNode();
+      }
+    });
+  });
 }
 
 // Check URL hash to automatically open modals
