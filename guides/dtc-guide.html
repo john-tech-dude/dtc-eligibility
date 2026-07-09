@@ -654,10 +654,13 @@
   <a href="#direct">Direct Registration vs. Street Name</a>
   <a href="#concept-map-street-vs-drs" class="sub">Concept Map — Street Name vs DRS</a>
   <a href="#euroclear">Euroclear — The European Counterpart</a>
+  <a href="#concept-map-euroclear-org" class="sub">Concept Map — Euroclear Group</a>
   <a href="#euroclear" class="sub">Euroclear Bank (ICSD)</a>
   <a href="#euroclear" class="sub">National CSDs & ESES</a>
   <a href="#euroclear" class="sub">TARGET2-Securities (T2S)</a>
+  <a href="#concept-map-euroclear-dtcc" class="sub">Concept Map — Euroclear &amp; DTCC Links</a>
   <a href="#global-comparison">Global Comparison: DTC vs. Euroclear</a>
+  <a href="#concept-map-global-compare" class="sub">Concept Map — U.S. vs Europe</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Related Documents</div>
@@ -3111,6 +3114,106 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
   </div>
 </div>
 
+<!-- Concept Map 8: Euroclear Group Structure -->
+<div class="diagram-box concept-map" id="concept-map-euroclear-org" role="img" aria-labelledby="cm8-title" aria-describedby="cm8-desc">
+  <div class="diagram-title" id="cm8-title">Concept Map — Euroclear Group Structure</div>
+  <p id="cm8-desc" class="visually-hidden">
+    Hierarchy of the Euroclear group: Euroclear SA/NV at the top, with Euroclear Bank as the international CSD with a banking license,
+    plus national CSDs for ESES markets, the United Kingdom CREST system, and Nordic markets. ESES CSDs connect to TARGET2-Securities
+    for central bank money settlement. Clearstream is shown as the other major ICSD peer, not part of Euroclear.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm8-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Parent connectors -->
+    <path class="cm-edge" d="M360 72 L360 92"/>
+    <path class="cm-edge" d="M120 92 L600 92"/>
+    <line class="cm-edge" x1="120" y1="92" x2="120" y2="118" marker-end="url(#cm8-arrow)"/>
+    <line class="cm-edge" x1="300" y1="92" x2="300" y2="118" marker-end="url(#cm8-arrow)"/>
+    <line class="cm-edge" x1="480" y1="92" x2="480" y2="118" marker-end="url(#cm8-arrow)"/>
+    <line class="cm-edge" x1="620" y1="92" x2="620" y2="118" marker-end="url(#cm8-arrow)"/>
+
+    <!-- ESES → T2S -->
+    <line class="cm-edge" x1="300" y1="188" x2="300" y2="218" marker-end="url(#cm8-arrow)"/>
+    <!-- Euroclear Bank peer note to Clearstream -->
+    <path class="cm-edge-dashed" d="M200 150 C160 150 140 200 140 240" marker-end="url(#cm8-arrow)"/>
+
+    <text class="cm-edge-label" x="210" y="86" text-anchor="middle">owns / operates</text>
+    <text class="cm-edge-label" x="312" y="208" text-anchor="start">settles via</text>
+    <text class="cm-edge-label" x="100" y="190" text-anchor="middle">peer ICSD</text>
+
+    <!-- Euroclear parent -->
+    <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
+      <rect class="cm-node-shape" x="250" y="20" width="220" height="52" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="#fff">Euroclear Group</text>
+      <text class="cm-node-sub" x="360" y="58" text-anchor="middle" fill="var(--accent-muted)">Brussels · post-trade FMI</text>
+    </g>
+
+    <!-- Euroclear Bank -->
+    <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
+      <rect class="cm-node-shape" x="40" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="120" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear Bank</text>
+      <text class="cm-node-sub" x="120" y="164" text-anchor="middle" fill="var(--ink-tertiary)">ICSD + bank license</text>
+      <text class="cm-node-sub" x="120" y="178" text-anchor="middle" fill="var(--ink-tertiary)">cross-border · ~50 ccy</text>
+    </g>
+
+    <!-- ESES -->
+    <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSD — open definition">
+      <rect class="cm-node-shape" x="220" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="300" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">ESES CSDs</text>
+      <text class="cm-node-sub" x="300" y="164" text-anchor="middle" fill="var(--ink-tertiary)">FR · NL · BE</text>
+      <text class="cm-node-sub" x="300" y="178" text-anchor="middle" fill="var(--ink-tertiary)">Euronext domestic</text>
+    </g>
+
+    <!-- UK -->
+    <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="UK CSD — open definition">
+      <rect class="cm-node-shape" x="400" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="480" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear UK</text>
+      <text class="cm-node-sub" x="480" y="164" text-anchor="middle" fill="var(--ink-tertiary)">CREST system</text>
+      <text class="cm-node-sub" x="480" y="178" text-anchor="middle" fill="var(--ink-tertiary)">UK equities · gilts</text>
+    </g>
+
+    <!-- Nordics -->
+    <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="Nordic CSDs — open definition">
+      <rect class="cm-node-shape" x="560" y="120" width="140" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="630" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Nordic CSDs</text>
+      <text class="cm-node-sub" x="630" y="164" text-anchor="middle" fill="var(--ink-tertiary)">Sweden · Finland</text>
+      <text class="cm-node-sub" x="630" y="178" text-anchor="middle" fill="var(--ink-tertiary)">domestic markets</text>
+    </g>
+
+    <!-- T2S -->
+    <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
+      <rect class="cm-node-shape" x="220" y="220" width="160" height="56" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="300" y="244" text-anchor="middle" fill="var(--green)" font-size="12">T2S platform</text>
+      <text class="cm-node-sub" x="300" y="262" text-anchor="middle" fill="var(--ink-tertiary)">Eurosystem · CB money</text>
+    </g>
+
+    <!-- Clearstream peer -->
+    <g class="cm-node" data-modal="clearstream" tabindex="0" role="button" aria-label="Clearstream — open definition">
+      <rect class="cm-node-shape" x="40" y="250" width="160" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <text class="cm-node-title" x="120" y="274" text-anchor="middle" fill="var(--ink)" font-size="12">Clearstream</text>
+      <text class="cm-node-sub" x="120" y="290" text-anchor="middle" fill="var(--ink-tertiary)">other major ICSD</text>
+    </g>
+
+    <!-- Capability strip -->
+    <rect x="40" y="320" width="640" height="44" rx="8" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="cm-edge-label" x="360" y="340" text-anchor="middle" fill="var(--ink-tertiary)">ICSD layer = cross-border (Euroclear Bank) · National CSDs = domestic books · T2S = shared Eurozone settlement rail</text>
+    <text class="cm-edge-label" x="360" y="356" text-anchor="middle" fill="var(--ink-muted)">Bank license enables triparty collateral, credit, and liquidity services DTC cannot offer as a pure CSD</text>
+  </svg>
+  <p class="cm-caption"><strong>Euroclear</strong> is a group, not a single vault: an <strong>ICSD bank</strong> for cross-border assets plus <strong>national CSDs</strong> for domestic markets — with ESES feeding into public <strong>T2S</strong> rails.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Group parent</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Euroclear entities</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Public settlement rail</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Peer (not Euroclear)</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
 <h3 class="subsection-title">Euroclear Bank as an ICSD</h3>
 
 <p class="body-text">
@@ -3166,6 +3269,79 @@ Euroclear and DTCC are not competitors in the traditional sense — they serve d
 In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint initiative to develop a framework for <strong>tokenized assets and digital securities</strong>. The partnership aims to standardize distributed ledger technology (DLT) processes, ensure interoperability between traditional and blockchain-based systems, and reduce connectivity costs for market participants. This reflects a shared recognition that post-trade infrastructure must evolve to accommodate digital assets.
 </p>
 
+<!-- Concept Map 9: Euroclear–DTCC relationship -->
+<div class="diagram-box concept-map" id="concept-map-euroclear-dtcc" role="img" aria-labelledby="cm9-title" aria-describedby="cm9-desc">
+  <div class="diagram-title" id="cm9-title">Concept Map — Euroclear &amp; DTCC Links</div>
+  <p id="cm9-desc" class="visually-hidden">
+    Collaboration map: DTCC and Euroclear serve different geographies with limited market overlap.
+    A 2013 collateral bridge connects DTC-held U.S. Treasuries with Euroclear Bank margin needs.
+    A 2024 joint initiative with Clearstream targets tokenized assets and DLT interoperability.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm9-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm9-arrow-both" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Region panels -->
+    <rect x="28" y="48" width="280" height="200" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.5"/>
+    <rect x="412" y="48" width="280" height="200" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.4"/>
+    <text class="cm-zone-label" x="168" y="72" text-anchor="middle" fill="var(--accent)">United States</text>
+    <text class="cm-zone-label" x="552" y="72" text-anchor="middle" fill="var(--green)">Europe / global ICSD</text>
+
+    <!-- Bridge connector -->
+    <line x1="308" y1="140" x2="412" y2="140" stroke="var(--gold)" stroke-width="2.2" marker-end="url(#cm9-arrow)"/>
+    <line x1="412" y1="160" x2="308" y2="160" stroke="var(--gold)" stroke-width="2.2" marker-end="url(#cm9-arrow)"/>
+    <rect x="300" y="118" width="120" height="64" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+    <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Collateral bridge</text>
+    <text class="cm-node-sub" x="360" y="160" text-anchor="middle" fill="var(--gold)">May 2013</text>
+    <text class="cm-edge-label" x="360" y="176" text-anchor="middle" fill="var(--ink-tertiary)">auto pledge / recall</text>
+
+    <!-- US stack -->
+    <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
+      <rect class="cm-node-shape" x="78" y="90" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)"/>
+      <text class="cm-node-title" x="168" y="118" text-anchor="middle" fill="#fff">DTCC</text>
+    </g>
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="78" y="180" width="180" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="168" y="202" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
+      <text class="cm-node-sub" x="168" y="218" text-anchor="middle" fill="var(--ink-tertiary)">U.S. Treasuries · equities</text>
+    </g>
+    <line class="cm-edge" x1="168" y1="134" x2="168" y2="178" marker-end="url(#cm9-arrow)"/>
+
+    <!-- Europe stack -->
+    <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
+      <rect class="cm-node-shape" x="462" y="90" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)"/>
+      <text class="cm-node-title" x="552" y="118" text-anchor="middle" fill="#fff">Euroclear</text>
+    </g>
+    <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
+      <rect class="cm-node-shape" x="462" y="180" width="180" height="48" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <text class="cm-node-title" x="552" y="202" text-anchor="middle" fill="var(--green)" font-size="12">Euroclear Bank</text>
+      <text class="cm-node-sub" x="552" y="218" text-anchor="middle" fill="var(--ink-tertiary)">margin · triparty · ICSD</text>
+    </g>
+    <line class="cm-edge" x1="552" y1="134" x2="552" y2="178" marker-end="url(#cm9-arrow)"/>
+
+    <!-- Not competitors note -->
+    <text class="cm-edge-label" x="360" y="40" text-anchor="middle" fill="var(--ink-muted)">Different geographies · limited competitive overlap · collaboration &gt; rivalry</text>
+
+    <!-- DLT partnership bar -->
+    <rect x="80" y="268" width="560" height="52" rx="10" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="cm-node-title" x="360" y="292" text-anchor="middle" fill="var(--ink)" font-size="12">Tokenized assets / DLT framework — May 2024</text>
+    <text class="cm-edge-label" x="360" y="310" text-anchor="middle" fill="var(--ink-tertiary)">DTCC · Euroclear · Clearstream — shared standards &amp; interoperability</text>
+  </svg>
+  <p class="cm-caption">They are <strong>geographic partners more than rivals</strong>: the collateral bridge moves pledges between systems; the 2024 DLT work aims at a common digital-asset playbook with Clearstream.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> U.S. stack</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Euroclear stack</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Cross-system bridge</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
 <div class="warn-box">
   <strong>Regulatory Note:</strong> Following the Russian invasion of Ukraine, Euroclear Bank has been prominently involved in the management of frozen Russian central bank reserves — approximately <strong>€200 billion</strong> as of early 2025. In March 2025, Belgium authorized Euroclear to make payouts from the interest generated by these frozen assets (approximately €4 billion annually) to fund a G7 loan to Ukraine. This has raised complex legal questions about the status of immobilized assets and the role of CSDs in sanctions enforcement.
 </div>
@@ -3176,6 +3352,111 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
 <p class="lead">
 Understanding the differences between the U.S. and European post-trade infrastructures is essential for anyone operating in global capital markets. While both systems achieve the same ultimate goal — safe, efficient settlement of securities transactions — their structures, regulatory frameworks, and operational models reflect distinct legal traditions and market structures.
 </p>
+
+<!-- Concept Map 10: Global comparison visual -->
+<div class="diagram-box concept-map" id="concept-map-global-compare" role="img" aria-labelledby="cm10-title" aria-describedby="cm10-desc">
+  <div class="diagram-title" id="cm10-title">Concept Map — U.S. vs Europe Post-Trade</div>
+  <p id="cm10-desc" class="visually-hidden">
+    Side-by-side comparison. United States: DTCC owns DTC depository with Cede nominee, NSCC equity CCP, and FICC fixed income CCP;
+    cash settles at the Federal Reserve on T+1 under SEC and Fed oversight. Europe: Euroclear Bank ICSD plus national CSDs,
+    no single NSCC equivalent, T2S for Eurozone central bank money, T+2 settlement, CSDR and ESMA regulation, banking license at Euroclear Bank.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm10-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Columns -->
+    <rect x="24" y="36" width="320" height="340" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.45"/>
+    <rect x="376" y="36" width="320" height="340" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.35"/>
+
+    <text class="cm-zone-label" x="184" y="60" text-anchor="middle" fill="var(--accent)">U.S. — DTCC ecosystem</text>
+    <text class="cm-zone-label" x="536" y="60" text-anchor="middle" fill="var(--green)">Europe — Euroclear model</text>
+
+    <!-- US nodes -->
+    <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
+      <rect class="cm-node-shape" x="94" y="78" width="180" height="36" rx="8" fill="var(--accent)"/>
+      <text class="cm-node-title" x="184" y="102" text-anchor="middle" fill="#fff" font-size="12">DTCC (user-owned)</text>
+    </g>
+    <line class="cm-edge" x1="94" y1="114" x2="94" y2="132" marker-end="url(#cm10-arrow)"/>
+    <line class="cm-edge" x1="184" y1="114" x2="184" y2="132" marker-end="url(#cm10-arrow)"/>
+    <line class="cm-edge" x1="274" y1="114" x2="274" y2="132" marker-end="url(#cm10-arrow)"/>
+
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="48" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="94" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">DTC</text>
+      <text class="cm-node-sub" x="94" y="170" text-anchor="middle" fill="var(--ink-tertiary)">CSD</text>
+    </g>
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
+      <rect class="cm-node-shape" x="138" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="184" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">NSCC</text>
+      <text class="cm-node-sub" x="184" y="170" text-anchor="middle" fill="var(--ink-tertiary)">equity CCP</text>
+    </g>
+    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
+      <rect class="cm-node-shape" x="228" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="274" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">FICC</text>
+      <text class="cm-node-sub" x="274" y="170" text-anchor="middle" fill="var(--ink-tertiary)">FI CCP</text>
+    </g>
+
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede — open definition">
+      <rect class="cm-node-shape" x="48" y="196" width="92" height="36" rx="7" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="94" y="219" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Cede &amp; Co.</text>
+    </g>
+    <line class="cm-edge" x1="94" y1="178" x2="94" y2="194" marker-end="url(#cm10-arrow)"/>
+
+    <!-- US facts -->
+    <text class="cm-edge-label" x="184" y="258" text-anchor="middle" fill="var(--ink-tertiary)">Cash: Federal Reserve (CB money)</text>
+    <text class="cm-edge-label" x="184" y="276" text-anchor="middle" fill="var(--ink-tertiary)">Cycle: T+1 · SEC + Fed</text>
+    <text class="cm-edge-label" x="184" y="294" text-anchor="middle" fill="var(--ink-tertiary)">Clearing: centralized (NSCC/FICC)</text>
+    <text class="cm-edge-label" x="184" y="312" text-anchor="middle" fill="var(--ink-tertiary)">DTC = trust co. · not full bank</text>
+    <text class="cm-edge-label" x="184" y="340" text-anchor="middle" fill="var(--accent)">One national post-trade utility stack</text>
+
+    <!-- Europe nodes -->
+    <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
+      <rect class="cm-node-shape" x="446" y="78" width="180" height="36" rx="8" fill="var(--accent)"/>
+      <text class="cm-node-title" x="536" y="102" text-anchor="middle" fill="#fff" font-size="12">Euroclear Group</text>
+    </g>
+    <line class="cm-edge" x1="480" y1="114" x2="480" y2="132" marker-end="url(#cm10-arrow)"/>
+    <line class="cm-edge" x1="580" y1="114" x2="580" y2="132" marker-end="url(#cm10-arrow)"/>
+
+    <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
+      <rect class="cm-node-shape" x="420" y="134" width="120" height="44" rx="7" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="480" y="154" text-anchor="middle" fill="var(--green)" font-size="11">Euroclear Bank</text>
+      <text class="cm-node-sub" x="480" y="170" text-anchor="middle" fill="var(--ink-tertiary)">ICSD + bank</text>
+    </g>
+    <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSDs — open definition">
+      <rect class="cm-node-shape" x="520" y="134" width="120" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="580" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">National CSDs</text>
+      <text class="cm-node-sub" x="580" y="170" text-anchor="middle" fill="var(--ink-tertiary)">domestic books</text>
+    </g>
+
+    <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
+      <rect class="cm-node-shape" x="470" y="196" width="132" height="36" rx="7" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="536" y="219" text-anchor="middle" fill="var(--green)" font-size="11">T2S (public rail)</text>
+    </g>
+    <line class="cm-edge" x1="580" y1="178" x2="536" y2="194" marker-end="url(#cm10-arrow)"/>
+
+    <!-- Europe facts -->
+    <text class="cm-edge-label" x="536" y="258" text-anchor="middle" fill="var(--ink-tertiary)">Cash: T2S CB money / ICSD commercial $</text>
+    <text class="cm-edge-label" x="536" y="276" text-anchor="middle" fill="var(--ink-tertiary)">Cycle: T+2 (T+1 under study)</text>
+    <text class="cm-edge-label" x="536" y="294" text-anchor="middle" fill="var(--ink-tertiary)">Clearing: fragmented (no NSCC twin)</text>
+    <text class="cm-edge-label" x="536" y="312" text-anchor="middle" fill="var(--ink-tertiary)">CSDR · ESMA · ECB / national regs</text>
+    <text class="cm-edge-label" x="536" y="340" text-anchor="middle" fill="var(--green)">Multi-CSD + ICSD + public T2S</text>
+
+    <!-- VS badge -->
+    <circle cx="360" cy="200" r="22" fill="var(--bg)" stroke="var(--border)" stroke-width="1.5"/>
+    <text class="cm-node-title" x="360" y="205" text-anchor="middle" fill="var(--ink-muted)" font-size="11">vs</text>
+  </svg>
+  <p class="cm-caption">Same goal — safe DVP settlement — different architecture: the U.S. concentrates clearing in <strong>NSCC/FICC</strong>; Europe spreads CSDs and CCPs and uses public <strong>T2S</strong> for Eurozone central-bank money.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> U.S. model</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> European model</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> U.S. nominee</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition · Detail table continues below</p>
+</div>
 
 <table class="comp-table">
   <tr>
