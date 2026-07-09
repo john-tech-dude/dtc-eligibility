@@ -235,6 +235,60 @@ body {
   display: inline;
 }
 
+/* Footer site navigation (Home / Site Map) — primary way back from deep pages */
+.footer-site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+}
+.footer-site-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.footer-site-nav a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+.footer-site-nav .footer-nav-sep {
+  color: var(--ink-faint);
+  user-select: none;
+}
+.footer-site-nav .footer-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-site-nav .footer-home-link::before {
+  content: "←";
+  font-weight: 700;
+  opacity: 0.85;
+}
+/* End-of-article trail (optional companion above footer) */
+.content-end-nav {
+  margin: 40px 0 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border-faint);
+}
+.content-end-nav .footer-site-nav {
+  margin-bottom: 0;
+}
+@media print {
+  .footer-site-nav,
+  .content-end-nav {
+    display: none !important;
+  }
+}
+
 /* Sidebar Backdrop */
 .sidebar-backdrop {
   position: fixed;
