@@ -485,6 +485,44 @@
             transition: color var(--transition);
         }
 
+        /* Mini concept-map preview on securities card */
+        .card-concept-map {
+            display: block;
+            margin: 0 0 16px;
+            padding: 12px 12px 10px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: inherit;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .card-concept-map:hover {
+            border-color: var(--accent-muted);
+            box-shadow: var(--shadow-sm);
+        }
+        .card-concept-map svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 96px;
+        }
+        .card-concept-map-label {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+        .card-concept-map-sub {
+            display: block;
+            font-size: 0.68rem;
+            color: var(--ink-muted);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
         .document-meta-list {
             display: flex;
             flex-direction: column;
@@ -968,6 +1006,26 @@
                     <div class="document-tag">📊 Securities</div>
                     <h3 class="document-title">Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h3>
                     <p class="document-description">Learn the modern securities infrastructure including DTC, DTCC, NSCC, FICC, and Cede &amp; Co. systems through comprehensive explanations of trade flows and settlement processes.</p>
+                    <a href="guides/dtc-guide.html#concept-map-overview" class="card-concept-map" aria-label="Open entity relationship concept map in the Securities Ownership Wizard">
+                        <svg viewBox="0 0 320 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="160" y1="22" x2="80" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="160" y1="22" x2="160" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="160" y1="22" x2="240" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="160" y1="62" x2="160" y2="72" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="120" y="6" width="80" height="20" rx="5" fill="var(--accent)"/>
+                            <text x="160" y="20" text-anchor="middle" fill="#fff" font-size="9" font-weight="600" font-family="system-ui,sans-serif">DTCC</text>
+                            <rect x="40" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                            <text x="68" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">NSCC</text>
+                            <rect x="132" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent)"/>
+                            <text x="160" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">DTC</text>
+                            <rect x="224" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                            <text x="252" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">FICC</text>
+                            <rect x="122" y="72" width="76" height="14" rx="4" fill="var(--gold-light)" stroke="var(--gold)"/>
+                            <text x="160" y="82" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Cede &amp; Co.</text>
+                        </svg>
+                        <span class="card-concept-map-label">7 interactive concept maps →</span>
+                        <span class="card-concept-map-sub">Entities · ownership · legal vs beneficial · street name vs DRS</span>
+                    </a>
                     <div class="document-meta-list">
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -979,7 +1037,7 @@
                         </div>
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">DTC/DTCC overview, settlement processes, Cede &amp; Co. system</span></div>
+                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Concept maps, DTC/DTCC overview, settlement, Cede &amp; Co.</span></div>
                         </div>
                     </div>
                     <a href="guides/dtc-guide.html" class="document-button" data-module="securities">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>

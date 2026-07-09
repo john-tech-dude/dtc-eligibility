@@ -364,6 +364,43 @@
   margin-top: 8px;
   font-style: italic;
 }
+
+/* Process flow SVGs (time-ordered steps) */
+.process-flow-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-width: 1.6;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px;
+  fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -1139,8 +1176,70 @@ NSCC's most important function is <span class="hotspot" data-modal="multilateral
 When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabindex="0" role="button" onclick="openModal('modal-central-counterparty')">central counterparty (CCP)</span>, it interposes itself between the buyer and seller in every trade it clears. NSCC becomes the buyer to every seller and the seller to every buyer — a process called <span class="hotspot" data-modal="novation" tabindex="0" role="button" onclick="openModal('modal-novation')">novation</span>. This eliminates bilateral counterparty risk: if one broker fails, NSCC steps in to ensure the trade completes, using its clearing fund and risk management tools to absorb the loss.
 </p>
 
-<div class="diagram-box">
-  <div class="diagram-title">NSCC Trade Clearing & Netting Flow</div>
+<div class="diagram-box concept-map" id="process-nscc-flow" role="img" aria-labelledby="pf-nscc-title" aria-describedby="pf-nscc-desc">
+  <div class="diagram-title" id="pf-nscc-title">NSCC Trade Clearing &amp; Netting Flow</div>
+  <p id="pf-nscc-desc" class="visually-hidden">
+    Five-step process: trade execution, trade reporting to NSCC, Continuous Net Settlement novation,
+    end-of-day netting, then T+1 settlement at DTC and the Federal Reserve.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-nscc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <!-- Phase bands -->
+    <rect x="20" y="20" width="268" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="154" y="36" text-anchor="middle">Trade day</text>
+    <rect x="300" y="20" width="200" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="400" y="36" text-anchor="middle" fill="var(--accent)">NSCC clearing</text>
+    <rect x="512" y="20" width="188" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="606" y="36" text-anchor="middle" fill="var(--green)">T+1 settle</text>
+
+    <!-- Connectors -->
+    <line class="pf-edge" x1="132" y1="110" x2="168" y2="110" marker-end="url(#pf-nscc-arrow)"/>
+    <line class="pf-edge" x1="272" y1="110" x2="308" y2="110" marker-end="url(#pf-nscc-arrow)"/>
+    <line class="pf-edge" x1="412" y1="110" x2="448" y2="110" marker-end="url(#pf-nscc-arrow)"/>
+    <line class="pf-edge" x1="552" y1="110" x2="588" y2="110" marker-end="url(#pf-nscc-arrow)"/>
+
+    <!-- Steps -->
+    <g>
+      <circle cx="80" cy="90" r="14" fill="var(--accent)"/>
+      <text class="pf-step-num" x="80" y="94" text-anchor="middle">1</text>
+      <rect x="28" y="112" width="104" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="80" y="134" text-anchor="middle">Execute</text>
+      <text class="pf-step-sub" x="80" y="150" text-anchor="middle">Exchange / ATS</text>
+    </g>
+    <g>
+      <circle cx="220" cy="90" r="14" fill="var(--accent)"/>
+      <text class="pf-step-num" x="220" y="94" text-anchor="middle">2</text>
+      <rect x="168" y="112" width="104" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="220" y="134" text-anchor="middle">Report</text>
+      <text class="pf-step-sub" x="220" y="150" text-anchor="middle">Both sides → NSCC</text>
+    </g>
+    <g class="cm-node" data-modal="cns" tabindex="0" role="button" aria-label="CNS — open definition">
+      <circle cx="360" cy="90" r="14" fill="var(--accent)"/>
+      <text class="pf-step-num" x="360" y="94" text-anchor="middle">3</text>
+      <rect class="cm-node-shape" x="308" y="112" width="104" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text class="pf-step-title" x="360" y="134" text-anchor="middle">CNS / Novate</text>
+      <text class="pf-step-sub" x="360" y="150" text-anchor="middle">CCP guarantee</text>
+    </g>
+    <g>
+      <circle cx="500" cy="90" r="14" fill="var(--accent)"/>
+      <text class="pf-step-num" x="500" y="94" text-anchor="middle">4</text>
+      <rect x="448" y="112" width="104" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <text class="pf-step-title" x="500" y="134" text-anchor="middle">Net EOD</text>
+      <text class="pf-step-sub" x="500" y="150" text-anchor="middle">1 oblig. / security</text>
+    </g>
+    <g>
+      <circle cx="640" cy="90" r="14" fill="var(--green)"/>
+      <text class="pf-step-num" x="640" y="94" text-anchor="middle">5</text>
+      <rect x="588" y="112" width="104" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="640" y="134" text-anchor="middle">Settle</text>
+      <text class="pf-step-sub" x="640" y="150" text-anchor="middle">DTC + Fed</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Click CNS for Continuous Net Settlement details · ~98% compression of settlement obligations</text>
+  </svg>
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Buyer and seller brokers execute a trade on an exchange or ATS.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both sides report trade details to NSCC for comparison and validation.</div>
@@ -1485,8 +1584,71 @@ The relationship between DTC, its participants, issuers, and investors is govern
 
 <h3 class="subsection-title">The Flow of a Trade: Step by Step</h3>
 
-<div class="diagram-box">
-  <div class="diagram-title">Trade Execution to Settlement (T+1)</div>
+<div class="diagram-box concept-map" id="process-t1-flow" role="img" aria-labelledby="pf-t1-title" aria-describedby="pf-t1-desc">
+  <div class="diagram-title" id="pf-t1-title">Trade Execution to Settlement (T+1)</div>
+  <p id="pf-t1-desc" class="visually-hidden">
+    Six-step T+1 flow: investor order execution, reporting to NSCC, clearing and netting,
+    DTC book-entry transfer, Federal Reserve cash settlement, and customer confirmation by the broker.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-t1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <!-- Day labels -->
+    <rect x="24" y="16" width="330" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="189" y="31" text-anchor="middle">T (trade date)</text>
+    <rect x="366" y="16" width="330" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="531" y="31" text-anchor="middle" fill="var(--green)">T+1 (settlement date)</text>
+
+    <!-- Row 1 connectors -->
+    <line class="pf-edge" x1="118" y1="100" x2="148" y2="100" marker-end="url(#pf-t1-arrow)"/>
+    <line class="pf-edge" x1="250" y1="100" x2="280" y2="100" marker-end="url(#pf-t1-arrow)"/>
+    <line class="pf-edge" x1="382" y1="100" x2="412" y2="100" marker-end="url(#pf-t1-arrow)"/>
+    <line class="pf-edge" x1="514" y1="100" x2="544" y2="100" marker-end="url(#pf-t1-arrow)"/>
+    <line class="pf-edge" x1="646" y1="100" x2="646" y2="128" marker-end="url(#pf-t1-arrow)"/>
+
+    <!-- Steps 1-5 top row -->
+    <g>
+      <circle cx="70" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="70" y="84" text-anchor="middle">1</text>
+      <rect x="24" y="102" width="92" height="50" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="70" y="122" text-anchor="middle">Execute</text>
+      <text class="pf-step-sub" x="70" y="138" text-anchor="middle">Order match</text>
+    </g>
+    <g>
+      <circle cx="200" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="200" y="84" text-anchor="middle">2</text>
+      <rect x="154" y="102" width="92" height="50" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="200" y="122" text-anchor="middle">Report</text>
+      <text class="pf-step-sub" x="200" y="138" text-anchor="middle">→ NSCC</text>
+    </g>
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
+      <circle cx="332" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="332" y="84" text-anchor="middle">3</text>
+      <rect class="cm-node-shape" x="286" y="102" width="92" height="50" rx="7" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text class="pf-step-title" x="332" y="122" text-anchor="middle">Clear / Net</text>
+      <text class="pf-step-sub" x="332" y="138" text-anchor="middle">NSCC CCP</text>
+    </g>
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <circle cx="464" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="464" y="84" text-anchor="middle">4</text>
+      <rect class="cm-node-shape" x="418" y="102" width="92" height="50" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="464" y="122" text-anchor="middle">Book-entry</text>
+      <text class="pf-step-sub" x="464" y="138" text-anchor="middle">DTC transfer</text>
+    </g>
+    <g class="cm-node" data-modal="dvp" tabindex="0" role="button" aria-label="DVP — open definition">
+      <circle cx="596" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="596" y="84" text-anchor="middle">5</text>
+      <rect class="cm-node-shape" x="550" y="102" width="92" height="50" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="596" y="122" text-anchor="middle">Cash DVP</text>
+      <text class="pf-step-sub" x="596" y="138" text-anchor="middle">Fed settle</text>
+    </g>
+    <!-- Step 6 bottom -->
+    <g>
+      <circle cx="464" cy="178" r="13" fill="var(--gold)"/><text class="pf-step-num" x="464" y="182" text-anchor="middle">6</text>
+      <rect x="360" y="168" width="208" height="40" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="464" y="186" text-anchor="middle">Customer confirmation</text>
+      <text class="pf-step-sub" x="464" y="200" text-anchor="middle">Broker updates investor account · no certificate</text>
+    </g>
+    <path class="pf-edge" d="M646 152 C646 178 560 178 512 178" marker-end="url(#pf-t1-arrow)"/>
+  </svg>
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Investor places an order through Broker A. Order is matched on an exchange with Broker B.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both brokers report the trade to NSCC for clearing.</div>

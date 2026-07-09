@@ -943,6 +943,53 @@
 }
 .warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
 
+/* Concept Maps */
+.diagram-box {
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 24px 16px 18px; margin: 24px 0;
+}
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 16px; text-align: center;
+}
+.diagram-box.concept-map { overflow-x: auto; }
+.concept-map-svg {
+  display: block; width: 100%; max-width: 720px; height: auto; margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge { fill: none; stroke: var(--ink-muted); stroke-width: 1.5; }
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary); font-size: 10px; font-weight: 500;
+}
+.concept-map-svg .cm-node-title { font-size: 12px; font-weight: 600; pointer-events: none; }
+.concept-map-svg .cm-node-sub { font-size: 9.5px; font-weight: 500; pointer-events: none; opacity: 0.9; }
+.concept-map-svg .cm-node { cursor: pointer; transition: filter 0.15s ease; }
+.concept-map-svg .cm-node:hover { filter: brightness(1.06); }
+.concept-map-svg .cm-node:focus { outline: none; }
+.concept-map-svg .cm-node:focus-visible .cm-node-shape { stroke: var(--gold); stroke-width: 2.5; }
+.concept-map-svg .cm-node-static { cursor: default; }
+.cm-caption {
+  text-align: center; font-size: 0.82rem; color: var(--ink-tertiary);
+  margin: 14px auto 0; line-height: 1.55; max-width: 560px;
+}
+.cm-legend {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 16px;
+  margin-top: 14px; font-size: 0.72rem; color: var(--ink-muted);
+}
+.cm-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.cm-legend-swatch {
+  width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-hint {
+  text-align: center; font-size: 0.68rem; color: var(--ink-faint);
+  margin-top: 8px; font-style: italic;
+}
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 /* ── Utility Classes for Inline Styles ── */
 .pad-left-28 { padding-left: 28px; }
 .min-w-60 { min-width: 60px; }
@@ -1067,6 +1114,7 @@
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
   <button class="toc-close" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
+  <a href="#concept-map-eligibility" class="sub">Concept Map — Eligibility Path</a>
   <a href="#instructions">Instructions & Deadlines</a>
   <a href="#issue-info" class="sub">Issue Information</a>
   <a href="#contact-info" class="sub">Contact Information</a>
@@ -1165,7 +1213,84 @@
   <div class="parent">DTC is a subsidiary of <span class="hotspot" data-modal="dtcc" tabindex="0" role="button" onclick="openModal('modal-dtcc')">The Depository Trust &amp; Clearing Corporation</span></div>
 </div>
 
+<!-- Concept Map: Eligibility Path -->
+<div class="diagram-box concept-map" id="concept-map-eligibility" role="img" aria-labelledby="cme-title" aria-describedby="cme-desc">
+  <div class="diagram-title" id="cme-title">Concept Map — Path to DTC Eligibility</div>
+  <p id="cme-desc" class="visually-hidden">
+    Flow from Issuer through Transfer Agent and FAST program, with questionnaire and Letter of Representations
+    submitted to DTC Underwriting via UW SOURCE, resulting in DTC-eligible book-entry securities registered to Cede and Co.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cme-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
 
+    <!-- Main pipeline edges -->
+    <line class="cm-edge" x1="128" y1="70" x2="168" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="298" y1="70" x2="338" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="468" y1="70" x2="508" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="360" y1="150" x2="360" y2="100" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="598" y1="100" x2="598" y2="190" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="508" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
+
+    <text class="cm-edge-label" x="148" y="60" text-anchor="middle">appoints</text>
+    <text class="cm-edge-label" x="318" y="60" text-anchor="middle">joins FAST</text>
+    <text class="cm-edge-label" x="488" y="60" text-anchor="middle">submits to</text>
+    <text class="cm-edge-label" x="372" y="130" text-anchor="start">docs required</text>
+    <text class="cm-edge-label" x="610" y="150" text-anchor="start">approves</text>
+
+    <!-- 1 Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="28" y="44" width="100" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="78" y="68" text-anchor="middle" fill="var(--ink)">Issuer</text>
+      <text class="cm-node-sub" x="78" y="84" text-anchor="middle" fill="var(--ink-tertiary)">new issue</text>
+    </g>
+
+    <!-- 2 Transfer agent -->
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
+      <rect class="cm-node-shape" x="170" y="44" width="128" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="234" y="68" text-anchor="middle" fill="var(--accent)">Transfer agent</text>
+      <text class="cm-node-sub" x="234" y="84" text-anchor="middle" fill="var(--ink-tertiary)">registrar</text>
+    </g>
+
+    <!-- 3 FAST -->
+    <g class="cm-node" data-modal="fast" tabindex="0" role="button" aria-label="FAST — open definition">
+      <rect class="cm-node-shape" x="340" y="44" width="128" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="404" y="68" text-anchor="middle" fill="var(--accent)">FAST program</text>
+      <text class="cm-node-sub" x="404" y="84" text-anchor="middle" fill="var(--ink-tertiary)">agent at DTC</text>
+    </g>
+
+    <!-- 4 Underwriting -->
+    <g class="cm-node" data-modal="underwriting-dept" tabindex="0" role="button" aria-label="Underwriting Department — open definition">
+      <rect class="cm-node-shape" x="510" y="44" width="176" height="56" rx="8" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="598" y="68" text-anchor="middle" fill="#fff">DTC Underwriting</text>
+      <text class="cm-node-sub" x="598" y="86" text-anchor="middle" fill="var(--accent-muted)">UW SOURCE / UWC</text>
+    </g>
+
+    <!-- Supporting package -->
+    <g class="cm-node" data-modal="lor" tabindex="0" role="button" aria-label="Letter of Representations — open definition">
+      <rect class="cm-node-shape" x="250" y="152" width="220" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.4"/>
+      <text class="cm-node-title" x="360" y="174" text-anchor="middle" fill="var(--gold-deep)">LoR + questionnaire</text>
+      <text class="cm-node-sub" x="360" y="192" text-anchor="middle" fill="var(--gold)">CUSIP · prospectus · agent letter</text>
+    </g>
+
+    <!-- Outcome -->
+    <g class="cm-node" data-modal="dtc-eligible" tabindex="0" role="button" aria-label="DTC eligible — open definition">
+      <rect class="cm-node-shape" x="250" y="222" width="220" height="44" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="360" y="242" text-anchor="middle" fill="var(--green)">DTC-eligible · book-entry</text>
+      <text class="cm-node-sub" x="360" y="256" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. on issuer books</text>
+    </g>
+  </svg>
+  <p class="cm-caption">Eligibility is an operational path: the issuer and transfer agent prepare the issue for <strong>FAST</strong>, then DTC Underwriting reviews the questionnaire and representations before book-entry goes live.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> DTC review</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Required documents</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Eligible outcome</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition · See also the <a href="../guides/dtc-guide.html#concept-map-overview">infrastructure concept maps</a></p>
+</div>
 
 <div class="deadline-callout" id="instructions">
   <h4>⏱ Critical Deadlines at a Glance</h4>
@@ -2550,67 +2675,6 @@ function resetQuiz() {
   </div>
 </div>
 
-<!-- CERTIFICATE REQUIREMENTS -->
-<div class="modal-overlay" id="modal-certificate-req" role="dialog" aria-modal="true" aria-labelledby="modal-title-certificate-req">
-  <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-certificate-req">Certificate Requirements & Sizing Rules</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
-    <div class="modal-body">
-      <div class="def-callout">
-        <div class="def-type">Operational Requirement</div>
-        <div class="def-word">Certificate Format</div>
-        <p>DTC specifies detailed requirements for physical certificate format, sizing, and presentation for both certificated and Book-Entry-Only (BEO) securities.</p>
-      </div>
-      
-      <p class="modal-section-title">Certificate Sizing Rules</p>
-      <p>DTC enforces strict certificate sizing requirements to facilitate processing:</p>
-      <ul>
-        <li><strong>Standard Rule:</strong> Single maturities up to $500 million can be represented by one certificate</li>
-        <li><strong>Oversized Rule:</strong> Single maturities exceeding $500 million require multiple certificates — one per $500 million tranche plus remainder</li>
-        <li><strong>Example:</strong> A $750 million maturity requires two certificates ($500M + $250M)</li>
-        <li><strong>Boundary Case:</strong> Exactly $500 million = one certificate is acceptable (threshold is exceeding $500M)</li>
-        <li><strong>BEO Application:</strong> Sizing rules apply to both certificated and BEO issues (master certificate sizing)</li>
-      </ul>
-      
-      <p class="modal-section-title">Certificate Format Standards</p>
-      <p>Certificates must meet DTC's format and presentation requirements:</p>
-      <ul>
-        <li><strong>Registration:</strong> Must be properly registered in the name of the appropriate entity (Cede & Co. for BEO)</li>
-        <li><strong>Legends:</strong> Required legends must be included (restrictive legends, tax legends, etc.)</li>
-        <li><strong>Authentication:</strong> Must be properly authenticated by the transfer agent or trustee</li>
-        <li><strong>Denominations:</strong> Must be in authorized denominations per the indenture or offering document</li>
-        <li><strong>CUSIP Display:</strong> CUSIP number must be prominently displayed on the certificate</li>
-      </ul>
-      
-      <p class="modal-section-title">BEO Master Certificate Requirements</p>
-      <p>For Book-Entry-Only issues, a single master certificate is held at DTC:</p>
-      <ul>
-        <li>Registered in the name of Cede & Co. as nominee</li>
-        <li>Represents the entire issue amount</li>
-        <li>Must follow the same sizing rules as certificated issues</li>
-        <li>Must be properly immobilized at DTC or FAST Agent location</li>
-        <li>Cannot be withdrawn by individual investors</li>
-      </ul>
-      
-      <p class="modal-section-title">Special Certificate Types</p>
-      <ul>
-        <li><strong>Global Certificates:</strong> Single certificate representing entire issue, typically for Rule 144A/Reg S offerings</li>
-        <li><strong>Balance Certificates:</strong> Used in FAST program to represent total FAST agent position</li>
-        <li><strong>Retail CDs:</strong> Use Electronic Master Certificate BLOR for bank CD programs</li>
-      </ul>
-      
-      <div class="warn-box">
-        <strong>Operational Requirement:</strong> Certificates that do not meet sizing, format, or authentication requirements will be rejected by DTC, causing eligibility delays. Reissuing certificates takes time and can delay closing dates. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">See Operational Arrangements Section II.A.2</a>
-      </div>
-      
-      <div class="tip-box">
-        <strong>Processing Tip:</strong> Always verify certificate sizing before printing. For complex issues with multiple maturities, create a certificate schedule showing each maturity, CUSIP, and certificate count to ensure compliance before closing.
-      </div>
-      
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2 - Certificate Format; DTC Underwriting FAQ. <a href="https://dtcclearning.com/documents/asset-services/underwriting/3453-underwriting-frequently-asked-questions.html">dtcclearning.com</a></div>
-    </div>
-  </div>
-</div>
-
 <!-- MUNICIPAL -->
 <div class="modal-overlay" id="modal-municipal" role="dialog" aria-modal="true" aria-labelledby="modal-title-municipal">
   <div class="modal-card">
@@ -2998,72 +3062,6 @@ function resetQuiz() {
       <p><strong>Electronic signatures:</strong> Permitted for U.S. entities in many circumstances per the June 2026 OA. <strong>Original manual signatures are still required for non-U.S. entities and for legal opinions.</strong></p>
       <p><strong>Non-U.S. Currency Rider:</strong> If the security is denominated in or pays interest in a currency other than U.S. dollars, a <strong>separate currency rider</strong> is required in addition to any jurisdiction-specific riders. This addresses FX conversion mechanics and payment timing.</p>
 <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; SEC Form of Letter of Representations. <a href="https://www.sec.gov/Archives/edgar/data/882153/000119312505173687/dex99k5.htm">sec.gov (ILOR)</a> | <a href="https://www.sec.gov/Archives/edgar/data/1173557/000119312505140329/dex99k4b.htm">sec.gov (BLOR)</a></div>
-    </div>
-  </div>
-</div>
-
-
-<!-- NON-U.S. CURRENCY RIDER -->
-<div class="modal-overlay" id="modal-non-us-currency" role="dialog" aria-modal="true" aria-labelledby="modal-title-non-us-currency">
-  <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-non-us-currency">Non-U.S. Currency LOR Rider</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
-    <div class="modal-body">
-      <div class="def-callout">
-        <div class="def-type">Specialized LOR Addendum</div>
-        <div class="def-word">Non-U.S. Currency Rider</div>
-        <p>A required addendum to the Letter of Representations for securities denominated in or having payments in a currency other than U.S. dollars. Distinct from the UK/Ireland rider.</p>
-      </div>
-      <p class="modal-section-title">When Required</p>
-      <ul>
-        <li>Securities with <strong>principal or interest payable in euros, pounds, yen, or any non-USD currency</strong></li>
-        <li>Dual-currency securities (e.g., principal in USD, interest in EUR)</li>
-        <li>Securities with <strong>currency conversion features</strong> or contingent currency provisions</li>
-      </ul>
-      <p class="modal-section-title">What the Rider Covers</p>
-      <ul>
-        <li>Currency conversion mechanics and timing</li>
-        <li>Exchange rate risk allocation between issuer and DTC</li>
-        <li>Payment instructions in non-USD currencies through DTC's systems</li>
-        <li>Coordination with Euroclear/Clearstream for cross-border settlement</li>
-      </ul>
-      <p class="modal-section-title">Practical Impact</p>
-      <p>The non-USD currency rider adds operational complexity because DTC's income collection and payment systems are primarily USD-based. The issuer must establish:</p>
-      <ul>
-        <li>A <strong>foreign currency account</strong> with DTC's designated bank</li>
-        <li>Clear instructions for currency conversion on payment dates</li>
-        <li>Backup USD payment provisions in case of currency unavailability</li>
-      </ul>
-      <div class="tip-box"><strong>Key distinction:</strong> The UK/Ireland rider addresses <em>legal jurisdiction</em> and insolvency law. The non-USD currency rider addresses <em>payment mechanics</em> and FX risk. Both may be required for a UK issuer issuing euro-denominated bonds.</div>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2 — LOR Riders; DTC Underwriting FAQ. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
-    </div>
-  </div>
-</div>
-
-<!-- CORRESPONDENT RELATIONSHIP -->
-<div class="modal-overlay" id="modal-correspondent" role="dialog" aria-modal="true" aria-labelledby="modal-title-correspondent">
-  <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-correspondent">Approved Correspondent Relationship</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
-    <div class="modal-body">
-      <div class="def-callout">
-        <div class="def-type">Eligibility Path</div>
-        <div class="def-word">Correspondent Relationship</div>
-        <p>An arrangement where a non-Participant underwriter or financial advisor partners with a DTC Participant to submit eligibility requests and handle settlement. The Participant acts as the formal DTC counterparty.</p>
-      </div>
-      <p class="modal-section-title">How It Works</p>
-      <ul>
-        <li>The non-Participant firm (e.g., a boutique advisor, foreign bank) has a <strong>pre-approved correspondent agreement</strong> with a DTC Participant</li>
-        <li>The Participant submits the questionnaire on behalf of the correspondent</li>
-        <li>Securities are credited to the Participant's account at closing</li>
-        <li>The Participant then allocates positions to the correspondent's customers</li>
-      </ul>
-      <p class="modal-section-title">Documentation Required</p>
-      <ul>
-        <li>Executed <strong>correspondent agreement</strong> on file with DTC</li>
-        <li>Participant's representation that it will supervise the correspondent's activities</li>
-        <li>Clear identification of which party is the "submitter" on the questionnaire</li>
-      </ul>
-      <div class="tip-box"><strong>Common misconception:</strong> Having a correspondent relationship does not exempt the underlying issuer from any eligibility requirements. The Participant is merely the conduit; the issuer must still provide all standard documentation (LOR, opinions, CUSIPs).</div>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A.1 — Submission Requirements; DTC Rules. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>
 </div>
