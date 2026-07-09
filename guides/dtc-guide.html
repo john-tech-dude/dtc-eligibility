@@ -597,6 +597,7 @@
   <a href="#concept-map-ownership" class="sub">Concept Map — Ownership Stack</a>
   <a href="#dtc" class="sub">Participants &amp; Eligibility</a>
   <a href="#dtcc">DTCC — The Parent Organization</a>
+  <a href="#concept-map-dtcc-org" class="sub">Concept Map — DTCC Org Tree</a>
   <a href="#nscc">National Securities Clearing Corporation (NSCC)</a>
   <a href="#nscc" class="sub">Multilateral Netting & CCP</a>
   <a href="#nscc" class="sub">NSCC Services & Membership</a>
@@ -612,7 +613,8 @@
   <a href="#settlement">Settlement &amp; Book-Entry</a>
   <a href="#rights">Shareholder Rights &amp; Dividends</a>
   <a href="#direct">Direct Registration vs. Street Name</a>
-    <a href="#euroclear">Euroclear — The European Counterpart</a>
+  <a href="#concept-map-street-vs-drs" class="sub">Concept Map — Street Name vs DRS</a>
+  <a href="#euroclear">Euroclear — The European Counterpart</a>
   <a href="#euroclear" class="sub">Euroclear Bank (ICSD)</a>
   <a href="#euroclear" class="sub">National CSDs & ESES</a>
   <a href="#euroclear" class="sub">TARGET2-Securities (T2S)</a>
@@ -987,6 +989,108 @@ Not all securities are automatically eligible for DTC services. Issuers must mee
 <p class="body-text">
 The distinction is important: <strong>DTC is the vault and registrar</strong>; <strong>NSCC is the clearinghouse</strong> that nets trades and calculates what each firm owes or is owed. Together, they form the backbone of U.S. post-trade infrastructure.
 </p>
+
+<!-- Concept Map 3: DTCC Organizational Tree -->
+<div class="diagram-box concept-map" id="concept-map-dtcc-org" role="img" aria-labelledby="cm3-title" aria-describedby="cm3-desc">
+  <div class="diagram-title" id="cm3-title">Concept Map — DTCC Organizational Tree</div>
+  <p id="cm3-desc" class="visually-hidden">
+    Hierarchy diagram: DTCC is the parent holding company. It owns and operates three main subsidiaries:
+    DTC the central securities depository with Cede and Co. as its nominee;
+    NSCC the equity and corporate clearing CCP;
+    and FICC the fixed income CCP, which has two divisions — GSD for government securities and MBSD for mortgage-backed securities.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Parent → children connectors -->
+    <path class="cm-edge" d="M360 78 L360 100"/>
+    <path class="cm-edge" d="M140 100 L580 100"/>
+    <line class="cm-edge" x1="140" y1="100" x2="140" y2="128" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="360" y1="100" x2="360" y2="128" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="580" y1="100" x2="580" y2="128" marker-end="url(#cm3-arrow)"/>
+
+    <!-- DTC → Cede -->
+    <line class="cm-edge" x1="140" y1="196" x2="140" y2="228" marker-end="url(#cm3-arrow)"/>
+    <!-- FICC → GSD / MBSD -->
+    <path class="cm-edge" d="M580 196 L580 214"/>
+    <path class="cm-edge" d="M500 214 L660 214"/>
+    <line class="cm-edge" x1="500" y1="214" x2="500" y2="238" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="660" y1="214" x2="660" y2="238" marker-end="url(#cm3-arrow)"/>
+
+    <text class="cm-edge-label" x="250" y="94" text-anchor="middle">owns / operates</text>
+    <text class="cm-edge-label" x="470" y="94" text-anchor="middle">owns / operates</text>
+    <text class="cm-edge-label" x="156" y="218" text-anchor="start">nominee</text>
+    <text class="cm-edge-label" x="580" y="208" text-anchor="middle">divisions</text>
+
+    <!-- DTCC parent -->
+    <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
+      <rect class="cm-node-shape" x="250" y="24" width="220" height="54" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="360" y="48" text-anchor="middle" fill="#fff">DTCC</text>
+      <text class="cm-node-sub" x="360" y="66" text-anchor="middle" fill="var(--accent-muted)">Holding company · SIFMU parent</text>
+    </g>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="60" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="140" y="156" text-anchor="middle" fill="var(--accent)">DTC</text>
+      <text class="cm-node-sub" x="140" y="174" text-anchor="middle" fill="var(--ink-tertiary)">CSD · custody</text>
+      <text class="cm-node-sub" x="140" y="188" text-anchor="middle" fill="var(--ink-tertiary)">asset servicing</text>
+    </g>
+
+    <!-- NSCC -->
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
+      <rect class="cm-node-shape" x="280" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="156" text-anchor="middle" fill="var(--accent)">NSCC</text>
+      <text class="cm-node-sub" x="360" y="174" text-anchor="middle" fill="var(--ink-tertiary)">Equity CCP</text>
+      <text class="cm-node-sub" x="360" y="188" text-anchor="middle" fill="var(--ink-tertiary)">netting · guarantee</text>
+    </g>
+
+    <!-- FICC -->
+    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
+      <rect class="cm-node-shape" x="500" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="580" y="156" text-anchor="middle" fill="var(--accent)">FICC</text>
+      <text class="cm-node-sub" x="580" y="174" text-anchor="middle" fill="var(--ink-tertiary)">Fixed income CCP</text>
+      <text class="cm-node-sub" x="580" y="188" text-anchor="middle" fill="var(--ink-tertiary)">govies · MBS</text>
+    </g>
+
+    <!-- Cede under DTC -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="60" y="230" width="160" height="52" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <text class="cm-node-title" x="140" y="252" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="140" y="270" text-anchor="middle" fill="var(--gold)">Nominee only</text>
+    </g>
+
+    <!-- GSD -->
+    <g class="cm-node" data-modal="gsd" tabindex="0" role="button" aria-label="GSD — open definition">
+      <rect class="cm-node-shape" x="430" y="240" width="140" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="500" y="262" text-anchor="middle" fill="var(--ink)" font-size="12">GSD</text>
+      <text class="cm-node-sub" x="500" y="280" text-anchor="middle" fill="var(--ink-tertiary)">Treasuries · repos</text>
+    </g>
+
+    <!-- MBSD -->
+    <g class="cm-node" data-modal="mbsd" tabindex="0" role="button" aria-label="MBSD — open definition">
+      <rect class="cm-node-shape" x="590" y="240" width="140" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="660" y="262" text-anchor="middle" fill="var(--ink)" font-size="12">MBSD</text>
+      <text class="cm-node-sub" x="660" y="280" text-anchor="middle" fill="var(--ink-tertiary)">Agency MBS · TBA</text>
+    </g>
+
+    <!-- Role strip -->
+    <rect x="60" y="318" width="600" height="40" rx="8" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="343" text-anchor="middle" fill="var(--ink-tertiary)">Clearing (NSCC / FICC) establishes who owes what · Settlement (DTC / Fed) exchanges securities and cash</text>
+  </svg>
+  <p class="cm-caption"><strong>DTCC</strong> is the parent. <strong>Cede &amp; Co.</strong> sits only under DTC — it is the nominee for depository holdings, not a separate clearing subsidiary.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Parent</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Operating subsidiaries</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Nominee</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> FICC divisions</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
 
 <table class="comp-table">
   <tr>
@@ -1652,6 +1756,114 @@ DTC's operational arrangements specify detailed notification requirements:
 <p class="body-text">
 Investors have alternatives to holding securities in street name through DTC. The <span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">Direct Registration System (DRS)</span> allows investors to hold securities directly on the books of the issuer or its transfer agent, without a physical certificate and without going through a broker.
 </p>
+
+<!-- Concept Map 7: Street Name vs DRS -->
+<div class="diagram-box concept-map" id="concept-map-street-vs-drs" role="img" aria-labelledby="cm7-title" aria-describedby="cm7-desc">
+  <div class="diagram-title" id="cm7-title">Concept Map — Street Name vs Direct Registration</div>
+  <p id="cm7-desc" class="visually-hidden">
+    Fork diagram of two holding methods. Left path is street name: investor is customer of a participant,
+    which has an account at DTC; Cede and Co. is the registered owner on issuer books.
+    Right path is direct registration: investor name appears on issuer or transfer agent books via DRS,
+    with fewer intermediaries and more issuer visibility but less trading convenience.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm7-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Column panels -->
+    <rect x="28" y="88" width="310" height="300" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.55"/>
+    <rect x="382" y="88" width="310" height="300" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.4"/>
+
+    <text class="cm-zone-label" x="183" y="112" text-anchor="middle" fill="var(--accent)">Street name</text>
+    <text class="cm-edge-label" x="183" y="128" text-anchor="middle" fill="var(--ink-tertiary)">Broker / DTC path</text>
+
+    <text class="cm-zone-label" x="537" y="112" text-anchor="middle" fill="var(--green)">Direct registration</text>
+    <text class="cm-edge-label" x="537" y="128" text-anchor="middle" fill="var(--ink-tertiary)">DRS path</text>
+
+    <!-- Top choice node -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="250" y="20" width="220" height="44" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="48" text-anchor="middle" fill="var(--ink)">Investor chooses how to hold</text>
+    </g>
+
+    <!-- Fork lines from choice -->
+    <path class="cm-edge" d="M300 64 L183 88" marker-end="url(#cm7-arrow)"/>
+    <path class="cm-edge" d="M420 64 L537 88" marker-end="url(#cm7-arrow)"/>
+
+    <!-- LEFT: Street name stack (top to bottom: Investor → Participant → DTC → Cede → Issuer) -->
+    <line class="cm-edge" x1="183" y1="186" x2="183" y2="202" marker-end="url(#cm7-arrow)"/>
+    <line class="cm-edge" x1="183" y1="248" x2="183" y2="264" marker-end="url(#cm7-arrow)"/>
+    <line class="cm-edge" x1="183" y1="310" x2="183" y2="326" marker-end="url(#cm7-arrow)"/>
+    <line class="cm-edge" x1="183" y1="368" x2="183" y2="378" marker-end="url(#cm7-arrow)"/>
+
+    <text class="cm-edge-label" x="198" y="198" text-anchor="start">customer of</text>
+    <text class="cm-edge-label" x="198" y="260" text-anchor="start">account at</text>
+    <text class="cm-edge-label" x="198" y="322" text-anchor="start">nominee</text>
+    <text class="cm-edge-label" x="198" y="376" text-anchor="start">on issuer books</text>
+
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
+      <rect class="cm-node-shape" x="98" y="142" width="170" height="44" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="183" y="162" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
+      <text class="cm-node-sub" x="183" y="178" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
+    </g>
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
+      <rect class="cm-node-shape" x="98" y="204" width="170" height="44" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="183" y="224" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
+      <text class="cm-node-sub" x="183" y="240" text-anchor="middle" fill="var(--ink-tertiary)">broker-dealer</text>
+    </g>
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="98" y="266" width="170" height="44" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="183" y="286" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
+      <text class="cm-node-sub" x="183" y="302" text-anchor="middle" fill="var(--ink-tertiary)">book-entry vault</text>
+    </g>
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="98" y="328" width="170" height="40" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="183" y="353" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
+    </g>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="98" y="380" width="170" height="36" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1"/>
+      <text class="cm-node-title" x="183" y="403" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer books</text>
+    </g>
+
+    <!-- RIGHT: DRS short path Investor → Transfer Agent / Issuer books -->
+    <line class="cm-edge" x1="537" y1="206" x2="537" y2="228" marker-end="url(#cm7-arrow)"/>
+    <line class="cm-edge" x1="537" y1="296" x2="537" y2="320" marker-end="url(#cm7-arrow)"/>
+
+    <text class="cm-edge-label" x="552" y="222" text-anchor="start">registered with</text>
+    <text class="cm-edge-label" x="552" y="314" text-anchor="start">name on register</text>
+
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor DRS — open definition">
+      <rect class="cm-node-shape" x="452" y="150" width="170" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.6"/>
+      <rect x="478" y="158" width="118" height="14" rx="3" fill="var(--green)"/>
+      <text class="cm-badge-text" x="537" y="169" text-anchor="middle" fill="#fff">Registered owner</text>
+      <text class="cm-node-title" x="537" y="192" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
+    </g>
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
+      <rect class="cm-node-shape" x="452" y="230" width="170" height="66" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="537" y="258" text-anchor="middle" fill="var(--accent)" font-size="12">Transfer agent</text>
+      <text class="cm-node-sub" x="537" y="278" text-anchor="middle" fill="var(--ink-tertiary)">DRS books</text>
+    </g>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="452" y="322" width="170" height="56" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1"/>
+      <text class="cm-node-title" x="537" y="346" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer books</text>
+      <text class="cm-node-sub" x="537" y="364" text-anchor="middle" fill="var(--ink-tertiary)">investor&apos;s own name</text>
+    </g>
+
+    <!-- Trade-off badges -->
+    <text class="cm-edge-label" x="183" y="428" text-anchor="middle" fill="var(--accent)">↑ Liquidity · brokerage convenience</text>
+    <text class="cm-edge-label" x="537" y="428" text-anchor="middle" fill="var(--green)">↑ Issuer visibility · fewer hops</text>
+  </svg>
+  <p class="cm-caption"><strong>Street name</strong> routes ownership through intermediaries for fast trading. <strong>DRS</strong> puts your name on the issuer&apos;s register — fewer hops, more direct communication, less instant liquidity.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent-muted)"></span> Street name path</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> DRS path</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Nominee (street name only)</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
 
 <table class="comp-table">
   <tr>
