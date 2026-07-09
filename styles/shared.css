@@ -64,12 +64,12 @@
 
 /* Premium Dark Theme */
 [data-theme="dark"] {
-  /* Text — warm off-white hierarchy */
+  /* Text — warm off-white hierarchy (muted raised for readable UI chrome) */
   --ink: #eae8e4;
-  --ink-secondary: #c4c2be;
-  --ink-tertiary: #9492a0;
-  --ink-muted: #686670;
-  --ink-faint: #484650;
+  --ink-secondary: #d0cec8;
+  --ink-tertiary: #a8a6b0;
+  --ink-muted: #8a8894;
+  --ink-faint: #6a6874;
 
   /* Borders — subtle violet-navy undertone */
   --border: #3a3848;

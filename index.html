@@ -15,51 +15,11 @@
     <link rel="stylesheet" href="styles/shared.css" />
 
     <style>
-        /* ─── CSS Variables ─── */
-        :root {
-            /* Premium High Contrast Text */
-            --accent: #0a2a4a;
-            --accent-hover: #051a30;
-            --accent-light: #e0e8f5;
-            --accent-muted: rgba(10, 42, 74, 0.12);
-            
-            /* Richer Premium Gold */
-            --gold: #b8860b;
-            --gold-deep: #8b6914;
-            --gold-light: #faf5e8;
-            
-            /* Enhanced Contrast Text */
-            --ink: #0a0a0a;
-            --ink-secondary: #1a1a2e;
-            --ink-tertiary: #4a4a5a;
-            --ink-muted: #6a6a7a;
-            --ink-faint: #9a9aaa;
-            
-            /* Premium Backgrounds */
-            --bg: #ffffff;
-            --bg-cream: #f5f3ef;
-            
-            /* Stronger Borders */
-            --border: #c0c0ca;
-            --border-light: #d8d8e2;
-            --border-faint: #e8e8f2;
-            
-            /* Refined Border Radius */
-            --radius-sm: 6px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            
-            /* Premium Depth Shadows */
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16), 0 8px 16px rgba(0, 0, 0, 0.12);
-            
-            /* Premium colored shadows */
-            --shadow-accent: 0 4px 16px rgba(10,42,74,0.15);
-            --shadow-gold: 0 4px 16px rgba(184,134,11,0.12);
-            
-            --transition: 0.25s ease;
-        }
+        /*
+         * Design tokens (colors, radii, shadows) live in styles/shared.css.
+         * Do NOT redeclare :root light-only variables here — they override
+         * [data-theme="dark"] tokens from shared.css and break dark mode.
+         */
 
         /* ─── Reset & Base ─── */
         *,
@@ -76,7 +36,7 @@
 
         body {
             font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-cream);
+            background: var(--bg-warm);
             color: var(--ink);
             line-height: 1.6;
             transition: background var(--transition), color var(--transition);
@@ -91,29 +51,77 @@
         }
 
         [data-theme="dark"] .page-header {
-            background: rgba(20, 20, 31, 0.88);
+            background: rgba(20, 20, 31, 0.92);
+            border-bottom-color: var(--border-light);
         }
 
+        /* Accent surfaces: dark text on light blue / gold chips for contrast */
         [data-theme="dark"] .header-icon,
         [data-theme="dark"] .card-icon,
         [data-theme="dark"] .scroll-top,
-        [data-theme="dark"] .document-button {
+        [data-theme="dark"] .document-button:not(.disabled),
+        [data-theme="dark"] .note-icon {
             color: #0e0e16;
         }
 
         [data-theme="dark"] .header-badge,
         [data-theme="dark"] .document-card.theological .document-tag {
-            border-color: rgba(212, 175, 55, 0.28);
+            border-color: rgba(212, 175, 55, 0.35);
+            color: var(--gold);
+            background: var(--gold-light);
         }
 
         [data-theme="dark"] .document-card {
+            background: var(--bg);
+            border-color: var(--border-light);
             box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-faint);
+        }
+
+        [data-theme="dark"] .card-concept-map {
+            background: var(--bg-cream);
+            border-color: var(--border);
+        }
+
+        [data-theme="dark"] .card-completion-badge {
+            background: var(--bg-ivory);
+            border-color: var(--border);
+            color: var(--ink-tertiary);
         }
 
         [data-theme="dark"] .card-completion-badge.done {
             color: var(--green);
-            border-color: rgba(92, 184, 122, 0.35);
+            border-color: rgba(92, 184, 122, 0.4);
             background: var(--green-light);
+        }
+
+        [data-theme="dark"] .document-button.disabled {
+            background: var(--border);
+            color: var(--ink-tertiary);
+            opacity: 0.85;
+        }
+
+        [data-theme="dark"] .learning-objectives,
+        [data-theme="dark"] .note-card {
+            background: var(--accent-light);
+            border-color: var(--accent-muted);
+        }
+
+        [data-theme="dark"] .search-section .search-input-wrapper,
+        [data-theme="dark"] #searchResults {
+            background: var(--bg) !important;
+            border-color: var(--border) !important;
+        }
+
+        [data-theme="dark"] .document-meta-label {
+            color: var(--ink-tertiary);
+        }
+
+        [data-theme="dark"] .document-meta-text,
+        [data-theme="dark"] .card-concept-map-sub,
+        [data-theme="dark"] .header-text .sub,
+        [data-theme="dark"] .footer-subtext,
+        [data-theme="dark"] .footer-disclaimer {
+            color: var(--ink-tertiary);
         }
 
         a {
@@ -228,7 +236,7 @@
             gap: 6px;
             padding: 6px 14px;
             background: var(--gold-light);
-            border: 1px solid rgba(166, 124, 0, 0.15);
+            border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
             border-radius: 100px;
             font-size: 0.68rem;
             font-weight: 600;
@@ -308,7 +316,7 @@
             transition: background var(--transition);
         }
         .progress-dot.done {
-            background: #2e8b57;
+            background: var(--green);
         }
         .progress-dot.partial {
             background: var(--gold);
@@ -628,9 +636,9 @@
             transition: all var(--transition);
         }
         .card-completion-badge.done {
-            color: #2e8b57;
-            border-color: #2e8b5740;
-            background: #2e8b5710;
+            color: var(--green);
+            border-color: color-mix(in srgb, var(--green) 40%, transparent);
+            background: var(--green-light);
         }
         .card-completion-badge .badge-icon {
             font-size: 0.8rem;
