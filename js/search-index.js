@@ -33,9 +33,35 @@ const searchIndex = [
       "broker",
       "participant",
       "nominee",
-      "book-entry"
+      "book-entry",
+      "deposit",
+      "certificated deposit",
+      "provisional credit",
+      "physical certificate",
+      "medallion",
+      "jumbo certificate"
     ],
     "type": "page"
+  },
+  {
+    "id": "process-certificated-deposit",
+    "title": "Process Map — Certificated Deposit Lifecycle",
+    "url": "guides/dtc-guide.html#process-certificated-deposit",
+    "description": "Six-step lifecycle: investor endorsement, participant deposit instruction, DTC vault provisional credit, transfer-agent presentment, cancellation and reregistration to Cede & Co., final book-entry with beneficial ownership retained.",
+    "keywords": [
+      "certificated deposit",
+      "deposit lifecycle",
+      "physical certificate",
+      "provisional credit",
+      "medallion",
+      "deposit ticket",
+      "transfer agent",
+      "cede",
+      "jumbo",
+      "book-entry",
+      "street name"
+    ],
+    "type": "section"
   },
   {
     "id": "sf28-guide",

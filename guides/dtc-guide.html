@@ -633,6 +633,7 @@
   <a href="#dtc">The Depository Trust Company (DTC)</a>
   <a href="#concept-map-ownership" class="sub">Concept Map — Ownership Stack</a>
   <a href="#dtc" class="sub">Participants &amp; Eligibility</a>
+  <a href="#process-certificated-deposit" class="sub">Process Map — Certificated Deposit Lifecycle</a>
   <a href="#dtcc">DTCC — The Parent Organization</a>
   <a href="#concept-map-dtcc-org" class="sub">Concept Map — DTCC Org Tree</a>
   <a href="#nscc">National Securities Clearing Corporation (NSCC)</a>
@@ -1023,7 +1024,126 @@ Not all securities are automatically eligible for DTC services. Issuers must mee
 </p>
 
 <div class="tip-box">
-  <strong>For detailed eligibility requirements:</strong> See the <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">DTC Operational Arrangements (June 2026)</a>, Section I - Eligibility Requirements, and the <a href="/forms/dtc-eligibility-questionnaire.html">DTC Eligibility Questionnaire teaching guide</a> for interactive guidance.
+  <strong>For detailed eligibility requirements:</strong> See the <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf" rel="noopener">DTC Operational Arrangements (June 2026)</a>, Section I - Eligibility Requirements, and the <a href="../forms/dtc-eligibility-questionnaire.html">DTC Eligibility Questionnaire teaching guide</a> for interactive guidance.
+</div>
+
+<h3 class="subsection-title" id="certificated-deposit">Certificated Deposit Lifecycle</h3>
+
+<p class="body-text">
+Eligibility answers whether a security <em>may</em> sit at DTC. The process below answers a different question: how a <strong>physical stock certificate</strong> already held by an investor is deposited through a <span class="hotspot" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')">DTC participant</span>, credited in <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry form</span>, and reregistered into the name of <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> This path is the operational inverse of free trading in street name — it is how paper becomes electronic custody aligned with DTC's <span class="hotspot" data-modal="operating-arrangements" tabindex="0" role="button" onclick="openModal('modal-operating-arrangements')">Operational Arrangements</span> and deposit rules.
+</p>
+
+<p class="body-text">
+Contrast this with the <a href="#process-t1-flow">T+1 trade settlement flow</a>, which moves positions that are <em>already</em> on deposit. A certificated deposit is how those positions get into the depository in the first place. For the opposite holding choice after deposit (or instead of street name), see <a href="#concept-map-street-vs-drs">Street Name vs Direct Registration</a>.
+</p>
+
+<!-- Process Map: Certificated Deposit Lifecycle -->
+<div class="diagram-box concept-map" id="process-certificated-deposit" role="img" aria-labelledby="pf-dep-title" aria-describedby="pf-dep-desc">
+  <div class="diagram-title" id="pf-dep-title">Process Map — Certificated Deposit Lifecycle</div>
+  <p id="pf-dep-desc" class="visually-hidden">
+    Six-step lifecycle of depositing a physical stock certificate through a DTC participant:
+    investor endorsement and Medallion guarantee; participant eligibility check and electronic deposit instruction;
+    physical delivery to DTC vault with provisional book-entry credit; presentment to the transfer agent;
+    cancellation of the investor certificate and reregistration to Cede and Co.; final credit on the participant books
+    with beneficial ownership retained by the investor.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-dep-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Phase bands -->
+    <rect x="20" y="14" width="220" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="130" y="29" text-anchor="middle">Initiate &amp; instruct</text>
+    <rect x="250" y="14" width="220" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="360" y="29" text-anchor="middle" fill="var(--accent)">DTC custody</text>
+    <rect x="480" y="14" width="220" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="590" y="29" text-anchor="middle" fill="var(--green)">Reregister &amp; finalize</text>
+
+    <text class="pf-step-sub" x="360" y="52" text-anchor="middle">Physical certificate → street name · click highlighted nodes for definitions</text>
+
+    <!-- Row 1 connectors: 1 → 2 → 3 -->
+    <line class="pf-edge" x1="148" y1="112" x2="188" y2="112" marker-end="url(#pf-dep-arrow)"/>
+    <line class="pf-edge" x1="312" y1="112" x2="352" y2="112" marker-end="url(#pf-dep-arrow)"/>
+    <!-- 3 down and left into 4 -->
+    <path class="pf-edge" d="M414 168 L414 200 L90 200" fill="none"/>
+    <line class="pf-edge" x1="90" y1="200" x2="90" y2="214" marker-end="url(#pf-dep-arrow)"/>
+    <!-- Row 2 connectors: 4 → 5 → 6 -->
+    <line class="pf-edge" x1="148" y1="230" x2="188" y2="230" marker-end="url(#pf-dep-arrow)"/>
+    <line class="pf-edge" x1="312" y1="230" x2="352" y2="230" marker-end="url(#pf-dep-arrow)"/>
+
+    <!-- Steps 1–3 top row -->
+    <g>
+      <circle cx="90" cy="92" r="13" fill="var(--accent)"/>
+      <text class="pf-step-num" x="90" y="96" text-anchor="middle">1</text>
+      <rect x="30" y="114" width="116" height="54" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="88" y="136" text-anchor="middle">Investor</text>
+      <text class="pf-step-sub" x="88" y="152" text-anchor="middle">Endorse · Medallion</text>
+    </g>
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
+      <circle cx="250" cy="92" r="13" fill="var(--accent)"/>
+      <text class="pf-step-num" x="250" y="96" text-anchor="middle">2</text>
+      <rect class="cm-node-shape" x="192" y="114" width="116" height="54" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="250" y="136" text-anchor="middle">Participant</text>
+      <text class="pf-step-sub" x="250" y="152" text-anchor="middle">PTS/PBS · ticket</text>
+    </g>
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <circle cx="414" cy="92" r="13" fill="var(--accent)"/>
+      <text class="pf-step-num" x="414" y="96" text-anchor="middle">3</text>
+      <rect class="cm-node-shape" x="356" y="114" width="116" height="54" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text class="pf-step-title" x="414" y="136" text-anchor="middle">DTC vault</text>
+      <text class="pf-step-sub" x="414" y="152" text-anchor="middle">Provisional credit</text>
+    </g>
+
+    <!-- Steps 4–6 bottom row (left → right) -->
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer Agent — open definition">
+      <circle cx="90" cy="230" r="13" fill="var(--accent)"/>
+      <text class="pf-step-num" x="90" y="234" text-anchor="middle">4</text>
+      <rect class="cm-node-shape" x="30" y="252" width="116" height="40" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <text class="pf-step-title" x="88" y="270" text-anchor="middle">Transfer agent</text>
+      <text class="pf-step-sub" x="88" y="284" text-anchor="middle">Presentment</text>
+    </g>
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede &amp; Co. — open definition">
+      <circle cx="250" cy="230" r="13" fill="var(--gold)"/>
+      <text class="pf-step-num" x="250" y="234" text-anchor="middle">5</text>
+      <rect class="cm-node-shape" x="192" y="252" width="116" height="40" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="250" y="270" text-anchor="middle">Cancel → Cede</text>
+      <text class="pf-step-sub" x="250" y="284" text-anchor="middle">Legal title shift</text>
+    </g>
+    <g class="cm-node" data-modal="book-entry" tabindex="0" role="button" aria-label="Book-entry — open definition">
+      <circle cx="460" cy="230" r="13" fill="var(--green)"/>
+      <text class="pf-step-num" x="460" y="234" text-anchor="middle">6</text>
+      <rect class="cm-node-shape" x="360" y="252" width="200" height="40" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="460" y="270" text-anchor="middle">Final book-entry</text>
+      <text class="pf-step-sub" x="460" y="284" text-anchor="middle">Beneficial ownership retained</text>
+    </g>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
+  <div class="flow-step"><span class="step-num">1</span><strong>Investor initiation</strong> — You present the physical certificate to your broker or bank (DTC participant). The certificate must be properly endorsed and typically requires a Medallion Signature Guarantee so it is in good deliverable form.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">2</span><strong>Participant processing</strong> — The participant verifies DTC eligibility, enters a deposit instruction in DTC's electronic systems (PTS/PBS or automated interfaces), and packages the certificate with a system-generated deposit ticket.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Physical delivery &amp; provisional credit</strong> — The certificate is shipped to DTC's physical processing facility. After inspection (CUSIP, quantity, and endorsements match the electronic instruction), DTC credits the participant account in book-entry form. That credit is <em>provisional</em> and may be reversed if the transfer agent later rejects the certificate.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">4</span><strong>Presentment to transfer agent</strong> — DTC forwards the physical certificate to the issuer's designated transfer agent for processing and reregistration.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Cancellation &amp; reregistration</strong> — The transfer agent validates the certificate (including stop-transfer checks), cancels the original registered in your name, and issues a new balance or &ldquo;jumbo&rdquo; certificate registered to <strong>Cede &amp; Co.</strong>, transferring legal title to DTC's nominee.</div>
+  <div class="flow-connector"></div>
+  <div class="flow-step"><span class="step-num">6</span><strong>Finalization of book-entry</strong> — The transfer agent confirms reregistration with DTC; the provisional credit becomes final; your broker reflects the shares in your account. You no longer hold legal title via a paper certificate, but you retain beneficial ownership (dividends, voting, and electronic trading rights).</div>
+    </div>
+  </details>
+</div>
+
+<div class="warn-box">
+  <strong>Provisional vs final credit:</strong> Until the transfer agent completes cancellation and reregistration to Cede &amp; Co., the book-entry credit on the participant account can be reversed (for example, stop-transfer, irregular endorsement, or other rejection). Do not treat provisional credit as irreversible free inventory.
+</div>
+
+<div class="tip-box">
+  <strong>FAST note:</strong> Where the issuer's transfer agent participates in <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span>, many deposits and withdrawals are processed as electronic balance adjustments against a balance certificate in Cede &amp; Co.'s name, rather than printing a new jumbo certificate for every movement. The lifecycle above still applies to true certificated deposits that require physical presentment and reregistration. See also <a href="#concept-map-ownership">Ownership Stack</a> and <a href="#cede">Cede &amp; Co.</a>
 </div>
 
 <!-- SECTION: DTCC -->
@@ -1521,7 +1641,7 @@ Before the depository system, every time a stock was sold, the seller's broker h
 </p>
 
 <p class="body-text">
-By registering securities in the name of a single nominee — Cede &amp; Co. — issuers only need to recognize one registered owner on their books. All transfers of ownership among investors happen electronically within DTC's system, without the issuer ever needing to know who the current beneficial owners are. This is called the <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">"street name"</span> system.
+By registering securities in the name of a single nominee — Cede &amp; Co. — issuers only need to recognize one registered owner on their books. All transfers of ownership among investors happen electronically within DTC's system, without the issuer ever needing to know who the current beneficial owners are. This is called the <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">"street name"</span> system. For the operational path by which a physical certificate is cancelled and reregistered into Cede &amp; Co., see the <a href="#process-certificated-deposit">Certificated Deposit Lifecycle</a>.
 </p>
 
 <div class="warn-box">
@@ -2251,7 +2371,7 @@ DTC's operational arrangements specify detailed notification requirements:
 <h2 class="section-title" id="direct">Direct Registration vs. Street Name</h2>
 
 <p class="body-text">
-Investors have alternatives to holding securities in street name through DTC. The <span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">Direct Registration System (DRS)</span> allows investors to hold securities directly on the books of the issuer or its transfer agent, without a physical certificate and without going through a broker.
+Investors have alternatives to holding securities in street name through DTC. The <span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">Direct Registration System (DRS)</span> allows investors to hold securities directly on the books of the issuer or its transfer agent, without a physical certificate and without going through a broker. The path <em>into</em> street name from paper is covered in the <a href="#process-certificated-deposit">Certificated Deposit Lifecycle</a>.
 </p>
 
 <!-- Concept Map 7: Street Name vs DRS -->

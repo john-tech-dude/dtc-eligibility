@@ -19,7 +19,7 @@ function initializeSearchIndex() {
       title: 'Securities Ownership Wizard — DTC Teaching Guide',
       url: 'guides/dtc-guide.html',
       description: 'Comprehensive teaching guide for DTC, DTCC & Cede & Co. securities infrastructure with interactive concept maps',
-      keywords: ['dtc', 'dtcc', 'cede & co', 'securities', 'ownership', 'clearing', 'settlement', 'broker', 'participant', 'nominee', 'book-entry', 'concept map', 'concept maps', 'euroclear', 't2s', 'nscc', 'ficc', 'ownership stack', 'street name', 'drs', 'collateral bridge']
+      keywords: ['dtc', 'dtcc', 'cede & co', 'securities', 'ownership', 'clearing', 'settlement', 'broker', 'participant', 'nominee', 'book-entry', 'concept map', 'concept maps', 'euroclear', 't2s', 'nscc', 'ficc', 'ownership stack', 'street name', 'drs', 'collateral bridge', 'deposit', 'certificated deposit', 'provisional credit', 'physical certificate', 'medallion', 'jumbo certificate']
     },
     {
       id: 'sf28-guide',
