@@ -1819,7 +1819,7 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
     then to participants, then to investors. Three channels: cash distributions, proxy and voting materials,
     and corporate action notices. Ownership nodes match the ownership stack but arrows reverse for economic rights.
   </p>
-  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg class="concept-map-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="cm6-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
@@ -1835,79 +1835,69 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
       </marker>
     </defs>
 
-    <!-- Channel background bands -->
-    <rect x="40" y="118" width="640" height="52" rx="8" fill="var(--green-light)" opacity="0.45"/>
-    <rect x="40" y="182" width="640" height="52" rx="8" fill="var(--accent-light)" opacity="0.55"/>
-    <rect x="40" y="246" width="640" height="52" rx="8" fill="var(--gold-light)" opacity="0.55"/>
-
-    <text class="cm-zone-label" x="52" y="148" fill="var(--green)" font-size="9">Cash</text>
-    <text class="cm-zone-label" x="52" y="212" fill="var(--accent)" font-size="9">Proxy</text>
-    <text class="cm-zone-label" x="52" y="276" fill="var(--gold-deep)" font-size="9">Notices</text>
-
-    <!-- Pipeline arrows per channel -->
-    <!-- Cash channel y=144 -->
-    <line x1="168" y1="144" x2="248" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
-    <line x1="312" y1="144" x2="392" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
-    <line x1="456" y1="144" x2="536" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
-    <!-- Proxy y=208 -->
-    <line x1="168" y1="208" x2="248" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
-    <line x1="312" y1="208" x2="392" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
-    <line x1="456" y1="208" x2="536" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
-    <!-- Notices y=272 -->
-    <line x1="168" y1="272" x2="248" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
-    <line x1="312" y1="272" x2="392" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
-    <line x1="456" y1="272" x2="536" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
-
-    <!-- Stage nodes (columns) -->
-    <!-- Issuer -->
+    <!-- Stage nodes (top row) -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="88" y="48" width="100" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
-      <text class="cm-node-title" x="138" y="70" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
-      <text class="cm-node-sub" x="138" y="86" text-anchor="middle" fill="var(--ink-tertiary)">source</text>
+      <rect class="cm-node-shape" x="48" y="28" width="110" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="103" y="50" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
+      <text class="cm-node-sub" x="103" y="66" text-anchor="middle" fill="var(--ink-tertiary)">source</text>
     </g>
-    <!-- vertical rail under issuer into channels -->
-    <line class="cm-edge" x1="138" y1="96" x2="138" y2="118"/>
-
-    <!-- Cede / DTC -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="228" y="36" width="120" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-      <text class="cm-node-title" x="288" y="60" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede / DTC</text>
-      <text class="cm-node-sub" x="288" y="78" text-anchor="middle" fill="var(--gold)">registered owner</text>
+      <rect class="cm-node-shape" x="210" y="24" width="120" height="58" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="270" y="48" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede / DTC</text>
+      <text class="cm-node-sub" x="270" y="66" text-anchor="middle" fill="var(--gold)">registered owner</text>
     </g>
-    <line class="cm-edge" x1="288" y1="96" x2="288" y2="118"/>
-
-    <!-- Participant -->
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
-      <rect class="cm-node-shape" x="372" y="40" width="120" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
-      <text class="cm-node-title" x="432" y="64" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
-      <text class="cm-node-sub" x="432" y="82" text-anchor="middle" fill="var(--ink-tertiary)">pro-rata share</text>
+      <rect class="cm-node-shape" x="382" y="28" width="120" height="50" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="442" y="50" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
+      <text class="cm-node-sub" x="442" y="66" text-anchor="middle" fill="var(--ink-tertiary)">pro-rata share</text>
     </g>
-    <line class="cm-edge" x1="432" y1="96" x2="432" y2="118"/>
-
-    <!-- Investor -->
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
-      <rect class="cm-node-shape" x="516" y="40" width="120" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
-      <text class="cm-node-title" x="576" y="64" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
-      <text class="cm-node-sub" x="576" y="82" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
+      <rect class="cm-node-shape" x="554" y="28" width="120" height="50" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="614" y="50" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
+      <text class="cm-node-sub" x="614" y="66" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
     </g>
-    <line class="cm-edge" x1="576" y1="96" x2="576" y2="118"/>
 
-    <!-- Channel content labels inside bands -->
-    <text class="cm-edge-label" x="360" y="148" text-anchor="middle" fill="var(--green)">Dividends · interest · distributions</text>
-    <text class="cm-edge-label" x="360" y="212" text-anchor="middle" fill="var(--accent)">Proxy materials · voting instructions</text>
+    <!-- Drop lines from stages into channel zone -->
+    <line class="cm-edge" x1="103" y1="78" x2="103" y2="100"/>
+    <line class="cm-edge" x1="270" y1="82" x2="270" y2="100"/>
+    <line class="cm-edge" x1="442" y1="78" x2="442" y2="100"/>
+    <line class="cm-edge" x1="614" y1="78" x2="614" y2="100"/>
+
+    <!-- Channel bands: label left · arrows only in gaps between columns · no text on arrow line -->
+    <!-- Cash -->
+    <rect x="36" y="100" width="648" height="58" rx="8" fill="var(--green-light)" opacity="0.4"/>
+    <text class="cm-zone-label" x="48" y="122" fill="var(--green)" font-size="9">Cash</text>
+    <line x1="120" y1="118" x2="248" y2="118" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <line x1="292" y1="118" x2="420" y2="118" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <line x1="464" y1="118" x2="592" y2="118" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <text class="cm-edge-label" x="360" y="144" text-anchor="middle" fill="var(--green)">Dividends · interest · distributions</text>
+
+    <!-- Proxy -->
+    <rect x="36" y="166" width="648" height="58" rx="8" fill="var(--accent-light)" opacity="0.5"/>
+    <text class="cm-zone-label" x="48" y="188" fill="var(--accent)" font-size="9">Proxy</text>
+    <line x1="120" y1="184" x2="248" y2="184" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <line x1="292" y1="184" x2="420" y2="184" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <line x1="464" y1="184" x2="592" y2="184" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <text class="cm-edge-label" x="360" y="210" text-anchor="middle" fill="var(--accent)">Proxy materials · voting instructions</text>
+
+    <!-- Notices -->
+    <rect x="36" y="232" width="648" height="58" rx="8" fill="var(--gold-light)" opacity="0.5"/>
+    <text class="cm-zone-label" x="48" y="254" fill="var(--gold-deep)" font-size="9">Notices</text>
+    <line x1="120" y1="250" x2="248" y2="250" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
+    <line x1="292" y1="250" x2="420" y2="250" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
+    <line x1="464" y1="250" x2="592" y2="250" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
     <text class="cm-edge-label" x="360" y="276" text-anchor="middle" fill="var(--gold-deep)">Corporate actions · redemptions · record dates</text>
 
-    <!-- Stage labels under pipeline -->
-    <text class="cm-edge-label" x="138" y="330" text-anchor="middle">Pays / sends</text>
-    <text class="cm-edge-label" x="288" y="330" text-anchor="middle">Receives as nominee</text>
-    <text class="cm-edge-label" x="432" y="330" text-anchor="middle">Allocates to accounts</text>
-    <text class="cm-edge-label" x="576" y="330" text-anchor="middle">Credits customer</text>
+    <!-- Stage role labels under channels -->
+    <text class="cm-edge-label" x="103" y="318" text-anchor="middle">Pays / sends</text>
+    <text class="cm-edge-label" x="270" y="318" text-anchor="middle">Receives as nominee</text>
+    <text class="cm-edge-label" x="442" y="318" text-anchor="middle">Allocates to accounts</text>
+    <text class="cm-edge-label" x="614" y="318" text-anchor="middle">Credits customer</text>
 
-    <!-- Reverse note: votes flow back -->
-    <path class="cm-edge-dashed" d="M576 350 C500 370 360 370 288 350" marker-end="url(#cm6-arrow)"/>
-    <text class="cm-edge-label" x="432" y="380" text-anchor="middle" fill="var(--ink-muted)">Votes flow back: Investor → Participant → DTC → Issuer (aggregated)</text>
-
-    <text class="cm-edge-label" x="360" y="408" text-anchor="middle" fill="var(--ink-tertiary)">Same ownership chain as the stack map — arrows reverse for economic rights and communications</text>
+    <!-- Votes flow back (below labels, clear of channel bands) -->
+    <path class="cm-edge-dashed" d="M614 340 C520 370 280 370 186 340" marker-end="url(#cm6-arrow)"/>
+    <text class="cm-edge-label" x="400" y="390" text-anchor="middle" fill="var(--ink-muted)">Votes flow back: Investor → Participant → DTC → Issuer (aggregated)</text>
+    <text class="cm-edge-label" x="360" y="418" text-anchor="middle" fill="var(--ink-tertiary)">Same ownership chain as the stack map — arrows reverse for economic rights and communications</text>
   </svg>
   <p class="cm-caption">Issuers pay and mail to <strong>Cede / DTC</strong>; the system is obligated to push value, votes, and notices down to you. Proxy votes travel back up the same ladder.</p>
   <div class="cm-legend" aria-hidden="true">
