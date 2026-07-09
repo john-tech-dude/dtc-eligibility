@@ -283,6 +283,34 @@ function initReturnToTop() {
 }
 
 // Hotspot functionality
+
+// Concept-map horizontal scroll hints (mobile)
+function initConceptMapScrollHints() {
+  const boxes = document.querySelectorAll('.diagram-box.concept-map');
+  if (!boxes.length) return;
+
+  const updateBox = (box) => {
+    const scrollEl = box;
+    const overflow = scrollEl.scrollWidth > scrollEl.clientWidth + 4;
+    box.classList.toggle('is-scrollable', overflow);
+    if (!overflow) {
+      box.classList.remove('is-scrolled-end');
+      return;
+    }
+    const atEnd = scrollEl.scrollLeft + scrollEl.clientWidth >= scrollEl.scrollWidth - 8;
+    box.classList.toggle('is-scrolled-end', atEnd);
+  };
+
+  boxes.forEach((box) => {
+    updateBox(box);
+    box.addEventListener('scroll', () => updateBox(box), { passive: true });
+  });
+
+  window.addEventListener('resize', () => {
+    boxes.forEach(updateBox);
+  }, { passive: true });
+}
+
 function initHotspots() {
   const hotspots = document.querySelectorAll('.hotspot');
   
@@ -332,6 +360,7 @@ if (document.readyState === 'loading') {
     initTheme();
     initTOCSidebar();
     initHotspots();
+    initConceptMapScrollHints();
     initReturnToTop();
     checkUrlHash();
   });
@@ -339,6 +368,7 @@ if (document.readyState === 'loading') {
   initTheme();
   initTOCSidebar();
   initHotspots();
+  initConceptMapScrollHints();
   initReturnToTop();
   checkUrlHash();
 }

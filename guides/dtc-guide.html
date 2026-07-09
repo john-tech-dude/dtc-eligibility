@@ -2066,24 +2066,63 @@ Certain dividend types require additional processing:
 Corporate actions include <span class="hotspot" data-modal="tender-offer" tabindex="0" role="button" onclick="openModal('modal-tender-offer')">tender offers</span>, mergers, stock splits, <span class="hotspot" data-modal="rights-offering" tabindex="0" role="button" onclick="openModal('modal-rights-offering')">rights offerings</span>, and other events that affect securities. DTC has established procedures for processing these events efficiently through its book-entry system.
 </p>
 
-<div class="diagram-box">
-  <div class="diagram-title">Corporate Action Processing Categories</div>
-  <div class="flow-step">
-    <span class="step-num">VOL</span>
-    <strong>Voluntary Corporate Actions</strong> — Tender offers, rights offerings, optional exchanges (require shareholder election)
-  </div>
-  <div class="flow-step">
-    <span class="step-num">MAN</span>
-    <strong>Mandatory Corporate Actions</strong> — Mergers, stock splits, mandatory exchanges (automatic for all holders)
-  </div>
-  <div class="flow-step">
-    <span class="step-num">RED</span>
-    <strong>Redemption Events</strong> — Called bonds, matured securities, sinking fund redemptions
-  </div>
-  <div class="flow-step">
-    <span class="step-num">REO</span>
-    <strong>Reorganization Events</strong> — Spin-offs, recapitalizations, change of control transactions
-  </div>
+<div class="diagram-box concept-map" id="process-corp-actions" role="img" aria-labelledby="pf-ca-title" aria-describedby="pf-ca-desc">
+  <div class="diagram-title" id="pf-ca-title">Corporate Action Processing Categories</div>
+  <p id="pf-ca-desc" class="visually-hidden">
+    Four corporate action categories processed through DTC: voluntary actions requiring election,
+    mandatory actions applied automatically, redemption events for called or matured securities,
+    and reorganization events such as spin-offs.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Four category cards -->
+    <rect x="24" y="28" width="160" height="120" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.4"/>
+    <circle cx="52" cy="52" r="16" fill="var(--accent)"/>
+    <text class="pf-step-num" x="52" y="56" text-anchor="middle" font-size="9">VOL</text>
+    <text class="pf-step-title" x="104" y="52" text-anchor="start" fill="var(--accent)">Voluntary</text>
+    <text class="pf-step-sub" x="40" y="84" fill="var(--ink-tertiary)">Tender offers</text>
+    <text class="pf-step-sub" x="40" y="100" fill="var(--ink-tertiary)">Rights offerings</text>
+    <text class="pf-step-sub" x="40" y="116" fill="var(--ink-tertiary)">Optional exchanges</text>
+    <text class="pf-step-sub" x="40" y="136" fill="var(--accent)">Election required</text>
+
+    <rect x="196" y="28" width="160" height="120" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+    <circle cx="224" cy="52" r="16" fill="var(--green)"/>
+    <text class="pf-step-num" x="224" y="56" text-anchor="middle" font-size="9">MAN</text>
+    <text class="pf-step-title" x="276" y="52" text-anchor="start" fill="var(--green)">Mandatory</text>
+    <text class="pf-step-sub" x="212" y="84" fill="var(--ink-tertiary)">Mergers</text>
+    <text class="pf-step-sub" x="212" y="100" fill="var(--ink-tertiary)">Stock splits</text>
+    <text class="pf-step-sub" x="212" y="116" fill="var(--ink-tertiary)">Mandatory exchanges</text>
+    <text class="pf-step-sub" x="212" y="136" fill="var(--green)">Automatic for all</text>
+
+    <rect x="368" y="28" width="160" height="120" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.4"/>
+    <circle cx="396" cy="52" r="16" fill="var(--gold)"/>
+    <text class="pf-step-num" x="396" y="56" text-anchor="middle" font-size="9">RED</text>
+    <text class="pf-step-title" x="448" y="52" text-anchor="start" fill="var(--gold-deep)">Redemption</text>
+    <text class="pf-step-sub" x="384" y="84" fill="var(--ink-tertiary)">Called bonds</text>
+    <text class="pf-step-sub" x="384" y="100" fill="var(--ink-tertiary)">Maturities</text>
+    <text class="pf-step-sub" x="384" y="116" fill="var(--ink-tertiary)">Sinking fund</text>
+    <text class="pf-step-sub" x="384" y="136" fill="var(--gold-deep)">Principal return</text>
+
+    <rect x="540" y="28" width="160" height="120" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.4"/>
+    <circle cx="568" cy="52" r="16" fill="var(--ink-muted)"/>
+    <text class="pf-step-num" x="568" y="56" text-anchor="middle" font-size="9">REO</text>
+    <text class="pf-step-title" x="620" y="52" text-anchor="start" fill="var(--ink)">Reorg</text>
+    <text class="pf-step-sub" x="556" y="84" fill="var(--ink-tertiary)">Spin-offs</text>
+    <text class="pf-step-sub" x="556" y="100" fill="var(--ink-tertiary)">Recapitalizations</text>
+    <text class="pf-step-sub" x="556" y="116" fill="var(--ink-tertiary)">Change of control</text>
+    <text class="pf-step-sub" x="556" y="136" fill="var(--ink-muted)">Structure change</text>
+
+    <text class="pf-step-sub" x="360" y="172" text-anchor="middle">DTC programs: ATOP (tenders) · ASOP (rights) · IVORS (UIT redemptions)</text>
+    <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Voluntary needs participant elections · mandatory/redemption run through book-entry automatically</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Category summary (text)</summary>
+    <div class="step-summary-body">
+      <div class="flow-step"><span class="step-num">VOL</span><strong>Voluntary Corporate Actions</strong> — Tender offers, rights offerings, optional exchanges (require shareholder election)</div>
+      <div class="flow-step"><span class="step-num">MAN</span><strong>Mandatory Corporate Actions</strong> — Mergers, stock splits, mandatory exchanges (automatic for all holders)</div>
+      <div class="flow-step"><span class="step-num">RED</span><strong>Redemption Events</strong> — Called bonds, matured securities, sinking fund redemptions</div>
+      <div class="flow-step"><span class="step-num">REO</span><strong>Reorganization Events</strong> — Spin-offs, recapitalizations, change of control transactions</div>
+    </div>
+  </details>
 </div>
 
 <h4 class="subsection-title">Key Processing Programs</h4>
