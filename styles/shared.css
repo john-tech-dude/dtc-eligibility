@@ -837,3 +837,222 @@ body,
     border-color var(--transition),
     box-shadow var(--transition);
 }
+/* ── Concept maps & process flows (teaching diagrams) ── */
+.diagram-box.concept-map {
+  padding: 24px 16px 18px;
+  overflow-x: auto;
+}
+.concept-map-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.06);
+}
+.concept-map-svg .cm-node:focus {
+  outline: none;
+}
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static {
+  cursor: default;
+}
+.cm-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-tertiary);
+  margin: 14px auto 0;
+  line-height: 1.55;
+  max-width: 560px;
+}
+.cm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.cm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cm-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--ink-muted);
+  flex-shrink: 0;
+}
+.cm-legend-line.dashed {
+  border-top-style: dashed;
+  border-color: var(--ink-faint);
+}
+.cm-legend-line.pass {
+  border-top-style: dashed;
+  border-color: var(--green);
+}
+.cm-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  font-style: italic;
+}
+.process-flow-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-width: 1.6;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px;
+  fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+.step-summary {
+  margin-top: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  padding: 0;
+}
+.step-summary > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  user-select: none;
+}
+.step-summary > summary::-webkit-details-marker { display: none; }
+.step-summary > summary::before {
+  content: "▸ ";
+  color: var(--ink-muted);
+}
+.step-summary[open] > summary::before {
+  content: "▾ ";
+}
+.step-summary-body {
+  padding: 4px 16px 14px;
+  border-top: 1px solid var(--border-faint);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .diagram-box.concept-map { padding: 18px 8px 14px; }
+  .concept-map-svg,
+  .process-flow-svg { min-width: 300px; }
+}
+@media print {
+  .concept-map-svg,
+  .process-flow-svg {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    break-inside: avoid;
+  }
+  .step-summary { border: none; }
+  .step-summary > summary { display: none; }
+  .step-summary-body { display: block !important; border: none; padding: 0; }
+}

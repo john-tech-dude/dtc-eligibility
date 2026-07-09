@@ -717,20 +717,23 @@
 <div class="quick-nav">
   <div class="quick-nav-title">Jump to Section</div>
   <div class="quick-nav-links">
-    <a href="#dtc" class="quick-nav-link">DTC Eligibility</a>
+    <a href="#overview" class="quick-nav-link">Overview</a>
+    <a href="#concept-map-overview" class="quick-nav-link">Concept Maps</a>
+    <a href="#dtc" class="quick-nav-link">DTC</a>
     <a href="#dtcc" class="quick-nav-link">DTCC</a>
     <a href="#nscc" class="quick-nav-link">NSCC</a>
     <a href="#ficc" class="quick-nav-link">FICC</a>
-    <a href="#cede" class="quick-nav-link">Cede & Co.</a>
-    <a href="#operations" class="quick-nav-link">Operations</a>
-    <a href="#corporate" class="quick-nav-link">Corporate Actions</a>
+    <a href="#cede" class="quick-nav-link">Cede &amp; Co.</a>
+    <a href="#operating" class="quick-nav-link">Operations</a>
+    <a href="#rights" class="quick-nav-link">Rights</a>
+    <a href="#euroclear" class="quick-nav-link">Euroclear</a>
     <a href="#quiz" class="quick-nav-link">Quiz</a>
   </div>
 </div>
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-  <span><strong>Document Guide:</strong> This is an interactive teaching guide to the U.S. securities depository and clearing infrastructure. Click any <strong>underlined term</strong> for definitions and explanations.</span>
+  <span><strong>Document Guide:</strong> Interactive teaching guide to U.S. securities depository and clearing infrastructure. Click any <strong>underlined term</strong> for definitions, and use the <strong>concept maps</strong> (click nodes) to see how DTC, Cede &amp; Co., participants, and Euroclear connect.</span>
 </div>
 
 <div class="doc-frame">
@@ -998,8 +1001,9 @@ When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex
 </div>
 
 <!-- Text fallback for sequential reading / accessibility -->
-<div class="diagram-box" aria-label="Ownership chain as numbered list">
-  <div class="diagram-title">Layered Ownership Chain — Step Summary</div>
+<details class="step-summary" aria-label="Ownership chain as numbered list">
+  <summary>Layered ownership chain — step summary</summary>
+  <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Issuer</strong> — The corporation that issued the securities.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Cede &amp; Co.</strong> — Registered owner on the issuer's books (nominee for DTC).</div>
@@ -1009,7 +1013,8 @@ When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex
   <div class="flow-step"><span class="step-num">4</span><strong>Participant (Broker-Dealer / Bank)</strong> — Maintains a securities account at DTC and records positions in customer accounts.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">5</span><strong>Investor (You)</strong> — The beneficial owner who enjoys economic rights (dividends, voting, sale proceeds).</div>
-</div>
+  </div>
+</details>
 
 <h3 class="subsection-title">DTC Eligibility &amp; Deposit Requirements</h3>
 
@@ -1243,6 +1248,9 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
     </g>
     <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Click CNS for Continuous Net Settlement details · ~98% compression of settlement obligations</text>
   </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Buyer and seller brokers execute a trade on an exchange or ATS.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both sides report trade details to NSCC for comparison and validation.</div>
@@ -1252,6 +1260,8 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
   <div class="flow-step"><span class="step-num">4</span><strong>End-of-Day Netting</strong> — All of each participant's buys and sells are netted into a single obligation per security.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">5</span><strong>Settlement</strong> — On T+1, DTC transfers securities and the Federal Reserve settles cash based on NSCC's net instructions.</div>
+    </div>
+  </details>
 </div>
 
 <h3 class="subsection-title">Key NSCC Services</h3>
@@ -1397,8 +1407,52 @@ FICC's margin methodology includes several components: a value-at-risk (<span cl
 While DTC, NSCC, and FICC are distinct entities with distinct functions, they operate as an integrated ecosystem. Understanding their interplay is essential:
 </p>
 
-<div class="diagram-box">
-  <div class="diagram-title">The DTCC Clearing & Settlement Ecosystem</div>
+<div class="diagram-box concept-map" id="process-dtcc-ecosystem" role="img" aria-labelledby="pf-eco-title" aria-describedby="pf-eco-desc">
+  <div class="diagram-title" id="pf-eco-title">The DTCC Clearing &amp; Settlement Ecosystem</div>
+  <p id="pf-eco-desc" class="visually-hidden">Five-step ecosystem: trade execution, CCP clearing at NSCC or FICC, DTC securities settlement, Federal Reserve cash settlement, and DTC asset servicing.</p>
+  <svg class="process-flow-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-eco-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="20" y="16" width="130" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="85" y="31" text-anchor="middle">Execute</text>
+    <rect x="160" y="16" width="160" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="240" y="31" text-anchor="middle" fill="var(--accent)">Clear (CCP)</text>
+    <rect x="330" y="16" width="180" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="420" y="31" text-anchor="middle" fill="var(--green)">Settle DVP</text>
+    <rect x="520" y="16" width="180" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="610" y="31" text-anchor="middle" fill="var(--gold-deep)">Service</text>
+    <line class="pf-edge" x1="118" y1="110" x2="150" y2="110" marker-end="url(#pf-eco-arrow)"/>
+    <line class="pf-edge" x1="258" y1="110" x2="290" y2="110" marker-end="url(#pf-eco-arrow)"/>
+    <line class="pf-edge" x1="398" y1="110" x2="430" y2="110" marker-end="url(#pf-eco-arrow)"/>
+    <line class="pf-edge" x1="538" y1="110" x2="570" y2="110" marker-end="url(#pf-eco-arrow)"/>
+    <g><circle cx="70" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="70" y="94" text-anchor="middle">1</text>
+      <rect x="20" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="70" y="134" text-anchor="middle">Trade</text>
+      <text class="pf-step-sub" x="70" y="150" text-anchor="middle">Equity / FI / MBS</text></g>
+    <g><circle cx="210" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="210" y="94" text-anchor="middle">2</text>
+      <rect x="160" y="112" width="100" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text class="pf-step-title" x="210" y="134" text-anchor="middle">Clear</text>
+      <text class="pf-step-sub" x="210" y="150" text-anchor="middle">NSCC / FICC</text></g>
+    <g><circle cx="350" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="350" y="94" text-anchor="middle">3</text>
+      <rect x="300" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="350" y="134" text-anchor="middle">Securities</text>
+      <text class="pf-step-sub" x="350" y="150" text-anchor="middle">DTC book-entry</text></g>
+    <g><circle cx="490" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="490" y="94" text-anchor="middle">4</text>
+      <rect x="440" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="490" y="134" text-anchor="middle">Cash</text>
+      <text class="pf-step-sub" x="490" y="150" text-anchor="middle">Federal Reserve</text></g>
+    <g><circle cx="630" cy="90" r="14" fill="var(--gold)"/><text class="pf-step-num" x="630" y="94" text-anchor="middle">5</text>
+      <rect x="580" y="112" width="100" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="630" y="134" text-anchor="middle">Service</text>
+      <text class="pf-step-sub" x="630" y="150" text-anchor="middle">Dividends · proxies</text></g>
+    <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Clearing establishes who owes what · settlement exchanges securities and cash · DTC services the position</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — A buyer and seller agree to trade equities (via NSCC), Treasuries (via FICC-GSD), or MBS (via FICC-MBSD).</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Clearing (NSCC / FICC)</strong> — The CCP novates the trade, nets obligations, collects margin, and guarantees completion.</div>
@@ -1408,6 +1462,8 @@ While DTC, NSCC, and FICC are distinct entities with distinct functions, they op
   <div class="flow-step"><span class="step-num">4</span><strong>Cash Settlement (Federal Reserve)</strong> — The Fed debits the buyer's bank and credits the seller's bank simultaneously with the securities transfer.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">5</span><strong>Asset Servicing (DTC)</strong> — DTC handles dividends, interest, corporate actions, and proxy materials for the settled positions.</div>
+    </div>
+  </details>
 </div>
 
 <table class="comp-table">
@@ -1652,6 +1708,9 @@ The relationship between DTC, its participants, issuers, and investors is govern
     </g>
     <path class="pf-edge" d="M646 152 C646 178 560 178 512 178" marker-end="url(#pf-t1-arrow)"/>
   </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Investor places an order through Broker A. Order is matched on an exchange with Broker B.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Reporting</strong> — Both brokers report the trade to NSCC for clearing.</div>
@@ -1663,6 +1722,8 @@ The relationship between DTC, its participants, issuers, and investors is govern
   <div class="flow-step"><span class="step-num">5</span><strong>Cash Settlement</strong> — DTCC's settlement bank (a Federal Reserve Bank) debits Broker A's cash account and credits Broker B's cash account.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">6</span><strong>Customer Confirmation</strong> — Broker A updates the investor's account to reflect the new position. No certificate changes hands.</div>
+    </div>
+  </details>
 </div>
 
 <p class="body-text">
@@ -1912,26 +1973,57 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
   <p class="cm-hint">Click a node to open its definition</p>
 </div>
 
-<div class="diagram-box">
-  <div class="diagram-title">Dividend Processing Flow</div>
+<div class="diagram-box concept-map" id="process-dividend-flow" role="img" aria-labelledby="pf-div-title" aria-describedby="pf-div-desc">
+  <div class="diagram-title" id="pf-div-title">Dividend Processing Flow</div>
+  <p id="pf-div-desc" class="visually-hidden">Five-step dividend path: issuer declares, notifies DTC of record date, pays Cede/DTC, DTC allocates pro-rata to participants, participants credit customers.</p>
+  <svg class="process-flow-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-div-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="16" width="672" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="360" y="31" text-anchor="middle" fill="var(--green)">Cash pass-through · issuer → Cede/DTC → participants → investors</text>
+    <line class="pf-edge" x1="118" y1="110" x2="150" y2="110" marker-end="url(#pf-div-arrow)"/>
+    <line class="pf-edge" x1="258" y1="110" x2="290" y2="110" marker-end="url(#pf-div-arrow)"/>
+    <line class="pf-edge" x1="398" y1="110" x2="430" y2="110" marker-end="url(#pf-div-arrow)"/>
+    <line class="pf-edge" x1="538" y1="110" x2="570" y2="110" marker-end="url(#pf-div-arrow)"/>
+    <g><circle cx="70" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="70" y="94" text-anchor="middle">1</text>
+      <rect x="20" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="70" y="134" text-anchor="middle">Declare</text>
+      <text class="pf-step-sub" x="70" y="150" text-anchor="middle">Record · pay dates</text></g>
+    <g><circle cx="210" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="210" y="94" text-anchor="middle">2</text>
+      <rect x="160" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="210" y="134" text-anchor="middle">Notify</text>
+      <text class="pf-step-sub" x="210" y="150" text-anchor="middle">Issuer → DTC</text></g>
+    <g><circle cx="350" cy="90" r="14" fill="var(--gold)"/><text class="pf-step-num" x="350" y="94" text-anchor="middle">3</text>
+      <rect x="300" y="112" width="100" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="350" y="134" text-anchor="middle">Pay Cede</text>
+      <text class="pf-step-sub" x="350" y="150" text-anchor="middle">Total to DTC</text></g>
+    <g><circle cx="490" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="490" y="94" text-anchor="middle">4</text>
+      <rect x="440" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="490" y="134" text-anchor="middle">Allocate</text>
+      <text class="pf-step-sub" x="490" y="150" text-anchor="middle">Pro-rata</text></g>
+    <g><circle cx="630" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="630" y="94" text-anchor="middle">5</text>
+      <rect x="580" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="630" y="134" text-anchor="middle">Credit</text>
+      <text class="pf-step-sub" x="630" y="150" text-anchor="middle">Customer a/c</text></g>
+    <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Same chain as the Rights Pass-Through map — cash channel only</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Issuer declares dividend</strong> — Sets record date and payment date per operational requirements</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Record date notification</strong> — Issuer notifies DTC of record date and payment details</div>
   <div class="flow-connector"></div>
-  <div class="flow-step">
-    <span class="step-num">3</span>
-    <strong>Payment processing</strong> — Issuer sends total payment to DTC for Cede & Co. as registered owner
-  </div>
+  <div class="flow-step"><span class="step-num">3</span><strong>Payment processing</strong> — Issuer sends total payment to DTC for Cede &amp; Co. as registered owner</div>
   <div class="flow-connector"></div>
-  <div class="flow-step">
-    <span class="step-num">4</span>
-    <strong>DTC allocation</strong> — DTC allocates payment pro-rata to participants based on positions
-  </div>
+  <div class="flow-step"><span class="step-num">4</span><strong>DTC allocation</strong> — DTC allocates payment pro-rata to participants based on positions</div>
   <div class="flow-connector"></div>
-  <div class="flow-step">
-    <span class="step-num">5</span>
-    <strong>Participant distribution</strong> — Participants credit customer accounts
-  </div>
+  <div class="flow-step"><span class="step-num">5</span><strong>Participant distribution</strong> — Participants credit customer accounts</div>
+    </div>
+  </details>
 </div>
 
 <div class="warn-box">
@@ -3244,8 +3336,54 @@ Euroclear's ESES CSDs (France, Netherlands, Belgium) connected to T2S in 2016. T
 Euroclear's settlement process shares conceptual similarities with DTC but differs in operational detail:
 </p>
 
-<div class="diagram-box">
-  <div class="diagram-title">Euroclear Settlement Flow (Cross-Border)</div>
+<div class="diagram-box concept-map" id="process-euroclear-settle" role="img" aria-labelledby="pf-eu-title" aria-describedby="pf-eu-desc">
+  <div class="diagram-title" id="pf-eu-title">Euroclear Settlement Flow (Cross-Border)</div>
+  <p id="pf-eu-desc" class="visually-hidden">Six-step Euroclear Bank cross-border settlement: execute, match, prepare, DVP on T+2, cash movement, confirmation.</p>
+  <svg class="process-flow-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-eu-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="300" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="174" y="29" text-anchor="middle">Trade date → prep</text>
+    <rect x="340" y="14" width="356" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="518" y="29" text-anchor="middle" fill="var(--green)">Settlement (typically T+2)</text>
+    <line class="pf-edge" x1="108" y1="100" x2="132" y2="100" marker-end="url(#pf-eu-arrow)"/>
+    <line class="pf-edge" x1="220" y1="100" x2="244" y2="100" marker-end="url(#pf-eu-arrow)"/>
+    <line class="pf-edge" x1="332" y1="100" x2="356" y2="100" marker-end="url(#pf-eu-arrow)"/>
+    <line class="pf-edge" x1="444" y1="100" x2="468" y2="100" marker-end="url(#pf-eu-arrow)"/>
+    <line class="pf-edge" x1="556" y1="100" x2="580" y2="100" marker-end="url(#pf-eu-arrow)"/>
+    <g><circle cx="64" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="64" y="84" text-anchor="middle">1</text>
+      <rect x="20" y="102" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="64" y="124" text-anchor="middle">Execute</text>
+      <text class="pf-step-sub" x="64" y="140" text-anchor="middle">Eurobond / OTC</text></g>
+    <g><circle cx="176" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="176" y="84" text-anchor="middle">2</text>
+      <rect x="132" y="102" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="176" y="124" text-anchor="middle">Match</text>
+      <text class="pf-step-sub" x="176" y="140" text-anchor="middle">Euroclear Bank</text></g>
+    <g><circle cx="288" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="288" y="84" text-anchor="middle">3</text>
+      <rect x="244" y="102" width="88" height="52" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <text class="pf-step-title" x="288" y="124" text-anchor="middle">Prepare</text>
+      <text class="pf-step-sub" x="288" y="140" text-anchor="middle">Securities · cash</text></g>
+    <g><circle cx="400" cy="80" r="12" fill="var(--green)"/><text class="pf-step-num" x="400" y="84" text-anchor="middle">4</text>
+      <rect x="356" y="102" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="400" y="124" text-anchor="middle">DVP</text>
+      <text class="pf-step-sub" x="400" y="140" text-anchor="middle">Simultaneous</text></g>
+    <g><circle cx="512" cy="80" r="12" fill="var(--green)"/><text class="pf-step-num" x="512" y="84" text-anchor="middle">5</text>
+      <rect x="468" y="102" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="512" y="124" text-anchor="middle">Cash</text>
+      <text class="pf-step-sub" x="512" y="140" text-anchor="middle">Comm. / CB $</text></g>
+    <g><circle cx="624" cy="80" r="12" fill="var(--gold)"/><text class="pf-step-num" x="624" y="84" text-anchor="middle">6</text>
+      <rect x="580" y="102" width="88" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="624" y="124" text-anchor="middle">Confirm</text>
+      <text class="pf-step-sub" x="624" y="140" text-anchor="middle">Both parties</text></g>
+    <text class="pf-step-sub" x="360" y="180" text-anchor="middle">ICSD cash often commercial-bank money · T2S-linked CSDs use central-bank money</text>
+    <text class="pf-step-sub" x="360" y="198" text-anchor="middle">Compare with U.S. T+1 process map · Europe typically T+2</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
   <div class="flow-step"><span class="step-num">1</span><strong>Trade Execution</strong> — Buyer and seller agree on a Eurobond trade, typically through EuroMTF or over-the-counter.</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">2</span><strong>Trade Matching</strong> — Both parties submit trade details to Euroclear Bank for matching and validation.</div>
@@ -3257,6 +3395,8 @@ Euroclear's settlement process shares conceptual similarities with DTC but diffe
   <div class="flow-step"><span class="step-num">5</span><strong>Cash Movement</strong> — Cash settles through commercial bank money (for Euroclear Bank) or central bank money (for T2S-connected CSDs).</div>
   <div class="flow-connector"></div>
   <div class="flow-step"><span class="step-num">6</span><strong>Confirmation</strong> — Both parties receive electronic confirmation of the settled transaction.</div>
+    </div>
+  </details>
 </div>
 
 <h3 class="subsection-title">Euroclear's Relationship with DTCC</h3>
@@ -3540,6 +3680,8 @@ Understanding the differences between the U.S. and European post-trade infrastru
         <a href="https://www.sec.gov" rel="noopener">SEC</a>
         <span class="footer-divider">•</span>
         <a href="https://www.federalreserve.gov" rel="noopener">Federal Reserve</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.euroclear.com" rel="noopener">Euroclear</a>
       </div>
       <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, investment, or regulatory advice. The information reflects the U.S. securities infrastructure as of 2024-2025. For official rules and procedures, consult DTCC, DTC, and SEC publications directly.</div>
     </div>
@@ -4507,13 +4649,13 @@ Understanding the differences between the U.S. and European post-trade infrastru
 <div class="quiz-section" id="quiz">
   <div class="section-heading">Securities Infrastructure Knowledge Check</div>
   <p class="quiz-intro">
-    Test your understanding of DTC, DTCC, and the U.S. securities infrastructure. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+    Test your understanding of DTC, DTCC, Euroclear, and the concept maps. Select the best answer for each question. Your score updates in real time. A passing score is 80% (20/24 correct).
   </p>
 
   <div class="quiz-score-bar">
     <div class="quiz-score-fill" id="quizScoreFill"></div>
   </div>
-  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 24 correct (0%)</div>
 
   <div class="quiz-container">
 
@@ -4802,6 +4944,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
       </div>
     </div>
 
+
     <!-- Question 20 -->
     <div class="quiz-card" data-q="20">
       <div class="quiz-num">20</div>
@@ -4816,6 +4959,66 @@ Understanding the differences between the U.S. and European post-trade infrastru
         <div class="quiz-feedback" id="fb-q20"></div>
       </div>
     </div>
+    <!-- Question 21 — concept map -->
+    <div class="quiz-card" data-q="21">
+      <div class="quiz-num">21</div>
+      <div class="quiz-content">
+        <h4>On the issuer&apos;s books in the street-name system, who is listed as the registered owner?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q21" value="a"><span>The beneficial investor</span></label>
+          <label><input type="radio" name="q21" value="b"><span>The broker-dealer only</span></label>
+          <label><input type="radio" name="q21" value="c"><span>Cede &amp; Co. (DTC&apos;s nominee)</span></label>
+          <label><input type="radio" name="q21" value="d"><span>The Federal Reserve</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q21"></div>
+      </div>
+    </div>
+
+    <!-- Question 22 — concept map -->
+    <div class="quiz-card" data-q="22">
+      <div class="quiz-num">22</div>
+      <div class="quiz-content">
+        <h4>What does the DTCC–Euroclear collateral bridge (2013) primarily enable?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q22" value="a"><span>Cross-listing of European stocks on the NYSE</span></label>
+          <label><input type="radio" name="q22" value="b"><span>Automatic movement of collateral between the two systems (e.g., U.S. Treasuries for Euroclear margin)</span></label>
+          <label><input type="radio" name="q22" value="c"><span>Merger of DTC and Euroclear Bank into one CSD</span></label>
+          <label><input type="radio" name="q22" value="d"><span>Elimination of T+2 settlement in Europe</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q22"></div>
+      </div>
+    </div>
+
+    <!-- Question 23 — concept map -->
+    <div class="quiz-card" data-q="23">
+      <div class="quiz-num">23</div>
+      <div class="quiz-content">
+        <h4>Which statement best matches the U.S. vs Europe post-trade comparison?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q23" value="a"><span>Europe has a single NSCC-equivalent CCP for all equities</span></label>
+          <label><input type="radio" name="q23" value="b"><span>U.S. equity clearing is centralized at NSCC; European clearing is more fragmented across CCPs</span></label>
+          <label><input type="radio" name="q23" value="c"><span>Euroclear Bank settles only in Federal Reserve money</span></label>
+          <label><input type="radio" name="q23" value="d"><span>DTC operates T2S for the Eurozone</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q23"></div>
+      </div>
+    </div>
+
+    <!-- Question 24 — concept map -->
+    <div class="quiz-card" data-q="24">
+      <div class="quiz-num">24</div>
+      <div class="quiz-content">
+        <h4>In the rights pass-through model, dividends and proxies primarily flow in which direction?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q24" value="a"><span>Investor → Participant → DTC → Issuer only</span></label>
+          <label><input type="radio" name="q24" value="b"><span>Issuer → Cede/DTC → Participants → Investors (votes return upstream)</span></label>
+          <label><input type="radio" name="q24" value="c"><span>NSCC → FICC → Federal Reserve only</span></label>
+          <label><input type="radio" name="q24" value="d"><span>Transfer agent → SIPC → beneficial owner only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q24"></div>
+      </div>
+    </div>
+
 
   </div>
 
@@ -4849,7 +5052,11 @@ const dtcGuideAnswers = {
   q17: { correct: 'b', explanation: 'DTCC is the parent company that coordinates subsidiaries like DTC (depository), NSCC (equity clearing), and FICC (fixed income clearing), providing integrated services for the U.S. securities industry.' },
   q18: { correct: 'b', explanation: 'SIFMUs are institutions like DTC and NSCC whose failure could pose systemic risk to the financial system, subject to enhanced regulatory oversight and risk management requirements.' },
   q19: { correct: 'b', explanation: 'Proxy voting allows shareholders to vote on corporate matters like director elections and mergers through their DTC participants, even though Cede & Co. holds legal title.' },
-  q20: { correct: 'b', explanation: 'The book-entry system is more efficient than physical certificates because it eliminates physical handling risks, reduces operational costs, and enables instant electronic transfers between participants.' }
+  q20: { correct: 'b', explanation: 'The book-entry system is more efficient than physical certificates because it eliminates physical handling risks, reduces operational costs, and enables instant electronic transfers between participants.' },
+  q21: { correct: 'c', explanation: 'In street name, Cede & Co. is the registered owner on the issuer\'s books; investors are beneficial owners through their DTC participants. See the ownership-stack and legal-vs-beneficial concept maps.' },
+  q22: { correct: 'b', explanation: 'The May 2013 collateral bridge lets participants move collateral between DTCC/DTC and Euroclear automatically—for example pledging U.S. Treasuries at DTC for a Euroclear Bank margin call. See the Euroclear & DTCC Links map.' },
+  q23: { correct: 'b', explanation: 'U.S. equity clearing is highly centralized at NSCC; Europe has no single NSCC equivalent—clearing is split across LCH, Euronext Clearing, bilateral arrangements, and national structures. See the U.S. vs Europe concept map.' },
+  q24: { correct: 'b', explanation: 'Distributions and notices flow Issuer → Cede/DTC → Participants → Investors; proxy votes are aggregated and sent back up the chain. See the Rights Pass-Through concept map.' }
 };
 
 function resetQuiz() {
@@ -4857,7 +5064,7 @@ function resetQuiz() {
   const answeredQuestions = new Set();
   
   document.getElementById('quizScoreFill').style.width = '0%';
-  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizScoreText').textContent = '0 / 24 correct (0%)';
   document.getElementById('quizResult').className = 'quiz-result';
   
   document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
@@ -4877,10 +5084,10 @@ function resetQuiz() {
 // Initialize quiz when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
-    setupQuiz(dtcGuideAnswers, 20);
+    setupQuiz(dtcGuideAnswers, 24);
   });
 } else {
-  setupQuiz(dtcGuideAnswers, 20);
+  setupQuiz(dtcGuideAnswers, 24);
 }
 </script>
 

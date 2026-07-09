@@ -18,8 +18,8 @@ function initializeSearchIndex() {
       id: 'dtc-guide',
       title: 'Securities Ownership Wizard — DTC Teaching Guide',
       url: 'guides/dtc-guide.html',
-      description: 'Comprehensive teaching guide for DTC, DTCC & Cede & Co. securities infrastructure',
-      keywords: ['dtc', 'dtcc', 'cede & co', 'securities', 'ownership', 'clearing', 'settlement', 'broker', 'participant', 'nominee', 'book-entry']
+      description: 'Comprehensive teaching guide for DTC, DTCC & Cede & Co. securities infrastructure with interactive concept maps',
+      keywords: ['dtc', 'dtcc', 'cede & co', 'securities', 'ownership', 'clearing', 'settlement', 'broker', 'participant', 'nominee', 'book-entry', 'concept map', 'concept maps', 'euroclear', 't2s', 'nscc', 'ficc', 'ownership stack', 'street name', 'drs', 'collateral bridge']
     },
     {
       id: 'sf28-guide',
@@ -32,8 +32,8 @@ function initializeSearchIndex() {
       id: 'questionnaire',
       title: 'DTC Eligibility Questionnaire',
       url: 'forms/dtc-eligibility-questionnaire.html',
-      description: 'Interactive eligibility assessment tool for DTC requirements',
-      keywords: ['questionnaire', 'eligibility', 'assessment', 'requirements', 'operational arrangements', 'quiz']
+      description: 'Interactive eligibility assessment tool for DTC requirements with eligibility path concept map',
+      keywords: ['questionnaire', 'eligibility', 'assessment', 'requirements', 'operational arrangements', 'quiz', 'concept map', 'fast', 'transfer agent', 'letter of representations']
     },
     {
       id: 'treasury',
