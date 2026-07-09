@@ -610,8 +610,10 @@
   <a href="#concept-map-legal-beneficial" class="sub">Concept Map — Legal vs Beneficial</a>
   <a href="#operating">Operating Arrangements</a>
   <a href="#operating" class="sub">The Flow of a Trade</a>
+  <a href="#concept-map-agreements" class="sub">Concept Map — Agreements Web</a>
   <a href="#settlement">Settlement &amp; Book-Entry</a>
   <a href="#rights">Shareholder Rights &amp; Dividends</a>
+  <a href="#concept-map-rights-pass" class="sub">Concept Map — Rights Pass-Through</a>
   <a href="#direct">Direct Registration vs. Street Name</a>
   <a href="#concept-map-street-vs-drs" class="sub">Concept Map — Street Name vs DRS</a>
   <a href="#euroclear">Euroclear — The European Counterpart</a>
@@ -1516,6 +1518,107 @@ Several foundational documents govern these relationships:
   <li><strong><span class="hotspot" data-modal="uniform-practice" tabindex="0" role="button" onclick="openModal('modal-uniform-practice')">Uniform Practice Code</span>:</strong> Industry standards developed by the <span class="hotspot" data-modal="sifma" tabindex="0" role="button" onclick="openModal('modal-sifma')">Securities Industry and Financial Markets Association (SIFMA)</span> that supplement DTC rules.</li>
 </ul>
 
+<!-- Concept Map 5: Operating Arrangements Web -->
+<div class="diagram-box concept-map" id="concept-map-agreements" role="img" aria-labelledby="cm5-title" aria-describedby="cm5-desc">
+  <div class="diagram-title" id="cm5-title">Concept Map — Operating Arrangements Web</div>
+  <p id="cm5-desc" class="visually-hidden">
+    Contract graph with DTC at the center. Issuer signs a Letter of Representations recognizing Cede and Co.
+    Transfer agent serves the issuer. Participants sign a participant application and indemnification covering
+    DTC and Cede. Cede is DTC&apos;s nominee partnership. Investors have a customer agreement with their
+    participant outside the DTC contract stack. DTC rules bind participants.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm5-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm5-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Spokes from DTC hub -->
+    <!-- Issuer left -->
+    <path class="cm-edge" d="M268 200 L168 120" marker-end="url(#cm5-arrow)"/>
+    <!-- Transfer agent upper-left -->
+    <path class="cm-edge" d="M280 230 L160 280" marker-end="url(#cm5-arrow)"/>
+    <!-- Cede below hub -->
+    <line class="cm-edge" x1="360" y1="258" x2="360" y2="300" marker-end="url(#cm5-arrow)"/>
+    <!-- Participant right -->
+    <path class="cm-edge" d="M452 200 L540 120" marker-end="url(#cm5-arrow)"/>
+    <!-- Participant indemnifies Cede (arc) -->
+    <path class="cm-edge-dashed" d="M540 160 C520 250 450 300 400 318" marker-end="url(#cm5-arrow)"/>
+    <!-- Investor outer right of participant -->
+    <path class="cm-edge" d="M620 140 L660 200" marker-end="url(#cm5-arrow)"/>
+    <!-- DTC rules ring label path (visual only) -->
+    <circle cx="360" cy="200" r="78" fill="none" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 4" opacity="0.8"/>
+
+    <!-- Edge labels -->
+    <text class="cm-edge-label" x="200" y="150" text-anchor="middle">Letter of Representations</text>
+    <text class="cm-edge-label" x="200" y="250" text-anchor="middle">agency / FAST</text>
+    <text class="cm-edge-label" x="372" y="286" text-anchor="start">nominee partnership</text>
+    <text class="cm-edge-label" x="520" y="150" text-anchor="middle">Participant Application</text>
+    <text class="cm-edge-label" x="500" y="248" text-anchor="middle">Indemnification</text>
+    <text class="cm-edge-label" x="660" y="168" text-anchor="middle">customer agreement</text>
+    <text class="cm-edge-label" x="360" y="130" text-anchor="middle" fill="var(--ink-muted)">DTC Rules bind participants</text>
+
+    <!-- Hub: DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="290" y="168" width="140" height="72" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="360" y="198" text-anchor="middle" fill="#fff">DTC</text>
+      <text class="cm-node-sub" x="360" y="218" text-anchor="middle" fill="var(--accent-muted)">Contract hub</text>
+    </g>
+
+    <!-- Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="48" y="70" width="130" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="113" y="94" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
+      <text class="cm-node-sub" x="113" y="110" text-anchor="middle" fill="var(--ink-tertiary)">deposits issue</text>
+    </g>
+
+    <!-- Transfer agent -->
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
+      <rect class="cm-node-shape" x="40" y="268" width="140" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="110" y="292" text-anchor="middle" fill="var(--accent)" font-size="12">Transfer agent</text>
+      <text class="cm-node-sub" x="110" y="308" text-anchor="middle" fill="var(--ink-tertiary)">issuer agent</text>
+    </g>
+
+    <!-- Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="280" y="302" width="160" height="56" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <text class="cm-node-title" x="360" y="326" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="360" y="344" text-anchor="middle" fill="var(--gold)">Nominee · protected party</text>
+    </g>
+
+    <!-- Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
+      <rect class="cm-node-shape" x="520" y="70" width="140" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="590" y="94" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
+      <text class="cm-node-sub" x="590" y="112" text-anchor="middle" fill="var(--ink-tertiary)">broker / bank</text>
+    </g>
+
+    <!-- Investor -->
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
+      <rect class="cm-node-shape" x="600" y="210" width="100" height="52" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <text class="cm-node-title" x="650" y="234" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
+      <text class="cm-node-sub" x="650" y="250" text-anchor="middle" fill="var(--ink-tertiary)">customer</text>
+    </g>
+
+    <!-- Outside DTC note -->
+    <rect x="48" y="390" width="624" height="48" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="412" text-anchor="middle" fill="var(--ink-tertiary)">Solid edges = DTC-facing contracts · Investor–participant agreement sits outside DTC&apos;s direct rules</text>
+    <text class="cm-edge-label" x="360" y="428" text-anchor="middle" fill="var(--ink-muted)">Dashed = indemnification of Cede &amp; DTC against beneficial-owner disputes</text>
+  </svg>
+  <p class="cm-caption">DTC sits at the center of the contract web. Issuers, participants, and Cede all connect to it; <strong>your brokerage agreement</strong> is with the participant, not with DTC itself.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> DTC hub</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Nominee (indemnified)</span>
+    <span class="cm-legend-item"><span class="cm-legend-line"></span> Core agreement</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Indemnification</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
 <!-- SECTION: SETTLEMENT -->
 <h2 class="section-title" id="settlement">Settlement &amp; Book-Entry Mechanics</h2>
 
@@ -1545,6 +1648,114 @@ Because Cede &amp; Co. is the registered owner, issuers send dividends, proxy ma
 <p class="body-text">
 When an issuer pays a dividend, it sends the total payment to DTC (as registered owner). DTC then <span class="hotspot" data-modal="pro-rata" tabindex="0" role="button" onclick="openModal('modal-pro-rata')">allocates the payment pro-rata</span> to participants based on their positions. Participants then credit their customers' accounts. This chain typically completes within one business day of the issuer's payment.
 </p>
+
+<!-- Concept Map 6: Rights Pass-Through -->
+<div class="diagram-box concept-map" id="concept-map-rights-pass" role="img" aria-labelledby="cm6-title" aria-describedby="cm6-desc">
+  <div class="diagram-title" id="cm6-title">Concept Map — Rights Pass-Through</div>
+  <p id="cm6-desc" class="visually-hidden">
+    Horizontal pipeline showing how issuer distributions and communications pass through Cede and Co. and DTC,
+    then to participants, then to investors. Three channels: cash distributions, proxy and voting materials,
+    and corporate action notices. Ownership nodes match the ownership stack but arrows reverse for economic rights.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm6-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm6-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="cm6-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+      <marker id="cm6-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Channel background bands -->
+    <rect x="40" y="118" width="640" height="52" rx="8" fill="var(--green-light)" opacity="0.45"/>
+    <rect x="40" y="182" width="640" height="52" rx="8" fill="var(--accent-light)" opacity="0.55"/>
+    <rect x="40" y="246" width="640" height="52" rx="8" fill="var(--gold-light)" opacity="0.55"/>
+
+    <text class="cm-zone-label" x="52" y="148" fill="var(--green)" font-size="9">Cash</text>
+    <text class="cm-zone-label" x="52" y="212" fill="var(--accent)" font-size="9">Proxy</text>
+    <text class="cm-zone-label" x="52" y="276" fill="var(--gold-deep)" font-size="9">Notices</text>
+
+    <!-- Pipeline arrows per channel -->
+    <!-- Cash channel y=144 -->
+    <line x1="168" y1="144" x2="248" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <line x1="312" y1="144" x2="392" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <line x1="456" y1="144" x2="536" y2="144" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
+    <!-- Proxy y=208 -->
+    <line x1="168" y1="208" x2="248" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <line x1="312" y1="208" x2="392" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <line x1="456" y1="208" x2="536" y2="208" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
+    <!-- Notices y=272 -->
+    <line x1="168" y1="272" x2="248" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
+    <line x1="312" y1="272" x2="392" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
+    <line x1="456" y1="272" x2="536" y2="272" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
+
+    <!-- Stage nodes (columns) -->
+    <!-- Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="88" y="48" width="100" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="138" y="70" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
+      <text class="cm-node-sub" x="138" y="86" text-anchor="middle" fill="var(--ink-tertiary)">source</text>
+    </g>
+    <!-- vertical rail under issuer into channels -->
+    <line class="cm-edge" x1="138" y1="96" x2="138" y2="118"/>
+
+    <!-- Cede / DTC -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="228" y="36" width="120" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="288" y="60" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede / DTC</text>
+      <text class="cm-node-sub" x="288" y="78" text-anchor="middle" fill="var(--gold)">registered owner</text>
+    </g>
+    <line class="cm-edge" x1="288" y1="96" x2="288" y2="118"/>
+
+    <!-- Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
+      <rect class="cm-node-shape" x="372" y="40" width="120" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="432" y="64" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
+      <text class="cm-node-sub" x="432" y="82" text-anchor="middle" fill="var(--ink-tertiary)">pro-rata share</text>
+    </g>
+    <line class="cm-edge" x1="432" y1="96" x2="432" y2="118"/>
+
+    <!-- Investor -->
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
+      <rect class="cm-node-shape" x="516" y="40" width="120" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="576" y="64" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
+      <text class="cm-node-sub" x="576" y="82" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
+    </g>
+    <line class="cm-edge" x1="576" y1="96" x2="576" y2="118"/>
+
+    <!-- Channel content labels inside bands -->
+    <text class="cm-edge-label" x="360" y="148" text-anchor="middle" fill="var(--green)">Dividends · interest · distributions</text>
+    <text class="cm-edge-label" x="360" y="212" text-anchor="middle" fill="var(--accent)">Proxy materials · voting instructions</text>
+    <text class="cm-edge-label" x="360" y="276" text-anchor="middle" fill="var(--gold-deep)">Corporate actions · redemptions · record dates</text>
+
+    <!-- Stage labels under pipeline -->
+    <text class="cm-edge-label" x="138" y="330" text-anchor="middle">Pays / sends</text>
+    <text class="cm-edge-label" x="288" y="330" text-anchor="middle">Receives as nominee</text>
+    <text class="cm-edge-label" x="432" y="330" text-anchor="middle">Allocates to accounts</text>
+    <text class="cm-edge-label" x="576" y="330" text-anchor="middle">Credits customer</text>
+
+    <!-- Reverse note: votes flow back -->
+    <path class="cm-edge-dashed" d="M576 350 C500 370 360 370 288 350" marker-end="url(#cm6-arrow)"/>
+    <text class="cm-edge-label" x="432" y="380" text-anchor="middle" fill="var(--ink-muted)">Votes flow back: Investor → Participant → DTC → Issuer (aggregated)</text>
+
+    <text class="cm-edge-label" x="360" y="408" text-anchor="middle" fill="var(--ink-tertiary)">Same ownership chain as the stack map — arrows reverse for economic rights and communications</text>
+  </svg>
+  <p class="cm-caption">Issuers pay and mail to <strong>Cede / DTC</strong>; the system is obligated to push value, votes, and notices down to you. Proxy votes travel back up the same ladder.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Cash distributions</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Proxy / voting</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Corporate action notices</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Votes returning upstream</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
 
 <div class="diagram-box">
   <div class="diagram-title">Dividend Processing Flow</div>
