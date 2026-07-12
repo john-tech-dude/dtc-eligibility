@@ -2889,8 +2889,6 @@ body,
     <a href="#instructions" class="quick-nav-link">Instructions</a>
     <a href="#issue-info" class="quick-nav-link">Issue Information</a>
     <a href="#delivery" class="quick-nav-link">Delivery</a>
-    <a href="#certificate" class="quick-nav-link">Certificates</a>
-    <a href="#lor" class="quick-nav-link">Letter of Reps</a>
     <a href="#scenarios" class="quick-nav-link">Scenarios</a>
     <a href="#mistakes" class="quick-nav-link">Common Mistakes</a>
     <a href="#study-guide" class="quick-nav-link">Study Guide</a>
@@ -3995,7 +3993,7 @@ body,
         <h4>What is the distribution compliance period for securities offered under Regulation S?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q11" value="a"><span>30 days for U.S. persons, 90 days for non-U.S. persons</span></label>
-          <label><input type="radio" name="q11" value="b"><span>40 days for all offerings</span></label>
+          <label><input type="radio" name="q11" value="b"><span>40 days for debt securities; 1 year for equity (non-reporting) or 6 months (reporting)</span></label>
           <label><input type="radio" name="q11" value="c"><span>90 days for offerings to non-U.S. persons, with restrictions on U.S. persons</span></label>
           <label><input type="radio" name="q11" value="d"><span>No compliance period required for Regulation S offerings</span></label>
         </div>
@@ -4185,7 +4183,7 @@ const quizAnswers = {
   q8: { correct: 'b', explanation: 'A Blanket Issuer LOR (BLOR) covers all DTC-eligible securities of a particular issuer and does not expire. An ILOR applies only to a single issuance. <strong>Definition:</strong> BLOR provides ongoing eligibility without requiring new LORs for each issue.' },
   q9: { correct: 'c', explanation: 'A UK entity issuing euro-denominated bonds needs BOTH the UK/Ireland rider (jurisdiction) AND the non-U.S. currency rider (FX mechanics). These are distinct requirements. <strong>Definition:</strong> LOR riders are addendum documents that address special circumstances beyond standard representations.' },
   q10: { correct: 'b', explanation: 'The Transfer Agent lacking an executed OA Agent Letter is a hard stop — DTC will deny eligibility. Missed deadlines may be extendable (DTC discretion), Reg S is eligible, and correspondent relationships are valid alternatives. <strong>Definition:</strong> OA Agent Letter is the agreement between Transfer Agent and DTC defining operational responsibilities.' },
-  q11: { correct: 'c', explanation: 'Regulation S offerings have a 90-day distribution compliance period during which securities cannot be offered or sold to U.S. persons, except in limited circumstances. <strong>Definition:</strong> Regulation S is an SEC exemption that allows companies to raise capital abroad without SEC registration, provided sales are made offshore to non-U.S. persons.' },
+  q11: { correct: 'b', explanation: 'Regulation S distribution compliance periods are 40 days for debt securities (Categories 2 and 3). For equity securities, the period is one year for non-reporting issuers or six months for reporting issuers. During these periods, securities cannot be offered or sold to U.S. persons except in limited circumstances. <strong>Definition:</strong> Regulation S is an SEC exemption that allows companies to raise capital abroad without SEC registration, provided sales are made offshore to non-U.S. persons.' },
   q12: { correct: 'b', explanation: 'Regulation S securities require a distinct CUSIP from any U.S. registered securities of the same class to prevent commingling and ensure proper restriction compliance. <strong>Definition:</strong> Distinct CUSIP means a completely different 9-character identifier, not just a variation.' },
   q13: { correct: 'a', explanation: 'Section 3(c)(7) funds are exempt from SEC registration only if all owners are Qualified Purchasers — generally institutions with at least $5 million in investments. <strong>Definition:</strong> Qualified Purchasers under the Investment Company Act are entities or individuals owning at least $5 million in investments, excluding certain employee benefit plans and retirement accounts.' },
   q14: { correct: 'b', explanation: 'The certificate sizing rule applies to amounts exceeding $500 million. Exactly $500M or less does not require multiple certificates. <strong>Key detail:</strong> $500,000,001 would require two certificates ($500M + $1).' },
@@ -4300,7 +4298,7 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Definition</div>
         <div class="def-word">The Depository Trust Company</div>
-        <p>The world's largest securities depository, holding over $87 trillion in assets. Founded in 1973 and headquartered in New York City, DTC is a subsidiary of The Depository Trust & Clearing Corporation (DTCC).</p>
+        <p>The world's largest securities depository, holding over $100 trillion in assets. (DTC surpassed this milestone in June 2025; the exact figure moves quarter to quarter.) Founded in 1973 and headquartered in New York City, DTC is a subsidiary of The Depository Trust & Clearing Corporation (DTCC).</p>
       </div>
       <p>DTC provides custody and book-entry transfer services for eligible securities. When securities are "DTC-eligible," they can be held, transferred, and settled electronically through DTC's systems rather than via physical certificate delivery.</p>
       <p>DTC's nominee, <strong>Cede & Co.</strong>, is the registered owner of record for all securities held in DTC's depository. Beneficial owners hold their interests through DTC Participants (broker-dealers, banks, and other financial institutions).</p>
@@ -4412,7 +4410,7 @@ function resetQuiz() {
       <ul>
         <li><strong>10 business days before closing:</strong> Completed questionnaire + preliminary offering document (via UW SOURCE/UWC preferred)</li>
         <li><strong>7 business days before closing:</strong> CUSIP numbers, principal amount, interest rate, maturity date</li>
-        <li><strong>3 business days before closing:</strong> Agent Confirmation from Transfer Agent</li>
+        <li><strong>10 business days after closing:</strong> Agent Confirmation from Transfer Agent</li>
         <li><strong>1 business day before closing:</strong> Signed Letter of Representations</li>
         <li><strong>12:00 p.m. ET, business day before closing:</strong> Physical certificates or FAST confirmation</li>
       </ul>
@@ -4728,7 +4726,7 @@ function resetQuiz() {
         <p>A safe harbor under the Securities Act of 1933 for offers and sales of securities outside the United States. Designed to facilitate access to international capital markets without full SEC registration.</p>
       </div>
       <p class="modal-section-title">Distribution Compliance Period</p>
-      <p>Regulation S prohibits offers and sales to U.S. persons during the distribution compliance period. For debt securities, this is typically <strong>40 days</strong> (90 days for certain categories). During this period, beneficial interests may only be held through Euroclear and Clearstream as DTC participants.</p>
+      <p>Regulation S prohibits offers and sales to U.S. persons during the distribution compliance period. For debt securities, this is typically <strong>40 days</strong>. For equity securities, the period is one year for non-reporting issuers or six months for reporting issuers. During this period, beneficial interests may only be held through Euroclear and Clearstream as DTC participants.</p>
       <div class="def-callout">
         <div class="def-type">Restriction</div>
         <div class="def-word">U.S. Person Prohibition</div>

@@ -881,7 +881,7 @@
     <li><strong>Original signatures only:</strong> Reproduced or electronic signatures are <strong>not acceptable</strong>. The affidavit must be notarized.</li>
     <li><strong>Net worth ≥ penal amount:</strong> The surety must demonstrate <span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span> not less than the <span class="hotspot" data-modal="penal-amount" tabindex="0" role="button" onclick="openModal('modal-penal-amount')">penal amount</span> of the bond.</li>
     <li><strong>No financial interest in principal:</strong> The surety cannot have any financial interest in assets connected with the principal on the bond.</li>
-    <li><strong>Documentation of pledged assets must be attached:</strong> Including CUSIP numbers, par amounts, certified <span class="hotspot" data-modal="evidence-of-title" tabindex="0" role="button" onclick="openModal('modal-evidence-of-title')">evidence of title</span>, and current <span class="hotspot" data-modal="tax-assessment" tabindex="0" role="button" onclick="openModal('modal-tax-assessment')">tax assessments</span> for real estate.</li>
+    <li><strong>Documentation of pledged assets must be attached:</strong> Including CUSIP numbers and par amounts for U.S. government securities and other Treasury-eligible obligations per 31 CFR part 225.</li>
   </ul>
 </div>
 
@@ -1009,13 +1009,13 @@
     </tbody>
   </table>
   <div style="padding: 10px 12px; font-size: 0.72rem; color: var(--ink-muted); font-style: italic; border-top: 1px solid var(--border);">
-    <strong>Note:</strong> For real estate, include a legal description, street address and other identifying characteristics; the <span class="hotspot" data-modal="market-value" tabindex="0" role="button" onclick="openModal('modal-market-value')">market value</span>; attach supporting certified documents including <span class="hotspot" data-modal="recorded-lien" tabindex="0" role="button" onclick="openModal('modal-recorded-lien')">recorded lien</span>; evidence of title and the current tax assessment on the property. For market value approach, also provide a current appraisal.
+    <strong>Note:</strong> Under current FAR 28.203-1 rules (effective Feb 2021), only U.S. government securities and other Treasury-eligible obligations are acceptable collateral. Provide CUSIP numbers and par amounts for each security pledged. Real estate is no longer acceptable collateral.
   </div>
 </div>
 
 <div class="sf28-encumbrance">
   <div class="sf28-encumbrance-header">
-    Real Estate and Other Assets (describe the assets, the details of the escrow account, and attach certified evidence thereof)
+    Securities (CUSIP number and par amount)
   </div>
   <div class="sf28-encumbrance-body">
     <div class="sf28-field" style="min-height: 60px;"></div>
@@ -1024,7 +1024,7 @@
 
 <div class="sf28-encumbrance" id="encumbrances">
   <div class="sf28-encumbrance-header">
-    8. Identify All <span class="hotspot" data-modal="liens" tabindex="0" role="button" onclick="openModal('modal-liens')">Liens</span>, <span class="hotspot" data-modal="judgments" tabindex="0" role="button" onclick="openModal('modal-judgments')">Judgements</span>, Or Any Other <span class="hotspot" data-modal="encumbrances" tabindex="0" role="button" onclick="openModal('modal-encumbrances')">Encumbrances</span> Involving Subject Assets Including Real Estate Taxes Due And Payable.
+    8. Identify All <span class="hotspot" data-modal="liens" tabindex="0" role="button" onclick="openModal('modal-liens')">Liens</span>, <span class="hotspot" data-modal="judgments" tabindex="0" role="button" onclick="openModal('modal-judgments')">Judgements</span>, Or Any Other <span class="hotspot" data-modal="encumbrances" tabindex="0" role="button" onclick="openModal('modal-encumbrances')">Encumbrances</span> Involving Subject Assets.
   </div>
   <div class="sf28-encumbrance-body">
     <div class="sf28-field" style="min-height: 80px;"></div>
@@ -1143,6 +1143,9 @@
   <div class="section-heading">Scenario-Based Learning</div>
   <p style="font-size: 0.82rem; color: var(--ink-tertiary); margin-bottom: 16px;">
     Work through realistic surety situations to see how SF 28 applies in practice. Click a tab to switch scenarios.
+  </p>
+  <p style="font-size: 0.78rem; color: var(--red); margin-bottom: 16px; padding: 8px 12px; background: var(--red-light); border-left: 3px solid var(--red);">
+    <strong>Note:</strong> Following a February 2021 FAR rule change, real estate is no longer acceptable collateral for individual sureties. Current rules require Treasury-eligible securities (31 CFR part 225). The real estate scenarios below reflect historical practice.
   </p>
   <div class="scenario-tabs" role="tablist">
     <button class="scenario-tab active" data-target="sc-a" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate Surety</button>
@@ -1472,8 +1475,8 @@
         <h4>What types of assets can be pledged as security for an individual surety?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q9" value="a"><span>Cash only</span></label>
-          <label><input type="radio" name="q9" value="b"><span>Real estate and securities</span></label>
-          <label><input type="radio" name="q9" value="c"><span>Personal property only</span></label>
+          <label><input type="radio" name="q9" value="b"><span>U.S. government securities and other Treasury-eligible obligations</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Real estate and personal property</span></label>
           <label><input type="radio" name="q9" value="d"><span>Business assets only</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q9"></div>
@@ -2595,13 +2598,13 @@
 const sf28Answers = {
   q1: { correct: 'b', explanation: 'SF 28 is the Standard Form 28 Affidavit of Individual Surety, used when an individual (rather than a corporate surety company) provides a bond for a government contract.' },
   q2: { correct: 'b', explanation: 'There is no flat dollar minimum. FAR 28.203-1 requires that the net adjusted value of an individual surety\'s pledged, unencumbered assets equal or exceed the penal amount of the specific bond — so the required net worth scales with the bond, not a fixed threshold.' },
-  q3: { correct: 'b', explanation: 'Individual sureties must be U.S. citizens or U.S. nationals, as defined by the Immigration and Nationality Act. Permanent residents and foreign nationals do not qualify.' },
+  q3: { correct: 'a', explanation: 'Individual sureties must be U.S. citizens. However, when the Contracting Officer is located in an outlying area or foreign country, the individual surety is only required to be a permanent resident of that area or country, per SF 28 instructions.' },
   q4: { correct: 'b', explanation: 'The False Statements Act (18 U.S.C. § 1001) makes it a criminal offense to knowingly and willfully make false statements on government forms, punishable by fine and/or imprisonment.' },
   q5: { correct: 'b', explanation: 'The Miller Act requires performance and payment bonds for federal construction contracts exceeding $150,000, protecting subcontractors and laborers on federal projects.' },
   q6: { correct: 'b', explanation: 'Corporate surety companies are insurance companies authorized by state insurance commissioners to issue surety bonds, using their corporate assets rather than personal assets.' },
   q7: { correct: 'b', explanation: 'Individual sureties pledge their personal assets, exposing them to personal liability if the bond is called. Corporate sureties use company resources and spread risk across many bonds.' },
   q8: { correct: 'c', explanation: 'The certification statement is a legally binding declaration that all information provided on SF 28 is true and correct, made under penalty of perjury under 18 U.S.C. § 1001.' },
-  q9: { correct: 'b', explanation: 'Individual sureties can pledge real estate (with evidence of title) and securities (through financial institutions) as security, among other asset types that meet net worth requirements.' },
+  q9: { correct: 'b', explanation: 'Under current FAR 28.203-1 (effective Feb 2021), individual sureties must pledge assets that meet Treasury\'s Bureau of the Fiscal Service eligibility requirements per 31 CFR part 225. Acceptable collateral is limited to U.S. government debt obligations (Treasury bills, notes, bonds, agency MBS, etc.). Real estate is no longer acceptable collateral.' },
   q10: { correct: 'c', explanation: 'The current version of SF 28 is Revision 10/2023, which updated the form with current regulatory requirements and clarified instructions for completion.' },
   q11: { correct: 'c', explanation: 'The disclosure section requires sureties to reveal any liens, claims, or encumbrances on pledged assets, ensuring the government understands any limitations on the security.' },
   q12: { correct: 'b', explanation: 'The RTN identifies the financial institution submitting the securities pledge, enabling the government to verify the pledge and potentially transfer ownership if the bond is called.' },
