@@ -1183,45 +1183,39 @@
     </defs>
 
     <!-- Main pipeline edges -->
-    <line class="cm-edge" x1="128" y1="70" x2="168" y2="70" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="298" y1="70" x2="338" y2="70" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="468" y1="70" x2="508" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="118" y1="70" x2="173" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="293" y1="70" x2="345" y2="70" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="461" y1="70" x2="528" y2="70" marker-end="url(#cme-arrow)"/>
     <line class="cm-edge" x1="360" y1="150" x2="360" y2="100" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="598" y1="100" x2="598" y2="190" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="508" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
-
-    <text class="cm-edge-label" x="148" y="60" text-anchor="middle">appoints</text>
-    <text class="cm-edge-label" x="318" y="60" text-anchor="middle">joins FAST</text>
-    <text class="cm-edge-label" x="488" y="60" text-anchor="middle">submits to</text>
-    <text class="cm-edge-label" x="372" y="130" text-anchor="start">docs required</text>
-    <text class="cm-edge-label" x="610" y="150" text-anchor="start">approves</text>
+    <line class="cm-edge" x1="602" y1="100" x2="602" y2="190" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="528" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
 
     <!-- 1 Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="28" y="44" width="100" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="38" y="44" width="80" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
       <text class="cm-node-title" x="78" y="68" text-anchor="middle" fill="var(--ink)">Issuer</text>
       <text class="cm-node-sub" x="78" y="84" text-anchor="middle" fill="var(--ink-tertiary)">new issue</text>
     </g>
 
     <!-- 2 Transfer agent -->
     <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
-      <rect class="cm-node-shape" x="170" y="44" width="128" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="175" y="44" width="118" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
       <text class="cm-node-title" x="234" y="68" text-anchor="middle" fill="var(--accent)">Transfer agent</text>
       <text class="cm-node-sub" x="234" y="84" text-anchor="middle" fill="var(--ink-tertiary)">registrar</text>
     </g>
 
     <!-- 3 FAST -->
     <g class="cm-node" data-modal="fast" tabindex="0" role="button" aria-label="FAST — open definition">
-      <rect class="cm-node-shape" x="340" y="44" width="128" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="347" y="44" width="114" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
       <text class="cm-node-title" x="404" y="68" text-anchor="middle" fill="var(--accent)">FAST program</text>
       <text class="cm-node-sub" x="404" y="84" text-anchor="middle" fill="var(--ink-tertiary)">agent at DTC</text>
     </g>
 
     <!-- 4 Underwriting -->
     <g class="cm-node" data-modal="underwriting-dept" tabindex="0" role="button" aria-label="Underwriting Department — open definition">
-      <rect class="cm-node-shape" x="510" y="44" width="176" height="56" rx="8" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
-      <text class="cm-node-title" x="598" y="68" text-anchor="middle" fill="#fff">DTC Underwriting</text>
-      <text class="cm-node-sub" x="598" y="86" text-anchor="middle" fill="var(--accent-muted)">UW SOURCE / UWC</text>
+      <rect class="cm-node-shape" x="530" y="44" width="144" height="56" rx="8" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="602" y="68" text-anchor="middle" fill="#fff">DTC Underwriting</text>
+      <text class="cm-node-sub" x="602" y="86" text-anchor="middle" fill="var(--accent-muted)">UW SOURCE / UWC</text>
     </g>
 
     <!-- Supporting package -->
@@ -1237,6 +1231,13 @@
       <text class="cm-node-title" x="360" y="242" text-anchor="middle" fill="var(--green)">DTC-eligible · book-entry</text>
       <text class="cm-node-sub" x="360" y="256" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. on issuer books</text>
     </g>
+
+    <!-- Edge labels (drawn last so they are guaranteed to sit on top of any overlapping graphics) -->
+    <text class="cm-edge-label" x="145" y="60" text-anchor="middle">appoints</text>
+    <text class="cm-edge-label" x="319" y="60" text-anchor="middle">joins FAST</text>
+    <text class="cm-edge-label" x="494" y="60" text-anchor="middle">submits to</text>
+    <text class="cm-edge-label" x="372" y="130" text-anchor="start">docs required</text>
+    <text class="cm-edge-label" x="614" y="150" text-anchor="start">approves</text>
   </svg>
   <p class="cm-caption">Eligibility is an operational path: the issuer and transfer agent prepare the issue for <strong>FAST</strong>, then DTC Underwriting reviews the questionnaire and representations before book-entry goes live.</p>
   <div class="cm-legend" aria-hidden="true">
