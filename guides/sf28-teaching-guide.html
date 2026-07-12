@@ -828,6 +828,7 @@
     </div>
     <div style="display: flex; align-items: center; gap: 12px;">
       <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
@@ -1144,10 +1145,10 @@
     Work through realistic surety situations to see how SF 28 applies in practice. Click a tab to switch scenarios.
   </p>
   <div class="scenario-tabs" role="tablist">
-    <button class="scenario-tab active" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate Surety</button>
-    <button class="scenario-tab" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Securities Portfolio Surety</button>
-    <button class="scenario-tab" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: Co-Surety Arrangement</button>
-    <button class="scenario-tab" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Foreign Contract Surety</button>
+    <button class="scenario-tab active" data-target="sc-a" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate Surety</button>
+    <button class="scenario-tab" data-target="sc-b" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Securities Portfolio Surety</button>
+    <button class="scenario-tab" data-target="sc-c" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: Co-Surety Arrangement</button>
+    <button class="scenario-tab" data-target="sc-d" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Foreign Contract Surety</button>
   </div>
 
   <div class="scenario-panel active" id="sc-a">
@@ -1363,12 +1364,12 @@
     <div class="quiz-card" data-q="2">
       <div class="quiz-num">2</div>
       <div class="quiz-content">
-        <h4>What is the minimum net worth requirement for an individual surety?</h4>
+        <h4>What net worth must an individual surety demonstrate?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q2" value="a"><span>$50,000</span></label>
-          <label><input type="radio" name="q2" value="b"><span>$100,000</span></label>
-          <label><input type="radio" name="q2" value="c"><span>$500,000</span></label>
-          <label><input type="radio" name="q2" value="d"><span>$1,000,000</span></label>
+          <label><input type="radio" name="q2" value="a"><span>A flat minimum of $100,000, regardless of bond size</span></label>
+          <label><input type="radio" name="q2" value="b"><span>Net worth equal to or greater than the penal amount of the bond</span></label>
+          <label><input type="radio" name="q2" value="c"><span>Net worth equal to at least 20% of the penal amount</span></label>
+          <label><input type="radio" name="q2" value="d"><span>There is no net worth requirement</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q2"></div>
       </div>
@@ -1543,7 +1544,7 @@
     <div class="quiz-card" data-q="14">
       <div class="quiz-num">14</div>
       <div class="quiz-content">
-        <h4>What is FAR 28.102-2?</h4>
+        <h4>What is FAR 28.203?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q14" value="a"><span>Regulation about bond pricing</span></label>
           <label><input type="radio" name="q14" value="b"><span>Regulation about individual surety qualifications</span></label>
@@ -1637,7 +1638,7 @@
         <div class="quiz-options">
           <label><input type="radio" name="q20" value="a"><span>Fine only</span></label>
           <label><input type="radio" name="q20" value="b"><span>Imprisonment only</span></label>
-          <label><input type="radio" name="q20" value="c"><span>Fine and/or imprisonment up to 8 years</span></label>
+          <label><input type="radio" name="q20" value="c"><span>Fine and/or imprisonment up to 5 years</span></label>
           <label><input type="radio" name="q20" value="d"><span>Loss of citizenship</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q20"></div>
@@ -1647,6 +1648,7 @@
   </div>
 
   <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check All Answers</button>
     <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
   </div>
 
@@ -1668,7 +1670,7 @@
   </nav>
 
     <div class="footer-info">
-      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0</div>
+      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0 · Last updated July 2026</div>
       <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
       <div class="footer-links">
         <a href="https://www.gsa.gov/reference/forms" rel="noopener">GSA Forms</a>
@@ -2184,10 +2186,10 @@
         <div class="def-word">Penal Amount</div>
         <p>The maximum dollar amount for which a surety can be held liable under a bond. This is the bond's face value — the amount the government can collect from the surety if the principal defaults.</p>
       </div>
-      <p><strong>Net worth requirement:</strong> FAR 28.102-2(a) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This means if the bond is $500,000, the surety must show a net worth of at least $500,000 after accounting for all debts and encumbrances.</p>
+      <p><strong>Net worth requirement:</strong> FAR 28.203-1(b) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This means if the bond is $500,000, the surety must show a net worth of at least $500,000 after accounting for all debts and encumbrances.</p>
       <p><strong>Calculation example:</strong> If you have $1.2 million in assets and $400,000 in liabilities (mortgage, loans, credit cards), your net worth is $800,000. This qualifies you for bonds up to $800,000 in penal amount.</p>
       <p><strong>Why this matters:</strong> The government must be confident that if it calls on the bond, the surety has sufficient personal resources to pay the full amount. The penal amount is the ceiling of that exposure.</p>
-      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203-1(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2205,7 +2207,7 @@
       <p><strong>Role in bond acceptance:</strong> The contracting officer reviews SF 28 affidavits to ensure they meet FAR requirements, verify that pledged assets are sufficient and properly documented, and determine whether the surety is acceptable for the specific contract.</p>
       <p><strong>Authority:</strong> Contracting officers have broad discretion to reject inadequate surety arrangements. They may require additional documentation, reject affidavits with discrepancies, or demand corporate surety bonds in place of individual surety arrangements.</p>
       <p><strong>Geographic jurisdiction:</strong> The contracting officer's location determines certain requirements, such as whether permanent resident (non-citizen) sureties are acceptable. Outlying areas have special citizenship rules.</p>
-      <div class="citation"><strong>Source:</strong> FAR 1.601; FAR 28.102-2. <a href="https://www.acquisition.gov/far/part-1#FAR_1_601">acquisition.gov (FAR 1.601)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 1.601; FAR 28.203. <a href="https://www.acquisition.gov/far/part-1#FAR_1_601">acquisition.gov (FAR 1.601)</a></div>
     </div>
   </div>
 </div>
@@ -2220,10 +2222,10 @@
         <div class="def-word">Outlying Area</div>
         <p>A geographic location outside the 50 states and the District of Columbia where the standard U.S. citizenship requirement for individual sureties may be relaxed.</p>
       </div>
-      <p><strong>Citizenship exception:</strong> Under FAR 28.102-2(b), when a contract is to be performed in an outlying area, a permanent resident alien (lawful permanent resident/green card holder) may serve as an individual surety, even though they are not a U.S. citizen.</p>
+      <p><strong>Citizenship exception:</strong> Under FAR 28.203, when a contract is to be performed in an outlying area, a permanent resident alien (lawful permanent resident/green card holder) may serve as an individual surety, even though they are not a U.S. citizen.</p>
       <p><strong>What qualifies as outlying area:</strong> This includes Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, Northern Mariana Islands, and certain U.S. territories and possessions. It does not include foreign countries.</p>
       <p><strong>Contracting officer location:</strong> The citizenship exception applies when the contracting officer is located in an outlying area, not just where the contract will be performed. The rationale is that it may be difficult to find U.S. citizens willing to serve as sureties in these locations.</p>
-      <div class="citation"><strong>Source:</strong> FAR 28.102-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203; SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2382,11 +2384,11 @@
         <div class="def-word">Permanent Resident</div>
         <p>A non-citizen who has been granted the right to live and work permanently in the United States, typically evidenced by a Green Card (Form I-551). Also known as a lawful permanent resident (LPR).</p>
       </div>
-      <p><strong>Citizenship requirement:</strong> For federal contracts awarded in the 50 states and D.C., individual sureties must be U.S. citizens. However, FAR 28.102-2(b) provides an exception for outlying areas and foreign countries.</p>
+      <p><strong>Citizenship requirement:</strong> For federal contracts awarded in the 50 states and D.C., individual sureties must be U.S. citizens. However, FAR 28.203 provides an exception for outlying areas and foreign countries.</p>
       <p><strong>Outlying area exception:</strong> When a contract is to be performed in an outlying area (Guam, Puerto Rico, U.S. Virgin Islands, American Samoa, Northern Mariana Islands) or a foreign country, a permanent resident of that area may serve as an individual surety, even if they are not a U.S. citizen.</p>
       <p><strong>Contracting officer location:</strong> The exception applies based on the contracting officer's location, not just where the contract will be performed. If the contracting officer is in an outlying area, permanent residency may suffice.</p>
       <p><strong>Documentation:</strong> Permanent residents should be prepared to provide their Green Card or other permanent residency documentation if requested by the contracting officer.</p>
-      <div class="citation"><strong>Source:</strong> FAR 28.102-2(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203; SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2401,11 +2403,11 @@
         <div class="def-word">Net Worth</div>
         <p>Total assets minus total liabilities (debts and encumbrances). For individual sureties, net worth must equal or exceed the penal amount of the bond.</p>
       </div>
-      <p><strong>FAR requirement:</strong> FAR 28.102-2(a) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This is a strict requirement — the contracting officer will reject affidavits that show net worth below the bond amount.</p>
+      <p><strong>FAR requirement:</strong> FAR 28.203-1(b) requires that an individual surety's net worth be "not less than the penal amount" of the bond. This is a strict requirement — the contracting officer will reject affidavits that show net worth below the bond amount.</p>
       <p><strong>Calculation:</strong> Net Worth = (Real Estate + Securities + Cash + Other Assets) − (Mortgages + Liens + Loans + Credit Cards + Other Debts). All liabilities must be disclosed, even if they seem small.</p>
       <p><strong>Example:</strong> If you have $1.2 million in assets (home, investments, savings) and $400,000 in liabilities (mortgage, student loans, credit cards), your net worth is $800,000. This qualifies you for bonds up to $800,000 in penal amount.</p>
       <p><strong>Hidden liabilities:</strong> Tax liens, judgments, and undisclosed debts can suddenly reduce net worth below requirements. Always disclose all encumbrances in Field 8 of SF 28.</p>
-      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203-1(b); SF 28 Instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2443,7 +2445,7 @@
       <p><strong>Securities market value:</strong> For stocks, bonds, and Treasury securities, market value is based on current trading prices. Field 7 of SF 28 requires both par value and current market value.</p>
       <p><strong>Why it matters:</strong> Net worth calculations use market value, not purchase price or tax assessment. A home purchased for $500,000 may now be worth $800,000 (good) or $400,000 (insufficient for larger bonds).</p>
       <p><strong>Contracting officer review:</strong> Contracting officers may question market values that seem inconsistent with market conditions. Be prepared to support your valuations with recent appraisals or broker statements.</p>
-      <div class="citation"><strong>Source:</strong> FAR 28.102-2(a); SF 28 Field 7 instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> FAR 28.203-1(b); SF 28 Field 7 instructions. <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2462,7 +2464,7 @@
       <p><strong>Limitations:</strong> Tax assessments may lag behind market changes. In rapidly appreciating markets, tax assessment may be lower than current market value. In declining markets, it may be higher. Use appraisals for current market value.</p>
       <p><strong>What to attach:</strong> The most recent property tax bill or assessment notice from the county or municipal tax assessor's office. This should show the assessment value, property description, and tax amount due.</p>
       <p><strong>Verification of clean title:</strong> Current tax assessments also help verify that property taxes are paid up to date. Unpaid property taxes represent a lien against the property that must be disclosed in Field 8.</p>
-      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.203-1(b). <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2501,7 +2503,7 @@
       <p><strong>Title insurance:</strong> A title insurance policy is particularly valuable evidence because it includes research into the property's ownership history and identifies any existing liens or encumbrances.</p>
       <p><strong>Recording:</strong> Real estate ownership is recorded at the county level. The evidence of title should reference the official recording information (book, page, document number) for verification.</p>
       <p><strong>Joint ownership:</strong> If property is jointly owned (e.g., married couple), all owners typically must consent to the pledge, and this should be reflected in the documentation.</p>
-      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 7 instructions; FAR 28.203-1(b). <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2521,7 +2523,7 @@
       <p><strong>How to find recorded liens:</strong> Title searches, property records searches at the county recorder's office, and credit reports will reveal most recorded liens. These should be reviewed before completing SF 28.</p>
       <p><strong>Impact on qualification:</strong> A property with substantial recorded liens may not provide sufficient unencumbered value to qualify as security. The equity (market value minus all liens) must still meet net worth requirements.</p>
       <p><strong>Title insurance:</strong> Title insurance policies typically identify recorded liens and are excellent documentation for both the surety's review and the contracting officer's verification.</p>
-      <div class="citation"><strong>Source:</strong> SF 28 Field 8 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 8 instructions; FAR 28.203-1(b). <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2561,7 +2563,7 @@
       <p><strong>Documentation requirements:</strong> The financial institution must provide written confirmation of the pledge, including CUSIP numbers, par amounts, and current market values. This documentation is attached to the SF 28 affidavit.</p>
       <p><strong>Government relationship:</strong> The financial institution essentially becomes a third-party custodian of the pledged assets, providing assurance that the securities exist and are properly held for the government's potential claim.</p>
       <p><strong>Choice of institution:</strong> Sureties should use established financial institutions with experience in government securities pledging. The contracting officer may verify the institution's credentials.</p>
-      <div class="citation"><strong>Source:</strong> SF 28 Field 6 instructions; FAR 28.102-2(a). <a href="https://www.acquisition.gov/far/part-28#FAR_28_102_2">acquisition.gov (FAR 28.102-2)</a></div>
+      <div class="citation"><strong>Source:</strong> SF 28 Field 6 instructions; FAR 28.203-1(b). <a href="https://www.acquisition.gov/far/part-28#FAR_28_203">acquisition.gov (FAR 28.203)</a></div>
     </div>
   </div>
 </div>
@@ -2592,7 +2594,7 @@
 // SF 28 Quiz Answers
 const sf28Answers = {
   q1: { correct: 'b', explanation: 'SF 28 is the Standard Form 28 Affidavit of Individual Surety, used when an individual (rather than a corporate surety company) provides a bond for a government contract.' },
-  q2: { correct: 'b', explanation: 'The minimum net worth requirement for individual sureties is $100,000, though contracting officers may require higher amounts based on contract size and risk.' },
+  q2: { correct: 'b', explanation: 'There is no flat dollar minimum. FAR 28.203-1 requires that the net adjusted value of an individual surety\'s pledged, unencumbered assets equal or exceed the penal amount of the specific bond — so the required net worth scales with the bond, not a fixed threshold.' },
   q3: { correct: 'b', explanation: 'Individual sureties must be U.S. citizens or U.S. nationals, as defined by the Immigration and Nationality Act. Permanent residents and foreign nationals do not qualify.' },
   q4: { correct: 'b', explanation: 'The False Statements Act (18 U.S.C. § 1001) makes it a criminal offense to knowingly and willfully make false statements on government forms, punishable by fine and/or imprisonment.' },
   q5: { correct: 'b', explanation: 'The Miller Act requires performance and payment bonds for federal construction contracts exceeding $150,000, protecting subcontractors and laborers on federal projects.' },
@@ -2604,32 +2606,72 @@ const sf28Answers = {
   q11: { correct: 'c', explanation: 'The disclosure section requires sureties to reveal any liens, claims, or encumbrances on pledged assets, ensuring the government understands any limitations on the security.' },
   q12: { correct: 'b', explanation: 'The RTN identifies the financial institution submitting the securities pledge, enabling the government to verify the pledge and potentially transfer ownership if the bond is called.' },
   q13: { correct: 'b', explanation: 'Notarization verifies the identity of the surety and witnesses their signature, preventing forgery and ensuring the person signing is who they claim to be.' },
-  q14: { correct: 'b', explanation: 'FAR 28.102-2 establishes the qualifications and requirements for individual sureties, including citizenship, net worth, and asset requirements for federal contracts.' },
+  q14: { correct: 'b', explanation: 'FAR 28.203 establishes the qualifications and requirements for individual sureties, including citizenship, net worth, and asset requirements for federal contracts.' },
   q15: { correct: 'b', explanation: 'Surety brokers are intermediaries who help arrange surety bonds, connecting principals with suitable sureties and handling administrative aspects of bond procurement.' },
   q16: { correct: 'b', explanation: 'Performance bonds guarantee the principal will complete the contract according to terms, while payment bonds guarantee the principal will pay subcontractors, laborers, and material suppliers.' },
   q17: { correct: 'b', explanation: 'Evidence of title proves ownership of real estate pledged as security, ensuring the surety actually owns the property being offered to guarantee the bond.' },
   q18: { correct: 'b', explanation: 'A recorded lien is a legal claim against property that appears in public records, such as mortgages, tax liens, or judgment liens that reduce the property\'s unencumbered value.' },
   q19: { correct: 'b', explanation: 'The Little Miller Act refers to state laws that mirror the federal Miller Act for state construction contracts, while SF 28 applies to federal contracts.' },
-  q20: { correct: 'c', explanation: 'False statements on government forms under 18 U.S.C. § 1001 are punishable by fine and/or imprisonment up to 8 years, making accurate completion of SF 28 critically important.' }
+  q20: { correct: 'c', explanation: 'False statements on government forms under 18 U.S.C. § 1001 are punishable by fine and/or imprisonment up to 5 years (the statute\'s 8-year maximum applies only to offenses involving terrorism or certain sex-trafficking-related crimes, not to a false SF 28 affidavit), making accurate completion critically important.' }
 };
 
-function resetQuiz() {
-  document.getElementById('quizScoreFill').style.width = '0%';
-  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
-  document.getElementById('quizResult').className = 'quiz-result';
-  
-  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
-    input.checked = false;
-  });
-  
-  document.querySelectorAll('.quiz-card').forEach(card => {
+// resetQuiz() is provided by quiz.js's setupQuiz() closure (window.resetQuiz),
+// which correctly tracks currentScore/answeredQuestions state. Do not redefine
+// it here — a duplicate definition previously shadowed/raced with it depending
+// on script execution order.
+
+// Check all answers at once
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 20;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'q' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + qName);
+    const answer = sf28Answers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+
     card.classList.remove('correct', 'incorrect');
-  });
-  
-  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+
     fb.className = 'quiz-feedback';
-    fb.innerHTML = '';
-  });
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  // Update score bar
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : 'fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : 'fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid grasp of SF 28 requirements.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80%.';
+  }
 }
 
 // Initialize quiz when DOM is ready
@@ -2641,11 +2683,9 @@ if (document.readyState === 'loading') {
   setupQuiz(sf28Answers, 20);
 }
 
-// TOC toggle
-function toggleToc() {
-  const sidebar = document.getElementById('tocSidebar');
-  sidebar.classList.toggle('open');
-}
+// Note: TOC sidebar open/close is handled by initTOCSidebar() in shared.js,
+// which binds to .toc-toggle / .toc-sidebar by class. (A dead toggleToc()
+// helper that referenced a nonexistent #tocSidebar id was removed from here.)
 
 // Show scenario panels
 function showScenario(id) {
@@ -2657,7 +2697,7 @@ function showScenario(id) {
   const panel = document.getElementById(id);
   if (panel) {
     panel.classList.add('active');
-    const activeTab = Array.from(document.querySelectorAll('.scenario-tab')).find(t => t.textContent.trim() === panel.querySelector('h4')?.textContent?.trim());
+    const activeTab = document.querySelector(`.scenario-tab[data-target="${id}"]`);
     if (activeTab) {
       activeTab.classList.add('active');
       activeTab.setAttribute('aria-selected', 'true');

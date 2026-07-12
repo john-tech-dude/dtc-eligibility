@@ -12,15 +12,15 @@ function setupQuiz(quizAnswers, totalQuestions) {
       const qNum = card.getAttribute('data-q');
       const feedback = document.getElementById('fb-' + qNum);
       const answer = quizAnswers[qNum];
-      
+
       // Remove previous feedback
       card.classList.remove('correct', 'incorrect');
-      
+
       if (this.value === answer.correct) {
         card.classList.add('correct');
         feedback.className = 'quiz-feedback show correct';
         feedback.innerHTML = '✓ ' + answer.explanation;
-        
+
         // Update score if this question hasn't been answered correctly before
         if (!answeredQuestions.has(qNum)) {
           answeredQuestions.add(qNum);
@@ -31,7 +31,7 @@ function setupQuiz(quizAnswers, totalQuestions) {
         card.classList.add('incorrect');
         feedback.className = 'quiz-feedback show incorrect';
         feedback.innerHTML = '✗ ' + answer.explanation;
-        
+
         // If this was previously correct, remove from score
         if (answeredQuestions.has(qNum)) {
           answeredQuestions.delete(qNum);
@@ -45,12 +45,12 @@ function setupQuiz(quizAnswers, totalQuestions) {
   function updateScoreDisplay() {
     const scoreFill = document.getElementById('quizScoreFill');
     const scoreText = document.getElementById('quizScoreText');
-    
+
     if (scoreFill && scoreText) {
       const percentage = (currentScore / totalQuestions) * 100;
       scoreFill.style.width = percentage + '%';
       scoreText.textContent = currentScore + ' / ' + totalQuestions + ' correct (' + percentage.toFixed(0) + '%)';
-      
+
       // Color coding based on score
       if (percentage >= 80) {
         scoreFill.style.background = 'var(--green)';
@@ -67,33 +67,41 @@ function setupQuiz(quizAnswers, totalQuestions) {
     currentScore = 0;
     answeredQuestions.clear();
     updateScoreDisplay();
-    
+
     // Reset all inputs
     document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
       input.checked = false;
     });
-    
+
     // Reset all cards
     document.querySelectorAll('.quiz-card').forEach(card => {
       card.classList.remove('correct', 'incorrect');
     });
-    
+
     // Reset all feedback
     document.querySelectorAll('.quiz-feedback').forEach(fb => {
       fb.className = 'quiz-feedback';
       fb.innerHTML = '';
     });
+
+    const result = document.getElementById('quizResult');
+    if (result) result.className = 'quiz-result';
   }
 
-  // Add reset button if not present
-  if (!document.querySelector('.quiz-reset')) {
+  // Expose this closure-aware reset globally so the page's static
+  // "Reset Quiz" button (onclick="resetQuiz()") stays in sync with the
+  // internal score state instead of relying on a separate, stale definition.
+  window.resetQuiz = resetQuiz;
+
+  // Only create a dynamic reset button if the page doesn't already have one
+  if (!document.querySelector('.quiz-reset') && !document.querySelector('.quiz-btn-secondary')) {
     const quizSection = document.querySelector('.quiz-section');
     if (quizSection) {
       const resetBtn = document.createElement('button');
       resetBtn.className = 'quiz-reset';
       resetBtn.textContent = 'Reset Quiz';
       resetBtn.onclick = resetQuiz;
-      
+
       const quizActions = document.querySelector('.quiz-actions');
       if (quizActions) {
         quizActions.appendChild(resetBtn);

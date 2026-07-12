@@ -176,7 +176,9 @@ function initTOCSidebar() {
 
   // Scroll spy - highlight current section in TOC
   function updateActiveSection() {
-    const sections = document.querySelectorAll('h2[id], h3[id], .section-title[id]');
+    const sections = Array.from(
+      document.querySelectorAll('h2[id], h3[id], .section-title[id]')
+    ).filter(el => !el.closest('.modal-overlay')); // exclude hidden modal titles
     const tocLinks = tocSidebar.querySelectorAll('a[href^="#"]');
     
     let currentSection = '';

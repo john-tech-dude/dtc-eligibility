@@ -35,8 +35,8 @@
 .toc-sidebar.open { transform: translateX(0); }
 .toc-toggle {
   position: fixed;
-  left: 16px;
-  top: 44px;
+  left: 28px;
+  top: 32px;
   z-index: 70;
   width: 40px; height: 40px;
   background: var(--accent);

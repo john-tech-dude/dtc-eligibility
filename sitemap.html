@@ -301,7 +301,7 @@
   <a href="#sitemap-top">Overview</a>
   <a href="#quick-links" class="sub">Quick Links</a>
   <a href="#teaching-guides" class="sub">Teaching Guides</a>
-  <a href="#forms" class="sub">Forms & Questionnaires</a>
+  <a href="#forms" class="sub">Forms &amp; Questionnaires</a>
   <a href="#documentation" class="sub">Documentation</a>
   <a href="#pdf-resources" class="sub">PDF Resources</a>
   <div class="toc-divider">Site</div>
@@ -387,10 +387,10 @@
         </div>
         <div class="card-meta" style="margin-top:6px">
           <div class="card-meta-item">
-            <span><a href="guides/dtc-guide.html#concept-map-overview" style="color:inherit">Maps index →</a></span>
+            <span class="card-meta-link" data-href="guides/dtc-guide.html#concept-map-overview" role="link" tabindex="0" style="color:inherit;text-decoration:underline;cursor:pointer;">Maps index →</span>
           </div>
           <div class="card-meta-item">
-            <span><a href="guides/dtc-guide.html#process-certificated-deposit" style="color:inherit">Certificated deposit →</a></span>
+            <span class="card-meta-link" data-href="guides/dtc-guide.html#process-certificated-deposit" role="link" tabindex="0" style="color:inherit;text-decoration:underline;cursor:pointer;">Certificated deposit →</span>
           </div>
         </div>
       </a>
@@ -435,7 +435,7 @@
           <polyline points="10 9 9 9 8 9"/>
         </svg>
       </div>
-      <h2 class="section-title">Forms & Questionnaires</h2>
+      <h2 class="section-title">Forms &amp; Questionnaires</h2>
     </div>
     <div class="document-grid">
       <a href="forms/dtc-eligibility-questionnaire.html" class="sitemap-card professional">
@@ -505,7 +505,7 @@
         </div>
       </a>
 
-      <a href="javascript:void(0)" class="sitemap-card theological disabled">
+      <a href="javascript:void(0)" class="sitemap-card theological disabled" aria-disabled="true" tabindex="-1">
         <div class="card-header">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Lock icon">
@@ -523,7 +523,7 @@
         </p>
         <div class="card-meta">
           <div class="card-meta-item">
-            <span>� Access restricted</span>
+            <span>🔒 Access restricted</span>
           </div>
           <div class="card-meta-item">
             <span>⏱️ ~60 min read</span>
@@ -641,6 +641,33 @@
 </div>
 
 <script src="js/shared.js"></script>
+
+<script>
+// Deep-link spans inside card links (see card-meta-link) can't be real <a> tags
+// nested inside the outer card <a> — that's invalid HTML and breaks click behavior.
+// Handle their navigation here instead, stopping propagation so the outer card
+// link doesn't also fire.
+(function initCardMetaLinks() {
+  function go(el) {
+    const href = el.getAttribute('data-href');
+    if (href) window.location.href = href;
+  }
+  document.querySelectorAll('.card-meta-link').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      go(el);
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        go(el);
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

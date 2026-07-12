@@ -7,8 +7,1261 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<style>
+/* Shared CSS for DTC Eligibility Project */
+/* This file contains common styles used across all non-biblical documents */
+
+/* CSS Custom Properties (Design Tokens) */
+:root {
+  /* Text Colors - Premium High Contrast */
+  --ink: #0a0a0a;
+  --ink-secondary: #1a1a2e;
+  --ink-tertiary: #4a4a5a;
+  --ink-muted: #6a6a7a;
+  --ink-faint: #9a9aaa;
+
+  /* Border Colors - Enhanced Visibility */
+  --border: #c0c0ca;
+  --border-light: #d8d8e2;
+  --border-faint: #e8e8f2;
+
+  /* Background Colors - Subtle Premium Depth */
+  --bg: #ffffff;
+  --bg-warm: #faf8f5;
+  --bg-cream: #f5f3ef;
+  --bg-ivory: #fdfbf7;
+
+  /* Accent Colors - Richer, More Vibrant */
+  --accent: #0a2a4a;
+  --accent-light: #e0e8f5;
+  --accent-muted: #a0b8d8;
+  --accent-hover: #051a30;
+
+  /* Gold Colors - Richer Premium Gold */
+  --gold: #b8860b;
+  --gold-light: #faf5e8;
+  --gold-muted: #d4a84a;
+  --gold-deep: #8b6914;
+
+  /* Additional Colors - Enhanced Contrast */
+  --green: #0a4a2a;
+  --green-light: #e0f0e5;
+  --teal: #0a5060;
+  --teal-light: #e0f0f5;
+  --red: #8b2020;
+  --red-light: #f5e0e0;
+  --red-muted: #c05050;
+
+  /* Effects - Premium Depth */
+  --modal-overlay: rgba(10,12,18,0.75);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.16), 0 8px 16px rgba(0,0,0,0.12);
+  --shadow-xl: 0 24px 64px rgba(0,0,0,0.20), 0 12px 24px rgba(0,0,0,0.16);
+  
+  /* Premium colored shadows for accents */
+  --shadow-accent: 0 4px 16px rgba(10,42,74,0.15);
+  --shadow-gold: 0 4px 16px rgba(184,134,11,0.12);
+
+  /* Border Radius - Refined */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Motion */
+  --transition: 0.25s ease;
+}
+
+/* Premium Dark Theme */
+[data-theme="dark"] {
+  /* Text — warm off-white hierarchy (muted raised for readable UI chrome) */
+  --ink: #eae8e4;
+  --ink-secondary: #d0cec8;
+  --ink-tertiary: #a8a6b0;
+  --ink-muted: #8a8894;
+  --ink-faint: #6a6874;
+
+  /* Borders — subtle violet-navy undertone */
+  --border: #3a3848;
+  --border-light: #2a2838;
+  --border-faint: #1e1c28;
+
+  /* Backgrounds — deep navy-charcoal with warmth */
+  --bg: #14141f;
+  --bg-warm: #0a0a12;
+  --bg-cream: #1a1a26;
+  --bg-ivory: #22222e;
+
+  /* Accent — refined steel blue (navy family) */
+  --accent: #5a9fd4;
+  --accent-light: #152030;
+  --accent-muted: #2a4060;
+  --accent-hover: #7ab8ec;
+
+  /* Gold — luminous premium */
+  --gold: #d4af37;
+  --gold-light: #2a2418;
+  --gold-muted: #a8883a;
+  --gold-deep: #c9a030;
+
+  /* Semantic colors */
+  --green: #5cb87a;
+  --green-light: #142820;
+  --teal: #5ec4e0;
+  --teal-light: #142830;
+  --red: #e87070;
+  --red-light: #281818;
+  --red-muted: #b05050;
+
+  /* Effects — depth with accent glow */
+  --modal-overlay: rgba(4, 4, 10, 0.88);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.75);
+  --shadow-accent: 0 4px 24px rgba(90, 159, 212, 0.18);
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.14);
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accessibility Focus States */
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+[tabindex="0"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Typography */
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-warm);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--ink-muted);
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.theme-toggle:hover {
+  background: var(--bg-cream);
+  border-color: var(--border);
+  color: var(--ink);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+
+/* Common Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Skip to Content Link (Accessibility) */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumbs {
+  padding: 12px 0;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border-faint);
+  margin-bottom: 24px;
+}
+
+.breadcrumbs a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-hover);
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: var(--ink-muted);
+}
+
+.breadcrumb-current {
+  color: var(--ink-tertiary);
+  font-weight: 500;
+}
+
+.breadcrumb-section {
+  display: inline;
+}
+
+/* Search Section Styles */
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  transition: all var(--transition);
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 40px 8px 44px;
+  border: none;
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: transparent;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: var(--border-light);
+  border: none;
+  border-radius: 50%;
+  color: var(--ink-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.search-clear:hover {
+  background: var(--border);
+  color: var(--ink);
+}
+
+.search-clear.hidden {
+  display: none;
+}
+
+.search-results {
+  margin-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Footer site navigation (Home / Site Map) — primary way back from deep pages */
+.footer-site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 12px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+}
+.footer-site-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.footer-site-nav a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+.footer-site-nav .footer-nav-sep {
+  color: var(--ink-faint);
+  user-select: none;
+}
+.footer-site-nav .footer-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-site-nav .footer-home-link::before {
+  content: "←";
+  font-weight: 700;
+  opacity: 0.85;
+}
+/* End-of-article trail (optional companion above footer) */
+.content-end-nav {
+  margin: 40px 0 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border-faint);
+}
+.content-end-nav .footer-site-nav {
+  margin-bottom: 0;
+}
+@media print {
+  .footer-site-nav,
+  .content-end-nav {
+    display: none !important;
+  }
+}
+
+/* Sidebar Backdrop */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active,
+.sidebar-backdrop.show {
+  display: block;
+  opacity: 1;
+}
+
+/* TOC Sidebar */
+.toc-sidebar,
+.page-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100vh;
+  background: var(--bg);
+  border-right: 1px solid var(--border-light);
+  padding: 24px 20px;
+  overflow-y: auto;
+  z-index: 60;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.toc-sidebar.open,
+.page-sidebar.open {
+  transform: translateX(0);
+}
+
+.toc-toggle {
+  position: fixed;
+  left: 16px;
+  top: 44px;
+  z-index: 70;
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-accent);
+  transition: all 0.2s;
+}
+
+.toc-toggle:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 20px rgba(10, 42, 74, 0.25);
+  transform: translateY(-1px);
+}
+
+.toc-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.toc-sidebar h4,
+.page-sidebar .sidebar-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.toc-sidebar a {
+  display: block;
+  padding: 6px 0;
+  font-size: 0.78rem;
+  color: var(--ink-tertiary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.toc-sidebar a:hover,
+.toc-sidebar a:focus-visible {
+  color: var(--accent);
+  padding-left: 4px;
+}
+
+.toc-sidebar a.sub {
+  padding-left: 12px;
+  font-size: 0.72rem;
+}
+
+.toc-sidebar a.external {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toc-sidebar .toc-close,
+.toc-sidebar .sidebar-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+
+.toc-close:focus-visible,
+.sidebar-close:focus-visible {
+  outline: 2px solid var(--accent);
+  border-radius: 2px;
+}
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+@media (max-width: 768px) {
+  .toc-sidebar,
+  .page-sidebar {
+    width: 100%;
+  }
+}
+
+/* TOC Active State */
+.toc-sidebar a.active {
+  color: var(--accent);
+  font-weight: 600;
+  padding-left: 4px;
+  border-left: 2px solid var(--accent);
+}
+
+/* Return to Top Button */
+.return-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.return-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.return-to-top:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .return-to-top {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+[data-theme="dark"] .return-to-top:hover {
+  background: var(--accent-hover);
+}
+
+.return-to-top:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.return-to-top svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+}
+
+@media (max-width: 768px) {
+  .return-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Quick Navigation Bar */
+.quick-nav {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+.quick-nav-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.quick-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-nav-link {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.quick-nav-link:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .quick-nav-links {
+    flex-direction: column;
+  }
+  .quick-nav-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Header Metadata */
+.header-meta {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-meta-separator {
+  color: var(--border-medium);
+}
+
+.last-updated {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.last-updated::before {
+  content: '📅';
+  font-size: 0.9rem;
+}
+
+.doc-type {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* Quiz Styles */
+.quiz-section {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  margin: 32px 0;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.quiz-intro {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.quiz-score-bar {
+  height: 8px;
+  background: var(--border-faint);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.quiz-score-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.quiz-score-text {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  margin-bottom: 20px;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quiz-card {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-warm);
+  transition: all 0.2s ease;
+}
+
+.quiz-card.correct {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+
+.quiz-card.incorrect {
+  border-color: var(--red);
+  background: var(--red-light);
+}
+
+.quiz-num {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.quiz-card.correct .quiz-num { background: var(--green); }
+.quiz-card.incorrect .quiz-num { background: var(--red); }
+
+.quiz-content { flex: 1; }
+.quiz-content h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.quiz-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  line-height: 1.5;
+}
+.quiz-options label:hover { background: var(--bg-cream); }
+.quiz-options input[type="radio"] {
+  width: 16px; height: 16px;
+  accent-color: var(--accent);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.quiz-feedback {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct {
+  background: var(--green-light);
+  color: var(--green);
+  border-left: 3px solid var(--green);
+}
+.quiz-feedback.incorrect {
+  background: var(--red-light);
+  color: var(--red);
+  border-left: 3px solid var(--red);
+}
+
+.quiz-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+}
+.quiz-btn {
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+.quiz-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.quiz-btn-primary:hover { background: var(--accent-hover); }
+.quiz-btn-secondary {
+  background: var(--bg-cream);
+  color: var(--ink-secondary);
+  border: 1px solid var(--border-light);
+}
+.quiz-btn-secondary:hover { background: var(--border-faint); }
+
+.quiz-result {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result.pass {
+  background: var(--green-light);
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+.quiz-result.fail {
+  background: var(--red-light);
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Premium Dark Theme — Site-wide Component Layer
+   ═══════════════════════════════════════════════════════════ */
+
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bg-warm);
+  background-image:
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgba(90, 159, 212, 0.07), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 80%, rgba(212, 175, 55, 0.04), transparent 50%);
+}
+
+[data-theme="dark"] .page-header {
+  background: rgba(20, 20, 31, 0.88);
+  border-bottom-color: var(--border-faint);
+}
+
+/* Light accent surfaces — use dark ink for contrast */
+[data-theme="dark"] .header-icon,
+[data-theme="dark"] .toc-toggle,
+[data-theme="dark"] .card-icon,
+[data-theme="dark"] .quiz-num,
+[data-theme="dark"] .return-to-top,
+[data-theme="dark"] .scroll-top,
+[data-theme="dark"] .quick-nav-link:hover,
+[data-theme="dark"] .quiz-btn-primary,
+[data-theme="dark"] .skip-to-content {
+  color: #0e0e16;
+}
+
+[data-theme="dark"] .header-badge,
+[data-theme="dark"] .document-card.theological .document-tag {
+  border-color: rgba(212, 175, 55, 0.28);
+}
+
+[data-theme="dark"] .doc-frame,
+[data-theme="dark"] .quiz-section,
+[data-theme="dark"] .document-card {
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-faint);
+}
+
+[data-theme="dark"] .modal-card {
+  box-shadow: var(--shadow-xl), 0 0 0 1px var(--border-light);
+}
+
+[data-theme="dark"] .toc-sidebar {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Form document lines (treasury & similar) */
+[data-theme="dark"] .form-row .underline,
+[data-theme="dark"] .form-row .short-underline,
+[data-theme="dark"] .docs-table th,
+[data-theme="dark"] .docs-table td,
+[data-theme="dark"] .boxed-section,
+[data-theme="dark"] .page2 .form-line .line,
+[data-theme="dark"] .checkbox-row .box,
+[data-theme="dark"] .bill-line .fill-line,
+[data-theme="dark"] .bill-line .short-fill,
+[data-theme="dark"] .signature-block .sig-line,
+[data-theme="dark"] hr.section-divider {
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] div[style*="border: 1px solid #000"],
+[data-theme="dark"] div[style*="border-bottom: 1px solid #000"] {
+  border-color: var(--border) !important;
+}
+
+[data-theme="dark"] .page {
+  border-color: var(--border);
+}
+
+/* Smooth theme transitions on key surfaces */
+body,
+.page-header,
+.doc-frame,
+.document-card,
+.quiz-section,
+.toc-sidebar,
+.modal-card,
+.theme-toggle {
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+/* Base diagram box */
+.diagram-box {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  margin: 24px 0;
+}
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Mobile scroll hint for wide concept maps */
+.diagram-box.concept-map {
+  position: relative;
+}
+.diagram-box.concept-map.is-scrollable::after {
+  content: "Scroll →";
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  padding: 4px 10px;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+.diagram-box.concept-map.is-scrollable.is-scrolled-end::after {
+  content: "← Scroll";
+}
+@media (min-width: 641px) {
+  .diagram-box.concept-map.is-scrollable::after {
+    display: none;
+  }
+}
+@media print {
+  .diagram-box.concept-map.is-scrollable::after {
+    display: none !important;
+  }
+}
+
+/* ── Concept maps & process flows (teaching diagrams) ── */
+.diagram-box.concept-map {
+  padding: 24px 16px 18px;
+  overflow-x: auto;
+}
+.concept-map-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.06);
+}
+.concept-map-svg .cm-node:focus {
+  outline: none;
+}
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static {
+  cursor: default;
+}
+.cm-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-tertiary);
+  margin: 14px auto 0;
+  line-height: 1.55;
+  max-width: 560px;
+}
+.cm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.cm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cm-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--ink-muted);
+  flex-shrink: 0;
+}
+.cm-legend-line.dashed {
+  border-top-style: dashed;
+  border-color: var(--ink-faint);
+}
+.cm-legend-line.pass {
+  border-top-style: dashed;
+  border-color: var(--green);
+}
+.cm-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  font-style: italic;
+}
+.process-flow-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-width: 1.6;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px;
+  fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+.step-summary {
+  margin-top: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  padding: 0;
+}
+.step-summary > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  user-select: none;
+}
+.step-summary > summary::-webkit-details-marker { display: none; }
+.step-summary > summary::before {
+  content: "▸ ";
+  color: var(--ink-muted);
+}
+.step-summary[open] > summary::before {
+  content: "▾ ";
+}
+.step-summary-body {
+  padding: 4px 16px 14px;
+  border-top: 1px solid var(--border-faint);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .diagram-box.concept-map { padding: 18px 8px 18px; }
+  /* Force horizontal scroll on phones so wide SVGs stay readable */
+  .concept-map-svg,
+  .process-flow-svg { min-width: 560px; }
+}
+@media print {
+  .concept-map-svg,
+  .process-flow-svg {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    break-inside: avoid;
+  }
+  .step-summary { border: none; }
+  .step-summary > summary { display: none; }
+  .step-summary-body { display: block !important; border: none; padding: 0; }
+}
+
+</style>
+<script>
+/* Blocking theme init — include synchronously in <head> before CSS to prevent flash */
+(function () {
+  var stored = localStorage.getItem('dtc-theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+
+</script>
 <style>
 
 /* CSS variables and base styles moved to shared.css */
@@ -397,6 +1650,499 @@
   border: 1px solid var(--accent); background: var(--accent-light);
 }
 .hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* Hover/focus preview tooltip (independent of the click-to-open modal) */
+.hotspot[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.45;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  width: max-content;
+  max-width: 260px;
+  white-space: normal;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 60;
+}
+.hotspot[data-tooltip]:hover::before,
+.hotspot[data-tooltip]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ══════════════════════════════════════════════════
+   DTC FORM FACSIMILE — mimics the actual printed form
+   ══════════════════════════════════════════════════ */
+.dtc-facsimile {
+  background: #fdfdfb;
+  color: #111;
+  border: 1.5px solid #1a1a1a;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.08);
+  max-width: 900px;
+  margin: 0 auto 20px;
+  font-family: Arial, Helvetica, 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  position: relative;
+}
+[data-theme="dark"] .dtc-facsimile {
+  background: #f4f2ec;
+  color: #111;
+}
+.facsimile-label {
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.form-title-bar {
+  text-align: center;
+  padding: 22px 24px 14px;
+  border-bottom: 2px solid #1a1a1a;
+}
+.form-title-bar h3 {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.form-title-bar .form-subline {
+  font-size: 10.5px;
+  margin-top: 3px;
+  color: #333;
+}
+.form-title-bar .form-instructions {
+  font-size: 10px;
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.55;
+  color: #222;
+}
+.form-page {
+  padding: 18px 26px 22px;
+}
+.form-page + .form-page {
+  border-top: 2px solid #1a1a1a;
+}
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 28px;
+}
+.form-col-left { border-right: 1px solid #ccc7ba; padding-right: 26px; }
+.form-col-right { padding-left: 0; }
+@media (max-width: 720px) {
+  .form-grid-2col { grid-template-columns: 1fr; }
+  .form-col-left { border-right: none; border-bottom: 1px solid #ccc7ba; padding-right: 0; padding-bottom: 16px; margin-bottom: 16px; }
+}
+
+.dtc-facsimile .section-heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1.25px solid #1a1a1a;
+  padding-bottom: 4px;
+  margin: 18px 0 10px;
+  color: #111;
+}
+.dtc-facsimile .section-heading:first-child { margin-top: 0; }
+.dtc-facsimile .section-heading::after { display: none; }
+.dtc-facsimile .form-subheading {
+  font-size: 10.5px;
+  font-weight: 700;
+  font-style: italic;
+  color: #333;
+  margin: 4px 0 10px;
+}
+
+.dtc-facsimile .form-row {
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  gap: 8px;
+}
+.dtc-facsimile .form-row .bullet {
+  width: 10px; height: 10px;
+  border: 1.25px solid #1a1a1a;
+  border-radius: 1px;
+  margin-top: 3px;
+  background: #fff;
+}
+.dtc-facsimile .form-row .bullet.round { border-radius: 1px; }
+.dtc-facsimile .form-row .label { color: #111; line-height: 1.5; }
+.dtc-facsimile .form-row .label strong { font-weight: 700; color: #000; }
+.dtc-facsimile .inline-checkbox {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border: 1.25px solid #1a1a1a;
+  border-radius: 1px;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+  background: #fff;
+}
+.inline-checkbox {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border: 1.25px solid #1a1a1a;
+  border-radius: 1px;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+  background: #fff;
+}
+.dtc-facsimile .inline-field {
+  border-bottom: 1px solid #1a1a1a;
+  min-width: 130px;
+}
+.dtc-facsimile .inline-field.wide { min-width: 190px; }
+.dtc-facsimile .hint-text, .dtc-facsimile .italic-hint {
+  font-style: italic;
+  color: #444;
+  font-size: 10.5px;
+}
+.dtc-facsimile .pad-left-28 { padding-left: 20px; }
+.dtc-facsimile .hotspot {
+  border-bottom: 1.25px dotted var(--accent);
+  color: #111;
+}
+.dtc-facsimile .hotspot::after {
+  content: "";
+  width: 6px; height: 6px;
+  border: none;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.55;
+  margin-left: 2px;
+}
+.dtc-facsimile .hotspot:hover, .dtc-facsimile .hotspot:focus-visible {
+  background: var(--accent-light);
+}
+.dtc-facsimile .delivery-box {
+  font-size: 10.5px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #1a1a1a;
+  background: rgba(0,0,0,0.02);
+}
+.dtc-facsimile .address-block {
+  font-size: 10px;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.dtc-facsimile .footnote {
+  font-size: 9.5px;
+  color: #333;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc7ba;
+  line-height: 1.6;
+}
+.dtc-facsimile .req-note {
+  font-size: 10px;
+  color: #333;
+}
+.dtc-facsimile .cusip-section,
+.dtc-facsimile .directory-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.dtc-facsimile .cusip-table {
+  font-size: 10.5px;
+}
+.dtc-facsimile .cusip-table th {
+  background: #ece7d8 !important;
+  color: #111 !important;
+  border-color: #7a6a45 !important;
+}
+.dtc-facsimile .cusip-table td {
+  background: #fff !important;
+  color: #111 !important;
+  border-color: #ccc7ba !important;
+}
+.dtc-facsimile .cusip-table tbody tr:hover td { background: #f3ecd6 !important; }
+.dtc-facsimile .cusip-table tr:nth-child(even) td { background: #faf8f2 !important; }
+.dtc-facsimile .cusip-table tr:nth-child(even):hover td { background: #f3ecd6 !important; }
+.dtc-facsimile .cusip-example-row td.filled { color: #111 !important; }
+.dtc-facsimile .cusip-note { color: #333 !important; }
+.dtc-facsimile .directory-section {
+  border-top-color: #1a1a1a !important;
+}
+.dtc-facsimile .directory-card {
+  background: #fff !important;
+  border-color: #ccc7ba !important;
+}
+.dtc-facsimile .directory-card h4 {
+  color: #7a5c00 !important;
+  border-bottom-color: #ccc7ba !important;
+}
+.dtc-facsimile .directory-card p,
+.dtc-facsimile .directory-card li {
+  color: #222 !important;
+}
+.dtc-facsimile .directory-card .phone { color: #111 !important; font-weight: 700; }
+.dtc-facsimile .address-block {
+  background: #f3f0e6 !important;
+  color: #222 !important;
+}
+.cusip-example-row {
+  cursor: pointer;
+  position: relative;
+}
+.cusip-example-row::before {
+  content: "✦";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 10px;
+}
+.cusip-example-row:hover td, .cusip-example-row:focus-visible td {
+  background: var(--gold-light) !important;
+  outline: none;
+}
+.cusip-example-row td.filled {
+  font-family: 'DM Sans', monospace;
+  color: var(--ink);
+  font-weight: 500;
+}
+.cusip-example-hint {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-top: 8px;
+}
+.dtc-facsimile .cusip-example-hint {
+  font-size: 9.5px;
+  color: #555;
+  margin-top: 6px;
+}
+.dtc-facsimile .section-subtitle {
+  font-size: 10px;
+  color: #333;
+}
+.dtc-facsimile .directory-grid { font-size: 10.5px; }
+@media print {
+  .dtc-facsimile { box-shadow: none; break-inside: avoid; }
+  .facsimile-label { display: none; }
+}
+.form-page-footer {
+  text-align: right;
+  font-size: 9px;
+  color: #555;
+  padding: 4px 26px 10px;
+  font-style: italic;
+}
+.dtc-facsimile .req-note {
+  font-size: 10px;
+  color: #222;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid #ccc7ba;
+  padding: 8px 10px;
+  margin-top: 4px;
+}
+.dtc-facsimile .req-note strong { color: #000; }
+.optional-tag {
+  display: inline-block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #666;
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 0 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* ── Legacy / Updated tags ── */
+.legacy-tag, .updated-tag {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  padding: 1px 8px;
+  margin: 0 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+.legacy-tag {
+  background: var(--gold-light);
+  color: var(--gold-deep);
+  border-color: rgba(166,124,0,0.25);
+}
+.legacy-tag:hover, .legacy-tag:focus-visible { background: var(--gold); color: #fff; outline: none; }
+.updated-tag {
+  background: var(--teal-light);
+  color: var(--teal);
+  border-color: rgba(13,115,119,0.25);
+}
+.updated-tag:hover, .updated-tag:focus-visible { background: var(--teal); color: #fff; outline: none; }
+.dtc-facsimile .legacy-tag, .dtc-facsimile .updated-tag {
+  font-size: 7.5px;
+  padding: 0 5px;
+  margin: 0 3px;
+}
+
+/* ── Legacy Toggle Bar ── */
+.legacy-toggle-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  background: var(--bg-ivory);
+  border-bottom: 2px solid #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+}
+.legacy-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.legacy-toggle-btn:hover, .legacy-toggle-btn:focus-visible { background: var(--accent); outline: none; }
+.legacy-toggle-btn[aria-expanded="true"] { background: var(--accent); }
+.legacy-toggle-hint {
+  font-size: 0.68rem;
+  color: var(--ink-muted);
+}
+
+/* ── Legacy Comparison Panel ── */
+.legacy-compare {
+  max-width: 900px;
+  margin: 0 auto 32px;
+  display: none;
+}
+.legacy-compare.open { display: block; }
+.legacy-compare-intro {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  padding: 14px 4px 18px;
+}
+.legacy-compare-intro strong { color: var(--ink); }
+.legacy-sheet {
+  background: #f7f2e6;
+  color: #2b2418;
+  border: 1.5px solid #7a6a45;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.legacy-sheet::before {
+  content: "ORIGINAL — 06/00";
+  position: absolute;
+  top: -11px;
+  left: 20px;
+  background: #7a6a45;
+  color: #fdfaf1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+.legacy-sheet h4 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.legacy-sheet .legacy-sub {
+  text-align: center;
+  font-size: 10.5px;
+  margin-bottom: 12px;
+}
+.legacy-sheet .legacy-para {
+  font-size: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #7a6a45;
+  padding-bottom: 12px;
+}
+.legacy-sheet .legacy-field {
+  margin-bottom: 6px;
+}
+.legacy-sheet .legacy-section {
+  font-weight: 700;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: 14px 0 8px;
+}
+.legacy-sheet .legacy-changed {
+  background: rgba(166,124,0,0.18);
+  border-bottom: 1.5px dotted #7a6a45;
+  cursor: pointer;
+  padding: 0 1px;
+}
+.legacy-sheet .legacy-changed:hover, .legacy-sheet .legacy-changed:focus-visible {
+  background: rgba(166,124,0,0.35);
+  outline: none;
+}
+.legacy-diff-key {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-top: 4px;
+}
+.legacy-diff-key .swatch {
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: rgba(166,124,0,0.35);
+  border: 1px solid #7a6a45;
+  vertical-align: middle;
+  margin-right: 4px;
+  border-radius: 2px;
+}
 
 /* ── CUSIP Table ── */
 .cusip-section {
@@ -975,6 +2721,7 @@
   .section-heading { border-bottom: 1px solid #000; margin: 24px 0 12px; }
   .hotspot { border-bottom: 1px dotted #000; }
   .hotspot::after { display: none; }
+  .hotspot[data-tooltip]::before { display: none; }
   a { text-decoration: none; color: #000; }
   .study-guide, .red-flags, .scenarios-section, .mistakes-section,
   .flow-section, .cusip-section, .directory-section {
@@ -1187,8 +2934,8 @@
     <line class="cm-edge" x1="293" y1="70" x2="345" y2="70" marker-end="url(#cme-arrow)"/>
     <line class="cm-edge" x1="461" y1="70" x2="528" y2="70" marker-end="url(#cme-arrow)"/>
     <line class="cm-edge" x1="360" y1="150" x2="360" y2="100" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="602" y1="100" x2="602" y2="190" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="528" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
+    <line class="cm-edge" x1="602" y1="100" x2="602" y2="214"/>
+    <line class="cm-edge" x1="602" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
 
     <!-- 1 Issuer -->
     <g class="cm-node cm-node-static">
@@ -1263,11 +3010,28 @@
 </div>
 
 <div class="instruction-box">
-  To make a new issue of securities <span class="hotspot" data-modal="dtc-eligible" tabindex="0" role="button" onclick="openModal('modal-dtc-eligible')">DTC eligible</span>, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span>'s <span class="hotspot" data-modal="underwriting-dept" tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> at least <strong>10 business days</strong> prior to the issue's <span class="hotspot" data-modal="closing-date" tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>. (With respect to <span class="hotspot" data-modal="corporate" tabindex="0" role="button" onclick="openModal('modal-corporate')">corporate</span> issues, upon pricing of the issue.)<br><br>
-  If complete <span class="hotspot" data-modal="cusip" tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least <strong>seven business days</strong> prior to the <span class="hotspot" data-modal="closing-date" tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>.<br><br>
+  To make a new issue of securities <span class="hotspot" data-modal="dtc-eligible" data-tooltip="Registered to Cede &amp; Co. and serviceable through DTC's book-entry system." tabindex="0" role="button" onclick="openModal('modal-dtc-eligible')">DTC eligible</span>, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to <span class="hotspot" data-modal="dtc" data-tooltip="The Depository Trust Company — the central securities depository." tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span>'s <span class="hotspot" data-modal="underwriting-dept" data-tooltip="DTC's department that reviews and approves new issues for eligibility." tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> at least <strong>10 business days</strong> prior to the issue's <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>. (With respect to <span class="hotspot" data-modal="corporate" data-tooltip="A security issued by a business corporation, as opposed to a municipal or government issuer." tabindex="0" role="button" onclick="openModal('modal-corporate')">corporate</span> issues, upon pricing of the issue.)<br><br>
+  If complete <span class="hotspot" data-modal="cusip" data-tooltip="CUSIP numbers, interest rates, and final maturities for each tranche of the issue." tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least <strong>seven business days</strong> prior to the <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>.<br><br>
   <strong>Agent Confirmation:</strong> The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department within ten (10) business days after the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter and is prepared to perform its duties.<br><br>
-  <strong>Electronic submission:</strong> DTC now accepts submissions through the <span class="hotspot" data-modal="uw-source" tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE</span> or <span class="hotspot" data-modal="uw-source" tabindex="0" role="button" onclick="openModal('modal-uw-source')">Underwriting Central (UWC)</span> platforms. Paper submissions are still accepted but electronic is preferred.
+  <strong>Electronic submission:</strong> DTC now accepts submissions through the <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's electronic portal for submitting new issue eligibility requests." tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE</span> or <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's newer electronic platform for underwriting submissions." tabindex="0" role="button" onclick="openModal('modal-uw-source')">Underwriting Central (UWC)</span> platforms. Paper submissions are still accepted but electronic is preferred.
 </div>
+
+<div class="dtc-facsimile" id="form-facsimile">
+  <div class="form-title-bar">
+    <h3>The Depository Trust Company (DTC) Eligibility Questionnaire</h3>
+    <div class="form-subline">DTC is a subsidiary of The Depository Trust &amp; Clearing Corporation</div>
+    <div class="form-instructions">To make a new issue of securities DTC eligible, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to DTC's Underwriting Dept. at least 10 business days prior to the issue's closing date. If complete CUSIP INFORMATION (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least seven business days prior to the closing date. (With respect to corporate issues, upon pricing of the issue.)</div>
+  </div>
+  <div class="legacy-toggle-bar">
+    <button type="button" class="legacy-toggle-btn" id="legacyToggleBtn" onclick="toggleLegacyPanel()" aria-expanded="false" aria-controls="legacy-compare">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="legacyToggleLabel">View Original 2000 Form (as filed)</span>
+    </button>
+    <span class="legacy-toggle-hint">Compare field-by-field · <span class="legacy-tag">Legacy</span> = changed since 2000 · <span class="updated-tag">Updated</span> = new in 2026</span>
+  </div>
+  <div class="form-page form-page-1">
+    <div class="form-grid-2col">
+      <div class="form-col-left">
 
 <!-- ── ISSUE INFORMATION ── -->
 <div class="section-heading" id="issue-info">Issue Information</div>
@@ -1286,16 +3050,16 @@
 <div class="form-row">
   <div class="bullet round"></div>
   <div class="label">Please indicate whether or not the issue is a <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">"security"</span> as such term is defined in <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">Article 8</span> of the <span class="hotspot" data-modal="ny-ucc" tabindex="0" role="button" onclick="openModal('modal-ny-ucc')">New York Uniform Commercial Code</span>.
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> Yes
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> No
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
 
 <div class="form-row">
   <div class="bullet round"></div>
   <div class="label">Please indicate whether or not the issuer is a <span class="hotspot" data-modal="uk-entity" tabindex="0" role="button" onclick="openModal('modal-uk-entity')">United Kingdom entity</span>.
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> Yes
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> No
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
 
@@ -1312,7 +3076,7 @@
   <div class="form-row"><div class="bullet round"></div><div class="label">Exempt under another exemption(s); indicate exemption(s): <span class="inline-field wide"></span></div></div>
 </div>
 
-<div class="form-row" class="form-margin-top">
+<div class="form-row form-margin-top">
   <div class="bullet"></div>
   <div class="label"><strong><span class="hotspot" data-modal="issuer-name" tabindex="0" role="button" onclick="openModal('modal-issuer-name')">Issuer Name / Issue Description</span>:</strong> <span class="inline-field wide"></span></div>
 </div>
@@ -1333,11 +3097,11 @@
   <div class="label"><strong><span class="hotspot" data-modal="closing-date-label" tabindex="0" role="button" onclick="openModal('modal-closing-date-label')">Closing Date</span>:</strong> <span class="inline-field"></span></div>
 </div>
 
-<div class="form-row" class="form-margin-top">
+<div class="form-row form-margin-top">
   <div class="bullet round"></div>
   <div class="label">Is this a <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> issue (with no certificates available to investors)?
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> Yes
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> No
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
     &nbsp;<span class="hint-text">(If yes, a <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">Letter of Representations</span> is required.)</span>
   </div>
 </div>
@@ -1345,8 +3109,8 @@
 <div class="form-row">
   <div class="bullet round"></div>
   <div class="label">Does this issue contain a <span class="hotspot" data-modal="put-tender" tabindex="0" role="button" onclick="openModal('modal-put-tender')">put/tender feature</span>?
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> Yes
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> No
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
     &nbsp;<span class="hint-text">(If yes, for certificated issues a <span class="hotspot" data-modal="tender-lor" tabindex="0" role="button" onclick="openModal('modal-tender-lor')">Tender Letter of Representations</span> is required).</span>
   </div>
 </div>
@@ -1371,14 +3135,14 @@
   <div class="label"><strong><span class="hotspot" data-modal="dtc-participant" tabindex="0" role="button" onclick="openModal('modal-dtc-participant')">DTC Participant</span> account number</strong> to be credited at the time of closing: <span class="inline-field wide"></span></div>
 </div>
 
-<div class="form-row" class="form-margin-top">
+<div class="form-row form-margin-top">
   <div class="bullet"></div>
-  <div class="label" class="italic-hint">If Lead Underwriter is not a <span class="hotspot" data-modal="dtc-participant" tabindex="0" role="button" onclick="openModal('modal-dtc-participant')">DTC Participant</span>, please provide clearing DTC Participant contact information.</div>
+  <div class="label italic-hint">If Lead Underwriter is not a <span class="hotspot" data-modal="dtc-participant" tabindex="0" role="button" onclick="openModal('modal-dtc-participant')">DTC Participant</span>, please provide clearing DTC Participant contact information.</div>
 </div>
 
 <div class="form-row">
   <div class="bullet"></div>
-  <div class="label"><strong>Clearing DTC Participant</strong> <span class="inline-field wide"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="dtc-participant" tabindex="0" role="button" onclick="openModal('modal-dtc-participant')">Clearing DTC Participant</span></strong> <span class="inline-field wide"></span></div>
 </div>
 <div class="form-row">
   <div class="bullet"></div>
@@ -1389,7 +3153,12 @@
   <div class="label"><strong>Phone</strong> <span class="inline-field"></span></div>
 </div>
 
-<div class="form-row" class="form-margin-top-lg">
+      </div><!-- /form-col-left -->
+      <div class="form-col-right">
+
+<div class="form-subheading">Contact Information (Continued)</div>
+
+<div class="form-row form-margin-top-lg">
   <div class="bullet"></div>
   <div class="label"><strong><span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">Transfer Agent</span></strong> <span class="inline-field wide"></span></div>
 </div>
@@ -1415,7 +3184,7 @@
 </div>
 <div class="form-row">
   <div class="bullet"></div>
-  <div class="label"><strong><span class="hotspot" data-modal="remarketing-agent" tabindex="0" role="button" onclick="openModal('modal-remarketing-agent')">Remarketing Agent</span></strong> <em class="hint-text">(provide if applicable)</em> <span class="inline-field wide"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="remarketing-agent" tabindex="0" role="button" onclick="openModal('modal-remarketing-agent')">Remarketing Agent</span></strong><span class="optional-tag">Optional</span> <em class="hint-text">(provide if applicable)</em> <span class="inline-field wide"></span></div>
 </div>
 <div class="form-row">
   <div class="bullet"></div>
@@ -1423,7 +3192,7 @@
 </div>
 <div class="form-row">
   <div class="bullet"></div>
-  <div class="label"><strong><span class="hotspot" data-modal="tender-agent" tabindex="0" role="button" onclick="openModal('modal-tender-agent')">Tender Agent</span></strong> <em class="hint-text">(provide if applicable)</em> <span class="inline-field wide"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="tender-agent" tabindex="0" role="button" onclick="openModal('modal-tender-agent')">Tender Agent</span></strong><span class="optional-tag">Optional</span> <em class="hint-text">(provide if applicable)</em> <span class="inline-field wide"></span></div>
 </div>
 <div class="form-row">
   <div class="bullet"></div>
@@ -1436,22 +3205,22 @@
 <div class="form-row">
   <div class="bullet round"></div>
   <div class="label">Will the securities be eligible as a <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span> (Fast Automated Securities Transfer) issue?
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> Yes
-    &nbsp;<span class="bullet round" class="inline-checkbox"></span> No
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
 
 <div class="form-row">
   <div class="bullet"></div>
   <div class="label">If no, provide the date the securities will be delivered to DTC:
-    <span class="inline-field" class="inline-field-sm"></span> /
-    <span class="inline-field" class="inline-field-sm"></span> /
+    <span class="inline-field inline-field-sm"></span> /
+    <span class="inline-field inline-field-sm"></span> /
     <span class="inline-field min-w-60"></span>
   </div>
 </div>
 
 <div class="delivery-box">
-  <strong>Note:</strong> Please use the address listed on the CUSIP INFORMATION page to deliver securities to DTC at least one business day before closing, by 12:00 noon ET. For additional information, please contact DTC's <span class="hotspot" data-modal="interface-dept" tabindex="0" role="button" onclick="openModal('modal-interface-dept')">Interface/Underwriting Department</span>.
+  <strong>Note:</strong> Please use the address listed on the CUSIP INFORMATION page to deliver securities to DTC at least one business day before closing, <span class="updated-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-noon-deadline')">Updated</span> by 12:00 noon ET. For additional information, please contact DTC's <span class="hotspot" data-modal="interface-dept" tabindex="0" role="button" onclick="openModal('modal-interface-dept')">Interface/Underwriting Department</span>.
   <div class="address-block">
     Attention: Interface/Underwriting Dept.<br>
     The Depository Trust Company<br>
@@ -1477,9 +3246,9 @@
   <div class="label"><span class="hotspot" data-modal="dtc-participant" tabindex="0" role="button" onclick="openModal('modal-dtc-participant')">Clearing DTC Participant</span></div>
 </div>
 
-<div class="form-row" class="form-margin-top">
+<div class="form-row form-margin-top">
   <div class="bullet"></div>
-  <div class="label"><strong>Authorized Signature</strong> <span class="inline-field wide"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="signature" tabindex="0" role="button" onclick="openModal('modal-signature')">Authorized Signature</span></strong><span class="updated-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-signature')">Updated</span> <span class="inline-field wide"></span></div>
 </div>
 
 <div class="form-row margin-top-8">
@@ -1489,10 +3258,16 @@
   </div>
 </div>
 
-<div class="footnote" id="footnotes" class="footnote-top-margin">
+<div class="footnote footnote-top-margin" id="footnotes">
   <sup>1</sup> Service available for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.<br>
-  <sup>2</sup> For non-investment grade issues eligible for resale under Rule 144A, a distinct CUSIP and LOR rider are required. <span class="strikethrough-muted">PORTAL eligibility was historically required; this system has been succeeded by private trading venues.</span>
+  <sup>2</sup> <span class="legacy-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">Legacy</span> For non-investment grade issues eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>, a distinct CUSIP and <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> rider are required. <span class="strikethrough-muted"><span class="hotspot" data-modal="portal" tabindex="0" role="button" onclick="openModal('modal-portal')">PORTAL</span> eligibility was historically required; this system has been succeeded by private trading venues.</span>
 </div>
+
+      </div><!-- /form-col-right -->
+    </div><!-- /form-grid-2col -->
+  </div><!-- /form-page-1 -->
+  <div class="form-page-footer">06/00 &nbsp;·&nbsp; Page 1 of 2</div>
+</div><!-- /dtc-facsimile -->
 
 <!-- ── RED FLAGS ── -->
 <div class="red-flags" id="red-flags">
@@ -1807,11 +3582,14 @@
     </div>
   </div>
 </div>
+<div class="dtc-facsimile" id="form-facsimile-page2">
+  <div class="form-page form-page-2">
+
 <!-- ── CUSIP INFORMATION TABLE ── -->
 <div class="cusip-section" id="cusip-table">
   <div class="section-heading">CUSIP Information</div>
   <p class="section-subtitle">
-    Complete this table for each CUSIP number associated with the issue. This page was part of the original PDF questionnaire. <strong>Click any column header</strong> for a detailed explanation. Hover over rows to see example data patterns.
+    Complete this table for each CUSIP number associated with the issue. This page was part of the original PDF questionnaire. <strong>Click any column header</strong> for a detailed explanation. <strong>Click a starred row</strong> to fill in worked example data.
   </p>
   <table class="cusip-table">
     <thead>
@@ -1825,9 +3603,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr title="Example: 037833100 | 5.250% | 06/15/2035 | $500,000,000 | T | 99.50"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr title="Example: 912828XXX | 4.875% | 12/01/2028 | $250,000,000 | S | 100.00"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr title="Example: 46625HXX1 | 0.000% | 08/15/2030 | $100,000,000 | C | 45.00"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr class="cusip-example-row" tabindex="0" role="button" aria-label="Click to fill in worked example: term bond" data-example="037833100|5.250%|06/15/2035|$500,000,000|T|99.50"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr class="cusip-example-row" tabindex="0" role="button" aria-label="Click to fill in worked example: serial bond" data-example="912828XX3|4.875%|12/01/2028|$250,000,000|S|100.00"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr class="cusip-example-row" tabindex="0" role="button" aria-label="Click to fill in worked example: capital appreciation bond" data-example="46625HXX1|0.000%|08/15/2030|$100,000,000|C|45.00"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
       <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
       <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
       <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -1837,6 +3615,7 @@
       <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
   </table>
+  <p class="cusip-example-hint">✦ Starred rows above are clickable — try one to see realistic worked examples of a term, serial, and capital-appreciation bond CUSIP entry.</p>
   <p class="cusip-note">* <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">C</span> = Capital Appreciation, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">P</span> = Put, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">S</span> = Serial, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">T</span> = Term</p>
 </div>
 
@@ -1897,6 +3676,93 @@
     </div>
   </div>
 </div>
+
+  </div><!-- /form-page-2 -->
+  <div class="form-page-footer">06/00 &nbsp;·&nbsp; Page 2 of 2</div>
+</div><!-- /dtc-facsimile page 2 -->
+
+<div class="legacy-compare" id="legacy-compare">
+  <p class="legacy-compare-intro">
+    Below is the questionnaire <strong>as originally filed in June 2000</strong> — before the June 2026 Operational Arrangements update. Text highlighted in <span class="legacy-diff-key"><span class="swatch"></span></span>gold is clickable and shows exactly what changed and why. Everything else on the 2000 form is unchanged in substance today.
+  </p>
+
+  <div class="legacy-sheet">
+    <h4>The Depository Trust Company (DTC) Eligibility Questionnaire</h4>
+    <div class="legacy-sub">DTC is a subsidiary of The Depository Trust &amp; Clearing Corporation</div>
+    <div class="legacy-para">
+      To make a new issue of securities DTC eligible, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be
+      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-submission')">submitted to DTC's Underwriting Dept.</span>
+      at least 10 business days prior to the issue's closing date. If complete CUSIP INFORMATION (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least seven business days prior to the closing date. (With respect to corporate issues, upon pricing of the issue.)
+    </div>
+
+    <div class="legacy-section">Issue Information</div>
+    <div class="legacy-field">Please check one of the following: ▢ Municipal ▢ Corporate ▢ Limited Underwriting¹ ▢ ABS ▢ CMO</div>
+    <div class="legacy-field">Please indicate whether or not the issue is a "security" as such term is defined in Article 8 of the New York Uniform Commercial Code. ▢ Yes ▢ No</div>
+    <div class="legacy-field">Please indicate whether or not the issuer is a United Kingdom entity. ▢ Yes ▢ No</div>
+    <div class="legacy-field">Please check at least one of the following, the issue is:</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Registered with the SEC</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Eligible for resale under Rule 144A² of the '33 Act</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Eligible for resale under Regulation S of the '33 Act</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Issuer relying on Section 3(c)(7) of the '40 Act</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Exempt under Rule 3(a)(2) of the '33 Act</div>
+    <div class="legacy-field" style="padding-left:16px">▢ Exempt under another exemption(s); indicate exemption(s): ______________</div>
+    <div class="legacy-field">Issuer Name/Issue Description: ______________________________________</div>
+    <div class="legacy-field">State of Incorporation or Municipality: ______________________________</div>
+    <div class="legacy-field">Issue Principal/Offering Amount: ____________________________________</div>
+    <div class="legacy-field">Share Quantity: ______________________________________________________</div>
+    <div class="legacy-field">Closing Date: ________/________/________</div>
+    <div class="legacy-field">Is this a Book-Entry-Only issue (with no certificates available to investors)? ▢ Yes ▢ No (If yes, a Letter of Representations is required.)</div>
+    <div class="legacy-field">Does this issue contain a put/tender feature? ▢ Yes ▢ No (If yes, for certificated issues a Tender Letter of Representations is required).</div>
+
+    <div class="legacy-section">Contact Information</div>
+    <div class="legacy-field">Lead Underwriter: ____________________________________________________</div>
+    <div class="legacy-field">Lead Underwriter Contact Phone: (____) ______________________________</div>
+    <div class="legacy-field">DTC Participant account number to be credited at the time of closing: __________</div>
+    <div class="legacy-field">If Lead Underwriter is not a DTC Participant, please provide clearing DTC Participant contact information.</div>
+    <div class="legacy-field">Clearing DTC Participant Contact Phone: (____) ______________________</div>
+    <div class="legacy-field">Transfer Agent / Contact Phone, Paying Agent / Contact Phone, Issuer's Counsel / Contact Phone, Remarketing Agent (if applicable), Tender Agent (if applicable) — <em>each with its own name and phone line, as on the current form.</em></div>
+
+    <div class="legacy-section">Delivery of Securities</div>
+    <div class="legacy-field">Will the securities be eligible as a FAST (Fast Automated Securities Transfer) issue? ▢ Yes ▢ No</div>
+    <div class="legacy-field">If no, provide the date the securities will be delivered to DTC: _____/_____/_____</div>
+    <div class="legacy-field">
+      Note: Please use the address listed on the CUSIP INFORMATION page to deliver securities to DTC
+      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-noon-deadline')">at least one business day before closing.</span>
+      For additional information, please contact DTC's Interface/Underwriting Department at the numbers provided.
+    </div>
+
+    <div class="legacy-section">Submitted By [Please Check One]</div>
+    <div class="legacy-field">▢ Underwriter &nbsp; ▢ Financial Advisor &nbsp; ▢ Clearing DTC Participant</div>
+    <div class="legacy-field" style="margin-top:10px">
+      X ________________________________________
+      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-signature')">(Authorized Signature)</span>
+    </div>
+    <div class="legacy-field" style="margin-top:6px; font-size:9px;">06/00</div>
+    <div class="legacy-field" style="margin-top:10px; font-size:9px; border-top:1px solid #7a6a45; padding-top:8px;">
+      ¹ Service available for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.<br>
+      ² <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">For non-investment grade issues eligible for resale under Rule 144A, PORTAL eligibility is required. Contact the NASD at (202) 728-8479 to apply for PORTAL.</span>
+    </div>
+  </div>
+
+  <div class="legacy-sheet">
+    <h4>CUSIP Information</h4>
+    <div class="legacy-field" style="text-align:center; margin-bottom:10px;">CUSIP Number · Interest Rate · Final Maturity/Expiration Date · Principal/Offering Amount · Type of Issue* · Initial Offering Price (to the Public)</div>
+    <div class="legacy-field" style="text-align:center; color:#7a6a45;">— 10 blank rows for CUSIP entries —</div>
+    <div class="legacy-field" style="margin-top:10px;">* C = Capital Appreciation, P = Put, S = Serial, T = Term</div>
+    <div class="legacy-section">DTC Underwriting Department Phone Numbers (Area Code 212)</div>
+    <div class="legacy-field">Issue Eligibility — Corporate: 855-3704 · Municipal: 855-3782 · Fax: 855-3726/3728</div>
+    <div class="legacy-field">Underwriting Processing: 855-3744/3774 · Fax: 855-5003</div>
+    <div class="legacy-field">Interface/Underwriting: 855-8820/8821 · Fax: 855-8703/8707</div>
+    <div class="legacy-field">Authorization for Closing: 855-3752/3753/3754/3755 · Fax: 855-3607</div>
+    <div class="legacy-field">Department Managers: 855-3793/3733 · Fax: 855-3726/3728</div>
+    <div class="legacy-section">DTC Mailing Addresses</div>
+    <div class="legacy-field">Underwriting Department (to forward issue information) — Attention: Eligibility Department, The Depository Trust Company, 55 Water Street - 19th Floor, New York, NY 10041-0099</div>
+    <div class="legacy-field">Delivery of Securities to DTC (for underwriting distribution only) — Attention: Interface/Underwriting Dept., The Depository Trust Company, 55 Water Street; 1SL - (Underwriting Securities), New York, NY 10041-0099</div>
+  </div>
+
+  <p class="legacy-diff-key"><span class="swatch"></span> Click any highlighted passage above to see what changed and why, per the June 2026 Operational Arrangements.</p>
+</div>
+
 
 <!-- ── STUDY GUIDE ── -->
 <div class="study-guide" id="study-guide">
@@ -2395,7 +4261,7 @@ function resetQuiz() {
 
   fill.style.width = '0%';
   fill.className = 'quiz-score-fill';
-  text.textContent = '0 / 10 correct (0%)';
+  text.textContent = '0 / 20 correct (0%)';
   result.className = 'quiz-result';
   result.innerHTML = '';
 }
@@ -3026,6 +4892,130 @@ function resetQuiz() {
       <p><strong>Electronic signatures:</strong> Permitted for U.S. entities in many circumstances per the June 2026 OA. <strong>Original manual signatures are still required for non-U.S. entities and for legal opinions.</strong></p>
       <p><strong>Non-U.S. Currency Rider:</strong> If the security is denominated in or pays interest in a currency other than U.S. dollars, a <strong>separate currency rider</strong> is required in addition to any jurisdiction-specific riders. This addresses FX conversion mechanics and payment timing.</p>
 <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; SEC Form of Letter of Representations. <a href="https://www.sec.gov/Archives/edgar/data/882153/000119312505173687/dex99k5.htm">sec.gov (ILOR)</a> | <a href="https://www.sec.gov/Archives/edgar/data/1173557/000119312505140329/dex99k4b.htm">sec.gov (BLOR)</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Authorized Signature -->
+<div class="modal-overlay" id="modal-signature" role="dialog" aria-modal="true" aria-labelledby="modal-title-signature">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-signature">Authorized Signature</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Execution Requirement</div>
+        <div class="def-word">Authorized Signature</div>
+        <p>The signature of a person with actual authority to bind the submitting entity (Underwriter, Financial Advisor, or Clearing DTC Participant) to the representations made on the questionnaire.</p>
+      </div>
+      <p class="modal-section-title">Electronic vs. Manual Signatures</p>
+      <ul>
+        <li><strong>Electronic signatures:</strong> Permitted in many circumstances for U.S. entities per the June 2026 Operational Arrangements.</li>
+        <li><strong>Original manual signatures:</strong> Still required for non-U.S. entities and for any accompanying legal opinions.</li>
+        <li><strong>Authority:</strong> The signer should hold a title or role (officer, partner, authorized agent) that reasonably establishes signing authority for the submitting entity.</li>
+      </ul>
+      <div class="tip-box"><strong>Practice tip:</strong> Confirm signing authority in advance for non-U.S. submitters — sourcing an original wet-ink signature under time pressure close to closing is a common cause of delay.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A.6.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div class="modal-overlay" id="modal-portal" role="dialog" aria-modal="true" aria-labelledby="modal-title-portal">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-portal">PORTAL</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legacy Trading System</div>
+        <div class="def-word">PORTAL</div>
+        <p>The NASD's Portal Alliance system, a trading platform historically used for non-investment-grade securities sold under Rule 144A that required Qualified Institutional Buyer (QIB) status to trade.</p>
+      </div>
+      <p class="modal-section-title">Current Status</p>
+      <ul>
+        <li><strong>Historical requirement:</strong> The original questionnaire required PORTAL eligibility for non-investment-grade Rule 144A resales.</li>
+        <li><strong>Succeeded by private venues:</strong> PORTAL has been succeeded by private trading platforms for Rule 144A securities; issuers should confirm current venue requirements rather than applying to PORTAL directly.</li>
+        <li><strong>Practical effect:</strong> A distinct CUSIP and LOR rider are still required for these issues even though the PORTAL application step itself is no longer the operative path.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Historical NASD PORTAL rules; current market practice for Rule 144A resale platforms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Legacy: PORTAL footnote (then vs now) -->
+<div class="modal-overlay" id="modal-legacy-portal" role="dialog" aria-modal="true" aria-labelledby="modal-title-legacy-portal">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legacy-portal">Then vs. Now: Footnote 2 (PORTAL)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legacy Field — Changed Since 2000</div>
+        <div class="def-word">PORTAL / NASD Footnote</div>
+        <p>The original 2000 form's footnote 2 read: "For non-investment grade issues eligible for resale under Rule 144A, PORTAL eligibility is required. Contact the NASD at (202) 728-8479 to apply for PORTAL."</p>
+      </div>
+      <p class="modal-section-title">What Changed</p>
+      <ul>
+        <li><strong>2000:</strong> Non-investment-grade Rule 144A issues had to separately apply for PORTAL eligibility through the NASD by phone.</li>
+        <li><strong>Today:</strong> PORTAL no longer exists as an active system. The NASD itself was absorbed into FINRA in 2007. Private trading platforms now serve this role.</li>
+        <li><strong>What survived:</strong> The underlying substantive requirement — a distinct CUSIP and an LOR rider for these issues — is unchanged; only the specific venue and phone number are obsolete.</li>
+      </ul>
+      <div class="tip-box"><strong>Practice tip:</strong> If you see PORTAL referenced in an older internal checklist or precedent document, treat it as a signal the checklist predates 2007 and should be refreshed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Legacy: 12:00 noon ET deadline -->
+<div class="modal-overlay" id="modal-legacy-noon-deadline" role="dialog" aria-modal="true" aria-labelledby="modal-title-legacy-noon-deadline">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legacy-noon-deadline">Then vs. Now: Delivery Deadline</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Updated Field — New Since 2000</div>
+        <div class="def-word">12:00 Noon ET Cutoff</div>
+        <p>The 2000 form simply said to deliver securities to DTC "at least one business day before closing," with no time-of-day cutoff stated.</p>
+      </div>
+      <p class="modal-section-title">What Changed</p>
+      <ul>
+        <li><strong>2000:</strong> No specific intraday cutoff was printed on the form itself (though DTC operationally had cutoff times internally).</li>
+        <li><strong>Today:</strong> The June 2026 Operational Arrangements make the <strong>12:00 noon ET</strong> cutoff explicit on the day-before-closing delivery requirement, for both physical certificates and FAST confirmations.</li>
+        <li><strong>Why it matters:</strong> Missing the noon cutoff can push a closing to the next business day — this is one of the most common operational delays in the process.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Legacy: signature requirements -->
+<div class="modal-overlay" id="modal-legacy-signature" role="dialog" aria-modal="true" aria-labelledby="modal-title-legacy-signature">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legacy-signature">Then vs. Now: Authorized Signature</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Updated Field — New Since 2000</div>
+        <div class="def-word">Electronic Signatures</div>
+        <p>The 2000 form provided a single signature line with no guidance on electronic execution — original wet-ink signatures were the only practical option at the time.</p>
+      </div>
+      <p class="modal-section-title">What Changed</p>
+      <ul>
+        <li><strong>2000:</strong> Manual, original signature expected; no electronic signature framework existed for DTC submissions.</li>
+        <li><strong>Today:</strong> The June 2026 Operational Arrangements (Section I.A.6) permit electronic signatures in many circumstances for U.S. entities.</li>
+        <li><strong>Still manual:</strong> Non-U.S. entities and accompanying legal opinions still require original manual signatures.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Legacy: paper vs electronic submission -->
+<div class="modal-overlay" id="modal-legacy-submission" role="dialog" aria-modal="true" aria-labelledby="modal-title-legacy-submission">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legacy-submission">Then vs. Now: How You Submit</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Updated Process — New Since 2000</div>
+        <div class="def-word">UW SOURCE / UWC Platforms</div>
+        <p>The 2000 form assumed paper submission — mail or fax to DTC's Underwriting Department at 55 Water Street, 19th Floor.</p>
+      </div>
+      <p class="modal-section-title">What Changed</p>
+      <ul>
+        <li><strong>2000:</strong> Questionnaire and offering documents submitted on paper via mail or fax; no electronic portal existed.</li>
+        <li><strong>Today:</strong> DTC accepts submissions through the UW SOURCE or Underwriting Central (UWC) electronic platforms. Paper submissions are still technically accepted but electronic is strongly preferred and faster.</li>
+        <li><strong>Also new since 2000:</strong> The requirement for Transfer Agents to submit an Agent Confirmation via email within 10 business days after closing — this had no equivalent on the 2000 form.</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -4116,9 +6106,431 @@ function resetQuiz() {
   </div>
 </div>
 
-<script src="../js/shared.js"></script>
+<script>
+/* Shared JavaScript for DTC Eligibility Project */
+/* This file contains common functionality used across multiple documents */
+
+// Theme Management
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.toggle('light', theme === 'light');
+  localStorage.setItem('dtc-theme', theme);
+}
+
+function initTheme() {
+  // Check for saved theme preference or default to system preference
+  const savedTheme = localStorage.getItem('dtc-theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Apply the appropriate theme
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
+
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    // Only auto-switch if user hasn't manually set a preference
+    if (!localStorage.getItem('dtc-theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
+// Modal functionality
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus trap for accessibility
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusableElements.length > 0) {
+      focusableElements[0].focus();
+    }
+  }
+}
+
+function closeModal(modal) {
+  if (typeof modal === 'string') {
+    modal = document.getElementById(modal);
+  }
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close modal on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    const modal = e.target.closest('.modal-overlay');
+    if (modal) {
+      closeModal(modal);
+    }
+  }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const activeModal = document.querySelector('.modal-overlay.active');
+    if (activeModal) {
+      closeModal(activeModal);
+    }
+  }
+});
+
+// Close modal on close button click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-close') || e.target.closest('.modal-close')) {
+    const modal = e.target.closest('.modal-overlay');
+    if (modal) {
+      closeModal(modal);
+    }
+  }
+});
+
+// TOC Sidebar functionality (for documents that have sidebar)
+function initTOCSidebar() {
+  const tocToggle = document.querySelector('.toc-toggle');
+  const tocSidebar = document.querySelector('.toc-sidebar, .page-sidebar');
+  const sidebarBackdrop = document.querySelector('.sidebar-backdrop');
+  const tocClose = document.querySelector('.toc-close, .sidebar-close');
+
+  if (!tocToggle || !tocSidebar) return;
+
+  function setBackdropVisible(visible) {
+    if (!sidebarBackdrop) return;
+    sidebarBackdrop.classList.toggle('active', visible);
+    sidebarBackdrop.classList.toggle('show', visible);
+  }
+
+  function closeSidebar() {
+    tocSidebar.classList.remove('open');
+    setBackdropVisible(false);
+    document.body.style.overflow = '';
+    tocToggle.classList.remove('open');
+  }
+
+  function openSidebar() {
+    tocSidebar.classList.add('open');
+    setBackdropVisible(true);
+    document.body.style.overflow = 'hidden';
+    tocToggle.classList.add('open');
+  }
+
+  function toggleSidebar() {
+    if (tocSidebar.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  }
+
+  tocToggle.addEventListener('click', toggleSidebar);
+
+  if (tocClose) {
+    tocClose.addEventListener('click', closeSidebar);
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && tocSidebar.classList.contains('open')) {
+      closeSidebar();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      toggleSidebar();
+    }
+  });
+
+  // Touch swipe to close on mobile
+  let touchStartX = 0;
+  const toc = tocSidebar;
+
+  if (toc) {
+    toc.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    toc.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      
+      // Swipe left to close
+      if (diff > 50) {
+        closeSidebar();
+      }
+    });
+  }
+
+  // Scroll spy - highlight current section in TOC
+  function updateActiveSection() {
+    const sections = document.querySelectorAll('h2[id], h3[id], .section-title[id]');
+    const tocLinks = tocSidebar.querySelectorAll('a[href^="#"]');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 100) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+    
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + currentSection) {
+        link.classList.add('active');
+      }
+    });
+
+    // Update breadcrumbs with current section
+    updateBreadcrumbs(currentSection);
+  }
+
+  // Update breadcrumbs to show current section
+  function updateBreadcrumbs(sectionId) {
+    const breadcrumbs = document.querySelector('.breadcrumbs');
+    if (!breadcrumbs) return;
+
+    // Remove existing current section breadcrumb if it exists
+    const existingSection = breadcrumbs.querySelector('.breadcrumb-section');
+    if (existingSection) {
+      existingSection.remove();
+    }
+
+    if (!sectionId) return;
+
+    // Find the section title
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const sectionTitle = section.textContent || section.innerText;
+    if (!sectionTitle || sectionTitle.trim().length === 0) return;
+
+    // Limit title length for breadcrumbs
+    const shortTitle = sectionTitle.trim().length > 30 
+      ? sectionTitle.trim().substring(0, 30) + '...' 
+      : sectionTitle.trim();
+
+    // Create section breadcrumb
+    const sectionCrumb = document.createElement('span');
+    sectionCrumb.className = 'breadcrumb-section';
+    sectionCrumb.innerHTML = `<span class="breadcrumb-separator">›</span><span class="breadcrumb-current">${shortTitle}</span>`;
+    
+    // Insert before the last breadcrumb
+    const lastCrumb = breadcrumbs.lastElementChild;
+    if (lastCrumb) {
+      breadcrumbs.insertBefore(sectionCrumb, lastCrumb);
+    }
+  }
+
+  // Add scroll listener for active section highlighting
+  window.addEventListener('scroll', updateActiveSection);
+  updateActiveSection(); // Initial call
+}
+
+// Return to Top Button functionality
+function initReturnToTop() {
+  if (
+    document.getElementById('scrollTop') ||
+    document.querySelector('.scroll-top, #fab-top, .return-to-top')
+  ) {
+    return;
+  }
+
+  const returnToTopButton = document.createElement('button');
+  returnToTopButton.className = 'return-to-top';
+  returnToTopButton.setAttribute('aria-label', 'Return to top');
+  returnToTopButton.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  `;
+  document.body.appendChild(returnToTopButton);
+
+  // Show/hide button based on scroll position
+  function toggleReturnToTop() {
+    if (window.scrollY > 300) {
+      returnToTopButton.classList.add('visible');
+    } else {
+      returnToTopButton.classList.remove('visible');
+    }
+  }
+
+  // Scroll to top on click
+  returnToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Add scroll listener
+  window.addEventListener('scroll', toggleReturnToTop);
+  toggleReturnToTop(); // Initial check
+}
+
+// Hotspot functionality
+
+// Concept-map horizontal scroll hints (mobile)
+function initConceptMapScrollHints() {
+  const boxes = document.querySelectorAll('.diagram-box.concept-map');
+  if (!boxes.length) return;
+
+  const updateBox = (box) => {
+    const scrollEl = box;
+    const overflow = scrollEl.scrollWidth > scrollEl.clientWidth + 4;
+    box.classList.toggle('is-scrollable', overflow);
+    if (!overflow) {
+      box.classList.remove('is-scrolled-end');
+      return;
+    }
+    const atEnd = scrollEl.scrollLeft + scrollEl.clientWidth >= scrollEl.scrollWidth - 8;
+    box.classList.toggle('is-scrolled-end', atEnd);
+  };
+
+  boxes.forEach((box) => {
+    updateBox(box);
+    box.addEventListener('scroll', () => updateBox(box), { passive: true });
+  });
+
+  window.addEventListener('resize', () => {
+    boxes.forEach(updateBox);
+  }, { passive: true });
+}
+
+function initHotspots() {
+  const hotspots = document.querySelectorAll('.hotspot');
+  
+  hotspots.forEach(hotspot => {
+    // Make hotspots keyboard accessible
+    hotspot.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const modalId = this.getAttribute('data-modal');
+        if (modalId) {
+          openModal('modal-' + modalId);
+        }
+      }
+    });
+  });
+
+  // Concept-map SVG nodes (data-modal="dtc" opens modal-dtc)
+  document.querySelectorAll('.cm-node[data-modal]').forEach(node => {
+    const openFromNode = function() {
+      const modalId = node.getAttribute('data-modal');
+      if (modalId) openModal('modal-' + modalId);
+    };
+    node.addEventListener('click', openFromNode);
+    node.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFromNode();
+      }
+    });
+  });
+}
+
+// Check URL hash to automatically open modals
+function checkUrlHash() {
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#modal-')) {
+    const modalId = hash.substring(1);
+    setTimeout(() => {
+      openModal(modalId);
+    }, 150);
+  }
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    initTheme();
+    initTOCSidebar();
+    initHotspots();
+    initConceptMapScrollHints();
+    initReturnToTop();
+    checkUrlHash();
+  });
+} else {
+  initTheme();
+  initTOCSidebar();
+  initHotspots();
+  initConceptMapScrollHints();
+  initReturnToTop();
+  checkUrlHash();
+}
+
+window.addEventListener('hashchange', checkUrlHash);
+</script>
 <script>
 /* Document-specific JavaScript */
+
+// ── Legacy 2000 form comparison toggle ──
+function toggleLegacyPanel() {
+  const panel = document.getElementById('legacy-compare');
+  const btn = document.getElementById('legacyToggleBtn');
+  const label = document.getElementById('legacyToggleLabel');
+  if (!panel || !btn) return;
+  const isOpen = panel.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (label) label.textContent = isOpen ? 'Hide Original 2000 Form' : 'View Original 2000 Form (as filed)';
+  if (isOpen) {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// ── CUSIP example row fill-in ──
+function initCusipExampleRows() {
+  const rows = document.querySelectorAll('.cusip-example-row');
+  rows.forEach(row => {
+    const fill = function() {
+      const data = row.getAttribute('data-example');
+      if (!data) return;
+      const parts = data.split('|');
+      const cells = row.querySelectorAll('td');
+      cells.forEach((cell, i) => {
+        if (parts[i] !== undefined) {
+          cell.textContent = parts[i];
+          cell.classList.add('filled');
+        }
+      });
+    };
+    row.addEventListener('click', fill);
+    row.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fill();
+      }
+    });
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCusipExampleRows);
+} else {
+  initCusipExampleRows();
+}
 
 // ── Scenario Tabs ──
 function showScenario(id) {

@@ -544,7 +544,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <th><span class="hotspot" data-modal="certificate-origin" tabindex="0" role="button" onclick="openModal('modal-certificate-origin')">Certificate<br>of Origin</span></th>
       <th><span class="hotspot" data-modal="insurance" tabindex="0" role="button" onclick="openModal('modal-insurance')">Insurance</span></th>
       <th><span class="hotspot" data-modal="courier-receipt" tabindex="0" role="button" onclick="openModal('modal-courier-receipt')">Courier<br>Receipt</span></th>
-      <th><span>Other<br>Documents</span></th>
+      <th><span class="hotspot" data-modal="other-documents" tabindex="0" role="button" onclick="openModal('modal-other-documents')">Other<br>Documents</span></th>
     </tr>
     <tr>
       <td class="doc-label"><span class="hotspot" data-modal="originals" tabindex="0" role="button" onclick="openModal('modal-originals')">ORIGINALS</span></td>
@@ -959,7 +959,6 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <div class="short-fill"></div>
     </div>
 
-    <div style="text-align: right; margin: 10px 0; font-style: italic;">iC</div>
   </div>
 
   <div class="convention-text">
@@ -1317,6 +1316,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   </div>
 
   <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check All Answers</button>
     <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
   </div>
 
@@ -1833,7 +1833,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <ul>
         <li><strong>All-risk:</strong> Covers all physical loss or damage from external causes, with specific exclusions.</li>
         <li><strong>With average:</strong> Covers partial losses; general average contribution may apply.</li>
-        <li><strong>Free of particular average (FPA):strong> Covers only total losses or specified partial losses.</li>
+        <li><strong>Free of particular average (FPA):</strong> Covers only total losses or specified partial losses.</li>
       </ul>
       <p class="modal-section-title">When Required</p>
       <p>Insurance documents are typically required when the sales contract specifies CIF or CIP terms (Cost, Insurance and Freight), where the seller is responsible for obtaining insurance. Under other terms (FOB, EXW), insurance may be optional or the buyer's responsibility.</p>
@@ -2294,48 +2294,84 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <script>
 // Treasury Bill of Exchange Quiz Answers
 const treasuryAnswers = {
-  q1: { correct: 'b', explanation: 'A bill of exchange is a written, unconditional order by one party (the drawer) to another party (the drawee) to pay a specified amount of money on demand or at a specified future date.' },
-  q2: { correct: 'b', explanation: 'Documentary collection is a payment method in international trade where banks handle the exchange of documents for payment or acceptance, without providing a bank guarantee like letters of credit.' },
-  q3: { correct: 'b', explanation: 'A bill of exchange is an order to pay (three-party instrument), while a promissory note is a promise to pay (two-party instrument). Bills involve drawer, drawee, and payee; notes involve maker and payee.' },
-  q4: { correct: 'b', explanation: 'The drawer is the party that creates the bill of exchange and orders the drawee to pay the specified amount to the payee. In international trade, this is typically the exporter.' },
-  q5: { correct: 'b', explanation: 'The drawee is the party ordered to pay the bill of exchange. In documentary collections, this is typically the buyer/importer who must pay to receive shipping documents.' },
-  q6: { correct: 'a', explanation: 'In documentary collection with payment at sight (D/P), documents are released to the buyer only upon immediate payment. The buyer must pay to receive the commercial documents needed to claim the goods.' },
-  q7: { correct: 'b', explanation: 'Acceptance is the drawee\'s written agreement to pay the bill of exchange at maturity. For usance bills, acceptance is required before documents are released, with payment due at a future date.' },
-  q8: { correct: 'b', explanation: 'D/P (Documents against Payment) requires payment before documents are released, while D/A (Documents against Acceptance) requires acceptance of a bill of exchange before documents are released.' },
-  q9: { correct: 'b', explanation: 'The collecting bank presents documents to the drawee for payment or acceptance according to the seller\'s instructions, and collects payment on the seller\'s behalf, typically for a fee.' },
-  q10: { correct: 'b', explanation: 'The bill of lading serves as a receipt for goods, evidence of the contract of carriage, and document of title. In documentary collections, it is a critical document that controls possession of the goods.' },
-  q11: { correct: 'b', explanation: 'The beneficiary is the seller/exporter who will receive payment through the documentary collection process. They are the party entitled to receive payment when the buyer pays or accepts the bill.' },
-  q12: { correct: 'b', explanation: 'A usance bill (or time bill) is payable at a specified future date rather than immediately upon presentation. It allows the buyer deferred payment, typically 30, 60, or 90 days from acceptance or bill date.' },
-  q13: { correct: 'a', explanation: 'The commercial invoice describes the goods, their value, and terms of sale. It is essential for customs authorities to assess duties and taxes, and for the buyer to understand what they are purchasing.' },
-  q14: { correct: 'b', explanation: 'A letter of credit involves a bank\'s guarantee of payment, providing security for both parties. Documentary collection does not provide a bank guarantee; payment risk remains with the buyer.' },
-  q15: { correct: 'b', explanation: 'The remitting bank is the seller\'s bank that receives documents and payment instructions from the seller and forwards them to the collecting bank in the buyer\'s country for processing.' },
-  q16: { correct: 'b', explanation: 'A clean collection involves only financial documents (bills, drafts) without commercial documents (shipping documents). This is less common in trade, typically used for services or debt collection.' },
-  q17: { correct: 'b', explanation: 'The insurance certificate provides evidence of insurance coverage for the goods during transit, protecting against loss or damage. It is often required under Incoterms that place insurance responsibility on the seller.' },
-  q18: { correct: 'b', explanation: 'An endorsed bill requires a transfer endorsement to be negotiated, transferring rights to a specific party. A bearer bill is payable to whoever holds it, requiring no endorsement for transfer.' },
-  q19: { correct: 'a', explanation: 'The certificate of origin certifies the country where the goods were manufactured or produced. It may be required for customs purposes, trade agreements, or import quotas, and is often issued by chambers of commerce.' },
-  q20: { correct: 'a', explanation: 'Documentary collection typically has lower bank fees than letters of credit since banks provide fewer services and take on less risk. However, it also provides less security for the seller since there is no bank guarantee.' }
+  q1: { correct: 'b', explanation: 'A bill of exchange is a written, unconditional order by one party (the drawer) directing another party (the drawee) to pay a specified sum of money, either on demand or at a determinable future date.' },
+  q2: { correct: 'b', explanation: 'Documentary collection is a payment method in which banks act as agents, handling shipping and financial documents in exchange for payment or acceptance from the buyer — without guaranteeing payment themselves.' },
+  q3: { correct: 'b', explanation: 'A sight draft is payable immediately upon presentation to the drawee, while a time (usance) draft is payable at a determinable future date, such as 30, 60, or 90 days after sight or after date.' },
+  q4: { correct: 'd', explanation: 'A Bill of Lading serves multiple functions at once: it is a receipt for goods shipped, evidence of the contract of carriage, and — in its original, negotiable form — a document of title.' },
+  q5: { correct: 'a', explanation: 'D/P stands for Documents against Payment: the collecting bank releases shipping documents to the buyer only once the buyer has paid the draft in full.' },
+  q6: { correct: 'b', explanation: 'D/A stands for Documents against Acceptance: the collecting bank releases documents to the buyer once the buyer accepts (signs) a time draft, with actual payment due at a later maturity date.' },
+  q7: { correct: 'b', explanation: 'The remitting bank is the seller\'s bank — it receives the collection documents and draft from the seller and forwards them to the collecting bank in the buyer\'s country.' },
+  q8: { correct: 'a', explanation: 'A clean collection involves only financial documents (such as a draft or bill of exchange) with no accompanying commercial/shipping documents — unlike a documentary collection, which includes both.' },
+  q9: { correct: 'b', explanation: 'A documentary collection involves both financial documents (the draft) and commercial documents (invoice, bill of lading, etc.), which the collecting bank exchanges for payment or acceptance.' },
+  q10: { correct: 'b', explanation: 'The collecting bank is the buyer\'s bank — it presents the draft and documents to the drawee for payment or acceptance and forwards any funds collected back to the remitting bank.' },
+  q11: { correct: 'b', explanation: 'The drawee is the party — typically the buyer/importer — on whom the bill of exchange is drawn and who is ordered to pay or accept the draft.' },
+  q12: { correct: 'a', explanation: 'The drawer is the party — typically the seller/exporter — who creates and signs the bill of exchange, ordering the drawee to pay a specified sum.' },
+  q13: { correct: 'a', explanation: 'An endorsement is the signature of the holder of a negotiable instrument, made on the back of the document, which transfers ownership or rights in the instrument to another party.' },
+  q14: { correct: 'a', explanation: 'A negotiable instrument is a document, such as a bill of exchange, that can be transferred from one party to another by endorsement, making it a liquid and transferable financial asset.' },
+  q15: { correct: 'a', explanation: 'A clean bill of lading has no notations indicating defects or damage to the goods or packaging, while a claused (or "dirty") bill of lading has such defects noted by the carrier.' },
+  q16: { correct: 'a', explanation: 'A straight bill of lading is consigned to a specific named party and is non-negotiable; only that named consignee can claim the goods, without needing to present the original document.' },
+  q17: { correct: 'b', explanation: 'An order bill of lading is made out "to order" and can be transferred by endorsement, making it a negotiable document of title that gives the seller control over the goods until payment.' },
+  q18: { correct: 'b', explanation: 'The presenting bank is the bank that presents the draft and accompanying documents to the drawee for payment or acceptance — in practice, this role is typically filled by the collecting bank.' },
+  q19: { correct: 'a', explanation: 'The beneficiary is the party entitled to receive payment through the collection — in a documentary collection, this is the seller/exporter (also acting as the drawer).' },
+  q20: { correct: 'b', explanation: 'The applicant is the party who requests and initiates the documentary collection — in this context, the seller/exporter who submits the collection instructions to their bank.' }
 };
 
-function resetQuiz() {
-  const currentScore = 0;
-  const answeredQuestions = new Set();
-  
-  document.getElementById('quizScoreFill').style.width = '0%';
-  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
-  document.getElementById('quizResult').className = 'quiz-result';
-  
-  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
-    input.checked = false;
-  });
-  
-  document.querySelectorAll('.quiz-card').forEach(card => {
+// Note: resetQuiz() is defined inside quiz.js's setupQuiz() and exposed via
+// window.resetQuiz, so it correctly resets both the DOM and the internal
+// score-tracking state together. No separate definition needed here.
+
+// Check all answers at once
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 20;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'q' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + qName);
+    const answer = treasuryAnswers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+
     card.classList.remove('correct', 'incorrect');
-  });
-  
-  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+
     fb.className = 'quiz-feedback';
-    fb.innerHTML = '';
-  });
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  // Update score bar
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : 'fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : 'fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid grasp of bills of exchange and documentary collections.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80%.';
+  }
 }
 
 // Initialize quiz when DOM is ready
@@ -2360,7 +2396,7 @@ if (document.readyState === 'loading') {
   </nav>
 
     <div class="footer-info">
-      <div class="footer-version">July 2026 · International Bill of Exchange Teaching Guide v1.0</div>
+      <div class="footer-version">July 2026 · International Bill of Exchange Teaching Guide v1.0 · Last updated July 2026</div>
       <div class="footer-links">
         <a href="https://uncitral.un.org/en/texts/payments/conventions/bills_of_exchange" rel="noopener">UNCITRAL Convention</a>
         <span class="footer-divider">•</span>

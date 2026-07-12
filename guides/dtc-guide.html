@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Securities Ownership Wizard — DTC, DTCC & Cede &amp; Co. Teaching Guide</title>
+<title>Securities Ownership Wizard — DTC, DTCC, Cede &amp; Co. &amp; Euroclear Teaching Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -707,12 +707,13 @@
     <div class="header-brand">
       <div class="header-icon">SO</div>
       <div class="header-text">
-        <h1>Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h1>
-        <div class="sub">Enhanced Teaching Guide to U.S. Securities Infrastructure · Interactive Definitions</div>
+        <h1>Securities Ownership Wizard — DTC, DTCC, Cede &amp; Co. &amp; Euroclear</h1>
+        <div class="sub">Interactive Teaching Guide to U.S. &amp; European Securities Infrastructure</div>
       </div>
     </div>
     <div style="display: flex; align-items: center; gap: 12px;">
       <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
@@ -932,7 +933,7 @@ Founded in 1973, the <span class="hotspot" data-modal="dtc" tabindex="0" role="b
 </p>
 
 <p class="body-text">
-DTC's core function is to eliminate the physical movement of securities certificates. Before DTC, brokers delivered millions of paper stock certificates daily. Today, DTC holds over $60 trillion in securities in <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry form</span> — meaning ownership is recorded electronically on DTC's books rather than through physical certificates.
+DTC's core function is to eliminate the physical movement of securities certificates. Before DTC, brokers delivered millions of paper stock certificates daily. Today, DTC holds over $100 trillion in securities in <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry form</span> — meaning ownership is recorded electronically on DTC's books rather than through physical certificates. (DTC surpassed the $100 trillion milestone in June 2025; the exact figure moves quarter to quarter as markets fluctuate.)
 </p>
 
 <h3 class="subsection-title">How DTC Holds Securities</h3>
@@ -1478,7 +1479,7 @@ FICC operates through two distinct divisions — the <span class="hotspot" data-
   <div class="entity-card">
     <div class="entity-name">GSD — Government Securities Division</div>
     <div class="entity-role">Treasury & Agency Securities</div>
-    <div class="entity-desc">Provides CCP clearing, netting, and settlement for U.S. Treasury bills, notes, bonds, strips, agency securities, and repurchase agreements (repos). Also offers sponsored membership and agent clearing services for broader market access.</div>
+    <div class="entity-desc">Provides CCP clearing, netting, and settlement for U.S. Treasury bills, notes, bonds, strips, agency securities, and <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repurchase agreements (repos)</span>. Also offers sponsored membership and agent clearing services for broader market access.</div>
   </div>
   <div class="entity-card">
     <div class="entity-name">MBSD — Mortgage-Backed Securities Division</div>
@@ -2676,7 +2677,7 @@ Most investors hold securities in street name because it is faster, cheaper, and
       </div>
       <p class="modal-section-title">Key Statistics</p>
       <ul>
-        <li>Holds over $60 trillion in securities value.</li>
+        <li>Holds over $100 trillion in securities value. (DTC surpassed this milestone in June 2025; the exact figure moves quarter to quarter.)</li>
         <li>Processes millions of transactions daily.</li>
         <li>Has approximately 300 participants (broker-dealers and banks).</li>
         <li>Founded in 1973; headquartered in New York.</li>
@@ -3672,7 +3673,7 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
 </div>
 
 <div class="warn-box">
-  <strong>Regulatory Note:</strong> Following the Russian invasion of Ukraine, Euroclear Bank has been prominently involved in the management of frozen Russian central bank reserves — approximately <strong>€200 billion</strong> as of early 2025. In March 2025, Belgium authorized Euroclear to make payouts from the interest generated by these frozen assets (approximately €4 billion annually) to fund a G7 loan to Ukraine. This has raised complex legal questions about the status of immobilized assets and the role of CSDs in sanctions enforcement.
+  <strong>Regulatory Note:</strong> Following the Russian invasion of Ukraine, Euroclear Bank has been prominently involved in the management of frozen Russian central bank reserves — approximately <strong>€193-210 billion</strong> remain immobilized as of early 2026, mostly at Euroclear in Belgium. The EU spent much of 2025 debating a "reparations loan" that would tap the frozen Russian assets themselves (not just interest income), but on December 19, 2025 EU leaders agreed instead to a €90 billion interest-free loan funded by member states, NOT the frozen Russian assets, after Belgium objected over legal risk. The 2024 windfall-tax/interest-income mechanism remains in place as background context, but the broader "reparations loan" plan did not proceed as originally proposed. This remains an evolving and contested situation that may change further.
 </div>
 
 <!-- SECTION: GLOBAL COMPARISON -->
@@ -3805,8 +3806,8 @@ Understanding the differences between the U.S. and European post-trade infrastru
   </tr>
   <tr>
     <td><strong>Assets Under Custody</strong></td>
-    <td>~$60+ trillion (DTC only)</td>
-    <td>~€37.5 trillion (Euroclear group, 2024)</td>
+    <td>~$100+ trillion (DTC only; surpassed $100 trillion milestone in June 2025)</td>
+    <td>~€40+ trillion (Euroclear group, approximately €42.5 trillion as of Q3 2025 — a fast-growing figure)</td>
   </tr>
   <tr>
     <td><strong>Geographic Focus</strong></td>
@@ -3859,31 +3860,6 @@ Understanding the differences between the U.S. and European post-trade infrastru
   <strong>Teaching Note:</strong> The absence of a single European equivalent to NSCC is one of the most significant structural differences. In Europe, CCP services are fragmented across multiple entities (LCH for interest rate swaps and some equities, Euronext Clearing for Euronext markets, bilateral clearing for many bonds). The EU has proposed reforms to centralize Treasury clearing, but nothing comparable to NSCC's universal equity clearing exists. This fragmentation is both a weakness (higher complexity) and a strength (reduced single-point-of-failure risk).
 </div>
 
-<footer class="page-footer">
-  <div class="footer-content">
-  <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
-    <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../sitemap.html">Site Map</a>
-    <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
-  </nav>
-
-    <div class="footer-info">
-      <div class="footer-version">July 2026 · Securities Infrastructure Teaching Guide v1.0</div>
-      <div class="footer-links">
-        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
-        <span class="footer-divider">•</span>
-        <a href="https://www.sec.gov" rel="noopener">SEC</a>
-        <span class="footer-divider">•</span>
-        <a href="https://www.federalreserve.gov" rel="noopener">Federal Reserve</a>
-        <span class="footer-divider">•</span>
-        <a href="https://www.euroclear.com" rel="noopener">Euroclear</a>
-      </div>
-      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, investment, or regulatory advice. The information reflects the U.S. securities infrastructure as of 2024-2025. For official rules and procedures, consult DTCC, DTC, and SEC publications directly.</div>
-    </div>
-  </div>
-</footer>
 
 </div><!-- /doc-frame -->
 
@@ -4008,7 +3984,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
       <ul>
         <li><strong>Founded:</strong> 1968 (originally the Euro-clear System by Morgan Guaranty).</li>
         <li><strong>Headquarters:</strong> Brussels, Belgium.</li>
-        <li><strong>Assets Under Custody:</strong> Over €37.5 trillion (2024).</li>
+        <li><strong>Assets Under Custody:</strong> Over €40 trillion (approximately €42.5 trillion as of Q3 2025 — a fast-growing figure).</li>
         <li><strong>Participants:</strong> 2,000+ financial institutions across 90+ countries.</li>
         <li><strong>Transactions:</strong> ~300 million transactions per year.</li>
         <li><strong>Markets Served:</strong> 50 markets, 46 settlement currencies.</li>
@@ -4372,7 +4348,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
       <p class="modal-section-title">How the Clearing Fund Works</p>
       <p>When a member defaults, the CCP first uses the defaulter's own margin deposit and corporate contribution. If these are insufficient, the CCP accesses the non-defaulting members' clearing fund contributions according to a pre-determined allocation formula (typically by tier based on trading activity).</p>
       <p class="modal-section-title">FICC Clearing Fund Sizes</p>
-      <p>As of year-end 2025, FICC's clearing funds hold substantial resources: the GSD clearing fund approximately $87 billion, and the MBSD clearing fund approximately $12.4 billion. These funds consist primarily of U.S. Treasuries and agency mortgage-backed securities.</p>
+      <p>FICC maintains separate multi-billion-dollar clearing funds for GSD and MBSD, sized to cover potential member defaults. These funds consist primarily of U.S. Treasuries and agency mortgage-backed securities. (Figures are illustrative and subject to change; consult DTCC's latest risk management disclosures for current data.)</p>
       <p class="modal-section-title">Risk Sharing</p>
       <p>The clearing fund represents collective mutualization of default risk. While each member's own contribution protects their own positions, the shared fund provides additional protection against systemic events. Cross-guaranty agreements between DTC, NSCC, FICC, and OCC provide further mutual support.</p>
       <div class="citation"><strong>Source:</strong> DTCC Annual Risk Management Disclosures; FICC Default Procedures.</div>
@@ -4938,8 +4914,8 @@ Understanding the differences between the U.S. and European post-trade infrastru
         <h4>What does FAST stand for and what is its purpose?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q6" value="a"><span>Federal Automated Securities Transfer - regulates DTC</span></label>
-          <label><input type="radio" name="q6" value="b"><span>Federal Automated Securities Tracking - tracks investor holdings</span></label>
-          <label><input type="radio" name="q6" value="c"><span>Fedwire Automated Securities Transfer - wire transfer system</span></label>
+          <label><input type="radio" name="q6" value="b"><span>Fast Automated Securities Transfer - lets transfer agents process deposits/withdrawals with DTC electronically</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Fedwire Automated Securities Transfer - the Federal Reserve's wire transfer system</span></label>
           <label><input type="radio" name="q6" value="d"><span>Faster Automated Settlement Transfer - T+1 settlement</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q6"></div>
@@ -5220,6 +5196,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
   </div>
 
   <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check All Answers</button>
     <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
   </div>
 
@@ -5235,7 +5212,7 @@ const dtcGuideAnswers = {
   q3: { correct: 'b', explanation: 'NSCC (National Securities Clearing Corporation) primarily clears and nets equity trades, reducing multiple settlement obligations between the same counterparties into single net settlements.' },
   q4: { correct: 'b', explanation: 'Legal owner (Cede & Co.) holds title to securities, while beneficial owners (investors through participants) receive economic benefits like dividends and price appreciation.' },
   q5: { correct: 'b', explanation: 'DVP (Delivery Versus Payment) ensures simultaneous exchange of securities and cash, eliminating the risk that one party delivers securities without receiving payment or vice versa.' },
-  q6: { correct: 'c', explanation: 'FAST stands for Fedwire Automated Securities Transfer, which is the Federal Reserve\'s wire transfer system for moving securities between accounts in exchange for cash settlement.' },
+  q6: { correct: 'b', explanation: 'FAST stands for Fast Automated Securities Transfer — a DTC program that lets a transfer agent electronically process deposits and withdrawals of securities directly with DTC, using a "balance certificate" registered in Cede & Co.\'s name, instead of moving physical certificates.' },
   q7: { correct: 'b', explanation: 'Multilateral netting reduces settlement obligations by netting trades between the same counterparties throughout the day, dramatically reducing the number of actual settlements needed.' },
   q8: { correct: 'b', explanation: 'A CCP becomes the buyer to every seller and seller to every buyer in trades it clears, reducing counterparty risk by guaranteeing settlement even if one party defaults.' },
   q9: { correct: 'b', explanation: 'The Federal Reserve Bank of New York provides central bank money settlement services, which is the safest form of settlement because it removes commercial bank credit risk.' },
@@ -5256,26 +5233,63 @@ const dtcGuideAnswers = {
   q24: { correct: 'b', explanation: 'Distributions and notices flow Issuer → Cede/DTC → Participants → Investors; proxy votes are aggregated and sent back up the chain. See the Rights Pass-Through concept map.' }
 };
 
-function resetQuiz() {
-  const currentScore = 0;
-  const answeredQuestions = new Set();
-  
-  document.getElementById('quizScoreFill').style.width = '0%';
-  document.getElementById('quizScoreText').textContent = '0 / 24 correct (0%)';
-  document.getElementById('quizResult').className = 'quiz-result';
-  
-  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
-    input.checked = false;
-  });
-  
-  document.querySelectorAll('.quiz-card').forEach(card => {
+// resetQuiz() is provided by quiz.js's setupQuiz() closure (window.resetQuiz),
+// which correctly tracks currentScore/answeredQuestions state. Do not redefine
+// it here — a duplicate definition previously shadowed/raced with it depending
+// on script execution order.
+
+// Check all answers at once
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 24;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'q' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + qName);
+    const answer = dtcGuideAnswers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+
     card.classList.remove('correct', 'incorrect');
-  });
-  
-  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+
     fb.className = 'quiz-feedback';
-    fb.innerHTML = '';
-  });
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  // Update score bar
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : 'fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : 'fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid grasp of U.S. and European securities infrastructure.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80%.';
+  }
 }
 
 // Initialize quiz when DOM is ready
@@ -5289,6 +5303,32 @@ if (document.readyState === 'loading') {
 </script>
 
 </div><!-- /wrap -->
+
+<footer class="page-footer">
+  <div class="footer-content">
+  <nav class="footer-site-nav" aria-label="Site navigation">
+    <a href="../index.html" class="footer-home-link">Home</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../sitemap.html">Site Map</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../index.html#documents">All Documents</a>
+  </nav>
+
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Securities Infrastructure Teaching Guide v1.0 · Last updated July 2026</div>
+      <div class="footer-links">
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.sec.gov" rel="noopener">SEC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.federalreserve.gov" rel="noopener">Federal Reserve</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.euroclear.com" rel="noopener">Euroclear</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, investment, or regulatory advice. The information reflects the U.S. and European securities infrastructure as of 2024-2026. For official rules and procedures, consult DTCC, DTC, SEC, and Euroclear publications directly.</div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
