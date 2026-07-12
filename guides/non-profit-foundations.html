@@ -1,0 +1,3165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Non-Profit Foundations & Securities Ownership — Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
+<script src="../js/theme-init.js"></script>
+<style>
+
+/* ─── Shared with template ─── */
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.3s ease;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 16px; top: 44px; z-index: 70;
+  width: 40px; height: 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: all 0.2s;
+}
+.toc-toggle:hover { background: var(--accent-hover); }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.78rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: all 0.15s;
+}
+.toc-sidebar a:hover { color: var(--accent); padding-left: 4px; }
+.toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
+}
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ─── Page Header ─── */
+.page-header {
+  background: var(--bg); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 24px 32px 20px; display: flex;
+  align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+.header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.header-text .sub {
+  font-size: 0.72rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 2px;
+}
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.15); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+/* ─── Main ─── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+.update-banner {
+  background: var(--accent-light); border: 1px solid var(--accent-muted);
+  border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.82rem; color: var(--accent);
+}
+.update-banner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.update-banner strong { color: var(--ink); }
+
+.teach-banner {
+  background: var(--teal-light); border: 1px solid rgba(13,115,119,0.15);
+  border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.84rem; color: var(--teal);
+}
+.teach-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.teach-banner strong { color: var(--ink); }
+
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 48px 52px 56px; position: relative;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem; font-weight: 600; color: var(--ink);
+  margin: 36px 0 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-faint);
+  letter-spacing: -0.01em;
+}
+.section-title:first-child { margin-top: 0; }
+
+.subsection-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ink-secondary);
+  margin: 24px 0 10px;
+}
+
+.lead {
+  font-size: 1.05rem; color: var(--ink-secondary); line-height: 1.75;
+  margin-bottom: 20px; max-width: 780px;
+}
+.lead a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: all 0.2s ease;
+}
+.lead a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+.body-text {
+  font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.85;
+  margin-bottom: 16px; max-width: 780px;
+}
+.body-text ul, .body-text ol {
+  margin: 12px 0 12px 24px; padding: 0;
+}
+.body-text li { margin-bottom: 8px; }
+
+.body-text a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: all 0.2s ease;
+}
+.body-text a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+.body-text a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.diagram-box {
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 28px 32px; margin: 24px 0;
+}
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 16px;
+  text-align: center;
+}
+
+.diagram-box.concept-map {
+  padding: 24px 16px 18px;
+  overflow-x: auto;
+}
+.concept-map-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.06);
+}
+.concept-map-svg .cm-node:focus {
+  outline: none;
+}
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static {
+  cursor: default;
+}
+.cm-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-tertiary);
+  margin: 14px auto 0;
+  line-height: 1.55;
+  max-width: 560px;
+}
+.cm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.cm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cm-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--ink-muted);
+  flex-shrink: 0;
+}
+.cm-legend-line.dashed {
+  border-top-style: dashed;
+  border-color: var(--ink-faint);
+}
+.cm-legend-line.pass {
+  border-top-style: dashed;
+  border-color: var(--green);
+}
+.cm-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.process-flow-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-width: 1.6;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px;
+  fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .diagram-box.concept-map { padding: 18px 8px 14px; }
+  .concept-map-svg { min-width: 300px; }
+}
+
+.entity-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.entity-card {
+  background: var(--bg-ivory); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 20px 22px;
+}
+.entity-card .entity-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.entity-card .entity-role {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.entity-card .entity-desc {
+  font-size: 0.82rem; color: var(--ink-tertiary); line-height: 1.65;
+}
+
+.comp-table {
+  width: 100%; border-collapse: collapse; margin: 20px 0;
+  font-size: 0.85rem; color: var(--ink-secondary);
+}
+.comp-table th, .comp-table td {
+  border: 1px solid var(--border-light); padding: 12px 14px;
+  text-align: left; vertical-align: top;
+}
+.comp-table th {
+  background: var(--bg-cream); font-weight: 600; color: var(--ink);
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.comp-table td { background: var(--bg); }
+
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: all 0.2s ease; padding: 0 1px;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 2px; outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.7; transition: opacity 0.2s;
+  display: inline-block; width: 12px; height: 12px;
+  line-height: 12px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* ─── Modal ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.modal-overlay.loading .modal-card {
+  transform: translateY(20px) scale(0.98);
+}
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: var(--bg-cream); border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 22px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.6rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: all 0.2s; margin-top: -4px;
+}
+.modal-close:hover { background: var(--border-light); color: var(--ink); }
+.modal-body {
+  padding: 24px 32px 32px; overflow-y: auto;
+  max-height: calc(88vh - 90px); font-size: 0.88rem;
+  line-height: 1.85; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 14px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 16px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body ul { margin: 12px 0 12px 24px; padding: 0; }
+.modal-body li { margin-bottom: 8px; line-height: 1.7; }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--ink); margin: 20px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.def-callout .def-type {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.tip-box {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+.warn-box {
+  background: var(--red-light); border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
+
+/* ─── Quiz ─── */
+.quiz-section {
+  margin-top: 48px;
+  padding: 32px 36px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.quiz-intro {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+.quiz-score-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.quiz-score-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+.quiz-score-fill.pass { background: var(--green); }
+.quiz-score-fill.fail { background: var(--red); }
+.quiz-score-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin-bottom: 20px;
+}
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.quiz-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-ivory);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.quiz-card.correct { border-color: var(--green); background: var(--green-light); }
+.quiz-card.incorrect { border-color: var(--red); background: var(--red-light); }
+.quiz-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.quiz-content { flex: 1; }
+.quiz-content h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.quiz-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  padding: 4px 0;
+}
+.quiz-options label:hover { color: var(--ink); }
+.quiz-options input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+.quiz-feedback {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct {
+  background: var(--green-light);
+  border-left: 3px solid var(--green);
+  color: var(--green);
+}
+.quiz-feedback.incorrect {
+  background: var(--red-light);
+  border-left: 3px solid var(--red);
+  color: var(--red);
+}
+.quiz-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.quiz-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.quiz-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.quiz-btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.quiz-btn-secondary {
+  background: var(--border-light);
+  color: var(--ink-secondary);
+}
+.quiz-btn-secondary:hover { background: var(--border); color: var(--ink); }
+.quiz-result {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result.pass {
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+  color: var(--green);
+}
+.quiz-result.fail {
+  background: var(--red-light);
+  border-left: 4px solid var(--red);
+  color: var(--red);
+}
+
+/* ─── Footer ─── */
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 24px 20px 32px; margin-top: 32px;
+}
+.footer-content { max-width: 1100px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center; font-size: 0.8rem; color: var(--ink-secondary);
+}
+.footer-version { font-weight: 500; color: var(--ink-tertiary); }
+.footer-links { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.7rem; }
+.footer-legal { margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px; text-align: center; }
+.footer-site-nav {
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+.footer-site-nav a {
+  color: var(--ink-tertiary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-site-nav a:hover { color: var(--accent); }
+.footer-site-nav .footer-nav-sep {
+  color: var(--border);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 20px 14px 48px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .quiz-section { padding: 20px 16px; }
+  .quiz-card { flex-direction: column; gap: 10px; }
+}
+
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+  .body-text a, .lead a {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+}
+</style>
+</head>
+<body>
+
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <h4>Contents</h4>
+  <a href="#overview">Overview — Foundations & Securities</a>
+  <a href="#overview" class="sub">501(c)(3) & Tax-Exempt Status</a>
+  <a href="#concept-map-foundation" class="sub">Concept Map — Foundation Ecosystem</a>
+  <a href="#endowment">Endowment Management</a>
+  <a href="#concept-map-endowment" class="sub">Concept Map — Endowment Lifecycle</a>
+  <a href="#endowment" class="sub">UPMIFA & Investment Policies</a>
+  <a href="#process-endowment-flow" class="sub">Process Map — Endowment Funding</a>
+  <a href="#securities-ownership">Securities Ownership — DTC & Cede & Co.</a>
+  <a href="#concept-map-dtc-foundation" class="sub">Concept Map — Foundation DTC Stack</a>
+  <a href="#securities-ownership" class="sub">Book-Entry vs Physical</a>
+  <a href="#process-dtc-deposit" class="sub">Process Map — DTC Deposit for Foundations</a>
+  <a href="#donor-advised">Donor-Advised Funds</a>
+  <a href="#concept-map-daf" class="sub">Concept Map — DAF Structure</a>
+  <a href="#donor-advised" class="sub">Securities Contributions</a>
+  <a href="#process-daf-contribution" class="sub">Process Map — DAF Securities Gift</a>
+  <a href="#compliance">Regulatory Compliance</a>
+  <a href="#compliance" class="sub">Form 990-PF · UBIT · Excise Taxes</a>
+  <a href="#concept-map-compliance" class="sub">Concept Map — Compliance Framework</a>
+  <a href="#euroclear-foundations">Euroclear & Cross-Border</a>
+  <a href="#concept-map-euroclear-foundation" class="sub">Concept Map — Euroclear for Foundations</a>
+  <a href="#global-comparison-foundation">Global Comparison</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard <span class="toc-desc">↗ DTC/DTCC/Cede &amp; Co.</span></a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">NF</div>
+      <div class="header-text">
+        <h1>Non-Profit Foundations &amp; Securities Ownership</h1>
+        <div class="sub">Teaching Guide — Endowments, Donor-Advised Funds &amp; Book-Entry Securities</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="font-size:0.78rem;color:var(--ink-muted);margin-bottom:16px;">
+  <a href="../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
+  <span style="margin:0 6px;">›</span>
+  <a href="../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
+  <span style="margin:0 6px;">›</span>
+  <span style="color:var(--ink-tertiary);">Teaching Guides</span>
+  <span style="margin:0 6px;">›</span>
+  <span style="color:var(--ink-secondary);font-weight:500;">Non-Profit Foundations &amp; Securities</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Teaching Guide:</strong> How 501(c)(3) foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear. Click any <strong>underlined term</strong> for definitions.</span>
+</div>
+
+<div class="doc-frame">
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: OVERVIEW
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="overview">Overview — Non-Profit Foundations &amp; Securities</h2>
+
+<p class="lead">
+<span class="hotspot" data-modal="foundation" tabindex="0" role="button" onclick="openModal('modal-foundation')">Non-profit foundations</span> are a cornerstone of the philanthropic sector, managing billions of dollars in assets dedicated to charitable purposes. Their investment portfolios — often structured as <span class="hotspot" data-modal="endowment" tabindex="0" role="button" onclick="openModal('modal-endowment')">endowments</span> — are typically invested in publicly traded securities, bonds, and alternative assets. Understanding how these securities are held, traded, and accounted for within the <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span>/<span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> system is essential for foundation trustees, investment committees, and compliance officers.
+</p>
+
+<p class="body-text">
+This guide explains the legal and operational framework for foundation securities ownership, from <span class="hotspot" data-modal="section501c3" tabindex="0" role="button" onclick="openModal('modal-section501c3')">501(c)(3) tax-exempt status</span> and <span class="hotspot" data-modal="upmifa" tabindex="0" role="button" onclick="openModal('modal-upmifa')">UPMIFA</span> investment rules to the mechanics of holding securities in <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span> through DTC participants. It also covers <span class="hotspot" data-modal="daf" tabindex="0" role="button" onclick="openModal('modal-daf')">donor-advised funds</span> — a rapidly growing vehicle for charitable giving that has unique securities-handling characteristics — and clarifies how the narrower <span class="hotspot" data-modal="section508c1a" tabindex="0" role="button" onclick="openModal('modal-section508c1a')">508(c)(1)(A) church exemption</span> differs from standard 501(c)(3) recognition.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">Private Foundation</div>
+    <div class="entity-role">501(c)(3) — Grantmaking</div>
+    <div class="entity-desc">A non-operating foundation that receives contributions and makes grants to other charities. Typically has an endowment that is invested for long-term growth and payout.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Public Charity</div>
+    <div class="entity-role">501(c)(3) — Direct Services</div>
+    <div class="entity-desc">A charity that conducts its own programs and receives broad public support. May maintain smaller endowments and often uses securities as a funding source.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Donor-Advised Fund (DAF)</div>
+    <div class="entity-role">Sponsored Fund</div>
+    <div class="entity-desc">A charitable fund sponsored by a public charity (e.g., Fidelity Charitable, Schwab Charitable, Vanguard Charitable). Donors contribute assets and recommend grants; the sponsor manages the investment pool.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Investment Manager / Custodian</div>
+    <div class="entity-role">Service Provider</div>
+    <div class="entity-desc">The entity (often a bank or trust company) that manages the foundation's investment portfolio and holds its securities in custody. Custodians are DTC participants.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Church / Religious Organization</div>
+    <div class="entity-role"><span class="hotspot" data-modal="section508c1a" tabindex="0" role="button" onclick="openModal('modal-section508c1a')">508(c)(1)(A)</span> — Automatic Exemption</div>
+    <div class="entity-desc">Automatically tax-exempt under 501(c)(3) without filing for IRS recognition. Still subject to the same securities, custody, and tax rules as any other 501(c)(3) organization — 508(c)(1)(A) is a filing exemption, not a distinct legal structure.</div>
+  </div>
+</div>
+
+<!-- Concept Map 1: Foundation Ecosystem -->
+<div class="diagram-box concept-map" id="concept-map-foundation" role="img" aria-labelledby="cm1-title" aria-describedby="cm1-desc">
+  <div class="diagram-title" id="cm1-title">Concept Map — Foundation Ecosystem</div>
+  <p id="cm1-desc" class="visually-hidden">
+    Ecosystem diagram showing: Donor contributes to Foundation (private or public).
+    Foundation has a Board of Trustees that oversees an Investment Committee.
+    The Investment Committee directs an Investment Manager/Custodian (a DTC participant)
+    to hold securities in book-entry form at DTC (Cede &amp; Co. as nominee).
+    The Foundation makes grants to Charitable Beneficiaries and files Form 990-PF with the IRS.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm1-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Donor top-left -->
+    <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Donor — open definition">
+      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="108" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
+      <text class="cm-node-sub" x="108" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
+    </g>
+
+    <!-- Donor → Foundation -->
+    <line class="cm-edge" x1="168" y1="53" x2="210" y2="53" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="190" y="44" text-anchor="middle">contributes</text>
+
+    <!-- Foundation hub -->
+    <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
+      <rect class="cm-node-shape" x="210" y="26" width="140" height="54" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="280" y="48" text-anchor="middle" fill="#fff">Foundation</text>
+      <text class="cm-node-sub" x="280" y="66" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) entity</text>
+    </g>
+
+    <!-- Board / Investment Committee -->
+    <rect x="400" y="26" width="140" height="54" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+    <text class="cm-node-title" x="470" y="48" text-anchor="middle" fill="var(--ink)" font-size="12">Board / Investment</text>
+    <text class="cm-node-sub" x="470" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Committee</text>
+    <line class="cm-edge" x1="350" y1="53" x2="400" y2="53" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="376" y="44" text-anchor="middle">oversees</text>
+
+    <!-- Investment Manager / Custodian -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Investment Manager — open definition">
+      <rect class="cm-node-shape" x="60" y="146" width="180" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="150" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">Investment Manager</text>
+      <text class="cm-node-sub" x="150" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Custodian / DTC Participant</text>
+    </g>
+    <path class="cm-edge" d="M280 80 L280 120 L150 120 L150 144" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="280" y="110" text-anchor="middle">hires / directs</text>
+
+    <!-- DTC / Cede -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="300" y="146" width="160" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="380" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="380" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
+    </g>
+    <line class="cm-edge" x1="240" y1="174" x2="300" y2="174" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="272" y="166" text-anchor="middle">securities held via</text>
+
+    <!-- Grants -->
+    <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grant — open definition">
+      <rect class="cm-node-shape" x="60" y="298" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="140" y="318" text-anchor="middle" fill="var(--green)" font-size="12">Charitable Grants</text>
+      <text class="cm-node-sub" x="140" y="334" text-anchor="middle" fill="var(--ink-tertiary)">→ Beneficiaries</text>
+    </g>
+    <path class="cm-edge" d="M280 80 L280 260 L140 260 L140 296" marker-end="url(#cm1-arrow-gold)"/>
+    <text class="cm-edge-label" x="290" y="250" text-anchor="start" fill="var(--gold)">makes grants</text>
+
+    <!-- IRS / Compliance -->
+    <g class="cm-node" data-modal="form990pf" tabindex="0" role="button" aria-label="Form 990-PF — open definition">
+      <rect class="cm-node-shape" x="350" y="298" width="160" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" stroke-dasharray="4 3"/>
+      <text class="cm-node-title" x="430" y="318" text-anchor="middle" fill="var(--ink)" font-size="12">IRS Form 990-PF</text>
+      <text class="cm-node-sub" x="430" y="334" text-anchor="middle" fill="var(--ink-tertiary)">Tax compliance</text>
+    </g>
+    <line class="cm-edge-dashed" x1="380" y1="174" x2="430" y2="296" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="430" y="250" text-anchor="start" fill="var(--ink-muted)">reports assets</text>
+
+    <rect x="48" y="396" width="624" height="42" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="418" text-anchor="middle" fill="var(--ink-tertiary)">Foundation assets are typically invested in publicly traded securities held in book-entry form through DTC participants.</text>
+  </svg>
+  <p class="cm-caption"><strong>Foundation assets</strong> flow from donors to the foundation, are overseen by a board, managed by an investment manager/custodian, and held in book-entry form at <strong>DTC</strong> through a participant. Grants go to charities; tax compliance is reported on <strong>Form 990-PF</strong>.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Foundation entity</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Service providers</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Grants</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Governance / compliance</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: ENDOWMENT MANAGEMENT
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="endowment">Endowment Management</h2>
+
+<p class="lead">
+A foundation's <span class="hotspot" data-modal="endowment" tabindex="0" role="button" onclick="openModal('modal-endowment')">endowment</span> is the permanent pool of assets that generates investment income to support the foundation's mission. Unlike a for-profit corporation's capital, a foundation's endowment is typically subject to <span class="hotspot" data-modal="upmifa" tabindex="0" role="button" onclick="openModal('modal-upmifa')">UPMIFA</span> (the Uniform Prudent Management of Institutional Funds Act) — a legal framework that governs how endowments are invested and spent.
+</p>
+
+<p class="body-text">
+Under UPMIFA, foundation trustees have a fiduciary duty to manage endowment funds with the care of a prudent person. They must balance the need for current income (to fund grants and operations) with the preservation of purchasing power over the long term. Most foundations adopt an investment policy statement (IPS) that sets asset allocation targets, risk parameters, and spending policies — typically 4–6% of the average asset value over the trailing 3–5 years.
+</p>
+
+<!-- Concept Map 2: Endowment Lifecycle -->
+<div class="diagram-box concept-map" id="concept-map-endowment" role="img" aria-labelledby="cm2-title" aria-describedby="cm2-desc">
+  <div class="diagram-title" id="cm2-title">Concept Map — Endowment Lifecycle</div>
+  <p id="cm2-desc" class="visually-hidden">
+    Endowment lifecycle stages: Contributions from donors form the foundation's corpus.
+    The corpus is invested in a diversified portfolio (equities, bonds, alternatives).
+    Investment returns (income + appreciation) grow the portfolio.
+    Spending distributions (typically 4-6% of rolling average) fund grants and operations.
+    The cycle repeats, with the goal of preserving purchasing power.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm2-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="cm2-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Cycle steps in a circle-ish layout -->
+    <!-- 1: Contributions (top) -->
+    <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Contributions — open definition">
+      <rect class="cm-node-shape" x="260" y="20" width="160" height="48" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="340" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">1 · Contributions</text>
+      <text class="cm-node-sub" x="340" y="58" text-anchor="middle" fill="var(--ink-tertiary)">Donor gifts</text>
+    </g>
+
+    <!-- 2: Investment (right) -->
+    <g class="cm-node" data-modal="investment" tabindex="0" role="button" aria-label="Investment — open definition">
+      <rect class="cm-node-shape" x="500" y="120" width="160" height="48" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="580" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">2 · Investment</text>
+      <text class="cm-node-sub" x="580" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Equities · bonds · alts</text>
+    </g>
+
+    <!-- 3: Growth (bottom-right) -->
+    <g class="cm-node" data-modal="growth" tabindex="0" role="button" aria-label="Growth — open definition">
+      <rect class="cm-node-shape" x="460" y="260" width="160" height="48" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="540" y="282" text-anchor="middle" fill="var(--green)" font-size="12">3 · Growth</text>
+      <text class="cm-node-sub" x="540" y="298" text-anchor="middle" fill="var(--ink-tertiary)">Income + appreciation</text>
+    </g>
+
+    <!-- 4: Spending (bottom-left) -->
+    <g class="cm-node" data-modal="spending" tabindex="0" role="button" aria-label="Spending — open definition">
+      <rect class="cm-node-shape" x="120" y="260" width="160" height="48" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="200" y="282" text-anchor="middle" fill="var(--gold-deep)" font-size="12">4 · Spending</text>
+      <text class="cm-node-sub" x="200" y="298" text-anchor="middle" fill="var(--ink-tertiary)">4–6% rolling avg</text>
+    </g>
+
+    <!-- 5: Grants (left) -->
+    <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grants — open definition">
+      <rect class="cm-node-shape" x="40" y="120" width="160" height="48" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="120" y="142" text-anchor="middle" fill="var(--ink)" font-size="12">5 · Grants</text>
+      <text class="cm-node-sub" x="120" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Charitable beneficiaries</text>
+    </g>
+
+    <!-- Edges forming cycle -->
+    <line class="cm-edge" x1="420" y1="44" x2="498" y2="132" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="580" y1="168" x2="560" y2="258" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="460" y1="284" x2="280" y2="284" marker-end="url(#cm2-arrow)"/>
+    <line class="cm-edge" x1="200" y1="260" x2="120" y2="168" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M120 120 L220 54" marker-end="url(#cm2-arrow)"/>
+
+    <!-- Edge labels -->
+    <text class="cm-edge-label" x="470" y="100" text-anchor="start">reinvest</text>
+    <text class="cm-edge-label" x="540" y="220" text-anchor="middle">compounds</text>
+    <text class="cm-edge-label" x="360" y="276" text-anchor="middle">distribute</text>
+    <text class="cm-edge-label" x="150" y="210" text-anchor="middle">fund mission</text>
+    <text class="cm-edge-label" x="180" y="80" text-anchor="middle">perpetual corpus</text>
+
+    <!-- Center note -->
+    <text class="cm-node-title" x="340" y="190" text-anchor="middle" fill="var(--ink-muted)" font-size="13">Endowment cycle</text>
+    <text class="cm-node-sub" x="340" y="210" text-anchor="middle" fill="var(--ink-tertiary)">Preserve purchasing power · UPMIFA</text>
+  </svg>
+  <p class="cm-caption"><strong>The endowment cycle:</strong> Contributions build corpus → investments generate returns → growth compounds → spending funds grants and operations — with the goal of preserving real purchasing power over time.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Contributions / grants</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Investment</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Growth</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Spending</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Investment Policy Statement (IPS)</h3>
+
+<p class="body-text">
+A foundation's <span class="hotspot" data-modal="ips" tabindex="0" role="button" onclick="openModal('modal-ips')">Investment Policy Statement (IPS)</span> is the governing document for investment decisions. It typically includes:
+</p>
+
+<ul class="body-text">
+  <li><strong>Return Objectives:</strong> The target total return (often CPI + 5% to maintain purchasing power).</li>
+  <li><strong>Risk Tolerance:</strong> The acceptable level of volatility and drawdown.</li>
+  <li><strong>Asset Allocation:</strong> Target percentages for equities, fixed income, real assets, private equity, and alternatives.</li>
+  <li><strong>Spending Policy:</strong> The formula for determining annual spending (e.g., 5% of trailing 3-year average market value).</li>
+  <li><strong>Responsible Investing:</strong> ESG (environmental, social, governance) considerations, if applicable.</li>
+</ul>
+
+<p class="body-text">
+The IPS is approved by the board of trustees and reviewed regularly. It serves as the foundation's "investment constitution" — guiding investment manager selection, performance evaluation, and portfolio rebalancing.
+</p>
+
+<!-- Process Map: Endowment Funding Flow -->
+<div class="diagram-box concept-map" id="process-endowment-flow" role="img" aria-labelledby="pf-endow-title" aria-describedby="pf-endow-desc">
+  <div class="diagram-title" id="pf-endow-title">Process Map — Endowment Funding &amp; Investment Flow</div>
+  <p id="pf-endow-desc" class="visually-hidden">
+    Six-step flow: Donor makes a contribution of cash or securities.
+    Foundation deposits assets with its custodian (a DTC participant).
+    Investment manager allocates assets per the Investment Policy Statement.
+    Portfolio generates investment returns (income and appreciation).
+    Assets are revalued and spending is calculated (typically 4-6% of rolling average).
+    Spending funds grants and operations; remaining assets are reinvested.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-endow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="160" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="104" y="29" text-anchor="middle">Contribute</text>
+    <rect x="196" y="14" width="160" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="276" y="29" text-anchor="middle" fill="var(--accent)">Invest</text>
+    <rect x="368" y="14" width="160" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="448" y="29" text-anchor="middle" fill="var(--green)">Grow</text>
+    <rect x="540" y="14" width="160" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="620" y="29" text-anchor="middle" fill="var(--gold-deep)">Spend</text>
+
+    <line class="pf-edge" x1="120" y1="100" x2="150" y2="100" marker-end="url(#pf-endow-arrow)"/>
+    <line class="pf-edge" x1="260" y1="100" x2="290" y2="100" marker-end="url(#pf-endow-arrow)"/>
+    <line class="pf-edge" x1="400" y1="100" x2="430" y2="100" marker-end="url(#pf-endow-arrow)"/>
+    <line class="pf-edge" x1="540" y1="100" x2="570" y2="100" marker-end="url(#pf-endow-arrow)"/>
+
+    <g>
+      <circle cx="80" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="80" y="84" text-anchor="middle">1</text>
+      <rect x="28" y="102" width="104" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="80" y="124" text-anchor="middle">Contribution</text>
+      <text class="pf-step-sub" x="80" y="140" text-anchor="middle">Cash or securities</text>
+    </g>
+    <g>
+      <circle cx="220" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="220" y="84" text-anchor="middle">2</text>
+      <rect x="168" y="102" width="104" height="52" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <text class="pf-step-title" x="220" y="124" text-anchor="middle">Deposit</text>
+      <text class="pf-step-sub" x="220" y="140" text-anchor="middle">Custodian / DTC</text>
+    </g>
+    <g>
+      <circle cx="360" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="360" y="84" text-anchor="middle">3</text>
+      <rect x="308" y="102" width="104" height="52" rx="7" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text class="pf-step-title" x="360" y="124" text-anchor="middle">Allocate</text>
+      <text class="pf-step-sub" x="360" y="140" text-anchor="middle">Per IPS</text>
+    </g>
+    <g>
+      <circle cx="500" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="500" y="84" text-anchor="middle">4</text>
+      <rect x="448" y="102" width="104" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="500" y="124" text-anchor="middle">Returns</text>
+      <text class="pf-step-sub" x="500" y="140" text-anchor="middle">Income + gain</text>
+    </g>
+    <g>
+      <circle cx="640" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="640" y="84" text-anchor="middle">5</text>
+      <rect x="588" y="102" width="104" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="640" y="124" text-anchor="middle">Spending</text>
+      <text class="pf-step-sub" x="640" y="140" text-anchor="middle">Grants · ops</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="180" text-anchor="middle">Spending is typically 4-6% of the trailing 3- to 5-year average market value.</text>
+    <text class="pf-step-sub" x="360" y="198" text-anchor="middle">Remaining returns are reinvested to preserve purchasing power.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body" style="padding:12px 0;font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;">
+      <div><strong>1 · Contribution</strong> — Donor contributes cash or securities to the foundation.</div>
+      <div><strong>2 · Deposit</strong> — Foundation deposits assets with its custodian (a DTC participant).</div>
+      <div><strong>3 · Allocation</strong> — Investment manager allocates assets per the Investment Policy Statement.</div>
+      <div><strong>4 · Returns</strong> — Portfolio generates investment income and capital appreciation.</div>
+      <div><strong>5 · Spending</strong> — Spending is calculated (typically 4-6% of rolling average) and funds grants/operations.</div>
+    </div>
+  </details>
+</div>
+
+<div class="tip-box">
+  <strong>Spending Policy Note:</strong> The 5% spending rule — often cited as the "gold standard" for endowment spending — is not a legal requirement but a widely adopted practice. It aims to balance current spending needs with long-term preservation of purchasing power. The rule originated from a 1971 study by the Ford Foundation and has been validated by many subsequent studies.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: SECURITIES OWNERSHIP — DTC & CEDE
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="securities-ownership">Securities Ownership — DTC, Cede &amp; Co. &amp; Foundations</h2>
+
+<p class="lead">
+For most foundations, investment securities are held in <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span> through a <span class="hotspot" data-modal="custodian" tabindex="0" role="button" onclick="openModal('modal-custodian')">custodian</span> that is a <span class="hotspot" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')">DTC participant</span>. This allows for efficient trading, settlement, and corporate action processing. The custodian — often a bank trust department or a brokerage firm — holds the foundation's securities in its DTC account, with <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> as the registered owner on the issuer's books.
+</p>
+
+<p class="body-text">
+From the foundation's perspective, its securities are "at the custodian" — meaning the custodian maintains the official record of the foundation's positions, sends trade confirmations, collects dividends and interest, and provides periodic account statements. The foundation is the <span class="hotspot" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')">beneficial owner</span>, enjoying all economic rights (dividends, capital appreciation, voting rights) through the custodian.
+</p>
+
+<!-- Concept Map 3: Foundation DTC Ownership Stack -->
+<div class="diagram-box concept-map" id="concept-map-dtc-foundation" role="img" aria-labelledby="cm3-title" aria-describedby="cm3-desc">
+  <div class="diagram-title" id="cm3-title">Concept Map — Foundation Ownership Stack (DTC)</div>
+  <p id="cm3-desc" class="visually-hidden">
+    Ownership stack for a foundation's securities: Issuer books show Cede and Co. as the registered owner.
+    Cede is the nominee for DTC. DTC credits the custodian's participant account.
+    The custodian maintains a client account for the foundation.
+    The foundation is the beneficial owner with full economic rights.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 640 540" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:640px">
+    <defs>
+      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="36" width="8" height="52" rx="3" fill="var(--border)" opacity="0.55"/>
+    <text x="38" y="58" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Issuer</text>
+    <text x="38" y="70" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">books</text>
+
+    <rect x="24" y="150" width="8" height="160" rx="3" fill="var(--accent-muted)" opacity="0.7"/>
+    <text x="38" y="220" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">DTC</text>
+    <text x="38" y="232" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">system</text>
+
+    <rect x="24" y="400" width="8" height="90" rx="3" fill="var(--green)" opacity="0.45"/>
+    <text x="38" y="436" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Custodian</text>
+    <text x="38" y="448" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">books</text>
+
+    <line class="cm-edge" x1="240" y1="88" x2="240" y2="118" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="240" y1="188" x2="240" y2="218" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="240" y1="288" x2="240" y2="318" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="240" y1="388" x2="240" y2="418" marker-end="url(#cm3-arrow)"/>
+
+    <text class="cm-edge-label" x="410" y="108" text-anchor="start">lists registered owner</text>
+    <text class="cm-edge-label" x="410" y="208" text-anchor="start">holds as nominee for</text>
+    <text class="cm-edge-label" x="410" y="308" text-anchor="start">credits book-entry to</text>
+    <text class="cm-edge-label" x="410" y="408" text-anchor="start">credits client account</text>
+
+    <!-- 1 Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="240" y="58" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
+      <text class="cm-node-sub" x="240" y="74" text-anchor="middle" fill="var(--ink-tertiary)">Corporation</text>
+    </g>
+
+    <!-- 2 Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
+      <rect x="148" y="128" width="184" height="16" rx="4" fill="var(--gold)"/>
+      <text class="cm-badge-text" x="240" y="140" text-anchor="middle" fill="#fff">Legal title</text>
+      <text class="cm-node-title" x="240" y="162" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="240" y="178" text-anchor="middle" fill="var(--gold)">Registered owner</text>
+    </g>
+
+    <!-- 3 DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="240" y="248" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
+      <text class="cm-node-sub" x="240" y="266" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
+    </g>
+
+    <!-- 4 Custodian (Participant) -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.8"/>
+      <rect x="136" y="328" width="208" height="16" rx="4" fill="var(--accent)"/>
+      <text class="cm-badge-text" x="240" y="340" text-anchor="middle" fill="#fff">DTC Participant</text>
+      <text class="cm-node-title" x="240" y="362" text-anchor="middle" fill="var(--accent)">4 · Custodian</text>
+      <text class="cm-node-sub" x="240" y="378" text-anchor="middle" fill="var(--ink-tertiary)">Bank / trust company</text>
+    </g>
+
+    <!-- 5 Foundation (Beneficial Owner) -->
+    <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
+      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <rect x="136" y="428" width="208" height="16" rx="4" fill="var(--green)"/>
+      <text class="cm-badge-text" x="240" y="440" text-anchor="middle" fill="#fff">Beneficial ownership</text>
+      <text class="cm-node-title" x="240" y="462" text-anchor="middle" fill="var(--green)">5 · Foundation</text>
+      <text class="cm-node-sub" x="240" y="478" text-anchor="middle" fill="var(--ink-tertiary)">Dividends · voting · proceeds</text>
+    </g>
+
+    <text class="cm-edge-label" x="320" y="520" text-anchor="middle" fill="var(--ink-muted)">Same ownership chain as all DTC-eligible securities — foundations are beneficial owners</text>
+  </svg>
+  <p class="cm-caption">Title sits at the top of the stack (<strong>Cede &amp; Co.</strong>); the foundation's beneficial interest sits at the bottom. The <strong>custodian</strong> (a DTC participant) connects the two.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Legal title</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial ownership</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Intermediaries</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Book-Entry vs. Physical Certificates</h3>
+
+<p class="body-text">
+Foundations almost universally hold securities in <span class="hotspot" data-modal="book-entry" tabindex="0" role="button" onclick="openModal('modal-book-entry')">book-entry form</span> through DTC. Physical stock certificates are rarely issued or held, and most issuers have eliminated physical certificates entirely. The advantages of book-entry for foundations are significant:
+</p>
+
+<ul class="body-text">
+  <li><strong>Efficiency:</strong> Trades settle on T+1 rather than the days or weeks required for physical delivery.</li>
+  <li><strong>Safety:</strong> No risk of lost, stolen, or forged certificates.</li>
+  <li><strong>Cost:</strong> No certificate issuance, insurance, or secure storage costs.</li>
+  <li><strong>Corporate Actions:</strong> Dividends, splits, mergers, and proxy voting are processed automatically.</li>
+</ul>
+
+<!-- Process Map: DTC Deposit for Foundations -->
+<div class="diagram-box concept-map" id="process-dtc-deposit" role="img" aria-labelledby="pf-dep-foundation-title" aria-describedby="pf-dep-foundation-desc">
+  <div class="diagram-title" id="pf-dep-foundation-title">Process Map — DTC Securities Deposit for Foundations</div>
+  <p id="pf-dep-foundation-desc" class="visually-hidden">
+    Five-step process: Foundation authorizes the custodian to deposit securities.
+    Custodian (a DTC participant) submits deposit instructions via DTC's systems.
+    DTC credits the custodian's participant account and reregisters the securities to Cede and Co.
+    The foundation receives confirmation and can view the position online.
+    Dividend and corporate action processing follows the standard DTC pass-through.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-dep-f-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="140" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="94" y="29" text-anchor="middle">Authorize</text>
+    <rect x="176" y="14" width="140" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="246" y="29" text-anchor="middle" fill="var(--accent)">Instruct</text>
+    <rect x="328" y="14" width="140" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="398" y="29" text-anchor="middle" fill="var(--green)">Deposit</text>
+    <rect x="480" y="14" width="210" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="585" y="29" text-anchor="middle" fill="var(--gold-deep)">Confirm &amp; Service</text>
+
+    <line class="pf-edge" x1="128" y1="102" x2="160" y2="102" marker-end="url(#pf-dep-f-arrow)"/>
+    <line class="pf-edge" x1="270" y1="102" x2="302" y2="102" marker-end="url(#pf-dep-f-arrow)"/>
+    <line class="pf-edge" x1="412" y1="102" x2="444" y2="102" marker-end="url(#pf-dep-f-arrow)"/>
+    <line class="pf-edge" x1="554" y1="102" x2="586" y2="102" marker-end="url(#pf-dep-f-arrow)"/>
+
+    <g>
+      <circle cx="84" cy="82" r="13" fill="var(--accent)"/><text class="pf-step-num" x="84" y="86" text-anchor="middle">1</text>
+      <rect x="28" y="104" width="112" height="54" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="84" y="126" text-anchor="middle">Authorize</text>
+      <text class="pf-step-sub" x="84" y="142" text-anchor="middle">Foundation → custodian</text>
+    </g>
+    <g>
+      <circle cx="224" cy="82" r="13" fill="var(--accent)"/><text class="pf-step-num" x="224" y="86" text-anchor="middle">2</text>
+      <rect x="168" y="104" width="112" height="54" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="224" y="126" text-anchor="middle">Instruct</text>
+      <text class="pf-step-sub" x="224" y="142" text-anchor="middle">Custodian → DTC</text>
+    </g>
+    <g>
+      <circle cx="364" cy="82" r="13" fill="var(--green)"/><text class="pf-step-num" x="364" y="86" text-anchor="middle">3</text>
+      <rect x="308" y="104" width="112" height="54" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="364" y="126" text-anchor="middle">Deposit</text>
+      <text class="pf-step-sub" x="364" y="142" text-anchor="middle">DTC credits account</text>
+    </g>
+    <g>
+      <circle cx="504" cy="82" r="13" fill="var(--gold)"/><text class="pf-step-num" x="504" y="86" text-anchor="middle">4</text>
+      <rect x="448" y="104" width="112" height="54" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="504" y="126" text-anchor="middle">Confirm</text>
+      <text class="pf-step-sub" x="504" y="142" text-anchor="middle">Position visible</text>
+    </g>
+    <g>
+      <circle cx="644" cy="82" r="13" fill="var(--gold)"/><text class="pf-step-num" x="644" y="86" text-anchor="middle">5</text>
+      <rect x="588" y="104" width="112" height="54" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="644" y="126" text-anchor="middle">Service</text>
+      <text class="pf-step-sub" x="644" y="142" text-anchor="middle">Dividends · proxies</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="188" text-anchor="middle">Cede &amp; Co. becomes registered owner on issuer books; foundation retains beneficial ownership.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body" style="padding:12px 0;font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;">
+      <div><strong>1 · Authorize</strong> — The foundation authorizes its custodian to deposit securities.</div>
+      <div><strong>2 · Instruct</strong> — The custodian (a DTC participant) submits deposit instructions to DTC.</div>
+      <div><strong>3 · Deposit</strong> — DTC credits the custodian's participant account and reregisters the securities to Cede &amp; Co.</div>
+      <div><strong>4 · Confirm</strong> — The foundation receives confirmation and can view the position online.</div>
+      <div><strong>5 · Service</strong> — Dividends, proxies, and corporate actions flow through DTC to the custodian and then to the foundation.</div>
+    </div>
+  </details>
+</div>
+
+<div class="warn-box">
+  <strong>Custodian Risk:</strong> When a foundation holds securities through a custodian, it bears <span class="hotspot" data-modal="custodian-risk" tabindex="0" role="button" onclick="openModal('modal-custodian-risk')">custodian risk</span> — the risk that the custodian fails, mismanages assets, or commits fraud. To mitigate this, foundations should use well-capitalized, regulated custodians (typically banks or broker-dealers with strong credit ratings), require regular account reconciliations, and ensure assets are segregated and held in the foundation's name at the custodian level (not commingled with the custodian's own assets).
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: DONOR-ADVISED FUNDS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="donor-advised">Donor-Advised Funds (DAFs)</h2>
+
+<p class="lead">
+<span class="hotspot" data-modal="daf" tabindex="0" role="button" onclick="openModal('modal-daf')">Donor-advised funds</span> have become one of the fastest-growing vehicles for charitable giving in the United States. A DAF is a charitable fund sponsored by a public charity (such as Fidelity Charitable, Schwab Charitable, or Vanguard Charitable). Donors contribute assets — often appreciated securities — to the DAF, receive an immediate tax deduction, and then recommend grants to qualified charities over time.
+</p>
+
+<p class="body-text">
+From a securities ownership perspective, DAFs have several unique characteristics. The sponsoring organization is the legal owner of the assets and is a <span class="hotspot" data-modal="section501c3" tabindex="0" role="button" onclick="openModal('modal-section501c3')">501(c)(3)</span> public charity. It maintains investment accounts at custodians, which are DTC participants. Donors do not own the assets — they have a "donor advisory" right to recommend grants, but the sponsoring organization has ultimate legal control. This distinction is important for tax, compliance, and securities law purposes.
+</p>
+
+<!-- Concept Map 4: DAF Structure -->
+<div class="diagram-box concept-map" id="concept-map-daf" role="img" aria-labelledby="cm4-title" aria-describedby="cm4-desc">
+  <div class="diagram-title" id="cm4-title">Concept Map — Donor-Advised Fund Structure</div>
+  <p id="cm4-desc" class="visually-hidden">
+    DAF structure: Donor contributes assets to a DAF Sponsoring Organization (a 501(c)(3) public charity).
+    The sponsoring organization holds assets at a custodian (DTC participant) in book-entry form.
+    The donor advises the sponsoring organization on grant recommendations.
+    The sponsoring organization makes grants to charitable beneficiaries.
+    The donor receives an immediate tax deduction (fair market value of contributed assets).
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm4-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="cm4-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Donor -->
+    <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Donor — open definition">
+      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="108" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
+      <text class="cm-node-sub" x="108" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
+    </g>
+    <line class="cm-edge" x1="168" y1="53" x2="210" y2="53" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="190" y="44" text-anchor="middle">contributes</text>
+
+    <!-- DAF Sponsoring Organization -->
+    <g class="cm-node" data-modal="daf" tabindex="0" role="button" aria-label="DAF — open definition">
+      <rect class="cm-node-shape" x="210" y="20" width="180" height="60" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="300" y="44" text-anchor="middle" fill="#fff">DAF Sponsor</text>
+      <text class="cm-node-sub" x="300" y="64" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) public charity</text>
+    </g>
+    <line class="cm-edge" x1="390" y1="50" x2="430" y2="50" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="412" y="40" text-anchor="middle">advises</text>
+
+    <!-- Donor Advisory Rights (text bubble) -->
+    <g class="cm-node cm-node-static">
+      <rect x="400" y="70" width="160" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="4 3"/>
+      <text class="cm-node-title" x="480" y="92" text-anchor="middle" fill="var(--ink)" font-size="11">Advisory rights</text>
+      <text class="cm-node-sub" x="480" y="108" text-anchor="middle" fill="var(--ink-tertiary)">Recommend grants</text>
+    </g>
+    <line class="cm-edge-dashed" x1="480" y1="120" x2="480" y2="140" marker-end="url(#cm4-arrow)"/>
+
+    <!-- Custodian (participant) -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="60" y="168" width="180" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="150" y="190" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
+      <text class="cm-node-sub" x="150" y="208" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant</text>
+    </g>
+    <line class="cm-edge" x1="300" y1="60" x2="150" y2="166" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="190" y="120" text-anchor="middle">holds assets</text>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="340" y="168" width="140" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="410" y="190" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
+      <text class="cm-node-sub" x="410" y="208" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
+    </g>
+    <line class="cm-edge" x1="240" y1="196" x2="340" y2="196" marker-end="url(#cm4-arrow)"/>
+
+    <!-- Grants -->
+    <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grant — open definition">
+      <rect class="cm-node-shape" x="60" y="300" width="180" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="150" y="320" text-anchor="middle" fill="var(--green)" font-size="12">Grants</text>
+      <text class="cm-node-sub" x="150" y="336" text-anchor="middle" fill="var(--ink-tertiary)">→ Charitable beneficiaries</text>
+    </g>
+    <path class="cm-edge" d="M300 50 L300 280 L150 280 L150 298" marker-end="url(#cm4-arrow-green)"/>
+    <text class="cm-edge-label" x="220" y="270" text-anchor="start" fill="var(--green)">grants</text>
+
+    <!-- Tax deduction -->
+    <g class="cm-node cm-node-static">
+      <rect x="380" y="300" width="160" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="460" y="320" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Tax deduction</text>
+      <text class="cm-node-sub" x="460" y="336" text-anchor="middle" fill="var(--ink-tertiary)">Immediate (FMV)</text>
+    </g>
+    <path class="cm-edge" d="M170 80 L460 298" marker-end="url(#cm4-arrow-gold)"/>
+    <text class="cm-edge-label" x="340" y="180" text-anchor="start" fill="var(--gold)">tax benefit</text>
+  </svg>
+  <p class="cm-caption"><strong>DAF structure:</strong> Donor contributes to the DAF sponsor (a 501(c)(3)), receives an immediate tax deduction, and recommends grants. The sponsor holds assets through a custodian (DTC participant) in book-entry form.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> DAF sponsor</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Custodian / DTC</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Grants</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Tax benefit</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Securities Contributions to DAFs</h3>
+
+<p class="body-text">
+Donors often contribute <strong>appreciated securities</strong> to DAFs rather than cash. This is a powerful tax strategy because it:
+</p>
+
+<ul class="body-text">
+  <li><strong>Eliminates capital gains tax</strong> — the donor avoids paying tax on the appreciation.</li>
+  <li><strong>Provides a full fair market value deduction</strong> — the donor can deduct the full current value of the securities (subject to IRS limits).</li>
+  <li><strong>Increases the charitable impact</strong> — the DAF receives the full value of the securities, which can be sold tax-free by the DAF sponsor.</li>
+</ul>
+
+<p class="body-text">
+From a securities-processing perspective, the contribution involves transferring the securities from the donor's brokerage account to the DAF sponsor's custodial account. This is typically done through DTC using a <span class="hotspot" data-modal="dvp" tabindex="0" role="button" onclick="openModal('modal-dvp')">DVP</span> (Delivery Versus Payment) transfer or a <span class="hotspot" data-modal="free-delivery" tabindex="0" role="button" onclick="openModal('modal-free-delivery')">free delivery</span> (no cash consideration). The DAF sponsor's custodian then sells the securities (often as soon as practical) and invests the proceeds according to the DAF's investment policy.
+</p>
+
+<!-- Process Map: DAF Securities Gift -->
+<div class="diagram-box concept-map" id="process-daf-contribution" role="img" aria-labelledby="pf-daf-title" aria-describedby="pf-daf-desc">
+  <div class="diagram-title" id="pf-daf-title">Process Map — DAF Securities Contribution</div>
+  <p id="pf-daf-desc" class="visually-hidden">
+    Six-step process for contributing appreciated securities to a DAF:
+    Donor initiates transfer from their brokerage account to the DAF sponsor's account.
+    Brokerages coordinate via DTC to move the securities.
+    The DAF sponsor's custodian receives the securities and provides a donation receipt.
+    The sponsor sells the securities (often immediately) and invests the proceeds.
+    The donor receives a tax receipt for the fair market value of the securities on the date of the gift.
+    The donor's charitable fund balance is credited, and the donor can recommend grants.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-daf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="160" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="104" y="29" text-anchor="middle">Initiate</text>
+    <rect x="196" y="14" width="160" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="276" y="29" text-anchor="middle" fill="var(--accent)">Transfer</text>
+    <rect x="368" y="14" width="160" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="448" y="29" text-anchor="middle" fill="var(--green)">Receive</text>
+    <rect x="540" y="14" width="160" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="620" y="29" text-anchor="middle" fill="var(--gold-deep)">Settle &amp; Credit</text>
+
+    <line class="pf-edge" x1="120" y1="100" x2="152" y2="100" marker-end="url(#pf-daf-arrow)"/>
+    <line class="pf-edge" x1="260" y1="100" x2="292" y2="100" marker-end="url(#pf-daf-arrow)"/>
+    <line class="pf-edge" x1="400" y1="100" x2="432" y2="100" marker-end="url(#pf-daf-arrow)"/>
+    <line class="pf-edge" x1="540" y1="100" x2="572" y2="100" marker-end="url(#pf-daf-arrow)"/>
+
+    <g>
+      <circle cx="80" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="80" y="84" text-anchor="middle">1</text>
+      <rect x="28" y="104" width="104" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="80" y="126" text-anchor="middle">Donor initiates</text>
+      <text class="pf-step-sub" x="80" y="142" text-anchor="middle">Transfer request</text>
+    </g>
+    <g>
+      <circle cx="216" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="216" y="84" text-anchor="middle">2</text>
+      <rect x="164" y="104" width="104" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="216" y="126" text-anchor="middle">Brokerage</text>
+      <text class="pf-step-sub" x="216" y="142" text-anchor="middle">DTC coordination</text>
+    </g>
+    <g>
+      <circle cx="352" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="352" y="84" text-anchor="middle">3</text>
+      <rect x="300" y="104" width="104" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="352" y="126" text-anchor="middle">Custodian</text>
+      <text class="pf-step-sub" x="352" y="142" text-anchor="middle">Receives securities</text>
+    </g>
+    <g>
+      <circle cx="488" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="488" y="84" text-anchor="middle">4</text>
+      <rect x="436" y="104" width="104" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="488" y="126" text-anchor="middle">Sponsor</text>
+      <text class="pf-step-sub" x="488" y="142" text-anchor="middle">Sells &amp; invests</text>
+    </g>
+    <g>
+      <circle cx="624" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="624" y="84" text-anchor="middle">5</text>
+      <rect x="572" y="104" width="104" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="624" y="126" text-anchor="middle">Tax receipt</text>
+      <text class="pf-step-sub" x="624" y="142" text-anchor="middle">FMV deduction</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="188" text-anchor="middle">Donor receives immediate tax deduction for the fair market value of the securities on the date of the gift.</text>
+    <text class="pf-step-sub" x="360" y="206" text-anchor="middle">The DAF sponsor sells the securities tax-free and invests the proceeds for future grants.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body" style="padding:12px 0;font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;">
+      <div><strong>1 · Donor initiates</strong> — Donor contacts the DAF sponsor or uses an online portal to initiate the transfer.</div>
+      <div><strong>2 · Brokerage coordination</strong> — The donor's brokerage and the DAF sponsor's custodian coordinate via DTC.</div>
+      <div><strong>3 · Custodian receives</strong> — The DAF sponsor's custodian receives the securities in its DTC account.</div>
+      <div><strong>4 · Sponsor sells &amp; invests</strong> — The DAF sponsor sells the securities (often immediately) and invests the proceeds.</div>
+      <div><strong>5 · Tax receipt</strong> — The donor receives a tax receipt for the fair market value of the securities on the date of the gift.</div>
+    </div>
+  </details>
+</div>
+
+<div class="tip-box">
+  <strong>Tax Tip:</strong> For highly appreciated securities, donating them to a DAF can be significantly more tax-efficient than selling them and donating the cash. By donating appreciated securities, you eliminate the capital gains tax that would otherwise be due on the sale, and you receive a charitable deduction for the full fair market value (subject to IRS limits — typically 30% of adjusted gross income for securities, with a 5-year carryforward).
+</div>
+
+<div class="warn-box">
+  <strong>Donor Advisory Rights:</strong> Donors to DAFs have the right to <strong>advise</strong> the sponsor on grants — but the sponsor has ultimate legal authority. The donor cannot direct the sponsor to make a grant to a disqualified person or for a non-charitable purpose. The IRS treats DAF contributions as completed gifts to the sponsor, not as donor-controlled funds.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: COMPLIANCE
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="compliance">Regulatory Compliance — Foundations &amp; Securities</h2>
+
+<p class="lead">
+Non-profit foundations are subject to a complex web of tax and regulatory requirements that intersect with their securities holdings. Key among them are the <span class="hotspot" data-modal="form990pf" tabindex="0" role="button" onclick="openModal('modal-form990pf')">Form 990-PF</span> annual return, the <span class="hotspot" data-modal="ubit" tabindex="0" role="button" onclick="openModal('modal-ubit')">Unrelated Business Income Tax (UBIT)</span> rules, and the <span class="hotspot" data-modal="excise-tax" tabindex="0" role="button" onclick="openModal('modal-excise-tax')">excise tax</span> on investment income. Understanding how these rules apply to securities transactions is essential for foundation trustees and compliance officers.
+</p>
+
+<!-- Concept Map 5: Compliance Framework -->
+<div class="diagram-box concept-map" id="concept-map-compliance" role="img" aria-labelledby="cm5-title" aria-describedby="cm5-desc">
+  <div class="diagram-title" id="cm5-title">Concept Map — Foundation Compliance Framework</div>
+  <p id="cm5-desc" class="visually-hidden">
+    Compliance framework for foundations: three pillars — Tax Compliance (Form 990-PF),
+    Investment Compliance (UPMIFA, prudent investor rule, IPS),
+    and Regulatory Compliance (UBIT, excise tax, excess business holdings).
+    Custodians and investment managers support reporting and data provision.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm5-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Center: Foundation -->
+    <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
+      <rect class="cm-node-shape" x="280" y="140" width="160" height="56" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="360" y="164" text-anchor="middle" fill="#fff">Foundation</text>
+      <text class="cm-node-sub" x="360" y="182" text-anchor="middle" fill="var(--accent-muted)">501(c)(3)</text>
+    </g>
+
+    <!-- Pillar 1: Tax Compliance (left) -->
+    <g class="cm-node" data-modal="form990pf" tabindex="0" role="button" aria-label="Form 990-PF — open definition">
+      <rect class="cm-node-shape" x="40" y="36" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="130" y="58" text-anchor="middle" fill="var(--ink)" font-size="12">Tax Compliance</text>
+      <text class="cm-node-sub" x="130" y="76" text-anchor="middle" fill="var(--ink-tertiary)">Form 990-PF · filings</text>
+    </g>
+    <line class="cm-edge" x1="220" y1="68" x2="278" y2="156" marker-end="url(#cm5-arrow)"/>
+    <text class="cm-edge-label" x="260" y="100" text-anchor="start">reports assets</text>
+
+    <!-- Pillar 2: Investment Compliance (top) -->
+    <g class="cm-node" data-modal="upmifa" tabindex="0" role="button" aria-label="UPMIFA — open definition">
+      <rect class="cm-node-shape" x="270" y="20" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Investment Compliance</text>
+      <text class="cm-node-sub" x="360" y="60" text-anchor="middle" fill="var(--ink-tertiary)">UPMIFA · IPS</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="76" x2="360" y2="138" marker-end="url(#cm5-arrow)"/>
+
+    <!-- Pillar 3: Regulatory Compliance (right) -->
+    <g class="cm-node" data-modal="excise-tax" tabindex="0" role="button" aria-label="Excise Tax — open definition">
+      <rect class="cm-node-shape" x="500" y="36" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="590" y="58" text-anchor="middle" fill="var(--ink)" font-size="12">Regulatory Compliance</text>
+      <text class="cm-node-sub" x="590" y="76" text-anchor="middle" fill="var(--ink-tertiary)">UBIT · excise tax · EBI</text>
+    </g>
+    <line class="cm-edge" x1="500" y1="68" x2="442" y2="156" marker-end="url(#cm5-arrow)"/>
+    <text class="cm-edge-label" x="460" y="100" text-anchor="end">monitors investments</text>
+
+    <!-- Custodian support (bottom) -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="280" y="290" width="160" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="310" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
+      <text class="cm-node-sub" x="360" y="328" text-anchor="middle" fill="var(--ink-tertiary)">Data &amp; reporting</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="196" x2="360" y2="288" marker-end="url(#cm5-arrow)"/>
+    <text class="cm-edge-label" x="380" y="240" text-anchor="start">provides data</text>
+
+    <!-- Compliance summary -->
+    <rect x="40" y="356" width="640" height="44" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="376" text-anchor="middle" fill="var(--ink-tertiary)">Compliance pillars: Tax (990-PF) · Investment (UPMIFA) · Regulatory (UBIT, excise tax, EBI)</text>
+    <text class="cm-edge-label" x="360" y="392" text-anchor="middle" fill="var(--ink-muted)">Custodians and investment managers are key partners in data provision and compliance monitoring</text>
+  </svg>
+  <p class="cm-caption"><strong>Three compliance pillars:</strong> Tax compliance (Form 990-PF), investment compliance (UPMIFA, IPS), and regulatory compliance (UBIT, excise tax, excess business holdings).</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Foundation</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Compliance pillars</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Service provider</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Form 990-PF — The Foundation Tax Return</h3>
+
+<p class="body-text">
+Private foundations (and certain other types of foundations) must file <span class="hotspot" data-modal="form990pf" tabindex="0" role="button" onclick="openModal('modal-form990pf')">Form 990-PF</span> with the IRS annually. This return requires detailed reporting of:
+</p>
+
+<ul class="body-text">
+  <li><strong>Assets and liabilities:</strong> Schedule of investment holdings, including security-level detail for publicly traded securities.</li>
+  <li><strong>Investment income:</strong> Dividends, interest, rental income, and capital gains.</li>
+  <li><strong>Distributions:</strong> Grants made, administrative expenses, and the required 5% distribution test.</li>
+  <li><strong>Excise tax:</strong> Calculation of the flat 1.39% excise tax on net investment income.</li>
+  <li><strong>Unrelated Business Income Tax (UBIT):</strong> Income from activities not substantially related to the foundation's charitable purpose.</li>
+</ul>
+
+<p class="body-text">
+Foundations rely on their custodians and investment managers to provide accurate and timely data for these filings. The custodian provides monthly or quarterly statements with detailed transaction and position data; the investment manager provides performance and valuation data; and the foundation's tax advisor consolidates and prepares the return.
+</p>
+
+<h3 class="subsection-title">Unrelated Business Income Tax (UBIT)</h3>
+
+<p class="body-text">
+<span class="hotspot" data-modal="ubit" tabindex="0" role="button" onclick="openModal('modal-ubit')">Unrelated Business Income Tax (UBIT)</span> is a tax on income generated by activities that are not substantially related to the foundation's charitable purpose. For investment portfolios, UBIT can arise from:
+</p>
+
+<ul class="body-text">
+  <li><strong>Leveraged investments:</strong> Income from property acquired with debt financing (e.g., a private equity fund that uses leverage).</li>
+  <li><strong>Qualified partnership income:</strong> Income from partnerships that includes UBIT-generating activities.</li>
+  <li><strong>Unrelated business activities:</strong> Income from activities conducted in connection with investments (e.g., royalties, advertising income).</li>
+</ul>
+
+<p class="body-text">
+Foundations must monitor their investments for UBIT exposure and file Form 990-T if they have $1,000 or more of unrelated business taxable income. Many foundations avoid leveraged investments or invest through vehicles that minimize UBIT exposure.
+</p>
+
+<div class="warn-box">
+  <strong>UBIT Trap:</strong> Many foundations are surprised to learn that income from investments in certain alternative assets (like hedge funds or private equity funds) can generate UBIT. Before investing, foundations should review the fund's investment structure and consult with tax advisors to understand UBIT implications.
+</div>
+
+<h3 class="subsection-title">Excise Tax on Investment Income</h3>
+
+<p class="body-text">
+Private foundations are subject to an <span class="hotspot" data-modal="excise-tax" tabindex="0" role="button" onclick="openModal('modal-excise-tax')">excise tax on net investment income</span> under IRC § 4940, currently a flat rate of <strong>1.39%</strong>. This replaced the older two-tier system (2%, reducible to 1% if the foundation met certain distribution requirements) for tax years beginning after December 20, 2019 — the flat rate was adopted specifically to simplify planning and remove the incentive to time distributions around the old reduced-rate test. The tax is calculated on the foundation's net investment income, which includes dividends, interest, rents, royalties, and capital gains (net of losses and expenses). Foreign private foundations are generally subject to a 4% rate instead.
+</p>
+
+<p class="body-text">
+The excise tax is reported and paid on Form 990-PF. Foundations with significant investment portfolios often have substantial excise tax liabilities, which reduce the amount available for charitable grants. Some foundations structure their investments to minimize excise tax exposure (e.g., by using tax-exempt bonds or investing in partnerships that are treated as pass-through entities).
+</p>
+
+<h3 class="subsection-title">Excess Business Holdings</h3>
+
+<p class="body-text">
+Private foundations are subject to the <span class="hotspot" data-modal="excess-business-holdings" tabindex="0" role="button" onclick="openModal('modal-excess-business-holdings')">excess business holdings</span> rules, which limit the percentage of a business that a foundation and its related disqualified persons can own. Generally, a foundation and its disqualified persons together cannot own more than <strong>20% of the voting stock</strong> of a business (or 35% if a non-disqualified person has effective control). This applies to public and private companies alike — the relevant carve-out is the <strong>2% de minimis rule</strong>: a foundation is not treated as having excess business holdings in any corporation in which it (together with related foundations) owns 2% or less of both the voting stock and the value of all outstanding shares, regardless of what disqualified persons hold. In practice, most diversified public-equity positions fall under this de minimis threshold, but a concentrated position in a single public company can still trigger the rule.
+</p>
+
+<p class="body-text">
+For foundations that hold concentrated positions in publicly traded companies — or that receive private company stock as a contribution — monitoring excess business holdings is essential. The IRS imposes an initial 10% tax on excess holdings, with additional taxes and penalties if the excess is not corrected within a prescribed period.
+</p>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: EUROCLEAR & CROSS-BORDER
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="euroclear-foundations">Euroclear &amp; Cross-Border Securities for Foundations</h2>
+
+<p class="lead">
+While most U.S.-based foundations hold their securities at DTC, many also have international investments — particularly in <span class="hotspot" data-modal="eurobond" tabindex="0" role="button" onclick="openModal('modal-eurobond')">Eurobonds</span>, foreign equities, and global funds. These are often held through <span class="hotspot" data-modal="euroclear" tabindex="0" role="button" onclick="openModal('modal-euroclear')">Euroclear</span>, the leading international central securities depository. Understanding the Euroclear infrastructure is essential for foundations with global portfolios.
+</p>
+
+<p class="body-text">
+Euroclear operates <span class="hotspot" data-modal="euroclear-bank" tabindex="0" role="button" onclick="openModal('modal-euroclear-bank')">Euroclear Bank</span>, an International CSD (ICSD) with a banking license, and a network of national CSDs. For a foundation, holding international securities through Euroclear involves a similar ownership stack to DTC: the foundation is the beneficial owner, the custodian (often a global custodian like Bank of New York Mellon, State Street, or JPMorgan) holds the securities in its Euroclear account, and the legal title is held by Euroclear's nominee (or, in some cases, by the issuer's registrar).
+</p>
+
+<!-- Concept Map 6: Euroclear for Foundations -->
+<div class="diagram-box concept-map" id="concept-map-euroclear-foundation" role="img" aria-labelledby="cm6-title" aria-describedby="cm6-desc">
+  <div class="diagram-title" id="cm6-title">Concept Map — Euroclear for Foundations</div>
+  <p id="cm6-desc" class="visually-hidden">
+    Euroclear structure for foundations: Foundation is the beneficial owner.
+    A global custodian (DTC participant for US assets, Euroclear participant for international assets)
+    holds Euroclear securities through Euroclear Bank (ICSD) or a national CSD.
+    Euroclear holds legal title (with its own nominee structure) and provides settlement and asset servicing.
+    T2S provides central bank money settlement for Eurozone securities.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm6-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Foundation (beneficial owner) -->
+    <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
+      <rect class="cm-node-shape" x="280" y="20" width="160" height="50" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <text class="cm-badge-text" x="360" y="40" text-anchor="middle" fill="var(--green)">Beneficial owner</text>
+      <text class="cm-node-title" x="360" y="58" text-anchor="middle" fill="var(--green)" font-size="12">Foundation</text>
+    </g>
+
+    <!-- Global Custodian -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="240" y="120" width="240" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">Global Custodian</text>
+      <text class="cm-node-sub" x="360" y="158" text-anchor="middle" fill="var(--ink-tertiary)">DTC + Euroclear participant</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="70" x2="360" y2="118" marker-end="url(#cm6-arrow)"/>
+
+    <!-- Euroclear Bank / ICSD -->
+    <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
+      <rect class="cm-node-shape" x="140" y="220" width="200" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="240" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear Bank</text>
+      <text class="cm-node-sub" x="240" y="258" text-anchor="middle" fill="var(--ink-tertiary)">ICSD · banking license</text>
+    </g>
+    <line class="cm-edge" x1="280" y1="170" x2="240" y2="218" marker-end="url(#cm6-arrow)"/>
+
+    <!-- National CSDs -->
+    <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSD — open definition">
+      <rect class="cm-node-shape" x="380" y="220" width="200" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="480" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">National CSDs</text>
+      <text class="cm-node-sub" x="480" y="258" text-anchor="middle" fill="var(--ink-tertiary)">ESES · UK · Nordics</text>
+    </g>
+    <line class="cm-edge" x1="440" y1="170" x2="480" y2="218" marker-end="url(#cm6-arrow)"/>
+
+    <!-- T2S -->
+    <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
+      <rect class="cm-node-shape" x="280" y="320" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <text class="cm-node-title" x="360" y="342" text-anchor="middle" fill="var(--green)" font-size="12">T2S</text>
+      <text class="cm-node-sub" x="360" y="358" text-anchor="middle" fill="var(--ink-tertiary)">Central bank money</text>
+    </g>
+    <line class="cm-edge" x1="240" y1="270" x2="280" y2="318" marker-end="url(#cm6-arrow)"/>
+    <line class="cm-edge" x1="480" y1="270" x2="440" y2="318" marker-end="url(#cm6-arrow)"/>
+    <text class="cm-edge-label" x="270" y="300" text-anchor="end">settlement</text>
+    <text class="cm-edge-label" x="470" y="300" text-anchor="start">settlement</text>
+
+    <!-- Caption -->
+    <rect x="40" y="380" width="640" height="30" rx="8" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="cm-edge-label" x="360" y="400" text-anchor="middle" fill="var(--ink-tertiary)">Foundations hold international securities through Euroclear via a global custodian — same beneficial-ownership model as DTC</text>
+  </svg>
+  <p class="cm-caption"><strong>Euroclear for foundations:</strong> The foundation is the beneficial owner; a global custodian holds the securities in its Euroclear account; Euroclear Bank or a national CSD provides settlement and asset servicing.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial owner</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Custodians &amp; CSDs</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> T2S settlement rail</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Cross-Border Tax &amp; Reporting Considerations</h3>
+
+<p class="body-text">
+Foundations with international securities face additional tax and reporting obligations, including:
+</p>
+
+<ul class="body-text">
+  <li><strong>Foreign withholding tax:</strong> Many countries impose withholding tax on dividends and interest paid to foreign investors. Foundations may be eligible for reduced withholding tax rates under US tax treaties, but must submit proper forms (e.g., Form W-8BEN-E) to their custodians.</li>
+  <li><strong>Form 8938:</strong> Statement of Specified Foreign Financial Assets — required for foundations with foreign financial assets exceeding certain thresholds.</li>
+  <li><strong>FATCA:</strong> The Foreign Account Tax Compliance Act — requires foreign financial institutions to report US account holders to the IRS. Foundations must ensure their foreign accounts are FATCA-compliant.</li>
+  <li><strong>PFIC reporting:</strong> Investments in Passive Foreign Investment Companies (PFICs) trigger additional reporting and tax treatment under IRS rules.</li>
+</ul>
+
+<p class="body-text">
+Foundations with significant international investments often rely on their global custodians and tax advisors to manage these obligations. The custodian typically handles withholding tax reclaims and provides year-end tax reporting data.
+</p>
+
+<div class="tip-box">
+  <strong>Cross-Border Tip:</strong> The US has tax treaties with many countries that reduce withholding tax rates on dividends and interest. For example, under the US-UK tax treaty, the withholding tax rate on dividends from UK companies is typically 15% (or 0% for qualified retirement plans). Foundations should work with their custodians to ensure they are claiming the correct treaty benefits.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: GLOBAL COMPARISON
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="global-comparison-foundation">Global Comparison — Foundation Securities Holding Models</h2>
+
+<p class="lead">
+While the DTC/Cede &amp; Co. model dominates U.S. foundation securities holdings, other jurisdictions have different structures. Understanding these differences is important for foundations with global portfolios or for foundations considering cross-border grantmaking.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>United States (DTC)</th>
+    <th>Europe (Euroclear)</th>
+    <th>United Kingdom (CREST)</th>
+  </tr>
+  <tr>
+    <td><strong>Primary Depository</strong></td>
+    <td>DTC (central securities depository)</td>
+    <td>Euroclear Bank (ICSD) + National CSDs</td>
+    <td>Euroclear UK &amp; International (CREST)</td>
+  </tr>
+  <tr>
+    <td><strong>Nominee Structure</strong></td>
+    <td>Cede &amp; Co. (single nominee for all DTC)</td>
+    <td>Varies by CSD; Euroclear Bank has nominee structure</td>
+    <td>CREST nominee (a separate nominee)</td>
+  </tr>
+  <tr>
+    <td><strong>Registration Model</strong></td>
+    <td>Street name (beneficial owners through participants)</td>
+    <td>Mixture of book-entry and registered</td>
+    <td>Book-entry with nominee holding</td>
+  </tr>
+  <tr>
+    <td><strong>Settlement Cycle</strong></td>
+    <td>T+1</td>
+    <td>T+2 (T+1 under study)</td>
+    <td>T+2</td>
+  </tr>
+  <tr>
+    <td><strong>Cash Settlement</strong></td>
+    <td>Federal Reserve (central bank money)</td>
+    <td>T2S (central bank) / commercial bank</td>
+    <td>Bank of England (central bank money)</td>
+  </tr>
+  <tr>
+    <td><strong>Regulatory Oversight</strong></td>
+    <td>SEC, Federal Reserve</td>
+    <td>ESMA, ECB, national regulators</td>
+    <td>Bank of England, FCA</td>
+  </tr>
+  <tr>
+    <td><strong>Foundation-Specific Considerations</strong></td>
+    <td>Form 990-PF, UBIT, excise tax</td>
+    <td>Varies by country; EU tax directives</td>
+    <td>Charity Commission, HMRC</td>
+  </tr>
+</table>
+
+<p class="body-text">
+For most U.S.-based foundations, the DTC model is the default for domestic holdings. International holdings are typically held through Euroclear (for European securities) or through local custodians with links to other depositories. The choice of custodian — and the custodian's cross-border capabilities — is therefore a critical consideration for foundations with global investment mandates.
+</p>
+
+</div><!-- /doc-frame -->
+
+<!-- ═══════════════════════════════════════════════════
+     QUIZ SECTION
+════════════════════════════════════════════════════ -->
+
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">Foundation Securities Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of non-profit foundations, endowments, DAFs, and securities ownership through DTC and Euroclear. Select the best answer for each question. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Q1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is the primary legal status of a private foundation under U.S. tax law?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq1" value="a"><span>501(c)(4) social welfare organization</span></label>
+          <label><input type="radio" name="fq1" value="b"><span>501(c)(3) tax-exempt charitable organization</span></label>
+          <label><input type="radio" name="fq1" value="c"><span>501(c)(6) business league</span></label>
+          <label><input type="radio" name="fq1" value="d"><span>527 political organization</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q1"></div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What does UPMIFA stand for and what does it address?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq2" value="a"><span>Uniform Prudent Management of Institutional Funds Act — governs endowment investment and spending</span></label>
+          <label><input type="radio" name="fq2" value="b"><span>Uniform Private Foundation Management Act — governs foundation governance</span></label>
+          <label><input type="radio" name="fq2" value="c"><span>Uniform Public Charity Management Act — governs public charities</span></label>
+          <label><input type="radio" name="fq2" value="d"><span>Uniform Partnership and Fiduciary Management Act — governs trustees</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q2"></div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>In the DTC system, who is the registered owner of a foundation&apos;s securities on the issuer&apos;s books?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq3" value="a"><span>The foundation itself</span></label>
+          <label><input type="radio" name="fq3" value="b"><span>The foundation&apos;s custodian</span></label>
+          <label><input type="radio" name="fq3" value="c"><span>Cede &amp; Co.</span></label>
+          <label><input type="radio" name="fq3" value="d"><span>The IRS</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q3"></div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the typical spending rate for foundation endowments?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq4" value="a"><span>1-2% of asset value</span></label>
+          <label><input type="radio" name="fq4" value="b"><span>4-6% of trailing average asset value</span></label>
+          <label><input type="radio" name="fq4" value="c"><span>10-12% of asset value</span></label>
+          <label><input type="radio" name="fq4" value="d"><span>There is no typical spending rate</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q4"></div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is a Donor-Advised Fund (DAF)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq5" value="a"><span>A private foundation controlled by a single donor</span></label>
+          <label><input type="radio" name="fq5" value="b"><span>A charitable fund sponsored by a public charity where donors recommend grants</span></label>
+          <label><input type="radio" name="fq5" value="c"><span>A donor-controlled trust that makes grants</span></label>
+          <label><input type="radio" name="fq5" value="d"><span>A for-profit investment fund that donates to charity</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q5"></div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What tax advantage does donating appreciated securities to a DAF provide?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq6" value="a"><span>No tax benefit</span></label>
+          <label><input type="radio" name="fq6" value="b"><span>Deduction at cost basis only</span></label>
+          <label><input type="radio" name="fq6" value="c"><span>Full fair market value deduction and no capital gains tax</span></label>
+          <label><input type="radio" name="fq6" value="d"><span>Only a deduction for the donor&apos;s cost basis</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q6"></div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>Which form do private foundations file annually with the IRS?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq7" value="a"><span>Form 990 (public charity version)</span></label>
+          <label><input type="radio" name="fq7" value="b"><span>Form 990-PF (private foundation)</span></label>
+          <label><input type="radio" name="fq7" value="c"><span>Form 1040</span></label>
+          <label><input type="radio" name="fq7" value="d"><span>Form 1120</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q7"></div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is UBIT and how does it affect foundations?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq8" value="a"><span>Unrelated Business Income Tax — tax on income from activities not related to charitable purpose</span></label>
+          <label><input type="radio" name="fq8" value="b"><span>Uniform Business Income Tax — standard tax for all businesses</span></label>
+          <label><input type="radio" name="fq8" value="c"><span>United Business Income Tax — federal tax on corporations</span></label>
+          <label><input type="radio" name="fq8" value="d"><span>Unrelated Business Income Tax — tax on investment income only</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q8"></div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is the excise tax rate on private foundation net investment income?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq9" value="a"><span>0%</span></label>
+          <label><input type="radio" name="fq9" value="b"><span>A flat 1.39%</span></label>
+          <label><input type="radio" name="fq9" value="c"><span>10%</span></label>
+          <label><input type="radio" name="fq9" value="d"><span>20%</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q9"></div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>In the foundation ownership stack, who is the beneficial owner of the securities?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq10" value="a"><span>Cede &amp; Co.</span></label>
+          <label><input type="radio" name="fq10" value="b"><span>The custodian</span></label>
+          <label><input type="radio" name="fq10" value="c"><span>The foundation</span></label>
+          <label><input type="radio" name="fq10" value="d"><span>DTC</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q10"></div>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is the primary advantage of book-entry securities over physical certificates for foundations?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq11" value="a"><span>Physical certificates are more secure</span></label>
+          <label><input type="radio" name="fq11" value="b"><span>Book-entry eliminates physical handling risk and enables efficient trading</span></label>
+          <label><input type="radio" name="fq11" value="c"><span>Book-entry is required by law</span></label>
+          <label><input type="radio" name="fq11" value="d"><span>Physical certificates are more valuable</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q11"></div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is the role of a foundation&apos;s custodian in securities ownership?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq12" value="a"><span>To manage investment decisions</span></label>
+          <label><input type="radio" name="fq12" value="b"><span>To hold securities in its DTC participant account and maintain records for the foundation</span></label>
+          <label><input type="radio" name="fq12" value="c"><span>To file the foundation&apos;s tax returns</span></label>
+          <label><input type="radio" name="fq12" value="d"><span>To make grants to charities</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q12"></div>
+      </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is Euroclear&apos;s primary role for foundations with international holdings?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq13" value="a"><span>To issue new securities</span></label>
+          <label><input type="radio" name="fq13" value="b"><span>To provide settlement and custody for cross-border securities</span></label>
+          <label><input type="radio" name="fq13" value="c"><span>To serve as the US depository for foreign securities</span></label>
+          <label><input type="radio" name="fq13" value="d"><span>To replace DTC for all securities</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q13"></div>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>Which of the following is a key difference between DTC and Euroclear?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq14" value="a"><span>DTC is for bonds; Euroclear is for stocks</span></label>
+          <label><input type="radio" name="fq14" value="b"><span>DTC is a US CSD; Euroclear is a European ICSD with a banking license</span></label>
+          <label><input type="radio" name="fq14" value="c"><span>DTC is regulated by the ECB; Euroclear by the SEC</span></label>
+          <label><input type="radio" name="fq14" value="d"><span>There is no difference</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q14"></div>
+      </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is the "excess business holdings" rule for private foundations?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq15" value="a"><span>Limits foundation ownership of a business to 20-35%</span></label>
+          <label><input type="radio" name="fq15" value="b"><span>Requires foundations to hold at least 51% of any business</span></label>
+          <label><input type="radio" name="fq15" value="c"><span>Prohibits foundations from owning any business</span></label>
+          <label><input type="radio" name="fq15" value="d"><span>Applies only to real estate investments</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q15"></div>
+      </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>Which settlement cycle applies to most U.S. equity trades for foundations?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq16" value="a"><span>T+0 (same day)</span></label>
+          <label><input type="radio" name="fq16" value="b"><span>T+1 (one business day after trade)</span></label>
+          <label><input type="radio" name="fq16" value="c"><span>T+2 (two business days after trade)</span></label>
+          <label><input type="radio" name="fq16" value="d"><span>T+3 (three business days after trade)</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q16"></div>
+      </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the role of the Investment Policy Statement (IPS) for a foundation?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq17" value="a"><span>A legal document required by the IRS</span></label>
+          <label><input type="radio" name="fq17" value="b"><span>A governance document that sets investment objectives, risk tolerance, and asset allocation</span></label>
+          <label><input type="radio" name="fq17" value="c"><span>A document filed with the SEC</span></label>
+          <label><input type="radio" name="fq17" value="d"><span>A marketing document for donors</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q17"></div>
+      </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>In a DAF, who has ultimate legal control over the assets?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq18" value="a"><span>The donor</span></label>
+          <label><input type="radio" name="fq18" value="b"><span>The DAF sponsoring organization (public charity)</span></label>
+          <label><input type="radio" name="fq18" value="c"><span>The custodian</span></label>
+          <label><input type="radio" name="fq18" value="d"><span>The charitable beneficiaries</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q18"></div>
+      </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the primary purpose of Form 990-PF?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq19" value="a"><span>To register a foundation with the IRS</span></label>
+          <label><input type="radio" name="fq19" value="b"><span>To report assets, investment income, grants, and calculate excise tax</span></label>
+          <label><input type="radio" name="fq19" value="c"><span>To apply for tax-exempt status</span></label>
+          <label><input type="radio" name="fq19" value="d"><span>To report donor contributions</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q19"></div>
+      </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>Which entity is the legal owner of securities held in a foundation&apos;s DTC account?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="fq20" value="a"><span>The foundation</span></label>
+          <label><input type="radio" name="fq20" value="b"><span>The custodian</span></label>
+          <label><input type="radio" name="fq20" value="c"><span>Cede &amp; Co. (nominee for DTC)</span></label>
+          <label><input type="radio" name="fq20" value="d"><span>The IRS</span></label>
+        </div>
+        <div class="quiz-feedback" id="ff-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkFoundationQuiz()">Check All Answers</button>
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetFoundationQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script>
+// ─── Quiz Answers ───
+const foundationQuizAnswers = {
+  fq1: { correct: 'b', explanation: 'Private foundations are 501(c)(3) tax-exempt charitable organizations. They are subject to specific rules on distributions, investment income, and excess business holdings.' },
+  fq2: { correct: 'a', explanation: 'UPMIFA — Uniform Prudent Management of Institutional Funds Act — governs how endowments are invested and spent, balancing current needs with long-term preservation of purchasing power.' },
+  fq3: { correct: 'c', explanation: 'Cede & Co. is the registered owner on the issuer\'s books. The foundation is the beneficial owner through its custodian (a DTC participant).' },
+  fq4: { correct: 'b', explanation: 'Most foundations spend 4-6% of the trailing 3- to 5-year average market value of their endowments. This balances current spending needs with long-term preservation.' },
+  fq5: { correct: 'b', explanation: 'A Donor-Advised Fund is a charitable fund sponsored by a public charity where donors can contribute assets and recommend grants, but the sponsor has ultimate legal control.' },
+  fq6: { correct: 'c', explanation: 'Donating appreciated securities to a DAF provides a full fair market value deduction and eliminates capital gains tax — making it more tax-efficient than selling and donating cash.' },
+  fq7: { correct: 'b', explanation: 'Private foundations file Form 990-PF annually. This return reports assets, investment income, grants, and calculates the excise tax on net investment income.' },
+  fq8: { correct: 'a', explanation: 'Unrelated Business Income Tax (UBIT) is tax on income from activities not substantially related to the foundation\'s charitable purpose. It can arise from leveraged investments or partnership income.' },
+  fq9: { correct: 'b', explanation: 'Since tax years beginning after December 20, 2019, private foundations pay a flat 1.39% excise tax on net investment income under IRC § 4940. This replaced the older two-tier system (2%, reducible to 1% for meeting a distribution test), which no longer applies.' },
+  fq10: { correct: 'c', explanation: 'The foundation is the beneficial owner of its securities, enjoying economic rights like dividends, capital appreciation, and voting rights, while Cede & Co. holds legal title.' },
+  fq11: { correct: 'b', explanation: 'Book-entry securities eliminate physical handling risk, reduce costs, and enable efficient T+1 settlement — all critical for investment management.' },
+  fq12: { correct: 'b', explanation: 'The custodian holds the securities in its DTC participant account, maintains records of the foundation\'s positions, and processes transactions and corporate actions.' },
+  fq13: { correct: 'b', explanation: 'Euroclear provides settlement and custody services for cross-border securities, allowing foundations to hold international investments through their global custodians.' },
+  fq14: { correct: 'b', explanation: 'DTC is a U.S. central securities depository. Euroclear is a European ICSD with a banking license, offering cross-border settlement and custody services.' },
+  fq15: { correct: 'a', explanation: 'The excess business holdings rules limit a foundation\'s ownership of a business to 20-35% of voting stock (with exceptions), penalizing holdings above these thresholds.' },
+  fq16: { correct: 'b', explanation: 'Most U.S. equity trades settle T+1 — one business day after the trade date. This is the current settlement cycle for U.S. securities, effective May 2024.' },
+  fq17: { correct: 'b', explanation: 'The Investment Policy Statement is a governance document that sets investment objectives, risk tolerance, asset allocation, and spending policy. It is approved by the board.' },
+  fq18: { correct: 'b', explanation: 'In a DAF, the sponsoring organization (a public charity) has ultimate legal control over the assets. The donor has advisory rights to recommend grants.' },
+  fq19: { correct: 'b', explanation: 'Form 990-PF is the annual return for private foundations, reporting assets, investment income, grants, and calculating the excise tax on net investment income.' },
+  fq20: { correct: 'c', explanation: 'Cede & Co. is the legal owner on the issuer\'s books. The foundation is the beneficial owner, holding economic rights through its custodian.' }
+};
+
+function checkFoundationQuiz() {
+  let correct = 0;
+  const total = 20;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'fq' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('ff-' + qName);
+    const answer = foundationQuizAnswers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback';
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : 'fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : 'fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid understanding of non-profit foundations, securities ownership, and compliance.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80%.';
+  }
+
+  reportFoundationQuizScore(pct);
+}
+
+function resetFoundationQuiz() {
+  document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+  document.querySelectorAll('.quiz-options input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  document.getElementById('quizResult').innerHTML = '';
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY
+════════════════════════════════════════════════════ -->
+
+<!-- How to Use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <p>This interactive teaching guide explains how non-profit foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear.</p>
+      <p><strong>How to navigate:</strong></p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between sections.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation.</li>
+        <li>Use this guide to understand the ownership stack, compliance requirements, and cross-border considerations for foundation securities.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Start with the Overview and work through each section sequentially. The diagrams illustrate how securities flow from donors to foundations to beneficiaries.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Foundation -->
+<div class="modal-overlay" id="modal-foundation" role="dialog" aria-modal="true" aria-labelledby="modal-title-foundation">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-foundation">Non-Profit Foundation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">501(c)(3) Organization</div>
+        <div class="def-word">Foundation</div>
+        <p>A tax-exempt charitable organization that typically makes grants to other charities rather than operating its own programs. Private foundations are distinguished from public charities by their funding source (usually a single donor or family) and their governance structure.</p>
+      </div>
+      <p class="modal-section-title">Types</p>
+      <ul>
+        <li><strong>Private Foundation:</strong> Funded by a single source (individual, family, corporation), typically with a small board and no public solicitation. Subject to stricter IRS rules.</li>
+        <li><strong>Public Charity (Operating):</strong> Conducts its own charitable programs; receives broad public support. May have an endowment but is not primarily grant-making.</li>
+        <li><strong>Community Foundation:</strong> A public charity that pools donor contributions and manages endowments for specific geographic areas or causes.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRS Publication 557; Uniform Prudent Management of Institutional Funds Act (UPMIFA).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Endowment -->
+<div class="modal-overlay" id="modal-endowment" role="dialog" aria-modal="true" aria-labelledby="modal-title-endowment">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-endowment">Endowment</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Asset Pool</div>
+        <div class="def-word">Endowment</div>
+        <p>A permanent pool of assets held by a foundation or other non-profit to generate investment income to support operations and grants. The principal is typically preserved (or grown) while income is spent.</p>
+      </div>
+      <p class="modal-section-title">Endowment Types</p>
+      <ul>
+        <li><strong>Permanent Endowment:</strong> Principal must be preserved in perpetuity; only income may be spent.</li>
+        <li><strong>Quasi-Endowment (Board-Designated):</strong> Funds set aside by the board for investment, but the board can reclassify them if needed.</li>
+        <li><strong>Term Endowment:</strong> Principal can be spent after a specified term or event.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> UPMIFA; NACUBO Endowment Study.</div>
+    </div>
+  </div>
+</div>
+
+<!-- UPMIFA -->
+<div class="modal-overlay" id="modal-upmifa" role="dialog" aria-modal="true" aria-labelledby="modal-title-upmifa">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-upmifa">UPMIFA — Uniform Prudent Management of Institutional Funds Act</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Uniform State Law</div>
+        <div class="def-word">UPMIFA</div>
+        <p>A uniform act adopted by most U.S. states that provides guidance on the management and investment of institutional funds (including endowments). It replaced the older Uniform Management of Institutional Funds Act (UMIFA).</p>
+      </div>
+      <p class="modal-section-title">Key Provisions</p>
+      <ul>
+        <li><strong>Prudent Management:</strong> Trustees must manage funds with the care of a prudent person.</li>
+        <li><strong>Spending Rules:</strong> Allows spending of both income and appreciation, subject to the prudent investor standard.</li>
+        <li><strong>Donor Intent:</strong> Preservation of donor intent is a key consideration.</li>
+        <li><strong>Appropriation:</strong> Provides a framework for determining how much may be spent from an endowment.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Law Commission; UPMIFA (2006).</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTC -->
+<div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Central Securities Depository</div>
+        <div class="def-word">DTC</div>
+        <p>A limited-purpose trust company, central securities depository, and SEC-registered clearing agency. It holds the majority of U.S. equity and debt securities in book-entry form and provides asset servicing and settlement services.</p>
+      </div>
+      <p class="modal-section-title">Key Statistics</p>
+      <ul>
+        <li>Holds over $100 trillion in securities value.</li>
+        <li>Processes millions of transactions daily.</li>
+        <li>Has approximately 300 participants (broker-dealers and banks).</li>
+        <li>Founded in 1973; headquartered in New York.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cede & Co. -->
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Nominee Partnership</div>
+        <div class="def-word">Cede &amp; Co.</div>
+        <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers.</p>
+      </div>
+      <p class="modal-section-title">Role in Foundation Holdings</p>
+      <p>When a foundation holds securities through a custodian that is a DTC participant, Cede &amp; Co. is the registered owner on the issuer's books. The foundation is the beneficial owner, enjoying all economic rights through the custodian.</p>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Beneficial Owner -->
+<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-beneficial-owner">Beneficial Owner</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Property Law Concept</div>
+        <div class="def-word">Beneficial Owner</div>
+        <p>The person or entity that enjoys the economic benefits of property ownership — dividends, interest, capital appreciation, and voting rights — even though legal title is held by another (a nominee or trustee).</p>
+      </div>
+      <p class="modal-section-title">Foundation as Beneficial Owner</p>
+      <p>For securities held in street name through DTC, the foundation is the beneficial owner. It receives dividends, has voting rights (through its custodian), and can sell or pledge the securities. Cede &amp; Co. holds legal title as nominee.</p>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Rule 14b-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Custodian -->
+<div class="modal-overlay" id="modal-custodian" role="dialog" aria-modal="true" aria-labelledby="modal-title-custodian">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-custodian">Custodian</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Service Provider</div>
+        <div class="def-word">Custodian</div>
+        <p>A financial institution (typically a bank or trust company) that holds securities on behalf of a client, maintains records of positions and transactions, and processes corporate actions and proxy voting.</p>
+      </div>
+      <p class="modal-section-title">Role in Foundation Securities</p>
+      <p>Foundations typically use a custodian (or a bank trust department) to hold their securities. The custodian is a DTC participant, meaning it has a securities account at DTC. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions.</p>
+      <div class="citation"><strong>Source:</strong> Bank custody agreements; SEC Rule 17Ad-10.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Custodian Risk -->
+<div class="modal-overlay" id="modal-custodian-risk" role="dialog" aria-modal="true" aria-labelledby="modal-title-custodian-risk">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-custodian-risk">Custodian Risk</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Counterparty Risk</div>
+        <div class="def-word">Custodian Risk</div>
+        <p>The risk that a custodian fails, mismanages assets, commits fraud, or otherwise causes losses to the client. This is a form of counterparty risk specific to the custodial relationship.</p>
+      </div>
+      <p class="modal-section-title">Mitigation Strategies</p>
+      <ul>
+        <li><strong>Segregation:</strong> Ensure assets are held in the client's name (not commingled with the custodian's own assets).</li>
+        <li><strong>Reconciliation:</strong> Regularly reconcile custodian statements against internal records.</li>
+        <li><strong>Due Diligence:</strong> Review the custodian's financial health, regulatory status, and operational controls.</li>
+        <li><strong>Diversification:</strong> Consider using multiple custodians to diversify risk.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> SEC Investor Bulletin; OCC trust examination guidelines.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Donor -->
+<div class="modal-overlay" id="modal-donor" role="dialog" aria-modal="true" aria-labelledby="modal-title-donor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-donor">Donor</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Contributor</div>
+        <div class="def-word">Donor</div>
+        <p>An individual, family, corporation, or other entity that contributes assets to a non-profit foundation or donor-advised fund. Donors receive tax benefits for their contributions and may have advisory rights (in DAFs) or governance rights (in foundations).</p>
+      </div>
+      <p class="modal-section-title">Tax Considerations</p>
+      <ul>
+        <li><strong>Income Tax Deduction:</strong> Donors can deduct contributions to 501(c)(3) organizations (subject to AGI limits).</li>
+        <li><strong>Capital Gains Avoidance:</strong> Donating appreciated securities avoids capital gains tax.</li>
+        <li><strong>Estate Tax Reduction:</strong> Charitable bequests reduce the donor's taxable estate.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRS Publication 526 (Charitable Contributions).</div>
+    </div>
+  </div>
+</div>
+
+<!-- DAF -->
+<div class="modal-overlay" id="modal-daf" role="dialog" aria-modal="true" aria-labelledby="modal-title-daf">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-daf">Donor-Advised Fund (DAF)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Charitable Giving Vehicle</div>
+        <div class="def-word">Donor-Advised Fund</div>
+        <p>A charitable fund sponsored by a public charity (such as Fidelity Charitable, Schwab Charitable, or Vanguard Charitable). Donors contribute assets, receive an immediate tax deduction, and recommend grants to qualified charities over time.</p>
+      </div>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li><strong>Sponsor:</strong> A 501(c)(3) public charity that has ultimate legal control.</li>
+        <li><strong>Advisory Rights:</strong> Donors can recommend grants, but the sponsor has final authority.</li>
+        <li><strong>Tax Deduction:</strong> Immediate deduction for the fair market value of contributed assets.</li>
+        <li><strong>Growth:</strong> Assets can be invested and grow tax-free.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRS Notice 2017-73; National Philanthropic Trust DAF Report.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Grant -->
+<div class="modal-overlay" id="modal-grant" role="dialog" aria-modal="true" aria-labelledby="modal-title-grant">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-grant">Charitable Grant</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Distribution</div>
+        <div class="def-word">Grant</div>
+        <p>A distribution of funds from a foundation or donor-advised fund to a charitable beneficiary. Grants are the primary way foundations achieve their charitable purpose and satisfy IRS distribution requirements.</p>
+      </div>
+      <p class="modal-section-title">Types</p>
+      <ul>
+        <li><strong>Program-Related Investment (PRI):</strong> An investment made by a foundation to further its charitable purpose, with repayment expected.</li>
+        <li><strong>General Operating Support:</strong> Unrestricted funds for a charity's operations.</li>
+        <li><strong>Project Support:</strong> Funds for a specific program or project.</li>
+        <li><strong>Capital Grant:</strong> Funds for capital projects (buildings, equipment, etc.).</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRS Form 990-PF instructions; Council on Foundations.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Form 990-PF -->
+<div class="modal-overlay" id="modal-form990pf" role="dialog" aria-modal="true" aria-labelledby="modal-title-form990pf">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-form990pf">Form 990-PF — Private Foundation Return</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Return</div>
+        <div class="def-word">Form 990-PF</div>
+        <p>The annual information return filed by private foundations with the IRS. It reports assets, investment income, grants, and calculates the excise tax on net investment income.</p>
+      </div>
+      <p class="modal-section-title">Key Sections</p>
+      <ul>
+        <li><strong>Part I:</strong> Assets, liabilities, and net worth.</li>
+        <li><strong>Part II:</strong> Investment income (dividends, interest, rents, capital gains).</li>
+        <li><strong>Part III:</strong> Distributions (grants, administrative expenses).</li>
+        <li><strong>Part IV:</strong> Excise tax calculation.</li>
+        <li><strong>Part V:</strong> Distributable amount and qualifying distributions.</li>
+        <li><strong>Schedule A:</strong> Initial return of a private foundation.</li>
+        <li><strong>Schedule B:</strong> Schedule of contributors.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRS Form 990-PF instructions; Treas. Reg. § 1.509(a)-3.</div>
+    </div>
+  </div>
+</div>
+
+<!-- UBIT -->
+<div class="modal-overlay" id="modal-ubit" role="dialog" aria-modal="true" aria-labelledby="modal-title-ubit">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ubit">Unrelated Business Income Tax (UBIT)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax</div>
+        <div class="def-word">UBIT</div>
+        <p>A tax imposed on income generated by activities that are not substantially related to the foundation's charitable purpose. UBIT is calculated on Form 990-T and applies when a foundation has $1,000 or more of unrelated business taxable income.</p>
+      </div>
+      <p class="modal-section-title">Common UBIT Sources for Foundations</p>
+      <ul>
+        <li><strong>Debt-Financed Income:</strong> Income from property acquired with debt financing (e.g., leveraged investments).</li>
+        <li><strong>Partnership Income:</strong> Income from partnerships that includes UBIT-generating activities.</li>
+        <li><strong>Unrelated Activities:</strong> Income from activities conducted in connection with investments (e.g., royalties, advertising income).</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRC § 511-514; Treas. Reg. § 1.512(b)-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Excise Tax -->
+<div class="modal-overlay" id="modal-excise-tax" role="dialog" aria-modal="true" aria-labelledby="modal-title-excise-tax">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-excise-tax">Excise Tax on Investment Income</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax</div>
+        <div class="def-word">Excise Tax</div>
+        <p>A tax imposed on private foundations under IRC § 4940 based on their net investment income. Since tax years beginning after December 20, 2019, the rate is a flat <strong>1.39%</strong> for domestic private foundations (4% for most foreign private foundations). This replaced the older two-tier system (2%, or 1% if the foundation met a minimum distribution test), which is no longer in effect.</p>
+      </div>
+      <p class="modal-section-title">Calculation</p>
+      <p>The excise tax is calculated on the foundation's net investment income, which includes dividends, interest, rents, royalties, and capital gains (net of losses and expenses). The tax is reported and paid on Form 990-PF, with quarterly estimated payments generally required if the annual tax is expected to be $500 or more.</p>
+      <div class="citation"><strong>Source:</strong> IRC § 4940 (as amended by the Further Consolidated Appropriations Act, 2020); IRS "Tax on Net Investment Income" guidance; Treas. Reg. § 53.4940-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Excess Business Holdings -->
+<div class="modal-overlay" id="modal-excess-business-holdings" role="dialog" aria-modal="true" aria-labelledby="modal-title-excess-business-holdings">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-excess-business-holdings">Excess Business Holdings</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">IRS Rule</div>
+        <div class="def-word">Excess Business Holdings</div>
+        <p>A rule limiting the percentage of a business that a private foundation and its related entities can own. Generally, a foundation cannot own more than 20% of the voting stock of a business (or 35% under certain conditions).</p>
+      </div>
+      <p class="modal-section-title">Penalties</p>
+      <ul>
+        <li><strong>Initial Tax:</strong> 10% excise tax on excess holdings.</li>
+        <li><strong>Additional Tax:</strong> 200% of the value of excess holdings if not corrected within 90 days.</li>
+        <li><strong>Exceptions:</strong> The 2% de minimis rule — a foundation is not treated as having excess holdings in a corporation where it (with related foundations) owns 2% or less of both voting stock and total share value; certain functionally-related businesses are also excluded.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRC § 4943; Treas. Reg. § 53.4943-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Street Name -->
+<div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-street-name">Street Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Industry Term</div>
+        <div class="def-word">Street Name</div>
+        <p>The practice of registering securities in the name of a broker-dealer or its nominee (Cede &amp; Co.) rather than in the name of the beneficial owner. The term derives from Wall Street, where brokers historically held customer securities.</p>
+      </div>
+      <p class="modal-section-title">Prevalence</p>
+      <p>Over 99% of publicly traded U.S. equities are held in street name. Foundations almost universally hold their securities in street name through their custodians, which are DTC participants.</p>
+      <div class="citation"><strong>Source:</strong> SEC Investor Bulletin: "Holding Your Securities."</div>
+    </div>
+  </div>
+</div>
+
+<!-- Book-Entry -->
+<div class="modal-overlay" id="modal-book-entry" role="dialog" aria-modal="true" aria-labelledby="modal-title-book-entry">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-book-entry">Book-Entry System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Record-Keeping Method</div>
+        <div class="def-word">Book-Entry</div>
+        <p>A system of tracking ownership of securities through electronic ledger entries rather than physical certificates. Ownership changes are effected by debiting one account and crediting another.</p>
+      </div>
+      <p class="modal-section-title">Advantages for Foundations</p>
+      <ul>
+        <li><strong>Speed:</strong> Trades settle in T+1 rather than days or weeks.</li>
+        <li><strong>Safety:</strong> No risk of lost, stolen, or forged certificates.</li>
+        <li><strong>Cost:</strong> No certificate issuance, insurance, or secure storage costs.</li>
+        <li><strong>Efficiency:</strong> Corporate actions and proxy voting are processed automatically.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Release No. 33-7496.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DVP -->
+<div class="modal-overlay" id="modal-dvp" role="dialog" aria-modal="true" aria-labelledby="modal-title-dvp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dvp">Delivery Versus Payment (DVP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Mechanism</div>
+        <div class="def-word">DVP</div>
+        <p>A settlement mechanism that ensures the delivery of securities occurs only if payment is made, and payment occurs only if securities are delivered. It eliminates principal risk — the risk of delivering securities without receiving payment, or vice versa.</p>
+      </div>
+      <p class="modal-section-title">DVP in Foundation Securities</p>
+      <p>When a foundation sells securities, the custodian executes a DVP transaction: the securities are delivered to the buyer's custodian simultaneously with the receipt of cash. This ensures the foundation receives payment before the securities are released.</p>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO PFMI; DTC Rules, Article 9.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Free Delivery -->
+<div class="modal-overlay" id="modal-free-delivery" role="dialog" aria-modal="true" aria-labelledby="modal-title-free-delivery">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-free-delivery">Free Delivery</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transfer Method</div>
+        <div class="def-word">Free Delivery</div>
+        <p>A securities transfer made without simultaneous cash payment. Free deliveries are used for gifts, charitable contributions, and certain transfers between accounts.</p>
+      </div>
+      <p class="modal-section-title">Use in Foundation Securities</p>
+      <p>When a donor contributes appreciated securities to a DAF or a foundation, the transfer is typically processed as a free delivery (no cash consideration). The securities are moved from the donor's brokerage account to the foundation's custodial account via DTC without a cash payment.</p>
+      <div class="citation"><strong>Source:</strong> DTC Participant Guide; SEC Regulation S-T.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Euroclear -->
+<div class="modal-overlay" id="modal-euroclear" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-euroclear">Euroclear</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Market Infrastructure</div>
+        <div class="def-word">Euroclear</div>
+        <p>A Belgium-based financial market infrastructure group specializing in central securities depository (CSD) services. It operates Euroclear Bank (an International CSD) and national CSDs across Europe, providing settlement, safekeeping, and asset servicing for domestic and cross-border securities transactions.</p>
+      </div>
+      <p class="modal-section-title">Key Facts</p>
+      <ul>
+        <li><strong>Founded:</strong> 1968.</li>
+        <li><strong>Headquarters:</strong> Brussels, Belgium.</li>
+        <li><strong>Assets Under Custody:</strong> Over €40 trillion.</li>
+        <li><strong>Participants:</strong> 2,000+ financial institutions across 90+ countries.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Euroclear Holding SA/NV Annual Report; Euroclear.com.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Euroclear Bank -->
+<div class="modal-overlay" id="modal-euroclear-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear-bank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-euroclear-bank">Euroclear Bank</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International CSD (ICSD)</div>
+        <div class="def-word">Euroclear Bank</div>
+        <p>An ICSD with a banking license, headquartered in Brussels. It settles cross-border transactions in international securities (Eurobonds, global bonds, equities, derivatives, and investment funds) and serves as the domestic CSD for Irish securities.</p>
+      </div>
+      <p class="modal-section-title">Key Services</p>
+      <ul>
+        <li><strong>Settlement:</strong> DVP settlement for international securities in ~50 currencies.</li>
+        <li><strong>Custody:</strong> Safekeeping for over 1 million international securities.</li>
+        <li><strong>Collateral Management:</strong> Triparty collateral management and securities lending.</li>
+        <li><strong>Fund Services:</strong> Fund settlement via Fundsettle and MFEX integration.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Euroclear Bank; National Bank of Belgium.</div>
+    </div>
+  </div>
+</div>
+
+<!-- National CSD -->
+<div class="modal-overlay" id="modal-national-csd" role="dialog" aria-modal="true" aria-labelledby="modal-title-national-csd">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-national-csd">National CSD</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Financial Market Infrastructure</div>
+        <div class="def-word">National CSD</div>
+        <p>A central securities depository that operates within a single country or currency area, maintaining the definitive record of securities issued in that jurisdiction and settling transactions among domestic participants.</p>
+      </div>
+      <p class="modal-section-title">Euroclear's National CSDs</p>
+      <ul>
+        <li><strong>Euroclear Belgium, France, Nederland:</strong> ESES CSDs on a shared platform.</li>
+        <li><strong>Euroclear UK &amp; International:</strong> UK CSD operating CREST.</li>
+        <li><strong>Euroclear Sweden / Finland:</strong> Nordic CSDs.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> ESMA; CSDR Regulation (EU) No 909/2014.</div>
+    </div>
+  </div>
+</div>
+
+<!-- T2S -->
+<div class="modal-overlay" id="modal-t2s" role="dialog" aria-modal="true" aria-labelledby="modal-title-t2s">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-t2s">TARGET2-Securities (T2S)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Eurosystem Infrastructure</div>
+        <div class="def-word">T2S</div>
+        <p>A single, pan-European platform for securities settlement in central bank money, operated by the Eurosystem. T2S allows national CSDs to settle securities transactions on a shared technical platform using central bank accounts.</p>
+      </div>
+      <p class="modal-section-title">Key Features</p>
+      <ul>
+        <li><strong>Central Bank Money:</strong> Cash leg settles in central bank accounts.</li>
+        <li><strong>Single Platform:</strong> Multiple CSDs share one technical infrastructure.</li>
+        <li><strong>DVP Model 1:</strong> Real-time gross settlement.</li>
+        <li><strong>Launch:</strong> Phased rollout 2015-2017; Euroclear ESES CSDs connected in 2016.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> European Central Bank; T2S Framework.</div>
+    </div>
+  </div>
+</div>
+
+<!-- IPS -->
+<div class="modal-overlay" id="modal-ips" role="dialog" aria-modal="true" aria-labelledby="modal-title-ips">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ips">Investment Policy Statement (IPS)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Governance Document</div>
+        <div class="def-word">Investment Policy Statement</div>
+        <p>A governing document that sets investment objectives, risk tolerance, asset allocation targets, and spending policies for a foundation's endowment. It is approved by the board of trustees and reviewed regularly.</p>
+      </div>
+      <p class="modal-section-title">Key Components</p>
+      <ul>
+        <li><strong>Return Objectives:</strong> Target total return (e.g., CPI + 5%).</li>
+        <li><strong>Risk Tolerance:</strong> Acceptable volatility and drawdown.</li>
+        <li><strong>Asset Allocation:</strong> Target percentages for equities, bonds, alternatives.</li>
+        <li><strong>Spending Policy:</strong> Formula for annual spending (e.g., 5% of trailing 3-year average).</li>
+        <li><strong>Responsible Investing:</strong> ESG considerations, if applicable.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> UPMIFA; Council on Foundations.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Eurobond -->
+<div class="modal-overlay" id="modal-eurobond" role="dialog" aria-modal="true" aria-labelledby="modal-title-eurobond">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-eurobond">Eurobond</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International Bond</div>
+        <div class="def-word">Eurobond</div>
+        <p>A bond issued in a currency other than the currency of the country where it is issued. Eurobonds are typically issued by international entities and traded across borders. They are often settled through ICSDs like Euroclear Bank.</p>
+      </div>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li><strong>Currency:</strong> Issued in a major currency (e.g., USD, EUR, GBP) outside the home country.</li>
+        <li><strong>Bearers:</strong> Often issued in bearer form (though many are now book-entry).</li>
+        <li><strong>Settlement:</strong> Typically settled through Euroclear Bank or Clearstream.</li>
+        <li><strong>Investors:</strong> Attract international investors seeking diversification.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> ICMA; European Securities and Markets Authority.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Participant -->
+<div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Member Entity</div>
+        <div class="def-word">DTC Participant</div>
+        <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC and is a member of NSCC. Participants are the intermediaries through which investors access the depository system.</p>
+      </div>
+      <p class="modal-section-title">Role in Foundation Securities</p>
+      <p>A foundation's custodian is typically a DTC participant. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions.</p>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2 (Participant Application).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Growth -->
+<div class="modal-overlay" id="modal-growth" role="dialog" aria-modal="true" aria-labelledby="modal-title-growth">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-growth">Investment Growth</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Compound Returns</div>
+        <div class="def-word">Growth</div>
+        <p>The increase in the value of an investment portfolio over time due to investment returns (income and capital appreciation) that are reinvested, creating compound growth.</p>
+      </div>
+      <p class="modal-section-title">Endowment Growth</p>
+      <p>Endowments grow through investment returns that exceed spending and inflation. The goal is to preserve purchasing power while funding grants. The 4-6% spending rule is designed to allow for growth that keeps pace with inflation.</p>
+      <div class="citation"><strong>Source:</strong> NACUBO Endowment Study; CFA Institute.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Spending -->
+<div class="modal-overlay" id="modal-spending" role="dialog" aria-modal="true" aria-labelledby="modal-title-spending">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-spending">Spending Policy</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Payout Rule</div>
+        <div class="def-word">Spending Policy</div>
+        <p>The policy that determines how much of an endowment's assets are spent each year to fund grants and operations. Most foundations use a percentage of the trailing average market value (typically 4-6%).</p>
+      </div>
+      <p class="modal-section-title">Why a Spending Policy Matters</p>
+      <ul>
+        <li><strong>Stability:</strong> Smoothing spending over market cycles helps avoid drastic changes in grantmaking.</li>
+        <li><strong>Preservation:</strong> Limiting spending to a percentage of the average asset value helps preserve purchasing power.</li>
+        <li><strong>Compliance:</strong> Private foundations must meet a minimum distribution requirement (5% of average asset value) under IRS rules.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> UPMIFA; IRC § 4942; NACUBO.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Investment -->
+<div class="modal-overlay" id="modal-investment" role="dialog" aria-modal="true" aria-labelledby="modal-title-investment">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-investment">Investment Management</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Portfolio Management</div>
+        <div class="def-word">Investment Management</div>
+        <p>The professional management of a foundation's investment portfolio, including asset allocation, security selection, and risk management. Investment managers may be internal (staff) or external (hired firms).</p>
+      </div>
+      <p class="modal-section-title">Fiduciary Duties</p>
+      <ul>
+        <li><strong>Prudent Investor Rule:</strong> Investments must be made with the care of a prudent person.</li>
+        <li><strong>Diversification:</strong> Avoiding concentration in any single investment or asset class.</li>
+        <li><strong>IPS Compliance:</strong> Adhering to the investment policy statement.</li>
+        <li><strong>Monitoring:</strong> Regular review of portfolio performance and risk.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> UPMIFA; Uniform Prudent Investor Act; CFA Institute.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 501(c)(3) -->
+<div class="modal-overlay" id="modal-section501c3" role="dialog" aria-modal="true" aria-labelledby="modal-title-section501c3">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-section501c3">501(c)(3) Tax-Exempt Status</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">IRS Code Section</div>
+        <div class="def-word">501(c)(3)</div>
+        <p>Section of the Internal Revenue Code that provides tax-exempt status to charitable organizations. Organizations that qualify under 501(c)(3) are exempt from federal income tax and donations to them are tax-deductible.</p>
+      </div>
+      <p class="modal-section-title">Requirements for 501(c)(3) Status</p>
+      <ul>
+        <li><strong>Charitable Purpose:</strong> The organization must operate for charitable, religious, educational, scientific, or literary purposes.</li>
+        <li><strong>Non-Profit:</strong> The organization cannot have shareholders or distribute profits.</li>
+        <li><strong>No Private Inurement:</strong> No part of the organization's income may inure to the benefit of private individuals.</li>
+        <li><strong>Lobbying Limits:</strong> Substantial lobbying activities are prohibited.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRC § 501(c)(3); Treas. Reg. § 1.501(c)(3)-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 508(c)(1)(A) -->
+<div class="modal-overlay" id="modal-section508c1a" role="dialog" aria-modal="true" aria-labelledby="modal-title-section508c1a">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-section508c1a">508(c)(1)(A) — Church Exemption</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">IRS Code Section</div>
+        <div class="def-word">508(c)(1)(A)</div>
+        <p>A provision of the Internal Revenue Code stating that churches, their integrated auxiliaries, and conventions or associations of churches are automatically exempt from federal income tax under 501(c)(3) — without needing to apply for or receive an IRS determination letter.</p>
+      </div>
+      <p class="modal-section-title">What 508(c)(1)(A) Actually Does</p>
+      <ul>
+        <li><strong>Filing exemption only:</strong> It waives the requirement to file Form 1023 for recognition of exempt status. A qualifying church is exempt whether or not it ever applies.</li>
+        <li><strong>Same substantive rules apply:</strong> A 508(c)(1)(A) church must still meet the same 501(c)(3) requirements as any other charity — organized and operated for exempt purposes, no private inurement, and limits on lobbying and political activity.</li>
+        <li><strong>No effect on securities or custody:</strong> Securities donated to or held by a church are still registered in book-entry form through the same DTC/custodian structure described throughout this guide — there is no separate "508" account type or clearing path.</li>
+        <li><strong>Other obligations still apply:</strong> Employment tax withholding, unrelated business income tax, and state-law fiduciary duties are unaffected by 508(c)(1)(A) status.</li>
+      </ul>
+      <p class="modal-section-title">⚠️ Common Misconception</p>
+      <p>Some promoters market "508(c)(1)(a) trusts" as a special legal entity that provides total financial privacy, exemption from all IRS oversight, or the ability to receive unlimited undeclared donations. This is inaccurate. Section 508(c)(1)(A) does not create a distinct trust or entity type, does not eliminate a church's tax and reporting obligations, and does not provide any special protection from IRS examination. Forming an entity around this misreading of the statute does not change how it is legally treated.</p>
+      <div class="citation"><strong>Source:</strong> IRC § 508(c)(1)(A); IRS Publication 1828, <em>Tax Guide for Churches and Religious Organizations</em>.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer class="page-footer">
+  <div class="footer-content">
+  <nav class="footer-site-nav" aria-label="Site navigation">
+    <a href="../index.html" class="footer-home-link">Home</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../sitemap.html">Site Map</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../index.html#documents">All Documents</a>
+  </nav>
+
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Non-Profit Foundations Teaching Guide v1.0 · Last updated July 2026</div>
+      <div class="footer-links">
+        <a href="https://www.irs.gov/charities-non-profits" rel="noopener">IRS</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.euroclear.com" rel="noopener">Euroclear</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.nacubo.org" rel="noopener">NACUBO</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, tax, investment, or regulatory advice. For official guidance, consult IRS publications, DTCC and Euroclear documents, and qualified professional advisors.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/shared.js"></script>
+
+<script>
+// ─── Theme Toggle ───
+(function initThemeToggle() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', function() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ─── TOC Sidebar ───
+(function initSidebar() {
+  const toggleBtn = document.querySelector('.toc-toggle');
+  const sidebar = document.getElementById('tocSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (!toggleBtn || !sidebar || !backdrop) return;
+  function openSidebar() {
+    sidebar.classList.add('open');
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+  });
+  backdrop.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSidebar();
+  });
+})();
+
+// ─── Modal System ───
+// NOTE: close/backdrop/Escape handlers are attached once, globally (below),
+// rather than inside openModal() — the previous version re-added a new
+// listener on every openModal() call, leaking handlers each time the same
+// modal was reopened.
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Global, one-time listeners for closing modals (close button, backdrop click, Escape)
+document.addEventListener('click', function(e) {
+  const closeBtn = e.target.closest('.modal-close');
+  if (closeBtn) {
+    const modal = closeBtn.closest('.modal-overlay');
+    if (modal) closeModal(modal.id);
+    return;
+  }
+  if (e.target.classList && e.target.classList.contains('modal-overlay')) {
+    closeModal(e.target.id);
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(function(m) { closeModal(m.id); });
+  }
+});
+
+// ─── Concept Map Node Interactivity ───
+// The diagram SVGs mark each clickable node with class="cm-node" and a
+// data-modal attribute (e.g. data-modal="donor" → #modal-donor), and the
+// caption under every diagram says "Click a node to open its definition" —
+// but no click handler was ever wired up, so every node in every concept
+// map on this page was inert. This delegated listener fixes all of them
+// (mouse and keyboard) in one place instead of requiring 30 separate
+// per-node onclick attributes.
+document.addEventListener('click', function(e) {
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) openModal('modal-' + node.getAttribute('data-modal'));
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) {
+    e.preventDefault();
+    openModal('modal-' + node.getAttribute('data-modal'));
+  }
+});
+
+// ─── Progress Tracking (syncs with the main index page) ───
+// Mirrors the localStorage schema used by index.html's DTCProgress module
+// so that visiting/completing this guide updates the "nonprofit" card's
+// badge back on the index page.
+const DTC_PROGRESS_KEY = 'dtc-progress';
+function readDtcProgress() {
+  try {
+    const raw = localStorage.getItem(DTC_PROGRESS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) { return {}; }
+}
+function writeDtcProgress(data) {
+  try { localStorage.setItem(DTC_PROGRESS_KEY, JSON.stringify(data)); } catch (e) { /* ignore */ }
+}
+function markFoundationViewed() {
+  const data = readDtcProgress();
+  if (!data.nonprofit) data.nonprofit = { viewed: true, quizScore: null };
+  else data.nonprofit.viewed = true;
+  writeDtcProgress(data);
+}
+function reportFoundationQuizScore(score) {
+  const data = readDtcProgress();
+  data.nonprofit = { viewed: true, quizScore: score };
+  writeDtcProgress(data);
+}
+markFoundationViewed();
+</script>
+
+</body>
+</html>

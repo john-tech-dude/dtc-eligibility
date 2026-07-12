@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trusts & Fiduciary Structures — Advanced Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ─── Design Tokens ─── */
+:root {
+  --accent: #1e5a5a;
+  --accent-hover: #144040;
+  --accent-light: #e8f4f4;
+  --accent-muted: #b8d4d4;
+  --gold: #a67c00;
+  --gold-deep: #7a5c00;
+  --gold-light: #faf5e6;
+  --green: #2d7a46;
+  --green-light: #e8f5ec;
+  --red: #b5423e;
+  --red-light: #fceeee;
+  --teal: #0d7377;
+  --teal-light: #e0f7f8;
+  --bg: #fafbfc;
+  --bg-cream: #f5f3ef;
+  --bg-ivory: #f9f8f6;
+  --ink: #1a1a1a;
+  --ink-secondary: #333333;
+  --ink-tertiary: #555555;
+  --ink-muted: #777777;
+  --ink-faint: #999999;
+  --border: #d4d0c8;
+  --border-light: #e8e4dc;
+  --border-faint: #f0ede6;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.10);
+  --modal-overlay: rgba(0,0,0,0.45);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-cream: #1a1f26;
+  --bg-ivory: #161b22;
+  --ink: #e6e6e6;
+  --ink-secondary: #c9c9c9;
+  --ink-tertiary: #a0a0a0;
+  --ink-muted: #808080;
+  --ink-faint: #606060;
+  --border: #2d333b;
+  --border-light: #21262d;
+  --border-faint: #1c2128;
+  --accent: #4fd1c5;
+  --accent-hover: #38b2ac;
+  --accent-light: #1a2e2e;
+  --accent-muted: #2d4a4a;
+  --gold: #d4a843;
+  --gold-deep: #b8932f;
+  --gold-light: #2a2518;
+  --green: #48bb78;
+  --green-light: #1a2e22;
+  --red: #fc8181;
+  --red-light: #2e1a1a;
+  --teal: #4fd1c5;
+  --teal-light: #1a2e2e;
+  --modal-overlay: rgba(0,0,0,0.65);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink-secondary);
+  line-height: 1.65;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ─── Sidebar ─── */
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 300px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 28px 24px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: var(--shadow-lg);
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 18px; top: 46px; z-index: 70;
+  width: 42px; height: 42px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.15rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: var(--transition);
+}
+.toc-toggle:hover { background: var(--accent-hover); transform: scale(1.05); }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--ink);
+  margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-faint);
+  font-weight: 600;
+}
+.toc-sidebar a {
+  display: block; padding: 7px 0; font-size: 0.8rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-left: 2px solid transparent; padding-left: 8px;
+  transition: var(--transition); border-radius: 0 4px 4px 0;
+}
+.toc-sidebar a:hover { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); padding-left: 12px; }
+.toc-sidebar a.sub { padding-left: 20px; font-size: 0.75rem; color: var(--ink-muted); }
+.toc-sidebar a.sub:hover { padding-left: 24px; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 18px 0 10px; padding-top: 10px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem; color: var(--ink-muted);
+  text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+}
+.toc-desc { font-size: 0.68rem; color: var(--ink-faint); font-style: italic; margin-left: 4px; }
+.sidebar-backdrop {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  z-index: 55; display: none; opacity: 0; transition: opacity 0.3s ease;
+}
+.sidebar-backdrop.active { display: block; opacity: 1; }
+
+/* ─── Header ─── */
+.page-header {
+  background: rgba(250,251,252,0.85); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(24px) saturate(1.2); -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  transition: background 0.3s;
+}
+[data-theme="dark"] .page-header { background: rgba(15,20,25,0.85); }
+.header-inner {
+  max-width: 1140px; margin: 0 auto;
+  padding: 22px 32px 18px; display: flex;
+  align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.header-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.15rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.45rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.25;
+}
+.header-text .sub {
+  font-size: 0.74rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 3px;
+}
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.18); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: var(--transition); font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+
+/* ─── Main ─── */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 40px 32px 100px; }
+
+.breadcrumbs {
+  font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.breadcrumbs a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+.breadcrumbs a:hover { color: var(--accent-hover); text-decoration: underline; }
+.breadcrumbs span { color: var(--ink-faint); }
+
+.update-banner {
+  background: linear-gradient(135deg, var(--accent-light), rgba(30,90,90,0.05));
+  border: 1px solid var(--accent-muted); border-radius: var(--radius-md);
+  padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.85rem; color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.update-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.update-banner strong { color: var(--ink); font-weight: 600; }
+
+.teach-banner {
+  background: linear-gradient(135deg, var(--teal-light), rgba(13,115,119,0.05));
+  border: 1px solid rgba(13,115,119,0.18); border-radius: var(--radius-md);
+  padding: 18px 22px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.86rem; color: var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.teach-banner svg { flex-shrink: 0; width: 24px; height: 24px; }
+.teach-banner strong { color: var(--ink); font-weight: 600; }
+
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);
+  padding: 52px 56px 60px; position: relative; overflow: hidden;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--teal), var(--gold));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.85rem; font-weight: 600; color: var(--ink);
+  margin: 44px 0 18px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-faint);
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.section-title:first-child { margin-top: 0; }
+
+.subsection-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem; font-weight: 600; color: var(--ink-secondary);
+  margin: 28px 0 12px; padding-left: 14px; border-left: 3px solid var(--accent-muted);
+}
+
+.lead {
+  font-size: 1.08rem; color: var(--ink-secondary); line-height: 1.85;
+  margin-bottom: 22px; max-width: 820px; font-weight: 400;
+}
+.lead a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: var(--transition); font-weight: 500;
+}
+.lead a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
+
+.body-text {
+  font-size: 0.94rem; color: var(--ink-secondary); line-height: 1.9;
+  margin-bottom: 18px; max-width: 820px;
+}
+.body-text ul, .body-text ol {
+  margin: 14px 0 14px 28px; padding: 0;
+}
+.body-text li { margin-bottom: 10px; }
+.body-text li::marker { color: var(--accent); }
+
+.body-text a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: var(--transition); font-weight: 500;
+}
+.body-text a:hover { color: var(--accent-hover); border-bottom-color: var(--accent-hover); }
+
+/* ─── Diagrams ─── */
+.diagram-box {
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); padding: 32px 36px; margin: 28px 0;
+  box-shadow: var(--shadow-sm); transition: var(--transition);
+}
+.diagram-box:hover { box-shadow: var(--shadow-md); }
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 20px;
+  text-align: center; letter-spacing: 0.01em;
+}
+
+.concept-map-svg {
+  display: block; width: 100%; max-width: 760px; height: auto;
+  margin: 0 auto; font-family: 'DM Sans', sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none; stroke: var(--ink-muted); stroke-width: 1.5;
+  transition: stroke 0.3s;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none; stroke: var(--ink-faint); stroke-width: 1.4; stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none; stroke: var(--green); stroke-width: 1.8;
+  stroke-dasharray: 6 4; opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary); font-size: 10px; font-weight: 500; letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px; font-weight: 600; pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px; font-weight: 500; pointer-events: none; opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; fill: var(--ink-muted); pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer; transition: filter 0.2s ease, transform 0.2s ease;
+}
+.concept-map-svg .cm-node:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.concept-map-svg .cm-node:focus { outline: none; }
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold); stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static { cursor: default; }
+.concept-map-svg .cm-node-static:hover { filter: none; transform: none; }
+.cm-caption {
+  text-align: center; font-size: 0.85rem; color: var(--ink-tertiary);
+  margin: 16px auto 0; line-height: 1.6; max-width: 600px;
+}
+.cm-legend {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 20px; margin-top: 16px; font-size: 0.74rem; color: var(--ink-muted);
+}
+.cm-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.cm-legend-swatch {
+  width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px; height: 0; border-top: 2px solid var(--ink-muted); flex-shrink: 0;
+}
+.cm-legend-line.dashed { border-top-style: dashed; border-color: var(--ink-faint); }
+.cm-legend-line.pass { border-top-style: dashed; border-color: var(--green); }
+.cm-hint {
+  text-align: center; font-size: 0.7rem; color: var(--ink-faint);
+  margin-top: 10px; font-style: italic;
+}
+
+.process-flow-svg {
+  display: block; width: 100%; max-width: 760px; height: auto;
+  margin: 0 auto 14px; font-family: 'DM Sans', sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none; stroke: var(--accent-muted); stroke-width: 1.8;
+  transition: stroke 0.3s;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px; font-weight: 700; fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px; font-weight: 600; fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px; fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; fill: var(--ink-muted);
+}
+.process-flow-svg g:hover .pf-edge { stroke: var(--accent); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ─── Entity Cards ─── */
+.entity-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px; margin: 28px 0;
+}
+.entity-card {
+  background: var(--bg-ivory); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 22px 24px;
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.entity-card::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  background: var(--accent); opacity: 0.6; transition: opacity 0.3s;
+}
+.entity-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border); }
+.entity-card:hover::before { opacity: 1; }
+.entity-card .entity-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.entity-card .entity-role {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px;
+}
+.entity-card .entity-desc {
+  font-size: 0.84rem; color: var(--ink-tertiary); line-height: 1.7;
+}
+
+/* ─── Tables ─── */
+.comp-table {
+  width: 100%; border-collapse: collapse; margin: 24px 0;
+  font-size: 0.87rem; color: var(--ink-secondary); border-radius: var(--radius-md);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.comp-table th, .comp-table td {
+  border: 1px solid var(--border-light); padding: 14px 16px;
+  text-align: left; vertical-align: top;
+}
+.comp-table th {
+  background: linear-gradient(180deg, var(--bg-cream), var(--bg-ivory));
+  font-weight: 600; color: var(--ink); font-size: 0.76rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.comp-table td { background: var(--bg); transition: background 0.2s; }
+.comp-table tr:hover td { background: var(--bg-cream); }
+.comp-table td:first-child { font-weight: 500; color: var(--ink); }
+
+/* ─── Hotspots ─── */
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: var(--transition); padding: 0 2px; font-weight: 500;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 3px; outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.6; transition: opacity 0.2s;
+  display: inline-block; width: 13px; height: 13px;
+  line-height: 13px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* ─── Info Boxes ─── */
+.info-box {
+  background: linear-gradient(135deg, var(--bg-cream), var(--bg-ivory));
+  border: 1px solid var(--border-light); border-radius: var(--radius-md);
+  padding: 20px 24px; margin: 20px 0; font-size: 0.88rem;
+  color: var(--ink-secondary); line-height: 1.75;
+  box-shadow: var(--shadow-sm); border-left: 4px solid var(--accent);
+}
+.info-box strong { color: var(--ink); font-weight: 600; }
+
+.tip-box {
+  background: linear-gradient(135deg, var(--green-light), rgba(45,122,70,0.03));
+  border-left: 4px solid var(--green); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px; margin: 16px 0; font-size: 0.85rem;
+  color: var(--ink-secondary); line-height: 1.75;
+  box-shadow: var(--shadow-sm);
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 6px; color: var(--green); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.warn-box {
+  background: linear-gradient(135deg, var(--red-light), rgba(181,66,62,0.03));
+  border-left: 4px solid var(--red); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px; margin: 16px 0; font-size: 0.85rem;
+  color: var(--ink-secondary); line-height: 1.75;
+  box-shadow: var(--shadow-sm);
+}
+.warn-box strong { font-weight: 600; display: block; margin-bottom: 6px; color: var(--red); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* ─── Modal ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-xl);
+  max-width: 760px; width: 100%; max-height: 90vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: linear-gradient(180deg, var(--bg-cream), var(--bg));
+  border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 24px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.45rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.7rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 38px; height: 38px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: var(--transition); margin-top: -6px;
+}
+.modal-close:hover { background: var(--border-light); color: var(--ink); }
+.modal-body {
+  padding: 28px 32px 36px; overflow-y: auto;
+  max-height: calc(90vh - 100px); font-size: 0.9rem;
+  line-height: 1.9; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 16px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 18px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body ul { margin: 14px 0 14px 28px; padding: 0; }
+.modal-body li { margin-bottom: 10px; line-height: 1.7; }
+.modal-body li::marker { color: var(--accent); }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  font-weight: 600; color: var(--ink); margin: 24px 0 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 18px 22px; margin: 16px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 8px;
+}
+.def-callout .def-type {
+  font-size: 0.7rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;
+}
+.see-also {
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-faint);
+  font-size: 0.8rem; color: var(--ink-muted);
+}
+.see-also a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.see-also a:hover { text-decoration: underline; }
+
+/* ─── Quiz ─── */
+.quiz-section {
+  margin-top: 56px; padding: 36px 40px;
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.7rem; font-weight: 600; color: var(--ink);
+  margin-bottom: 10px; letter-spacing: -0.01em;
+}
+.quiz-intro {
+  font-size: 0.92rem; color: var(--ink-secondary);
+  margin-bottom: 28px; max-width: 820px;
+}
+.quiz-score-bar {
+  width: 100%; height: 10px; background: var(--border-light);
+  border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+}
+.quiz-score-fill {
+  height: 100%; width: 0%; background: var(--accent);
+  border-radius: 8px; transition: width 0.5s ease, background 0.5s ease;
+}
+.quiz-score-fill.pass { background: var(--green); }
+.quiz-score-fill.fail { background: var(--red); }
+.quiz-score-text {
+  font-size: 0.82rem; font-weight: 500; color: var(--ink-secondary); margin-bottom: 24px;
+}
+.quiz-container { display: flex; flex-direction: column; gap: 18px; }
+.quiz-card {
+  display: flex; gap: 18px;
+  background: var(--bg-ivory); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 20px 24px;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s;
+}
+.quiz-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.quiz-card.correct { border-color: var(--green); background: var(--green-light); }
+.quiz-card.incorrect { border-color: var(--red); background: var(--red-light); }
+.quiz-num {
+  flex-shrink: 0; width: 30px; height: 30px;
+  background: var(--accent); color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 0.82rem;
+}
+.quiz-content { flex: 1; }
+.quiz-content h4 {
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.45;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-options label {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.87rem; color: var(--ink-secondary); cursor: pointer;
+  padding: 6px 10px; border-radius: var(--radius-sm); transition: background 0.2s;
+}
+.quiz-options label:hover { background: var(--bg-cream); color: var(--ink); }
+.quiz-options input[type="radio"] {
+  width: 17px; height: 17px; accent-color: var(--accent); flex-shrink: 0; margin-top: 2px;
+}
+.quiz-feedback {
+  margin-top: 12px; font-size: 0.87rem; color: var(--ink-secondary);
+  padding: 12px 16px; border-radius: var(--radius-sm); display: none;
+  line-height: 1.65;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct {
+  background: var(--green-light); border-left: 3px solid var(--green); color: var(--green);
+}
+.quiz-feedback.incorrect {
+  background: var(--red-light); border-left: 3px solid var(--red); color: var(--red);
+}
+.quiz-actions {
+  display: flex; gap: 14px; margin-top: 24px; flex-wrap: wrap;
+}
+.quiz-btn {
+  padding: 11px 28px; border: none; border-radius: var(--radius-sm);
+  font-weight: 500; font-size: 0.87rem; cursor: pointer;
+  transition: var(--transition);
+}
+.quiz-btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: #fff; box-shadow: var(--shadow-sm);
+}
+.quiz-btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.quiz-btn-secondary {
+  background: var(--border-light); color: var(--ink-secondary);
+}
+.quiz-btn-secondary:hover { background: var(--border); color: var(--ink); }
+.quiz-result {
+  margin-top: 24px; padding: 18px 24px;
+  border-radius: var(--radius-md); font-size: 0.92rem;
+  display: none; line-height: 1.65;
+}
+.quiz-result.show { display: block; }
+.quiz-result.pass {
+  background: var(--green-light); border-left: 4px solid var(--green); color: var(--green);
+}
+.quiz-result.fail {
+  background: var(--red-light); border-left: 4px solid var(--red); color: var(--red);
+}
+
+/* ─── Footer ─── */
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 32px 24px 40px; margin-top: 40px;
+}
+.footer-content { max-width: 1140px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  text-align: center; font-size: 0.82rem; color: var(--ink-secondary);
+}
+.footer-version { font-weight: 500; color: var(--ink-tertiary); }
+.footer-links { display: flex; align-items: center; gap: 18px; margin-top: 6px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.72rem; }
+.footer-legal { margin-top: 14px; font-size: 0.72rem; color: var(--ink-muted); line-height: 1.6; max-width: 860px; text-align: center; }
+.footer-site-nav {
+  margin: 0 auto 18px; display: flex; justify-content: center;
+  gap: 10px; flex-wrap: wrap; font-size: 0.82rem;
+}
+.footer-site-nav a { color: var(--ink-tertiary); text-decoration: none; transition: color 0.2s; }
+.footer-site-nav a:hover { color: var(--accent); }
+.footer-site-nav .footer-nav-sep { color: var(--border); font-size: 0.72rem; }
+
+/* ─── Step Summary ─── */
+.step-summary { margin-top: 16px; }
+.step-summary summary {
+  cursor: pointer; font-size: 0.82rem; color: var(--accent); font-weight: 500;
+  padding: 8px 0; user-select: none;
+}
+.step-summary summary:hover { color: var(--accent-hover); }
+.step-summary-body { padding: 14px 0; font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.8; }
+.step-summary-body div { margin-bottom: 10px; padding-left: 12px; border-left: 2px solid var(--border-light); }
+.step-summary-body div:last-child { margin-bottom: 0; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 22px 16px 56px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .quiz-section { padding: 22px 18px; }
+  .quiz-card { flex-direction: column; gap: 12px; }
+  .toc-sidebar { width: 260px; }
+}
+
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner, .quiz-actions { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+  .body-text a, .lead a { color: #000; border-bottom: 1px solid #000; }
+  .quiz-card { break-inside: avoid; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <h4>Contents</h4>
+  <a href="#overview">Overview — Trusts & Fiduciaries</a>
+  <a href="#overview" class="sub">Fiduciary Duty & Prudent Investor Rule</a>
+  <a href="#concept-map-trust-ecosystem" class="sub">Concept Map — Trust Ecosystem</a>
+  <a href="#trust-types">Types of Trusts</a>
+  <a href="#concept-map-trust-types" class="sub">Concept Map — Trust Types</a>
+  <a href="#trust-types" class="sub">Revocable vs Irrevocable</a>
+  <a href="#trust-types" class="sub">Testamentary vs Inter Vivos</a>
+  <a href="#trust-types" class="sub">Charitable Trusts (CRT, CLT)</a>
+  <a href="#fiduciary">Fiduciary Responsibilities</a>
+  <a href="#fiduciary" class="sub">Duty of Loyalty & Care</a>
+  <a href="#fiduciary" class="sub">Prudent Investor Rule</a>
+  <a href="#process-trust-funding" class="sub">Process Map — Funding a Trust</a>
+  <a href="#securities-titling">Securities Titling & DTC Nominee</a>
+  <a href="#concept-map-dtc-trust" class="sub">Concept Map — DTC Trust Stack</a>
+  <a href="#securities-titling" class="sub">Titling & Transfer Mechanics</a>
+  <a href="#process-dtc-transfer" class="sub">Process Map — DTC Transfer into Trust</a>
+  <a href="#tax">Tax Considerations</a>
+  <a href="#concept-map-tax" class="sub">Concept Map — Trust Tax Framework</a>
+  <a href="#advanced-topics">Advanced Topics</a>
+  <a href="#global-comparison-trust">Global Comparison</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview</span></a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard <span class="toc-desc">↗ DTC/DTCC/Cede</span></a>
+  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations <span class="toc-desc">↗ Endowments & DAFs</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">TR</div>
+      <div class="header-text">
+        <h1>Trusts &amp; Fiduciary Structures</h1>
+        <div class="sub">Advanced Teaching Guide — Fiduciary Duties, Securities Titling &amp; Estate Planning</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span>›</span>
+  <a href="../index.html#documents">Documents</a>
+  <span>›</span>
+  <span style="color:var(--ink-tertiary);">Teaching Guides</span>
+  <span>›</span>
+  <span style="color:var(--ink-secondary);font-weight:500;">Trusts &amp; Fiduciary Structures</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Updated for 2026:</strong> Reflects the <em>One Big Beautiful Bill Act</em> (July 2025), which permanently raised the estate tax exemption to <strong>$15 million</strong> per individual ($30M for married couples) and introduced a 0.5% AGI floor for individual charitable deductions. Click any <strong>underlined term</strong> for definitions.</span>
+</div>
+
+<div class="teach-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+  <span><strong>Learning Objective:</strong> Distinguish revocable, irrevocable, testamentary, and charitable trusts. Master fiduciary responsibilities, securities titling, and the DTC nominee structure. Understand the 2026 tax landscape under OBBBA.</span>
+</div>
+
+<div class="doc-frame">
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: OVERVIEW
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="overview">Overview — Trusts &amp; Fiduciary Structures</h2>
+
+<p class="lead">
+A <span class="hotspot" data-modal="trust" tabindex="0" role="button" onclick="openModal('modal-trust')">trust</span> is a fiduciary legal arrangement in which a <span class="hotspot" data-modal="settlor" tabindex="0" role="button" onclick="openModal('modal-settlor')">settlor</span> (also called grantor or trustor) transfers legal title to property to a <span class="hotspot" data-modal="trustee" tabindex="0" role="button" onclick="openModal('modal-trustee')">trustee</span>, who holds and manages that property for the benefit of one or more <span class="hotspot" data-modal="beneficiary-trust" tabindex="0" role="button" onclick="openModal('modal-beneficiary-trust')">beneficiaries</span>. Trusts are foundational instruments in estate planning, asset protection, and charitable giving. They impose the highest standard of legal care — <span class="hotspot" data-modal="fiduciary-duty" tabindex="0" role="button" onclick="openModal('modal-fiduciary-duty')">fiduciary duties</span> — requiring trustees to act with undivided loyalty, prudence, and good faith.
+</p>
+
+<p class="body-text">
+This guide covers the principal trust architectures, the fiduciary responsibilities that govern them, and the mechanics of holding securities in trust through the <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">Depository Trust Company (DTC)</span> and <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> nominee system. Understanding securities titling — how securities are registered in the name of a trustee in their fiduciary capacity — is essential for compliance with trust instruments, tax reporting, and ensuring that beneficiary rights are properly protected against the trustee's personal creditors.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">Settlor / Grantor</div>
+    <div class="entity-role">Creator of the Trust</div>
+    <div class="entity-desc">The person who transfers assets into the trust and establishes its governing terms. In a revocable trust, the settlor may retain amendment and revocation powers. In an irrevocable trust, the settlor relinquishes all control, which is necessary for estate tax exclusion and asset protection.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Trustee</div>
+    <div class="entity-role">Fiduciary Manager</div>
+    <div class="entity-desc">The individual or institutional fiduciary (e.g., bank trust department, trust company) that holds legal title to trust assets, manages investments under the Prudent Investor Rule, and administers the trust according to its terms. The trustee owes enforceable fiduciary duties to all beneficiaries.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Beneficiary</div>
+    <div class="entity-role">Recipient of Trust Benefits</div>
+    <div class="entity-desc">The person or entity entitled to income and/or principal from the trust. Beneficiaries may be <em>current</em> (income beneficiaries) or <em>remainder</em> (principal beneficiaries after a triggering event). Beneficiaries have standing to enforce the trust and demand accountings.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Custodian / DTC Participant</div>
+    <div class="entity-role">Securities Holder &amp; Record-Keeper</div>
+    <div class="entity-desc">The financial institution (typically a bank trust department or broker-dealer) that is a DTC participant and holds the trust's securities in book-entry form. The custodian's records must reflect the trustee's fiduciary titling to preserve the trust's legal and tax character.</div>
+  </div>
+</div>
+
+<!-- Concept Map 1: Trust Ecosystem -->
+<div class="diagram-box concept-map" id="concept-map-trust-ecosystem" role="img" aria-labelledby="cm1-title" aria-describedby="cm1-desc">
+  <div class="diagram-title" id="cm1-title">Concept Map — Trust Ecosystem</div>
+  <p id="cm1-desc" class="visually-hidden">
+    Ecosystem diagram: Settlor creates the trust and transfers assets.
+    The trust is a legal entity governed by the Trust Document.
+    The Trustee holds legal title and manages assets for the Beneficiary.
+    A Custodian (DTC participant) holds the securities in book-entry form.
+    Cede and Co. is the registered owner on issuer books.
+    The Beneficiary receives income and principal distributions.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm1-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+      <filter id="cm1-shadow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.08)"/>
+      </filter>
+    </defs>
+
+    <!-- Settlor top-left -->
+    <g class="cm-node" data-modal="settlor" tabindex="0" role="button" aria-label="Settlor — open definition">
+      <rect class="cm-node-shape" x="52" y="24" width="140" height="50" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm1-shadow)"/>
+      <text class="cm-node-title" x="122" y="46" text-anchor="middle" fill="var(--ink)" font-size="12">Settlor</text>
+      <text class="cm-node-sub" x="122" y="62" text-anchor="middle" fill="var(--ink-tertiary)">(Grantor / Trustor)</text>
+    </g>
+    <path class="cm-edge" d="M192 49 L232 49" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="212" y="38" text-anchor="middle">creates &amp; funds</text>
+
+    <!-- Trust Document (center top) -->
+    <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
+      <rect class="cm-node-shape" x="232" y="18" width="156" height="60" rx="14" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" filter="url(#cm1-shadow)"/>
+      <text class="cm-node-title" x="310" y="42" text-anchor="middle" fill="#fff">Trust</text>
+      <text class="cm-node-sub" x="310" y="62" text-anchor="middle" fill="var(--accent-muted)">Legal entity / Fiduciary arrangement</text>
+    </g>
+    <path class="cm-edge" d="M310 78 L310 108" marker-end="url(#cm1-arrow)"/>
+
+    <!-- Trustee -->
+    <g class="cm-node" data-modal="trustee" tabindex="0" role="button" aria-label="Trustee — open definition">
+      <rect class="cm-node-shape" x="210" y="110" width="200" height="62" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <text class="cm-node-title" x="310" y="134" text-anchor="middle" fill="var(--accent)" font-size="12">Trustee</text>
+      <text class="cm-node-sub" x="310" y="154" text-anchor="middle" fill="var(--ink-tertiary)">Fiduciary manager / Legal title holder</text>
+    </g>
+
+    <!-- Custodian -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="60" y="210" width="170" height="62" rx="12" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#cm1-shadow)"/>
+      <text class="cm-node-title" x="145" y="234" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
+      <text class="cm-node-sub" x="145" y="254" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant / Book-entry</text>
+    </g>
+    <line class="cm-edge" x1="230" y1="142" x2="110" y2="210" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="150" y="182" text-anchor="start">appoints &amp; directs</text>
+
+    <!-- DTC / Cede -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="390" y="210" width="150" height="62" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <text class="cm-node-title" x="465" y="234" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="465" y="254" text-anchor="middle" fill="var(--gold)">Nominee / Registered owner</text>
+    </g>
+    <line class="cm-edge" x1="230" y1="172" x2="465" y2="210" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="370" y="190" text-anchor="start">holds securities via</text>
+
+    <!-- Beneficiary -->
+    <g class="cm-node" data-modal="beneficiary-trust" tabindex="0" role="button" aria-label="Beneficiary — open definition">
+      <rect class="cm-node-shape" x="230" y="330" width="200" height="62" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <rect x="260" y="338" width="140" height="16" rx="4" fill="var(--green)"/>
+      <text class="cm-badge-text" x="330" y="350" text-anchor="middle" fill="#fff">Beneficial owner</text>
+      <text class="cm-node-title" x="330" y="374" text-anchor="middle" fill="var(--green)" font-size="12">Beneficiary</text>
+    </g>
+    <line class="cm-edge" x1="310" y1="172" x2="330" y2="328" marker-end="url(#cm1-arrow-gold)"/>
+    <text class="cm-edge-label" x="340" y="260" text-anchor="start" fill="var(--gold)">income / principal distributions</text>
+
+    <!-- DTC arrow from Custodian to Cede -->
+    <line class="cm-edge" x1="230" y1="241" x2="390" y2="241" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="310" y="232" text-anchor="middle">DTC book-entry</text>
+
+    <rect x="52" y="420" width="656" height="44" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="380" y="442" text-anchor="middle" fill="var(--ink-tertiary)">Trustee holds legal title; beneficiaries hold equitable/beneficial interests.</text>
+    <text class="cm-edge-label" x="380" y="456" text-anchor="middle" fill="var(--ink-muted)">Securities are held through a custodian (DTC participant) with Cede &amp; Co. as registered owner.</text>
+  </svg>
+  <p class="cm-caption"><strong>Trust ecosystem:</strong> Settlor creates the trust; trustee manages it for the beneficiary. Securities are held through a custodian (DTC participant) with <strong>Cede &amp; Co.</strong> as the registered owner on issuer books.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Trust entity</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Fiduciaries &amp; custodians</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficiary</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> DTC nominee</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: TYPES OF TRUSTS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="trust-types">Types of Trusts</h2>
+
+<p class="lead">
+Trusts are classified along three principal axes: <strong>revocability</strong> (revocable vs. irrevocable), <strong>timing of creation</strong> (inter vivos vs. testamentary), and <strong>charitable purpose</strong> (charitable remainder vs. charitable lead). Each classification carries distinct legal, tax, and practical consequences. The choice of trust architecture should align with the settlor's goals: <em>control and probate avoidance</em> (revocable living trust), <em>estate tax reduction and asset protection</em> (irrevocable trust), or <em>charitable giving combined with wealth transfer</em> (CRT/CLT).
+</p>
+
+<!-- Concept Map 2: Trust Types -->
+<div class="diagram-box concept-map" id="concept-map-trust-types" role="img" aria-labelledby="cm2-title" aria-describedby="cm2-desc">
+  <div class="diagram-title" id="cm2-title">Concept Map — Trust Types &amp; Characteristics</div>
+  <p id="cm2-desc" class="visually-hidden">
+    Decision tree diagram. Trust branches into Revocable (can be amended, no asset protection, grantor trust for tax) vs Irrevocable (cannot be amended, asset protection, estate tax benefits, non-grantor trust).
+    It also branches by creation time: Inter Vivos (created during life, can be revocable or irrevocable) vs Testamentary (created by will, only effective at death).
+    Charitable Trusts branch into CRT (income to non-charity first, remainder to charity, immediate income tax deduction) vs CLT (charity gets income first, remainder to non-charity, gift/estate tax reduction).
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <filter id="cm2-shadow" x="-8%" y="-8%" width="116%" height="116%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
+      </filter>
+    </defs>
+
+    <!-- Root: Trust -->
+    <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
+      <rect class="cm-node-shape" x="310" y="16" width="140" height="50" rx="14" fill="var(--accent)" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="380" y="46" text-anchor="middle" fill="#fff">Trust</text>
+    </g>
+
+    <!-- Fork 1: Revocability -->
+    <path class="cm-edge" d="M310 66 L170 108" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M450 66 L590 108" marker-end="url(#cm2-arrow)"/>
+
+    <g class="cm-node" data-modal="revocable" tabindex="0" role="button" aria-label="Revocable — open definition">
+      <rect class="cm-node-shape" x="60" y="110" width="220" height="66" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="170" y="136" text-anchor="middle" fill="var(--ink)" font-size="12">Revocable (Living) Trust</text>
+      <text class="cm-node-sub" x="170" y="156" text-anchor="middle" fill="var(--ink-tertiary)">Amendable · No asset protection · Grantor tax</text>
+    </g>
+    <g class="cm-node" data-modal="irrevocable" tabindex="0" role="button" aria-label="Irrevocable — open definition">
+      <rect class="cm-node-shape" x="480" y="110" width="220" height="66" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="590" y="136" text-anchor="middle" fill="var(--accent)" font-size="12">Irrevocable Trust</text>
+      <text class="cm-node-sub" x="590" y="156" text-anchor="middle" fill="var(--ink-tertiary)">Fixed · Asset protection · Estate tax savings</text>
+    </g>
+    <text class="cm-edge-label" x="220" y="96" text-anchor="middle">amendable / revocable</text>
+    <text class="cm-edge-label" x="540" y="96" text-anchor="middle">permanent / irrevocable</text>
+
+    <!-- Fork 2: Creation time -->
+    <path class="cm-edge" d="M60 176 L60 218" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M280 176 L280 218" marker-end="url(#cm2-arrow)"/>
+
+    <g class="cm-node" data-modal="inter-vivos" tabindex="0" role="button" aria-label="Inter Vivos — open definition">
+      <rect class="cm-node-shape" x="10" y="220" width="130" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="75" y="246" text-anchor="middle" fill="var(--ink)" font-size="11">Inter Vivos</text>
+      <text class="cm-node-sub" x="75" y="264" text-anchor="middle" fill="var(--ink-tertiary)">Created during life</text>
+    </g>
+    <g class="cm-node" data-modal="testamentary" tabindex="0" role="button" aria-label="Testamentary — open definition">
+      <rect class="cm-node-shape" x="160" y="220" width="130" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="225" y="246" text-anchor="middle" fill="var(--ink)" font-size="11">Testamentary</text>
+      <text class="cm-node-sub" x="225" y="264" text-anchor="middle" fill="var(--ink-tertiary)">Created by will at death</text>
+    </g>
+
+    <!-- Fork 3: Charitable Trusts -->
+    <path class="cm-edge" d="M480 176 L480 218" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M700 176 L700 218" marker-end="url(#cm2-arrow)"/>
+
+    <g class="cm-node" data-modal="crt" tabindex="0" role="button" aria-label="CRT — open definition">
+      <rect class="cm-node-shape" x="400" y="220" width="160" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="480" y="246" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Charitable Remainder</text>
+      <text class="cm-node-sub" x="480" y="264" text-anchor="middle" fill="var(--gold)">Income → non-charity first</text>
+    </g>
+    <g class="cm-node" data-modal="clt" tabindex="0" role="button" aria-label="CLT — open definition">
+      <rect class="cm-node-shape" x="580" y="220" width="160" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <text class="cm-node-title" x="660" y="246" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Charitable Lead</text>
+      <text class="cm-node-sub" x="660" y="264" text-anchor="middle" fill="var(--gold)">Income → charity first</text>
+    </g>
+
+    <!-- Additional sub-branches (irrevocable details) -->
+    <path class="cm-edge" d="M430 176 L430 218 L360 300" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M630 176 L630 218 L560 300" marker-end="url(#cm2-arrow)"/>
+
+    <rect x="300" y="302" width="120" height="44" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#cm2-shadow)"/>
+    <text class="cm-node-title" x="360" y="322" text-anchor="middle" fill="var(--ink)" font-size="10">Asset protection</text>
+    <text class="cm-node-title" x="360" y="336" text-anchor="middle" fill="var(--ink-muted)" font-size="9">from creditors</text>
+
+    <rect x="500" y="302" width="120" height="44" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#cm2-shadow)"/>
+    <text class="cm-node-title" x="560" y="322" text-anchor="middle" fill="var(--ink)" font-size="10">Estate tax savings</text>
+    <text class="cm-node-title" x="560" y="336" text-anchor="middle" fill="var(--ink-muted)" font-size="9">removal from estate</text>
+
+    <!-- Summary strip -->
+    <rect x="40" y="380" width="680" height="44" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="380" y="400" text-anchor="middle" fill="var(--ink-tertiary)">Choice depends on goals: control (revocable) vs. protection (irrevocable) · charitable intent (CRT/CLT)</text>
+    <text class="cm-edge-label" x="380" y="414" text-anchor="middle" fill="var(--ink-muted)">All trusts require proper drafting, funding, and ongoing administration to achieve their intended purposes.</text>
+  </svg>
+  <p class="cm-caption"><strong>Trust type decision tree:</strong> Revocable vs. irrevocable; inter vivos vs. testamentary; charitable remainder vs. lead. Each type serves distinct planning objectives.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Root trust</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Revocable / Inter Vivos</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Irrevocable</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Charitable trusts</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Revocable vs. Irrevocable</h3>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>Revocable Trust</th>
+    <th>Irrevocable Trust</th>
+  </tr>
+  <tr>
+    <td><strong>Amendability</strong></td>
+    <td>Can be amended or revoked by the settlor at any time during life</td>
+    <td>Generally cannot be amended or revoked (limited exceptions: decanting, judicial modification, trust protector)</td>
+  </tr>
+  <tr>
+    <td><strong>Asset Protection</strong></td>
+    <td>None — assets remain part of the settlor's estate and are reachable by creditors</td>
+    <td>Strong — assets are removed from the settlor's estate and protected from personal creditors (if properly structured and no fraudulent transfer)</td>
+  </tr>
+  <tr>
+    <td><strong>Estate Tax</strong></td>
+    <td>Assets included in settlor's gross estate for estate tax purposes</td>
+    <td>Assets excluded from settlor's gross estate (if no retained powers under IRC §§ 2036–2038)</td>
+  </tr>
+  <tr>
+    <td><strong>Income Tax</strong></td>
+    <td>Grantor trust — all income taxed to the settlor on their personal return (Form 1040)</td>
+    <td>Non-grantor trust — trust is a separate taxpayer (Form 1041); or intentionally structured as a grantor trust for planning benefits</td>
+  </tr>
+  <tr>
+    <td><strong>Primary Use Cases</strong></td>
+    <td>Probate avoidance, incapacity planning (successor trustee), privacy</td>
+    <td>Estate tax reduction, asset protection, Medicaid planning (in some states), charitable giving, generation-skipping</td>
+  </tr>
+  <tr>
+    <td><strong>Control Retained</strong></td>
+    <td>Settlor retains full control as trustee and beneficiary</td>
+    <td>Settlor relinquishes control; independent trustee manages assets</td>
+  </tr>
+</table>
+
+<h3 class="subsection-title">Testamentary vs. Inter Vivos</h3>
+
+<p class="body-text">
+A <span class="hotspot" data-modal="testamentary" tabindex="0" role="button" onclick="openModal('modal-testamentary')">testamentary trust</span> is created by language within a will and only becomes effective upon the settlor's death, after probate administration. It is commonly used to provide for minor children, manage assets for spendthrift beneficiaries, or stagger distributions over time. Because it is created by will, a testamentary trust does <em>not</em> avoid probate — the will must be admitted to probate, and the trust is funded through the estate administration process.
+</p>
+
+<p class="body-text">
+An <span class="hotspot" data-modal="inter-vivos" tabindex="0" role="button" onclick="openModal('modal-inter-vivos')">inter vivos (living) trust</span> is created and funded during the settlor's lifetime. It can be either revocable or irrevocable. The primary advantage of an inter vivos trust is that assets properly titled in the trust's name at death pass outside of probate, providing privacy, speed, and cost savings. For incapacity planning, a revocable living trust allows a successor trustee to step in seamlessly if the settlor becomes incapacitated, avoiding the need for a court-appointed guardian or conservator.
+</p>
+
+<div class="tip-box">
+  <strong>Planning Tip:</strong> A common and effective strategy is to pair a <em>pourover will</em> with a revocable living trust. The will "pours over" any probate assets into the trust at death, ensuring that all assets are ultimately governed by the trust's terms, even if some were not retitled during life.
+</div>
+
+<h3 class="subsection-title">Charitable Trusts — CRT &amp; CLT</h3>
+
+<p class="body-text">
+<span class="hotspot" data-modal="charitable-trust" tabindex="0" role="button" onclick="openModal('modal-charitable-trust')">Charitable trusts</span> are split-interest trusts that satisfy both charitable and non-charitable objectives. They are subject to strict IRS requirements under IRC § 664 and must be carefully drafted and administered:
+</p>
+
+<ul class="body-text">
+  <li><strong><span class="hotspot" data-modal="crt" tabindex="0" role="button" onclick="openModal('modal-crt')">Charitable Remainder Trust (CRT):</span></strong> The trust pays a fixed annuity (CRAT) or unitrust amount (CRUT) to one or more non-charitable beneficiaries for a term of up to 20 years or for life. At the end of the term, the remaining principal passes to a designated qualified charity. The settlor receives an immediate charitable income tax deduction equal to the present value of the remainder interest, subject to AGI limitations. CRTs are particularly effective for donors with highly appreciated assets who want to diversify without immediate capital gains tax.</li>
+  <li><strong><span class="hotspot" data-modal="clt" tabindex="0" role="button" onclick="openModal('modal-clt')">Charitable Lead Trust (CLT):</span></strong> The trust pays income to a qualified charity for a term of years. At the end of the term, the remaining principal passes to non-charitable beneficiaries (typically family members). A CLT is useful for transferring wealth to the next generation with reduced gift or estate tax, because the charitable interest reduces the taxable value of the remainder gift. CLTs can be structured as grantor trusts (income tax deduction to settlor) or non-grantor trusts (no income tax deduction, but estate/gift tax benefits).</li>
+</ul>
+
+<div class="warn-box">
+  <strong>CRT/CLT Compliance Warning:</strong> Charitable trusts must comply with strict IRS requirements, including the prohibition on self-dealing, minimum payout rates (5% for CRTs), and prohibited investments. Failure to comply can result in loss of tax-exempt status and excise taxes under IRC § 4947. Always work with experienced estate planning counsel and a qualified appraiser for remainder interest valuations.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: FIDUCIARY RESPONSIBILITIES
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="fiduciary">Fiduciary Responsibilities</h2>
+
+<p class="lead">
+A <span class="hotspot" data-modal="fiduciary-duty" tabindex="0" role="button" onclick="openModal('modal-fiduciary-duty')">fiduciary duty</span> is the highest standard of care recognized in law. Trustees owe enforceable fiduciary duties to the beneficiaries of the trust, including the <span class="hotspot" data-modal="duty-loyalty" tabindex="0" role="button" onclick="openModal('modal-duty-loyalty')">duty of loyalty</span>, the <span class="hotspot" data-modal="duty-care" tabindex="0" role="button" onclick="openModal('modal-duty-care')">duty of care</span>, the duty to act in good faith, and the duty to account. The <span class="hotspot" data-modal="prudent-investor" tabindex="0" role="button" onclick="openModal('modal-prudent-investor')">Prudent Investor Rule</span> — codified in the <span class="hotspot" data-modal="upia" tabindex="0" role="button" onclick="openModal('modal-upia')">Uniform Prudent Investor Act (UPIA)</span> and adopted by nearly all states — establishes the investment management standard for trustees.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">Duty of Loyalty</div>
+    <div class="entity-role">Undivided Loyalty to Beneficiaries</div>
+    <div class="entity-desc">The trustee must act solely in the interests of the beneficiaries, avoiding all conflicts of interest and self-dealing. Transactions between the trustee and the trust are presumptively voidable unless expressly authorized by the trust instrument or court order.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Duty of Care</div>
+    <div class="entity-role">Prudent Administration</div>
+    <div class="entity-desc">The trustee must administer the trust with the care, skill, and caution that a prudent person would exercise in managing similar affairs. This includes proper investment management, diversification, monitoring, and record-keeping. Professional trustees are held to a higher standard.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Prudent Investor Rule</div>
+    <div class="entity-role">Portfolio-Level Investment Standard</div>
+    <div class="entity-desc">Trust investments must be evaluated in the context of the total portfolio, not individual holdings in isolation. Diversification is required, and risk must be balanced against return objectives. The rule reflects Modern Portfolio Theory (MPT).</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Duty to Account</div>
+    <div class="entity-role">Transparency &amp; Record-Keeping</div>
+    <div class="entity-desc">Trustees must keep accurate records, provide regular accountings to beneficiaries (typically annually), and maintain documentation of all investment decisions, distributions, and trust expenses. Beneficiaries have the right to inspect trust records.</div>
+  </div>
+</div>
+
+<div class="warn-box">
+  <strong>Fiduciary Liability:</strong> Trustees who breach their fiduciary duties can be held personally liable for losses to the trust. This includes losses from imprudent investments, failure to diversify, self-dealing, commingling of trust and personal assets, and failure to monitor delegated investment managers. Trustees should maintain comprehensive records, obtain professional advice where appropriate, and consider fiduciary liability insurance.
+</div>
+
+<h3 class="subsection-title">The Prudent Investor Rule in Practice</h3>
+
+<p class="body-text">
+The Prudent Investor Rule, as articulated in the <span class="hotspot" data-modal="upia" tabindex="0" role="button" onclick="openModal('modal-upia')">Uniform Prudent Investor Act (UPIA)</span> (1994) and adopted in substance by most U.S. jurisdictions, requires trustees to:
+</p>
+
+<ul class="body-text">
+  <li><strong>Diversify investments</strong> unless special circumstances (such as a concentrated position required by the trust instrument or tax considerations) warrant a different approach. Undiversified portfolios carry a heightened risk of liability.</li>
+  <li><strong>Consider the total portfolio</strong> — risk and return are evaluated at the portfolio level, not for individual securities in isolation. A single risky asset may be prudent if it reduces overall portfolio risk through negative correlation.</li>
+  <li><strong>Balance risk and return</strong> — investments must be reasonable in light of the trust's purposes, duration, distribution requirements, and prevailing economic conditions. The trustee must consider inflation, liquidity needs, and tax consequences.</li>
+  <li><strong>Monitor and review</strong> — investments must be reviewed regularly and adjusted as circumstances change. A "set it and forget it" approach is a breach of the duty of care.</li>
+  <li><strong>Delegate prudently</strong> — trustees may delegate investment management to qualified professionals (investment advisors, mutual funds), but they must select, instruct, and monitor delegates with care. The trustee cannot abdicate responsibility by delegation.</li>
+  <li><strong>Consider costs</strong> — trustees must consider the costs of investment management, trading, and custody. Excessive fees that do not produce commensurate benefits may constitute a breach.</li>
+</ul>
+
+<div class="tip-box">
+  <strong>Modern Portfolio Theory (MPT):</strong> The Prudent Investor Rule explicitly incorporates MPT principles. Under MPT, risk is a function of the entire portfolio's variance, not individual asset volatility. A trustee can prudently hold volatile assets (e.g., emerging market equities, venture capital) if they improve the portfolio's risk-adjusted return through diversification benefits. The key is documentation: the trustee should maintain an Investment Policy Statement (IPS) that articulates the portfolio's objectives, constraints, and risk tolerance.
+</div>
+
+<!-- Process Map: Funding a Trust with Securities -->
+<div class="diagram-box concept-map" id="process-trust-funding" role="img" aria-labelledby="pf-fund-title" aria-describedby="pf-fund-desc">
+  <div class="diagram-title" id="pf-fund-title">Process Map — Funding a Trust with Securities</div>
+  <p id="pf-fund-desc" class="visually-hidden">
+    Six-step process: 1. Settlor executes the trust document with an attorney.
+    2. Settlor establishes a trust account with a custodian (DTC participant).
+    3. Settlor instructs their broker to transfer securities via DTC.
+    4. Custodian credits the trust account and registers securities in the trustee's fiduciary name.
+    5. Trustee manages investments per the trust document, IPS, and Prudent Investor Rule.
+    6. Trustee makes distributions to beneficiaries per the trust terms and maintains records.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-fund-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+      <filter id="pf-shadow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
+      </filter>
+    </defs>
+    <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="93" y="32" text-anchor="middle">Create</text>
+    <rect x="170" y="16" width="130" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="235" y="32" text-anchor="middle" fill="var(--accent)">Account</text>
+    <rect x="312" y="16" width="130" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="377" y="32" text-anchor="middle" fill="var(--green)">Transfer</text>
+    <rect x="454" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="519" y="32" text-anchor="middle" fill="var(--gold-deep)">Credit</text>
+    <rect x="596" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="661" y="32" text-anchor="middle" fill="var(--gold-deep)">Manage &amp; Distribute</text>
+
+    <line class="pf-edge" x1="140" y1="108" x2="170" y2="108" marker-end="url(#pf-fund-arrow)"/>
+    <line class="pf-edge" x1="282" y1="108" x2="312" y2="108" marker-end="url(#pf-fund-arrow)"/>
+    <line class="pf-edge" x1="424" y1="108" x2="454" y2="108" marker-end="url(#pf-fund-arrow)"/>
+    <line class="pf-edge" x1="566" y1="108" x2="596" y2="108" marker-end="url(#pf-fund-arrow)"/>
+
+    <g filter="url(#pf-shadow)">
+      <circle cx="93" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="93" y="90" text-anchor="middle">1</text>
+      <rect x="38" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="93" y="136" text-anchor="middle">Execute Trust</text>
+      <text class="pf-step-sub" x="93" y="152" text-anchor="middle">Document &amp; terms</text>
+    </g>
+    <g filter="url(#pf-shadow)">
+      <circle cx="235" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="235" y="90" text-anchor="middle">2</text>
+      <rect x="180" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="235" y="136" text-anchor="middle">Open Account</text>
+      <text class="pf-step-sub" x="235" y="152" text-anchor="middle">Custodian / DTC</text>
+    </g>
+    <g filter="url(#pf-shadow)">
+      <circle cx="377" cy="86" r="14" fill="var(--green)"/><text class="pf-step-num" x="377" y="90" text-anchor="middle">3</text>
+      <rect x="322" y="112" width="110" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="377" y="136" text-anchor="middle">DTC Transfer</text>
+      <text class="pf-step-sub" x="377" y="152" text-anchor="middle">Broker → Trust</text>
+    </g>
+    <g filter="url(#pf-shadow)">
+      <circle cx="519" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="519" y="90" text-anchor="middle">4</text>
+      <rect x="464" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="519" y="136" text-anchor="middle">Credit &amp; Title</text>
+      <text class="pf-step-sub" x="519" y="152" text-anchor="middle">Trustee / Cede</text>
+    </g>
+    <g filter="url(#pf-shadow)">
+      <circle cx="661" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="661" y="90" text-anchor="middle">5</text>
+      <rect x="606" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="661" y="136" text-anchor="middle">Manage &amp; Distribute</text>
+      <text class="pf-step-sub" x="661" y="152" text-anchor="middle">Per trust terms</text>
+    </g>
+    <text class="pf-step-sub" x="380" y="200" text-anchor="middle">Trustee manages investments under the Prudent Investor Rule and distributes income/principal to beneficiaries.</text>
+    <text class="pf-step-sub" x="380" y="218" text-anchor="middle">Cede &amp; Co. holds legal title; the trust (via the trustee) is the beneficial owner for tax and economic purposes.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
+      <div><strong>1 · Execute Trust Document</strong> — Settlor works with estate planning counsel to draft and execute the trust instrument, specifying terms, beneficiaries, trustee powers, and distribution standards.</div>
+      <div><strong>2 · Open Account</strong> — The trustee opens a custodial account with a DTC participant (typically a bank trust department or broker-dealer), providing the trust instrument and tax identification number (EIN).</div>
+      <div><strong>3 · DTC Transfer</strong> — The settlor (or transferor) instructs their broker to transfer securities via DTC to the trust's custodian account, specifying the correct fiduciary titling.</div>
+      <div><strong>4 · Credit &amp; Title</strong> — The custodian credits the trust account. Securities are registered in the name of the trustee in their fiduciary capacity (or Cede &amp; Co. on issuer books).</div>
+      <div><strong>5 · Manage &amp; Distribute</strong> — The trustee manages investments per the trust document, an Investment Policy Statement (IPS), and the Prudent Investor Rule. Distributions are made to beneficiaries per the trust terms.</div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: SECURITIES TITLING & DTC
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="securities-titling">Securities Titling &amp; the DTC Nominee Structure</h2>
+
+<p class="lead">
+For trusts, securities are typically held in a <span class="hotspot" data-modal="custodian" tabindex="0" role="button" onclick="openModal('modal-custodian')">custodial account</span> at a financial institution that is a <span class="hotspot" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')">DTC participant</span>. On the custodian's books, the securities are registered in the name of the <span class="hotspot" data-modal="trustee" tabindex="0" role="button" onclick="openModal('modal-trustee')">trustee</span> in their fiduciary capacity — for example, "<span class="hotspot" data-modal="titling-example" tabindex="0" role="button" onclick="openModal('modal-titling-example')">John Doe, Trustee of the Smith Family Trust u/a/d [date]</span>." On the issuer's books, however, <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span> remains the sole registered owner, with the custodian's DTC participant account reflecting the trustee's beneficial position.
+</p>
+
+<p class="body-text">
+This layered intermediary structure is identical for individual investors, foundations, and trusts, but the <em>titling</em> is critical for trusts: the trust's name must be accurately reflected on the custodian's records so that all distributions (dividends, interest), proxy materials, corporate actions, and tax reporting (Form 1099, Form 1041) are properly attributed to the trust — not to the individual trustee personally. Incorrect titling can defeat the trust's asset protection, expose assets to the trustee's personal creditors, and create estate tax inclusion issues.
+</p>
+
+<!-- Concept Map 3: DTC Ownership Stack for Trusts -->
+<div class="diagram-box concept-map" id="concept-map-dtc-trust" role="img" aria-labelledby="cm3-title" aria-describedby="cm3-desc">
+  <div class="diagram-title" id="cm3-title">Concept Map — DTC Ownership Stack for Trusts</div>
+  <p id="cm3-desc" class="visually-hidden">
+    Ownership stack: Issuer books show Cede and Co. as registered owner.
+    Cede holds legal title as nominee for DTC.
+    DTC credits the custodian's participant account.
+    The custodian's records show the trustee's trust account (e.g., "John Doe, Trustee of XYZ Trust").
+    The Trust is the beneficial owner, entitled to income, principal, and distributions.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:680px">
+    <defs>
+      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <filter id="cm3-shadow" x="-8%" y="-8%" width="116%" height="116%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
+      </filter>
+    </defs>
+    <rect x="28" y="40" width="8" height="56" rx="3" fill="var(--border)" opacity="0.55"/>
+    <text x="44" y="62" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Issuer</text>
+    <text x="44" y="76" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">books</text>
+
+    <rect x="28" y="170" width="8" height="180" rx="3" fill="var(--accent-muted)" opacity="0.7"/>
+    <text x="44" y="250" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">DTC</text>
+    <text x="44" y="264" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">system</text>
+
+    <rect x="28" y="430" width="8" height="100" rx="3" fill="var(--green)" opacity="0.45"/>
+    <text x="44" y="470" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Trust</text>
+    <text x="44" y="484" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">records</text>
+
+    <line class="cm-edge" x1="260" y1="96" x2="260" y2="128" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="260" y1="208" x2="260" y2="240" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="260" y1="320" x2="260" y2="352" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="260" y1="432" x2="260" y2="464" marker-end="url(#cm3-arrow)"/>
+
+    <text class="cm-edge-label" x="450" y="116" text-anchor="start">lists registered owner</text>
+    <text class="cm-edge-label" x="450" y="228" text-anchor="start">holds as nominee for</text>
+    <text class="cm-edge-label" x="450" y="340" text-anchor="start">credits book-entry to</text>
+    <text class="cm-edge-label" x="450" y="452" text-anchor="start">credits trust account</text>
+
+    <!-- 1 Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="120" y="40" width="280" height="56" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm3-shadow)"/>
+      <text class="cm-node-title" x="260" y="64" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
+      <text class="cm-node-sub" x="260" y="82" text-anchor="middle" fill="var(--ink-tertiary)">Corporation / Municipal entity</text>
+    </g>
+
+    <!-- 2 Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
+      <rect class="cm-node-shape" x="120" y="132" width="280" height="76" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
+      <rect x="160" y="142" width="200" height="18" rx="4" fill="var(--gold)"/>
+      <text class="cm-badge-text" x="260" y="155" text-anchor="middle" fill="#fff">Legal title / Registered owner</text>
+      <text class="cm-node-title" x="260" y="180" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="260" y="198" text-anchor="middle" fill="var(--gold)">DTC nominee partnership</text>
+    </g>
+
+    <!-- 3 DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="120" y="244" width="280" height="76" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" filter="url(#cm3-shadow)"/>
+      <text class="cm-node-title" x="260" y="274" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
+      <text class="cm-node-sub" x="260" y="294" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault / Central depository</text>
+    </g>
+
+    <!-- 4 Custodian (Participant) / Trustee Account -->
+    <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
+      <rect class="cm-node-shape" x="120" y="356" width="280" height="76" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
+      <rect x="148" y="366" width="224" height="18" rx="4" fill="var(--accent)"/>
+      <text class="cm-badge-text" x="260" y="379" text-anchor="middle" fill="#fff">DTC Participant / Custodian</text>
+      <text class="cm-node-title" x="260" y="404" text-anchor="middle" fill="var(--accent)">4 · Custodian</text>
+      <text class="cm-node-sub" x="260" y="422" text-anchor="middle" fill="var(--ink-tertiary)">"John Doe, Trustee of XYZ Trust"</text>
+    </g>
+
+    <!-- 5 Trust (Beneficial Owner) -->
+    <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
+      <rect class="cm-node-shape" x="120" y="468" width="280" height="80" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
+      <rect x="148" y="478" width="224" height="18" rx="4" fill="var(--green)"/>
+      <text class="cm-badge-text" x="260" y="491" text-anchor="middle" fill="#fff">Beneficial ownership</text>
+      <text class="cm-node-title" x="260" y="516" text-anchor="middle" fill="var(--green)">5 · Trust</text>
+      <text class="cm-node-sub" x="260" y="536" text-anchor="middle" fill="var(--ink-tertiary)">Income · principal · distributions · tax</text>
+    </g>
+
+    <text class="cm-edge-label" x="340" y="560" text-anchor="middle" fill="var(--ink-muted)">Same DTC stack as all investors — trust is the beneficial owner; Cede &amp; Co. holds legal title</text>
+  </svg>
+  <p class="cm-caption">Title sits at <strong>Cede &amp; Co.</strong>; the <strong>trust</strong> (via its trustee) is the beneficial owner. The custodian's records must show the exact fiduciary titling to preserve the trust's legal character.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Legal title</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial ownership</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Intermediaries</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Titling Mechanics &amp; Why They Matter</h3>
+
+<p class="body-text">
+When a trust account is established at a custodian, the account must be titled in the name of the trustee(s) <em>in their fiduciary capacity</em>, with explicit trust identification. The standard format is:
+</p>
+
+<pre style="background:var(--bg-cream);padding:14px 18px;border-radius:var(--radius-sm);border:1px solid var(--border-light);font-size:0.87rem;color:var(--ink-secondary);font-family:'DM Sans',monospace;line-height:1.6;margin:16px 0;">
+"John Doe and Jane Doe, Trustees of the Smith Family Trust, dated January 15, 2020"
+</pre>
+
+<p class="body-text">
+This precise titling is critical for four reasons:
+</p>
+
+<ul class="body-text">
+  <li><strong>Legal Ownership Distinction:</strong> The securities are legally owned by the trustees <em>qua</em> fiduciaries, not in their personal capacity. This distinction prevents the assets from being treated as the trustee's personal property for creditor, divorce, or estate tax purposes.</li>
+  <li><strong>Tax Reporting:</strong> The trust's Employer Identification Number (EIN) — not the trustee's Social Security Number — must be used for all tax reporting (Form 1099, Form 1041). Using the trustee's SSN can cause the IRS to attribute trust income to the trustee personally.</li>
+  <li><strong>Succession of Authority:</strong> If a trustee dies, resigns, or is removed, the remaining or successor trustee(s) automatically continue to control the account without the need for probate or court intervention, because the account is titled in the fiduciary capacity, not the individual's name.</li>
+  <li><strong>Beneficiary Protection:</strong> Proper titling on the custodian's records establishes the trust's beneficial ownership, which protects the beneficiaries' equitable interests and ensures that corporate actions (dividends, stock splits, proxy materials) flow to the trust, not the trustee personally.</li>
+</ul>
+
+<!-- Process Map: DTC Transfer into Trust -->
+<div class="diagram-box concept-map" id="process-dtc-transfer" role="img" aria-labelledby="pf-transfer-title" aria-describedby="pf-transfer-desc">
+  <div class="diagram-title" id="pf-transfer-title">Process Map — DTC Securities Transfer into a Trust</div>
+  <p id="pf-transfer-desc" class="visually-hidden">
+    Five-step process: 1. Settlor/transferor provides transfer instructions to their broker.
+    2. Broker and custodian coordinate the DTC transfer (free delivery or DVP).
+    3. DTC books the transfer from the transferor's account to the trust's custodian account.
+    4. Custodian credits the trust account with the appropriate fiduciary titling.
+    5. The trust's investment manager manages the assets per the trust's IPS and Prudent Investor Rule.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-transfer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+      <filter id="pf2-shadow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
+      </filter>
+    </defs>
+    <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="93" y="32" text-anchor="middle">Instruct</text>
+    <rect x="170" y="16" width="130" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="235" y="32" text-anchor="middle" fill="var(--accent)">Coordinate</text>
+    <rect x="312" y="16" width="130" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="377" y="32" text-anchor="middle" fill="var(--green)">Transfer</text>
+    <rect x="454" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="519" y="32" text-anchor="middle" fill="var(--gold-deep)">Credit</text>
+    <rect x="596" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="661" y="32" text-anchor="middle" fill="var(--gold-deep)">Manage</text>
+
+    <line class="pf-edge" x1="140" y1="108" x2="170" y2="108" marker-end="url(#pf-transfer-arrow)"/>
+    <line class="pf-edge" x1="282" y1="108" x2="312" y2="108" marker-end="url(#pf-transfer-arrow)"/>
+    <line class="pf-edge" x1="424" y1="108" x2="454" y2="108" marker-end="url(#pf-transfer-arrow)"/>
+    <line class="pf-edge" x1="566" y1="108" x2="596" y2="108" marker-end="url(#pf-transfer-arrow)"/>
+
+    <g filter="url(#pf2-shadow)">
+      <circle cx="93" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="93" y="90" text-anchor="middle">1</text>
+      <rect x="38" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="93" y="136" text-anchor="middle">Instruct</text>
+      <text class="pf-step-sub" x="93" y="152" text-anchor="middle">Settlor → Broker</text>
+    </g>
+    <g filter="url(#pf2-shadow)">
+      <circle cx="235" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="235" y="90" text-anchor="middle">2</text>
+      <rect x="180" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="235" y="136" text-anchor="middle">Coordinate</text>
+      <text class="pf-step-sub" x="235" y="152" text-anchor="middle">Broker ↔ Custodian</text>
+    </g>
+    <g filter="url(#pf2-shadow)">
+      <circle cx="377" cy="86" r="14" fill="var(--green)"/><text class="pf-step-num" x="377" y="90" text-anchor="middle">3</text>
+      <rect x="322" y="112" width="110" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="377" y="136" text-anchor="middle">DTC Transfer</text>
+      <text class="pf-step-sub" x="377" y="152" text-anchor="middle">Free delivery / DVP</text>
+    </g>
+    <g filter="url(#pf2-shadow)">
+      <circle cx="519" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="519" y="90" text-anchor="middle">4</text>
+      <rect x="464" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="519" y="136" text-anchor="middle">Credit</text>
+      <text class="pf-step-sub" x="519" y="152" text-anchor="middle">Trust account</text>
+    </g>
+    <g filter="url(#pf2-shadow)">
+      <circle cx="661" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="661" y="90" text-anchor="middle">5</text>
+      <rect x="606" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="661" y="136" text-anchor="middle">Manage</text>
+      <text class="pf-step-sub" x="661" y="152" text-anchor="middle">Per trust terms / IPS</text>
+    </g>
+    <text class="pf-step-sub" x="380" y="200" text-anchor="middle">Securities are credited to the trust account with proper fiduciary titling. Cede &amp; Co. remains registered owner on issuer books.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body">
+      <div><strong>1 · Instruct</strong> — The settlor or transferor provides written instructions to their broker to transfer securities into the trust account, specifying the exact fiduciary titling.</div>
+      <div><strong>2 · Coordinate</strong> — The broker and the trust's custodian coordinate the transfer via DTC, confirming account numbers, CUSIPs, and share quantities.</div>
+      <div><strong>3 · DTC Transfer</strong> — Securities are moved electronically (free delivery or Delivery vs. Payment) from the transferor's DTC account to the trust's custodian account.</div>
+      <div><strong>4 · Credit</strong> — The custodian credits the trust account with the securities, applying the correct fiduciary titling (e.g., "Trustee of XYZ Trust").</div>
+      <div><strong>5 · Manage</strong> — The trustee manages the assets per the trust document, Investment Policy Statement (IPS), and the Prudent Investor Rule.</div>
+    </div>
+  </details>
+</div>
+
+<div class="warn-box">
+  <strong>Titling Error Risk:</strong> If securities are transferred into a trust account with incorrect titling (e.g., naming the individual trustee personally rather than in their fiduciary capacity), the assets may be treated as the trustee's personal property, subjecting them to the trustee's personal creditors, divorce claims, estate tax inclusion, and probate. Always verify that the full trust name and "Trustee" or "Trustees" appear in the account title. If an error is discovered, promptly re-register the securities with the correct titling.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: TAX CONSIDERATIONS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="tax">Tax Considerations for Trusts</h2>
+
+<p class="lead">
+Trusts are subject to a complex web of tax rules. The two primary income tax regimes are <span class="hotspot" data-modal="grantor-trust" tabindex="0" role="button" onclick="openModal('modal-grantor-trust')">grantor trust</span> treatment (where the settlor is taxed on all trust income) and <span class="hotspot" data-modal="non-grantor" tabindex="0" role="button" onclick="openModal('modal-non-grantor')">non-grantor trust</span> treatment (where the trust or its beneficiaries are taxed). Estate tax and <span class="hotspot" data-modal="gst" tabindex="0" role="button" onclick="openModal('modal-gst')">generation-skipping transfer (GST) tax</span> are critical considerations for irrevocable trusts. The <em>One Big Beautiful Bill Act</em> (OBBBA), signed July 4, 2025, permanently raised the estate tax exemption to <strong>$15 million</strong> per individual ($30 million for married couples) for 2026, with inflation indexing beginning in 2027.
+</p>
+
+<!-- Concept Map 4: Trust Tax Framework -->
+<div class="diagram-box concept-map" id="concept-map-tax" role="img" aria-labelledby="cm4-title" aria-describedby="cm4-desc">
+  <div class="diagram-title" id="cm4-title">Concept Map — Trust Tax Framework (2026)</div>
+  <p id="cm4-desc" class="visually-hidden">
+    Tax framework for trusts: three pillars — Income Tax (grantor vs non-grantor, Form 1041, compressed brackets for non-grantor trusts),
+    Estate Tax (inclusion vs exclusion from settlor's estate, $15M exemption per individual under OBBBA),
+    and GST Tax (generation-skipping transfer tax, $15M exemption).
+    Charitable trusts have special deductions (CRT/CLT). OBBBA introduced a 0.5% AGI floor for individual charitable deductions.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <filter id="cm4-shadow" x="-8%" y="-8%" width="116%" height="116%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
+      </filter>
+    </defs>
+
+    <!-- Center: Trust -->
+    <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
+      <rect class="cm-node-shape" x="300" y="150" width="160" height="60" rx="14" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" filter="url(#cm4-shadow)"/>
+      <text class="cm-node-title" x="380" y="176" text-anchor="middle" fill="#fff">Trust</text>
+      <text class="cm-node-sub" x="380" y="196" text-anchor="middle" fill="var(--accent-muted)">Taxpayer / Fiduciary entity</text>
+    </g>
+
+    <!-- Pillar 1: Income Tax -->
+    <g class="cm-node" data-modal="form1041" tabindex="0" role="button" aria-label="Form 1041 — open definition">
+      <rect class="cm-node-shape" x="40" y="36" width="200" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <text class="cm-node-title" x="140" y="60" text-anchor="middle" fill="var(--ink)" font-size="12">Income Tax</text>
+      <text class="cm-node-sub" x="140" y="80" text-anchor="middle" fill="var(--ink-tertiary)">Form 1041 · Grantor vs. Non-grantor</text>
+    </g>
+    <line class="cm-edge" x1="240" y1="70" x2="298" y2="168" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="280" y="110" text-anchor="start">reports income</text>
+
+    <!-- Pillar 2: Estate Tax -->
+    <g class="cm-node" data-modal="estate-tax" tabindex="0" role="button" aria-label="Estate Tax — open definition">
+      <rect class="cm-node-shape" x="290" y="20" width="180" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <text class="cm-node-title" x="380" y="44" text-anchor="middle" fill="var(--ink)" font-size="12">Estate Tax</text>
+      <text class="cm-node-sub" x="380" y="64" text-anchor="middle" fill="var(--ink-tertiary)">$15M exemption · Inclusion vs. Exclusion</text>
+    </g>
+    <line class="cm-edge" x1="380" y1="82" x2="380" y2="148" marker-end="url(#cm4-arrow)"/>
+
+    <!-- Pillar 3: GST Tax -->
+    <g class="cm-node" data-modal="gst" tabindex="0" role="button" aria-label="GST Tax — open definition">
+      <rect class="cm-node-shape" x="520" y="36" width="200" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <text class="cm-node-title" x="620" y="60" text-anchor="middle" fill="var(--ink)" font-size="12">GST Tax</text>
+      <text class="cm-node-sub" x="620" y="80" text-anchor="middle" fill="var(--ink-tertiary)">$15M exemption · Generation-skipping</text>
+    </g>
+    <line class="cm-edge" x1="520" y1="70" x2="462" y2="168" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="480" y="110" text-anchor="end">exemption allocation</text>
+
+    <!-- Charitable deduction -->
+    <g class="cm-node" data-modal="charitable-deduction" tabindex="0" role="button" aria-label="Charitable Deduction — open definition">
+      <rect class="cm-node-shape" x="300" y="310" width="160" height="56" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <text class="cm-node-title" x="380" y="334" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Charitable Deduction</text>
+      <text class="cm-node-sub" x="380" y="352" text-anchor="middle" fill="var(--gold)">CRT · CLT · 0.5% AGI floor (individual)</text>
+    </g>
+    <line class="cm-edge" x1="380" y1="210" x2="380" y2="308" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="400" y="260" text-anchor="start">may apply</text>
+
+    <!-- OBBBA note -->
+    <rect x="40" y="390" width="680" height="50" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="380" y="412" text-anchor="middle" fill="var(--ink-tertiary)">OBBBA (July 2025): $15M estate/GST exemption (permanent, indexed from 2027)</text>
+    <text class="cm-edge-label" x="380" y="428" text-anchor="middle" fill="var(--ink-muted)">Non-grantor trust income tax: 37% bracket starts at $16,250 (2026) — highly compressed</text>
+  </svg>
+  <p class="cm-caption"><strong>Three tax pillars:</strong> Income tax (Form 1041, grantor rules, compressed non-grantor brackets), estate tax ($15M exemption under OBBBA), and GST tax ($15M exemption). Charitable trusts offer special deductions; individuals face a 0.5% AGI floor.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Trust</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Tax pillars</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Charitable benefits</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Income Tax — Grantor vs. Non-Grantor Trusts</h3>
+
+<p class="body-text">
+A <span class="hotspot" data-modal="grantor-trust" tabindex="0" role="button" onclick="openModal('modal-grantor-trust')">grantor trust</span> is a trust in which the settlor retains one or more powers described in IRC §§ 671–679 — such as the power to revoke the trust, the right to income, the power to control beneficial enjoyment, or the power to borrow trust assets without adequate security. Under these rules, the settlor is treated as the owner of the trust assets and is taxed on all trust income on their personal Form 1040. The trust itself does not file a separate income tax return (though it may file an information return).
+</p>
+
+<p class="body-text">
+A <span class="hotspot" data-modal="non-grantor" tabindex="0" role="button" onclick="openModal('modal-non-grantor')">non-grantor trust</span> is a trust in which the settlor has relinquished all powers that would trigger grantor trust status. The trust is a separate taxpayer with its own EIN and must file <span class="hotspot" data-modal="form1041" tabindex="0" role="button" onclick="openModal('modal-form1041')">Form 1041</span> annually. Income distributed to beneficiaries is taxed to the beneficiaries (reported on Schedule K-1), while income retained by the trust is taxed at the trust's highly compressed tax brackets. For 2026, a non-grantor trust reaches the top 37% federal income tax bracket at just <strong>$16,250</strong> of taxable income (plus the 3.8% Net Investment Income Tax), making distribution planning critical.
+</p>
+
+<div class="info-box">
+  <strong>2026 Income Tax Brackets for Estates &amp; Non-Grantor Trusts:</strong>
+  <ul style="margin:10px 0 0 20px;font-size:0.85rem;">
+    <li>10% on income up to $3,150</li>
+    <li>24% on income over $3,150 up to $11,450</li>
+    <li>35% on income over $11,450 up to $16,250</li>
+    <li>37% on income over $16,250</li>
+  </ul>
+  <p style="margin-top:10px;font-size:0.84rem;">These brackets are significantly more compressed than individual brackets, where the 37% rate does not apply until income exceeds approximately $626,000 (single) or $1,252,000 (married filing jointly) in 2026.</p>
+</div>
+
+<div class="tip-box">
+  <strong>Tax Planning Strategy:</strong> Grantor trusts are often intentionally used for their simplicity (no separate trust tax return) and because the settlor's payment of income tax on trust income is effectively a tax-free gift to the beneficiaries — it reduces the settlor's estate without using gift tax exemption. Non-grantor trusts are used when the goal is to shift income to beneficiaries in lower tax brackets, but the trustee must carefully time distributions to avoid the trust's compressed brackets.
+</div>
+
+<h3 class="subsection-title">Estate Tax &amp; GST Tax Under OBBBA</h3>
+
+<p class="body-text">
+For irrevocable trusts, one of the primary benefits is the removal of assets from the settlor's estate for estate tax purposes. If properly structured — meaning the settlor retains no powers that would trigger estate tax inclusion under IRC §§ 2036–2038 — the trust assets are not included in the settlor's gross estate at death. The <em>One Big Beautiful Bill Act</em> (OBBBA), signed into law on July 4, 2025, made the following permanent changes effective January 1, 2026:
+</p>
+
+<ul class="body-text">
+  <li><strong>Estate tax exemption:</strong> Raised to <strong>$15 million</strong> per individual ($30 million for married couples with portability), permanently eliminating the scheduled TCJA sunset that would have reduced the exemption to approximately $7 million.</li>
+  <li><strong>Inflation indexing:</strong> The exemption will be adjusted annually for inflation beginning in 2027.</li>
+  <li><strong>GST tax exemption:</strong> Also raised to $15 million per individual, permanently indexed for inflation from 2027.</li>
+  <li><strong>Annual gift exclusion:</strong> Remains at $19,000 per recipient in 2026 ($38,000 for married couples electing gift-splitting).</li>
+  <li><strong>Charitable deduction floor:</strong> Individual taxpayers now face a 0.5% of AGI floor for charitable deductions, making trust-level charitable planning more attractive in some cases.</li>
+</ul>
+
+<p class="body-text">
+The settlor may allocate <span class="hotspot" data-modal="gst-exemption" tabindex="0" role="button" onclick="openModal('modal-gst-exemption')">GST tax exemption</span> to an irrevocable trust to allow for tax-free transfers to grandchildren and more remote descendants (generation-skipping). Trusts designed to maximize estate and GST tax savings often use "credit shelter" (bypass), "dynasty," or "generation-skipping" trust structures that can perpetually shelter assets from transfer tax across multiple generations.
+</p>
+
+<div class="warn-box">
+  <strong>OBBBA Planning Note:</strong> While the $15 million exemption is now permanent (subject to future legislative change), high-net-worth individuals should still consider making strategic lifetime gifts to "lock in" the exemption and remove future appreciation from their taxable estates. Trust structures such as Spousal Lifetime Access Trusts (SLATs), Grantor Retained Annuity Trusts (GRATs), and Intentionally Defective Grantor Trusts (IDGTs) remain highly effective planning tools under the new law.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: ADVANCED TOPICS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="advanced-topics">Advanced Topics</h2>
+
+<h3 class="subsection-title">Investment Policy Statements (IPS) for Trusts</h3>
+
+<p class="body-text">
+A well-drafted <strong>Investment Policy Statement (IPS)</strong> is the trustee's primary defense against claims of imprudent investment management. The IPS should articulate:
+</p>
+
+<ul class="body-text">
+  <li><strong>Trust objectives:</strong> Income production, capital preservation, growth, or total return.</li>
+  <li><strong>Risk tolerance:</strong> The acceptable level of volatility and drawdown, considering the trust's duration and distribution requirements.</li>
+  <li><strong>Asset allocation targets:</strong> Target percentages for equities, fixed income, alternatives, and cash, with permissible ranges.</li>
+  <li><strong>Constraints:</strong> Liquidity needs, time horizon, tax considerations, legal restrictions (e.g., no investments in the settlor's business), and ESG preferences.</li>
+  <li><strong>Benchmarks:</strong> Appropriate benchmarks for measuring performance (e.g., a blended benchmark reflecting the target allocation).</li>
+  <li><strong>Review schedule:</strong> Quarterly or semi-annual review of the portfolio against the IPS.</li>
+</ul>
+
+<h3 class="subsection-title">Trust Protectors &amp; Directed Trusts</h3>
+
+<p class="body-text">
+Modern trust drafting often includes a <strong>trust protector</strong> — an independent third party with limited powers to modify the trust in response to changed circumstances (e.g., tax law changes, family dynamics) without requiring court approval. A <strong>directed trust</strong> bifurcates trustee duties: an administrative trustee handles custody, record-keeping, and distributions, while an <strong>investment advisor</strong> or <strong>distribution advisor</strong> directs investment or distribution decisions. Directed trusts are particularly popular in states with modern trust statutes (e.g., Delaware, South Dakota, Nevada) and can reduce fiduciary liability by allocating responsibility.
+</p>
+
+<h3 class="subsection-title">Decanting &amp; Trust Modification</h3>
+
+<p class="body-text">
+<strong>Decanting</strong> is the process of pouring assets from an old trust into a new trust with modified terms, typically to address changed tax laws, beneficiary needs, or administrative inefficiencies. Most states that have adopted the <span class="hotspot" data-modal="utc" tabindex="0" role="button" onclick="openModal('modal-utc')">Uniform Trust Code (UTC)</span> or have specific decanting statutes permit decanting under certain conditions. The UTC also provides for non-judicial settlement agreements and judicial modification when all beneficiaries consent or when the modification is consistent with the trust's material purpose.
+</p>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: GLOBAL COMPARISON
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="global-comparison-trust">Global Comparison — Trust Structures &amp; Securities Titling</h2>
+
+<p class="lead">
+While the U.S. trust is a flexible and widely used tool, other jurisdictions have different legal structures for fiduciary holding of assets. For trusts with international investments or non-U.S. beneficiaries, understanding these differences is essential for compliance, tax efficiency, and operational execution.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>United States (DTC)</th>
+    <th>United Kingdom</th>
+    <th>Europe (Euroclear)</th>
+  </tr>
+  <tr>
+    <td><strong>Primary Trust Statute</strong></td>
+    <td>Uniform Trust Code (UTC) — adopted by ~37 states + D.C.; CA, DE, NY, TX retain their own trust codes</td>
+    <td>Trustee Act 2000; common law fiduciary principles</td>
+    <td>Varies by country (e.g., Luxembourg, Netherlands, Switzerland); civil law jurisdictions may not recognize trusts natively</td>
+  </tr>
+  <tr>
+    <td><strong>Fiduciary Standard</strong></td>
+    <td>Prudent Investor Rule (UPIA) — portfolio-level, MPT-based</td>
+    <td>Prudent Trustee Standard — statutory duty of care and skill</td>
+    <td>Civil law — fiduciary duties may differ; some jurisdictions use contractual structures (e.g., <em>fiducie</em> in France, <em>Stiftung</em> in Liechtenstein)</td>
+  </tr>
+  <tr>
+    <td><strong>Securities Titling</strong></td>
+    <td>"[Trustee], Trustee of [Trust Name] u/a/d [Date]"</td>
+    <td>"[Trustee] as trustee of [Trust Name]"</td>
+    <td>Varies; nominee structures common; some jurisdictions require local registration</td>
+  </tr>
+  <tr>
+    <td><strong>Nominee Structure</strong></td>
+    <td>Cede &amp; Co. (DTC nominee partnership)</td>
+    <td>CREST nominee (Euroclear UK &amp; Ireland)</td>
+    <td>Euroclear Bank (Brussels) / national central securities depositories (e.g., Clearstream)</td>
+  </tr>
+  <tr>
+    <td><strong>Settlement Cycle</strong></td>
+    <td>T+1 (since May 28, 2024)</td>
+    <td>T+2 (moving toward T+1)</td>
+    <td>T+2 (T+1 under study for some markets)</td>
+  </tr>
+  <tr>
+    <td><strong>Tax Treatment</strong></td>
+    <td>Grantor/Non-grantor; Form 1041; compressed trust brackets; $15M estate/GST exemption (2026)</td>
+    <td>Income tax on trustees/beneficiaries; IHT on death (nil-rate band £325,000 + residence nil-rate band)</td>
+    <td>Varies widely; withholding taxes common; no unified estate tax across EU; some jurisdictions offer favorable trust tax regimes</td>
+  </tr>
+  <tr>
+    <td><strong>Asset Protection</strong></td>
+    <td>Strong for irrevocable trusts (fraudulent transfer excepted); domestic asset protection trusts in ~20 states</td>
+    <td>Limited statutory asset protection; UK courts can unwind trusts found to be a sham or set up to defeat creditors or a spouse's financial claims on divorce</td>
+    <td>Varies; some jurisdictions (e.g., Jersey, Guernsey, Isle of Man) offer robust asset protection trust statutes</td>
+  </tr>
+</table>
+
+<p class="body-text">
+For U.S.-based trusts holding foreign securities, the titling and tax reporting become significantly more complex. The trust should work with a global custodian that can handle cross-border settlement, withholding tax reclaims (under tax treaties), foreign tax reporting (e.g., FATCA, CRS), and currency conversion. The fundamental principle — that the trust is the beneficial owner — remains the same, but the operational mechanics, regulatory requirements, and tax consequences vary by jurisdiction.
+</p>
+
+<div class="tip-box">
+  <strong>International Planning Tip:</strong> When a U.S. trust has non-U.S. beneficiaries or holds foreign assets, consider the interaction of U.S. tax rules with foreign tax regimes. For example, distributions from a U.S. non-grantor trust to a non-resident alien beneficiary may be subject to withholding under IRC § 1441. Conversely, a foreign trust with U.S. beneficiaries may be treated as a "foreign grantor trust" or subject to the throwback rules under IRC §§ 665–668. Specialized cross-border tax counsel is essential.
+</div>
+
+</div><!-- /doc-frame -->
+
+<!-- ═══════════════════════════════════════════════════
+     QUIZ SECTION
+════════════════════════════════════════════════════ -->
+
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">Trust &amp; Fiduciary Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of trust types, fiduciary duties, securities titling, the DTC nominee structure, and the 2026 tax landscape under OBBBA. Select the best answer for each question. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Q1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is a fiduciary duty in the context of a trust?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq1" value="a"><span>A legal duty to maximize investment returns regardless of risk</span></label>
+          <label><input type="radio" name="tq1" value="b"><span>The highest standard of care, requiring the trustee to act with undivided loyalty and prudence in the best interests of beneficiaries</span></label>
+          <label><input type="radio" name="tq1" value="c"><span>A duty to follow the settlor's instructions literally, even if circumstances change</span></label>
+          <label><input type="radio" name="tq1" value="d"><span>A duty to invest only in government bonds and insured deposits</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q1"></div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is the key difference between a revocable and an irrevocable trust?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq2" value="a"><span>Revocable trusts are for charitable giving; irrevocable trusts are for family wealth</span></label>
+          <label><input type="radio" name="tq2" value="b"><span>Revocable trusts can be amended or revoked by the settlor; irrevocable trusts generally cannot</span></label>
+          <label><input type="radio" name="tq2" value="c"><span>Revocable trusts avoid probate; irrevocable trusts do not</span></label>
+          <label><input type="radio" name="tq2" value="d"><span>There is no practical difference between the two</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q2"></div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What is a testamentary trust?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq3" value="a"><span>A trust created and funded during the settlor's lifetime</span></label>
+          <label><input type="radio" name="tq3" value="b"><span>A trust created within a will, becoming effective only upon the settlor's death after probate</span></label>
+          <label><input type="radio" name="tq3" value="c"><span>A trust that only benefits charitable organizations</span></label>
+          <label><input type="radio" name="tq3" value="d"><span>A trust that can be amended at any time by the beneficiaries</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q3"></div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What does the Prudent Investor Rule require of a trustee?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq4" value="a"><span>To invest only in low-risk, income-producing assets</span></label>
+          <label><input type="radio" name="tq4" value="b"><span>To evaluate investments in the context of the total portfolio, diversify, and balance risk against return</span></label>
+          <label><input type="radio" name="tq4" value="c"><span>To maximize current income for income beneficiaries, even at the expense of principal</span></label>
+          <label><input type="radio" name="tq4" value="d"><span>To avoid all investments that have any volatility</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q4"></div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>How should securities be titled for a trust account at a custodian?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq5" value="a"><span>In the name of the settlor personally, for simplicity</span></label>
+          <label><input type="radio" name="tq5" value="b"><span>In the name of the trust's beneficiaries</span></label>
+          <label><input type="radio" name="tq5" value="c"><span>In the name of the trustee(s) in their fiduciary capacity (e.g., "John Doe, Trustee of XYZ Trust")</span></label>
+          <label><input type="radio" name="tq5" value="d"><span>In the name of Cede &amp; Co. directly</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q5"></div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>On the issuer's books, who is the registered owner of securities held in a trust's DTC account?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq6" value="a"><span>The trust itself</span></label>
+          <label><input type="radio" name="tq6" value="b"><span>The trustee personally</span></label>
+          <label><input type="radio" name="tq6" value="c"><span>Cede &amp; Co.</span></label>
+          <label><input type="radio" name="tq6" value="d"><span>The beneficiary</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q6"></div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is a grantor trust for income tax purposes?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq7" value="a"><span>A trust where the settlor is taxed on the trust's income on their personal return</span></label>
+          <label><input type="radio" name="tq7" value="b"><span>A trust that is exempt from all income tax</span></label>
+          <label><input type="radio" name="tq7" value="c"><span>A trust that only invests in government securities</span></label>
+          <label><input type="radio" name="tq7" value="d"><span>A trust created by a corporation for employee benefits</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q7"></div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is a Charitable Remainder Trust (CRT)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq8" value="a"><span>A trust that pays income to a charity first, then to family members</span></label>
+          <label><input type="radio" name="tq8" value="b"><span>A trust that pays income to non-charitable beneficiaries first, then the remainder to charity</span></label>
+          <label><input type="radio" name="tq8" value="c"><span>A trust that is entirely exempt from income tax</span></label>
+          <label><input type="radio" name="tq8" value="d"><span>A trust that only holds real estate investments</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q8"></div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is the duty of loyalty in a trust context?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq9" value="a"><span>The trustee must be loyal to the settlor above all others</span></label>
+          <label><input type="radio" name="tq9" value="b"><span>The trustee must avoid self-dealing and act solely in the interests of the beneficiaries</span></label>
+          <label><input type="radio" name="tq9" value="c"><span>The trustee must invest only in companies they have a personal relationship with</span></label>
+          <label><input type="radio" name="tq9" value="d"><span>The trustee must provide loyalty rewards to beneficiaries</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q9"></div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What does the Uniform Trust Code (UTC) provide?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq10" value="a"><span>Federal tax rules for all trusts nationwide</span></label>
+          <label><input type="radio" name="tq10" value="b"><span>Model state legislation for trust administration, fiduciary standards, and beneficiary rights</span></label>
+          <label><input type="radio" name="tq10" value="c"><span>Rules for international trust recognition and enforcement</span></label>
+          <label><input type="radio" name="tq10" value="d"><span>SEC regulations governing trust investments in securities</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q10"></div>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What role does a custodian play for a trust's securities?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq11" value="a"><span>The custodian manages the trust's investments and makes distribution decisions</span></label>
+          <label><input type="radio" name="tq11" value="b"><span>The custodian holds the securities in its DTC participant account and maintains records for the trust</span></label>
+          <label><input type="radio" name="tq11" value="c"><span>The custodian is the settlor of the trust</span></label>
+          <label><input type="radio" name="tq11" value="d"><span>The custodian distributes trust income to beneficiaries without trustee approval</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q11"></div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>Why are assets in an irrevocable trust typically excluded from the settlor's estate?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq12" value="a"><span>The settlor is no longer the legal or beneficial owner of the assets and has relinquished control</span></label>
+          <label><input type="radio" name="tq12" value="b"><span>The IRS grants an automatic exclusion for all trust assets regardless of structure</span></label>
+          <label><input type="radio" name="tq12" value="c"><span>The trust pays estate tax instead of the settlor</span></label>
+          <label><input type="radio" name="tq12" value="d"><span>Irrevocable trusts are not subject to any tax whatsoever</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q12"></div>
+      </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the current DTC settlement cycle for U.S. securities?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq13" value="a"><span>T+0 (same day)</span></label>
+          <label><input type="radio" name="tq13" value="b"><span>T+1 (one business day)</span></label>
+          <label><input type="radio" name="tq13" value="c"><span>T+2 (two business days)</span></label>
+          <label><input type="radio" name="tq13" value="d"><span>T+3 (three business days)</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q13"></div>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is a non-grantor trust?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq14" value="a"><span>A trust where the settlor retains the power to revoke or amend</span></label>
+          <label><input type="radio" name="tq14" value="b"><span>A trust that is a separate taxpayer and files its own tax return (Form 1041)</span></label>
+          <label><input type="radio" name="tq14" value="c"><span>A trust that is exempt from all income tax</span></label>
+          <label><input type="radio" name="tq14" value="d"><span>A trust that only holds cash and cash equivalents</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q14"></div>
+      </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is the primary purpose of a Charitable Lead Trust (CLT)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq15" value="a"><span>To provide income to charity for a term, with the remainder to family members</span></label>
+          <label><input type="radio" name="tq15" value="b"><span>To provide income to family members, with the remainder to charity</span></label>
+          <label><input type="radio" name="tq15" value="c"><span>To avoid all tax on trust assets entirely</span></label>
+          <label><input type="radio" name="tq15" value="d"><span>To serve as a revocable living trust</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q15"></div>
+      </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is the GST (Generation-Skipping Transfer) tax?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq16" value="a"><span>A tax on transfers to grandchildren or more remote descendants to prevent estate tax avoidance</span></label>
+          <label><input type="radio" name="tq16" value="b"><span>A tax on all transfers to charitable organizations</span></label>
+          <label><input type="radio" name="tq16" value="c"><span>A tax on transfers between spouses</span></label>
+          <label><input type="radio" name="tq16" value="d"><span>A tax on trust administration and legal fees</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q16"></div>
+      </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the main advantage of a revocable living trust?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq17" value="a"><span>Asset protection from the settlor's personal creditors</span></label>
+          <label><input type="radio" name="tq17" value="b"><span>Avoidance of probate and seamless incapacity planning</span></label>
+          <label><input type="radio" name="tq17" value="c"><span>Estate tax reduction and removal from the taxable estate</span></label>
+          <label><input type="radio" name="tq17" value="d"><span>No income tax on trust income</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q17"></div>
+      </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What happens if a trust account is titled incorrectly (e.g., naming the trustee personally)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq18" value="a"><span>Nothing — it is a minor administrative error that can be ignored</span></label>
+          <label><input type="radio" name="tq18" value="b"><span>The assets may become subject to the trustee's personal creditors, divorce, or estate tax</span></label>
+          <label><input type="radio" name="tq18" value="c"><span>The IRS will automatically correct the titling upon review</span></label>
+          <label><input type="radio" name="tq18" value="d"><span>The trust is automatically terminated and assets revert to the settlor</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q18"></div>
+      </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>Which form does a non-grantor trust typically file for U.S. income tax?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq19" value="a"><span>Form 1040 (Individual Income Tax Return)</span></label>
+          <label><input type="radio" name="tq19" value="b"><span>Form 1041 (U.S. Income Tax Return for Estates and Trusts)</span></label>
+          <label><input type="radio" name="tq19" value="c"><span>Form 1065 (Partnership Return)</span></label>
+          <label><input type="radio" name="tq19" value="d"><span>Form 1120 (Corporate Income Tax Return)</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q19"></div>
+      </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>Under the One Big Beautiful Bill Act (OBBBA), what is the federal estate tax exemption for 2026?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="tq20" value="a"><span>$7 million per individual (the pre-TCJA sunset amount)</span></label>
+          <label><input type="radio" name="tq20" value="b"><span>$13.99 million per individual (the 2025 amount)</span></label>
+          <label><input type="radio" name="tq20" value="c"><span>$15 million per individual, permanently indexed for inflation from 2027</span></label>
+          <label><input type="radio" name="tq20" value="d"><span>Unlimited — the estate tax was repealed</span></label>
+        </div>
+        <div class="quiz-feedback" id="tf-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkTrustQuiz()">Check All Answers</button>
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetTrustQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script>
+// ─── Quiz Answers ───
+const trustQuizAnswers = {
+  tq1: { correct: 'b', explanation: 'A fiduciary duty is the highest standard of care in law, requiring the trustee to act with undivided loyalty and prudence in the best interests of the beneficiaries. It is not about maximizing returns or literal adherence to instructions.' },
+  tq2: { correct: 'b', explanation: 'Revocable trusts can be amended or revoked by the settlor during life. Irrevocable trusts generally cannot be changed once created, which is necessary for estate tax exclusion and asset protection.' },
+  tq3: { correct: 'b', explanation: 'A testamentary trust is created within a will and becomes effective only upon the settlor's death, after probate administration. It does not avoid probate.' },
+  tq4: { correct: 'b', explanation: 'The Prudent Investor Rule requires diversification and evaluation of investments in the context of the total portfolio, balancing risk and return. It reflects Modern Portfolio Theory (MPT).' },
+  tq5: { correct: 'c', explanation: 'Securities must be titled in the name of the trustee(s) in their fiduciary capacity (e.g., "John Doe, Trustee of XYZ Trust") to preserve the trust's legal and tax character.' },
+  tq6: { correct: 'c', explanation: 'Cede & Co. is the registered owner on the issuer's books. The trust (via the trustee) is the beneficial owner. The custodian is the intermediary DTC participant.' },
+  tq7: { correct: 'a', explanation: 'A grantor trust is one where the settlor is taxed on the trust's income under IRC §§ 671-679 because the settlor retains certain powers (e.g., power to revoke, right to income).' },
+  tq8: { correct: 'b', explanation: 'A CRT pays income to non-charitable beneficiaries first (for a term or life), with the remainder going to charity at the end of the term. The settlor receives an immediate charitable income tax deduction.' },
+  tq9: { correct: 'b', explanation: 'The duty of loyalty requires the trustee to avoid self-dealing, conflicts of interest, and to act solely in the interests of the beneficiaries — not the settlor or the trustee personally.' },
+  tq10: { correct: 'b', explanation: 'The UTC provides model state legislation for trust administration, fiduciary standards, and beneficiary rights. It has been adopted (in whole or in part) by roughly 37 U.S. states and D.C.; California, Delaware, New York, and Texas are notable holdouts with their own trust codes.' },
+  tq11: { correct: 'b', explanation: 'The custodian holds the securities in its DTC participant account and maintains records for the trust. The custodian does not make investment or distribution decisions — those are trustee functions.' },
+  tq12: { correct: 'a', explanation: 'In an irrevocable trust, the settlor has relinquished control and is no longer the legal or beneficial owner, so assets are excluded from the settlor's estate for estate tax purposes (assuming no retained powers under IRC §§ 2036-2038).' },
+  tq13: { correct: 'b', explanation: 'Since May 28, 2024, U.S. securities settle on a T+1 basis (one business day after trade). The U.K. and Europe are generally T+2, with T+1 under study.' },
+  tq14: { correct: 'b', explanation: 'A non-grantor trust is a separate taxpayer and files Form 1041. Income distributed to beneficiaries is taxed to them (Schedule K-1); retained income is taxed at the trust's compressed brackets.' },
+  tq15: { correct: 'a', explanation: 'A CLT pays income to charity for a term, with the remainder going to non-charitable beneficiaries (usually family). This reduces the taxable value of the gift/estate transfer.' },
+  tq16: { correct: 'a', explanation: 'GST tax is imposed on transfers to grandchildren or more remote descendants (skipping a generation) to prevent the avoidance of estate tax. The 2026 GST exemption is $15 million per individual under OBBBA.' },
+  tq17: { correct: 'b', explanation: 'The primary advantage of a revocable living trust is avoiding probate and providing for incapacity planning (successor trustee steps in). It does NOT provide asset protection or estate tax reduction.' },
+  tq18: { correct: 'b', explanation: 'Incorrect titling can expose trust assets to the trustee's personal creditors, divorce claims, and estate tax inclusion, defeating the purpose of the trust. Always use full fiduciary titling.' },
+  tq19: { correct: 'b', explanation: 'Non-grantor trusts file Form 1041 (U.S. Income Tax Return for Estates and Trusts). Grantor trusts typically do not file a separate return — income is reported on the settlor's Form 1040.' },
+  tq20: { correct: 'c', explanation: 'Under the One Big Beautiful Bill Act (OBBBA), signed July 4, 2025, the federal estate tax exemption is $15 million per individual ($30M for married couples) for 2026, permanently indexed for inflation from 2027.' }
+};
+
+function checkTrustQuiz() {
+  let correct = 0;
+  const total = 20;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'tq' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('tf-' + qName);
+    const answer = trustQuizAnswers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback';
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : ' fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : ' fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid understanding of trusts, fiduciary duties, securities titling, and the 2026 tax landscape.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80% (16/20 correct).';
+  }
+}
+
+function resetTrustQuiz() {
+  document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+  document.querySelectorAll('.quiz-options input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  document.getElementById('quizResult').innerHTML = '';
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY
+════════════════════════════════════════════════════ -->
+
+<!-- How to Use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-how-to-use')">&times;</button></div>
+    <div class="modal-body">
+      <p>This interactive teaching guide explains trusts, fiduciary duties, securities titling, and the DTC nominee structure. It has been updated for 2026 to reflect the <em>One Big Beautiful Bill Act</em> (OBBBA) and current tax law.</p>
+      <p class="modal-section-title">How to Navigate</p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between sections.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation with legal citations.</li>
+        <li>Review the <strong>concept maps</strong> to visualize relationships between settlors, trustees, beneficiaries, and the DTC stack.</li>
+        <li>Test your knowledge with the <strong>20-question quiz</strong> at the bottom.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Start with the Overview and work through each section sequentially. The concept maps illustrate the relationships between settlors, trustees, and beneficiaries. Pay special attention to the 2026 tax updates under OBBBA.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Trust -->
+<div class="modal-overlay" id="modal-trust" role="dialog" aria-modal="true" aria-labelledby="modal-title-trust">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-trust">Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-trust')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Entity / Fiduciary Arrangement</div>
+        <div class="def-word">Trust</div>
+        <p>A legal arrangement where one party (the settlor) transfers property to a trustee, who holds and manages it for the benefit of one or more beneficiaries. The trust is governed by a trust document (or will) and is subject to enforceable fiduciary duties. A trust is not a separate legal entity like a corporation, but it is treated as a separate taxpayer for certain purposes.</p>
+      </div>
+      <p class="modal-section-title">Key Elements</p>
+      <ul>
+        <li><strong>Settlor (Grantor / Trustor):</strong> The person who creates the trust and transfers assets.</li>
+        <li><strong>Trustee:</strong> The person or institution that holds legal title and manages the trust.</li>
+        <li><strong>Beneficiary:</strong> The person or entity entitled to the trust's income and/or principal.</li>
+        <li><strong>Trust Document:</strong> The written instrument that establishes the trust terms, powers, and distribution standards.</li>
+        <li><strong>Corpus / Principal:</strong> The assets originally transferred to the trust, plus accumulated gains.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-settlor');return false;">Settlor</a>, <a href="#" onclick="openModal('modal-trustee');return false;">Trustee</a>, <a href="#" onclick="openModal('modal-beneficiary-trust');return false;">Beneficiary</a></div>
+      <div class="citation"><strong>Source:</strong> Restatement (Third) of Trusts § 2; Uniform Trust Code § 103.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Settlor -->
+<div class="modal-overlay" id="modal-settlor" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-settlor">Settlor / Grantor / Trustor</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-settlor')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Creator</div>
+        <div class="def-word">Settlor</div>
+        <p>The person who creates a trust by transferring assets to a trustee. The settlor establishes the trust's terms and purposes. In revocable trusts, the settlor may serve as trustee and beneficiary. In irrevocable trusts, the settlor must relinquish control to achieve estate tax and asset protection benefits.</p>
+      </div>
+      <p class="modal-section-title">Tax Significance</p>
+      <ul>
+        <li>If the settlor retains certain powers (revocation, income rights, control), the trust is a <strong>grantor trust</strong> and the settlor pays income tax on trust income.</li>
+        <li>If the settlor retains powers that trigger estate tax inclusion (IRC §§ 2036–2038), trust assets will be included in the settlor's gross estate.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 103(15); IRC §§ 671–679 (grantor trust rules).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Trustee -->
+<div class="modal-overlay" id="modal-trustee" role="dialog" aria-modal="true" aria-labelledby="modal-title-trustee">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-trustee">Trustee</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-trustee')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Fiduciary</div>
+        <div class="def-word">Trustee</div>
+        <p>The person or institution that holds legal title to trust assets and manages them for the benefit of the beneficiaries. The trustee owes fiduciary duties of loyalty, care, and good faith. A trustee can be an individual, a corporate trustee (bank or trust company), or a combination (co-trustees).</p>
+      </div>
+      <p class="modal-section-title">Trustee Powers &amp; Duties</p>
+      <ul>
+        <li><strong>Invest:</strong> Manage trust investments per the Prudent Investor Rule and any IPS.</li>
+        <li><strong>Distribute:</strong> Make distributions of income and/or principal to beneficiaries per the trust terms.</li>
+        <li><strong>Administer:</strong> Keep records, file tax returns (Form 1041 if non-grantor), and communicate with beneficiaries.</li>
+        <li><strong>Delegate:</strong> May delegate investment management to professionals (with due care and monitoring).</li>
+        <li><strong>Account:</strong> Provide regular accountings to beneficiaries, typically annually.</li>
+      </ul>
+      <div class="warn-box"><strong>Liability:</strong> Trustees who breach fiduciary duties can be held personally liable for losses. Professional trustees are held to a higher standard of care than lay trustees.</div>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code §§ 801–817 (Trustee Powers); Restatement (Third) of Trusts §§ 76–92.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Beneficiary (Trust) -->
+<div class="modal-overlay" id="modal-beneficiary-trust" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficiary-trust">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-beneficiary-trust">Beneficiary</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-beneficiary-trust')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Recipient</div>
+        <div class="def-word">Beneficiary</div>
+        <p>The person or entity entitled to receive income and/or principal from a trust. Beneficiaries can be current (receiving income now, also called income beneficiaries) or remainder (receiving principal after a specified event, such as the death of the income beneficiary or the expiration of a term).</p>
+      </div>
+      <p class="modal-section-title">Rights of Beneficiaries</p>
+      <ul>
+        <li>Right to receive distributions per the trust terms.</li>
+        <li>Right to an accounting and information about the trust's assets, liabilities, and transactions.</li>
+        <li>Right to enforce the trust and seek removal of a trustee for breach of fiduciary duty.</li>
+        <li>Right to challenge a trustee's actions in court.</li>
+        <li>Right to a copy of the trust instrument (in most jurisdictions).</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code §§ 105, 110, 112 (Beneficiary Rights); Restatement (Third) of Trusts § 82.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Fiduciary Duty -->
+<div class="modal-overlay" id="modal-fiduciary-duty" role="dialog" aria-modal="true" aria-labelledby="modal-title-fiduciary-duty">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-fiduciary-duty">Fiduciary Duty</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-fiduciary-duty')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Standard</div>
+        <div class="def-word">Fiduciary Duty</div>
+        <p>The highest standard of care recognized in law. A fiduciary must act in the best interests of the beneficiary with loyalty, care, and good faith. Breach of fiduciary duty can result in personal liability, removal, surcharge (repayment of losses), and in extreme cases, criminal penalties.</p>
+      </div>
+      <p class="modal-section-title">Key Components</p>
+      <ul>
+        <li><strong>Duty of Loyalty:</strong> Act solely in the beneficiary's interest; avoid self-dealing and conflicts of interest.</li>
+        <li><strong>Duty of Care:</strong> Act with the care, skill, and caution of a prudent person in similar circumstances.</li>
+        <li><strong>Duty of Good Faith:</strong> Act honestly and fairly; do not subordinate beneficiary interests to the trustee's own.</li>
+        <li><strong>Duty to Account:</strong> Maintain transparent records and provide regular reports.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Restatement (Third) of Trusts §§ 76–78; Uniform Trust Code §§ 802–804.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Duty of Loyalty -->
+<div class="modal-overlay" id="modal-duty-loyalty" role="dialog" aria-modal="true" aria-labelledby="modal-title-duty-loyalty">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-duty-loyalty">Duty of Loyalty</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-duty-loyalty')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Fiduciary Duty</div>
+        <div class="def-word">Duty of Loyalty</div>
+        <p>The duty to act solely in the interests of the beneficiaries, not for the trustee's personal benefit. Self-dealing, conflicts of interest, and using trust assets for personal gain are prohibited unless specifically authorized by the trust document or court order. Transactions between the trustee and the trust are presumptively voidable.</p>
+      </div>
+      <p class="modal-section-title">Prohibited Conduct</p>
+      <ul>
+        <li>Selling personal assets to the trust (or buying trust assets) without fair market value and full disclosure.</li>
+        <li>Competing with the trust's business interests.</li>
+        <li>Using trust assets to secure personal loans.</li>
+        <li>Favoring one beneficiary over another without trust document authorization.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 802 (Duty of Loyalty); Restatement (Third) of Trusts § 78.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Duty of Care -->
+<div class="modal-overlay" id="modal-duty-care" role="dialog" aria-modal="true" aria-labelledby="modal-title-duty-care">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-duty-care">Duty of Care</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-duty-care')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Fiduciary Duty</div>
+        <div class="def-word">Duty of Care</div>
+        <p>The duty to act with the care, skill, and caution that a prudent person would exercise in managing similar affairs. This includes proper investment management, diversification, monitoring, and record-keeping. Trustees with special skills (e.g., professional corporate trustees, attorneys, CPAs) are held to a higher standard commensurate with their expertise.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 804 (Duty of Care); Uniform Prudent Investor Act § 2.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Prudent Investor Rule -->
+<div class="modal-overlay" id="modal-prudent-investor" role="dialog" aria-modal="true" aria-labelledby="modal-title-prudent-investor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-prudent-investor">Prudent Investor Rule</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-prudent-investor')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Investment Standard</div>
+        <div class="def-word">Prudent Investor Rule</div>
+        <p>A standard for trust investment management codified in the Uniform Prudent Investor Act (UPIA) (1994). It requires trustees to evaluate investments in the context of the total portfolio, diversify, and balance risk and return. It explicitly incorporates Modern Portfolio Theory (MPT) and replaced the older "prudent man" rule that evaluated each investment in isolation.</p>
+      </div>
+      <p class="modal-section-title">Key Requirements</p>
+      <ul>
+        <li><strong>Portfolio Context:</strong> Risk is evaluated for the entire portfolio, not individual holdings in isolation.</li>
+        <li><strong>Diversification:</strong> Unless special circumstances warrant, portfolios must be diversified across asset classes, sectors, and geographies.</li>
+        <li><strong>Risk-Return Balance:</strong> Investments must be reasonable given the trust's purposes, duration, distribution requirements, and economic conditions.</li>
+        <li><strong>Monitoring:</strong> Regular review and adjustment of investments; a "set it and forget it" approach is a breach.</li>
+        <li><strong>Cost Consideration:</strong> Trustees must consider the costs of investment management, trading, and custody.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Prudent Investor Act (1994); Restatement (Third) of Trusts §§ 90–92.</div>
+    </div>
+  </div>
+</div>
+
+<!-- UTC -->
+<div class="modal-overlay" id="modal-utc" role="dialog" aria-modal="true" aria-labelledby="modal-title-utc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-utc">Uniform Trust Code (UTC)</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-utc')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Model State Law</div>
+        <div class="def-word">Uniform Trust Code</div>
+        <p>A comprehensive model state law promulgated by the Uniform Law Commission that provides rules for trust creation, administration, modification, and fiduciary standards. Adopted in whole or in part by roughly 37 U.S. states and the District of Columbia (most recently Oklahoma, in 2025), the UTC modernizes trust law, codifies fiduciary duties, and provides default rules that apply unless the trust instrument provides otherwise. Notable holdouts — including California, Delaware, New York, and Texas — retain their own comprehensive trust statutes that predate the UTC and cover much of the same ground.</p>
+      </div>
+      <p class="modal-section-title">Key Provisions</p>
+      <ul>
+        <li><strong>Trust Creation:</strong> Rules for creating valid trusts, including oral trusts (in limited circumstances) and trusts created by exercise of a power of appointment.</li>
+        <li><strong>Trustee Powers:</strong> Default powers of trustees, including the power to invest, sell, lease, and delegate.</li>
+        <li><strong>Fiduciary Duties:</strong> Codifies duties of loyalty, care, and good faith.</li>
+        <li><strong>Beneficiary Rights:</strong> Rights to information, accounting, and enforcement.</li>
+        <li><strong>Trust Modification &amp; Termination:</strong> Rules for non-judicial settlement agreements, decanting, and judicial modification.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Law Commission; Uniform Trust Code (2000, amended 2005, 2010).</div>
+    </div>
+  </div>
+</div>
+
+<!-- UPIA -->
+<div class="modal-overlay" id="modal-upia" role="dialog" aria-modal="true" aria-labelledby="modal-title-upia">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-upia">Uniform Prudent Investor Act (UPIA)</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-upia')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Model State Law</div>
+        <div class="def-word">Uniform Prudent Investor Act (UPIA)</div>
+        <p>A model state law promulgated in 1994 that codifies the Prudent Investor Rule for trust investment management. UPIA reflects Modern Portfolio Theory and has been adopted in substance by nearly all U.S. states. It replaced the older "prudent man" rule (from <em>Harvard College v. Amory</em>, 1830) that evaluated each investment in isolation.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Law Commission; Uniform Prudent Investor Act (1994).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Revocable -->
+<div class="modal-overlay" id="modal-revocable" role="dialog" aria-modal="true" aria-labelledby="modal-title-revocable">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-revocable">Revocable Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-revocable')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Type</div>
+        <div class="def-word">Revocable Trust</div>
+        <p>A trust that can be amended or revoked by the settlor during their lifetime. Also known as a "living trust" when created inter vivos. Assets are included in the settlor's estate for estate tax purposes, and there is no asset protection from creditors. The settlor typically serves as trustee and beneficiary.</p>
+      </div>
+      <p class="modal-section-title">Primary Uses</p>
+      <ul>
+        <li><strong>Probate avoidance:</strong> Assets titled in the trust pass outside of probate, providing privacy and speed.</li>
+        <li><strong>Incapacity planning:</strong> A successor trustee steps in automatically if the settlor becomes incapacitated, avoiding guardianship proceedings.</li>
+        <li><strong>Privacy:</strong> Trust terms and assets are not part of the public probate record.</li>
+        <li><strong>Ease of administration:</strong> Simplifies estate administration by consolidating assets under one instrument.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 602 (Revocation or Amendment); IRC § 676 (grantor trust — power to revoke).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Irrevocable -->
+<div class="modal-overlay" id="modal-irrevocable" role="dialog" aria-modal="true" aria-labelledby="modal-title-irrevocable">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-irrevocable">Irrevocable Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-irrevocable')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Type</div>
+        <div class="def-word">Irrevocable Trust</div>
+        <p>A trust that generally cannot be amended or revoked after it is created. Once assets are transferred, the settlor relinquishes control. Assets are typically excluded from the settlor's estate for estate tax purposes and are protected from the settlor's personal creditors (subject to fraudulent transfer laws). Irrevocable trusts are the cornerstone of advanced estate planning.</p>
+      </div>
+      <p class="modal-section-title">Primary Uses</p>
+      <ul>
+        <li><strong>Estate tax reduction:</strong> Removing assets from the settlor's taxable estate.</li>
+        <li><strong>Asset protection:</strong> Shielding assets from creditors, lawsuits, and divorce claims.</li>
+        <li><strong>Charitable giving:</strong> CRTs and CLTs are irrevocable.</li>
+        <li><strong>Medicaid planning:</strong> In some states, irrevocable trusts can protect assets from Medicaid spend-down requirements (subject to look-back periods).</li>
+        <li><strong>Generation-skipping:</strong> Dynasty trusts that shelter assets from transfer tax across multiple generations.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 602; IRC §§ 2036–2038 (estate tax inclusion); IRC § 2035 (gifts within 3 years of death).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Testamentary -->
+<div class="modal-overlay" id="modal-testamentary" role="dialog" aria-modal="true" aria-labelledby="modal-title-testamentary">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-testamentary">Testamentary Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-testamentary')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Type</div>
+        <div class="def-word">Testamentary Trust</div>
+        <p>A trust created within a will that becomes effective only upon the death of the settlor, after the will is admitted to probate and the estate is administered. It is often used to provide for minor children, manage assets for beneficiaries over time, or address special family needs. Because it is created by will, it does NOT avoid probate.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 407 (Trust Created by Will); Restatement (Third) of Trusts § 26.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Inter Vivos -->
+<div class="modal-overlay" id="modal-inter-vivos" role="dialog" aria-modal="true" aria-labelledby="modal-title-inter-vivos">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-inter-vivos">Inter Vivos Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-inter-vivos')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Type</div>
+        <div class="def-word">Inter Vivos Trust</div>
+        <p>A trust created and funded during the lifetime of the settlor. It can be revocable or irrevocable. "Living trust" is a common term for an inter vivos revocable trust. The primary advantage is that properly funded inter vivos trusts avoid probate and provide for seamless incapacity planning.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 401 (Methods of Creating Trust).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Charitable Trust -->
+<div class="modal-overlay" id="modal-charitable-trust" role="dialog" aria-modal="true" aria-labelledby="modal-title-charitable-trust">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-charitable-trust">Charitable Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-charitable-trust')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trust Type</div>
+        <div class="def-word">Charitable Trust</div>
+        <p>A split-interest trust that combines charitable giving with income or estate planning benefits. The two main types are Charitable Remainder Trusts (CRT) and Charitable Lead Trusts (CLT). Both are irrevocable and must comply with strict IRS requirements under IRC § 664.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 664 (CRT); IRC § 170 (Charitable Deduction); Treas. Reg. § 1.664-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CRT -->
+<div class="modal-overlay" id="modal-crt" role="dialog" aria-modal="true" aria-labelledby="modal-title-crt">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-crt">Charitable Remainder Trust (CRT)</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-crt')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Charitable Trust</div>
+        <div class="def-word">Charitable Remainder Trust (CRT)</div>
+        <p>A trust that pays income to non-charitable beneficiaries (usually the settlor or family) for a term of up to 20 years or for life. At the end of the term, the remaining principal goes to a designated qualified charity. The settlor receives an immediate charitable income tax deduction equal to the present value of the remainder interest, subject to AGI limitations. CRTs are tax-exempt entities, so appreciated assets can be sold within the CRT without immediate capital gains tax.</p>
+      </div>
+      <p class="modal-section-title">Types of CRTs</p>
+      <ul>
+        <li><strong>CRAT (Charitable Remainder Annuity Trust):</strong> Pays a fixed annuity amount (at least 5% of initial value) each year. The annuity amount does not change.</li>
+        <li><strong>CRUT (Charitable Remainder Unitrust):</strong> Pays a fixed percentage (at least 5%) of the trust's fair market value each year, revalued annually. Payments fluctuate with trust value.</li>
+      </ul>
+      <div class="warn-box"><strong>IRS Requirements:</strong> CRTs must pay at least 5% annually; the remainder interest must be at least 10% of the initial value; no self-dealing; and prohibited investments are restricted.</div>
+      <div class="citation"><strong>Source:</strong> IRC § 664; Treas. Reg. § 1.664-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLT -->
+<div class="modal-overlay" id="modal-clt" role="dialog" aria-modal="true" aria-labelledby="modal-title-clt">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-clt">Charitable Lead Trust (CLT)</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-clt')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Charitable Trust</div>
+        <div class="def-word">Charitable Lead Trust (CLT)</div>
+        <p>A trust that pays income to a qualified charity for a term of years. At the end of the term, the remaining principal goes to non-charitable beneficiaries (usually family members). The CLT is useful for transferring wealth to the next generation with reduced gift or estate tax, because the charitable interest reduces the taxable value of the remainder gift. CLTs can be structured as grantor trusts (income tax deduction to settlor) or non-grantor trusts (no income tax deduction, but estate/gift tax benefits).</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 170(f)(2)(B); Treas. Reg. § 1.170A-6(c).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Form 1041 -->
+<div class="modal-overlay" id="modal-form1041" role="dialog" aria-modal="true" aria-labelledby="modal-title-form1041">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-form1041">Form 1041 — Trust Income Tax Return</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-form1041')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Form</div>
+        <div class="def-word">Form 1041</div>
+        <p>The U.S. Income Tax Return for Estates and Trusts. Non-grantor trusts must file Form 1041 annually to report income, deductions, gains, losses, and distributions. Income distributed to beneficiaries is reported on Schedule K-1 and is taxed to the beneficiaries. Income retained by the trust is taxed at the trust's highly compressed brackets — the top 37% rate applies at just $16,000 of taxable income in 2026 (IRS Rev. Proc. 2025-32), versus $640,600 for a single individual filer. A 3.8% Net Investment Income Tax applies above that same threshold, producing a combined top federal rate of 40.8% on undistributed investment income — a key reason trustees often distribute income to beneficiaries in lower brackets rather than accumulate it.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRS Form 1041 instructions; IRC §§ 641–648, 1411; Rev. Proc. 2025-32.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Grantor Trust -->
+<div class="modal-overlay" id="modal-grantor-trust" role="dialog" aria-modal="true" aria-labelledby="modal-title-grantor-trust">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-grantor-trust">Grantor Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-grantor-trust')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Status</div>
+        <div class="def-word">Grantor Trust</div>
+        <p>A trust where the settlor retains one or more powers described in IRC §§ 671–679 (e.g., power to revoke, right to income, power to control beneficial enjoyment, power to borrow without adequate security). Under these rules, the settlor is treated as the owner of the trust assets and is taxed on all trust income on their personal Form 1040. The trust itself does not pay income tax. Many advanced planning trusts (e.g., IDGTs, SLATs, GRATs) are intentionally structured as grantor trusts.</p>
+      </div>
+      <p class="modal-section-title">Common Grantor Trust Powers (IRC §§ 671–679)</p>
+      <ul>
+        <li>Power to revoke the trust (§ 676).</li>
+        <li>Right to receive trust income (§ 677).</li>
+        <li>Power to control beneficial enjoyment (§ 674).</li>
+        <li>Power to borrow trust assets without adequate security (§ 675).</li>
+        <li>Power to reacquire trust corpus by substituting assets of equal value (§ 675(4)(C)) — commonly used in IDGTs.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> IRC §§ 671–679; Treas. Reg. § 1.671-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Non-Grantor -->
+<div class="modal-overlay" id="modal-non-grantor" role="dialog" aria-modal="true" aria-labelledby="modal-title-non-grantor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-non-grantor">Non-Grantor Trust</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-non-grantor')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Status</div>
+        <div class="def-word">Non-Grantor Trust</div>
+        <p>A trust where the settlor has relinquished all powers that would trigger grantor trust status under IRC §§ 671–679. The trust is a separate taxpayer with its own EIN and must file Form 1041. Income distributed to beneficiaries is taxed to them (Schedule K-1). Income retained by the trust is taxed at the trust's compressed brackets — the 37% rate applies at just $16,000 of taxable income in 2026 (plus the 3.8% NIIT, which kicks in at the same threshold), for a combined top rate of 40.8%.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 641–648, 1411; Treas. Reg. § 1.641(a)-1; Rev. Proc. 2025-32.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Estate Tax -->
+<div class="modal-overlay" id="modal-estate-tax" role="dialog" aria-modal="true" aria-labelledby="modal-title-estate-tax">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-estate-tax">Estate Tax</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-estate-tax')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transfer Tax</div>
+        <div class="def-word">Estate Tax</div>
+        <p>A tax on the transfer of a person's estate at death. Under the <em>One Big Beautiful Bill Act</em> (OBBBA), signed July 4, 2025, the federal estate tax exemption is <strong>$15 million</strong> per individual ($30 million for married couples with portability) for 2026, permanently indexed for inflation beginning in 2027. The top estate tax rate remains 40%. Irrevocable trusts are often used to remove assets from the settlor's estate, reducing or eliminating estate tax liability.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 2001–2056; IRS Publication 559; OBBBA (July 2025).</div>
+    </div>
+  </div>
+</div>
+
+<!-- GST -->
+<div class="modal-overlay" id="modal-gst" role="dialog" aria-modal="true" aria-labelledby="modal-title-gst">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-gst">Generation-Skipping Transfer (GST) Tax</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-gst')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transfer Tax</div>
+        <div class="def-word">GST Tax</div>
+        <p>A tax on transfers to grandchildren or other beneficiaries who are two or more generations below the transferor ("skip persons"). The GST tax is designed to prevent the avoidance of estate tax by skipping generations. Under OBBBA, the GST exemption is also $15 million per individual for 2026, permanently indexed for inflation from 2027. The GST tax rate is a flat 40%.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 2601–2663; IRS Form 709.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GST Exemption -->
+<div class="modal-overlay" id="modal-gst-exemption" role="dialog" aria-modal="true" aria-labelledby="modal-title-gst-exemption">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-gst-exemption">GST Exemption</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-gst-exemption')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Exemption</div>
+        <div class="def-word">GST Exemption</div>
+        <p>The amount that can be transferred free of generation-skipping transfer tax. Under OBBBA, the GST exemption is <strong>$15 million</strong> per individual for 2026, permanently indexed for inflation from 2027. Trusts can be structured to use the GST exemption to make tax-free transfers to grandchildren and more remote descendants. "Dynasty trusts" are designed to perpetually shelter assets from GST tax across multiple generations.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 2631; Treas. Reg. § 26.2631-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Charitable Deduction -->
+<div class="modal-overlay" id="modal-charitable-deduction" role="dialog" aria-modal="true" aria-labelledby="modal-title-charitable-deduction">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-charitable-deduction">Charitable Deduction</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-charitable-deduction')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Tax Deduction</div>
+        <div class="def-word">Charitable Deduction</div>
+        <p>An income tax deduction for contributions made to qualified charitable organizations. For CRTs, the deduction is based on the present value of the charity's remainder interest. For CLTs, the deduction depends on whether the CLT is a grantor trust (income tax deduction to settlor) or non-grantor trust (no income tax deduction, but estate/gift tax benefits). Under OBBBA, individual taxpayers face a 0.5% of AGI floor for charitable deductions, making trust-level charitable planning more attractive in some cases.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 170; Treas. Reg. § 1.170A-6; OBBBA (July 2025).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Titling Example -->
+<div class="modal-overlay" id="modal-titling-example" role="dialog" aria-modal="true" aria-labelledby="modal-title-titling-example">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-titling-example">Trust Securities Titling</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-titling-example')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Fiduciary Titling</div>
+        <div class="def-word">Trustee Titling</div>
+        <p>The correct format for titling securities in a trust account is: <em>"[First Name] [Last Name], Trustee of the [Trust Name] Trust, dated [Date]"</em>. For example: <strong>"John Doe, Trustee of the Smith Family Trust, dated January 1, 2020."</strong> For co-trustees: <strong>"John Doe and Jane Doe, Trustees of the Smith Family Trust, dated January 1, 2020."</strong></p>
+      </div>
+      <p class="modal-section-title">Why Proper Titling Matters</p>
+      <ul>
+        <li><strong>Legal Ownership:</strong> Establishes that assets are held in a fiduciary capacity, not personally.</li>
+        <li><strong>Tax Reporting:</strong> Ensures the trust's EIN and tax status are properly applied (Form 1099, Form 1041).</li>
+        <li><strong>Succession:</strong> Clarifies who has authority when a trustee dies or resigns.</li>
+        <li><strong>Asset Protection:</strong> Protects trust assets from the trustee's personal creditors and divorce claims.</li>
+        <li><strong>Estate Tax:</strong> Prevents inclusion of trust assets in the trustee's personal estate.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Custodian account opening procedures; Uniform Trust Code § 801.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTC -->
+<div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-dtc')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Central Securities Depository</div>
+        <div class="def-word">DTC</div>
+        <p>A limited-purpose trust company and the primary central securities depository for U.S. equity and debt securities. DTC holds the majority of U.S. securities in book-entry form, eliminating the need for physical certificates. DTC is a subsidiary of DTCC (Depository Trust &amp; Clearing Corporation). Settlement for DTC-eligible securities is T+1 (one business day after trade) as of May 28, 2024.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-96818 (T+1 adoption); DTCC website.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cede -->
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cede')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Nominee Partnership</div>
+        <div class="def-word">Cede &amp; Co.</div>
+        <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers, including trusts, individuals, and institutions. Cede &amp; Co. does not have beneficial ownership — it is purely a nominee. The beneficial ownership chain runs through the DTC participant (custodian) to the ultimate beneficial owner (the trust, via the trustee).</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Participant -->
+<div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-participant')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Member Entity</div>
+        <div class="def-word">DTC Participant</div>
+        <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC. The trust's custodian is typically a DTC participant, holding the trust's securities in its participant account. DTC participants are responsible for maintaining accurate records of their customers' positions and for settling trades on a T+1 basis.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Custodian -->
+<div class="modal-overlay" id="modal-custodian" role="dialog" aria-modal="true" aria-labelledby="modal-title-custodian">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-custodian">Custodian</h3><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-custodian')">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Service Provider</div>
+        <div class="def-word">Custodian</div>
+        <p>A financial institution (typically a bank, trust company, or broker-dealer) that holds securities on behalf of a client (such as a trust). The custodian is a DTC participant and maintains records of the trust's positions, processes transactions (trades, corporate actions), provides reporting, and ensures proper fiduciary titling. The custodian does not make investment or distribution decisions — those are trustee functions.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Bank custody agreements; SEC Rule 17Ad-10.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer class="page-footer">
+  <div class="footer-content">
+  <nav class="footer-site-nav" aria-label="Site navigation">
+    <a href="../index.html" class="footer-home-link">Home</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../sitemap.html">Site Map</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../index.html#documents">All Documents</a>
+  </nav>
+
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Trusts &amp; Fiduciary Structures Teaching Guide v2.0 · Updated for OBBBA ($15M exemption) and T+1 settlement</div>
+      <div class="footer-links">
+        <a href="https://www.uniformlaws.org" rel="noopener">Uniform Law Commission</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.irs.gov/charities-non-profits" rel="noopener">IRS</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, tax, or investment advice. Tax laws change frequently; consult qualified counsel for your specific situation. For official guidance, consult an attorney, tax advisor, or investment professional.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── Theme Toggle ───
+(function initThemeToggle() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', function() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ─── TOC Sidebar ───
+(function initSidebar() {
+  const toggleBtn = document.querySelector('.toc-toggle');
+  const sidebar = document.getElementById('tocSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (!toggleBtn || !sidebar || !backdrop) return;
+  function openSidebar() {
+    sidebar.classList.add('open');
+    backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+  });
+  backdrop.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSidebar();
+  });
+})();
+
+// ─── Modal System ───
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  // Close any open modals first
+  document.querySelectorAll('.modal-overlay.active').forEach(m => {
+    if (m.id !== id) m.classList.remove('active');
+  });
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  const closeBtn = modal.querySelector('.modal-close');
+  if (closeBtn) {
+    closeBtn.onclick = function() { closeModal(id); };
+  }
+  modal.onclick = function(e) {
+    if (e.target === modal) closeModal(id);
+  };
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('active');
+  // Only restore scroll if no other modals are open
+  const anyOpen = document.querySelector('.modal-overlay.active');
+  if (!anyOpen) document.body.style.overflow = '';
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const openModal = document.querySelector('.modal-overlay.active');
+    if (openModal) closeModal(openModal.id);
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLCs, Corporations & Other Corporate Structures — Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
+<script src="../js/theme-init.js"></script>
+<style>
+
+/* ─── Shared with template ─── */
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.3s ease;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 16px; top: 44px; z-index: 70;
+  width: 40px; height: 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: all 0.2s;
+}
+.toc-toggle:hover { background: var(--accent-hover); }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.78rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: all 0.15s;
+}
+.toc-sidebar a:hover { color: var(--accent); padding-left: 4px; }
+.toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
+}
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ─── Page Header ─── */
+.page-header {
+  background: var(--bg); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 24px 32px 20px; display: flex;
+  align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+.header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.header-text .sub {
+  font-size: 0.72rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 2px;
+}
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.15); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+/* ─── Main ─── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+.update-banner {
+  background: var(--accent-light); border: 1px solid var(--accent-muted);
+  border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.82rem; color: var(--accent);
+}
+.update-banner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.update-banner strong { color: var(--ink); }
+
+.teach-banner {
+  background: var(--teal-light); border: 1px solid rgba(13,115,119,0.15);
+  border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.84rem; color: var(--teal);
+}
+.teach-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.teach-banner strong { color: var(--ink); }
+
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 48px 52px 56px; position: relative;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem; font-weight: 600; color: var(--ink);
+  margin: 36px 0 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-faint);
+  letter-spacing: -0.01em;
+}
+.section-title:first-child { margin-top: 0; }
+
+.subsection-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ink-secondary);
+  margin: 24px 0 10px;
+}
+
+.lead {
+  font-size: 1.05rem; color: var(--ink-secondary); line-height: 1.75;
+  margin-bottom: 20px; max-width: 780px;
+}
+.lead a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: all 0.2s ease;
+}
+.lead a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+.body-text {
+  font-size: 0.92rem; color: var(--ink-secondary); line-height: 1.85;
+  margin-bottom: 16px; max-width: 780px;
+}
+.body-text ul, .body-text ol {
+  margin: 12px 0 12px 24px; padding: 0;
+}
+.body-text li { margin-bottom: 8px; }
+
+.body-text a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-muted);
+  transition: all 0.2s ease;
+}
+.body-text a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+.body-text a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.diagram-box {
+  background: var(--bg-cream); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 28px 32px; margin: 24px 0;
+}
+.diagram-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 16px;
+  text-align: center;
+}
+
+.diagram-box.concept-map {
+  padding: 24px 16px 18px;
+  overflow-x: auto;
+}
+.concept-map-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.concept-map-svg .cm-edge {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+.concept-map-svg .cm-edge-dashed {
+  fill: none;
+  stroke: var(--ink-faint);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+}
+.concept-map-svg .cm-edge-pass {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+.concept-map-svg .cm-edge-label {
+  fill: var(--ink-tertiary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.concept-map-svg .cm-node-title {
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.concept-map-svg .cm-node-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.concept-map-svg .cm-badge-text {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.concept-map-svg .cm-zone-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+  pointer-events: none;
+}
+.concept-map-svg .cm-node {
+  cursor: pointer;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.06);
+}
+.concept-map-svg .cm-node:focus {
+  outline: none;
+}
+.concept-map-svg .cm-node:focus-visible .cm-node-shape {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+.concept-map-svg .cm-node-static {
+  cursor: default;
+}
+.cm-caption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-tertiary);
+  margin: 14px auto 0;
+  line-height: 1.55;
+  max-width: 560px;
+}
+.cm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+.cm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cm-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+}
+.cm-legend-line {
+  width: 18px;
+  height: 0;
+  border-top: 2px solid var(--ink-muted);
+  flex-shrink: 0;
+}
+.cm-legend-line.dashed {
+  border-top-style: dashed;
+  border-color: var(--ink-faint);
+}
+.cm-legend-line.pass {
+  border-top-style: dashed;
+  border-color: var(--green);
+}
+.cm-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.process-flow-svg {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.process-flow-svg .pf-edge {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-width: 1.6;
+}
+.process-flow-svg .pf-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #fff;
+}
+.process-flow-svg .pf-step-title {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.process-flow-svg .pf-step-sub {
+  font-size: 9px;
+  fill: var(--ink-tertiary);
+}
+.process-flow-svg .pf-phase {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .diagram-box.concept-map { padding: 18px 8px 14px; }
+  .concept-map-svg { min-width: 300px; }
+}
+
+.entity-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.entity-card {
+  background: var(--bg-ivory); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 20px 22px;
+}
+.entity-card .entity-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.entity-card .entity-role {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+.entity-card .entity-desc {
+  font-size: 0.82rem; color: var(--ink-tertiary); line-height: 1.65;
+}
+
+.comp-table {
+  width: 100%; border-collapse: collapse; margin: 20px 0;
+  font-size: 0.85rem; color: var(--ink-secondary);
+}
+.comp-table th, .comp-table td {
+  border: 1px solid var(--border-light); padding: 12px 14px;
+  text-align: left; vertical-align: top;
+}
+.comp-table th {
+  background: var(--bg-cream); font-weight: 600; color: var(--ink);
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.comp-table td { background: var(--bg); }
+
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: all 0.2s ease; padding: 0 1px;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 2px; outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.7; transition: opacity 0.2s;
+  display: inline-block; width: 12px; height: 12px;
+  line-height: 12px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* ─── Modal ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.modal-overlay.loading .modal-card {
+  transform: translateY(20px) scale(0.98);
+}
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: var(--bg-cream); border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 22px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.6rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: all 0.2s; margin-top: -4px;
+}
+.modal-close:hover { background: var(--border-light); color: var(--ink); }
+.modal-body {
+  padding: 24px 32px 32px; overflow-y: auto;
+  max-height: calc(88vh - 90px); font-size: 0.88rem;
+  line-height: 1.85; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 14px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 16px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body ul { margin: 12px 0 12px 24px; padding: 0; }
+.modal-body li { margin-bottom: 8px; line-height: 1.7; }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--ink); margin: 20px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.def-callout .def-type {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.tip-box {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+.warn-box {
+  background: var(--red-light); border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.warn-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--red); }
+
+/* ─── Quiz ─── */
+.quiz-section {
+  margin-top: 48px;
+  padding: 32px 36px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+}
+.section-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.quiz-intro {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  margin-bottom: 24px;
+  max-width: 780px;
+}
+.quiz-score-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.quiz-score-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+.quiz-score-fill.pass { background: var(--green); }
+.quiz-score-fill.fail { background: var(--red); }
+.quiz-score-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin-bottom: 20px;
+}
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.quiz-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-ivory);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.quiz-card.correct { border-color: var(--green); background: var(--green-light); }
+.quiz-card.incorrect { border-color: var(--red); background: var(--red-light); }
+.quiz-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.quiz-content { flex: 1; }
+.quiz-content h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.quiz-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  padding: 4px 0;
+}
+.quiz-options label:hover { color: var(--ink); }
+.quiz-options input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+.quiz-feedback {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct {
+  background: var(--green-light);
+  border-left: 3px solid var(--green);
+  color: var(--green);
+}
+.quiz-feedback.incorrect {
+  background: var(--red-light);
+  border-left: 3px solid var(--red);
+  color: var(--red);
+}
+.quiz-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.quiz-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.quiz-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.quiz-btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.quiz-btn-secondary {
+  background: var(--border-light);
+  color: var(--ink-secondary);
+}
+.quiz-btn-secondary:hover { background: var(--border); color: var(--ink); }
+.quiz-result {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  display: none;
+}
+.quiz-result.show { display: block; }
+.quiz-result.pass {
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+  color: var(--green);
+}
+.quiz-result.fail {
+  background: var(--red-light);
+  border-left: 4px solid var(--red);
+  color: var(--red);
+}
+
+/* ─── Footer ─── */
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 24px 20px 32px; margin-top: 32px;
+}
+.footer-content { max-width: 1100px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center; font-size: 0.8rem; color: var(--ink-secondary);
+}
+.footer-version { font-weight: 500; color: var(--ink-tertiary); }
+.footer-links { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.7rem; }
+.footer-legal { margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px; text-align: center; }
+.footer-site-nav {
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+.footer-site-nav a {
+  color: var(--ink-tertiary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-site-nav a:hover { color: var(--accent); }
+.footer-site-nav .footer-nav-sep {
+  color: var(--border);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 20px 14px 48px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .quiz-section { padding: 20px 16px; }
+  .quiz-card { flex-direction: column; gap: 10px; }
+}
+
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+  .body-text a, .lead a {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+}
+</style>
+</head>
+<body>
+
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <h4>Contents</h4>
+  <a href="#overview">Overview — Corporate Structures & Securities</a>
+  <a href="#overview" class="sub">Entity Choice & Securities Titling</a>
+  <a href="#concept-map-entity" class="sub">Concept Map — Entity Types</a>
+  <a href="#llc">Limited Liability Companies (LLCs)</a>
+  <a href="#concept-map-llc" class="sub">Concept Map — LLC Structure</a>
+  <a href="#corporations">Corporations — C-Corp & S-Corp</a>
+  <a href="#concept-map-corp" class="sub">Concept Map — Corporate Structure</a>
+  <a href="#corporations" class="sub">C-Corp vs S-Corp</a>
+  <a href="#partnerships">Partnerships</a>
+  <a href="#securities-issuance">Securities Issuance & Registration</a>
+  <a href="#concept-map-issuance" class="sub">Concept Map — Issuance Lifecycle</a>
+  <a href="#process-issuance" class="sub">Process Map — Issuance to DTC</a>
+  <a href="#dtc-eligibility">DTC Eligibility for Corporate Securities</a>
+  <a href="#restricted">Restricted Securities — Rule 144, 144A, Reg S</a>
+  <a href="#concept-map-restricted" class="sub">Concept Map — Restricted Securities</a>
+  <a href="#reorganizations">Mergers, Reorganizations & Transfers</a>
+  <a href="#process-merger" class="sub">Process Map — Merger DTC Processing</a>
+  <a href="#governance">Governance & Voting Rights</a>
+  <a href="#concept-map-governance" class="sub">Concept Map — Governance Stack</a>
+  <a href="#global-comparison-corp">Global Comparison</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview</span></a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard <span class="toc-desc">↗ DTC/DTCC/Cede</span></a>
+  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations <span class="toc-desc">↗ Endowments & DAFs</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">CO</div>
+      <div class="header-text">
+        <h1>LLCs, Corporations &amp; Other Corporate Structures</h1>
+        <div class="sub">Teaching Guide — Securities Issuance, Ownership &amp; Governance</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="font-size:0.78rem;color:var(--ink-muted);margin-bottom:16px;">
+  <a href="../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
+  <span style="margin:0 6px;">›</span>
+  <a href="../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
+  <span style="margin:0 6px;">›</span>
+  <span style="color:var(--ink-tertiary);">Teaching Guides</span>
+  <span style="margin:0 6px;">›</span>
+  <span style="color:var(--ink-secondary);font-weight:500;">LLCs, Corporations &amp; Corporate Structures</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Teaching Guide:</strong> Understand securities ownership across LLCs, C-Corps, S-Corps, and partnerships. Master governance, restricted securities, DTC eligibility, and corporate reorganizations. Click any <strong>underlined term</strong> for definitions.</span>
+</div>
+
+<div class="doc-frame">
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: OVERVIEW
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="overview">Overview — Corporate Structures &amp; Securities</h2>
+
+<p class="lead">
+Securities are issued by a wide range of entities, each with distinct legal characteristics. <span class="hotspot" data-modal="llc" tabindex="0" role="button" onclick="openModal('modal-llc')">Limited Liability Companies (LLCs)</span>, <span class="hotspot" data-modal="ccorp" tabindex="0" role="button" onclick="openModal('modal-ccorp')">C-Corporations</span>, <span class="hotspot" data-modal="scorp" tabindex="0" role="button" onclick="openModal('modal-scorp')">S-Corporations</span>, and <span class="hotspot" data-modal="partnership" tabindex="0" role="button" onclick="openModal('modal-partnership')">partnerships</span> are the most common forms of for-profit entities that issue securities. Understanding how securities are titled, traded, and held through the <span class="hotspot" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span> system is essential for corporate issuers, investors, and legal professionals.
+</p>
+
+<p class="body-text">
+This guide covers the securities mechanics for each entity type, from initial issuance and DTC eligibility to trading, restricted securities rules, and corporate actions. It also explores governance structures — how shareholders (or members) exercise voting rights — and the legal and operational frameworks that apply to each entity type.
+</p>
+
+<div class="entity-grid">
+  <div class="entity-card">
+    <div class="entity-name">C-Corporation</div>
+    <div class="entity-role">Traditional Corporation</div>
+    <div class="entity-desc">A separate legal entity that issues common and preferred stock. C-corps are subject to corporate income tax (double taxation) but offer unlimited growth potential and the ability to have an unlimited number of shareholders.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">S-Corporation</div>
+    <div class="entity-role">Pass-Through Entity</div>
+    <div class="entity-desc">A corporation that elects pass-through taxation under Subchapter S of the IRC. Limited to 100 shareholders (individuals, estates, certain trusts), with one class of stock. Cannot be owned by non-U.S. residents.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">LLC</div>
+    <div class="entity-role">Limited Liability Company</div>
+    <div class="entity-desc">A flexible structure offering pass-through taxation and limited liability. LLCs issue membership interests (not stock). Can be member-managed or manager-managed. Popular for private businesses and real estate.</div>
+  </div>
+  <div class="entity-card">
+    <div class="entity-name">Partnership</div>
+    <div class="entity-role">Pass-Through Entity</div>
+    <div class="entity-desc">A business structure where two or more partners share ownership. General partnerships (GP) have unlimited liability; limited partnerships (LP) have general and limited partners; limited liability partnerships (LLP) offer liability protection.</div>
+  </div>
+</div>
+
+<!-- Concept Map 1: Entity Types -->
+<div class="diagram-box concept-map" id="concept-map-entity" role="img" aria-labelledby="cm1-title" aria-describedby="cm1-desc">
+  <div class="diagram-title" id="cm1-title">Concept Map — Entity Types &amp; Securities</div>
+  <p id="cm1-desc" class="visually-hidden">
+    Decision tree of entity types: For-Profit Entities branch into Corporations (C-Corp, S-Corp),
+    LLCs, and Partnerships (GP, LP, LLP). Each has different securities characteristics:
+    C-Corp issues common/preferred stock, unlimited shareholders, double taxation;
+    S-Corp issues one class of stock, 100 shareholder limit, pass-through;
+    LLC issues membership interests, flexible, pass-through;
+    Partnerships issue partnership interests, pass-through.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Root -->
+    <g class="cm-node" data-modal="entity" tabindex="0" role="button" aria-label="Entity — open definition">
+      <rect class="cm-node-shape" x="270" y="16" width="180" height="46" rx="12" fill="var(--accent)"/>
+      <text class="cm-node-title" x="360" y="46" text-anchor="middle" fill="#fff">For-Profit Entity</text>
+    </g>
+
+    <!-- Forks -->
+    <path class="cm-edge" d="M270 62 L160 100" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M360 62 L360 100" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M450 62 L560 100" marker-end="url(#cm1-arrow)"/>
+
+    <!-- Corporations -->
+    <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Corporation — open definition">
+      <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="160" y="126" text-anchor="middle" fill="var(--accent)" font-size="12">Corporations</text>
+      <text class="cm-node-sub" x="160" y="144" text-anchor="middle" fill="var(--ink-tertiary)">C-Corp · S-Corp</text>
+    </g>
+
+    <!-- LLCs -->
+    <g class="cm-node" data-modal="llc" tabindex="0" role="button" aria-label="LLC — open definition">
+      <rect class="cm-node-shape" x="260" y="102" width="200" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="126" text-anchor="middle" fill="var(--gold-deep)" font-size="12">LLCs</text>
+      <text class="cm-node-sub" x="360" y="144" text-anchor="middle" fill="var(--gold)">Membership interests</text>
+    </g>
+
+    <!-- Partnerships -->
+    <g class="cm-node" data-modal="partnership" tabindex="0" role="button" aria-label="Partnership — open definition">
+      <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="560" y="126" text-anchor="middle" fill="var(--green)" font-size="12">Partnerships</text>
+      <text class="cm-node-sub" x="560" y="144" text-anchor="middle" fill="var(--ink-tertiary)">GP · LP · LLP</text>
+    </g>
+
+    <text class="cm-edge-label" x="200" y="92" text-anchor="middle">stock</text>
+    <text class="cm-edge-label" x="360" y="92" text-anchor="middle">membership</text>
+    <text class="cm-edge-label" x="520" y="92" text-anchor="middle">partnership</text>
+
+    <!-- C-Corp / S-Corp sub-branches -->
+    <path class="cm-edge" d="M60 162 L60 200" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M260 162 L260 200" marker-end="url(#cm1-arrow)"/>
+
+    <g class="cm-node" data-modal="ccorp" tabindex="0" role="button" aria-label="C-Corp — open definition">
+      <rect class="cm-node-shape" x="10" y="202" width="120" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="70" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">C-Corp</text>
+      <text class="cm-node-sub" x="70" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Double taxation</text>
+    </g>
+    <g class="cm-node" data-modal="scorp" tabindex="0" role="button" aria-label="S-Corp — open definition">
+      <rect class="cm-node-shape" x="150" y="202" width="120" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="210" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">S-Corp</text>
+      <text class="cm-node-sub" x="210" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Pass-through</text>
+    </g>
+
+    <!-- Partnership sub-branches -->
+    <path class="cm-edge" d="M460 162 L400 200" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M560 162 L560 200" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M660 162 L660 200" marker-end="url(#cm1-arrow)"/>
+
+    <rect x="340" y="202" width="100" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-node-title" x="390" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">GP</text>
+    <text class="cm-node-sub" x="390" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Unlimited</text>
+
+    <rect x="460" y="202" width="100" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-node-title" x="510" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">LP</text>
+    <text class="cm-node-sub" x="510" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Limited partners</text>
+
+    <rect x="580" y="202" width="100" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-node-title" x="630" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">LLP</text>
+    <text class="cm-node-sub" x="630" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Liability protection</text>
+
+    <!-- Securities types at bottom -->
+    <rect x="40" y="290" width="640" height="38" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="314" text-anchor="middle" fill="var(--ink-tertiary)">Securities: Stock (Corporations) · Membership Interests (LLCs) · Partnership Interests (Partnerships)</text>
+
+    <!-- DTC eligibility note -->
+    <rect x="40" y="340" width="640" height="44" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="360" text-anchor="middle" fill="var(--ink-tertiary)">All can be held in DTC book-entry form — DTC eligibility depends on issuer meeting requirements</text>
+    <text class="cm-edge-label" x="360" y="376" text-anchor="middle" fill="var(--ink-muted)">C-Corps typically have the broadest DTC eligibility; S-Corps and LLCs often have restrictions</text>
+  </svg>
+  <p class="cm-caption"><strong>Entity types and their securities:</strong> C-Corps (stock, double taxation), S-Corps (stock, pass-through), LLCs (membership interests, pass-through), and Partnerships (partnership interests, pass-through).</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Root entity</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Corporations</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> LLCs</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Partnerships</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: LLCs
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="llc">Limited Liability Companies (LLCs)</h2>
+
+<p class="lead">
+A <span class="hotspot" data-modal="llc" tabindex="0" role="button" onclick="openModal('modal-llc')">Limited Liability Company (LLC)</span> is a flexible business structure that combines the limited liability of a corporation with the pass-through taxation of a partnership. LLCs are governed by state law (typically the LLC Act of the state of formation) and are popular for small businesses, real estate investment, and as holding vehicles for family assets.
+</p>
+
+<p class="body-text">
+LLCs issue <span class="hotspot" data-modal="membership-interest" tabindex="0" role="button" onclick="openModal('modal-membership-interest')">membership interests</span> rather than "stock" or "shares." These interests represent the economic and governance rights of the members. LLCs can be <span class="hotspot" data-modal="member-managed" tabindex="0" role="button" onclick="openModal('modal-member-managed')">member-managed</span> (where all members participate in management) or <span class="hotspot" data-modal="manager-managed" tabindex="0" role="button" onclick="openModal('modal-manager-managed')">manager-managed</span> (where designated managers run the business).
+</p>
+
+<h3 class="subsection-title">Securities Ownership in LLCs</h3>
+
+<p class="body-text">
+For DTC purposes, LLC membership interests can be held in book-entry form if the LLC meets DTC eligibility requirements. However, LLCs face additional challenges:
+</p>
+
+<ul class="body-text">
+  <li><strong>Transfer Restrictions:</strong> Many LLC operating agreements restrict the transfer of membership interests, which can limit trading and DTC eligibility.</li>
+  <li><strong>Tax Status:</strong> LLCs are typically pass-through entities, which may limit the pool of eligible investors (especially tax-exempt entities and foreign investors).</li>
+  <li><strong>Securities Law:</strong> LLC interests are securities under federal and state law, subject to registration or exemption requirements.</li>
+</ul>
+
+<!-- Concept Map 2: LLC Structure -->
+<div class="diagram-box concept-map" id="concept-map-llc" role="img" aria-labelledby="cm2-title" aria-describedby="cm2-desc">
+  <div class="diagram-title" id="cm2-title">Concept Map — LLC Structure &amp; Securities</div>
+  <p id="cm2-desc" class="visually-hidden">
+    LLC structure: Members (owners) hold membership interests.
+    They execute an Operating Agreement governing rights and management.
+    The LLC can be member-managed or manager-managed.
+    The LLC holds assets and issues securities.
+    Securities can be held at DTC if eligible.
+    Cede and Co. is the registered owner on the transfer agent's books.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Members -->
+    <g class="cm-node" data-modal="member" tabindex="0" role="button" aria-label="Member — open definition">
+      <rect class="cm-node-shape" x="48" y="30" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="113" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Members</text>
+      <text class="cm-node-sub" x="113" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Owners</text>
+    </g>
+
+    <!-- Operating Agreement -->
+    <g class="cm-node" data-modal="operating-agreement" tabindex="0" role="button" aria-label="Operating Agreement — open definition">
+      <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Operating Agreement</text>
+      <text class="cm-node-sub" x="350" y="58" text-anchor="middle" fill="var(--accent-muted)">Governs LLC</text>
+    </g>
+    <line class="cm-edge" x1="178" y1="53" x2="258" y2="43" marker-end="url(#cm2-arrow)"/>
+    <text class="cm-edge-label" x="220" y="34" text-anchor="middle">create</text>
+
+    <!-- Management choice -->
+    <path class="cm-edge" d="M350 66 L220 100" marker-end="url(#cm2-arrow)"/>
+    <path class="cm-edge" d="M350 66 L480 100" marker-end="url(#cm2-arrow)"/>
+
+    <g class="cm-node" data-modal="member-managed" tabindex="0" role="button" aria-label="Member-Managed — open definition">
+      <rect class="cm-node-shape" x="120" y="102" width="160" height="46" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="200" y="124" text-anchor="middle" fill="var(--ink)" font-size="11">Member-Managed</text>
+      <text class="cm-node-sub" x="200" y="140" text-anchor="middle" fill="var(--ink-tertiary)">All members manage</text>
+    </g>
+
+    <g class="cm-node" data-modal="manager-managed" tabindex="0" role="button" aria-label="Manager-Managed — open definition">
+      <rect class="cm-node-shape" x="440" y="102" width="160" height="46" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <text class="cm-node-title" x="520" y="124" text-anchor="middle" fill="var(--ink)" font-size="11">Manager-Managed</text>
+      <text class="cm-node-sub" x="520" y="140" text-anchor="middle" fill="var(--ink-tertiary)">Designated managers</text>
+    </g>
+
+    <text class="cm-edge-label" x="180" y="92" text-anchor="start">management</text>
+    <text class="cm-edge-label" x="480" y="92" text-anchor="end">management</text>
+
+    <!-- LLC Assets / Securities -->
+    <g class="cm-node" data-modal="llc" tabindex="0" role="button" aria-label="LLC — open definition">
+      <rect class="cm-node-shape" x="260" y="210" width="180" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="350" y="232" text-anchor="middle" fill="var(--gold-deep)" font-size="12">LLC Assets</text>
+      <text class="cm-node-sub" x="350" y="248" text-anchor="middle" fill="var(--gold)">Securities held</text>
+    </g>
+    <line class="cm-edge" x1="200" y1="148" x2="350" y2="208" marker-end="url(#cm2-arrow)"/>
+    <text class="cm-edge-label" x="280" y="180" text-anchor="start">manage</text>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="260" y="300" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="350" y="322" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede</text>
+      <text class="cm-node-sub" x="350" y="338" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
+    </g>
+    <line class="cm-edge" x1="350" y1="256" x2="350" y2="298" marker-end="url(#cm2-arrow)"/>
+    <text class="cm-edge-label" x="370" y="280" text-anchor="start">holds via</text>
+
+    <rect x="48" y="360" width="624" height="30" rx="8" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="cm-edge-label" x="360" y="380" text-anchor="middle" fill="var(--ink-tertiary)">LLC membership interests are securities — held in DTC if eligible and operating agreement permits</text>
+  </svg>
+  <p class="cm-caption"><strong>LLC structure:</strong> Members own interests governed by an operating agreement; management can be by members or designated managers; securities are held through DTC.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Governance</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> LLC assets</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> DTC</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<div class="warn-box">
+  <strong>LLC Transfer Restrictions:</strong> Most LLC operating agreements contain transfer restrictions that can prevent membership interests from being freely traded. For an LLC's interests to be DTC-eligible, the operating agreement must permit transfers (or have a mechanism for approval) and the LLC must have a transfer agent that participates in the FAST program.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: CORPORATIONS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="corporations">Corporations — C-Corp vs S-Corp</h2>
+
+<p class="lead">
+Corporations are the most common form of entity for public companies. A <span class="hotspot" data-modal="ccorp" tabindex="0" role="button" onclick="openModal('modal-ccorp')">C-Corporation</span> is a separate legal entity subject to corporate income tax (the "double taxation" problem). An <span class="hotspot" data-modal="scorp" tabindex="0" role="button" onclick="openModal('modal-scorp')">S-Corporation</span> is a corporation that elects pass-through taxation under Subchapter S of the Internal Revenue Code, avoiding double taxation.
+</p>
+
+<!-- Concept Map 3: Corporate Structure -->
+<div class="diagram-box concept-map" id="concept-map-corp" role="img" aria-labelledby="cm3-title" aria-describedby="cm3-desc">
+  <div class="diagram-title" id="cm3-title">Concept Map — Corporate Structure &amp; Securities</div>
+  <p id="cm3-desc" class="visually-hidden">
+    Corporate structure: Shareholders own stock and elect a Board of Directors.
+    The Board oversees Officers (CEO, CFO, etc.) who manage the corporation.
+    The corporation issues common and preferred stock.
+    Preferred stock often has special rights (dividend preference, liquidation preference).
+    Securities are held at DTC with Cede and Co. as registered owner.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Shareholders -->
+    <g class="cm-node" data-modal="shareholder" tabindex="0" role="button" aria-label="Shareholder — open definition">
+      <rect class="cm-node-shape" x="48" y="20" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="113" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Shareholders</text>
+      <text class="cm-node-sub" x="113" y="56" text-anchor="middle" fill="var(--ink-tertiary)">Owners</text>
+    </g>
+
+    <!-- Board -->
+    <g class="cm-node" data-modal="board" tabindex="0" role="button" aria-label="Board — open definition">
+      <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Board of Directors</text>
+      <text class="cm-node-sub" x="350" y="58" text-anchor="middle" fill="var(--accent-muted)">Oversees management</text>
+    </g>
+    <line class="cm-edge" x1="178" y1="43" x2="258" y2="43" marker-end="url(#cm3-arrow)"/>
+    <text class="cm-edge-label" x="220" y="34" text-anchor="middle">elect</text>
+
+    <!-- Officers -->
+    <g class="cm-node" data-modal="officer" tabindex="0" role="button" aria-label="Officer — open definition">
+      <rect class="cm-node-shape" x="480" y="20" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="545" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Officers</text>
+      <text class="cm-node-sub" x="545" y="56" text-anchor="middle" fill="var(--ink-tertiary)">CEO, CFO, etc.</text>
+    </g>
+    <line class="cm-edge" x1="440" y1="43" x2="478" y2="43" marker-end="url(#cm3-arrow)"/>
+    <text class="cm-edge-label" x="460" y="34" text-anchor="middle">oversees</text>
+
+    <!-- Corporation -->
+    <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Corporation — open definition">
+      <rect class="cm-node-shape" x="260" y="120" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="350" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">Corporation</text>
+      <text class="cm-node-sub" x="350" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Issues securities</text>
+    </g>
+    <line class="cm-edge" x1="350" y1="66" x2="350" y2="118" marker-end="url(#cm3-arrow)"/>
+
+    <!-- Stock types -->
+    <path class="cm-edge" d="M260 166 L180 200" marker-end="url(#cm3-arrow)"/>
+    <path class="cm-edge" d="M440 166 L520 200" marker-end="url(#cm3-arrow)"/>
+
+    <g class="cm-node" data-modal="common-stock" tabindex="0" role="button" aria-label="Common Stock — open definition">
+      <rect class="cm-node-shape" x="100" y="202" width="160" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="180" y="224" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Common Stock</text>
+      <text class="cm-node-sub" x="180" y="240" text-anchor="middle" fill="var(--gold)">Voting · residual</text>
+    </g>
+
+    <g class="cm-node" data-modal="preferred-stock" tabindex="0" role="button" aria-label="Preferred Stock — open definition">
+      <rect class="cm-node-shape" x="460" y="202" width="160" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="540" y="224" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Preferred Stock</text>
+      <text class="cm-node-sub" x="540" y="240" text-anchor="middle" fill="var(--gold)">Preference rights</text>
+    </g>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="260" y="310" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="350" y="332" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede</text>
+      <text class="cm-node-sub" x="350" y="348" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
+    </g>
+    <line class="cm-edge" x1="180" y1="248" x2="350" y2="308" marker-end="url(#cm3-arrow)"/>
+    <line class="cm-edge" x1="540" y1="248" x2="350" y2="308" marker-end="url(#cm3-arrow)"/>
+    <text class="cm-edge-label" x="280" y="280" text-anchor="end">held at</text>
+    <text class="cm-edge-label" x="430" y="280" text-anchor="start">held at</text>
+
+    <rect x="48" y="380" width="624" height="40" rx="8" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="cm-edge-label" x="360" y="400" text-anchor="middle" fill="var(--ink-tertiary)">Corporations issue common and preferred stock — held in DTC book-entry with Cede &amp; Co. as registered owner</text>
+  </svg>
+  <p class="cm-caption"><strong>Corporate structure:</strong> Shareholders elect the board; the board oversees officers who run the corporation. The corporation issues common and preferred stock held in DTC.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Governance</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Securities</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> DTC</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">C-Corp vs S-Corp — Key Differences</h3>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>C-Corporation</th>
+    <th>S-Corporation</th>
+  </tr>
+  <tr>
+    <td><strong>Taxation</strong></td>
+    <td>Double taxation — entity pays corporate tax; shareholders pay tax on dividends</td>
+    <td>Pass-through — income/loss flows to shareholders' personal returns</td>
+  </tr>
+  <tr>
+    <td><strong>Shareholders</strong></td>
+    <td>Unlimited number; can include non-U.S. residents, corporations, trusts</td>
+    <td>Maximum 100; only individuals, estates, certain trusts; no non-U.S. residents</td>
+  </tr>
+  <tr>
+    <td><strong>Stock Classes</strong></td>
+    <td>Can have multiple classes (common, preferred, etc.)</td>
+    <td>Only one class of stock (cannot have preferred stock)</td>
+  </tr>
+  <tr>
+    <td><strong>DTC Eligibility</strong></td>
+    <td>Readily available for publicly traded C-corps</td>
+    <td>Typically not DTC-eligible; S-corps rarely go public</td>
+  </tr>
+  <tr>
+    <td><strong>Use Cases</strong></td>
+    <td>Public companies, high-growth startups, companies needing venture capital</td>
+    <td>Small to medium businesses, family-owned enterprises</td>
+  </tr>
+</table>
+
+<div class="tip-box">
+  <strong>Entity Choice Tip:</strong> For a business planning to raise capital from venture capital or go public, a C-Corporation is the preferred structure. For a closely held business with a limited number of individual owners, an S-Corporation or LLC may be more tax-efficient.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: PARTNERSHIPS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="partnerships">Partnerships</h2>
+
+<p class="lead">
+A <span class="hotspot" data-modal="partnership" tabindex="0" role="button" onclick="openModal('modal-partnership')">partnership</span> is a business entity where two or more partners share ownership and management. The three main types are:
+</p>
+
+<ul class="body-text">
+  <li><strong><span class="hotspot" data-modal="gp" tabindex="0" role="button" onclick="openModal('modal-gp')">General Partnership (GP):</span></strong> All partners have unlimited liability and participate in management.</li>
+  <li><strong><span class="hotspot" data-modal="lp" tabindex="0" role="button" onclick="openModal('modal-lp')">Limited Partnership (LP):</span></strong> Has one or more general partners (unlimited liability, management) and limited partners (liability limited to their investment, no management).</li>
+  <li><strong><span class="hotspot" data-modal="llp" tabindex="0" role="button" onclick="openModal('modal-llp')">Limited Liability Partnership (LLP):</span></strong> All partners have limited liability; often used by professional services firms (law, accounting).</li>
+</ul>
+
+<p class="body-text">
+Partnerships issue <span class="hotspot" data-modal="partnership-interest" tabindex="0" role="button" onclick="openModal('modal-partnership-interest')">partnership interests</span> to their partners. These interests represent economic and governance rights. Publicly traded partnerships — known as <span class="hotspot" data-modal="mlp" tabindex="0" role="button" onclick="openModal('modal-mlp')">Master Limited Partnerships (MLPs)</span> — are a special category of publicly traded partnerships that are often DTC-eligible.
+</p>
+
+<div class="warn-box">
+  <strong>Passive Activity Loss Limitations:</strong> Partnership interests are subject to complex tax rules, including passive activity loss limitations and at-risk rules. Investors in partnerships should consult with tax advisors before investing.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: SECURITIES ISSUANCE
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="securities-issuance">Securities Issuance &amp; Registration</h2>
+
+<p class="lead">
+The process of issuing securities involves the creation of the security, registration (or exemption from registration) under federal and state securities laws, and deposit with DTC (if eligible). The <span class="hotspot" data-modal="securities-act-1933" tabindex="0" role="button" onclick="openModal('modal-securities-act-1933')">Securities Act of 1933</span> governs the offer and sale of securities in the United States.
+</p>
+
+<!-- Concept Map 4: Issuance Lifecycle -->
+<div class="diagram-box concept-map" id="concept-map-issuance" role="img" aria-labelledby="cm4-title" aria-describedby="cm4-desc">
+  <div class="diagram-title" id="cm4-title">Concept Map — Securities Issuance Lifecycle</div>
+  <p id="cm4-desc" class="visually-hidden">
+    Securities issuance lifecycle: Corporation (issuer) decides to issue securities.
+    It prepares a registration statement (Form S-1, S-3, etc.) and files with SEC.
+    SEC reviews and declares the registration effective.
+    Securities are priced and sold in an offering (IPO, secondary).
+    Securities are deposited with DTC via the transfer agent (FAST).
+    Securities become DTC-eligible and are held in book-entry form.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm4-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+    </defs>
+
+    <!-- 1: Issuer decides -->
+    <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Issuer — open definition">
+      <rect class="cm-node-shape" x="40" y="36" width="140" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="110" y="58" text-anchor="middle" fill="#fff" font-size="12">Issuer</text>
+      <text class="cm-node-sub" x="110" y="74" text-anchor="middle" fill="var(--accent-muted)">Corporation</text>
+    </g>
+
+    <path class="cm-edge" d="M180 59 L220 59" marker-end="url(#cm4-arrow)"/>
+    <text class="cm-edge-label" x="202" y="50" text-anchor="middle">decides to issue</text>
+
+    <!-- 2: Registration -->
+    <g class="cm-node" data-modal="registration" tabindex="0" role="button" aria-label="Registration — open definition">
+      <rect class="cm-node-shape" x="220" y="30" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="310" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Registration</text>
+      <text class="cm-node-sub" x="310" y="70" text-anchor="middle" fill="var(--ink-tertiary)">Form S-1 · SEC filing</text>
+    </g>
+    <line class="cm-edge" x1="310" y1="86" x2="310" y2="120" marker-end="url(#cm4-arrow)"/>
+
+    <!-- 3: SEC Review -->
+    <g class="cm-node" data-modal="sec" tabindex="0" role="button" aria-label="SEC — open definition">
+      <rect class="cm-node-shape" x="220" y="122" width="180" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="310" y="144" text-anchor="middle" fill="var(--ink)" font-size="12">SEC Review</text>
+      <text class="cm-node-sub" x="310" y="160" text-anchor="middle" fill="var(--ink-tertiary)">Effective declaration</text>
+    </g>
+    <line class="cm-edge" x1="310" y1="168" x2="310" y2="202" marker-end="url(#cm4-arrow)"/>
+
+    <!-- 4: Offering -->
+    <g class="cm-node" data-modal="offering" tabindex="0" role="button" aria-label="Offering — open definition">
+      <rect class="cm-node-shape" x="220" y="204" width="180" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="310" y="226" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Offering</text>
+      <text class="cm-node-sub" x="310" y="242" text-anchor="middle" fill="var(--gold)">IPO · Secondary</text>
+    </g>
+    <line class="cm-edge" x1="310" y1="250" x2="310" y2="284" marker-end="url(#cm4-arrow)"/>
+
+    <!-- 5: Deposit with DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="220" y="286" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="310" y="308" text-anchor="middle" fill="var(--accent)" font-size="12">Deposit with DTC</text>
+      <text class="cm-node-sub" x="310" y="324" text-anchor="middle" fill="var(--ink-tertiary)">Transfer agent · FAST</text>
+    </g>
+    <line class="cm-edge" x1="310" y1="332" x2="310" y2="366" marker-end="url(#cm4-arrow-green)"/>
+
+    <!-- 6: Book-Entry -->
+    <g class="cm-node" data-modal="book-entry" tabindex="0" role="button" aria-label="Book-Entry — open definition">
+      <rect class="cm-node-shape" x="220" y="368" width="180" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="310" y="390" text-anchor="middle" fill="var(--green)" font-size="12">Book-Entry</text>
+      <text class="cm-node-sub" x="310" y="406" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. · trading</text>
+    </g>
+
+    <rect x="440" y="36" width="240" height="380" rx="12" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-zone-label" x="560" y="60" text-anchor="middle" fill="var(--ink-muted)">Key steps</text>
+    <text class="cm-edge-label" x="560" y="90" text-anchor="start">• Board approval</text>
+    <text class="cm-edge-label" x="560" y="120" text-anchor="start">• Underwriter selection</text>
+    <text class="cm-edge-label" x="560" y="150" text-anchor="start">• Registration statement</text>
+    <text class="cm-edge-label" x="560" y="180" text-anchor="start">• SEC effectiveness</text>
+    <text class="cm-edge-label" x="560" y="210" text-anchor="start">• Pricing</text>
+    <text class="cm-edge-label" x="560" y="240" text-anchor="start">• Allocation</text>
+    <text class="cm-edge-label" x="560" y="270" text-anchor="start">• Settlement</text>
+    <text class="cm-edge-label" x="560" y="300" text-anchor="start">• DTC deposit</text>
+    <text class="cm-edge-label" x="560" y="330" text-anchor="start">• Trading begins</text>
+  </svg>
+  <p class="cm-caption"><strong>Issuance lifecycle:</strong> From board approval to SEC registration to offering to DTC deposit and book-entry trading.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Issuer / SEC</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Offering</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> DTC deposit</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<!-- Process Map: Issuance to DTC -->
+<div class="diagram-box concept-map" id="process-issuance" role="img" aria-labelledby="pf-issuance-title" aria-describedby="pf-issuance-desc">
+  <div class="diagram-title" id="pf-issuance-title">Process Map — Issuing Securities to DTC</div>
+  <p id="pf-issuance-desc" class="visually-hidden">
+    Seven-step process: Issuer approves issuance; drafts and files registration statement with SEC;
+    SEC declares effective; securities are priced and sold; transfer agent prepares DTC deposit;
+    DTC credits participant accounts (underwriters); securities are distributed to investors.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-issuance-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="110" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="79" y="29" text-anchor="middle">Approve</text>
+    <rect x="146" y="14" width="110" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="201" y="29" text-anchor="middle" fill="var(--accent)">File</text>
+    <rect x="268" y="14" width="110" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="323" y="29" text-anchor="middle" fill="var(--green)">Declare</text>
+    <rect x="390" y="14" width="110" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="445" y="29" text-anchor="middle" fill="var(--gold-deep)">Price</text>
+    <rect x="512" y="14" width="110" height="22" rx="6" fill="var(--teal-light)" stroke="var(--teal)"/>
+    <text class="pf-phase" x="567" y="29" text-anchor="middle" fill="var(--teal)">Deposit</text>
+    <rect x="634" y="14" width="70" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="669" y="29" text-anchor="middle" fill="var(--green)">Trade</text>
+
+    <line class="pf-edge" x1="112" y1="100" x2="140" y2="100" marker-end="url(#pf-issuance-arrow)"/>
+    <line class="pf-edge" x1="234" y1="100" x2="262" y2="100" marker-end="url(#pf-issuance-arrow)"/>
+    <line class="pf-edge" x1="356" y1="100" x2="384" y2="100" marker-end="url(#pf-issuance-arrow)"/>
+    <line class="pf-edge" x1="478" y1="100" x2="506" y2="100" marker-end="url(#pf-issuance-arrow)"/>
+    <line class="pf-edge" x1="600" y1="100" x2="628" y2="100" marker-end="url(#pf-issuance-arrow)"/>
+
+    <g>
+      <circle cx="68" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="68" y="84" text-anchor="middle">1</text>
+      <rect x="24" y="104" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="68" y="126" text-anchor="middle">Approve</text>
+      <text class="pf-step-sub" x="68" y="142" text-anchor="middle">Board / shareholders</text>
+    </g>
+    <g>
+      <circle cx="190" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="190" y="84" text-anchor="middle">2</text>
+      <rect x="146" y="104" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="190" y="126" text-anchor="middle">File</text>
+      <text class="pf-step-sub" x="190" y="142" text-anchor="middle">Registration statement</text>
+    </g>
+    <g>
+      <circle cx="312" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="312" y="84" text-anchor="middle">3</text>
+      <rect x="268" y="104" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="312" y="126" text-anchor="middle">Declare</text>
+      <text class="pf-step-sub" x="312" y="142" text-anchor="middle">SEC effective</text>
+    </g>
+    <g>
+      <circle cx="434" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="434" y="84" text-anchor="middle">4</text>
+      <rect x="390" y="104" width="88" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="434" y="126" text-anchor="middle">Price</text>
+      <text class="pf-step-sub" x="434" y="142" text-anchor="middle">IPO / offering</text>
+    </g>
+    <g>
+      <circle cx="556" cy="80" r="13" fill="var(--teal)"/><text class="pf-step-num" x="556" y="84" text-anchor="middle">5</text>
+      <rect x="512" y="104" width="88" height="52" rx="7" fill="var(--teal-light)" stroke="var(--teal)"/>
+      <text class="pf-step-title" x="556" y="126" text-anchor="middle">Deposit</text>
+      <text class="pf-step-sub" x="556" y="142" text-anchor="middle">Transfer agent → DTC</text>
+    </g>
+    <g>
+      <circle cx="678" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="678" y="84" text-anchor="middle">6</text>
+      <rect x="634" y="104" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="678" y="126" text-anchor="middle">Trade</text>
+      <text class="pf-step-sub" x="678" y="142" text-anchor="middle">Book-entry</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="188" text-anchor="middle">Cede &amp; Co. becomes registered owner; DTC participants hold positions for investors.</text>
+    <text class="pf-step-sub" x="360" y="206" text-anchor="middle">The process applies to IPOs, secondary offerings, and private placements that become DTC-eligible.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body" style="padding:12px 0;font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;">
+      <div><strong>1 · Approve</strong> — The issuer's board (and shareholders, if required) approves the issuance.</div>
+      <div><strong>2 · File</strong> — The issuer drafts and files a registration statement with the SEC (Form S-1, S-3, etc.).</div>
+      <div><strong>3 · Declare Effective</strong> — The SEC reviews and declares the registration effective.</div>
+      <div><strong>4 · Price &amp; Sell</strong> — The securities are priced and sold in an offering (IPO, secondary, etc.).</div>
+      <div><strong>5 · Deposit</strong> — The transfer agent deposits the securities with DTC (via FAST or physical deposit).</div>
+      <div><strong>6 · Trade</strong> — Securities become DTC-eligible and trade in book-entry form; Cede &amp; Co. is registered owner.</div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: DTC ELIGIBILITY
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="dtc-eligibility">DTC Eligibility for Corporate Securities</h2>
+
+<p class="lead">
+Not all securities are automatically eligible for DTC services. DTC eligibility is a critical operational requirement for publicly traded securities because it enables efficient clearing and settlement through the DTC system.
+</p>
+
+<p class="body-text">
+To become DTC-eligible, an issuer must:
+</p>
+
+<ul class="body-text">
+  <li><strong>Engage a transfer agent</strong> that participates in DTC's FAST program.</li>
+  <li><strong>Execute a Letter of Representations</strong> agreeing to DTC's procedures.</li>
+  <li><strong>Ensure the securities are freely tradable</strong> (or eligible under Rule 144A or Regulation S).</li>
+  <li><strong>Satisfy DTC's operational requirements</strong> regarding corporate actions, dividends, and record-keeping.</li>
+</ul>
+
+<p class="body-text">
+For C-Corporations, DTC eligibility is typically straightforward for publicly traded securities. For S-Corps and LLCs, transfer restrictions and shareholder limitations often make DTC eligibility impractical or unnecessary.
+</p>
+
+<div class="tip-box">
+  <strong>Issuer Tip:</strong> DTC eligibility is critical for marketability. Most institutional investors require securities to be DTC-eligible; otherwise, they cannot be held in street name and trades must be settled manually — which is expensive and time-consuming.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: RESTRICTED SECURITIES
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="restricted">Restricted Securities — Rule 144, 144A &amp; Regulation S</h2>
+
+<p class="lead">
+<span class="hotspot" data-modal="restricted" tabindex="0" role="button" onclick="openModal('modal-restricted')">Restricted securities</span> are securities acquired in private transactions (not public offerings) that are subject to resale restrictions. The primary rules governing resale are <span class="hotspot" data-modal="rule144" tabindex="0" role="button" onclick="openModal('modal-rule144')">Rule 144</span> (for affiliates and non-affiliates), <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span> (for qualified institutional buyers), and <span class="hotspot" data-modal="regulation-s" tabindex="0" role="button" onclick="openModal('modal-regulation-s')">Regulation S</span> (for offshore transactions).
+</p>
+
+<!-- Concept Map 5: Restricted Securities -->
+<div class="diagram-box concept-map" id="concept-map-restricted" role="img" aria-labelledby="cm5-title" aria-describedby="cm5-desc">
+  <div class="diagram-title" id="cm5-title">Concept Map — Restricted Securities Framework</div>
+  <p id="cm5-desc" class="visually-hidden">
+    Restricted securities framework: Restricted securities are acquired in private transactions.
+    Resale pathways: Rule 144 (public resale with holding periods, volume limits, manner of sale);
+    Rule 144A (resale to QIBs in private markets);
+    Regulation S (offshore resale for foreign investors).
+    Public securities are freely tradable through DTC.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm5-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Restricted Securities -->
+    <g class="cm-node" data-modal="restricted" tabindex="0" role="button" aria-label="Restricted — open definition">
+      <rect class="cm-node-shape" x="260" y="16" width="180" height="46" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Restricted Securities</text>
+    </g>
+
+    <path class="cm-edge" d="M260 62 L160 100" marker-end="url(#cm5-arrow)"/>
+    <path class="cm-edge" d="M350 62 L350 100" marker-end="url(#cm5-arrow)"/>
+    <path class="cm-edge" d="M440 62 L540 100" marker-end="url(#cm5-arrow)"/>
+
+    <!-- Rule 144 -->
+    <g class="cm-node" data-modal="rule144" tabindex="0" role="button" aria-label="Rule 144 — open definition">
+      <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="160" y="126" text-anchor="middle" fill="var(--ink)" font-size="12">Rule 144</text>
+      <text class="cm-node-sub" x="160" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Public resale</text>
+    </g>
+
+    <!-- Rule 144A -->
+    <g class="cm-node" data-modal="rule144a" tabindex="0" role="button" aria-label="Rule 144A — open definition">
+      <rect class="cm-node-shape" x="250" y="102" width="200" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="350" y="126" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Rule 144A</text>
+      <text class="cm-node-sub" x="350" y="144" text-anchor="middle" fill="var(--gold)">QIB private market</text>
+    </g>
+
+    <!-- Regulation S -->
+    <g class="cm-node" data-modal="regulation-s" tabindex="0" role="button" aria-label="Regulation S — open definition">
+      <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="560" y="126" text-anchor="middle" fill="var(--green)" font-size="12">Regulation S</text>
+      <text class="cm-node-sub" x="560" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Offshore resale</text>
+    </g>
+
+    <text class="cm-edge-label" x="190" y="92" text-anchor="middle">holding period</text>
+    <text class="cm-edge-label" x="350" y="92" text-anchor="middle">QIB only</text>
+    <text class="cm-edge-label" x="520" y="92" text-anchor="middle">foreign investors</text>
+
+    <!-- Outcomes -->
+    <path class="cm-edge" d="M60 162 L60 220" marker-end="url(#cm5-arrow)"/>
+    <path class="cm-edge" d="M260 162 L260 220" marker-end="url(#cm5-arrow)"/>
+    <path class="cm-edge" d="M460 162 L460 220" marker-end="url(#cm5-arrow)"/>
+
+    <rect x="10" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)"/>
+    <text class="cm-node-title" x="70" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">Public resale</text>
+
+    <rect x="190" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)"/>
+    <text class="cm-node-title" x="250" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">QIB market</text>
+
+    <rect x="390" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)"/>
+    <text class="cm-node-title" x="450" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">Offshore</text>
+
+    <!-- DTC note -->
+    <rect x="40" y="300" width="640" height="40" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="360" y="322" text-anchor="middle" fill="var(--ink-tertiary)">Restricted securities can be held at DTC if they meet eligibility requirements and are properly deposited</text>
+    <text class="cm-edge-label" x="360" y="338" text-anchor="middle" fill="var(--ink-muted)">Rule 144A securities are typically held in DTC with a restricted CUSIP</text>
+  </svg>
+  <p class="cm-caption"><strong>Restricted securities framework:</strong> Rule 144 (public resale), Rule 144A (QIB private market), and Regulation S (offshore resale).</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Restricted securities</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Rule 144</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Rule 144A</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Regulation S</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<h3 class="subsection-title">Rule 144 — Public Resale</h3>
+
+<p class="body-text">
+<span class="hotspot" data-modal="rule144" tabindex="0" role="button" onclick="openModal('modal-rule144')">Rule 144</span> provides a safe harbor for the resale of restricted securities and securities held by affiliates. Key requirements include:
+</p>
+
+<ul class="body-text">
+  <li><strong>Holding Period:</strong> Typically 6 months (or 1 year for non-reporting companies).</li>
+  <li><strong>Current Public Information:</strong> The issuer must be current in its SEC filings.</li>
+  <li><strong>Volume Limitations:</strong> For affiliates, the amount sold cannot exceed certain volume limits.</li>
+  <li><strong>Manner of Sale:</strong> Affiliates must sell in a manner consistent with the rule (e.g., broker transactions).</li>
+  <li><strong>Filing Requirement:</strong> Affiliates must file Form 144 with the SEC.</li>
+</ul>
+
+<h3 class="subsection-title">Rule 144A — Private Resale to QIBs</h3>
+
+<p class="body-text">
+<span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span> allows the resale of restricted securities to <span class="hotspot" data-modal="qib" tabindex="0" role="button" onclick="openModal('modal-qib')">Qualified Institutional Buyers (QIBs)</span> without the holding periods and volume limitations of Rule 144. Rule 144A securities are typically held in DTC with a restricted CUSIP and can only be transferred to other QIBs.
+</p>
+
+<h3 class="subsection-title">Regulation S — Offshore Transactions</h3>
+
+<p class="body-text">
+<span class="hotspot" data-modal="regulation-s" tabindex="0" role="button" onclick="openModal('modal-regulation-s')">Regulation S</span> provides a safe harbor for offers and sales of securities made outside the United States. It allows issuers and distributors to sell securities to foreign investors without SEC registration, provided the sale is made in an offshore transaction and no "directed selling efforts" are made in the U.S.
+</p>
+
+<div class="warn-box">
+  <strong>Restricted Securities Risk:</strong> Investors who acquire restricted securities must be aware of resale restrictions. Failure to comply with Rule 144, Rule 144A, or Regulation S can result in violations of the Securities Act of 1933, potentially leading to rescission rights and penalties.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: REORGANIZATIONS
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="reorganizations">Mergers, Reorganizations &amp; Transfers</h2>
+
+<p class="lead">
+Corporate reorganizations — including mergers, acquisitions, spin-offs, and stock-for-stock exchanges — involve the transfer and exchange of securities. DTC plays a critical role in processing these <span class="hotspot" data-modal="corporate-action" tabindex="0" role="button" onclick="openModal('modal-corporate-action')">corporate actions</span> efficiently.
+</p>
+
+<!-- Process Map: Merger DTC Processing -->
+<div class="diagram-box concept-map" id="process-merger" role="img" aria-labelledby="pf-merger-title" aria-describedby="pf-merger-desc">
+  <div class="diagram-title" id="pf-merger-title">Process Map — Merger &amp; Reorganization Processing (DTC)</div>
+  <p id="pf-merger-desc" class="visually-hidden">
+    Six-step merger processing: Issuer announces the merger or reorganization.
+    DTC is notified and sets up the corporate action in its systems.
+    Participants are notified of the election deadlines and procedures.
+    Shareholders elect their choice (cash, stock, or combination) through brokers.
+    DTC processes the elections and exchanges securities.
+    New securities are credited to participants' accounts; legacy securities are retired.
+  </p>
+  <svg class="process-flow-svg" viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="pf-merger-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      </marker>
+    </defs>
+    <rect x="24" y="14" width="140" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
+    <text class="pf-phase" x="94" y="29" text-anchor="middle">Announce</text>
+    <rect x="176" y="14" width="140" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <text class="pf-phase" x="246" y="29" text-anchor="middle" fill="var(--accent)">Notify</text>
+    <rect x="328" y="14" width="140" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <text class="pf-phase" x="398" y="29" text-anchor="middle" fill="var(--green)">Elect</text>
+    <rect x="480" y="14" width="210" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <text class="pf-phase" x="585" y="29" text-anchor="middle" fill="var(--gold-deep)">Process &amp; Credit</text>
+
+    <line class="pf-edge" x1="128" y1="100" x2="160" y2="100" marker-end="url(#pf-merger-arrow)"/>
+    <line class="pf-edge" x1="270" y1="100" x2="302" y2="100" marker-end="url(#pf-merger-arrow)"/>
+    <line class="pf-edge" x1="412" y1="100" x2="444" y2="100" marker-end="url(#pf-merger-arrow)"/>
+    <line class="pf-edge" x1="554" y1="100" x2="586" y2="100" marker-end="url(#pf-merger-arrow)"/>
+
+    <g>
+      <circle cx="84" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="84" y="84" text-anchor="middle">1</text>
+      <rect x="28" y="104" width="112" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="84" y="126" text-anchor="middle">Announce</text>
+      <text class="pf-step-sub" x="84" y="142" text-anchor="middle">Merger / reorg</text>
+    </g>
+    <g>
+      <circle cx="224" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="224" y="84" text-anchor="middle">2</text>
+      <rect x="168" y="104" width="112" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <text class="pf-step-title" x="224" y="126" text-anchor="middle">Notify DTC</text>
+      <text class="pf-step-sub" x="224" y="142" text-anchor="middle">Corporate action</text>
+    </g>
+    <g>
+      <circle cx="364" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="364" y="84" text-anchor="middle">3</text>
+      <rect x="308" y="104" width="112" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <text class="pf-step-title" x="364" y="126" text-anchor="middle">Election</text>
+      <text class="pf-step-sub" x="364" y="142" text-anchor="middle">Shareholders choose</text>
+    </g>
+    <g>
+      <circle cx="504" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="504" y="84" text-anchor="middle">4</text>
+      <rect x="448" y="104" width="112" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="504" y="126" text-anchor="middle">Process</text>
+      <text class="pf-step-sub" x="504" y="142" text-anchor="middle">DTC exchanges</text>
+    </g>
+    <g>
+      <circle cx="644" cy="80" r="13" fill="var(--gold)"/><text class="pf-step-num" x="644" y="84" text-anchor="middle">5</text>
+      <rect x="588" y="104" width="112" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text class="pf-step-title" x="644" y="126" text-anchor="middle">Credit</text>
+      <text class="pf-step-sub" x="644" y="142" text-anchor="middle">New securities</text>
+    </g>
+    <text class="pf-step-sub" x="360" y="188" text-anchor="middle">DTC processes mergers, spin-offs, and exchanges through its corporate action systems.</text>
+    <text class="pf-step-sub" x="360" y="206" text-anchor="middle">New securities are credited to participant accounts; legacy securities are retired.</text>
+  </svg>
+  <details class="step-summary">
+    <summary>Step summary (text)</summary>
+    <div class="step-summary-body" style="padding:12px 0;font-size:0.85rem;color:var(--ink-secondary);line-height:1.7;">
+      <div><strong>1 · Announce</strong> — The issuer announces the merger, reorganization, or corporate action.</div>
+      <div><strong>2 · Notify DTC</strong> — The issuer (via transfer agent) notifies DTC and sets up the corporate action.</div>
+      <div><strong>3 · Election</strong> — Shareholders elect their choice (cash, stock, or combination) through their brokers.</div>
+      <div><strong>4 · Process</strong> — DTC processes elections and exchanges securities per the transaction terms.</div>
+      <div><strong>5 · Credit</strong> — New securities are credited to participants' accounts; legacy securities are retired.</div>
+    </div>
+  </details>
+</div>
+
+<div class="tip-box">
+  <strong>Corporate Action Tip:</strong> DTC's ATOP (Automated Tender Offer Program) and other automated services streamline the processing of mergers, tender offers, and reorganizations. Issuers and transfer agents should ensure timely and accurate notification to DTC to avoid processing delays.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: GOVERNANCE
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="governance">Governance &amp; Voting Rights</h2>
+
+<p class="lead">
+For securities held in street name through DTC, voting rights are exercised through the <span class="hotspot" data-modal="proxy-system" tabindex="0" role="button" onclick="openModal('modal-proxy-system')">beneficial owner proxy voting system</span>. The issuer sends proxy materials to <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span>; DTC forwards them to participants; participants forward to beneficial owners; and votes flow back through the same chain.
+</p>
+
+<!-- Concept Map 6: Governance Stack -->
+<div class="diagram-box concept-map" id="concept-map-governance" role="img" aria-labelledby="cm6-title" aria-describedby="cm6-desc">
+  <div class="diagram-title" id="cm6-title">Concept Map — Governance &amp; Voting Stack</div>
+  <p id="cm6-desc" class="visually-hidden">
+    Governance stack: Issuer sends proxy materials to Cede and Co. (registered owner).
+    Cede/DTC forwards to participants. Participants forward to beneficial owners.
+    Beneficial owners vote. Votes are aggregated and returned through participants to DTC to the issuer.
+    The stack mirrors the ownership stack but operates in reverse for voting rights.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="cm6-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="cm6-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="cm6-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Issuer top -->
+    <g class="cm-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer — open definition">
+      <rect class="cm-node-shape" x="280" y="16" width="160" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="38" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
+      <text class="cm-node-sub" x="360" y="54" text-anchor="middle" fill="var(--ink-tertiary)">Proxy solicitation</text>
+    </g>
+
+    <!-- Cede -->
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede — open definition">
+      <rect class="cm-node-shape" x="280" y="120" width="160" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="360" y="158" text-anchor="middle" fill="var(--gold)">Registered owner</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="62" x2="360" y2="118" marker-end="url(#cm6-arrow)"/>
+
+    <!-- DTC -->
+    <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
+      <rect class="cm-node-shape" x="280" y="220" width="160" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
+      <text class="cm-node-sub" x="360" y="258" text-anchor="middle" fill="var(--ink-tertiary)">Forwards materials</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="166" x2="360" y2="218" marker-end="url(#cm6-arrow)"/>
+
+    <!-- Participant -->
+    <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
+      <rect class="cm-node-shape" x="280" y="310" width="160" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="360" y="332" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
+      <text class="cm-node-sub" x="360" y="348" text-anchor="middle" fill="var(--ink-tertiary)">Forwards to investors</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="266" x2="360" y2="308" marker-end="url(#cm6-arrow)"/>
+
+    <!-- Investor bottom -->
+    <g class="cm-node" data-modal="shareholder" tabindex="0" role="button" aria-label="Shareholder — open definition">
+      <rect class="cm-node-shape" x="280" y="390" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="360" y="412" text-anchor="middle" fill="var(--green)" font-size="12">Shareholder</text>
+      <text class="cm-node-sub" x="360" y="428" text-anchor="middle" fill="var(--ink-tertiary)">Beneficial owner</text>
+    </g>
+    <line class="cm-edge" x1="360" y1="356" x2="360" y2="388" marker-end="url(#cm6-arrow-green)"/>
+
+    <!-- Proxy materials flow (down) -->
+    <text class="cm-edge-label" x="380" y="80" text-anchor="start" fill="var(--gold)">materials down</text>
+    <text class="cm-edge-label" x="380" y="190" text-anchor="start" fill="var(--gold)">materials down</text>
+    <text class="cm-edge-label" x="380" y="280" text-anchor="start" fill="var(--gold)">materials down</text>
+
+    <!-- Votes flow (up) -->
+    <path class="cm-edge-dashed" d="M340 390 L340 356" marker-end="url(#cm6-arrow)"/>
+    <path class="cm-edge-dashed" d="M340 310 L340 266" marker-end="url(#cm6-arrow)"/>
+    <path class="cm-edge-dashed" d="M340 220 L340 166" marker-end="url(#cm6-arrow)"/>
+    <path class="cm-edge-dashed" d="M340 120 L340 62" marker-end="url(#cm6-arrow)"/>
+
+    <text class="cm-edge-label" x="310" y="374" text-anchor="end" fill="var(--green)">votes up</text>
+    <text class="cm-edge-label" x="310" y="290" text-anchor="end" fill="var(--green)">votes up</text>
+    <text class="cm-edge-label" x="310" y="195" text-anchor="end" fill="var(--green)">votes up</text>
+
+    <rect x="40" y="390" width="180" height="36" rx="8" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+    <text class="cm-edge-label" x="130" y="412" text-anchor="middle" fill="var(--ink-tertiary)">Proxy materials</text>
+    <text class="cm-edge-label" x="130" y="422" text-anchor="middle" fill="var(--ink-muted)">↓ down / ↑ up</text>
+  </svg>
+  <p class="cm-caption"><strong>Governance stack:</strong> Proxy materials flow from the issuer down to the shareholder; votes flow back up through the same chain.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Registered owner</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Beneficial owner</span>
+    <span class="cm-legend-item"><span class="cm-legend-line"></span> Materials flow down</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Votes flow up</span>
+  </div>
+  <p class="cm-hint">Click a node to open its definition</p>
+</div>
+
+<div class="tip-box">
+  <strong>Shareholder Communications:</strong> Beneficial owners who hold securities in street name can receive proxy materials and vote in corporate elections. The NOBO/OBO (Non-Objecting/Objecting Beneficial Owner) designation determines whether the issuer can communicate directly with the shareholder or must go through the broker.
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION: GLOBAL COMPARISON
+════════════════════════════════════════════════════ -->
+
+<h2 class="section-title" id="global-comparison-corp">Global Comparison — Corporate Securities Structures</h2>
+
+<p class="lead">
+While the U.S. system of C-Corps, S-Corps, and LLCs is unique, other jurisdictions have analogous structures. Understanding these differences is important for cross-border investing and multinational corporations.
+</p>
+
+<table class="comp-table">
+  <tr>
+    <th>Feature</th>
+    <th>United States</th>
+    <th>United Kingdom</th>
+    <th>European Union</th>
+  </tr>
+  <tr>
+    <td><strong>Public Corporation</strong></td>
+    <td>C-Corporation (publicly traded)</td>
+    <td>Public Limited Company (PLC)</td>
+    <td>Société Anonyme (SA) / Aktiengesellschaft (AG)</td>
+  </tr>
+  <tr>
+    <td><strong>Private Corporation</strong></td>
+    <td>LLC, S-Corp, C-Corp (private)</td>
+    <td>Private Limited Company (Ltd)</td>
+    <td>Société à Responsabilité Limitée (SARL) / GmbH</td>
+  </tr>
+  <tr>
+    <td><strong>Taxation</strong></td>
+    <td>Double (C-Corp) or pass-through (S-Corp, LLC)</td>
+    <td>Corporate tax + dividend tax</td>
+    <td>Corporate tax + dividend tax (varies by country)</td>
+  </tr>
+  <tr>
+    <td><strong>DTC/Depository</strong></td>
+    <td>DTC (U.S.)</td>
+    <td>Euroclear UK &amp; International (CREST)</td>
+    <td>Euroclear Bank / national CSDs</td>
+  </tr>
+  <tr>
+    <td><strong>Nominee Structure</strong></td>
+    <td>Cede &amp; Co.</td>
+    <td>CREST nominee</td>
+    <td>Euroclear / national nominees</td>
+  </tr>
+</table>
+
+</div><!-- /doc-frame -->
+
+<!-- ═══════════════════════════════════════════════════
+     QUIZ SECTION
+════════════════════════════════════════════════════ -->
+
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">Corporate Structures &amp; Securities Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of LLCs, corporations, partnerships, securities issuance, restricted securities, and DTC eligibility. Select the best answer for each question. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Q1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What type of entity typically faces "double taxation"?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq1" value="a"><span>LLC</span></label>
+          <label><input type="radio" name="cq1" value="b"><span>S-Corporation</span></label>
+          <label><input type="radio" name="cq1" value="c"><span>C-Corporation</span></label>
+          <label><input type="radio" name="cq1" value="d"><span>Partnership</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q1"></div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is the primary difference between a C-Corp and an S-Corp?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq2" value="a"><span>S-Corps cannot have shareholders</span></label>
+          <label><input type="radio" name="cq2" value="b"><span>C-Corps are pass-through; S-Corps are double-taxed</span></label>
+          <label><input type="radio" name="cq2" value="c"><span>S-Corps are pass-through; C-Corps are double-taxed</span></label>
+          <label><input type="radio" name="cq2" value="d"><span>There is no difference</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q2"></div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What security does an LLC issue?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq3" value="a"><span>Common stock</span></label>
+          <label><input type="radio" name="cq3" value="b"><span>Preferred stock</span></label>
+          <label><input type="radio" name="cq3" value="c"><span>Membership interests</span></label>
+          <label><input type="radio" name="cq3" value="d"><span>Partnership interests</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q3"></div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>Which entity type is limited to 100 shareholders and cannot have non-U.S. residents?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq4" value="a"><span>C-Corporation</span></label>
+          <label><input type="radio" name="cq4" value="b"><span>S-Corporation</span></label>
+          <label><input type="radio" name="cq4" value="c"><span>LLC</span></label>
+          <label><input type="radio" name="cq4" value="d"><span>Partnership</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q4"></div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>On the issuer's books, who is the registered owner of DTC-eligible securities?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq5" value="a"><span>The shareholder</span></label>
+          <label><input type="radio" name="cq5" value="b"><span>The issuing corporation</span></label>
+          <label><input type="radio" name="cq5" value="c"><span>Cede &amp; Co.</span></label>
+          <label><input type="radio" name="cq5" value="d"><span>The DTC participant</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q5"></div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What is the role of a transfer agent in securities issuance?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq6" value="a"><span>To underwrite the offering</span></label>
+          <label><input type="radio" name="cq6" value="b"><span>To maintain records of registered shareholders and process transfers</span></label>
+          <label><input type="radio" name="cq6" value="c"><span>To trade securities on the exchange</span></label>
+          <label><input type="radio" name="cq6" value="d"><span>To set the offering price</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q6"></div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is Rule 144?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq7" value="a"><span>A rule that allows all securities to be traded freely</span></label>
+          <label><input type="radio" name="cq7" value="b"><span>A safe harbor for the public resale of restricted securities</span></label>
+          <label><input type="radio" name="cq7" value="c"><span>A rule for offshore securities offerings</span></label>
+          <label><input type="radio" name="cq7" value="d"><span>A rule that exempts all private placements</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q7"></div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>Who can purchase securities under Rule 144A?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq8" value="a"><span>Any investor</span></label>
+          <label><input type="radio" name="cq8" value="b"><span>Qualified Institutional Buyers (QIBs)</span></label>
+          <label><input type="radio" name="cq8" value="c"><span>Only foreign investors</span></label>
+          <label><input type="radio" name="cq8" value="d"><span>Only the issuer's employees</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q8"></div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is Regulation S?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq9" value="a"><span>A rule for selling securities outside the U.S.</span></label>
+          <label><input type="radio" name="cq9" value="b"><span>A rule for selling securities to QIBs</span></label>
+          <label><input type="radio" name="cq9" value="c"><span>A rule for public offerings</span></label>
+          <label><input type="radio" name="cq9" value="d"><span>A rule for employee stock options</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q9"></div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the FAST program's role in DTC eligibility?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq10" value="a"><span>It provides faster trade execution</span></label>
+          <label><input type="radio" name="cq10" value="b"><span>It allows transfer agents to process deposits/withdrawals electronically with DTC</span></label>
+          <label><input type="radio" name="cq10" value="c"><span>It is a trading platform</span></label>
+          <label><input type="radio" name="cq10" value="d"><span>It is a regulatory agency</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q10"></div>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is a Master Limited Partnership (MLP)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq11" value="a"><span>A partnership that is not traded publicly</span></label>
+          <label><input type="radio" name="cq11" value="b"><span>A publicly traded partnership that is often DTC-eligible</span></label>
+          <label><input type="radio" name="cq11" value="c"><span>A partnership that only holds real estate</span></label>
+          <label><input type="radio" name="cq11" value="d"><span>A partnership that is tax-exempt</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q11"></div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>In a corporation, who elects the Board of Directors?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq12" value="a"><span>The officers</span></label>
+          <label><input type="radio" name="cq12" value="b"><span>The shareholders</span></label>
+          <label><input type="radio" name="cq12" value="c"><span>The employees</span></label>
+          <label><input type="radio" name="cq12" value="d"><span>The government</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q12"></div>
+      </div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the primary purpose of the Securities Act of 1933?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq13" value="a"><span>To regulate securities exchanges</span></label>
+          <label><input type="radio" name="cq13" value="b"><span>To require registration of securities offerings and prevent fraud</span></label>
+          <label><input type="radio" name="cq13" value="c"><span>To regulate investment advisers</span></label>
+          <label><input type="radio" name="cq13" value="d"><span>To create the SEC</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q13"></div>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is a Limited Partnership (LP)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq14" value="a"><span>A partnership where all partners have limited liability</span></label>
+          <label><input type="radio" name="cq14" value="b"><span>A partnership with general partners (unlimited liability) and limited partners (limited liability)</span></label>
+          <label><input type="radio" name="cq14" value="c"><span>A partnership that is publicly traded</span></label>
+          <label><input type="radio" name="cq14" value="d"><span>A partnership that is tax-exempt</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q14"></div>
+      </div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>How are voting rights exercised for securities held in street name?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq15" value="a"><span>Directly through the issuer's website</span></label>
+          <label><input type="radio" name="cq15" value="b"><span>Through the beneficial owner proxy voting system (issuer → DTC → participant → owner)</span></label>
+          <label><input type="radio" name="cq15" value="c"><span>By attending the annual meeting in person</span></label>
+          <label><input type="radio" name="cq15" value="d"><span>Shareholders in street name cannot vote</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q15"></div>
+      </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is the typical DTC settlement cycle?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq16" value="a"><span>T+0</span></label>
+          <label><input type="radio" name="cq16" value="b"><span>T+1</span></label>
+          <label><input type="radio" name="cq16" value="c"><span>T+2</span></label>
+          <label><input type="radio" name="cq16" value="d"><span>T+3</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q16"></div>
+      </div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>Which entity can have multiple classes of stock (common and preferred)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq17" value="a"><span>S-Corporation</span></label>
+          <label><input type="radio" name="cq17" value="b"><span>C-Corporation</span></label>
+          <label><input type="radio" name="cq17" value="c"><span>LLC</span></label>
+          <label><input type="radio" name="cq17" value="d"><span>Partnership</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q17"></div>
+      </div>
+    </div>
+
+    <!-- Q18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is a corporate action?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq18" value="a"><span>A daily trading activity</span></label>
+          <label><input type="radio" name="cq18" value="b"><span>An event like a merger, spin-off, or dividend that affects securities</span></label>
+          <label><input type="radio" name="cq18" value="c"><span>A shareholder meeting</span></label>
+          <label><input type="radio" name="cq18" value="d"><span>A regulatory filing</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q18"></div>
+      </div>
+    </div>
+
+    <!-- Q19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What type of partnership is commonly used by professional services firms (law, accounting)?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq19" value="a"><span>General Partnership (GP)</span></label>
+          <label><input type="radio" name="cq19" value="b"><span>Limited Partnership (LP)</span></label>
+          <label><input type="radio" name="cq19" value="c"><span>Limited Liability Partnership (LLP)</span></label>
+          <label><input type="radio" name="cq19" value="d"><span>Master Limited Partnership (MLP)</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q19"></div>
+      </div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the primary advantage of DTC eligibility for a corporation's securities?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="cq20" value="a"><span>It allows the corporation to avoid SEC registration</span></label>
+          <label><input type="radio" name="cq20" value="b"><span>It enables efficient clearing and settlement in book-entry form</span></label>
+          <label><input type="radio" name="cq20" value="c"><span>It eliminates all tax obligations</span></label>
+          <label><input type="radio" name="cq20" value="d"><span>It guarantees the price of the security</span></label>
+        </div>
+        <div class="quiz-feedback" id="cf-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-primary" onclick="checkCorpQuiz()">Check All Answers</button>
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetCorpQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script>
+// ─── Quiz Answers ───
+const corpQuizAnswers = {
+  cq1: { correct: 'c', explanation: 'C-Corporations face double taxation — the corporation pays tax on income, and shareholders pay tax on dividends received.' },
+  cq2: { correct: 'c', explanation: 'S-Corporations are pass-through entities (income flows to shareholders); C-Corps are taxed at the corporate level (double taxation).' },
+  cq3: { correct: 'c', explanation: 'LLCs issue membership interests, not stock. These represent the economic and governance rights of the members.' },
+  cq4: { correct: 'b', explanation: 'S-Corporations are limited to 100 shareholders (individuals, estates, certain trusts) and cannot have non-U.S. residents.' },
+  cq5: { correct: 'c', explanation: 'Cede & Co. is the registered owner on the issuer\'s books. Shareholders are beneficial owners through DTC participants.' },
+  cq6: { correct: 'b', explanation: 'The transfer agent maintains records of registered shareholders and processes transfers of ownership.' },
+  cq7: { correct: 'b', explanation: 'Rule 144 provides a safe harbor for the public resale of restricted securities, subject to holding periods and other conditions.' },
+  cq8: { correct: 'b', explanation: 'Rule 144A allows resale of restricted securities to Qualified Institutional Buyers (QIBs) without public registration.' },
+  cq9: { correct: 'a', explanation: 'Regulation S provides a safe harbor for offers and sales of securities made outside the United States.' },
+  cq10: { correct: 'b', explanation: 'FAST (Fast Automated Securities Transfer) allows transfer agents to process deposits and withdrawals electronically with DTC.' },
+  cq11: { correct: 'b', explanation: 'Master Limited Partnerships (MLPs) are publicly traded partnerships that are often DTC-eligible, commonly used in energy and infrastructure.' },
+  cq12: { correct: 'b', explanation: 'Shareholders elect the Board of Directors, which oversees the corporation\'s management.' },
+  cq13: { correct: 'b', explanation: 'The Securities Act of 1933 requires registration of securities offerings and prohibits fraud in connection with the sale of securities.' },
+  cq14: { correct: 'b', explanation: 'A Limited Partnership (LP) has general partners (unlimited liability, management) and limited partners (liability limited to their investment).' },
+  cq15: { correct: 'b', explanation: 'Voting rights for street-name holders are exercised through the proxy system: issuer → DTC → participant → beneficial owner.' },
+  cq16: { correct: 'b', explanation: 'Most U.S. securities settle T+1 — one business day after the trade date.' },
+  cq17: { correct: 'b', explanation: 'C-Corporations can have multiple classes of stock (common and preferred). S-Corps are limited to one class.' },
+  cq18: { correct: 'b', explanation: 'A corporate action is an event like a merger, spin-off, dividend, or stock split that affects the corporation\'s securities.' },
+  cq19: { correct: 'c', explanation: 'Limited Liability Partnerships (LLPs) are commonly used by professional services firms (law firms, accounting firms).' },
+  cq20: { correct: 'b', explanation: 'DTC eligibility enables efficient clearing and settlement in book-entry form, which is essential for marketability and liquidity.' }
+};
+
+function checkCorpQuiz() {
+  let correct = 0;
+  const total = 20;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'cq' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('cf-' + qName);
+    const answer = corpQuizAnswers[qName];
+
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      fb.classList.add('show', 'incorrect');
+      continue;
+    }
+
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback';
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + answer.explanation;
+      fb.classList.add('show', 'correct');
+      correct++;
+    } else {
+      fb.innerHTML = '<strong>✗ Incorrect.</strong> ' + answer.explanation;
+      fb.classList.add('show', 'incorrect');
+    }
+  }
+
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : 'fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : 'fail');
+  if (pct >= 80) {
+    result.innerHTML = '🎉 <strong>Congratulations! You passed with ' + pct + '%.</strong> You have a solid understanding of corporate structures, securities issuance, and DTC eligibility.';
+  } else {
+    result.innerHTML = '⚠️ <strong>You scored ' + pct + '%.</strong> Review the sections you missed and try again. A passing score is 80%.';
+  }
+}
+
+function resetCorpQuiz() {
+  document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+  document.querySelectorAll('.quiz-options input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  document.getElementById('quizResult').innerHTML = '';
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY — Key Terms
+════════════════════════════════════════════════════ -->
+
+<!-- How to Use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <p>This interactive teaching guide explains securities ownership across LLCs, C-Corps, S-Corps, and partnerships.</p>
+      <p><strong>How to navigate:</strong></p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between sections.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation.</li>
+        <li>Use this guide to understand entity types, securities issuance, restricted securities, and DTC eligibility.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Start with the Overview and work through each section sequentially. The concept maps illustrate the relationships between entity types and securities structures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Entity -->
+<div class="modal-overlay" id="modal-entity" role="dialog" aria-modal="true" aria-labelledby="modal-title-entity">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-entity">For-Profit Entity</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Business Organization</div>
+        <div class="def-word">For-Profit Entity</div>
+        <p>A legal organization formed to generate profit for its owners. Common types include corporations (C-Corp, S-Corp), LLCs, and partnerships. Each has distinct tax, liability, and securities characteristics.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRS; state business entity statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LLC -->
+<div class="modal-overlay" id="modal-llc" role="dialog" aria-modal="true" aria-labelledby="modal-title-llc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-llc">Limited Liability Company (LLC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Business Structure</div>
+        <div class="def-word">LLC</div>
+        <p>A flexible business structure that provides limited liability to its owners (members) and pass-through taxation. LLCs are governed by state law and an operating agreement. They issue membership interests rather than stock.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRS; state LLC statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- C-Corp -->
+<div class="modal-overlay" id="modal-ccorp" role="dialog" aria-modal="true" aria-labelledby="modal-title-ccorp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-ccorp">C-Corporation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporation Type</div>
+        <div class="def-word">C-Corporation</div>
+        <p>A corporation taxed under Subchapter C of the Internal Revenue Code. C-Corps are subject to corporate income tax (double taxation) and can have an unlimited number of shareholders, multiple classes of stock, and non-U.S. residents.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 11; state corporate statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- S-Corp -->
+<div class="modal-overlay" id="modal-scorp" role="dialog" aria-modal="true" aria-labelledby="modal-title-scorp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-scorp">S-Corporation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Corporation Type</div>
+        <div class="def-word">S-Corporation</div>
+        <p>A corporation that elects pass-through taxation under Subchapter S of the Internal Revenue Code. S-Corps are limited to 100 shareholders (individuals, estates, certain trusts) and cannot have non-U.S. residents. They can have only one class of stock.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 1361-1379; Treas. Reg. § 1.1361-1.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Partnership -->
+<div class="modal-overlay" id="modal-partnership" role="dialog" aria-modal="true" aria-labelledby="modal-title-partnership">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-partnership">Partnership</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Business Structure</div>
+        <div class="def-word">Partnership</div>
+        <p>A business entity where two or more partners share ownership and management. Types include General Partnerships (GP), Limited Partnerships (LP), and Limited Liability Partnerships (LLP). Partnerships are pass-through entities.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 701-777; Uniform Partnership Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Corporation -->
+<div class="modal-overlay" id="modal-corporation" role="dialog" aria-modal="true" aria-labelledby="modal-title-corporation">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-corporation">Corporation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Business Structure</div>
+        <div class="def-word">Corporation</div>
+        <p>A separate legal entity owned by shareholders. Corporations have a board of directors that oversees officers who manage the business. They issue common and preferred stock and are governed by state corporate law.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act; state corporate statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Shareholder -->
+<div class="modal-overlay" id="modal-shareholder" role="dialog" aria-modal="true" aria-labelledby="modal-title-shareholder">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-shareholder">Shareholder</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Owner</div>
+        <div class="def-word">Shareholder</div>
+        <p>A person or entity that owns shares of stock in a corporation. Shareholders have voting rights, receive dividends, and have a residual claim on the corporation's assets after debts are paid.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Board -->
+<div class="modal-overlay" id="modal-board" role="dialog" aria-modal="true" aria-labelledby="modal-title-board">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-board">Board of Directors</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Governance</div>
+        <div class="def-word">Board of Directors</div>
+        <p>A group of individuals elected by shareholders to oversee the management of a corporation. The board sets corporate strategy, appoints officers, and ensures the corporation operates in the best interests of shareholders.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Officer -->
+<div class="modal-overlay" id="modal-officer" role="dialog" aria-modal="true" aria-labelledby="modal-title-officer">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-officer">Officer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Management</div>
+        <div class="def-word">Officer</div>
+        <p>An individual appointed by the board of directors to manage the day-to-day operations of a corporation. Key officers include CEO, CFO, COO, and Secretary. Officers are fiduciaries of the corporation and its shareholders.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Membership Interest -->
+<div class="modal-overlay" id="modal-membership-interest" role="dialog" aria-modal="true" aria-labelledby="modal-title-membership-interest">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-membership-interest">Membership Interest</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">LLC Security</div>
+        <div class="def-word">Membership Interest</div>
+        <p>The ownership interest in a limited liability company (LLC). It represents the member's economic and governance rights. Unlike stock, membership interests are governed by the LLC's operating agreement.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform LLC Act; state LLC statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Operating Agreement -->
+<div class="modal-overlay" id="modal-operating-agreement" role="dialog" aria-modal="true" aria-labelledby="modal-title-operating-agreement">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-operating-agreement">Operating Agreement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">LLC Governance</div>
+        <div class="def-word">Operating Agreement</div>
+        <p>The governing document of a limited liability company (LLC). It sets forth the rights and obligations of the members, management structure, profit distribution, and transfer restrictions on membership interests.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform LLC Act; state LLC statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Member-Managed -->
+<div class="modal-overlay" id="modal-member-managed" role="dialog" aria-modal="true" aria-labelledby="modal-title-member-managed">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-member-managed">Member-Managed LLC</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">LLC Management</div>
+        <div class="def-word">Member-Managed</div>
+        <p>An LLC structure where all members participate in the management of the business. This is the default for many LLCs and is common in smaller businesses where all members are actively involved.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform LLC Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Manager-Managed -->
+<div class="modal-overlay" id="modal-manager-managed" role="dialog" aria-modal="true" aria-labelledby="modal-title-manager-managed">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-manager-managed">Manager-Managed LLC</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">LLC Management</div>
+        <div class="def-word">Manager-Managed</div>
+        <p>An LLC structure where designated managers (who may or may not be members) run the business. This is common in larger LLCs or where some members are passive investors.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform LLC Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Member -->
+<div class="modal-overlay" id="modal-member" role="dialog" aria-modal="true" aria-labelledby="modal-title-member">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-member">Member</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">LLC Owner</div>
+        <div class="def-word">Member</div>
+        <p>An owner of a limited liability company (LLC). Members hold membership interests and have rights to profits, losses, and distributions as set forth in the operating agreement.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform LLC Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Partnership Interest -->
+<div class="modal-overlay" id="modal-partnership-interest" role="dialog" aria-modal="true" aria-labelledby="modal-title-partnership-interest">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-partnership-interest">Partnership Interest</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Partnership Security</div>
+        <div class="def-word">Partnership Interest</div>
+        <p>The ownership interest in a partnership. It represents the partner's economic rights (profits, losses, distributions) and governance rights (voting, management). Partnership interests are governed by the partnership agreement.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Partnership Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MLP -->
+<div class="modal-overlay" id="modal-mlp" role="dialog" aria-modal="true" aria-labelledby="modal-title-mlp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-mlp">Master Limited Partnership (MLP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Public Partnership</div>
+        <div class="def-word">MLP</div>
+        <p>A publicly traded partnership that offers the tax benefits of a partnership with the liquidity of publicly traded securities. MLPs are commonly used in the energy and infrastructure sectors.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> IRC § 7704; SEC rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GP -->
+<div class="modal-overlay" id="modal-gp" role="dialog" aria-modal="true" aria-labelledby="modal-title-gp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-gp">General Partnership (GP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Partnership Type</div>
+        <div class="def-word">General Partnership</div>
+        <p>A partnership where all partners have unlimited liability for the debts of the partnership and participate in management. This is the most basic partnership structure.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Partnership Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LP -->
+<div class="modal-overlay" id="modal-lp" role="dialog" aria-modal="true" aria-labelledby="modal-title-lp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-lp">Limited Partnership (LP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Partnership Type</div>
+        <div class="def-word">Limited Partnership</div>
+        <p>A partnership with one or more general partners (unlimited liability, management) and one or more limited partners (liability limited to their investment, no management). LPs are commonly used in real estate and private equity.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Limited Partnership Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LLP -->
+<div class="modal-overlay" id="modal-llp" role="dialog" aria-modal="true" aria-labelledby="modal-title-llp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-llp">Limited Liability Partnership (LLP)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Partnership Type</div>
+        <div class="def-word">Limited Liability Partnership</div>
+        <p>A partnership where all partners have limited liability for the debts of the partnership. LLPs are commonly used by professional services firms like law firms and accounting firms.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Uniform Partnership Act; state LLP statutes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Restricted Securities -->
+<div class="modal-overlay" id="modal-restricted" role="dialog" aria-modal="true" aria-labelledby="modal-title-restricted">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-restricted">Restricted Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Securities Law</div>
+        <div class="def-word">Restricted Securities</div>
+        <p>Securities acquired in private transactions (not public offerings) that are subject to resale restrictions under the Securities Act of 1933. Restricted securities are typically held for a period before they can be publicly resold.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Securities Act of 1933; Rule 144.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Rule 144 -->
+<div class="modal-overlay" id="modal-rule144" role="dialog" aria-modal="true" aria-labelledby="modal-title-rule144">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-rule144">Rule 144</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">SEC Rule</div>
+        <div class="def-word">Rule 144</div>
+        <p>An SEC rule that provides a safe harbor for the public resale of restricted securities. Key requirements include a holding period (typically 6 months), current public information, volume limitations (for affiliates), and proper manner of sale.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> 17 CFR § 230.144.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Rule 144A -->
+<div class="modal-overlay" id="modal-rule144a" role="dialog" aria-modal="true" aria-labelledby="modal-title-rule144a">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-rule144a">Rule 144A</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">SEC Rule</div>
+        <div class="def-word">Rule 144A</div>
+        <p>An SEC rule that allows the resale of restricted securities to Qualified Institutional Buyers (QIBs) without public registration. Rule 144A provides a private market for institutional trading of restricted securities.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> 17 CFR § 230.144A.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Regulation S -->
+<div class="modal-overlay" id="modal-regulation-s" role="dialog" aria-modal="true" aria-labelledby="modal-title-regulation-s">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-regulation-s">Regulation S</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">SEC Rule</div>
+        <div class="def-word">Regulation S</div>
+        <p>An SEC rule that provides a safe harbor for offers and sales of securities made outside the United States. It allows issuers and distributors to sell securities to foreign investors without SEC registration, provided certain conditions are met.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> 17 CFR § 230.901-905.</div>
+    </div>
+  </div>
+</div>
+
+<!-- QIB -->
+<div class="modal-overlay" id="modal-qib" role="dialog" aria-modal="true" aria-labelledby="modal-title-qib">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-qib">Qualified Institutional Buyer (QIB)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Definition</div>
+        <div class="def-word">QIB</div>
+        <p>An institution that meets the definition under Rule 144A, typically with $100 million or more in securities holdings. QIBs are the only entities eligible to purchase securities in Rule 144A transactions.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Rule 144A(a)(1).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Corporate Action -->
+<div class="modal-overlay" id="modal-corporate-action" role="dialog" aria-modal="true" aria-labelledby="modal-title-corporate-action">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-corporate-action">Corporate Action</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Event</div>
+        <div class="def-word">Corporate Action</div>
+        <p>An event that affects the securities of a corporation, such as a merger, acquisition, spin-off, dividend, stock split, or rights offering. Corporate actions require processing by the issuer, transfer agent, and DTC.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Corporate Action Services.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Securities Act 1933 -->
+<div class="modal-overlay" id="modal-securities-act-1933" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-act-1933">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-securities-act-1933">Securities Act of 1933</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Statute</div>
+        <div class="def-word">Securities Act of 1933</div>
+        <p>The primary federal law governing the offer and sale of securities in the United States. It requires registration of securities offerings (unless exempt) and prohibits fraud in connection with the sale of securities.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> 15 U.S.C. § 77a et seq.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Registration -->
+<div class="modal-overlay" id="modal-registration" role="dialog" aria-modal="true" aria-labelledby="modal-title-registration">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-registration">Registration Statement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">SEC Filing</div>
+        <div class="def-word">Registration Statement</div>
+        <p>A document filed with the SEC to register securities for public offering. Common forms include Form S-1 (initial public offering), Form S-3 (shelf registration), and Form S-8 (employee benefit plans).</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Securities Act of 1933; SEC forms.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEC -->
+<div class="modal-overlay" id="modal-sec" role="dialog" aria-modal="true" aria-labelledby="modal-title-sec">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sec">Securities and Exchange Commission (SEC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Federal Regulator</div>
+        <div class="def-word">SEC</div>
+        <p>The U.S. federal agency responsible for enforcing securities laws, regulating securities markets, and protecting investors. The SEC reviews and declares effective registration statements for public offerings.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Offering -->
+<div class="modal-overlay" id="modal-offering" role="dialog" aria-modal="true" aria-labelledby="modal-title-offering">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-offering">Public Offering</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Securities Sale</div>
+        <div class="def-word">Offering</div>
+        <p>The sale of securities to the public. An Initial Public Offering (IPO) is the first time a company sells shares to the public. Secondary offerings involve the sale of additional shares by the company or existing shareholders.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Securities Act of 1933.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Book-Entry -->
+<div class="modal-overlay" id="modal-book-entry" role="dialog" aria-modal="true" aria-labelledby="modal-title-book-entry">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-book-entry">Book-Entry System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Record-Keeping</div>
+        <div class="def-word">Book-Entry</div>
+        <p>A system of tracking ownership of securities through electronic ledger entries rather than physical certificates. DTC is the primary book-entry system for U.S. securities.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Proxy System -->
+<div class="modal-overlay" id="modal-proxy-system" role="dialog" aria-modal="true" aria-labelledby="modal-title-proxy-system">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-proxy-system">Proxy Voting System</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Voting</div>
+        <div class="def-word">Proxy System</div>
+        <p>The system by which beneficial owners (shareholders holding in street name) receive proxy materials and vote through the chain of intermediaries: issuer → DTC → participant → beneficial owner.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> SEC Rule 14b-1; DTC Proxy Procedures.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DTC -->
+<div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dtc">Depository Trust Company (DTC)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Central Securities Depository</div>
+        <div class="def-word">DTC</div>
+        <p>A limited-purpose trust company that holds the majority of U.S. equity and debt securities in book-entry form. DTC provides settlement, custody, and asset servicing for securities held in street name.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cede -->
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-cede">Cede &amp; Co.</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Nominee Partnership</div>
+        <div class="def-word">Cede &amp; Co.</div>
+        <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Participant -->
+<div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-participant">DTC Participant</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Member Entity</div>
+        <div class="def-word">DTC Participant</div>
+        <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC. Participants are the intermediaries through which investors access the depository system.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Issuer -->
+<div class="modal-overlay" id="modal-issuer" role="dialog" aria-modal="true" aria-labelledby="modal-title-issuer">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-issuer">Issuer</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Entity</div>
+        <div class="def-word">Issuer</div>
+        <p>The entity that creates and sells securities to investors. Issuers can be corporations, LLCs, partnerships, trusts, or governments. They are responsible for registration, compliance, and corporate actions.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Securities Act of 1933.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Common Stock -->
+<div class="modal-overlay" id="modal-common-stock" role="dialog" aria-modal="true" aria-labelledby="modal-title-common-stock">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-common-stock">Common Stock</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Equity Security</div>
+        <div class="def-word">Common Stock</div>
+        <p>The most basic form of corporate ownership. Common stockholders have voting rights (typically one vote per share), receive dividends (if declared), and have a residual claim on assets after creditors and preferred stockholders.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Preferred Stock -->
+<div class="modal-overlay" id="modal-preferred-stock" role="dialog" aria-modal="true" aria-labelledby="modal-title-preferred-stock">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-preferred-stock">Preferred Stock</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Equity Security</div>
+        <div class="def-word">Preferred Stock</div>
+        <p>A class of stock that has a higher claim on assets and earnings than common stock. Preferred stockholders typically receive dividends before common stockholders and have preference in liquidation, but may have limited or no voting rights.</p>
+      </div>
+      <div class="citation"><strong>Source:</strong> Model Business Corporation Act.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer class="page-footer">
+  <div class="footer-content">
+  <nav class="footer-site-nav" aria-label="Site navigation">
+    <a href="../index.html" class="footer-home-link">Home</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../sitemap.html">Site Map</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../index.html#documents">All Documents</a>
+  </nav>
+
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Corporate Structures Teaching Guide v1.0 · Last updated July 2026</div>
+      <div class="footer-links">
+        <a href="https://www.sec.gov" rel="noopener">SEC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.irs.gov" rel="noopener">IRS</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, tax, or investment advice. For official guidance, consult an attorney, tax advisor, or financial professional.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/shared.js"></script>
+
+<script>
+// ─── Page-specific functions ───
+// Modal system is handled by shared.js, but we need page-specific modal handlers
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ─── Concept Map Node Interactivity ───
+document.addEventListener('click', function(e) {
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) openModal('modal-' + node.getAttribute('data-modal'));
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) {
+    e.preventDefault();
+    openModal('modal-' + node.getAttribute('data-modal'));
+  }
+});
+
+</script>
+
+</body>
+</html>

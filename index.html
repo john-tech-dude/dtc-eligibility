@@ -389,6 +389,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
             margin-bottom: 32px;
+            align-items: stretch;
         }
 
         @media (max-width: 768px) {
@@ -418,6 +419,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            min-height: 480px;
             transition: all var(--transition);
             position: relative;
         }
@@ -489,7 +491,7 @@
             color: var(--ink-secondary);
             line-height: 1.7;
             margin-bottom: 20px;
-            flex-grow: 1;
+            flex-grow: 0;
             transition: color var(--transition);
         }
 
@@ -536,6 +538,7 @@
             flex-direction: column;
             gap: 12px;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .document-meta-item {
@@ -896,7 +899,9 @@
                     <li>Understand DTC eligibility requirements and the submission process</li>
                     <li>Master international trade payments and documentary collections</li>
                     <li>Navigate federal surety requirements (SF 28) and government contracting</li>
-                    <li>Explore the U.S. securities infrastructure: DTC, DTCC, NSCC, FICC &amp; Cede &amp; Co.</li>
+                    <li>Explore the U.S. securities infrastructure: DTC, DTCC, NSCC, FICC, Cede &amp; Co. &amp; Euroclear</li>
+                    <li>Understand non-profit foundation endowment management and securities custody</li>
+                    <li>Distinguish trust structures and fiduciary duties in securities titling</li>
                 </ul>
             </div>
 
@@ -956,6 +961,26 @@
                     <div class="document-tag">💰 Trade Finance</div>
                     <h3 class="document-title">Treasury International Bill of Exchange</h3>
                     <p class="document-description">Master international trade payment processes, documentary collections, and bill of exchange workflows through practical learning scenarios and banking protocols.</p>
+                    <a href="docs/treasury-international_bill_of_exchange.html#concept-map-trade" class="card-concept-map" aria-label="Open trade finance concept map">
+                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Seller</text>
+                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                            <text x="104" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Bank</text>
+                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent)"/>
+                            <text x="174" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Buyer</text>
+                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--accent)"/>
+                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Bill of Exchange</text>
+                            <text x="264" y="38" text-anchor="middle" fill="var(--accent-muted)" font-size="6.5" font-family="system-ui,sans-serif">Payment Instrument</text>
+                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ Documentary Collection</text>
+                        </svg>
+                        <span class="card-concept-map-label">Trade finance concept map →</span>
+                        <span class="card-concept-map-sub">Seller · bank · buyer · bill of exchange</span>
+                    </a>
                     <div class="document-meta-list">
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -982,6 +1007,26 @@
                     <div class="document-tag">🏛️ Government</div>
                     <h3 class="document-title">SF 28 — Affidavit of Individual Surety</h3>
                     <p class="document-description">Understand federal government contracting requirements, individual surety obligations, and proper completion procedures through structured teaching materials.</p>
+                    <a href="guides/sf28-teaching-guide.html#concept-map-surety" class="card-concept-map" aria-label="Open surety concept map">
+                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Surety</text>
+                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                            <text x="104" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Assets</text>
+                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent)"/>
+                            <text x="174" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">SF 28</text>
+                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--accent)"/>
+                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Government</text>
+                            <text x="264" y="38" text-anchor="middle" fill="var(--accent-muted)" font-size="6.5" font-family="system-ui,sans-serif">Contracting</text>
+                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ FAR 28.203 Compliance</text>
+                        </svg>
+                        <span class="card-concept-map-label">Surety concept map →</span>
+                        <span class="card-concept-map-sub">Surety · assets · SF 28 · government contracting</span>
+                    </a>
                     <div class="document-meta-list">
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -999,7 +1044,7 @@
                     <a href="guides/sf28-teaching-guide.html" class="document-button" data-module="sf28">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
 
-                <!-- Card 4: Securities Ownership Wizard -->
+                <!-- Card 4: Securities Ownership Wizard (UPDATED with Euroclear) -->
                 <div class="document-card professional" data-module="securities" data-title="Securities Ownership Wizard">
                     <div class="card-completion-badge" id="badge-securities"><span class="badge-icon">○</span> Not started</div>
                     <div class="card-icon" aria-hidden="true">
@@ -1007,7 +1052,7 @@
                     </div>
                     <div class="document-tag">📊 Securities</div>
                     <h3 class="document-title">Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h3>
-                    <p class="document-description">Learn the modern securities infrastructure including DTC, DTCC, NSCC, FICC, and Cede &amp; Co. systems through comprehensive explanations of trade flows and settlement processes.</p>
+                    <p class="document-description">Learn the modern securities infrastructure including DTC, DTCC, NSCC, FICC, Cede &amp; Co., and <strong>Euroclear</strong> systems through comprehensive explanations of trade flows, settlement processes, and cross-border clearing.</p>
                     <a href="guides/dtc-guide.html#concept-map-overview" class="card-concept-map" aria-label="Open entity relationship concept map in the Securities Ownership Wizard">
                         <svg viewBox="0 0 320 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <line x1="160" y1="22" x2="80" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
@@ -1031,7 +1076,7 @@
                     <div class="document-meta-list">
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Securities ownership and clearing infrastructure</span></div>
+                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Securities ownership, clearing infrastructure &amp; cross-border</span></div>
                         </div>
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -1039,13 +1084,168 @@
                         </div>
                         <div class="document-meta-item">
                             <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Concept maps, DTC/DTCC overview, settlement, Cede &amp; Co.</span></div>
+                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Concept maps, DTC/DTCC/Euroclear, settlement, Cede &amp; Co.</span></div>
                         </div>
                     </div>
                     <a href="guides/dtc-guide.html" class="document-button" data-module="securities">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
 
-                <!-- Card 5: Biblical Exegesis (No Access) — last in group -->
+                <!-- Card 5: Non-Profit Foundations -->
+                <div class="document-card professional" data-module="nonprofit" data-title="Non-Profit Foundations & Securities">
+                    <div class="card-completion-badge" id="badge-nonprofit"><span class="badge-icon">○</span> Not started</div>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="8" width="20" height="14" rx="2" />
+                            <path d="M6 8V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" />
+                            <path d="M12 12v4" />
+                            <circle cx="12" cy="18" r="1" />
+                        </svg>
+                    </div>
+                    <div class="document-tag">🏛️ Non-Profit &amp; Foundations</div>
+                    <h3 class="document-title">Non-Profit Foundations &amp; Securities Ownership</h3>
+                    <p class="document-description">Explore how 501(c)(3) foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear.</p>
+                    <a href="guides/non-profit-foundations.html#concept-map-foundation" class="card-concept-map" aria-label="Open foundation concept map">
+                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Donor</text>
+                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
+                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">DAF</text>
+                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
+                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">501(c)(3)</text>
+                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
+                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Foundation</text>
+                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Endowment</text>
+                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Book-Entry Securities</text>
+                        </svg>
+                        <span class="card-concept-map-label">Foundation concept map →</span>
+                        <span class="card-concept-map-sub">Donor · DAF · 501(c)(3) · foundation endowment</span>
+                    </a>
+                    <div class="document-meta-list">
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Foundation endowment management &amp; DTC securities</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Foundation trustees, endowment managers, nonprofit compliance officers</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">UPMIFA, donor-advised funds, Form 990-PF, custody</span></div>
+                        </div>
+                    </div>
+                    <a href="guides/non-profit-foundations.html" class="document-button" data-module="nonprofit">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+
+                <!-- Card 6: Trusts & Fiduciary -->
+                <div class="document-card professional" data-module="trusts" data-title="Trusts & Fiduciary Structures">
+                    <div class="card-completion-badge" id="badge-trusts"><span class="badge-icon">○</span> Not started</div>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <path d="M8 11l3 3 5-5" />
+                        </svg>
+                    </div>
+                    <div class="document-tag">⚖️ Trusts &amp; Fiduciary</div>
+                    <h3 class="document-title">Trusts &amp; Fiduciary Structures</h3>
+                    <p class="document-description">Distinguish revocable, irrevocable, testamentary, and charitable trusts, and master fiduciary responsibilities, securities titling, and DTC nominee structures.</p>
+                    <a href="guides/trusts-fiduciary.html#concept-map-trusts" class="card-concept-map" aria-label="Open trust concept map">
+                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Grantor</text>
+                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
+                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Trust</text>
+                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
+                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Beneficiary</text>
+                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
+                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Fiduciary</text>
+                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Duty</text>
+                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Nominee Titling</text>
+                        </svg>
+                        <span class="card-concept-map-label">Trust concept map →</span>
+                        <span class="card-concept-map-sub">Grantor · trust · beneficiary · fiduciary duty</span>
+                    </a>
+                    <div class="document-meta-list">
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Trust types, fiduciary duties, securities titling</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Trustees, estate planners, fiduciary advisors</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Prudent Investor Rule, Uniform Trust Code, CRTs/CLTs</span></div>
+                        </div>
+                    </div>
+                    <a href="guides/trusts-fiduciary.html" class="document-button" data-module="trusts">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+
+                <!-- Card 7: LLCs & Corporate Structures (In Development) -->
+                <div class="document-card professional" data-module="" data-title="LLCs & Corporate Structures">
+                    <div class="card-completion-badge"><span class="badge-icon">🔒</span> Under Development</div>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="8" height="8" rx="1" />
+                            <rect x="14" y="2" width="8" height="8" rx="1" />
+                            <rect x="2" y="14" width="8" height="8" rx="1" />
+                            <rect x="14" y="14" width="8" height="8" rx="1" />
+                            <line x1="10" y1="6" x2="14" y2="6" />
+                            <line x1="10" y1="18" x2="14" y2="18" />
+                            <line x1="6" y1="10" x2="6" y2="14" />
+                            <line x1="18" y1="10" x2="18" y2="14" />
+                        </svg>
+                    </div>
+                    <div class="document-tag">🚧 In Development</div>
+                    <h3 class="document-title">LLCs, Corporations &amp; Other Corporate Structures</h3>
+                    <p class="document-description">Understand securities ownership across LLCs, C-corps, S-corps, and partnerships, including governance, voting rights, restricted securities, and DTC eligibility.</p>
+                    <a href="javascript:void(0)" class="card-concept-map" aria-label="Corporate structure concept map (coming soon)">
+                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">LLC</text>
+                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
+                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">C-Corp</text>
+                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
+                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">S-Corp</text>
+                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
+                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Securities</text>
+                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Ownership</text>
+                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Eligibility & Titling</text>
+                        </svg>
+                        <span class="card-concept-map-label">Corporate structure concept map →</span>
+                        <span class="card-concept-map-sub">LLC · C-Corp · S-Corp · securities ownership</span>
+                    </a>
+                    <div class="document-meta-list">
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Corporate governance, securities issuance &amp; transfers</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Corporate counsel, transfer agents, cap table administrators</span></div>
+                        </div>
+                        <div class="document-meta-item">
+                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Rule 144/144A, Reg S, mergers, stock classes</span></div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="document-button disabled" aria-disabled="true" tabindex="-1">Under Development <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></a>
+                </div>
+
+                <!-- Card 8: Biblical Exegesis (No Access) -->
                 <div class="document-card theological" data-module="biblical" data-title="The DTC Documents: A Biblical Exegesis">
                     <div class="card-completion-badge" id="badge-biblical"><span class="badge-icon">🔒</span> Restricted</div>
                     <div class="card-icon" aria-hidden="true">
@@ -1230,9 +1430,8 @@
         (function initProgress() {
             const STORAGE_KEY = 'dtc-progress';
 
-            // module IDs must match data-module on cards
-            const MODULES = ['eligibility', 'trade', 'sf28', 'securities'];
-            // biblical is restricted, not tracked
+            // module IDs must match data-module on cards (new ones are empty/untracked)
+            const MODULES = ['eligibility', 'trade', 'sf28', 'securities', 'nonprofit', 'trusts'];
 
             function getProgress() {
                 try {
@@ -1343,6 +1542,7 @@
                 'NSCC': 'National Securities Clearing Corporation — handles clearing and netting of equity trades.',
                 'FICC': 'Fixed Income Clearing Corporation — clears U.S. government and mortgage-backed securities.',
                 'Cede & Co.': 'Nominee partnership that holds legal title to securities on behalf of DTC.',
+                'Euroclear': 'A major international central securities depository (ICSD) that settles cross-border trades in Eurobonds and other international securities.',
                 'FAST': 'Fast Automated Securities Transfer — DTC program for efficient securities movement.',
                 'BEO': 'Book-Entry-Only — securities issued without physical certificates.',
                 'LOR': 'Letter of Representations — agreement between issuer and DTC for depository services.',
