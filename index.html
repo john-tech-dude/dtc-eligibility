@@ -1090,9 +1090,9 @@
                     <a href="guides/dtc-guide.html" class="document-button" data-module="securities">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                 </div>
 
-                <!-- Card 5: Non-Profit Foundations -->
-                <div class="document-card professional" data-module="nonprofit" data-title="Non-Profit Foundations & Securities">
-                    <div class="card-completion-badge" id="badge-nonprofit"><span class="badge-icon">○</span> Not started</div>
+                <!-- Card 5: Non-Profit Foundations (In Development) -->
+                <div class="document-card professional" data-module="" data-title="Non-Profit Foundations & Securities">
+                    <div class="card-completion-badge"><span class="badge-icon">🔒</span> Under Development</div>
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="2" y="8" width="20" height="14" rx="2" />
@@ -1101,10 +1101,10 @@
                             <circle cx="12" cy="18" r="1" />
                         </svg>
                     </div>
-                    <div class="document-tag">🏛️ Non-Profit &amp; Foundations</div>
+                    <div class="document-tag">🚧 In Development</div>
                     <h3 class="document-title">Non-Profit Foundations &amp; Securities Ownership</h3>
                     <p class="document-description">Explore how 501(c)(3) foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear.</p>
-                    <a href="guides/non-profit-foundations.html#concept-map-foundation" class="card-concept-map" aria-label="Open foundation concept map">
+                    <a href="javascript:void(0)" class="card-concept-map" aria-label="Foundation concept map (coming soon)">
                         <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
                             <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
@@ -1138,22 +1138,22 @@
                             <div><span class="document-meta-label">Includes</span><span class="document-meta-text">UPMIFA, donor-advised funds, Form 990-PF, custody</span></div>
                         </div>
                     </div>
-                    <a href="guides/non-profit-foundations.html" class="document-button" data-module="nonprofit">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="javascript:void(0)" class="document-button disabled" aria-disabled="true" tabindex="-1">Under Development <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></a>
                 </div>
 
-                <!-- Card 6: Trusts & Fiduciary -->
-                <div class="document-card professional" data-module="trusts" data-title="Trusts & Fiduciary Structures">
-                    <div class="card-completion-badge" id="badge-trusts"><span class="badge-icon">○</span> Not started</div>
+                <!-- Card 6: Trusts & Fiduciary (In Development) -->
+                <div class="document-card professional" data-module="" data-title="Trusts &amp; Fiduciary Structures">
+                    <div class="card-completion-badge"><span class="badge-icon">🔒</span> Under Development</div>
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             <path d="M8 11l3 3 5-5" />
                         </svg>
                     </div>
-                    <div class="document-tag">⚖️ Trusts &amp; Fiduciary</div>
+                    <div class="document-tag">🚧 In Development</div>
                     <h3 class="document-title">Trusts &amp; Fiduciary Structures</h3>
                     <p class="document-description">Distinguish revocable, irrevocable, testamentary, and charitable trusts, and master fiduciary responsibilities, securities titling, and DTC nominee structures.</p>
-                    <a href="guides/trusts-fiduciary.html#concept-map-trusts" class="card-concept-map" aria-label="Open trust concept map">
+                    <a href="javascript:void(0)" class="card-concept-map" aria-label="Trust concept map (coming soon)">
                         <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
                             <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
@@ -1187,7 +1187,7 @@
                             <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Prudent Investor Rule, Uniform Trust Code, CRTs/CLTs</span></div>
                         </div>
                     </div>
-                    <a href="guides/trusts-fiduciary.html" class="document-button" data-module="trusts">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    <a href="javascript:void(0)" class="document-button disabled" aria-disabled="true" tabindex="-1">Under Development <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></a>
                 </div>
 
                 <!-- Card 7: LLCs & Corporate Structures (In Development) -->
@@ -1431,7 +1431,7 @@
             const STORAGE_KEY = 'dtc-progress';
 
             // module IDs must match data-module on cards (new ones are empty/untracked)
-            const MODULES = ['eligibility', 'trade', 'sf28', 'securities', 'nonprofit', 'trusts'];
+            const MODULES = ['eligibility', 'trade', 'sf28', 'securities'];
 
             function getProgress() {
                 try {
