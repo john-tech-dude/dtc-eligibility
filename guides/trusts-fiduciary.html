@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
+<script src="../js/theme-init.js"></script>
 <style>
 /* ─── Design Tokens ─── */
 :root {
@@ -88,19 +90,19 @@ body {
 .toc-sidebar {
   position: fixed; left: 0; top: 0; width: 300px; height: 100vh;
   background: var(--bg); border-right: 1px solid var(--border-light);
-  padding: 28px 24px; overflow-y: auto; z-index: 60;
+  padding: 28px 24px; overflow-y: auto; z-index: 96;
   transform: translateX(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
   box-shadow: var(--shadow-lg);
 }
 .toc-sidebar.open { transform: translateX(0); }
 .toc-toggle {
-  position: fixed; left: 18px; top: 46px; z-index: 70;
-  width: 42px; height: 42px; background: var(--accent); color: #fff;
-  border: none; border-radius: var(--radius-sm); cursor: pointer;
-  font-size: 1.15rem; display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-md); transition: var(--transition);
+  position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%; z-index: 90;
+  background: var(--bg); border: 1px solid var(--border-light); color: var(--ink-muted);
+  font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); cursor: pointer; transition: var(--transition);
 }
-.toc-toggle:hover { background: var(--accent-hover); transform: scale(1.05); }
+.toc-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--ink);
   margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-faint);
@@ -124,15 +126,18 @@ body {
 }
 .toc-desc { font-size: 0.68rem; color: var(--ink-faint); font-style: italic; margin-left: 4px; }
 .sidebar-backdrop {
-  position: fixed; inset: 0; background: var(--modal-overlay);
-  z-index: 55; display: none; opacity: 0; transition: opacity 0.3s ease;
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.3);
+  z-index: 94; display: none; backdrop-filter: blur(2px);
 }
-.sidebar-backdrop.active { display: block; opacity: 1; }
+.sidebar-backdrop.active,
+.sidebar-backdrop.show {
+  display: block;
+}
 
 /* ─── Header ─── */
 .page-header {
   background: rgba(250,251,252,0.85); border-bottom: 1px solid var(--border-light);
-  padding: 0; position: sticky; top: 0; z-index: 50;
+  padding: 0; position: sticky; top: 0; z-index: 100;
   backdrop-filter: blur(24px) saturate(1.2); -webkit-backdrop-filter: blur(24px) saturate(1.2);
   transition: background 0.3s;
 }
@@ -725,6 +730,7 @@ body {
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#overview">Overview — Trusts & Fiduciaries</a>
   <a href="#overview" class="sub">Fiduciary Duty & Prudent Investor Rule</a>
@@ -748,10 +754,15 @@ body {
   <a href="#global-comparison-trust">Global Comparison</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
-  <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview</span></a>
-  <a href="dtc-guide.html" class="external">Securities Ownership Wizard <span class="toc-desc">↗ DTC/DTCC/Cede</span></a>
-  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations <span class="toc-desc">↗ Endowments & DAFs</span></a>
+  <div class="toc-divider">Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -2034,23 +2045,23 @@ For U.S.-based trusts holding foreign securities, the titling and tax reporting 
 const trustQuizAnswers = {
   tq1: { correct: 'b', explanation: 'A fiduciary duty is the highest standard of care in law, requiring the trustee to act with undivided loyalty and prudence in the best interests of the beneficiaries. It is not about maximizing returns or literal adherence to instructions.' },
   tq2: { correct: 'b', explanation: 'Revocable trusts can be amended or revoked by the settlor during life. Irrevocable trusts generally cannot be changed once created, which is necessary for estate tax exclusion and asset protection.' },
-  tq3: { correct: 'b', explanation: 'A testamentary trust is created within a will and becomes effective only upon the settlor's death, after probate administration. It does not avoid probate.' },
+  tq3: { correct: 'b', explanation: 'A testamentary trust is created within a will and becomes effective only upon the settlor\'s death, after probate administration. It does not avoid probate.' },
   tq4: { correct: 'b', explanation: 'The Prudent Investor Rule requires diversification and evaluation of investments in the context of the total portfolio, balancing risk and return. It reflects Modern Portfolio Theory (MPT).' },
-  tq5: { correct: 'c', explanation: 'Securities must be titled in the name of the trustee(s) in their fiduciary capacity (e.g., "John Doe, Trustee of XYZ Trust") to preserve the trust's legal and tax character.' },
-  tq6: { correct: 'c', explanation: 'Cede & Co. is the registered owner on the issuer's books. The trust (via the trustee) is the beneficial owner. The custodian is the intermediary DTC participant.' },
-  tq7: { correct: 'a', explanation: 'A grantor trust is one where the settlor is taxed on the trust's income under IRC §§ 671-679 because the settlor retains certain powers (e.g., power to revoke, right to income).' },
+  tq5: { correct: 'c', explanation: 'Securities must be titled in the name of the trustee(s) in their fiduciary capacity (e.g., "John Doe, Trustee of XYZ Trust") to preserve the trust\'s legal and tax character.' },
+  tq6: { correct: 'c', explanation: 'Cede & Co. is the registered owner on the issuer\'s books. The trust (via the trustee) is the beneficial owner. The custodian is the intermediary DTC participant.' },
+  tq7: { correct: 'a', explanation: 'A grantor trust is one where the settlor is taxed on the trust\'s income under IRC §§ 671-679 because the settlor retains certain powers (e.g., power to revoke, right to income).' },
   tq8: { correct: 'b', explanation: 'A CRT pays income to non-charitable beneficiaries first (for a term or life), with the remainder going to charity at the end of the term. The settlor receives an immediate charitable income tax deduction.' },
   tq9: { correct: 'b', explanation: 'The duty of loyalty requires the trustee to avoid self-dealing, conflicts of interest, and to act solely in the interests of the beneficiaries — not the settlor or the trustee personally.' },
   tq10: { correct: 'b', explanation: 'The UTC provides model state legislation for trust administration, fiduciary standards, and beneficiary rights. It has been adopted (in whole or in part) by roughly 37 U.S. states and D.C.; California, Delaware, New York, and Texas are notable holdouts with their own trust codes.' },
   tq11: { correct: 'b', explanation: 'The custodian holds the securities in its DTC participant account and maintains records for the trust. The custodian does not make investment or distribution decisions — those are trustee functions.' },
-  tq12: { correct: 'a', explanation: 'In an irrevocable trust, the settlor has relinquished control and is no longer the legal or beneficial owner, so assets are excluded from the settlor's estate for estate tax purposes (assuming no retained powers under IRC §§ 2036-2038).' },
+  tq12: { correct: 'a', explanation: 'In an irrevocable trust, the settlor has relinquished control and is no longer the legal or beneficial owner, so assets are excluded from the settlor\'s estate for estate tax purposes (assuming no retained powers under IRC §§ 2036-2038).' },
   tq13: { correct: 'b', explanation: 'Since May 28, 2024, U.S. securities settle on a T+1 basis (one business day after trade). The U.K. and Europe are generally T+2, with T+1 under study.' },
-  tq14: { correct: 'b', explanation: 'A non-grantor trust is a separate taxpayer and files Form 1041. Income distributed to beneficiaries is taxed to them (Schedule K-1); retained income is taxed at the trust's compressed brackets.' },
+  tq14: { correct: 'b', explanation: 'A non-grantor trust is a separate taxpayer and files Form 1041. Income distributed to beneficiaries is taxed to them (Schedule K-1); retained income is taxed at the trust\'s compressed brackets.' },
   tq15: { correct: 'a', explanation: 'A CLT pays income to charity for a term, with the remainder going to non-charitable beneficiaries (usually family). This reduces the taxable value of the gift/estate transfer.' },
   tq16: { correct: 'a', explanation: 'GST tax is imposed on transfers to grandchildren or more remote descendants (skipping a generation) to prevent the avoidance of estate tax. The 2026 GST exemption is $15 million per individual under OBBBA.' },
   tq17: { correct: 'b', explanation: 'The primary advantage of a revocable living trust is avoiding probate and providing for incapacity planning (successor trustee steps in). It does NOT provide asset protection or estate tax reduction.' },
-  tq18: { correct: 'b', explanation: 'Incorrect titling can expose trust assets to the trustee's personal creditors, divorce claims, and estate tax inclusion, defeating the purpose of the trust. Always use full fiduciary titling.' },
-  tq19: { correct: 'b', explanation: 'Non-grantor trusts file Form 1041 (U.S. Income Tax Return for Estates and Trusts). Grantor trusts typically do not file a separate return — income is reported on the settlor's Form 1040.' },
+  tq18: { correct: 'b', explanation: 'Incorrect titling can expose trust assets to the trustee\'s personal creditors, divorce claims, and estate tax inclusion, defeating the purpose of the trust. Always use full fiduciary titling.' },
+  tq19: { correct: 'b', explanation: 'Non-grantor trusts file Form 1041 (U.S. Income Tax Return for Estates and Trusts). Grantor trusts typically do not file a separate return — income is reported on the settlor\'s Form 1040.' },
   tq20: { correct: 'c', explanation: 'Under the One Big Beautiful Bill Act (OBBBA), signed July 4, 2025, the federal estate tax exemption is $15 million per individual ($30M for married couples) for 2026, permanently indexed for inflation from 2027.' }
 };
 
@@ -2285,7 +2296,14 @@ function resetTrustQuiz() {
         <div class="def-word">Duty of Care</div>
         <p>The duty to act with the care, skill, and caution that a prudent person would exercise in managing similar affairs. This includes proper investment management, diversification, monitoring, and record-keeping. Trustees with special skills (e.g., professional corporate trustees, attorneys, CPAs) are held to a higher standard commensurate with their expertise.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 804 (Duty of Care); Uniform Prudent Investor Act § 2.</div>
+      <p class="modal-section-title">Practical Applications</p>
+      <ul>
+        <li><strong>Investment oversight:</strong> Applying the Prudent Investor Rule to portfolio construction, diversification, and periodic review.</li>
+        <li><strong>Property management:</strong> Maintaining insurance, paying taxes, and preserving the value of real estate or other tangible trust property.</li>
+        <li><strong>Recordkeeping:</strong> Keeping trust assets separate from the trustee's personal assets and maintaining accurate books to support required accountings.</li>
+        <li><strong>Timely administration:</strong> Acting within a reasonable time on distributions, tax filings, and beneficiary requests for information.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 804 (Duty of Care); Uniform Prudent Investor Act § 2; Restatement (Third) of Trusts § 77.</div>
     </div>
   </div>
 </div>
@@ -2346,7 +2364,16 @@ function resetTrustQuiz() {
         <div class="def-word">Uniform Prudent Investor Act (UPIA)</div>
         <p>A model state law promulgated in 1994 that codifies the Prudent Investor Rule for trust investment management. UPIA reflects Modern Portfolio Theory and has been adopted in substance by nearly all U.S. states. It replaced the older "prudent man" rule (from <em>Harvard College v. Amory</em>, 1830) that evaluated each investment in isolation.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> Uniform Law Commission; Uniform Prudent Investor Act (1994).</div>
+      <p class="modal-section-title">Five Core Principles</p>
+      <ul>
+        <li><strong>§ 2 — Standard of Care:</strong> Judges investment decisions in the context of the whole portfolio, not any single holding.</li>
+        <li><strong>§ 3 — Diversification:</strong> Requires diversification unless the trustee reasonably determines special circumstances make it imprudent.</li>
+        <li><strong>§ 5 — Loyalty:</strong> Requires investment decisions to be made solely in the interest of the beneficiaries.</li>
+        <li><strong>§ 7 — Delegation:</strong> Permits trustees to delegate investment functions to qualified agents, subject to a duty to select, instruct, and monitor them.</li>
+        <li><strong>§ 9 — Cost Control:</strong> Requires trustees to incur only costs that are reasonable and appropriate given the trust's assets and purposes.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-prudent-investor');return false;">Prudent Investor Rule</a>, <a href="#" onclick="openModal('modal-duty-care');return false;">Duty of Care</a></div>
+      <div class="citation"><strong>Source:</strong> Uniform Law Commission; Uniform Prudent Investor Act (1994), §§ 2, 3, 5, 7, 9.</div>
     </div>
   </div>
 </div>
@@ -2406,6 +2433,15 @@ function resetTrustQuiz() {
         <div class="def-word">Testamentary Trust</div>
         <p>A trust created within a will that becomes effective only upon the death of the settlor, after the will is admitted to probate and the estate is administered. It is often used to provide for minor children, manage assets for beneficiaries over time, or address special family needs. Because it is created by will, it does NOT avoid probate.</p>
       </div>
+      <p class="modal-section-title">Common Applications</p>
+      <ul>
+        <li><strong>Minor beneficiaries:</strong> Holds and manages an inheritance for a child until they reach an age specified in the will, rather than passing property outright at 18.</li>
+        <li><strong>Staggered distributions:</strong> Releases principal in installments (e.g., one-third at 25, one-third at 30, remainder at 35) instead of a single lump sum.</li>
+        <li><strong>Special needs planning:</strong> Can be drafted as a supplemental needs trust to provide for a disabled beneficiary without disqualifying them from means-tested government benefits.</li>
+        <li><strong>Pour-over coordination:</strong> Often works alongside a "pour-over will," which directs any assets not already titled in a living trust into the trust at death.</li>
+      </ul>
+      <div class="warn-box"><strong>Note:</strong> Because a testamentary trust arises through probate, its terms become part of the public probate record, unlike an inter vivos trust, which generally remains private.</div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-inter-vivos');return false;">Inter Vivos Trust</a>, <a href="#" onclick="openModal('modal-revocable');return false;">Revocable Trust</a></div>
       <div class="citation"><strong>Source:</strong> Uniform Trust Code § 407 (Trust Created by Will); Restatement (Third) of Trusts § 26.</div>
     </div>
   </div>
@@ -2421,7 +2457,15 @@ function resetTrustQuiz() {
         <div class="def-word">Inter Vivos Trust</div>
         <p>A trust created and funded during the lifetime of the settlor. It can be revocable or irrevocable. "Living trust" is a common term for an inter vivos revocable trust. The primary advantage is that properly funded inter vivos trusts avoid probate and provide for seamless incapacity planning.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 401 (Methods of Creating Trust).</div>
+      <p class="modal-section-title">Funding the Trust</p>
+      <ul>
+        <li><strong>Retitling assets:</strong> Real estate, brokerage accounts, and business interests must be retitled in the trustee's name to be governed by the trust; assets left outside the trust may still require probate.</li>
+        <li><strong>Beneficiary designations:</strong> Assets such as life insurance and retirement accounts typically pass by contract to a named beneficiary and are not retitled into the trust.</li>
+        <li><strong>Certification of Trust:</strong> Financial institutions often accept a short "certification of trust" (rather than the full trust instrument) to retitle accounts, preserving privacy.</li>
+      </ul>
+      <div class="warn-box"><strong>Common pitfall:</strong> An unfunded or partially funded revocable trust does not avoid probate for the assets left outside it — a frequent drafting failure sometimes called the "empty trust" problem.</div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-revocable');return false;">Revocable Trust</a>, <a href="#" onclick="openModal('modal-testamentary');return false;">Testamentary Trust</a></div>
+      <div class="citation"><strong>Source:</strong> Uniform Trust Code § 401 (Methods of Creating Trust); Uniform Trust Code § 402 (Requirements for Creation).</div>
     </div>
   </div>
 </div>
@@ -2436,7 +2480,14 @@ function resetTrustQuiz() {
         <div class="def-word">Charitable Trust</div>
         <p>A split-interest trust that combines charitable giving with income or estate planning benefits. The two main types are Charitable Remainder Trusts (CRT) and Charitable Lead Trusts (CLT). Both are irrevocable and must comply with strict IRS requirements under IRC § 664.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> IRC § 664 (CRT); IRC § 170 (Charitable Deduction); Treas. Reg. § 1.664-1.</div>
+      <p class="modal-section-title">Why "Split-Interest"</p>
+      <ul>
+        <li>The trust's economic value is split between a charitable interest (a stream of payments to charity, or a charity's future remainder) and a non-charitable interest (payments to, or a remainder for, individuals).</li>
+        <li>The settlor receives a partial income or gift/estate tax deduction reflecting only the charitable portion, calculated using IRS actuarial tables and the applicable federal rate under IRC § 7520.</li>
+        <li>Both CRTs and CLTs must be irrevocable and must name a qualified charitable organization under IRC § 501(c)(3) to receive the charitable interest.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-crt');return false;">Charitable Remainder Trust</a>, <a href="#" onclick="openModal('modal-clt');return false;">Charitable Lead Trust</a>, <a href="#" onclick="openModal('modal-charitable-deduction');return false;">Charitable Deduction</a></div>
+      <div class="citation"><strong>Source:</strong> IRC § 664 (CRT); IRC § 170 (Charitable Deduction); IRC § 7520 (valuation rate); Treas. Reg. § 1.664-1.</div>
     </div>
   </div>
 </div>
@@ -2555,7 +2606,14 @@ function resetTrustQuiz() {
         <div class="def-word">GST Tax</div>
         <p>A tax on transfers to grandchildren or other beneficiaries who are two or more generations below the transferor ("skip persons"). The GST tax is designed to prevent the avoidance of estate tax by skipping generations. Under OBBBA, the GST exemption is also $15 million per individual for 2026, permanently indexed for inflation from 2027. The GST tax rate is a flat 40%.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> IRC §§ 2601–2663; IRS Form 709.</div>
+      <p class="modal-section-title">Three Taxable Events</p>
+      <ul>
+        <li><strong>Direct skip:</strong> An outright transfer or transfer in trust to a skip person, such as a grandparent gifting directly to a grandchild.</li>
+        <li><strong>Taxable termination:</strong> The termination of an interest in a trust (e.g., the death of a child beneficiary) that leaves only skip persons as beneficiaries.</li>
+        <li><strong>Taxable distribution:</strong> Any distribution from a trust to a skip person that is not a direct skip or taxable termination.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-gst-exemption');return false;">GST Exemption</a>, <a href="#" onclick="openModal('modal-estate-tax');return false;">Estate Tax</a></div>
+      <div class="citation"><strong>Source:</strong> IRC §§ 2601–2663; Treas. Reg. § 26.2612-1; IRS Form 709.</div>
     </div>
   </div>
 </div>
@@ -2623,6 +2681,13 @@ function resetTrustQuiz() {
         <div class="def-word">DTC</div>
         <p>A limited-purpose trust company and the primary central securities depository for U.S. equity and debt securities. DTC holds the majority of U.S. securities in book-entry form, eliminating the need for physical certificates. DTC is a subsidiary of DTCC (Depository Trust &amp; Clearing Corporation). Settlement for DTC-eligible securities is T+1 (one business day after trade) as of May 28, 2024.</p>
       </div>
+      <p class="modal-section-title">Why It Matters for Trustees</p>
+      <ul>
+        <li><strong>Immobilization:</strong> Because DTC holds a global certificate (or tracks positions electronically) rather than issuing certificates to each owner, securities transfer by book entry between participant accounts rather than by physical delivery.</li>
+        <li><strong>Regulatory status:</strong> DTC is chartered as a limited-purpose New York trust company and is a member of the Federal Reserve System; it is also registered with, and regulated by, the SEC as a clearing agency.</li>
+        <li><strong>Where the trustee's asset lives:</strong> A trustee never holds a DTC account directly — the trust's custodian, as a DTC participant, holds the position on the trustee's behalf, one layer below DTC itself.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede &amp; Co.</a>, <a href="#" onclick="openModal('modal-participant');return false;">DTC Participant</a>, <a href="#" onclick="openModal('modal-custodian');return false;">Custodian</a></div>
       <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-96818 (T+1 adoption); DTCC website.</div>
     </div>
   </div>
@@ -2638,7 +2703,14 @@ function resetTrustQuiz() {
         <div class="def-word">Cede &amp; Co.</div>
         <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers, including trusts, individuals, and institutions. Cede &amp; Co. does not have beneficial ownership — it is purely a nominee. The beneficial ownership chain runs through the DTC participant (custodian) to the ultimate beneficial owner (the trust, via the trustee).</p>
       </div>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+      <p class="modal-section-title">The Ownership Chain</p>
+      <ul>
+        <li><strong>Issuer's books:</strong> List Cede &amp; Co. as the single registered ("record") holder of essentially all shares held through the DTC system, regardless of how many actual beneficial owners exist.</li>
+        <li><strong>DTC's books:</strong> Track how those shares are divided among thousands of DTC participants (banks and broker-dealers).</li>
+        <li><strong>Participant's books:</strong> Track how each participant's DTC position is divided among its own customers — including a trust's custodian account, titled in the trustee's fiduciary capacity.</li>
+        <li><strong>Practical effect:</strong> Because Cede &amp; Co. is a nominee rather than a beneficial owner, it has no economic interest in the securities and exercises voting or other rights only as directed by the underlying beneficial owners, relayed up through the participant and DTC.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law; SEC Concept Release No. 34-69225 (proxy plumbing).</div>
     </div>
   </div>
 </div>
@@ -2653,7 +2725,14 @@ function resetTrustQuiz() {
         <div class="def-word">DTC Participant</div>
         <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC. The trust's custodian is typically a DTC participant, holding the trust's securities in its participant account. DTC participants are responsible for maintaining accurate records of their customers' positions and for settling trades on a T+1 basis.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2.</div>
+      <p class="modal-section-title">Participant Obligations</p>
+      <ul>
+        <li><strong>Eligibility:</strong> Must meet DTC's financial responsibility and operational capability standards, and remain subject to ongoing DTC oversight.</li>
+        <li><strong>Sub-accounting:</strong> Maintains its own books identifying which underlying customer — such as a trust's custodial account — owns each position within the participant's aggregate DTC holding.</li>
+        <li><strong>Corporate actions:</strong> Passes through dividends, interest payments, tender offers, and proxy materials received from DTC to the beneficial owners it services.</li>
+        <li><strong>Net settlement:</strong> Settles trades against other participants through DTC's continuous net settlement system, which nets offsetting obligations to reduce the number and value of actual securities movements.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2 (Participants); DTC Rules, Article 8 (Settlement).</div>
     </div>
   </div>
 </div>
@@ -2668,7 +2747,14 @@ function resetTrustQuiz() {
         <div class="def-word">Custodian</div>
         <p>A financial institution (typically a bank, trust company, or broker-dealer) that holds securities on behalf of a client (such as a trust). The custodian is a DTC participant and maintains records of the trust's positions, processes transactions (trades, corporate actions), provides reporting, and ensures proper fiduciary titling. The custodian does not make investment or distribution decisions — those are trustee functions.</p>
       </div>
-      <div class="citation"><strong>Source:</strong> Bank custody agreements; SEC Rule 17Ad-10.</div>
+      <p class="modal-section-title">Custodian vs. Trustee: Different Roles</p>
+      <ul>
+        <li><strong>Custodian:</strong> Safekeeps assets, settles trades, collects income, and reports positions — an administrative and record-keeping function, typically governed by a separate custody agreement.</li>
+        <li><strong>Trustee:</strong> Exercises discretion over investment strategy and distributions and bears fiduciary responsibility to the beneficiaries under the trust instrument and state trust law.</li>
+        <li><strong>Overlap:</strong> A corporate trustee (e.g., a bank trust department) may serve as both trustee and custodian for the same trust, but the two functions remain legally distinct, and the fiduciary standards described elsewhere in this guide attach to the trustee role, not the custodial function itself.</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-participant');return false;">DTC Participant</a>, <a href="#" onclick="openModal('modal-trustee');return false;">Trustee</a></div>
+      <div class="citation"><strong>Source:</strong> Bank custody agreements; SEC Rule 17Ad-10; Uniform Trust Code § 816 (Specific Powers of Trustee).</div>
     </div>
   </div>
 </div>
@@ -2699,82 +2785,47 @@ function resetTrustQuiz() {
   </div>
 </footer>
 
+<script src="../js/shared.js" defer></script>
+
 <script>
-// ─── Theme Toggle ───
-(function initThemeToggle() {
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-  toggle.addEventListener('click', function() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
-  const saved = localStorage.getItem('theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
-})();
-
-// ─── TOC Sidebar ───
-(function initSidebar() {
-  const toggleBtn = document.querySelector('.toc-toggle');
-  const sidebar = document.getElementById('tocSidebar');
-  const backdrop = document.getElementById('sidebarBackdrop');
-  if (!toggleBtn || !sidebar || !backdrop) return;
-  function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
+// ─── Concept Map Node Interactivity ───
+document.addEventListener('click', function(e) {
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) openModal('modal-' + node.getAttribute('data-modal'));
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
+  if (node) {
+    e.preventDefault();
+    openModal('modal-' + node.getAttribute('data-modal'));
   }
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    backdrop.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  toggleBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (sidebar.classList.contains('open')) closeSidebar();
-    else openSidebar();
-  });
-  backdrop.addEventListener('click', closeSidebar);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeSidebar();
-  });
-})();
+});
 
-// ─── Modal System ───
+// ─── Modal Helpers ───
 function openModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  // Close any open modals first
-  document.querySelectorAll('.modal-overlay.active').forEach(m => {
-    if (m.id !== id) m.classList.remove('active');
-  });
-  modal.classList.add('active');
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('active');
   document.body.style.overflow = 'hidden';
-  const closeBtn = modal.querySelector('.modal-close');
-  if (closeBtn) {
-    closeBtn.onclick = function() { closeModal(id); };
-  }
-  modal.onclick = function(e) {
-    if (e.target === modal) closeModal(id);
-  };
 }
-
 function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.remove('active');
-  // Only restore scroll if no other modals are open
-  const anyOpen = document.querySelector('.modal-overlay.active');
-  if (!anyOpen) document.body.style.overflow = '';
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('active');
+  document.body.style.overflow = '';
 }
-
-// Close modal on Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    const openModal = document.querySelector('.modal-overlay.active');
-    if (openModal) closeModal(openModal.id);
+    const open = document.querySelector('.modal-overlay.active');
+    if (open) closeModal(open.id);
   }
+});
+// ─── Close modal on backdrop click ───
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) {
+    if (e.target === this) closeModal(this.id);
+  });
 });
 </script>
 

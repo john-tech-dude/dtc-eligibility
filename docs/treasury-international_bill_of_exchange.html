@@ -17,19 +17,19 @@
 .toc-sidebar {
   position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
   background: var(--bg); border-right: 1px solid var(--border-light);
-  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  padding: 24px 20px; overflow-y: auto; z-index: 96;
   transform: translateX(-100%); transition: transform 0.3s ease;
 }
 .toc-sidebar.open { transform: translateX(0); }
 .toc-toggle {
-  position: fixed; left: 16px; top: 44px; z-index: 70;
-  width: 40px; height: 40px; background: var(--accent); color: #fff;
-  border: none; border-radius: var(--radius-sm); cursor: pointer;
-  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-md); transition: all 0.2s;
+  position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%; z-index: 90;
+  background: var(--bg); border: 1px solid var(--border-light); color: var(--ink-muted);
+  font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); cursor: pointer; transition: var(--transition);
 }
 [data-theme="dark"] .toc-toggle { color: var(--bg); }
-.toc-toggle:hover { background: var(--accent-hover); }
+.toc-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
   margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
@@ -80,23 +80,22 @@
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 55;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 94;
   display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
 }
 
-.sidebar-backdrop.active {
+.sidebar-backdrop.active,
+.sidebar-backdrop.show {
   display: block;
-  opacity: 1;
 }
 
 
 /* Page Header */
 .page-header {
   background: var(--bg); border-bottom: 1px solid var(--border-light);
-  padding: 0; position: sticky; top: 0; z-index: 50;
+  padding: 0; position: sticky; top: 0; z-index: 100;
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
 }
 .header-inner {
@@ -408,7 +407,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
-  <button class="toc-close" aria-label="Close navigation">×</button>
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#page1">Page 1 — Collection Instructions</a>
   <a href="#page1" class="sub">Drawer & Drawee</a>
@@ -421,11 +420,14 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   <a href="#page3" class="sub">Endorsement & Signature</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
-  <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
-  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide <span class="toc-desc">↗ Infrastructure & processes</span></a>
-  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment tool</span></a>
-  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety <span class="toc-desc">↗ Bond guarantee requirements</span></a>
+  <div class="toc-divider">Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../guides/corporate-structures.html" class="external">LLCs & Corporate Structures</a>
+  <a href="../guides/trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+  <a href="../guides/non-profit-foundations.html" class="external">Non-Profit Foundations</a>
+  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
   <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
@@ -2289,7 +2291,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   </div>
 </div>
 
-<script src="../js/shared.js"></script>
+<script src="../js/shared.js" defer></script>
 <script src="../js/quiz.js"></script>
 <script>
 // Treasury Bill of Exchange Quiz Answers

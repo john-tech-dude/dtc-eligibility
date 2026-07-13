@@ -15,18 +15,18 @@
 .toc-sidebar {
   position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
   background: var(--bg); border-right: 1px solid var(--border-light);
-  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  padding: 24px 20px; overflow-y: auto; z-index: 96;
   transform: translateX(-100%); transition: transform 0.3s ease;
 }
 .toc-sidebar.open { transform: translateX(0); }
 .toc-toggle {
-  position: fixed; left: 16px; top: 44px; z-index: 70;
-  width: 40px; height: 40px; background: var(--accent); color: #fff;
-  border: none; border-radius: var(--radius-sm); cursor: pointer;
-  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-md); transition: all 0.2s;
+  position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%; z-index: 90;
+  background: var(--bg); border: 1px solid var(--border-light); color: var(--ink-muted);
+  font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); cursor: pointer; transition: var(--transition);
 }
-.toc-toggle:hover { background: var(--accent-hover); }
+.toc-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
   margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
@@ -71,21 +71,20 @@
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 55;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 94;
   display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
 }
-.sidebar-backdrop.active {
+.sidebar-backdrop.active,
+.sidebar-backdrop.show {
   display: block;
-  opacity: 1;
 }
 
 /* ─── Page Header ─── */
 .page-header {
   background: var(--bg); border-bottom: 1px solid var(--border-light);
-  padding: 0; position: sticky; top: 0; z-index: 50;
+  padding: 0; position: sticky; top: 0; z-index: 100;
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
 }
 .header-inner {
@@ -795,6 +794,7 @@
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#overview">Overview — Foundations & Securities</a>
   <a href="#overview" class="sub">501(c)(3) & Tax-Exempt Status</a>
@@ -819,10 +819,15 @@
   <a href="#global-comparison-foundation">Global Comparison</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
-  <div class="toc-divider">Related Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
-  <a href="dtc-guide.html" class="external">Securities Ownership Wizard <span class="toc-desc">↗ DTC/DTCC/Cede &amp; Co.</span></a>
-  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment</span></a>
+  <div class="toc-divider">Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
 <div class="page-header">
@@ -2347,7 +2352,7 @@ function resetFoundationQuiz() {
 </script>
 
 <!-- ═══════════════════════════════════════════════════
-     MODAL LIBRARY
+     MODAL LIBRARY — All expanded
 ════════════════════════════════════════════════════ -->
 
 <!-- How to Use -->
@@ -2363,6 +2368,7 @@ function resetFoundationQuiz() {
         <li>Use this guide to understand the ownership stack, compliance requirements, and cross-border considerations for foundation securities.</li>
       </ul>
       <div class="tip-box"><strong>Learning tip:</strong> Start with the Overview and work through each section sequentially. The diagrams illustrate how securities flow from donors to foundations to beneficiaries.</div>
+      <div class="citation"><strong>Source:</strong> IRS Publication 557, DTC Rules, Euroclear documentation.</div>
     </div>
   </div>
 </div>
@@ -2382,6 +2388,13 @@ function resetFoundationQuiz() {
         <li><strong>Private Foundation:</strong> Funded by a single source (individual, family, corporation), typically with a small board and no public solicitation. Subject to stricter IRS rules.</li>
         <li><strong>Public Charity (Operating):</strong> Conducts its own charitable programs; receives broad public support. May have an endowment but is not primarily grant-making.</li>
         <li><strong>Community Foundation:</strong> A public charity that pools donor contributions and manages endowments for specific geographic areas or causes.</li>
+      </ul>
+      <p class="modal-section-title">Key Compliance Obligations</p>
+      <ul>
+        <li>Annual filing of Form 990-PF (private foundations) or Form 990 (public charities).</li>
+        <li>Minimum distribution requirement: 5% of average asset value (private foundations).</li>
+        <li>Excise tax on net investment income (1.39% for private foundations).</li>
+        <li>Excess business holdings limitations.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> IRS Publication 557; Uniform Prudent Management of Institutional Funds Act (UPMIFA).</div>
     </div>
@@ -2404,7 +2417,9 @@ function resetFoundationQuiz() {
         <li><strong>Quasi-Endowment (Board-Designated):</strong> Funds set aside by the board for investment, but the board can reclassify them if needed.</li>
         <li><strong>Term Endowment:</strong> Principal can be spent after a specified term or event.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> UPMIFA; NACUBO Endowment Study.</div>
+      <p class="modal-section-title">Investment Strategy</p>
+      <p>Endowments are typically invested for long-term growth with a diversified portfolio of equities, fixed income, real assets, and alternatives. The goal is to achieve a total return that exceeds the spending rate plus inflation, preserving purchasing power over time. Most endowments target a 5% real return (after inflation) to sustain a 4-5% spending rate.</p>
+      <div class="citation"><strong>Source:</strong> UPMIFA; NACUBO Endowment Study; CFA Institute.</div>
     </div>
   </div>
 </div>
@@ -2421,10 +2436,11 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Key Provisions</p>
       <ul>
-        <li><strong>Prudent Management:</strong> Trustees must manage funds with the care of a prudent person.</li>
+        <li><strong>Prudent Management:</strong> Trustees must manage funds with the care of a prudent person, considering both current and future needs.</li>
         <li><strong>Spending Rules:</strong> Allows spending of both income and appreciation, subject to the prudent investor standard.</li>
-        <li><strong>Donor Intent:</strong> Preservation of donor intent is a key consideration.</li>
-        <li><strong>Appropriation:</strong> Provides a framework for determining how much may be spent from an endowment.</li>
+        <li><strong>Donor Intent:</strong> Preservation of donor intent is a key consideration; the act provides guidance on interpreting donor restrictions.</li>
+        <li><strong>Appropriation:</strong> Provides a framework for determining how much may be spent from an endowment, considering the duration, preservation of purchasing power, and other relevant factors.</li>
+        <li><strong>Release of Restrictions:</strong> Allows for release of donor restrictions under certain circumstances, with court approval.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> Uniform Law Commission; UPMIFA (2006).</div>
     </div>
@@ -2448,6 +2464,8 @@ function resetFoundationQuiz() {
         <li>Has approximately 300 participants (broker-dealers and banks).</li>
         <li>Founded in 1973; headquartered in New York.</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>Foundations use DTC to hold the vast majority of their public market investments. The DTC system provides the infrastructure for trading, settlement, and corporate action processing. Custodians hold securities at DTC on behalf of foundations, providing the foundation with beneficial ownership while Cede &amp; Co. holds legal title.</p>
       <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832.</div>
     </div>
   </div>
@@ -2464,7 +2482,9 @@ function resetFoundationQuiz() {
         <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. It holds legal title as nominee for DTC participants and their customers.</p>
       </div>
       <p class="modal-section-title">Role in Foundation Holdings</p>
-      <p>When a foundation holds securities through a custodian that is a DTC participant, Cede &amp; Co. is the registered owner on the issuer's books. The foundation is the beneficial owner, enjoying all economic rights through the custodian.</p>
+      <p>When a foundation holds securities through a custodian that is a DTC participant, Cede &amp; Co. is the registered owner on the issuer's books. The foundation is the beneficial owner, enjoying all economic rights through the custodian. This structure—where the legal title and beneficial ownership are separated—is the foundation of the U.S. securities holding system.</p>
+      <p class="modal-section-title">Why This Matters</p>
+      <p>Because Cede &amp; Co. is the registered owner, the issuer does not know the identity of the beneficial owners. This simplifies record-keeping for issuers, enabling efficient processing of dividends, splits, and other corporate actions. For foundations, this means they can trade and settle securities efficiently without the administrative burden of maintaining direct registration with each issuer.</p>
       <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
     </div>
   </div>
@@ -2481,7 +2501,14 @@ function resetFoundationQuiz() {
         <p>The person or entity that enjoys the economic benefits of property ownership — dividends, interest, capital appreciation, and voting rights — even though legal title is held by another (a nominee or trustee).</p>
       </div>
       <p class="modal-section-title">Foundation as Beneficial Owner</p>
-      <p>For securities held in street name through DTC, the foundation is the beneficial owner. It receives dividends, has voting rights (through its custodian), and can sell or pledge the securities. Cede &amp; Co. holds legal title as nominee.</p>
+      <p>For securities held in street name through DTC, the foundation is the beneficial owner. It receives dividends, has voting rights (through its custodian), and can sell or pledge the securities. Cede &amp; Co. holds legal title as nominee. The foundation's status as beneficial owner is recognized under both securities law and the Uniform Commercial Code (UCC) Article 8.</p>
+      <p class="modal-section-title">Rights and Responsibilities</p>
+      <ul>
+        <li><strong>Economic Rights:</strong> Right to receive dividends, interest, and capital appreciation.</li>
+        <li><strong>Voting Rights:</strong> Right to vote shares through the proxy system.</li>
+        <li><strong>Right to Transfer:</strong> Right to sell or pledge the securities.</li>
+        <li><strong>Liability:</strong> Beneficial owners are not liable for the debts of the entity holding legal title.</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Rule 14b-1.</div>
     </div>
   </div>
@@ -2497,8 +2524,17 @@ function resetFoundationQuiz() {
         <div class="def-word">Custodian</div>
         <p>A financial institution (typically a bank or trust company) that holds securities on behalf of a client, maintains records of positions and transactions, and processes corporate actions and proxy voting.</p>
       </div>
-      <p class="modal-section-title">Role in Foundation Securities</p>
-      <p>Foundations typically use a custodian (or a bank trust department) to hold their securities. The custodian is a DTC participant, meaning it has a securities account at DTC. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions.</p>
+      <p class="modal-section-title">Role in Foundation Securities</h3>
+      <p>Foundations typically use a custodian (or a bank trust department) to hold their securities. The custodian is a DTC participant, meaning it has a securities account at DTC. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions. Key custodians for foundations include Bank of New York Mellon, State Street, JPMorgan Chase, and Northern Trust.</p>
+      <p class="modal-section-title">Services Provided</p>
+      <ul>
+        <li><strong>Safekeeping:</strong> Holding securities in a segregated account.</li>
+        <li><strong>Record-Keeping:</strong> Maintaining position and transaction records.</li>
+        <li><strong>Settlement:</strong> Processing trades and settlements.</li>
+        <li><strong>Corporate Actions:</strong> Processing dividends, splits, mergers, and proxy voting.</li>
+        <li><strong>Reporting:</strong> Providing monthly and quarterly account statements.</li>
+        <li><strong>Tax Reporting:</strong> Providing tax data for Form 990-PF filings.</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> Bank custody agreements; SEC Rule 17Ad-10.</div>
     </div>
   </div>
@@ -2514,12 +2550,20 @@ function resetFoundationQuiz() {
         <div class="def-word">Custodian Risk</div>
         <p>The risk that a custodian fails, mismanages assets, commits fraud, or otherwise causes losses to the client. This is a form of counterparty risk specific to the custodial relationship.</p>
       </div>
+      <p class="modal-section-title">Types of Custodian Risk</p>
+      <ul>
+        <li><strong>Operational Risk:</strong> Failure of internal processes, systems, or people.</li>
+        <li><strong>Credit Risk:</strong> The custodian itself becomes insolvent.</li>
+        <li><strong>Fraud Risk:</strong> Misappropriation of assets by custodian employees.</li>
+        <li><strong>Legal Risk:</strong> Custodian fails to comply with laws or regulations.</li>
+      </ul>
       <p class="modal-section-title">Mitigation Strategies</p>
       <ul>
         <li><strong>Segregation:</strong> Ensure assets are held in the client's name (not commingled with the custodian's own assets).</li>
         <li><strong>Reconciliation:</strong> Regularly reconcile custodian statements against internal records.</li>
         <li><strong>Due Diligence:</strong> Review the custodian's financial health, regulatory status, and operational controls.</li>
         <li><strong>Diversification:</strong> Consider using multiple custodians to diversify risk.</li>
+        <li><strong>Insurance:</strong> Ensure the custodian has adequate insurance (e.g., SIPC coverage for cash and securities).</li>
       </ul>
       <div class="citation"><strong>Source:</strong> SEC Investor Bulletin; OCC trust examination guidelines.</div>
     </div>
@@ -2538,10 +2582,13 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Tax Considerations</p>
       <ul>
-        <li><strong>Income Tax Deduction:</strong> Donors can deduct contributions to 501(c)(3) organizations (subject to AGI limits).</li>
+        <li><strong>Income Tax Deduction:</strong> Donors can deduct contributions to 501(c)(3) organizations (subject to AGI limits — up to 60% of AGI for cash donations, 30% for securities, with a 5-year carryforward).</li>
         <li><strong>Capital Gains Avoidance:</strong> Donating appreciated securities avoids capital gains tax.</li>
         <li><strong>Estate Tax Reduction:</strong> Charitable bequests reduce the donor's taxable estate.</li>
+        <li><strong>Appraisal Requirements:</strong> For donations of property over $5,000, a qualified appraisal is required.</li>
       </ul>
+      <p class="modal-section-title">Donor Rights vs. Control</p>
+      <p>In a private foundation, donors often serve on the board and have governance rights. In a DAF, donors have advisory rights to recommend grants but the sponsor has ultimate legal control. The distinction is critical for tax and compliance purposes.</p>
       <div class="citation"><strong>Source:</strong> IRS Publication 526 (Charitable Contributions).</div>
     </div>
   </div>
@@ -2563,7 +2610,10 @@ function resetFoundationQuiz() {
         <li><strong>Advisory Rights:</strong> Donors can recommend grants, but the sponsor has final authority.</li>
         <li><strong>Tax Deduction:</strong> Immediate deduction for the fair market value of contributed assets.</li>
         <li><strong>Growth:</strong> Assets can be invested and grow tax-free.</li>
+        <li><strong>Minimal Administration:</strong> Sponsors handle all administrative and compliance tasks.</li>
       </ul>
+      <p class="modal-section-title">Growth Statistics</p>
+      <p>As of 2024, DAFs hold over $250 billion in assets, with annual contributions exceeding $70 billion. The number of DAF accounts exceeds 2 million, making DAFs one of the most popular charitable giving vehicles in the U.S.</p>
       <div class="citation"><strong>Source:</strong> IRS Notice 2017-73; National Philanthropic Trust DAF Report.</div>
     </div>
   </div>
@@ -2581,11 +2631,14 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Types</p>
       <ul>
-        <li><strong>Program-Related Investment (PRI):</strong> An investment made by a foundation to further its charitable purpose, with repayment expected.</li>
+        <li><strong>Program-Related Investment (PRI):</strong> An investment made by a foundation to further its charitable purpose, with repayment expected. Can be an equity investment, loan, or guarantee.</li>
         <li><strong>General Operating Support:</strong> Unrestricted funds for a charity's operations.</li>
         <li><strong>Project Support:</strong> Funds for a specific program or project.</li>
         <li><strong>Capital Grant:</strong> Funds for capital projects (buildings, equipment, etc.).</li>
+        <li><strong>Emergency Grant:</strong> Funds for disaster relief or crisis response.</li>
       </ul>
+      <p class="modal-section-title">IRS Requirements</p>
+      <p>Private foundations must make qualifying distributions equal to 5% of average asset value (minus acquisition debt) each year. This is the "minimum distribution requirement" under IRC § 4942. Grants to qualified charities count toward this requirement; administrative expenses also count.</p>
       <div class="citation"><strong>Source:</strong> IRS Form 990-PF instructions; Council on Foundations.</div>
     </div>
   </div>
@@ -2606,10 +2659,15 @@ function resetFoundationQuiz() {
         <li><strong>Part I:</strong> Assets, liabilities, and net worth.</li>
         <li><strong>Part II:</strong> Investment income (dividends, interest, rents, capital gains).</li>
         <li><strong>Part III:</strong> Distributions (grants, administrative expenses).</li>
-        <li><strong>Part IV:</strong> Excise tax calculation.</li>
+        <li><strong>Part IV:</strong> Excise tax calculation (1.39% of net investment income).</li>
         <li><strong>Part V:</strong> Distributable amount and qualifying distributions.</li>
+        <li><strong>Part VI:</strong> Information about foundation officers and directors.</li>
         <li><strong>Schedule A:</strong> Initial return of a private foundation.</li>
-        <li><strong>Schedule B:</strong> Schedule of contributors.</li>
+        <li><strong>Schedule B:</strong> Schedule of contributors (large gifts).</li>
+        <li><strong>Schedule C:</strong> Distributions and other information.</li>
+        <li><strong>Schedule D:</strong> Supplemental financial information.</li>
+        <li><strong>Schedule G:</strong> Grants and contributions made.</li>
+        <li><strong>Schedule H:</strong> Grants to foreign organizations.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> IRS Form 990-PF instructions; Treas. Reg. § 1.509(a)-3.</div>
     </div>
@@ -2628,9 +2686,17 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Common UBIT Sources for Foundations</p>
       <ul>
-        <li><strong>Debt-Financed Income:</strong> Income from property acquired with debt financing (e.g., leveraged investments).</li>
-        <li><strong>Partnership Income:</strong> Income from partnerships that includes UBIT-generating activities.</li>
-        <li><strong>Unrelated Activities:</strong> Income from activities conducted in connection with investments (e.g., royalties, advertising income).</li>
+        <li><strong>Debt-Financed Income:</strong> Income from property acquired with debt financing (e.g., leveraged investments). This can include income from private equity funds that use leverage.</li>
+        <li><strong>Partnership Income:</strong> Income from partnerships that includes UBIT-generating activities. Foundations should review K-1s for UBIT indicators.</li>
+        <li><strong>Unrelated Activities:</strong> Income from activities conducted in connection with investments (e.g., royalties, advertising income, or rent from business tenants).</li>
+        <li><strong>Income from S-Corporations:</strong> Since S-Corp income is treated as "unrelated" for 501(c)(3) organizations, foundations often avoid S-Corp investments entirely.</li>
+      </ul>
+      <p class="modal-section-title">How to Minimize UBIT</p>
+      <ul>
+        <li>Invest through taxable corporate structures (C-Corps) rather than pass-through entities.</li>
+        <li>Avoid debt-financed investments where possible.</li>
+        <li>Use tax-exempt bond funds for fixed income.</li>
+        <li>Work with investment managers who understand UBIT and can structure investments to minimize exposure.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> IRC § 511-514; Treas. Reg. § 1.512(b)-1.</div>
     </div>
@@ -2649,6 +2715,8 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Calculation</p>
       <p>The excise tax is calculated on the foundation's net investment income, which includes dividends, interest, rents, royalties, and capital gains (net of losses and expenses). The tax is reported and paid on Form 990-PF, with quarterly estimated payments generally required if the annual tax is expected to be $500 or more.</p>
+      <p class="modal-section-title">Practical Implications</p>
+      <p>For a foundation with a $100 million endowment generating a 5% total return ($5 million), the excise tax at 1.39% would be approximately $69,500. Foundations with large endowments often have substantial excise tax liabilities, which reduce the amount available for charitable grants.</p>
       <div class="citation"><strong>Source:</strong> IRC § 4940 (as amended by the Further Consolidated Appropriations Act, 2020); IRS "Tax on Net Investment Income" guidance; Treas. Reg. § 53.4940-1.</div>
     </div>
   </div>
@@ -2664,11 +2732,18 @@ function resetFoundationQuiz() {
         <div class="def-word">Excess Business Holdings</div>
         <p>A rule limiting the percentage of a business that a private foundation and its related entities can own. Generally, a foundation cannot own more than 20% of the voting stock of a business (or 35% under certain conditions).</p>
       </div>
+      <p class="modal-section-title">Key Provisions</p>
+      <ul>
+        <li><strong>20% Rule:</strong> Foundation + disqualified persons cannot own more than 20% of voting stock.</li>
+        <li><strong>35% Rule:</strong> If a non-disqualified person has effective control, the threshold is 35%.</li>
+        <li><strong>2% De Minimis:</strong> Foundation is not subject to the rule if it owns 2% or less of both voting stock and total value.</li>
+        <li><strong>Functionally-Related Businesses:</strong> Exemptions exist for businesses that are functionally related to the foundation's purpose.</li>
+      </ul>
       <p class="modal-section-title">Penalties</p>
       <ul>
         <li><strong>Initial Tax:</strong> 10% excise tax on excess holdings.</li>
         <li><strong>Additional Tax:</strong> 200% of the value of excess holdings if not corrected within 90 days.</li>
-        <li><strong>Exceptions:</strong> The 2% de minimis rule — a foundation is not treated as having excess holdings in a corporation where it (with related foundations) owns 2% or less of both voting stock and total share value; certain functionally-related businesses are also excluded.</li>
+        <li><strong>Additional Tax (Tier 2):</strong> 200% of the value of excess holdings if not corrected within the 90-day period after the initial tax is imposed.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> IRC § 4943; Treas. Reg. § 53.4943-1.</div>
     </div>
@@ -2686,7 +2761,14 @@ function resetFoundationQuiz() {
         <p>The practice of registering securities in the name of a broker-dealer or its nominee (Cede &amp; Co.) rather than in the name of the beneficial owner. The term derives from Wall Street, where brokers historically held customer securities.</p>
       </div>
       <p class="modal-section-title">Prevalence</p>
-      <p>Over 99% of publicly traded U.S. equities are held in street name. Foundations almost universally hold their securities in street name through their custodians, which are DTC participants.</p>
+      <p>Over 99% of publicly traded U.S. equities are held in street name. Foundations almost universally hold their securities in street name through their custodians, which are DTC participants. Direct registration (holding securities in the foundation's own name) is increasingly rare for public market investments.</p>
+      <p class="modal-section-title">Advantages</p>
+      <ul>
+        <li><strong>Efficiency:</strong> Simplified trading and settlement.</li>
+        <li><strong>Cost:</strong> No certificate issuance or transfer fees.</li>
+        <li><strong>Convenience:</strong> Consolidated statements and records.</li>
+        <li><strong>Corporate Actions:</strong> Automatic processing of dividends, splits, and other actions.</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> SEC Investor Bulletin: "Holding Your Securities."</div>
     </div>
   </div>
@@ -2708,7 +2790,10 @@ function resetFoundationQuiz() {
         <li><strong>Safety:</strong> No risk of lost, stolen, or forged certificates.</li>
         <li><strong>Cost:</strong> No certificate issuance, insurance, or secure storage costs.</li>
         <li><strong>Efficiency:</strong> Corporate actions and proxy voting are processed automatically.</li>
+        <li><strong>Reporting:</strong> Account statements provide a clear record of positions and transactions.</li>
       </ul>
+      <p class="modal-section-title">How It Works</p>
+      <p>In the book-entry system, DTC maintains electronic records of securities positions for each participant. When a trade occurs, DTC debits the seller's participant account and credits the buyer's participant account. The issuer's books reflect Cede &amp; Co. as the registered owner, but the beneficial owners are recorded in the DTC system through the participant chain.</p>
       <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Release No. 33-7496.</div>
     </div>
   </div>
@@ -2725,7 +2810,12 @@ function resetFoundationQuiz() {
         <p>A settlement mechanism that ensures the delivery of securities occurs only if payment is made, and payment occurs only if securities are delivered. It eliminates principal risk — the risk of delivering securities without receiving payment, or vice versa.</p>
       </div>
       <p class="modal-section-title">DVP in Foundation Securities</p>
-      <p>When a foundation sells securities, the custodian executes a DVP transaction: the securities are delivered to the buyer's custodian simultaneously with the receipt of cash. This ensures the foundation receives payment before the securities are released.</p>
+      <p>When a foundation sells securities, the custodian executes a DVP transaction: the securities are delivered to the buyer's custodian simultaneously with the receipt of cash. This ensures the foundation receives payment before the securities are released. DVP is the standard settlement method for most securities transactions and is a key risk-management feature of the DTC system.</p>
+      <p class="modal-section-title">DVP vs. Free Delivery</p>
+      <ul>
+        <li><strong>DVP:</strong> Securities delivered with simultaneous cash payment.</li>
+        <li><strong>Free Delivery:</strong> Securities delivered without cash payment (used for gifts and contributions).</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> CPMI-IOSCO PFMI; DTC Rules, Article 9.</div>
     </div>
   </div>
@@ -2742,7 +2832,9 @@ function resetFoundationQuiz() {
         <p>A securities transfer made without simultaneous cash payment. Free deliveries are used for gifts, charitable contributions, and certain transfers between accounts.</p>
       </div>
       <p class="modal-section-title">Use in Foundation Securities</p>
-      <p>When a donor contributes appreciated securities to a DAF or a foundation, the transfer is typically processed as a free delivery (no cash consideration). The securities are moved from the donor's brokerage account to the foundation's custodial account via DTC without a cash payment.</p>
+      <p>When a donor contributes appreciated securities to a DAF or a foundation, the transfer is typically processed as a free delivery (no cash consideration). The securities are moved from the donor's brokerage account to the foundation's custodial account via DTC without a cash payment. The foundation's custodian then holds the securities on behalf of the foundation.</p>
+      <p class="modal-section-title">Settlement Process</p>
+      <p>Free delivery transactions are processed through DTC's systems using a "free of payment" code. The transfer is typically completed on T+1 (the same settlement cycle as DVP transactions). The donor's broker instructs DTC to move the securities to the foundation's custodian account without any cash movement.</p>
       <div class="citation"><strong>Source:</strong> DTC Participant Guide; SEC Regulation S-T.</div>
     </div>
   </div>
@@ -2764,7 +2856,10 @@ function resetFoundationQuiz() {
         <li><strong>Headquarters:</strong> Brussels, Belgium.</li>
         <li><strong>Assets Under Custody:</strong> Over €40 trillion.</li>
         <li><strong>Participants:</strong> 2,000+ financial institutions across 90+ countries.</li>
+        <li><strong>Ownership:</strong> Owned by its participants (financial institutions).</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>Foundations with international investments — Eurobonds, foreign equities, global funds — use Euroclear through their global custodians. The Euroclear system provides the same basic functions as DTC: settlement, custody, and corporate action processing, but for international securities.</p>
       <div class="citation"><strong>Source:</strong> Euroclear Holding SA/NV Annual Report; Euroclear.com.</div>
     </div>
   </div>
@@ -2786,7 +2881,10 @@ function resetFoundationQuiz() {
         <li><strong>Custody:</strong> Safekeeping for over 1 million international securities.</li>
         <li><strong>Collateral Management:</strong> Triparty collateral management and securities lending.</li>
         <li><strong>Fund Services:</strong> Fund settlement via Fundsettle and MFEX integration.</li>
+        <li><strong>Tax Services:</strong> Withholding tax processing and reclaim services.</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>For foundations with international portfolios, Euroclear Bank is the primary settlement and custody platform for Eurobonds and other international securities. The foundation's global custodian holds the securities in its Euroclear Bank account, providing the foundation with beneficial ownership and efficient cross-border settlement.</p>
       <div class="citation"><strong>Source:</strong> Euroclear Bank; National Bank of Belgium.</div>
     </div>
   </div>
@@ -2808,6 +2906,8 @@ function resetFoundationQuiz() {
         <li><strong>Euroclear UK &amp; International:</strong> UK CSD operating CREST.</li>
         <li><strong>Euroclear Sweden / Finland:</strong> Nordic CSDs.</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>Foundations with holdings in specific European countries use the national CSD for that jurisdiction. For example, a foundation holding shares in a French company (e.g., LVMH) would have those securities held in Euroclear France through its global custodian. The national CSD maintains the definitive record of ownership for domestic securities.</p>
       <div class="citation"><strong>Source:</strong> ESMA; CSDR Regulation (EU) No 909/2014.</div>
     </div>
   </div>
@@ -2825,11 +2925,14 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Key Features</p>
       <ul>
-        <li><strong>Central Bank Money:</strong> Cash leg settles in central bank accounts.</li>
+        <li><strong>Central Bank Money:</strong> Cash leg settles in central bank accounts (not commercial bank accounts).</li>
         <li><strong>Single Platform:</strong> Multiple CSDs share one technical infrastructure.</li>
-        <li><strong>DVP Model 1:</strong> Real-time gross settlement.</li>
+        <li><strong>DVP Model 1:</strong> Real-time gross settlement with delivery versus payment.</li>
         <li><strong>Launch:</strong> Phased rollout 2015-2017; Euroclear ESES CSDs connected in 2016.</li>
+        <li><strong>Currencies:</strong> Supports EUR, DKK, and SEK settlement (other currencies use T2S with a link).</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>For foundations with European investments, T2S provides efficient, low-risk settlement in central bank money. Transactions in T2S settle on a gross basis, reducing systemic risk and improving settlement efficiency compared to previous systems.</p>
       <div class="citation"><strong>Source:</strong> European Central Bank; T2S Framework.</div>
     </div>
   </div>
@@ -2848,12 +2951,16 @@ function resetFoundationQuiz() {
       <p class="modal-section-title">Key Components</p>
       <ul>
         <li><strong>Return Objectives:</strong> Target total return (e.g., CPI + 5%).</li>
-        <li><strong>Risk Tolerance:</strong> Acceptable volatility and drawdown.</li>
-        <li><strong>Asset Allocation:</strong> Target percentages for equities, bonds, alternatives.</li>
-        <li><strong>Spending Policy:</strong> Formula for annual spending (e.g., 5% of trailing 3-year average).</li>
-        <li><strong>Responsible Investing:</strong> ESG considerations, if applicable.</li>
+        <li><strong>Risk Tolerance:</strong> Acceptable volatility, drawdown, and liquidity constraints.</li>
+        <li><strong>Asset Allocation:</strong> Target percentages for equities, bonds, real assets, private equity, and alternatives.</li>
+        <li><strong>Spending Policy:</strong> Formula for annual spending (e.g., 5% of trailing 3-year average market value).</li>
+        <li><strong>Responsible Investing:</strong> ESG (environmental, social, governance) considerations, if applicable.</li>
+        <li><strong>Manager Selection:</strong> Criteria for selecting and monitoring investment managers.</li>
+        <li><strong>Performance Benchmarks:</strong> Indices used to evaluate performance (e.g., S&P 500, Bloomberg Aggregate).</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> UPMIFA; Council on Foundations.</div>
+      <p class="modal-section-title">Why It Matters</p>
+      <p>The IPS is the foundation's "investment constitution." It provides clarity to investment managers, protects against inconsistent decision-making, and demonstrates the board's fiduciary diligence. It should be reviewed at least annually and updated as the foundation's circumstances change.</p>
+      <div class="citation"><strong>Source:</strong> UPMIFA; Council on Foundations; CFA Institute.</div>
     </div>
   </div>
 </div>
@@ -2874,7 +2981,10 @@ function resetFoundationQuiz() {
         <li><strong>Bearers:</strong> Often issued in bearer form (though many are now book-entry).</li>
         <li><strong>Settlement:</strong> Typically settled through Euroclear Bank or Clearstream.</li>
         <li><strong>Investors:</strong> Attract international investors seeking diversification.</li>
+        <li><strong>Tax Treatment:</strong> Often issued in jurisdictions with favorable tax treatment.</li>
       </ul>
+      <p class="modal-section-title">Foundation Relevance</p>
+      <p>Foundations with fixed-income allocations often hold Eurobonds as a way to diversify credit exposure and currency risk. Eurobonds are typically held through a global custodian in Euroclear Bank, with the foundation as beneficial owner.</p>
       <div class="citation"><strong>Source:</strong> ICMA; European Securities and Markets Authority.</div>
     </div>
   </div>
@@ -2891,7 +3001,15 @@ function resetFoundationQuiz() {
         <p>A broker-dealer, bank, or other financial institution that maintains a securities account at DTC and is a member of NSCC. Participants are the intermediaries through which investors access the depository system.</p>
       </div>
       <p class="modal-section-title">Role in Foundation Securities</p>
-      <p>A foundation's custodian is typically a DTC participant. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions.</p>
+      <p>A foundation's custodian is typically a DTC participant. The custodian holds the foundation's securities in its DTC account, maintains records for the foundation, and processes transactions and corporate actions. The participant account is the foundation's "book-entry location" in the DTC system.</p>
+      <p class="modal-section-title">Participant Responsibilities</p>
+      <ul>
+        <li>Hold securities in book-entry form for clients.</li>
+        <li>Process settlement and corporate actions.</li>
+        <li>Maintain accurate client records.</li>
+        <li>Comply with DTC rules and regulatory requirements.</li>
+        <li>Provide account statements and transaction reports to clients.</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> DTC Rules, Article 2 (Participant Application).</div>
     </div>
   </div>
@@ -2908,7 +3026,9 @@ function resetFoundationQuiz() {
         <p>The increase in the value of an investment portfolio over time due to investment returns (income and capital appreciation) that are reinvested, creating compound growth.</p>
       </div>
       <p class="modal-section-title">Endowment Growth</p>
-      <p>Endowments grow through investment returns that exceed spending and inflation. The goal is to preserve purchasing power while funding grants. The 4-6% spending rule is designed to allow for growth that keeps pace with inflation.</p>
+      <p>Endowments grow through investment returns that exceed spending and inflation. The goal is to preserve purchasing power while funding grants. The 4-6% spending rule is designed to allow for growth that keeps pace with inflation. Over the long term, a well-managed endowment can achieve real returns (after inflation and spending) of 2-4%.</p>
+      <p class="modal-section-title">Compound Interest in Action</p>
+      <p>A $100 million endowment earning a 7% annual return, spending 5% and keeping inflation at 2%, would grow to approximately $200 million in real terms over 20 years. This compounding effect demonstrates the power of long-term investment growth.</p>
       <div class="citation"><strong>Source:</strong> NACUBO Endowment Study; CFA Institute.</div>
     </div>
   </div>
@@ -2930,6 +3050,12 @@ function resetFoundationQuiz() {
         <li><strong>Preservation:</strong> Limiting spending to a percentage of the average asset value helps preserve purchasing power.</li>
         <li><strong>Compliance:</strong> Private foundations must meet a minimum distribution requirement (5% of average asset value) under IRS rules.</li>
       </ul>
+      <p class="modal-section-title">Common Approaches</p>
+      <ul>
+        <li><strong>Percentage of Average Value:</strong> Spend a fixed percentage (e.g., 5%) of the trailing 3-year average market value.</li>
+        <li><strong>Hybrid Approach:</strong> Spend a percentage of average value plus a smoothing adjustment to dampen volatility.</li>
+        <li><strong>Floor/Ceiling:</strong> Set a minimum and maximum spending amount to protect against extreme market movements.</li>
+      </ul>
       <div class="citation"><strong>Source:</strong> UPMIFA; IRC § 4942; NACUBO.</div>
     </div>
   </div>
@@ -2947,10 +3073,19 @@ function resetFoundationQuiz() {
       </div>
       <p class="modal-section-title">Fiduciary Duties</p>
       <ul>
-        <li><strong>Prudent Investor Rule:</strong> Investments must be made with the care of a prudent person.</li>
+        <li><strong>Prudent Investor Rule:</strong> Investments must be made with the care of a prudent person, considering the fund's purposes, terms, distribution requirements, and other circumstances.</li>
         <li><strong>Diversification:</strong> Avoiding concentration in any single investment or asset class.</li>
         <li><strong>IPS Compliance:</strong> Adhering to the investment policy statement.</li>
         <li><strong>Monitoring:</strong> Regular review of portfolio performance and risk.</li>
+        <li><strong>Cost Awareness:</strong> Managing fees and expenses to maximize net returns.</li>
+      </ul>
+      <p class="modal-section-title">Typical Asset Classes</p>
+      <ul>
+        <li><strong>Public Equities:</strong> Domestic and international stocks.</li>
+        <li><strong>Fixed Income:</strong> Treasury, corporate, municipal, and international bonds.</li>
+        <li><strong>Real Assets:</strong> Real estate, infrastructure, commodities.</li>
+        <li><strong>Private Equity:</strong> Venture capital, buyout funds, growth equity.</li>
+        <li><strong>Hedge Funds:</strong> Alternative strategies for diversification.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> UPMIFA; Uniform Prudent Investor Act; CFA Institute.</div>
     </div>
@@ -2973,6 +3108,13 @@ function resetFoundationQuiz() {
         <li><strong>Non-Profit:</strong> The organization cannot have shareholders or distribute profits.</li>
         <li><strong>No Private Inurement:</strong> No part of the organization's income may inure to the benefit of private individuals.</li>
         <li><strong>Lobbying Limits:</strong> Substantial lobbying activities are prohibited.</li>
+        <li><strong>Political Activity:</strong> No participation in political campaigns.</li>
+      </ul>
+      <p class="modal-section-title">Types of 501(c)(3) Organizations</p>
+      <ul>
+        <li><strong>Private Foundations:</strong> Funded by a single source; subject to excise tax and distribution requirements.</li>
+        <li><strong>Public Charities:</strong> Receive broad public support; less restrictive IRS rules.</li>
+        <li><strong>Community Foundations:</strong> Public charities that serve a geographic area.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> IRC § 501(c)(3); Treas. Reg. § 1.501(c)(3)-1.</div>
     </div>
@@ -2998,6 +3140,8 @@ function resetFoundationQuiz() {
       </ul>
       <p class="modal-section-title">⚠️ Common Misconception</p>
       <p>Some promoters market "508(c)(1)(a) trusts" as a special legal entity that provides total financial privacy, exemption from all IRS oversight, or the ability to receive unlimited undeclared donations. This is inaccurate. Section 508(c)(1)(A) does not create a distinct trust or entity type, does not eliminate a church's tax and reporting obligations, and does not provide any special protection from IRS examination. Forming an entity around this misreading of the statute does not change how it is legally treated.</p>
+      <p class="modal-section-title">What the IRS Says</p>
+      <p>The IRS has repeatedly warned about the misuse of 508(c)(1)(A) by promoters who claim it creates a tax-exempt entity without IRS involvement. The IRS has issued guidance clarifying that 508(c)(1)(A) is a filing exemption, not a substance exemption. Churches are still subject to all other tax rules.</p>
       <div class="citation"><strong>Source:</strong> IRC § 508(c)(1)(A); IRS Publication 1828, <em>Tax Guide for Churches and Religious Organizations</em>.</div>
     </div>
   </div>
@@ -3031,95 +3175,10 @@ function resetFoundationQuiz() {
   </div>
 </footer>
 
-<script src="../js/shared.js"></script>
+<script src="../js/shared.js" defer></script>
 
 <script>
-// ─── Theme Toggle ───
-(function initThemeToggle() {
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-  toggle.addEventListener('click', function() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
-  const saved = localStorage.getItem('theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
-})();
-
-// ─── TOC Sidebar ───
-(function initSidebar() {
-  const toggleBtn = document.querySelector('.toc-toggle');
-  const sidebar = document.getElementById('tocSidebar');
-  const backdrop = document.getElementById('sidebarBackdrop');
-  if (!toggleBtn || !sidebar || !backdrop) return;
-  function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeSidebar() {
-    sidebar.classList.remove('open');
-    backdrop.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  toggleBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (sidebar.classList.contains('open')) closeSidebar();
-    else openSidebar();
-  });
-  backdrop.addEventListener('click', closeSidebar);
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeSidebar();
-  });
-})();
-
-// ─── Modal System ───
-// NOTE: close/backdrop/Escape handlers are attached once, globally (below),
-// rather than inside openModal() — the previous version re-added a new
-// listener on every openModal() call, leaking handlers each time the same
-// modal was reopened.
-function openModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Global, one-time listeners for closing modals (close button, backdrop click, Escape)
-document.addEventListener('click', function(e) {
-  const closeBtn = e.target.closest('.modal-close');
-  if (closeBtn) {
-    const modal = closeBtn.closest('.modal-overlay');
-    if (modal) closeModal(modal.id);
-    return;
-  }
-  if (e.target.classList && e.target.classList.contains('modal-overlay')) {
-    closeModal(e.target.id);
-  }
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.active').forEach(function(m) { closeModal(m.id); });
-  }
-});
-
 // ─── Concept Map Node Interactivity ───
-// The diagram SVGs mark each clickable node with class="cm-node" and a
-// data-modal attribute (e.g. data-modal="donor" → #modal-donor), and the
-// caption under every diagram says "Click a node to open its definition" —
-// but no click handler was ever wired up, so every node in every concept
-// map on this page was inert. This delegated listener fixes all of them
-// (mouse and keyboard) in one place instead of requiring 30 separate
-// per-node onclick attributes.
 document.addEventListener('click', function(e) {
   const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
   if (node) openModal('modal-' + node.getAttribute('data-modal'));
@@ -3133,10 +3192,41 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// ─── Progress Tracking (syncs with the main index page) ───
-// Mirrors the localStorage schema used by index.html's DTCProgress module
-// so that visiting/completing this guide updates the "nonprofit" card's
-// badge back on the index page.
+// ─── Modal close handlers ───
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.querySelector('.modal-close')?.addEventListener('click', () => closeModal(overlay.id));
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) closeModal(this.id);
+  });
+  overlay.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal(this.id);
+  });
+});
+
+function openModal(id) {
+  const overlay = document.getElementById(id);
+  if (!overlay) return;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  const focusable = overlay.querySelector('button, [tabindex="0"], a, input');
+  if (focusable) setTimeout(() => focusable.focus(), 50);
+}
+
+function closeModal(id) {
+  const overlay = document.getElementById(id);
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const open = document.querySelector('.modal-overlay.active');
+    if (open) closeModal(open.id);
+  }
+});
+
+// ─── Progress Tracking ───
 const DTC_PROGRESS_KEY = 'dtc-progress';
 function readDtcProgress() {
   try {
