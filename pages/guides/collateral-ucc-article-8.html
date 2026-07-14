@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles/shared.css" />
-    <script src="../js/theme-init.js"></script>
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <script src="../../js/theme-init.js"></script>
     <style>
         /* ─── Design Tokens ─── */
         :root {
@@ -1487,7 +1487,6 @@
             padding-top: 6px;
         }
     </style>
-    <base target="_blank" />
 </head>
 
 <body>
@@ -1509,14 +1508,14 @@
         <div class="toc-divider">Assessment</div>
         <a href="#quiz">Knowledge Check Quiz</a>
         <div class="toc-divider">Documents</div>
-        <a href="../index.html" class="external">DTC Documents Index</a>
+        <a href="../../index.html" class="external">DTC Documents Index</a>
         <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
         <a href="dtc-guide.html" class="external">Securities Ownership Wizard</a>
         <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
         <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
         <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
         <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-        <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+        <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
         <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
     </div>
 
@@ -1555,9 +1554,9 @@
     <div class="wrap">
 
         <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-            <a href="../index.html">Home</a>
+            <a href="../../index.html">Home</a>
             <span>›</span>
-            <a href="../index.html#documents">Documents</a>
+            <a href="../../index.html#documents">Documents</a>
             <span>›</span>
             <span style="color:var(--ink-tertiary);">Teaching Guides</span>
             <span>›</span>
@@ -1624,78 +1623,111 @@
                     The Lender has a perfected security interest in the book-entry securities.
                     On the issuer's books, Cede and Co. remains the registered owner.
                 </p>
-                <svg class="concept-map-svg" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <svg class="concept-map-svg" viewBox="0 0 780 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <defs>
-                        <marker id="cm-collat-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <marker id="cm-collat-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
                             <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
                         </marker>
-                        <marker id="cm-collat-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <marker id="cm-collat-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
                             <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
                         </marker>
-                        <filter id="cm-collat-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.08)"/>
+                        <marker id="cm-collat-arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--teal)"/>
+                        </marker>
+                        <filter id="cm-collat-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
                         </filter>
+                        <linearGradient id="cm-grad-neutral" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--bg-ivory)"/>
+                            <stop offset="1" stop-color="var(--bg-cream)"/>
+                        </linearGradient>
+                        <linearGradient id="cm-grad-accent" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--accent-light)"/>
+                            <stop offset="1" stop-color="var(--accent-muted)"/>
+                        </linearGradient>
+                        <linearGradient id="cm-grad-gold" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--gold-light)"/>
+                            <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+                        </linearGradient>
+                        <linearGradient id="cm-grad-teal" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--teal-light)"/>
+                            <stop offset="1" stop-color="var(--teal)" stop-opacity="0.3"/>
+                        </linearGradient>
+                        <linearGradient id="cm-badge-gold" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--gold-deep)"/>
+                            <stop offset="1" stop-color="var(--gold)"/>
+                        </linearGradient>
                     </defs>
 
                     <!-- Borrower -->
                     <g class="cm-node" data-modal="borrower" tabindex="0" role="button" aria-label="Borrower — open definition">
-                        <rect class="cm-node-shape" x="60" y="36" width="160" height="56" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm-collat-shadow)"/>
-                        <text class="cm-node-title" x="140" y="60" text-anchor="middle" fill="var(--ink)" font-size="12">Borrower / Pledgor</text>
-                        <text class="cm-node-sub" x="140" y="78" text-anchor="middle" fill="var(--ink-tertiary)">Owns securities</text>
+                        <rect class="cm-node-shape" x="40" y="46" width="230" height="78" rx="14" fill="url(#cm-grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm-collat-shadow)"/>
+                        <text class="cm-node-title" x="155" y="78" text-anchor="middle" fill="var(--ink)" font-size="13">Borrower / Pledgor</text>
+                        <text class="cm-node-sub" x="155" y="98" text-anchor="middle" fill="var(--ink-tertiary)">Owns the securities</text>
                     </g>
-                    <path class="cm-edge" d="M220 64 L270 64" marker-end="url(#cm-collat-arrow)"/>
-                    <text class="cm-edge-label" x="245" y="54" text-anchor="middle">grants security interest</text>
 
                     <!-- Lender -->
                     <g class="cm-node" data-modal="lender" tabindex="0" role="button" aria-label="Lender — open definition">
-                        <rect class="cm-node-shape" x="270" y="18" width="160" height="56" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" filter="url(#cm-collat-shadow)"/>
-                        <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="var(--accent)" font-size="12">Lender / Secured Party</text>
-                        <text class="cm-node-sub" x="350" y="60" text-anchor="middle" fill="var(--ink-tertiary)">Extends credit</text>
+                        <rect class="cm-node-shape" x="500" y="30" width="240" height="78" rx="14" fill="url(#cm-grad-accent)" stroke="var(--accent)" stroke-width="1.6" filter="url(#cm-collat-shadow)"/>
+                        <text class="cm-node-title" x="620" y="62" text-anchor="middle" fill="var(--accent)" font-size="13">Lender / Secured Party</text>
+                        <text class="cm-node-sub" x="620" y="82" text-anchor="middle" fill="var(--ink-tertiary)">Extends credit</text>
                     </g>
-                    <path class="cm-edge" d="M350 74 L350 112" marker-end="url(#cm-collat-arrow)"/>
-                    <text class="cm-edge-label" x="370" y="96" text-anchor="start">perfected via</text>
+                    <path class="cm-edge" d="M270 80 C 380 50, 420 65, 498 68" marker-end="url(#cm-collat-arrow)"/>
+                    <text class="cm-edge-label" x="380" y="46" text-anchor="middle">grants security interest</text>
 
                     <!-- ACA -->
                     <g class="cm-node" data-modal="aca" tabindex="0" role="button" aria-label="Account Control Agreement — open definition">
-                        <rect class="cm-node-shape" x="250" y="114" width="200" height="62" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8" filter="url(#cm-collat-shadow)"/>
-                        <rect x="280" y="124" width="140" height="16" rx="4" fill="var(--gold)"/>
-                        <text class="cm-badge-text" x="350" y="136" text-anchor="middle" fill="#fff">UCC Art. 8 "Control"</text>
-                        <text class="cm-node-title" x="350" y="160" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Account Control Agreement (ACA)</text>
+                        <rect class="cm-node-shape" x="390" y="168" width="340" height="98" rx="16" fill="url(#cm-grad-gold)" stroke="var(--gold)" stroke-width="2" filter="url(#cm-collat-shadow)"/>
+                        <rect x="422" y="182" width="276" height="20" rx="10" fill="url(#cm-badge-gold)"/>
+                        <text class="cm-badge-text" x="560" y="196" text-anchor="middle" fill="#fff">UCC § 8-106 &amp; § 9-328 — "Control"</text>
+                        <text class="cm-node-title" x="560" y="228" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Account Control</text>
+                        <text class="cm-node-title" x="560" y="246" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Agreement (ACA)</text>
                     </g>
-                    <path class="cm-edge" d="M350 176 L350 218" marker-end="url(#cm-collat-arrow)"/>
-                    <text class="cm-edge-label" x="370" y="200" text-anchor="start">perfects interest in</text>
+                    <path class="cm-edge" d="M620 108 C 605 130, 585 150, 565 166" marker-end="url(#cm-collat-arrow)"/>
+                    <text class="cm-edge-label" x="642" y="140" text-anchor="start">perfected via</text>
 
                     <!-- Securities (book-entry) -->
                     <g class="cm-node" data-modal="book-entry" tabindex="0" role="button" aria-label="Book-entry securities — open definition">
-                        <rect class="cm-node-shape" x="240" y="220" width="220" height="62" rx="12" fill="var(--teal-light)" stroke="var(--teal)" stroke-width="1.5" filter="url(#cm-collat-shadow)"/>
-                        <text class="cm-node-title" x="350" y="248" text-anchor="middle" fill="var(--teal)" font-size="12">Book-Entry Securities</text>
-                        <text class="cm-node-sub" x="350" y="268" text-anchor="middle" fill="var(--ink-tertiary)">Held at DTC participant / custodian</text>
+                        <rect class="cm-node-shape" x="40" y="290" width="290" height="90" rx="14" fill="url(#cm-grad-teal)" stroke="var(--teal)" stroke-width="1.6" filter="url(#cm-collat-shadow)"/>
+                        <text class="cm-node-title" x="185" y="326" text-anchor="middle" fill="var(--teal)" font-size="13">Book-Entry Securities</text>
+                        <text class="cm-node-sub" x="185" y="346" text-anchor="middle" fill="var(--ink-tertiary)">Held via security entitlement</text>
+                        <text class="cm-node-sub" x="185" y="362" text-anchor="middle" fill="var(--ink-tertiary)">at the intermediary</text>
                     </g>
+                    <path class="cm-edge" d="M420 266 C 340 285, 260 285, 195 288" marker-end="url(#cm-collat-arrow-gold)"/>
+                    <text class="cm-edge-label" x="330" y="272" text-anchor="middle">perfects interest in</text>
 
                     <!-- Intermediary -->
                     <g class="cm-node" data-modal="intermediary" tabindex="0" role="button" aria-label="Securities Intermediary — open definition">
-                        <rect class="cm-node-shape" x="540" y="114" width="180" height="62" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm-collat-shadow)"/>
-                        <text class="cm-node-title" x="630" y="140" text-anchor="middle" fill="var(--ink)" font-size="12">Securities Intermediary</text>
-                        <text class="cm-node-sub" x="630" y="160" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant / Custodian</text>
+                        <rect class="cm-node-shape" x="410" y="290" width="290" height="90" rx="14" fill="url(#cm-grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm-collat-shadow)"/>
+                        <text class="cm-node-title" x="555" y="326" text-anchor="middle" fill="var(--ink)" font-size="13">Securities Intermediary</text>
+                        <text class="cm-node-sub" x="555" y="346" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant / Custodian</text>
+                        <text class="cm-node-sub" x="555" y="362" text-anchor="middle" fill="var(--ink-tertiary)">Signs the ACA</text>
                     </g>
-                    <line class="cm-edge" x1="450" y1="145" x2="538" y2="145" marker-end="url(#cm-collat-arrow)"/>
-                    <text class="cm-edge-label" x="500" y="138" text-anchor="middle">holds account for</text>
+                    <path class="cm-edge" d="M330 335 L408 335" marker-end="url(#cm-collat-arrow-teal)"/>
+                    <text class="cm-edge-label" x="369" y="325" text-anchor="middle">held through</text>
+                    <path class="cm-edge" d="M560 266 C 558 275, 557 282, 556 288" marker-end="url(#cm-collat-arrow-gold)"/>
 
                     <!-- Cede -->
                     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-                        <rect class="cm-node-shape" x="530" y="220" width="200" height="56" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" filter="url(#cm-collat-shadow)"/>
-                        <text class="cm-node-title" x="630" y="248" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
-                        <text class="cm-node-sub" x="630" y="266" text-anchor="middle" fill="var(--gold)">Registered owner (issuer books)</text>
+                        <rect class="cm-node-shape" x="410" y="430" width="290" height="84" rx="14" fill="url(#cm-grad-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#cm-collat-shadow)"/>
+                        <text class="cm-node-title" x="555" y="464" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Cede &amp; Co.</text>
+                        <text class="cm-node-sub" x="555" y="484" text-anchor="middle" fill="var(--gold-deep)">Registered owner on the</text>
+                        <text class="cm-node-sub" x="555" y="500" text-anchor="middle" fill="var(--gold-deep)">issuer's books (nominee)</text>
                     </g>
-                    <line class="cm-edge cm-edge-dashed" x1="460" y1="251" x2="528" y2="248" marker-end="url(#cm-collat-arrow)"/>
-                    <text class="cm-edge-label" x="496" y="242" text-anchor="middle" fill="var(--ink-faint)">nominee for</text>
+                    <path class="cm-edge cm-edge-dashed" d="M555 380 L555 428" marker-end="url(#cm-collat-arrow)"/>
+                    <text class="cm-edge-label" x="580" y="410" text-anchor="start" fill="var(--ink-faint)">nominee for</text>
 
-                    <!-- Perfection label -->
-                    <rect x="60" y="334" width="640" height="46" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
-                    <text class="cm-edge-label" x="380" y="354" text-anchor="middle" fill="var(--ink-tertiary)">The ACA perfects the lender's security interest by giving the lender "control" over the securities account.</text>
-                    <text class="cm-edge-label" x="380" y="370" text-anchor="middle" fill="var(--ink-muted)">The borrower retains beneficial ownership; the lender has a secured claim enforceable against the securities.</text>
+                    <!-- Perfection banner -->
+                    <rect x="40" y="410" width="330" height="104" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
+                    <text class="cm-edge-label" x="60" y="436" fill="var(--ink-tertiary)" font-size="11">
+                        <tspan x="60" dy="0">The ACA perfects the lender's security</tspan>
+                        <tspan x="60" dy="16">interest by giving it "control" over the</tspan>
+                        <tspan x="60" dy="16">securities account. The borrower keeps</tspan>
+                        <tspan x="60" dy="16">beneficial ownership; the lender holds a</tspan>
+                        <tspan x="60" dy="16">secured claim with top priority.</tspan>
+                    </text>
                 </svg>
-                <p class="cm-caption"><strong>Collateral flow:</strong> Borrower → Lender → ACA → Book-Entry Securities. The Account Control Agreement perfects the lender's security interest under UCC Article 8.</p>
+                <p class="cm-caption"><strong>Collateral flow:</strong> Borrower → Lender → ACA → Book-Entry Securities (held through the Intermediary, which is nominee-registered as Cede &amp; Co. on the issuer's books). The ACA gives the lender "control" under UCC § 8-106, which carries top priority under § 9-328(a).</p>
                 <div class="cm-legend" aria-hidden="true">
                     <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--bg-ivory);border-color:var(--border)"></span> Borrower / Intermediary</span>
                     <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Lender</span>
@@ -1723,18 +1755,18 @@
                 </div>
                 <div class="entity-card">
                     <div class="entity-name">Perfection by Filing</div>
-                    <div class="entity-role">UCC Article 9 — § 9-312</div>
-                    <div class="entity-desc">The secured party files a UCC-1 financing statement in the borrower's jurisdiction. This method is only available for <em>certificated</em> securities (physical certificates) or in certain limited scenarios for uncertificated securities. Filing does not give the secured party control and is generally subordinate to a later-perfected control party.</div>
+                    <div class="entity-role">UCC Article 9 — § 9-312(a)</div>
+                    <div class="entity-desc">The secured party files a UCC-1 financing statement in the borrower's jurisdiction. Filing is a permissive method of perfection available for <em>any</em> investment property — certificated securities, uncertificated securities, security entitlements, and securities accounts alike. It is legally valid on its own, but under § 9-328 it is always subordinate to a secured party that later perfects by control, so it is rarely relied on as the sole method for book-entry collateral.</div>
                 </div>
                 <div class="entity-card">
                     <div class="entity-name">Priority</div>
-                    <div class="entity-role">Who Gets Paid First?</div>
-                    <div class="entity-desc">A secured party with <em>control</em> has priority over a secured party that merely filed a UCC-1. Control also beats most other claims, including judicial liens. This "control priority" is a central feature of Article 8 and a key reason why lenders insist on ACAs for book-entry collateral.</div>
+                    <div class="entity-role">UCC Article 9 — § 9-328(a)</div>
+                    <div class="entity-desc">A secured party with <em>control</em> has priority over a secured party that merely filed a UCC-1 — regardless of which party acted first in time. This "control priority" rule is the central organizing principle for investment property under Article 9, and the key reason why lenders insist on ACAs for book-entry collateral rather than relying on a filing.</div>
                 </div>
                 <div class="entity-card">
                     <div class="entity-name">Automatic Perfection</div>
-                    <div class="entity-role">9-309 &amp; 9-312</div>
-                    <div class="entity-desc">Certain security interests are automatically perfected without filing or control (e.g., a security interest in a securities account created by a broker in favor of a customer). But for most commercial lending, an ACA is the standard and safest route.</div>
+                    <div class="entity-role">UCC § 9-309(10)–(11)</div>
+                    <div class="entity-desc">A narrow category of security interests is automatically perfected without filing or control — specifically, a security interest that a broker, securities intermediary, or commodity intermediary creates <em>in its own favor</em> against a customer's account (for example, to secure a margin loan). This does not apply to a third-party lender's interest; for most commercial lending, an ACA is the standard and safest route.</div>
                 </div>
             </div>
 
@@ -1753,24 +1785,81 @@
                 </tr>
                 <tr>
                     <td><strong>Filing (UCC-1)</strong></td>
-                    <td>Financing statement filed with the Secretary of State in the borrower's jurisdiction.</td>
-                    <td>Subordinate to a later-perfected control party; may be junior to other filers.</td>
-                    <td>Used for certificated securities (physical certificates) or when the intermediary will not sign an ACA.</td>
+                    <td>Financing statement filed with the Secretary of State in the borrower's jurisdiction. Available under § 9-312(a) for any investment property, not just certificated securities.</td>
+                    <td>Always subordinate to a later-perfected control party under § 9-328(a), regardless of filing date.</td>
+                    <td>Used for certificated securities held outside DTC, non-DTC-eligible securities, or as a protective "backup" filing alongside an ACA.</td>
                 </tr>
                 <tr>
                     <td><strong>Automatic Perfection</strong></td>
-                    <td>Security interest in a securities account created by a broker in favor of a customer (e.g., margin account).</td>
-                    <td>Subject to priority rules; may be junior to a perfected control party.</td>
-                    <td>Broker-dealer margin lending; not typically used for institutional lending.</td>
+                    <td>A broker, securities intermediary, or commodity intermediary's own security interest against a customer's securities account (e.g., to secure a margin loan) under § 9-309(10)–(11).</td>
+                    <td>Perfected automatically, but still ranks below a conflicting control party under § 9-328.</td>
+                    <td>Broker-dealer margin lending only; not available to a third-party institutional lender.</td>
                 </tr>
             </table>
+
+            <div class="diagram-box" id="priority-waterfall" role="img" aria-labelledby="pf-priority-title" aria-describedby="pf-priority-desc">
+                <div class="diagram-title" id="pf-priority-title">Diagram — The § 9-328(a) Priority Waterfall</div>
+                <p id="pf-priority-desc" class="visually-hidden">
+                    Priority ladder for conflicting security interests in the same investment property under UCC § 9-328(a).
+                    Rank one: a secured party with control, such as through an Account Control Agreement, always outranks every other claimant, regardless of timing.
+                    Rank two: a secured party perfected only by filing a UCC-1 is subordinate to any control party, but still outranks general unsecured creditors and a bankruptcy trustee.
+                    Rank three: an unperfected security interest offers no priority protection and is typically defeated by a bankruptcy trustee and by later perfected secured parties.
+                </p>
+                <svg class="process-flow-svg" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="pf-grad-gold" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--gold)"/>
+                            <stop offset="1" stop-color="var(--gold-deep)"/>
+                        </linearGradient>
+                        <linearGradient id="pf-grad-accent" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--accent)"/>
+                            <stop offset="1" stop-color="var(--accent-hover)"/>
+                        </linearGradient>
+                        <linearGradient id="pf-grad-muted" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--ink-muted)"/>
+                            <stop offset="1" stop-color="var(--ink-faint)"/>
+                        </linearGradient>
+                        <filter id="pf-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.14)"/>
+                        </filter>
+                    </defs>
+
+                    <text class="pf-phase" x="40" y="18">Rank 1 — Always Wins</text>
+                    <rect x="40" y="26" width="620" height="70" rx="14" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8" filter="url(#pf-shadow)"/>
+                    <circle cx="76" cy="61" r="19" fill="url(#pf-grad-gold)"/>
+                    <text class="pf-step-num" x="76" y="66" text-anchor="middle">1</text>
+                    <text class="pf-step-title" x="110" y="56">Perfection by Control (ACA) — UCC § 8-106</text>
+                    <text class="pf-step-sub" x="110" y="74">Beats every other claimant, including earlier filers, regardless of timing (§ 9-328(a)).</text>
+
+                    <path class="pf-edge" d="M76 96 L76 122" marker-end="url(#cm-collat-arrow)"/>
+                    <text class="pf-step-sub" x="94" y="114" fill="var(--ink-muted)">outranks ↓</text>
+
+                    <text class="pf-phase" x="40" y="140">Rank 2 — Subordinate to Control</text>
+                    <rect x="40" y="148" width="620" height="70" rx="14" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.6" filter="url(#pf-shadow)"/>
+                    <circle cx="76" cy="183" r="19" fill="url(#pf-grad-accent)"/>
+                    <text class="pf-step-num" x="76" y="188" text-anchor="middle">2</text>
+                    <text class="pf-step-title" x="110" y="178" fill="var(--accent)">Perfection by Filing (UCC-1) — § 9-312(a)</text>
+                    <text class="pf-step-sub" x="110" y="196">Valid perfection, but always loses to a later-perfected control party under § 9-328(a).</text>
+
+                    <path class="pf-edge" d="M76 218 L76 244" marker-end="url(#cm-collat-arrow)"/>
+                    <text class="pf-step-sub" x="94" y="236" fill="var(--ink-muted)">outranks ↓</text>
+
+                    <text class="pf-phase" x="40" y="262">Rank 3 — Unprotected</text>
+                    <rect x="40" y="270" width="620" height="52" rx="14" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.4" filter="url(#pf-shadow)"/>
+                    <circle cx="76" cy="296" r="19" fill="url(#pf-grad-muted)"/>
+                    <text class="pf-step-num" x="76" y="301" text-anchor="middle">3</text>
+                    <text class="pf-step-title" x="110" y="292" fill="var(--ink-tertiary)">No Perfection</text>
+                    <text class="pf-step-sub" x="110" y="308">Loses to nearly every secured party and to the bankruptcy trustee.</text>
+                </svg>
+                <p class="cm-caption">A secured party with control always wins under § 9-328(a) — timing never matters against it. This is why an ACA, not a UCC-1 filing, is the standard for book-entry securities collateral.</p>
+            </div>
 
             <div class="tip-box">
                 <strong>Why Control Matters:</strong> Control is the most important concept in Article 8 secured transactions. A lender with control does not need to file a UCC-1, does not need to worry about the borrower filing bankruptcy (the security interest is effective against the bankruptcy trustee), and has priority over virtually all other claimants. Control is achieved through an Account Control Agreement — a tri-party contract that gives the lender direct rights against the securities intermediary.
             </div>
 
             <div class="warn-box">
-                <strong>Filing Trap:</strong> Relying solely on a UCC-1 filing for book-entry securities is risky. Under UCC § 8-106, a secured party that merely files a UCC-1 does <em>not</em> have control. If another lender later obtains an ACA with the same intermediary, that later lender will have priority — even if the first lender filed first. For book-entry securities, always use an ACA.
+                <strong>Filing Trap:</strong> Relying solely on a UCC-1 filing for book-entry securities is risky. Filing does not give the secured party "control" as defined in UCC § 8-106. Under the priority rule in § 9-328(a), a secured party with control always outranks one who merely filed — so if another lender later obtains an ACA with the same intermediary, that later lender will have priority, even though the first lender filed first. For book-entry securities, always use an ACA.
             </div>
 
             <!-- ═══════════════════════════════════════════════════
@@ -1807,14 +1896,14 @@
             <h3 class="subsection-title">UCC-1 Financing Statements</h3>
 
             <p class="body-text">
-                A UCC-1 financing statement is the traditional method of perfecting a security interest in tangible personal property. For securities, a UCC-1 may be used for:
+                A UCC-1 financing statement is the traditional method of perfecting a security interest in tangible personal property, and under § 9-312(a) it is also a legally permissible way to perfect a security interest in <em>any</em> investment property — certificated, uncertificated, or held through an intermediary. In practice, though, filing is subordinate to control (§ 9-328(a)), so it is mainly used in a narrower set of situations:
             </p>
 
             <ul class="body-text">
-                <li><strong>Certificated securities</strong> — where the borrower holds physical certificates that are <em>not</em> deposited with DTC. In this case, the lender takes possession of the certificates (or they are held by a third-party bailee) and files a UCC-1 against the borrower.</li>
+                <li><strong>Certificated securities</strong> — where the borrower holds physical certificates that are <em>not</em> deposited with DTC. Here a lender will usually prefer to take possession of the certificates (which achieves control) but may file a UCC-1 as an alternative or supplement.</li>
                 <li><strong>Non-DTC securities</strong> — private company securities that are not DTC-eligible and are held in certificate form.</li>
-                <li><strong>Limited circumstances for uncertificated securities</strong> — where the issuer (not an intermediary) maintains the ownership records. Filing is required because there is no intermediary to sign an ACA.</li>
-                <li><strong>Backup perfection</strong> — some lenders file a UCC-1 in addition to obtaining an ACA, as an extra layer of protection in case the ACA is challenged.</li>
+                <li><strong>Uncertificated securities with no intermediary</strong> — where the issuer itself (not a broker or bank) maintains the ownership records directly. An ACA isn't possible because there is no intermediary to sign one, so filing (or registering the lender as owner, which achieves control) is the practical route.</li>
+                <li><strong>Backup perfection</strong> — some lenders file a UCC-1 in addition to obtaining an ACA, as an extra layer of protection in case the ACA is later challenged or the intermediary fails to honor it.</li>
             </ul>
 
             <div class="tip-box">
@@ -1832,7 +1921,7 @@
             </p>
 
             <p class="body-text">
-                When an investor borrows on margin, the securities in the margin account are pledged as collateral to the broker-dealer. The broker-dealer (as the secured party) may then re-pledge those securities to another institution (e.g., to a bank for a repo loan) or use them to cover its own short positions. This re-hypothecation is permitted under SEC Regulation T and the broker's customer agreement, subject to certain limits.
+                When an investor borrows on margin, the securities in the margin account are pledged as collateral to the broker-dealer. The broker-dealer (as the secured party) may then re-pledge those securities to another institution (e.g., to a bank for a repo loan) or use them to cover its own short positions. This re-hypothecation is permitted under the broker's customer agreement, subject to the quantitative limits and customer-asset segregation rules of SEC Rule 15c3-3 and the margin framework of Regulation T.
             </p>
 
             <div class="entity-grid">
@@ -2018,11 +2107,11 @@
     <footer class="page-footer">
         <div class="footer-content">
             <nav class="footer-site-nav" aria-label="Site navigation">
-                <a href="../index.html" class="footer-home-link">Home</a>
+                <a href="../../index.html" class="footer-home-link">Home</a>
                 <span class="footer-nav-sep" aria-hidden="true">·</span>
                 <a href="../sitemap.html">Site Map</a>
                 <span class="footer-nav-sep" aria-hidden="true">·</span>
-                <a href="../index.html#documents">All Documents</a>
+                <a href="../../index.html#documents">All Documents</a>
             </nav>
             <div class="footer-info">
                 <div class="footer-version">July 2026 · Securities as Collateral Teaching Guide v1.0 · UCC Article 8 &amp; Margin Lending</div>
@@ -2040,7 +2129,7 @@
         </div>
     </footer>
 
-    <script src="../js/shared.js" defer></script>
+    <script src="../../js/shared.js" defer></script>
 
     <!-- ═══════════════════════════════════════════════════
     MODAL LIBRARY
@@ -2099,11 +2188,11 @@
                 <p class="modal-section-title">Methods of Perfection for Securities</p>
                 <ul>
                     <li><strong>Control (UCC § 8-106):</strong> The secured party obtains "control" over the securities account through an Account Control Agreement, by being the entitlement holder, or by taking possession of a certificated security. This is the primary method for book-entry securities.</li>
-                    <li><strong>Filing (UCC Article 9):</strong> The secured party files a UCC-1 financing statement in the borrower's jurisdiction. This is only available for certificated securities or in limited circumstances for uncertificated securities.</li>
-                    <li><strong>Automatic Perfection:</strong> Some security interests are perfected automatically upon attachment (e.g., a broker's security interest in a customer's margin account under § 9-309).</li>
+                    <li><strong>Filing (UCC Article 9):</strong> The secured party files a UCC-1 financing statement in the borrower's jurisdiction. This is legally available for any investment property under § 9-312(a), but it is always subordinate to control under § 9-328(a).</li>
+                    <li><strong>Automatic Perfection:</strong> A narrow set of security interests is perfected automatically upon attachment — specifically, a broker's, securities intermediary's, or commodity intermediary's own security interest against a customer's account (e.g., a margin loan) under § 9-309(10)–(11).</li>
                 </ul>
                 <div class="see-also">See also: <a href="#" onclick="openModal('modal-control');return false;">Control</a>, <a href="#" onclick="openModal('modal-ucc1');return false;">UCC-1</a>, <a href="#" onclick="openModal('modal-aca');return false;">Account Control Agreement</a></div>
-                <div class="citation"><strong>Source:</strong> UCC § 9-308 (Perfection); § 8-106 (Control).</div>
+                <div class="citation"><strong>Source:</strong> UCC § 9-308 (Perfection); § 8-106 (Control); § 9-328 (Priority).</div>
             </div>
         </div>
     </div>
@@ -2159,16 +2248,16 @@
                 <div class="def-callout">
                     <div class="def-type">Filing</div>
                     <div class="def-word">UCC-1 Financing Statement</div>
-                    <p>A public notice filed with the Secretary of State (or other designated office) that gives notice of a secured party's security interest in a debtor's collateral. For securities, filing is an alternative to control — but it is subordinate to a later-perfected control party.</p>
+                    <p>A public notice filed with the Secretary of State (or other designated office) that gives notice of a secured party's security interest in a debtor's collateral. Under § 9-312(a), filing is a legally permissible way to perfect a security interest in any investment property — but it is always subordinate to a party that perfects by control (§ 9-328(a)).</p>
                 </div>
-                <p class="modal-section-title">When to File for Securities</p>
+                <p class="modal-section-title">When Filing Is Practically Used for Securities</p>
                 <ul>
                     <li><strong>Certificated securities:</strong> When the borrower holds physical certificates that are not deposited with DTC.</li>
                     <li><strong>Non-DTC securities:</strong> For private company securities that are not eligible for the DTC system.</li>
                     <li><strong>Backup perfection:</strong> Some lenders file a UCC-1 in addition to obtaining an ACA, as an extra layer of protection.</li>
                 </ul>
-                <div class="warn-box"><strong>Warning:</strong> Filing a UCC-1 for book-entry securities does <em>not</em> give the secured party "control" under UCC § 8-106. A later lender with an ACA will have priority. Always use an ACA for book-entry securities.</div>
-                <div class="citation"><strong>Source:</strong> UCC Article 9 (Secured Transactions); UCC § 9-310 (Filing).</div>
+                <div class="warn-box"><strong>Warning:</strong> Filing a UCC-1 does <em>not</em> give the secured party "control" as defined in UCC § 8-106. Under § 9-328(a), a later lender who obtains an ACA will have priority over an earlier UCC-1 filer. Always use an ACA for book-entry securities.</div>
+                <div class="citation"><strong>Source:</strong> UCC § 9-312(a) (Perfection by Filing); UCC § 9-328(a) (Priority of Security Interests in Investment Property).</div>
             </div>
         </div>
     </div>
@@ -2369,7 +2458,7 @@
             uccq2: { correct: 'b',
                 explanation: 'Rehypothecation is the practice of a broker-dealer re-using client collateral to finance its own activities or borrowings. This is permitted under Regulation T but subject to limits and disclosure requirements. It creates counterparty risk for the client, as seen in the Lehman Brothers bankruptcy.' },
             uccq3: { correct: 'b',
-                explanation: 'Under UCC Article 8, a secured party with control (via an ACA) has priority over a secured party that merely filed a UCC-1 financing statement. Control beats filing — even if the filing occurred first. This is a key feature of Article 8 and a reason why lenders insist on ACAs for book-entry collateral.' },
+                explanation: 'Under UCC § 9-328(a), a secured party with control (via an ACA) has priority over a secured party that merely filed a UCC-1 financing statement. Control beats filing — even if the filing occurred first. This is a key feature of Article 9\'s investment property priority rules and a reason why lenders insist on ACAs for book-entry collateral.' },
             uccq4: { correct: 'b',
                 explanation: 'The primary function of an ACA is to give the lender "control" over the securities account, perfecting its security interest under UCC § 8-106. The ACA does not transfer legal title (that remains with the borrower), does not file a public notice (that\'s a UCC-1), and does not require additional collateral (that\'s a margin call).' },
             uccq5: { correct: 'a',
@@ -2440,26 +2529,6 @@
             document.getElementById('quizResult').className = 'quiz-result';
             document.getElementById('quizResult').innerHTML = '';
         }
-
-        // ─── Theme toggle (local override) ───
-        (function() {
-            const toggle = document.getElementById('themeToggle');
-            if (!toggle) return;
-            toggle.addEventListener('click', function(e) {
-                const html = document.documentElement;
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                try {
-                    localStorage.setItem('dtc-theme', next);
-                } catch (_) {}
-            });
-            // Sync with shared.js if loaded
-            if (window.DTCTheme && window.DTCTheme.get) {
-                const theme = window.DTCTheme.get();
-                if (theme) document.documentElement.setAttribute('data-theme', theme);
-            }
-        })();
     </script>
 
 </body>

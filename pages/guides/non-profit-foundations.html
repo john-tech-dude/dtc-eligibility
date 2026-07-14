@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<link rel="stylesheet" href="../../styles/shared.css">
+<script src="../../js/theme-init.js"></script>
 <style>
 
 /* ─── Shared with template ─── */
@@ -789,6 +789,34 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="diagram-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    </filter>
+    <linearGradient id="grad-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory)"/>
+      <stop offset="1" stop-color="var(--bg-cream)"/>
+    </linearGradient>
+    <linearGradient id="grad-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="grad-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover)"/>
+    </linearGradient>
+    <linearGradient id="grad-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -820,13 +848,13 @@
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
   <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
   <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
   <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
@@ -865,9 +893,9 @@
 <div class="wrap">
 
 <nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="font-size:0.78rem;color:var(--ink-muted);margin-bottom:16px;">
-  <a href="../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
+  <a href="../../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
   <span style="margin:0 6px;">›</span>
-  <a href="../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
+  <a href="../../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
   <span style="margin:0 6px;">›</span>
   <span style="color:var(--ink-tertiary);">Teaching Guides</span>
   <span style="margin:0 6px;">›</span>
@@ -945,7 +973,7 @@ This guide explains the legal and operational framework for foundation securitie
 
     <!-- Donor top-left -->
     <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Donor — open definition">
-      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="108" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
       <text class="cm-node-sub" x="108" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
     </g>
@@ -956,21 +984,21 @@ This guide explains the legal and operational framework for foundation securitie
 
     <!-- Foundation hub -->
     <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
-      <rect class="cm-node-shape" x="210" y="26" width="140" height="54" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="210" y="26" width="140" height="54" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="280" y="48" text-anchor="middle" fill="#fff">Foundation</text>
       <text class="cm-node-sub" x="280" y="66" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) entity</text>
     </g>
 
     <!-- Board / Investment Committee -->
-    <rect x="400" y="26" width="140" height="54" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
-    <text class="cm-node-title" x="470" y="48" text-anchor="middle" fill="var(--ink)" font-size="12">Board / Investment</text>
-    <text class="cm-node-sub" x="470" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Committee</text>
-    <line class="cm-edge" x1="350" y1="53" x2="400" y2="53" marker-end="url(#cm1-arrow)"/>
-    <text class="cm-edge-label" x="376" y="44" text-anchor="middle">oversees</text>
+    <rect x="396" y="24" width="164" height="58" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+    <text class="cm-node-title" x="478" y="48" text-anchor="middle" fill="var(--ink)" font-size="12">Board / Investment</text>
+    <text class="cm-node-sub" x="478" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Committee</text>
+    <line class="cm-edge" x1="350" y1="53" x2="396" y2="53" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="373" y="44" text-anchor="middle">oversees</text>
 
     <!-- Investment Manager / Custodian -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Investment Manager — open definition">
-      <rect class="cm-node-shape" x="60" y="146" width="180" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="60" y="146" width="180" height="56" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="150" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">Investment Manager</text>
       <text class="cm-node-sub" x="150" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Custodian / DTC Participant</text>
     </g>
@@ -979,16 +1007,16 @@ This guide explains the legal and operational framework for foundation securitie
 
     <!-- DTC / Cede -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="300" y="146" width="160" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-      <text class="cm-node-title" x="380" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede &amp; Co.</text>
-      <text class="cm-node-sub" x="380" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
+      <rect class="cm-node-shape" x="300" y="146" width="176" height="56" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
+      <text class="cm-node-title" x="388" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="388" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
     </g>
     <line class="cm-edge" x1="240" y1="174" x2="300" y2="174" marker-end="url(#cm1-arrow)"/>
     <text class="cm-edge-label" x="272" y="166" text-anchor="middle">securities held via</text>
 
     <!-- Grants -->
     <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grant — open definition">
-      <rect class="cm-node-shape" x="60" y="298" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="60" y="298" width="160" height="46" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="140" y="318" text-anchor="middle" fill="var(--green)" font-size="12">Charitable Grants</text>
       <text class="cm-node-sub" x="140" y="334" text-anchor="middle" fill="var(--ink-tertiary)">→ Beneficiaries</text>
     </g>
@@ -997,7 +1025,7 @@ This guide explains the legal and operational framework for foundation securitie
 
     <!-- IRS / Compliance -->
     <g class="cm-node" data-modal="form990pf" tabindex="0" role="button" aria-label="Form 990-PF — open definition">
-      <rect class="cm-node-shape" x="350" y="298" width="160" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" stroke-dasharray="4 3"/>
+      <rect class="cm-node-shape" x="350" y="298" width="160" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" stroke-dasharray="4 3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="430" y="318" text-anchor="middle" fill="var(--ink)" font-size="12">IRS Form 990-PF</text>
       <text class="cm-node-sub" x="430" y="334" text-anchor="middle" fill="var(--ink-tertiary)">Tax compliance</text>
     </g>
@@ -1057,35 +1085,35 @@ Under UPMIFA, foundation trustees have a fiduciary duty to manage endowment fund
     <!-- Cycle steps in a circle-ish layout -->
     <!-- 1: Contributions (top) -->
     <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Contributions — open definition">
-      <rect class="cm-node-shape" x="260" y="20" width="160" height="48" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="260" y="20" width="160" height="48" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="340" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">1 · Contributions</text>
       <text class="cm-node-sub" x="340" y="58" text-anchor="middle" fill="var(--ink-tertiary)">Donor gifts</text>
     </g>
 
     <!-- 2: Investment (right) -->
     <g class="cm-node" data-modal="investment" tabindex="0" role="button" aria-label="Investment — open definition">
-      <rect class="cm-node-shape" x="500" y="120" width="160" height="48" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="500" y="120" width="160" height="48" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="580" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">2 · Investment</text>
       <text class="cm-node-sub" x="580" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Equities · bonds · alts</text>
     </g>
 
     <!-- 3: Growth (bottom-right) -->
     <g class="cm-node" data-modal="growth" tabindex="0" role="button" aria-label="Growth — open definition">
-      <rect class="cm-node-shape" x="460" y="260" width="160" height="48" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="460" y="260" width="160" height="48" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="540" y="282" text-anchor="middle" fill="var(--green)" font-size="12">3 · Growth</text>
       <text class="cm-node-sub" x="540" y="298" text-anchor="middle" fill="var(--ink-tertiary)">Income + appreciation</text>
     </g>
 
     <!-- 4: Spending (bottom-left) -->
     <g class="cm-node" data-modal="spending" tabindex="0" role="button" aria-label="Spending — open definition">
-      <rect class="cm-node-shape" x="120" y="260" width="160" height="48" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="120" y="260" width="160" height="48" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="200" y="282" text-anchor="middle" fill="var(--gold-deep)" font-size="12">4 · Spending</text>
       <text class="cm-node-sub" x="200" y="298" text-anchor="middle" fill="var(--ink-tertiary)">4–6% rolling avg</text>
     </g>
 
     <!-- 5: Grants (left) -->
     <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grants — open definition">
-      <rect class="cm-node-shape" x="40" y="120" width="160" height="48" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="40" y="120" width="160" height="48" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="120" y="142" text-anchor="middle" fill="var(--ink)" font-size="12">5 · Grants</text>
       <text class="cm-node-sub" x="120" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Charitable beneficiaries</text>
     </g>
@@ -1213,7 +1241,7 @@ The IPS is approved by the board of trustees and reviewed regularly. It serves a
 </div>
 
 <div class="tip-box">
-  <strong>Spending Policy Note:</strong> The 5% spending rule — often cited as the "gold standard" for endowment spending — is not a legal requirement but a widely adopted practice. It aims to balance current spending needs with long-term preservation of purchasing power. The rule originated from a 1971 study by the Ford Foundation and has been validated by many subsequent studies.
+  <strong>Spending Policy Note:</strong> The 4–6% spending range widely used today — not a legal requirement, but a widely adopted practice for endowments generally — traces back to the "total return" investing approach popularized by the Ford Foundation's 1969 Advisory Committee on Endowment Management report, which urged trustees to maximize long-term total return rather than focus narrowly on current income. Don't confuse this voluntary convention with the <em>legal</em> 5% minimum distribution requirement that applies specifically to private foundations under IRC § 4942 (which traces to the Tax Reform Act of 1969) — public charities and endowed institutions generally are not subject to that statutory minimum.
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -1269,14 +1297,14 @@ From the foundation's perspective, its securities are "at the custodian" — mea
 
     <!-- 1 Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="240" y="58" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
       <text class="cm-node-sub" x="240" y="74" text-anchor="middle" fill="var(--ink-tertiary)">Corporation</text>
     </g>
 
     <!-- 2 Cede -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
+      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#diagram-shadow)"/>
       <rect x="148" y="128" width="184" height="16" rx="4" fill="var(--gold)"/>
       <text class="cm-badge-text" x="240" y="140" text-anchor="middle" fill="#fff">Legal title</text>
       <text class="cm-node-title" x="240" y="162" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
@@ -1285,14 +1313,14 @@ From the foundation's perspective, its securities are "at the custodian" — mea
 
     <!-- 3 DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="240" y="248" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
       <text class="cm-node-sub" x="240" y="266" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
     </g>
 
     <!-- 4 Custodian (Participant) -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.8"/>
+      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.8" filter="url(#diagram-shadow)"/>
       <rect x="136" y="328" width="208" height="16" rx="4" fill="var(--accent)"/>
       <text class="cm-badge-text" x="240" y="340" text-anchor="middle" fill="#fff">DTC Participant</text>
       <text class="cm-node-title" x="240" y="362" text-anchor="middle" fill="var(--accent)">4 · Custodian</text>
@@ -1301,7 +1329,7 @@ From the foundation's perspective, its securities are "at the custodian" — mea
 
     <!-- 5 Foundation (Beneficial Owner) -->
     <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
-      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.8" filter="url(#diagram-shadow)"/>
       <rect x="136" y="428" width="208" height="16" rx="4" fill="var(--green)"/>
       <text class="cm-badge-text" x="240" y="440" text-anchor="middle" fill="#fff">Beneficial ownership</text>
       <text class="cm-node-title" x="240" y="462" text-anchor="middle" fill="var(--green)">5 · Foundation</text>
@@ -1449,7 +1477,7 @@ From a securities ownership perspective, DAFs have several unique characteristic
 
     <!-- Donor -->
     <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Donor — open definition">
-      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="48" y="30" width="120" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="108" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
       <text class="cm-node-sub" x="108" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
     </g>
@@ -1458,7 +1486,7 @@ From a securities ownership perspective, DAFs have several unique characteristic
 
     <!-- DAF Sponsoring Organization -->
     <g class="cm-node" data-modal="daf" tabindex="0" role="button" aria-label="DAF — open definition">
-      <rect class="cm-node-shape" x="210" y="20" width="180" height="60" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="210" y="20" width="180" height="60" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="300" y="44" text-anchor="middle" fill="#fff">DAF Sponsor</text>
       <text class="cm-node-sub" x="300" y="64" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) public charity</text>
     </g>
@@ -1475,7 +1503,7 @@ From a securities ownership perspective, DAFs have several unique characteristic
 
     <!-- Custodian (participant) -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="60" y="168" width="180" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="60" y="168" width="180" height="56" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="150" y="190" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
       <text class="cm-node-sub" x="150" y="208" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant</text>
     </g>
@@ -1484,7 +1512,7 @@ From a securities ownership perspective, DAFs have several unique characteristic
 
     <!-- DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="340" y="168" width="140" height="56" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="340" y="168" width="140" height="56" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="410" y="190" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
       <text class="cm-node-sub" x="410" y="208" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
     </g>
@@ -1492,7 +1520,7 @@ From a securities ownership perspective, DAFs have several unique characteristic
 
     <!-- Grants -->
     <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grant — open definition">
-      <rect class="cm-node-shape" x="60" y="300" width="180" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="60" y="300" width="180" height="46" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="150" y="320" text-anchor="middle" fill="var(--green)" font-size="12">Grants</text>
       <text class="cm-node-sub" x="150" y="336" text-anchor="middle" fill="var(--ink-tertiary)">→ Charitable beneficiaries</text>
     </g>
@@ -1647,14 +1675,14 @@ Non-profit foundations are subject to a complex web of tax and regulatory requir
 
     <!-- Center: Foundation -->
     <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
-      <rect class="cm-node-shape" x="280" y="140" width="160" height="56" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="280" y="140" width="160" height="56" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="360" y="164" text-anchor="middle" fill="#fff">Foundation</text>
       <text class="cm-node-sub" x="360" y="182" text-anchor="middle" fill="var(--accent-muted)">501(c)(3)</text>
     </g>
 
     <!-- Pillar 1: Tax Compliance (left) -->
     <g class="cm-node" data-modal="form990pf" tabindex="0" role="button" aria-label="Form 990-PF — open definition">
-      <rect class="cm-node-shape" x="40" y="36" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="40" y="36" width="180" height="56" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="130" y="58" text-anchor="middle" fill="var(--ink)" font-size="12">Tax Compliance</text>
       <text class="cm-node-sub" x="130" y="76" text-anchor="middle" fill="var(--ink-tertiary)">Form 990-PF · filings</text>
     </g>
@@ -1663,7 +1691,7 @@ Non-profit foundations are subject to a complex web of tax and regulatory requir
 
     <!-- Pillar 2: Investment Compliance (top) -->
     <g class="cm-node" data-modal="upmifa" tabindex="0" role="button" aria-label="UPMIFA — open definition">
-      <rect class="cm-node-shape" x="270" y="20" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="270" y="20" width="180" height="56" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Investment Compliance</text>
       <text class="cm-node-sub" x="360" y="60" text-anchor="middle" fill="var(--ink-tertiary)">UPMIFA · IPS</text>
     </g>
@@ -1671,7 +1699,7 @@ Non-profit foundations are subject to a complex web of tax and regulatory requir
 
     <!-- Pillar 3: Regulatory Compliance (right) -->
     <g class="cm-node" data-modal="excise-tax" tabindex="0" role="button" aria-label="Excise Tax — open definition">
-      <rect class="cm-node-shape" x="500" y="36" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="500" y="36" width="180" height="56" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="590" y="58" text-anchor="middle" fill="var(--ink)" font-size="12">Regulatory Compliance</text>
       <text class="cm-node-sub" x="590" y="76" text-anchor="middle" fill="var(--ink-tertiary)">UBIT · excise tax · EBI</text>
     </g>
@@ -1680,7 +1708,7 @@ Non-profit foundations are subject to a complex web of tax and regulatory requir
 
     <!-- Custodian support (bottom) -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="280" y="290" width="160" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="280" y="290" width="160" height="50" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="360" y="310" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
       <text class="cm-node-sub" x="360" y="328" text-anchor="middle" fill="var(--ink-tertiary)">Data &amp; reporting</text>
     </g>
@@ -1792,14 +1820,14 @@ Euroclear operates <span class="hotspot" data-modal="euroclear-bank" tabindex="0
 
     <!-- Foundation (beneficial owner) -->
     <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
-      <rect class="cm-node-shape" x="280" y="20" width="160" height="50" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
+      <rect class="cm-node-shape" x="280" y="20" width="160" height="50" rx="12" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.8" filter="url(#diagram-shadow)"/>
       <text class="cm-badge-text" x="360" y="40" text-anchor="middle" fill="var(--green)">Beneficial owner</text>
       <text class="cm-node-title" x="360" y="58" text-anchor="middle" fill="var(--green)" font-size="12">Foundation</text>
     </g>
 
     <!-- Global Custodian -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="240" y="120" width="240" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="240" y="120" width="240" height="50" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">Global Custodian</text>
       <text class="cm-node-sub" x="360" y="158" text-anchor="middle" fill="var(--ink-tertiary)">DTC + Euroclear participant</text>
     </g>
@@ -1807,7 +1835,7 @@ Euroclear operates <span class="hotspot" data-modal="euroclear-bank" tabindex="0
 
     <!-- Euroclear Bank / ICSD -->
     <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
-      <rect class="cm-node-shape" x="140" y="220" width="200" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="140" y="220" width="200" height="50" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="240" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear Bank</text>
       <text class="cm-node-sub" x="240" y="258" text-anchor="middle" fill="var(--ink-tertiary)">ICSD · banking license</text>
     </g>
@@ -1815,7 +1843,7 @@ Euroclear operates <span class="hotspot" data-modal="euroclear-bank" tabindex="0
 
     <!-- National CSDs -->
     <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSD — open definition">
-      <rect class="cm-node-shape" x="380" y="220" width="200" height="50" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="380" y="220" width="200" height="50" rx="10" fill="url(#grad-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="480" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">National CSDs</text>
       <text class="cm-node-sub" x="480" y="258" text-anchor="middle" fill="var(--ink-tertiary)">ESES · UK · Nordics</text>
     </g>
@@ -1823,7 +1851,7 @@ Euroclear operates <span class="hotspot" data-modal="euroclear-bank" tabindex="0
 
     <!-- T2S -->
     <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
-      <rect class="cm-node-shape" x="280" y="320" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <rect class="cm-node-shape" x="280" y="320" width="160" height="46" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#diagram-shadow)"/>
       <text class="cm-node-title" x="360" y="342" text-anchor="middle" fill="var(--green)" font-size="12">T2S</text>
       <text class="cm-node-sub" x="360" y="358" text-anchor="middle" fill="var(--ink-tertiary)">Central bank money</text>
     </g>
@@ -1853,7 +1881,7 @@ Foundations with international securities face additional tax and reporting obli
 
 <ul class="body-text">
   <li><strong>Foreign withholding tax:</strong> Many countries impose withholding tax on dividends and interest paid to foreign investors. Foundations may be eligible for reduced withholding tax rates under US tax treaties, but must submit proper forms (e.g., Form W-8BEN-E) to their custodians.</li>
-  <li><strong>Form 8938:</strong> Statement of Specified Foreign Financial Assets — required for foundations with foreign financial assets exceeding certain thresholds.</li>
+  <li><strong>Form 8938:</strong> Statement of Specified Foreign Financial Assets. This form is generally aimed at individuals and "specified domestic entities" that are <em>closely held</em> by a specified individual (broadly, 80%+ owned by one person) and hold significant passive foreign assets. Because a private foundation has no individual owners in that sense, it typically does <em>not</em> meet the closely-held test and is not required to file Form 8938 — foundations should not assume this filing applies to them without confirming with a tax advisor.</li>
   <li><strong>FATCA:</strong> The Foreign Account Tax Compliance Act — requires foreign financial institutions to report US account holders to the IRS. Foundations must ensure their foreign accounts are FATCA-compliant.</li>
   <li><strong>PFIC reporting:</strong> Investments in Passive Foreign Investment Companies (PFICs) trigger additional reporting and tax treatment under IRS rules.</li>
 </ul>
@@ -3152,11 +3180,11 @@ function resetFoundationQuiz() {
 <footer class="page-footer">
   <div class="footer-content">
   <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
+    <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
+    <a href="../../index.html#documents">All Documents</a>
   </nav>
 
     <div class="footer-info">
@@ -3175,7 +3203,7 @@ function resetFoundationQuiz() {
   </div>
 </footer>
 
-<script src="../js/shared.js" defer></script>
+<script src="../../js/shared.js" defer></script>
 
 <script>
 // ─── Concept Map Node Interactivity ───

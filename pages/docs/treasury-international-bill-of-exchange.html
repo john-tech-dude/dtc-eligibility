@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<link rel="stylesheet" href="../../styles/shared.css">
+<script src="../../js/theme-init.js"></script>
 <style>
 
 /* CSS variables and base styles moved to shared.css */
@@ -375,6 +375,22 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   .toc-sidebar { width: 100%; }
 }
 
+/* Process Flow Diagram */
+.flow-diagram-section {
+  margin-bottom: 28px; background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); padding: 24px 24px 16px; box-shadow: var(--shadow-md);
+}
+.flow-diagram-title {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem;
+  font-weight: 600; color: var(--ink); margin-bottom: 4px;
+}
+.flow-diagram-sub { font-size: 0.8rem; color: var(--ink-muted); margin-bottom: 14px; }
+.flow-node-label { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 12.5px; fill: var(--ink); }
+.flow-node-sub { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 9.5px; fill: var(--ink-tertiary); }
+.flow-step-num { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 10px; fill: #fff; }
+.flow-caption { font-family: 'DM Sans', sans-serif; font-size: 9.5px; fill: var(--ink-muted); }
+.flow-legend-text { font-family: 'DM Sans', sans-serif; font-size: 10px; fill: var(--ink-tertiary); }
+
 /* Page Footer */
 .page-footer {
   background: var(--bg); border-top: 1px solid var(--border-light);
@@ -402,6 +418,34 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gradNeutral" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--bg)"/>
+      <stop offset="100%" stop-color="var(--bg-cream)"/>
+    </linearGradient>
+    <linearGradient id="gradAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--accent-light)"/>
+      <stop offset="100%" stop-color="var(--bg)"/>
+    </linearGradient>
+    <linearGradient id="gradAccentSolid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--accent)"/>
+      <stop offset="100%" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="gradGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--gold-light)"/>
+      <stop offset="100%" stop-color="var(--bg)"/>
+    </linearGradient>
+    <linearGradient id="gradGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="var(--teal-light)"/>
+      <stop offset="100%" stop-color="var(--bg)"/>
+    </linearGradient>
+    <filter id="softDropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="var(--ink)" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+</svg>
+
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -421,7 +465,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
   <a href="../guides/corporate-structures.html" class="external">LLCs & Corporate Structures</a>
   <a href="../guides/trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
   <a href="../guides/non-profit-foundations.html" class="external">Non-Profit Foundations</a>
@@ -465,9 +509,9 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <div class="wrap">
 
 <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-  <a href="../index.html">Home</a>
+  <a href="../../index.html">Home</a>
   <span class="breadcrumb-separator">›</span>
-  <a href="../index.html">Documents</a>
+  <a href="../../index.html">Documents</a>
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Documentation</span>
   <span class="breadcrumb-separator">›</span>
@@ -477,6 +521,84 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
   <span><strong>Document Guide:</strong> This is an interactive version of the Zions Bank International Documentary Collection form and Bill of Exchange. Click any <span class="hotspot" data-modal="how-to-use" tabindex="0" role="button" onclick="openModal('modal-how-to-use')">underlined term</span> for definitions and explanations.</span>
+</div>
+
+<div class="flow-diagram-section" aria-label="Documentary collection process flow diagram">
+  <div class="flow-diagram-title">How a Documents Against Payment (D/P) Collection Flows</div>
+  <div class="flow-diagram-sub">Four parties, one round trip: shipping documents move forward under bank control; funds move back only after payment.</div>
+  <svg viewBox="0 0 920 300" role="img" aria-labelledby="flowTitle flowDesc" style="width:100%;height:auto;">
+    <title id="flowTitle">Documentary collection process flow</title>
+    <desc id="flowDesc">Seller ships goods and sends documents to the remitting bank, which forwards them to the collecting bank, which presents them to the buyer for payment; funds then flow back through the same chain to the seller.</desc>
+
+    <!-- Connector line: forward document flow -->
+    <path d="M 130 90 L 790 90" fill="none" stroke="var(--accent-muted)" stroke-width="2.5" marker-end="url(#flowArrowFwd)"/>
+    <text x="460" y="76" text-anchor="middle" class="flow-caption">Documents + draft (Bill of Exchange) flow forward via banks</text>
+
+    <!-- Connector line: backward payment flow -->
+    <path d="M 790 210 L 130 210" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#flowArrowBack)"/>
+    <text x="460" y="234" text-anchor="middle" class="flow-caption">Payment (D/P) flows back only after the buyer pays</text>
+
+    <defs>
+      <marker id="flowArrowFwd" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--accent-muted)"/>
+      </marker>
+      <marker id="flowArrowBack" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--gold)"/>
+      </marker>
+    </defs>
+
+    <!-- Node 1: Seller / Drawer -->
+    <g>
+      <rect x="30" y="120" width="170" height="60" rx="10" fill="url(#gradAccent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#softDropShadow)"/>
+      <circle cx="52" cy="128" r="10" fill="var(--accent)"/>
+      <text x="52" y="132" text-anchor="middle" class="flow-step-num">1</text>
+      <text x="115" y="148" text-anchor="middle" class="flow-node-label">Seller</text>
+      <text x="115" y="163" text-anchor="middle" class="flow-node-sub">Drawer / Principal</text>
+    </g>
+
+    <!-- Node 2: Remitting Bank -->
+    <g>
+      <rect x="270" y="120" width="180" height="60" rx="10" fill="url(#gradGold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#softDropShadow)"/>
+      <circle cx="292" cy="128" r="10" fill="var(--gold-deep)"/>
+      <text x="292" y="132" text-anchor="middle" class="flow-step-num">2</text>
+      <text x="360" y="148" text-anchor="middle" class="flow-node-label">Remitting Bank</text>
+      <text x="360" y="163" text-anchor="middle" class="flow-node-sub">Seller's bank (agent only)</text>
+    </g>
+
+    <!-- Node 3: Collecting / Presenting Bank -->
+    <g>
+      <rect x="520" y="120" width="200" height="60" rx="10" fill="url(#gradGold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#softDropShadow)"/>
+      <circle cx="542" cy="128" r="10" fill="var(--gold-deep)"/>
+      <text x="542" y="132" text-anchor="middle" class="flow-step-num">3</text>
+      <text x="620" y="148" text-anchor="middle" class="flow-node-label">Collecting Bank</text>
+      <text x="620" y="163" text-anchor="middle" class="flow-node-sub">Buyer's bank (presenting bank)</text>
+    </g>
+
+    <!-- Node 4: Buyer / Drawee -->
+    <g>
+      <rect x="760" y="120" width="150" height="60" rx="10" fill="url(#gradAccent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#softDropShadow)"/>
+      <circle cx="782" cy="128" r="10" fill="var(--accent)"/>
+      <text x="782" y="132" text-anchor="middle" class="flow-step-num">4</text>
+      <text x="835" y="148" text-anchor="middle" class="flow-node-label">Buyer</text>
+      <text x="835" y="163" text-anchor="middle" class="flow-node-sub">Drawee</text>
+    </g>
+
+    <!-- Vertical connectors linking the two horizontal flow lines to each node -->
+    <path d="M 115 90 L 115 120" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 360 90 L 360 120" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 620 90 L 620 120" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 835 90 L 835 120" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 115 180 L 115 210" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 360 180 L 360 210" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 620 180 L 620 210" stroke="var(--border)" stroke-width="1.5"/>
+    <path d="M 835 180 L 835 210" stroke="var(--border)" stroke-width="1.5"/>
+
+    <!-- Legend -->
+    <circle cx="30" cy="270" r="5" fill="var(--accent)"/>
+    <text x="42" y="274" class="flow-legend-text">Commercial parties (drawer / drawee)</text>
+    <circle cx="330" cy="270" r="5" fill="var(--gold-deep)"/>
+    <text x="342" y="274" class="flow-legend-text">Banks — act strictly as agents (URC 522, Art. 1 &amp; 4)</text>
+  </svg>
 </div>
 
 <div class="doc-frame">
@@ -1304,12 +1426,12 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
     <div class="quiz-card" data-q="20">
       <div class="quiz-num">20</div>
       <div class="quiz-content">
-        <h4>What is the role of the applicant?</h4>
+        <h4>What is the role of the "principal" under URC 522?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q20" value="a"><span>The party that receives payment</span></label>
-          <label><input type="radio" name="q20" value="b"><span>The party that requests the documentary collection</span></label>
-          <label><input type="radio" name="q20" value="c"><span>The party that ships the goods</span></label>
-          <label><input type="radio" name="q20" value="d"><span>The bank that handles the collection</span></label>
+          <label><input type="radio" name="q20" value="a"><span>The buyer's bank that guarantees payment</span></label>
+          <label><input type="radio" name="q20" value="b"><span>The party who entrusts the handling of a collection to a bank</span></label>
+          <label><input type="radio" name="q20" value="c"><span>A notary who certifies dishonor</span></label>
+          <label><input type="radio" name="q20" value="d"><span>The buyer's authorized signatory</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q20"></div>
       </div>
@@ -1371,7 +1493,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
         <li><strong>Time Draft / Usance Draft:</strong> Payable at a specified future date (e.g., 30, 60, 90 days after sight or after date). Used in D/A (Documents Against Acceptance) collections.</li>
       </ul>
       <div class="tip-box"><strong>Trade Finance Tip:</strong> In a D/P collection, the buyer cannot take possession of the shipping documents (and thus the goods) until they pay the sight draft. This gives the seller significant security.</div>
-      <div class="citation"><strong>Source:</strong> Uniform Customs and Practice for Documentary Collections (UCP 600), ICC Publication No. 600; UNCITRAL Convention on International Bills of Exchange and International Promissory Notes (1988).</div>
+      <div class="citation"><strong>Source:</strong> ICC Uniform Rules for Collections (URC 522), ICC Publication No. 522, Article 7 (D/P and D/A); UNCITRAL Convention on International Bills of Exchange and International Promissory Notes (1988).</div>
     </div>
   </div>
 </div>
@@ -1391,7 +1513,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
         <li><strong>Remitting Bank:</strong> The bank that receives the collection documents from the seller (drawer) and forwards them to the buyer's bank (collecting bank) in the buyer's country.</li>
         <li><strong>Agent:</strong> Acts solely as an intermediary — assumes no responsibility for payment. The bank's role is limited to presenting documents and collecting funds.</li>
       </ul>
-      <div class="tip-box"><strong>Important:</strong> Under UCP 600, banks deal in documents, not goods. Zions Bank is not responsible for the quality, quantity, or condition of the underlying merchandise. Its obligation is strictly to follow the collection instructions.</div>
+      <div class="tip-box"><strong>Important:</strong> Under URC 522, banks deal in documents, not goods. Zions Bank is not responsible for the quality, quantity, or condition of the underlying merchandise. Its obligation is strictly to follow the collection instructions.</div>
       <div class="citation"><strong>Source:</strong> Zions Bank International Trade Finance, One South Main, 2nd Floor, Salt Lake City, UT 84111. Tel: 801-524-8868.</div>
     </div>
   </div>
@@ -1421,7 +1543,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
         <li><strong>Drawer as Payee:</strong> Often the drawer is also the payee on the draft — the party to whom payment is made.</li>
       </ul>
       <div class="tip-box"><strong>Risk Note:</strong> In a D/P collection, the drawer retains control of the goods until payment. In a D/A collection, the drawer releases documents against acceptance of a time draft, bearing the credit risk of the buyer until maturity.</div>
-      <div class="citation"><strong>Source:</strong> UCP 600, Article 2 (Definitions); Uniform Commercial Code (UCC) Article 3 (Negotiable Instruments).</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 3 (Parties to a Collection); Uniform Commercial Code (UCC) Article 3 (Negotiable Instruments).</div>
     </div>
   </div>
 </div>
@@ -1444,7 +1566,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <p class="modal-section-title">Drawee Bank</p>
       <p>The drawee's bank (buyer's bank) acts as the <strong>collecting bank</strong> or <strong>presenting bank</strong> — the bank in the buyer's country that presents the documents and draft to the drawee for payment or acceptance.</p>
       <div class="tip-box"><strong>Credit Risk:</strong> D/P is safer for the seller because the buyer cannot obtain the goods without paying. D/A is riskier for the seller but more convenient for the buyer, who can sell the goods before payment is due.</div>
-      <div class="citation"><strong>Source:</strong> UCP 600, Articles 7-8; ICC Uniform Rules for Collections (URC 522).</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Articles 6-7 (Documents Against Acceptance / Documents Against Payment).</div>
     </div>
   </div>
 </div>
@@ -1491,6 +1613,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
         <li><strong>Evidence of debt:</strong> An accepted time draft becomes a trade acceptance — a marketable instrument that the seller can discount or sell.</li>
       </ul>
       <div class="tip-box"><strong>Document Check:</strong> The draft must be properly signed by the drawer, show the correct amount, and specify the drawee. Mismatches between the draft and invoice will cause delays or rejection by the collecting bank.</div>
+      <div class="tip-box"><strong>Treaty Status:</strong> The UNCITRAL Convention on International Bills of Exchange (1988), referenced on the form's face, has been ratified or acceded to by only five states and has not yet entered into force (ten instruments of ratification/accession are required). Marking an instrument "International bill of exchange (UNCITRAL Convention)" is an optional election under the Convention's own terms — it does not mean the Convention has binding, self-executing force. Governing law is typically UCC Article 3 unless the parties' jurisdictions provide otherwise.</div>
       <div class="citation"><strong>Source:</strong> URC 522, Article 4 (Form of Collection); UCC Article 3, Section 3-104.</div>
     </div>
   </div>
@@ -1940,7 +2063,7 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
       <p class="modal-section-title">When Not Required</p>
       <p>Many collection instructions specify "DO NOT PROTEST" because protest is expensive, time-consuming, and may not be required under modern law or banking practices. Banks typically handle dishonor through formal notices rather than protest.</p>
       <div class="tip-box"><strong>Modern Practice:</strong> In most international trade, protest is rarely used. Banks prefer to handle dishonor through swift communication and notice procedures. The "DO NOT PROTEST" instruction is standard to avoid unnecessary costs.</div>
-      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-507; URC 522, Article 16.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-505 (Evidence of Dishonor); URC 522, Article 24 (Protest).</div>
     </div>
   </div>
 </div>
@@ -2291,8 +2414,8 @@ hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
   </div>
 </div>
 
-<script src="../js/shared.js" defer></script>
-<script src="../js/quiz.js"></script>
+<script src="../../js/shared.js" defer></script>
+<script src="../../js/quiz.js"></script>
 <script>
 // Treasury Bill of Exchange Quiz Answers
 const treasuryAnswers = {
@@ -2315,7 +2438,7 @@ const treasuryAnswers = {
   q17: { correct: 'b', explanation: 'An order bill of lading is made out "to order" and can be transferred by endorsement, making it a negotiable document of title that gives the seller control over the goods until payment.' },
   q18: { correct: 'b', explanation: 'The presenting bank is the bank that presents the draft and accompanying documents to the drawee for payment or acceptance — in practice, this role is typically filled by the collecting bank.' },
   q19: { correct: 'a', explanation: 'The beneficiary is the party entitled to receive payment through the collection — in a documentary collection, this is the seller/exporter (also acting as the drawer).' },
-  q20: { correct: 'b', explanation: 'The applicant is the party who requests and initiates the documentary collection — in this context, the seller/exporter who submits the collection instructions to their bank.' }
+  q20: { correct: 'b', explanation: 'Under URC 522, the "principal" is the party — typically the seller/exporter — who entrusts the handling of a collection to a bank. Note: "applicant" is a letter-of-credit term for the buyer, not the correct term here; conflating the two reverses the relationship.' }
 };
 
 // Note: resetQuiz() is defined inside quiz.js's setupQuiz() and exposed via
@@ -2390,11 +2513,11 @@ if (document.readyState === 'loading') {
 <footer class="page-footer">
   <div class="footer-content">
   <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
+    <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
+    <a href="../../index.html#documents">All Documents</a>
   </nav>
 
     <div class="footer-info">

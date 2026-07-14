@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles/shared.css" />
-    <script src="../js/theme-init.js">
+    <link rel="stylesheet" href="../../styles/shared.css" />
+    <script src="../../js/theme-init.js">
     </script>
     <style>
         /* ─── Shared with template ─── */
@@ -1220,6 +1220,34 @@
 
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="diagram-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    </filter>
+    <linearGradient id="grad-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory)"/>
+      <stop offset="1" stop-color="var(--bg-cream)"/>
+    </linearGradient>
+    <linearGradient id="grad-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="grad-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover)"/>
+    </linearGradient>
+    <linearGradient id="grad-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="grad-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+</svg>
+
     <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -1250,13 +1278,13 @@
         <div class="toc-divider">Assessment</div>
         <a href="#quiz">Knowledge Check Quiz</a>
         <div class="toc-divider">Documents</div>
-        <a href="../index.html" class="external">DTC Documents Index</a>
+        <a href="../../index.html" class="external">DTC Documents Index</a>
         <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
         <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
         <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
         <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
         <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-        <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+        <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
         <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
     </div>
 
@@ -1293,9 +1321,9 @@
     <div class="wrap">
 
         <nav class="breadcrumbs" aria-label="Breadcrumb navigation" style="font-size:0.78rem;color:var(--ink-muted);margin-bottom:16px;">
-            <a href="../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
+            <a href="../../index.html" style="color:var(--accent);text-decoration:none;">Home</a>
             <span style="margin:0 6px;">›</span>
-            <a href="../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
+            <a href="../../index.html#documents" style="color:var(--accent);text-decoration:none;">Documents</a>
             <span style="margin:0 6px;">›</span>
             <span style="color:var(--ink-tertiary);">Teaching Guides</span>
             <span style="margin:0 6px;">›</span>
@@ -1369,7 +1397,7 @@
 
                     <!-- Root -->
                     <g class="cm-node" data-modal="entity" tabindex="0" role="button" aria-label="Entity — open definition">
-                        <rect class="cm-node-shape" x="270" y="16" width="180" height="46" rx="12" fill="var(--accent)" />
+                        <rect class="cm-node-shape" x="270" y="16" width="180" height="46" rx="12" fill="var(--accent)" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="46" text-anchor="middle" fill="#fff">For-Profit Entity</text>
                     </g>
 
@@ -1380,21 +1408,21 @@
 
                     <!-- Corporations -->
                     <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Corporation — open definition">
-                        <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="160" y="126" text-anchor="middle" fill="var(--accent)" font-size="12">Corporations</text>
                         <text class="cm-node-sub" x="160" y="144" text-anchor="middle" fill="var(--ink-tertiary)">C-Corp · S-Corp</text>
                     </g>
 
                     <!-- LLCs -->
                     <g class="cm-node" data-modal="llc" tabindex="0" role="button" aria-label="LLC — open definition">
-                        <rect class="cm-node-shape" x="260" y="102" width="200" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="260" y="102" width="200" height="60" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="126" text-anchor="middle" fill="var(--gold-deep)" font-size="12">LLCs</text>
                         <text class="cm-node-sub" x="360" y="144" text-anchor="middle" fill="var(--gold)">Membership interests</text>
                     </g>
 
                     <!-- Partnerships -->
                     <g class="cm-node" data-modal="partnership" tabindex="0" role="button" aria-label="Partnership — open definition">
-                        <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="560" y="126" text-anchor="middle" fill="var(--green)" font-size="12">Partnerships</text>
                         <text class="cm-node-sub" x="560" y="144" text-anchor="middle" fill="var(--ink-tertiary)">GP · LP · LLP</text>
                     </g>
@@ -1408,12 +1436,12 @@
                     <path class="cm-edge" d="M260 162 L260 200" marker-end="url(#cm1-arrow)" />
 
                     <g class="cm-node" data-modal="ccorp" tabindex="0" role="button" aria-label="C-Corp — open definition">
-                        <rect class="cm-node-shape" x="10" y="202" width="120" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" />
+                        <rect class="cm-node-shape" x="10" y="202" width="120" height="50" rx="8" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="70" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">C-Corp</text>
                         <text class="cm-node-sub" x="70" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Double taxation</text>
                     </g>
                     <g class="cm-node" data-modal="scorp" tabindex="0" role="button" aria-label="S-Corp — open definition">
-                        <rect class="cm-node-shape" x="150" y="202" width="120" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" />
+                        <rect class="cm-node-shape" x="150" y="202" width="120" height="50" rx="8" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="210" y="226" text-anchor="middle" fill="var(--ink)" font-size="11">S-Corp</text>
                         <text class="cm-node-sub" x="210" y="242" text-anchor="middle" fill="var(--ink-tertiary)">Pass-through</text>
                     </g>
@@ -1500,14 +1528,14 @@
 
                     <!-- Members -->
                     <g class="cm-node" data-modal="member" tabindex="0" role="button" aria-label="Member — open definition">
-                        <rect class="cm-node-shape" x="48" y="30" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="48" y="30" width="130" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="113" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Members</text>
                         <text class="cm-node-sub" x="113" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Owners</text>
                     </g>
 
                     <!-- Operating Agreement -->
                     <g class="cm-node" data-modal="operating-agreement" tabindex="0" role="button" aria-label="Operating Agreement — open definition">
-                        <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" />
+                        <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Operating Agreement</text>
                         <text class="cm-node-sub" x="350" y="58" text-anchor="middle" fill="var(--accent-muted)">Governs LLC</text>
                     </g>
@@ -1519,13 +1547,13 @@
                     <path class="cm-edge" d="M350 66 L480 100" marker-end="url(#cm2-arrow)" />
 
                     <g class="cm-node" data-modal="member-managed" tabindex="0" role="button" aria-label="Member-Managed — open definition">
-                        <rect class="cm-node-shape" x="120" y="102" width="160" height="46" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" />
+                        <rect class="cm-node-shape" x="120" y="102" width="160" height="46" rx="8" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="200" y="124" text-anchor="middle" fill="var(--ink)" font-size="11">Member-Managed</text>
                         <text class="cm-node-sub" x="200" y="140" text-anchor="middle" fill="var(--ink-tertiary)">All members manage</text>
                     </g>
 
                     <g class="cm-node" data-modal="manager-managed" tabindex="0" role="button" aria-label="Manager-Managed — open definition">
-                        <rect class="cm-node-shape" x="440" y="102" width="160" height="46" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" />
+                        <rect class="cm-node-shape" x="440" y="102" width="160" height="46" rx="8" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="520" y="124" text-anchor="middle" fill="var(--ink)" font-size="11">Manager-Managed</text>
                         <text class="cm-node-sub" x="520" y="140" text-anchor="middle" fill="var(--ink-tertiary)">Designated managers</text>
                     </g>
@@ -1535,7 +1563,7 @@
 
                     <!-- LLC Assets / Securities -->
                     <g class="cm-node" data-modal="llc" tabindex="0" role="button" aria-label="LLC — open definition">
-                        <rect class="cm-node-shape" x="260" y="210" width="180" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" />
+                        <rect class="cm-node-shape" x="260" y="210" width="180" height="46" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="232" text-anchor="middle" fill="var(--gold-deep)" font-size="12">LLC Assets</text>
                         <text class="cm-node-sub" x="350" y="248" text-anchor="middle" fill="var(--gold)">Securities held</text>
                     </g>
@@ -1544,7 +1572,7 @@
 
                     <!-- DTC -->
                     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-                        <rect class="cm-node-shape" x="260" y="300" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="260" y="300" width="180" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="322" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede</text>
                         <text class="cm-node-sub" x="350" y="338" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
                     </g>
@@ -1596,14 +1624,14 @@
 
                     <!-- Shareholders -->
                     <g class="cm-node" data-modal="shareholder" tabindex="0" role="button" aria-label="Shareholder — open definition">
-                        <rect class="cm-node-shape" x="48" y="20" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="48" y="20" width="130" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="113" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Shareholders</text>
                         <text class="cm-node-sub" x="113" y="56" text-anchor="middle" fill="var(--ink-tertiary)">Owners</text>
                     </g>
 
                     <!-- Board -->
                     <g class="cm-node" data-modal="board" tabindex="0" role="button" aria-label="Board — open definition">
-                        <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" />
+                        <rect class="cm-node-shape" x="260" y="20" width="180" height="46" rx="10" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Board of Directors</text>
                         <text class="cm-node-sub" x="350" y="58" text-anchor="middle" fill="var(--accent-muted)">Oversees management</text>
                     </g>
@@ -1612,7 +1640,7 @@
 
                     <!-- Officers -->
                     <g class="cm-node" data-modal="officer" tabindex="0" role="button" aria-label="Officer — open definition">
-                        <rect class="cm-node-shape" x="480" y="20" width="130" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="480" y="20" width="130" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="545" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Officers</text>
                         <text class="cm-node-sub" x="545" y="56" text-anchor="middle" fill="var(--ink-tertiary)">CEO, CFO, etc.</text>
                     </g>
@@ -1621,7 +1649,7 @@
 
                     <!-- Corporation -->
                     <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Corporation — open definition">
-                        <rect class="cm-node-shape" x="260" y="120" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="260" y="120" width="180" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="142" text-anchor="middle" fill="var(--accent)" font-size="12">Corporation</text>
                         <text class="cm-node-sub" x="350" y="158" text-anchor="middle" fill="var(--ink-tertiary)">Issues securities</text>
                     </g>
@@ -1632,20 +1660,20 @@
                     <path class="cm-edge" d="M440 166 L520 200" marker-end="url(#cm3-arrow)" />
 
                     <g class="cm-node" data-modal="common-stock" tabindex="0" role="button" aria-label="Common Stock — open definition">
-                        <rect class="cm-node-shape" x="100" y="202" width="160" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="100" y="202" width="160" height="46" rx="8" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="180" y="224" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Common Stock</text>
                         <text class="cm-node-sub" x="180" y="240" text-anchor="middle" fill="var(--gold)">Voting · residual</text>
                     </g>
 
                     <g class="cm-node" data-modal="preferred-stock" tabindex="0" role="button" aria-label="Preferred Stock — open definition">
-                        <rect class="cm-node-shape" x="460" y="202" width="160" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="460" y="202" width="160" height="46" rx="8" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="540" y="224" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Preferred Stock</text>
                         <text class="cm-node-sub" x="540" y="240" text-anchor="middle" fill="var(--gold)">Preference rights</text>
                     </g>
 
                     <!-- DTC -->
                     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-                        <rect class="cm-node-shape" x="260" y="310" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="260" y="310" width="180" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="332" text-anchor="middle" fill="var(--accent)" font-size="12">DTC / Cede</text>
                         <text class="cm-node-sub" x="350" y="348" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry</text>
                     </g>
@@ -1762,7 +1790,7 @@
 
                     <!-- 1: Issuer decides -->
                     <g class="cm-node" data-modal="corporation" tabindex="0" role="button" aria-label="Issuer — open definition">
-                        <rect class="cm-node-shape" x="40" y="36" width="140" height="46" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" />
+                        <rect class="cm-node-shape" x="40" y="36" width="140" height="46" rx="10" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="110" y="58" text-anchor="middle" fill="#fff" font-size="12">Issuer</text>
                         <text class="cm-node-sub" x="110" y="74" text-anchor="middle" fill="var(--accent-muted)">Corporation</text>
                     </g>
@@ -1772,7 +1800,7 @@
 
                     <!-- 2: Registration -->
                     <g class="cm-node" data-modal="registration" tabindex="0" role="button" aria-label="Registration — open definition">
-                        <rect class="cm-node-shape" x="220" y="30" width="180" height="56" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="220" y="30" width="180" height="56" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="310" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Registration</text>
                         <text class="cm-node-sub" x="310" y="70" text-anchor="middle" fill="var(--ink-tertiary)">Form S-1 · SEC filing</text>
                     </g>
@@ -1780,7 +1808,7 @@
 
                     <!-- 3: SEC Review -->
                     <g class="cm-node" data-modal="sec" tabindex="0" role="button" aria-label="SEC — open definition">
-                        <rect class="cm-node-shape" x="220" y="122" width="180" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="220" y="122" width="180" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="310" y="144" text-anchor="middle" fill="var(--ink)" font-size="12">SEC Review</text>
                         <text class="cm-node-sub" x="310" y="160" text-anchor="middle" fill="var(--ink-tertiary)">Effective declaration</text>
                     </g>
@@ -1788,7 +1816,7 @@
 
                     <!-- 4: Offering -->
                     <g class="cm-node" data-modal="offering" tabindex="0" role="button" aria-label="Offering — open definition">
-                        <rect class="cm-node-shape" x="220" y="204" width="180" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="220" y="204" width="180" height="46" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="310" y="226" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Offering</text>
                         <text class="cm-node-sub" x="310" y="242" text-anchor="middle" fill="var(--gold)">IPO · Secondary</text>
                     </g>
@@ -1796,7 +1824,7 @@
 
                     <!-- 5: Deposit with DTC -->
                     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-                        <rect class="cm-node-shape" x="220" y="286" width="180" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="220" y="286" width="180" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="310" y="308" text-anchor="middle" fill="var(--accent)" font-size="12">Deposit with DTC</text>
                         <text class="cm-node-sub" x="310" y="324" text-anchor="middle" fill="var(--ink-tertiary)">Transfer agent · FAST</text>
                     </g>
@@ -1804,22 +1832,22 @@
 
                     <!-- 6: Book-Entry -->
                     <g class="cm-node" data-modal="book-entry" tabindex="0" role="button" aria-label="Book-Entry — open definition">
-                        <rect class="cm-node-shape" x="220" y="368" width="180" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5" />
+                        <rect class="cm-node-shape" x="220" y="368" width="180" height="46" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="310" y="390" text-anchor="middle" fill="var(--green)" font-size="12">Book-Entry</text>
                         <text class="cm-node-sub" x="310" y="406" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. · trading</text>
                     </g>
 
                     <rect x="440" y="36" width="240" height="380" rx="12" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1" />
                     <text class="cm-zone-label" x="560" y="60" text-anchor="middle" fill="var(--ink-muted)">Key steps</text>
-                    <text class="cm-edge-label" x="560" y="90" text-anchor="start">• Board approval</text>
-                    <text class="cm-edge-label" x="560" y="120" text-anchor="start">• Underwriter selection</text>
-                    <text class="cm-edge-label" x="560" y="150" text-anchor="start">• Registration statement</text>
-                    <text class="cm-edge-label" x="560" y="180" text-anchor="start">• SEC effectiveness</text>
-                    <text class="cm-edge-label" x="560" y="210" text-anchor="start">• Pricing</text>
-                    <text class="cm-edge-label" x="560" y="240" text-anchor="start">• Allocation</text>
-                    <text class="cm-edge-label" x="560" y="270" text-anchor="start">• Settlement</text>
-                    <text class="cm-edge-label" x="560" y="300" text-anchor="start">• DTC deposit</text>
-                    <text class="cm-edge-label" x="560" y="330" text-anchor="start">• Trading begins</text>
+                    <text class="cm-edge-label" x="460" y="90" text-anchor="start">• Board approval</text>
+                    <text class="cm-edge-label" x="460" y="120" text-anchor="start">• Underwriter selection</text>
+                    <text class="cm-edge-label" x="460" y="150" text-anchor="start">• Registration statement</text>
+                    <text class="cm-edge-label" x="460" y="180" text-anchor="start">• SEC effectiveness</text>
+                    <text class="cm-edge-label" x="460" y="210" text-anchor="start">• Pricing</text>
+                    <text class="cm-edge-label" x="460" y="240" text-anchor="start">• Allocation</text>
+                    <text class="cm-edge-label" x="460" y="270" text-anchor="start">• Settlement</text>
+                    <text class="cm-edge-label" x="460" y="300" text-anchor="start">• DTC deposit</text>
+                    <text class="cm-edge-label" x="460" y="330" text-anchor="start">• Trading begins</text>
                 </svg>
                 <p class="cm-caption"><strong>Issuance lifecycle:</strong> From board approval to SEC registration to offering to DTC deposit and book-entry trading.</p>
                 <div class="cm-legend" aria-hidden="true">
@@ -1865,37 +1893,37 @@
 
                     <g>
                         <circle cx="68" cy="80" r="13" fill="var(--accent)" /><text class="pf-step-num" x="68" y="84" text-anchor="middle">1</text>
-                        <rect x="24" y="104" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)" />
+                        <rect x="24" y="104" width="104" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)" />
                         <text class="pf-step-title" x="68" y="126" text-anchor="middle">Approve</text>
                         <text class="pf-step-sub" x="68" y="142" text-anchor="middle">Board / shareholders</text>
                     </g>
                     <g>
                         <circle cx="190" cy="80" r="13" fill="var(--accent)" /><text class="pf-step-num" x="190" y="84" text-anchor="middle">2</text>
-                        <rect x="146" y="104" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)" />
+                        <rect x="146" y="104" width="104" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)" />
                         <text class="pf-step-title" x="190" y="126" text-anchor="middle">File</text>
                         <text class="pf-step-sub" x="190" y="142" text-anchor="middle">Registration statement</text>
                     </g>
                     <g>
                         <circle cx="312" cy="80" r="13" fill="var(--green)" /><text class="pf-step-num" x="312" y="84" text-anchor="middle">3</text>
-                        <rect x="268" y="104" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)" />
+                        <rect x="268" y="104" width="104" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)" />
                         <text class="pf-step-title" x="312" y="126" text-anchor="middle">Declare</text>
                         <text class="pf-step-sub" x="312" y="142" text-anchor="middle">SEC effective</text>
                     </g>
                     <g>
                         <circle cx="434" cy="80" r="13" fill="var(--gold)" /><text class="pf-step-num" x="434" y="84" text-anchor="middle">4</text>
-                        <rect x="390" y="104" width="88" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)" />
+                        <rect x="390" y="104" width="104" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)" />
                         <text class="pf-step-title" x="434" y="126" text-anchor="middle">Price</text>
                         <text class="pf-step-sub" x="434" y="142" text-anchor="middle">IPO / offering</text>
                     </g>
                     <g>
                         <circle cx="556" cy="80" r="13" fill="var(--teal)" /><text class="pf-step-num" x="556" y="84" text-anchor="middle">5</text>
-                        <rect x="512" y="104" width="88" height="52" rx="7" fill="var(--teal-light)" stroke="var(--teal)" />
+                        <rect x="512" y="104" width="104" height="52" rx="7" fill="var(--teal-light)" stroke="var(--teal)" />
                         <text class="pf-step-title" x="556" y="126" text-anchor="middle">Deposit</text>
                         <text class="pf-step-sub" x="556" y="142" text-anchor="middle">Transfer agent → DTC</text>
                     </g>
                     <g>
                         <circle cx="678" cy="80" r="13" fill="var(--green)" /><text class="pf-step-num" x="678" y="84" text-anchor="middle">6</text>
-                        <rect x="634" y="104" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)" />
+                        <rect x="634" y="104" width="104" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)" />
                         <text class="pf-step-title" x="678" y="126" text-anchor="middle">Trade</text>
                         <text class="pf-step-sub" x="678" y="142" text-anchor="middle">Book-entry</text>
                     </g>
@@ -1973,7 +2001,7 @@
 
                     <!-- Restricted Securities -->
                     <g class="cm-node" data-modal="restricted" tabindex="0" role="button" aria-label="Restricted — open definition">
-                        <rect class="cm-node-shape" x="260" y="16" width="180" height="46" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" />
+                        <rect class="cm-node-shape" x="260" y="16" width="180" height="46" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Restricted Securities</text>
                     </g>
 
@@ -1983,21 +2011,21 @@
 
                     <!-- Rule 144 -->
                     <g class="cm-node" data-modal="rule144" tabindex="0" role="button" aria-label="Rule 144 — open definition">
-                        <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="160" y="126" text-anchor="middle" fill="var(--ink)" font-size="12">Rule 144</text>
                         <text class="cm-node-sub" x="160" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Public resale</text>
                     </g>
 
                     <!-- Rule 144A -->
                     <g class="cm-node" data-modal="rule144a" tabindex="0" role="button" aria-label="Rule 144A — open definition">
-                        <rect class="cm-node-shape" x="250" y="102" width="200" height="60" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="250" y="102" width="200" height="60" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="350" y="126" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Rule 144A</text>
                         <text class="cm-node-sub" x="350" y="144" text-anchor="middle" fill="var(--gold)">QIB private market</text>
                     </g>
 
                     <!-- Regulation S -->
                     <g class="cm-node" data-modal="regulation-s" tabindex="0" role="button" aria-label="Regulation S — open definition">
-                        <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="560" y="126" text-anchor="middle" fill="var(--green)" font-size="12">Regulation S</text>
                         <text class="cm-node-sub" x="560" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Offshore resale</text>
                     </g>
@@ -2189,14 +2217,14 @@
 
                     <!-- Issuer top -->
                     <g class="cm-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer — open definition">
-                        <rect class="cm-node-shape" x="280" y="16" width="160" height="46" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="280" y="16" width="160" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="38" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
                         <text class="cm-node-sub" x="360" y="54" text-anchor="middle" fill="var(--ink-tertiary)">Proxy solicitation</text>
                     </g>
 
                     <!-- Cede -->
                     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede — open definition">
-                        <rect class="cm-node-shape" x="280" y="120" width="160" height="46" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="280" y="120" width="160" height="46" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
                         <text class="cm-node-sub" x="360" y="158" text-anchor="middle" fill="var(--gold)">Registered owner</text>
                     </g>
@@ -2204,7 +2232,7 @@
 
                     <!-- DTC -->
                     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-                        <rect class="cm-node-shape" x="280" y="220" width="160" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="280" y="220" width="160" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="242" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
                         <text class="cm-node-sub" x="360" y="258" text-anchor="middle" fill="var(--ink-tertiary)">Forwards materials</text>
                     </g>
@@ -2212,7 +2240,7 @@
 
                     <!-- Participant -->
                     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
-                        <rect class="cm-node-shape" x="280" y="310" width="160" height="46" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3" />
+                        <rect class="cm-node-shape" x="280" y="310" width="160" height="46" rx="10" fill="url(#grad-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="332" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
                         <text class="cm-node-sub" x="360" y="348" text-anchor="middle" fill="var(--ink-tertiary)">Forwards to investors</text>
                     </g>
@@ -2220,7 +2248,7 @@
 
                     <!-- Investor bottom -->
                     <g class="cm-node" data-modal="shareholder" tabindex="0" role="button" aria-label="Shareholder — open definition">
-                        <rect class="cm-node-shape" x="280" y="390" width="160" height="46" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5" />
+                        <rect class="cm-node-shape" x="280" y="390" width="160" height="46" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#diagram-shadow)"/>
                         <text class="cm-node-title" x="360" y="412" text-anchor="middle" fill="var(--green)" font-size="12">Shareholder</text>
                         <text class="cm-node-sub" x="360" y="428" text-anchor="middle" fill="var(--ink-tertiary)">Beneficial owner</text>
                     </g>
@@ -3412,11 +3440,11 @@
     <footer class="page-footer">
         <div class="footer-content">
             <nav class="footer-site-nav" aria-label="Site navigation">
-                <a href="../index.html" class="footer-home-link">Home</a>
+                <a href="../../index.html" class="footer-home-link">Home</a>
                 <span class="footer-nav-sep" aria-hidden="true">·</span>
                 <a href="../sitemap.html">Site Map</a>
                 <span class="footer-nav-sep" aria-hidden="true">·</span>
-                <a href="../index.html#documents">All Documents</a>
+                <a href="../../index.html#documents">All Documents</a>
             </nav>
 
             <div class="footer-info">
@@ -3433,7 +3461,7 @@
         </div>
     </footer>
 
-    <script src="../js/shared.js" defer></script>
+    <script src="../../js/shared.js" defer></script>
 
     <script>
         // ─── Concept Map Node Interactivity ───

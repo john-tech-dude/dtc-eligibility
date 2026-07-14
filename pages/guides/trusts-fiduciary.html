@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<link rel="stylesheet" href="../../styles/shared.css">
+<script src="../../js/theme-init.js"></script>
 <style>
 /* ─── Design Tokens ─── */
 :root {
@@ -725,6 +725,43 @@ body {
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- ─── Shared gradients & filter for all diagram nodes (theme-aware via CSS variables) ─── -->
+    <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory)"/>
+      <stop offset="1" stop-color="var(--bg-cream)"/>
+    </linearGradient>
+    <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover)"/>
+    </linearGradient>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="g-gold-solid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--gold-deep)"/>
+      <stop offset="1" stop-color="var(--gold)"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.32"/>
+    </linearGradient>
+    <linearGradient id="g-green-solid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--green)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.8"/>
+    </linearGradient>
+    <filter id="g-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    </filter>
+  </defs>
+</svg>
+
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -877,14 +914,11 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
       <marker id="cm1-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
       </marker>
-      <filter id="cm1-shadow" x="-10%" y="-10%" width="120%" height="120%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.08)"/>
-      </filter>
     </defs>
 
     <!-- Settlor top-left -->
     <g class="cm-node" data-modal="settlor" tabindex="0" role="button" aria-label="Settlor — open definition">
-      <rect class="cm-node-shape" x="52" y="24" width="140" height="50" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm1-shadow)"/>
+      <rect class="cm-node-shape" x="52" y="24" width="140" height="50" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="122" y="46" text-anchor="middle" fill="var(--ink)" font-size="12">Settlor</text>
       <text class="cm-node-sub" x="122" y="62" text-anchor="middle" fill="var(--ink-tertiary)">(Grantor / Trustor)</text>
     </g>
@@ -893,22 +927,23 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
 
     <!-- Trust Document (center top) -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
-      <rect class="cm-node-shape" x="232" y="18" width="156" height="60" rx="14" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" filter="url(#cm1-shadow)"/>
-      <text class="cm-node-title" x="310" y="42" text-anchor="middle" fill="#fff">Trust</text>
-      <text class="cm-node-sub" x="310" y="62" text-anchor="middle" fill="var(--accent-muted)">Legal entity / Fiduciary arrangement</text>
+      <rect class="cm-node-shape" x="222" y="18" width="176" height="72" rx="14" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="310" y="40" text-anchor="middle" fill="#fff">Trust</text>
+      <text class="cm-node-sub" x="310" y="58" text-anchor="middle" fill="var(--accent-muted)">Legal entity /</text>
+      <text class="cm-node-sub" x="310" y="70" text-anchor="middle" fill="var(--accent-muted)">Fiduciary arrangement</text>
     </g>
-    <path class="cm-edge" d="M310 78 L310 108" marker-end="url(#cm1-arrow)"/>
+    <path class="cm-edge" d="M310 90 L310 108" marker-end="url(#cm1-arrow)"/>
 
     <!-- Trustee -->
     <g class="cm-node" data-modal="trustee" tabindex="0" role="button" aria-label="Trustee — open definition">
-      <rect class="cm-node-shape" x="210" y="110" width="200" height="62" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <rect class="cm-node-shape" x="210" y="110" width="200" height="62" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="310" y="134" text-anchor="middle" fill="var(--accent)" font-size="12">Trustee</text>
       <text class="cm-node-sub" x="310" y="154" text-anchor="middle" fill="var(--ink-tertiary)">Fiduciary manager / Legal title holder</text>
     </g>
 
     <!-- Custodian -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="60" y="210" width="170" height="62" rx="12" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#cm1-shadow)"/>
+      <rect class="cm-node-shape" x="60" y="210" width="170" height="62" rx="12" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="145" y="234" text-anchor="middle" fill="var(--accent)" font-size="12">Custodian</text>
       <text class="cm-node-sub" x="145" y="254" text-anchor="middle" fill="var(--ink-tertiary)">DTC Participant / Book-entry</text>
     </g>
@@ -917,7 +952,7 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
 
     <!-- DTC / Cede -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="390" y="210" width="150" height="62" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <rect class="cm-node-shape" x="390" y="210" width="150" height="62" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="465" y="234" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
       <text class="cm-node-sub" x="465" y="254" text-anchor="middle" fill="var(--gold)">Nominee / Registered owner</text>
     </g>
@@ -926,7 +961,7 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
 
     <!-- Beneficiary -->
     <g class="cm-node" data-modal="beneficiary-trust" tabindex="0" role="button" aria-label="Beneficiary — open definition">
-      <rect class="cm-node-shape" x="230" y="330" width="200" height="62" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5" filter="url(#cm1-shadow)"/>
+      <rect class="cm-node-shape" x="230" y="330" width="200" height="62" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <rect x="260" y="338" width="140" height="16" rx="4" fill="var(--green)"/>
       <text class="cm-badge-text" x="330" y="350" text-anchor="middle" fill="#fff">Beneficial owner</text>
       <text class="cm-node-title" x="330" y="374" text-anchor="middle" fill="var(--green)" font-size="12">Beneficiary</text>
@@ -975,14 +1010,11 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
       <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
       </marker>
-      <filter id="cm2-shadow" x="-8%" y="-8%" width="116%" height="116%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
-      </filter>
     </defs>
 
     <!-- Root: Trust -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
-      <rect class="cm-node-shape" x="310" y="16" width="140" height="50" rx="14" fill="var(--accent)" filter="url(#cm2-shadow)"/>
+      <rect class="cm-node-shape" x="310" y="16" width="140" height="50" rx="14" fill="url(#g-accent-solid)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="380" y="46" text-anchor="middle" fill="#fff">Trust</text>
     </g>
 
@@ -991,14 +1023,16 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
     <path class="cm-edge" d="M450 66 L590 108" marker-end="url(#cm2-arrow)"/>
 
     <g class="cm-node" data-modal="revocable" tabindex="0" role="button" aria-label="Revocable — open definition">
-      <rect class="cm-node-shape" x="60" y="110" width="220" height="66" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
-      <text class="cm-node-title" x="170" y="136" text-anchor="middle" fill="var(--ink)" font-size="12">Revocable (Living) Trust</text>
-      <text class="cm-node-sub" x="170" y="156" text-anchor="middle" fill="var(--ink-tertiary)">Amendable · No asset protection · Grantor tax</text>
+      <rect class="cm-node-shape" x="60" y="110" width="220" height="66" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="170" y="133" text-anchor="middle" fill="var(--ink)" font-size="12">Revocable (Living) Trust</text>
+      <text class="cm-node-sub" x="170" y="151" text-anchor="middle" fill="var(--ink-tertiary)">Amendable · No asset protection</text>
+      <text class="cm-node-sub" x="170" y="163" text-anchor="middle" fill="var(--ink-tertiary)">Grantor tax treatment</text>
     </g>
     <g class="cm-node" data-modal="irrevocable" tabindex="0" role="button" aria-label="Irrevocable — open definition">
-      <rect class="cm-node-shape" x="480" y="110" width="220" height="66" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
-      <text class="cm-node-title" x="590" y="136" text-anchor="middle" fill="var(--accent)" font-size="12">Irrevocable Trust</text>
-      <text class="cm-node-sub" x="590" y="156" text-anchor="middle" fill="var(--ink-tertiary)">Fixed · Asset protection · Estate tax savings</text>
+      <rect class="cm-node-shape" x="480" y="110" width="220" height="66" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="590" y="133" text-anchor="middle" fill="var(--accent)" font-size="12">Irrevocable Trust</text>
+      <text class="cm-node-sub" x="590" y="151" text-anchor="middle" fill="var(--ink-tertiary)">Fixed · Asset protection</text>
+      <text class="cm-node-sub" x="590" y="163" text-anchor="middle" fill="var(--ink-tertiary)">Estate tax savings</text>
     </g>
     <text class="cm-edge-label" x="220" y="96" text-anchor="middle">amendable / revocable</text>
     <text class="cm-edge-label" x="540" y="96" text-anchor="middle">permanent / irrevocable</text>
@@ -1008,12 +1042,12 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
     <path class="cm-edge" d="M280 176 L280 218" marker-end="url(#cm2-arrow)"/>
 
     <g class="cm-node" data-modal="inter-vivos" tabindex="0" role="button" aria-label="Inter Vivos — open definition">
-      <rect class="cm-node-shape" x="10" y="220" width="130" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" filter="url(#cm2-shadow)"/>
+      <rect class="cm-node-shape" x="10" y="220" width="130" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="75" y="246" text-anchor="middle" fill="var(--ink)" font-size="11">Inter Vivos</text>
       <text class="cm-node-sub" x="75" y="264" text-anchor="middle" fill="var(--ink-tertiary)">Created during life</text>
     </g>
     <g class="cm-node" data-modal="testamentary" tabindex="0" role="button" aria-label="Testamentary — open definition">
-      <rect class="cm-node-shape" x="160" y="220" width="130" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" filter="url(#cm2-shadow)"/>
+      <rect class="cm-node-shape" x="160" y="220" width="130" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="225" y="246" text-anchor="middle" fill="var(--ink)" font-size="11">Testamentary</text>
       <text class="cm-node-sub" x="225" y="264" text-anchor="middle" fill="var(--ink-tertiary)">Created by will at death</text>
     </g>
@@ -1023,12 +1057,12 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
     <path class="cm-edge" d="M700 176 L700 218" marker-end="url(#cm2-arrow)"/>
 
     <g class="cm-node" data-modal="crt" tabindex="0" role="button" aria-label="CRT — open definition">
-      <rect class="cm-node-shape" x="400" y="220" width="160" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <rect class="cm-node-shape" x="400" y="220" width="160" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="480" y="246" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Charitable Remainder</text>
       <text class="cm-node-sub" x="480" y="264" text-anchor="middle" fill="var(--gold)">Income → non-charity first</text>
     </g>
     <g class="cm-node" data-modal="clt" tabindex="0" role="button" aria-label="CLT — open definition">
-      <rect class="cm-node-shape" x="580" y="220" width="160" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm2-shadow)"/>
+      <rect class="cm-node-shape" x="580" y="220" width="160" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="660" y="246" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Charitable Lead</text>
       <text class="cm-node-sub" x="660" y="264" text-anchor="middle" fill="var(--gold)">Income → charity first</text>
     </g>
@@ -1037,11 +1071,11 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
     <path class="cm-edge" d="M430 176 L430 218 L360 300" marker-end="url(#cm2-arrow)"/>
     <path class="cm-edge" d="M630 176 L630 218 L560 300" marker-end="url(#cm2-arrow)"/>
 
-    <rect x="300" y="302" width="120" height="44" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#cm2-shadow)"/>
+    <rect x="300" y="302" width="120" height="44" rx="6" fill="url(#g-neutral)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#g-shadow)"/>
     <text class="cm-node-title" x="360" y="322" text-anchor="middle" fill="var(--ink)" font-size="10">Asset protection</text>
     <text class="cm-node-title" x="360" y="336" text-anchor="middle" fill="var(--ink-muted)" font-size="9">from creditors</text>
 
-    <rect x="500" y="302" width="120" height="44" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#cm2-shadow)"/>
+    <rect x="500" y="302" width="120" height="44" rx="6" fill="url(#g-neutral)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="3 3" filter="url(#g-shadow)"/>
     <text class="cm-node-title" x="560" y="322" text-anchor="middle" fill="var(--ink)" font-size="10">Estate tax savings</text>
     <text class="cm-node-title" x="560" y="336" text-anchor="middle" fill="var(--ink-muted)" font-size="9">removal from estate</text>
 
@@ -1201,19 +1235,16 @@ The Prudent Investor Rule, as articulated in the <span class="hotspot" data-moda
       <marker id="pf-fund-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
       </marker>
-      <filter id="pf-shadow" x="-10%" y="-10%" width="120%" height="120%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
-      </filter>
     </defs>
     <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="93" y="32" text-anchor="middle">Create</text>
-    <rect x="170" y="16" width="130" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <rect x="170" y="16" width="130" height="24" rx="6" fill="url(#g-accent)" stroke="var(--accent-muted)"/>
     <text class="pf-phase" x="235" y="32" text-anchor="middle" fill="var(--accent)">Account</text>
-    <rect x="312" y="16" width="130" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="312" y="16" width="130" height="24" rx="6" fill="url(#g-green)" stroke="var(--green)"/>
     <text class="pf-phase" x="377" y="32" text-anchor="middle" fill="var(--green)">Transfer</text>
-    <rect x="454" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <rect x="454" y="16" width="130" height="24" rx="6" fill="url(#g-gold)" stroke="var(--gold)"/>
     <text class="pf-phase" x="519" y="32" text-anchor="middle" fill="var(--gold-deep)">Credit</text>
-    <rect x="596" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <rect x="596" y="16" width="130" height="24" rx="6" fill="url(#g-gold)" stroke="var(--gold)"/>
     <text class="pf-phase" x="661" y="32" text-anchor="middle" fill="var(--gold-deep)">Manage &amp; Distribute</text>
 
     <line class="pf-edge" x1="140" y1="108" x2="170" y2="108" marker-end="url(#pf-fund-arrow)"/>
@@ -1221,33 +1252,33 @@ The Prudent Investor Rule, as articulated in the <span class="hotspot" data-moda
     <line class="pf-edge" x1="424" y1="108" x2="454" y2="108" marker-end="url(#pf-fund-arrow)"/>
     <line class="pf-edge" x1="566" y1="108" x2="596" y2="108" marker-end="url(#pf-fund-arrow)"/>
 
-    <g filter="url(#pf-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="93" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="93" y="90" text-anchor="middle">1</text>
-      <rect x="38" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="38" y="112" width="110" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)"/>
       <text class="pf-step-title" x="93" y="136" text-anchor="middle">Execute Trust</text>
       <text class="pf-step-sub" x="93" y="152" text-anchor="middle">Document &amp; terms</text>
     </g>
-    <g filter="url(#pf-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="235" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="235" y="90" text-anchor="middle">2</text>
-      <rect x="180" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="180" y="112" width="110" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)"/>
       <text class="pf-step-title" x="235" y="136" text-anchor="middle">Open Account</text>
       <text class="pf-step-sub" x="235" y="152" text-anchor="middle">Custodian / DTC</text>
     </g>
-    <g filter="url(#pf-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="377" cy="86" r="14" fill="var(--green)"/><text class="pf-step-num" x="377" y="90" text-anchor="middle">3</text>
-      <rect x="322" y="112" width="110" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="322" y="112" width="110" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)"/>
       <text class="pf-step-title" x="377" y="136" text-anchor="middle">DTC Transfer</text>
       <text class="pf-step-sub" x="377" y="152" text-anchor="middle">Broker → Trust</text>
     </g>
-    <g filter="url(#pf-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="519" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="519" y="90" text-anchor="middle">4</text>
-      <rect x="464" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="464" y="112" width="110" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)"/>
       <text class="pf-step-title" x="519" y="136" text-anchor="middle">Credit &amp; Title</text>
       <text class="pf-step-sub" x="519" y="152" text-anchor="middle">Trustee / Cede</text>
     </g>
-    <g filter="url(#pf-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="661" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="661" y="90" text-anchor="middle">5</text>
-      <rect x="606" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="606" y="112" width="110" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)"/>
       <text class="pf-step-title" x="661" y="136" text-anchor="middle">Manage &amp; Distribute</text>
       <text class="pf-step-sub" x="661" y="152" text-anchor="middle">Per trust terms</text>
     </g>
@@ -1295,9 +1326,6 @@ This layered intermediary structure is identical for individual investors, found
       <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
       </marker>
-      <filter id="cm3-shadow" x="-8%" y="-8%" width="116%" height="116%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
-      </filter>
     </defs>
     <rect x="28" y="40" width="8" height="56" rx="3" fill="var(--border)" opacity="0.55"/>
     <text x="44" y="62" class="cm-zone-label" fill="var(--ink-muted)" font-size="9">Issuer</text>
@@ -1323,14 +1351,14 @@ This layered intermediary structure is identical for individual investors, found
 
     <!-- 1 Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="120" y="40" width="280" height="56" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm3-shadow)"/>
+      <rect class="cm-node-shape" x="120" y="40" width="280" height="56" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="260" y="64" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
       <text class="cm-node-sub" x="260" y="82" text-anchor="middle" fill="var(--ink-tertiary)">Corporation / Municipal entity</text>
     </g>
 
     <!-- 2 Cede -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="120" y="132" width="280" height="76" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
+      <rect class="cm-node-shape" x="120" y="132" width="280" height="76" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-shadow)"/>
       <rect x="160" y="142" width="200" height="18" rx="4" fill="var(--gold)"/>
       <text class="cm-badge-text" x="260" y="155" text-anchor="middle" fill="#fff">Legal title / Registered owner</text>
       <text class="cm-node-title" x="260" y="180" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
@@ -1339,15 +1367,15 @@ This layered intermediary structure is identical for individual investors, found
 
     <!-- 3 DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="120" y="244" width="280" height="76" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" filter="url(#cm3-shadow)"/>
+      <rect class="cm-node-shape" x="120" y="244" width="280" height="76" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="260" y="274" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
       <text class="cm-node-sub" x="260" y="294" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault / Central depository</text>
     </g>
 
     <!-- 4 Custodian (Participant) / Trustee Account -->
     <g class="cm-node" data-modal="custodian" tabindex="0" role="button" aria-label="Custodian — open definition">
-      <rect class="cm-node-shape" x="120" y="356" width="280" height="76" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
-      <rect x="148" y="366" width="224" height="18" rx="4" fill="var(--accent)"/>
+      <rect class="cm-node-shape" x="120" y="356" width="280" height="76" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.8" filter="url(#g-shadow)"/>
+      <rect x="148" y="366" width="224" height="18" rx="4" fill="url(#g-accent-solid)"/>
       <text class="cm-badge-text" x="260" y="379" text-anchor="middle" fill="#fff">DTC Participant / Custodian</text>
       <text class="cm-node-title" x="260" y="404" text-anchor="middle" fill="var(--accent)">4 · Custodian</text>
       <text class="cm-node-sub" x="260" y="422" text-anchor="middle" fill="var(--ink-tertiary)">"John Doe, Trustee of XYZ Trust"</text>
@@ -1355,7 +1383,7 @@ This layered intermediary structure is identical for individual investors, found
 
     <!-- 5 Trust (Beneficial Owner) -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
-      <rect class="cm-node-shape" x="120" y="468" width="280" height="80" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8" filter="url(#cm3-shadow)"/>
+      <rect class="cm-node-shape" x="120" y="468" width="280" height="80" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.8" filter="url(#g-shadow)"/>
       <rect x="148" y="478" width="224" height="18" rx="4" fill="var(--green)"/>
       <text class="cm-badge-text" x="260" y="491" text-anchor="middle" fill="#fff">Beneficial ownership</text>
       <text class="cm-node-title" x="260" y="516" text-anchor="middle" fill="var(--green)">5 · Trust</text>
@@ -1409,19 +1437,16 @@ This precise titling is critical for four reasons:
       <marker id="pf-transfer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
       </marker>
-      <filter id="pf2-shadow" x="-10%" y="-10%" width="120%" height="120%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
-      </filter>
     </defs>
     <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="93" y="32" text-anchor="middle">Instruct</text>
-    <rect x="170" y="16" width="130" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <rect x="170" y="16" width="130" height="24" rx="6" fill="url(#g-accent)" stroke="var(--accent-muted)"/>
     <text class="pf-phase" x="235" y="32" text-anchor="middle" fill="var(--accent)">Coordinate</text>
-    <rect x="312" y="16" width="130" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="312" y="16" width="130" height="24" rx="6" fill="url(#g-green)" stroke="var(--green)"/>
     <text class="pf-phase" x="377" y="32" text-anchor="middle" fill="var(--green)">Transfer</text>
-    <rect x="454" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <rect x="454" y="16" width="130" height="24" rx="6" fill="url(#g-gold)" stroke="var(--gold)"/>
     <text class="pf-phase" x="519" y="32" text-anchor="middle" fill="var(--gold-deep)">Credit</text>
-    <rect x="596" y="16" width="130" height="24" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <rect x="596" y="16" width="130" height="24" rx="6" fill="url(#g-gold)" stroke="var(--gold)"/>
     <text class="pf-phase" x="661" y="32" text-anchor="middle" fill="var(--gold-deep)">Manage</text>
 
     <line class="pf-edge" x1="140" y1="108" x2="170" y2="108" marker-end="url(#pf-transfer-arrow)"/>
@@ -1429,33 +1454,33 @@ This precise titling is critical for four reasons:
     <line class="pf-edge" x1="424" y1="108" x2="454" y2="108" marker-end="url(#pf-transfer-arrow)"/>
     <line class="pf-edge" x1="566" y1="108" x2="596" y2="108" marker-end="url(#pf-transfer-arrow)"/>
 
-    <g filter="url(#pf2-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="93" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="93" y="90" text-anchor="middle">1</text>
-      <rect x="38" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="38" y="112" width="110" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)"/>
       <text class="pf-step-title" x="93" y="136" text-anchor="middle">Instruct</text>
       <text class="pf-step-sub" x="93" y="152" text-anchor="middle">Settlor → Broker</text>
     </g>
-    <g filter="url(#pf2-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="235" cy="86" r="14" fill="var(--accent)"/><text class="pf-step-num" x="235" y="90" text-anchor="middle">2</text>
-      <rect x="180" y="112" width="110" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="180" y="112" width="110" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)"/>
       <text class="pf-step-title" x="235" y="136" text-anchor="middle">Coordinate</text>
       <text class="pf-step-sub" x="235" y="152" text-anchor="middle">Broker ↔ Custodian</text>
     </g>
-    <g filter="url(#pf2-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="377" cy="86" r="14" fill="var(--green)"/><text class="pf-step-num" x="377" y="90" text-anchor="middle">3</text>
-      <rect x="322" y="112" width="110" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="322" y="112" width="110" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)"/>
       <text class="pf-step-title" x="377" y="136" text-anchor="middle">DTC Transfer</text>
       <text class="pf-step-sub" x="377" y="152" text-anchor="middle">Free delivery / DVP</text>
     </g>
-    <g filter="url(#pf2-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="519" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="519" y="90" text-anchor="middle">4</text>
-      <rect x="464" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="464" y="112" width="110" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)"/>
       <text class="pf-step-title" x="519" y="136" text-anchor="middle">Credit</text>
       <text class="pf-step-sub" x="519" y="152" text-anchor="middle">Trust account</text>
     </g>
-    <g filter="url(#pf2-shadow)">
+    <g filter="url(#g-shadow)">
       <circle cx="661" cy="86" r="14" fill="var(--gold)"/><text class="pf-step-num" x="661" y="90" text-anchor="middle">5</text>
-      <rect x="606" y="112" width="110" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="606" y="112" width="110" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)"/>
       <text class="pf-step-title" x="661" y="136" text-anchor="middle">Manage</text>
       <text class="pf-step-sub" x="661" y="152" text-anchor="middle">Per trust terms / IPS</text>
     </g>
@@ -1501,21 +1526,18 @@ Trusts are subject to a complex web of tax rules. The two primary income tax reg
       <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
       </marker>
-      <filter id="cm4-shadow" x="-8%" y="-8%" width="116%" height="116%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.07)"/>
-      </filter>
     </defs>
 
     <!-- Center: Trust -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
-      <rect class="cm-node-shape" x="300" y="150" width="160" height="60" rx="14" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" filter="url(#cm4-shadow)"/>
+      <rect class="cm-node-shape" x="300" y="150" width="160" height="60" rx="14" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="380" y="176" text-anchor="middle" fill="#fff">Trust</text>
       <text class="cm-node-sub" x="380" y="196" text-anchor="middle" fill="var(--accent-muted)">Taxpayer / Fiduciary entity</text>
     </g>
 
     <!-- Pillar 1: Income Tax -->
     <g class="cm-node" data-modal="form1041" tabindex="0" role="button" aria-label="Form 1041 — open definition">
-      <rect class="cm-node-shape" x="40" y="36" width="200" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <rect class="cm-node-shape" x="40" y="36" width="200" height="62" rx="10" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="140" y="60" text-anchor="middle" fill="var(--ink)" font-size="12">Income Tax</text>
       <text class="cm-node-sub" x="140" y="80" text-anchor="middle" fill="var(--ink-tertiary)">Form 1041 · Grantor vs. Non-grantor</text>
     </g>
@@ -1524,15 +1546,16 @@ Trusts are subject to a complex web of tax rules. The two primary income tax reg
 
     <!-- Pillar 2: Estate Tax -->
     <g class="cm-node" data-modal="estate-tax" tabindex="0" role="button" aria-label="Estate Tax — open definition">
-      <rect class="cm-node-shape" x="290" y="20" width="180" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
-      <text class="cm-node-title" x="380" y="44" text-anchor="middle" fill="var(--ink)" font-size="12">Estate Tax</text>
-      <text class="cm-node-sub" x="380" y="64" text-anchor="middle" fill="var(--ink-tertiary)">$15M exemption · Inclusion vs. Exclusion</text>
+      <rect class="cm-node-shape" x="290" y="20" width="180" height="72" rx="10" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="380" y="42" text-anchor="middle" fill="var(--ink)" font-size="12">Estate Tax</text>
+      <text class="cm-node-sub" x="380" y="60" text-anchor="middle" fill="var(--ink-tertiary)">$15M exemption</text>
+      <text class="cm-node-sub" x="380" y="72" text-anchor="middle" fill="var(--ink-tertiary)">Inclusion vs. Exclusion</text>
     </g>
-    <line class="cm-edge" x1="380" y1="82" x2="380" y2="148" marker-end="url(#cm4-arrow)"/>
+    <line class="cm-edge" x1="380" y1="92" x2="380" y2="148" marker-end="url(#cm4-arrow)"/>
 
     <!-- Pillar 3: GST Tax -->
     <g class="cm-node" data-modal="gst" tabindex="0" role="button" aria-label="GST Tax — open definition">
-      <rect class="cm-node-shape" x="520" y="36" width="200" height="62" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
+      <rect class="cm-node-shape" x="520" y="36" width="200" height="62" rx="10" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="620" y="60" text-anchor="middle" fill="var(--ink)" font-size="12">GST Tax</text>
       <text class="cm-node-sub" x="620" y="80" text-anchor="middle" fill="var(--ink-tertiary)">$15M exemption · Generation-skipping</text>
     </g>
@@ -1541,9 +1564,10 @@ Trusts are subject to a complex web of tax rules. The two primary income tax reg
 
     <!-- Charitable deduction -->
     <g class="cm-node" data-modal="charitable-deduction" tabindex="0" role="button" aria-label="Charitable Deduction — open definition">
-      <rect class="cm-node-shape" x="300" y="310" width="160" height="56" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3" filter="url(#cm4-shadow)"/>
-      <text class="cm-node-title" x="380" y="334" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Charitable Deduction</text>
-      <text class="cm-node-sub" x="380" y="352" text-anchor="middle" fill="var(--gold)">CRT · CLT · 0.5% AGI floor (individual)</text>
+      <rect class="cm-node-shape" x="290" y="310" width="180" height="66" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="380" y="332" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Charitable Deduction</text>
+      <text class="cm-node-sub" x="380" y="350" text-anchor="middle" fill="var(--gold)">CRT · CLT</text>
+      <text class="cm-node-sub" x="380" y="362" text-anchor="middle" fill="var(--gold)">0.5% AGI floor (individual)</text>
     </g>
     <line class="cm-edge" x1="380" y1="210" x2="380" y2="308" marker-end="url(#cm4-arrow)"/>
     <text class="cm-edge-label" x="400" y="260" text-anchor="start">may apply</text>
@@ -1551,7 +1575,7 @@ Trusts are subject to a complex web of tax rules. The two primary income tax reg
     <!-- OBBBA note -->
     <rect x="40" y="390" width="680" height="50" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1"/>
     <text class="cm-edge-label" x="380" y="412" text-anchor="middle" fill="var(--ink-tertiary)">OBBBA (July 2025): $15M estate/GST exemption (permanent, indexed from 2027)</text>
-    <text class="cm-edge-label" x="380" y="428" text-anchor="middle" fill="var(--ink-muted)">Non-grantor trust income tax: 37% bracket starts at $16,250 (2026) — highly compressed</text>
+    <text class="cm-edge-label" x="380" y="428" text-anchor="middle" fill="var(--ink-muted)">Non-grantor trust income tax: 37% bracket starts at just $16,000 (2026) — highly compressed</text>
   </svg>
   <p class="cm-caption"><strong>Three tax pillars:</strong> Income tax (Form 1041, grantor rules, compressed non-grantor brackets), estate tax ($15M exemption under OBBBA), and GST tax ($15M exemption). Charitable trusts offer special deductions; individuals face a 0.5% AGI floor.</p>
   <div class="cm-legend" aria-hidden="true">
@@ -1569,18 +1593,18 @@ A <span class="hotspot" data-modal="grantor-trust" tabindex="0" role="button" on
 </p>
 
 <p class="body-text">
-A <span class="hotspot" data-modal="non-grantor" tabindex="0" role="button" onclick="openModal('modal-non-grantor')">non-grantor trust</span> is a trust in which the settlor has relinquished all powers that would trigger grantor trust status. The trust is a separate taxpayer with its own EIN and must file <span class="hotspot" data-modal="form1041" tabindex="0" role="button" onclick="openModal('modal-form1041')">Form 1041</span> annually. Income distributed to beneficiaries is taxed to the beneficiaries (reported on Schedule K-1), while income retained by the trust is taxed at the trust's highly compressed tax brackets. For 2026, a non-grantor trust reaches the top 37% federal income tax bracket at just <strong>$16,250</strong> of taxable income (plus the 3.8% Net Investment Income Tax), making distribution planning critical.
+A <span class="hotspot" data-modal="non-grantor" tabindex="0" role="button" onclick="openModal('modal-non-grantor')">non-grantor trust</span> is a trust in which the settlor has relinquished all powers that would trigger grantor trust status. The trust is a separate taxpayer with its own EIN and must file <span class="hotspot" data-modal="form1041" tabindex="0" role="button" onclick="openModal('modal-form1041')">Form 1041</span> annually. Income distributed to beneficiaries is taxed to the beneficiaries (reported on Schedule K-1), while income retained by the trust is taxed at the trust's highly compressed tax brackets. For 2026, a non-grantor trust reaches the top 37% federal income tax bracket at just <strong>$16,000</strong> of taxable income (plus the 3.8% Net Investment Income Tax), making distribution planning critical.
 </p>
 
 <div class="info-box">
-  <strong>2026 Income Tax Brackets for Estates &amp; Non-Grantor Trusts:</strong>
+  <strong>2026 Income Tax Brackets for Estates &amp; Non-Grantor Trusts (IRS Rev. Proc. 2025-32):</strong>
   <ul style="margin:10px 0 0 20px;font-size:0.85rem;">
-    <li>10% on income up to $3,150</li>
-    <li>24% on income over $3,150 up to $11,450</li>
-    <li>35% on income over $11,450 up to $16,250</li>
-    <li>37% on income over $16,250</li>
+    <li>10% on income up to $3,300</li>
+    <li>24% on income over $3,300 up to $11,700</li>
+    <li>35% on income over $11,700 up to $16,000</li>
+    <li>37% on income over $16,000</li>
   </ul>
-  <p style="margin-top:10px;font-size:0.84rem;">These brackets are significantly more compressed than individual brackets, where the 37% rate does not apply until income exceeds approximately $626,000 (single) or $1,252,000 (married filing jointly) in 2026.</p>
+  <p style="margin-top:10px;font-size:0.84rem;">These brackets are significantly more compressed than individual brackets, where the 37% rate does not apply until income exceeds $640,600 (single) or $768,600 (married filing jointly) in 2026.</p>
 </div>
 
 <div class="tip-box">
@@ -2688,7 +2712,7 @@ function resetTrustQuiz() {
         <li><strong>Where the trustee's asset lives:</strong> A trustee never holds a DTC account directly — the trust's custodian, as a DTC participant, holds the position on the trustee's behalf, one layer below DTC itself.</li>
       </ul>
       <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede &amp; Co.</a>, <a href="#" onclick="openModal('modal-participant');return false;">DTC Participant</a>, <a href="#" onclick="openModal('modal-custodian');return false;">Custodian</a></div>
-      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-96818 (T+1 adoption); DTCC website.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-96930 (T+1 adoption); DTCC website.</div>
     </div>
   </div>
 </div>
@@ -2785,7 +2809,7 @@ function resetTrustQuiz() {
   </div>
 </footer>
 
-<script src="../js/shared.js" defer></script>
+<script src="../../js/shared.js" defer></script>
 
 <script>
 // ─── Concept Map Node Interactivity ───

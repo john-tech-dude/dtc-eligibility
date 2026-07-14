@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<link rel="stylesheet" href="../../styles/shared.css">
+<script src="../../js/theme-init.js"></script>
 <style>
 
 /* CSS variables and base styles moved to shared.css */
@@ -650,6 +650,51 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- ─── Shared gradients & filter for all diagram nodes (theme-aware via CSS variables) ─── -->
+    <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory)"/>
+      <stop offset="1" stop-color="var(--bg-cream)"/>
+    </linearGradient>
+    <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover)"/>
+    </linearGradient>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="g-gold-solid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--gold-deep)"/>
+      <stop offset="1" stop-color="var(--gold)"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.32"/>
+    </linearGradient>
+    <linearGradient id="g-green-solid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="var(--green)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="g-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--teal-light)"/>
+      <stop offset="1" stop-color="var(--teal)" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="g-red" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--red-light)"/>
+      <stop offset="1" stop-color="var(--red)" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="g-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    </filter>
+  </defs>
+</svg>
+
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -695,13 +740,13 @@
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
   <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
   <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
   <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
   <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
   <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
@@ -740,9 +785,9 @@
 <div class="wrap">
 
 <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-  <a href="../index.html">Home</a>
+  <a href="../../index.html">Home</a>
   <span class="breadcrumb-separator">›</span>
-  <a href="../index.html">Documents</a>
+  <a href="../../index.html">Documents</a>
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Teaching Guides</span>
   <span class="breadcrumb-separator">›</span>
@@ -858,62 +903,62 @@ This system handles trillions of dollars in transactions daily. Understanding it
 
     <!-- SEC / Fed oversight -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="250" y="18" width="220" height="34" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <rect class="cm-node-shape" x="250" y="18" width="220" height="34" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="40" text-anchor="middle" fill="var(--ink-muted)" font-size="12">SEC · Federal Reserve</text>
     </g>
 
     <!-- DTCC -->
     <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
-      <rect class="cm-node-shape" x="270" y="74" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="270" y="74" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="93" text-anchor="middle" fill="#fff">DTCC</text>
       <text class="cm-node-sub" x="360" y="108" text-anchor="middle" fill="var(--accent-muted)">Parent holding company</text>
     </g>
 
     <!-- NSCC -->
     <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
-      <rect class="cm-node-shape" x="140" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="140" y="150" width="120" height="46" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="200" y="170" text-anchor="middle" fill="var(--accent)">NSCC</text>
       <text class="cm-node-sub" x="200" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Equity CCP</text>
     </g>
 
     <!-- DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="300" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="300" y="150" width="120" height="46" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="170" text-anchor="middle" fill="var(--accent)">DTC</text>
       <text class="cm-node-sub" x="360" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Depository (CSD)</text>
     </g>
 
     <!-- FICC -->
     <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
-      <rect class="cm-node-shape" x="460" y="150" width="120" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="460" y="150" width="120" height="46" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="520" y="170" text-anchor="middle" fill="var(--accent)">FICC</text>
       <text class="cm-node-sub" x="520" y="185" text-anchor="middle" fill="var(--ink-tertiary)">Fixed income CCP</text>
     </g>
 
     <!-- Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="60" y="268" width="108" height="44" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="60" y="268" width="108" height="44" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="114" y="288" text-anchor="middle" fill="var(--ink)">Issuer</text>
       <text class="cm-node-sub" x="114" y="302" text-anchor="middle" fill="var(--ink-tertiary)">Corporation</text>
     </g>
 
     <!-- Cede & Co. -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="278" y="260" width="164" height="50" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <rect class="cm-node-shape" x="278" y="260" width="164" height="50" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.6" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="282" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
       <text class="cm-node-sub" x="360" y="298" text-anchor="middle" fill="var(--gold)">Nominee · legal title</text>
     </g>
 
     <!-- Participant -->
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
-      <rect class="cm-node-shape" x="268" y="340" width="184" height="46" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="268" y="340" width="184" height="46" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="360" text-anchor="middle" fill="var(--accent)">Participant</text>
       <text class="cm-node-sub" x="360" y="375" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank</text>
     </g>
 
     <!-- Investor -->
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
-      <rect class="cm-node-shape" x="278" y="406" width="164" height="44" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <rect class="cm-node-shape" x="278" y="406" width="164" height="44" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="426" text-anchor="middle" fill="var(--green)">Investor</text>
       <text class="cm-node-sub" x="360" y="440" text-anchor="middle" fill="var(--ink-tertiary)">Beneficial owner</text>
     </g>
@@ -986,15 +1031,15 @@ When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex
 
     <!-- 1 Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="110" y="36" width="260" height="52" rx="10" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="240" y="58" text-anchor="middle" fill="var(--ink)">1 · Issuer</text>
       <text class="cm-node-sub" x="240" y="74" text-anchor="middle" fill="var(--ink-tertiary)">Corporation that issued the securities</text>
     </g>
 
     <!-- 2 Cede -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
-      <rect x="148" y="128" width="184" height="16" rx="4" fill="var(--gold)"/>
+      <rect class="cm-node-shape" x="110" y="120" width="260" height="68" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-shadow)"/>
+      <rect x="148" y="128" width="184" height="16" rx="4" fill="url(#g-gold-solid)" filter="url(#g-shadow)"/>
       <text class="cm-badge-text" x="240" y="140" text-anchor="middle" fill="#fff">Legal title</text>
       <text class="cm-node-title" x="240" y="162" text-anchor="middle" fill="var(--gold-deep)">2 · Cede &amp; Co.</text>
       <text class="cm-node-sub" x="240" y="178" text-anchor="middle" fill="var(--gold)">Registered owner on issuer books</text>
@@ -1002,22 +1047,22 @@ When an issuer or its <span class="hotspot" data-modal="transfer-agent" tabindex
 
     <!-- 3 DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="110" y="220" width="260" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="240" y="248" text-anchor="middle" fill="var(--accent)">3 · DTC</text>
       <text class="cm-node-sub" x="240" y="266" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault · participant records</text>
     </g>
 
     <!-- 4 Participant -->
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
-      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="110" y="320" width="260" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="240" y="348" text-anchor="middle" fill="var(--accent)">4 · Participant</text>
       <text class="cm-node-sub" x="240" y="366" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank at DTC</text>
     </g>
 
     <!-- 5 Investor -->
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
-      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
-      <rect x="136" y="428" width="208" height="16" rx="4" fill="var(--green)"/>
+      <rect class="cm-node-shape" x="110" y="420" width="260" height="72" rx="10" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.8" filter="url(#g-shadow)"/>
+      <rect x="136" y="428" width="208" height="16" rx="4" fill="url(#g-green-solid)" filter="url(#g-shadow)"/>
       <text class="cm-badge-text" x="240" y="440" text-anchor="middle" fill="#fff">Beneficial ownership</text>
       <text class="cm-node-title" x="240" y="462" text-anchor="middle" fill="var(--green)">5 · Investor (You)</text>
       <text class="cm-node-sub" x="240" y="478" text-anchor="middle" fill="var(--ink-tertiary)">Dividends · voting · sale proceeds</text>
@@ -1091,9 +1136,9 @@ Contrast this with the <a href="#process-t1-flow">T+1 trade settlement flow</a>,
     <!-- Phase bands -->
     <rect x="20" y="14" width="220" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="130" y="29" text-anchor="middle">Initiate &amp; instruct</text>
-    <rect x="250" y="14" width="220" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <rect x="250" y="14" width="220" height="22" rx="6" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="360" y="29" text-anchor="middle" fill="var(--accent)">DTC custody</text>
-    <rect x="480" y="14" width="220" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="480" y="14" width="220" height="22" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="590" y="29" text-anchor="middle" fill="var(--green)">Reregister &amp; finalize</text>
 
     <text class="pf-step-sub" x="360" y="52" text-anchor="middle">Physical certificate → street name · click highlighted nodes for definitions</text>
@@ -1112,21 +1157,21 @@ Contrast this with the <a href="#process-t1-flow">T+1 trade settlement flow</a>,
     <g>
       <circle cx="90" cy="92" r="13" fill="var(--accent)"/>
       <text class="pf-step-num" x="90" y="96" text-anchor="middle">1</text>
-      <rect x="30" y="114" width="116" height="54" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="30" y="114" width="116" height="54" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="88" y="136" text-anchor="middle">Investor</text>
       <text class="pf-step-sub" x="88" y="152" text-anchor="middle">Endorse · Medallion</text>
     </g>
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
       <circle cx="250" cy="92" r="13" fill="var(--accent)"/>
       <text class="pf-step-num" x="250" y="96" text-anchor="middle">2</text>
-      <rect class="cm-node-shape" x="192" y="114" width="116" height="54" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect class="cm-node-shape" x="192" y="114" width="116" height="54" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="250" y="136" text-anchor="middle">Participant</text>
       <text class="pf-step-sub" x="250" y="152" text-anchor="middle">PTS/PBS · ticket</text>
     </g>
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
       <circle cx="414" cy="92" r="13" fill="var(--accent)"/>
       <text class="pf-step-num" x="414" y="96" text-anchor="middle">3</text>
-      <rect class="cm-node-shape" x="356" y="114" width="116" height="54" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <rect class="cm-node-shape" x="356" y="114" width="116" height="54" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="414" y="136" text-anchor="middle">DTC vault</text>
       <text class="pf-step-sub" x="414" y="152" text-anchor="middle">Provisional credit</text>
     </g>
@@ -1135,21 +1180,21 @@ Contrast this with the <a href="#process-t1-flow">T+1 trade settlement flow</a>,
     <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer Agent — open definition">
       <circle cx="90" cy="230" r="13" fill="var(--accent)"/>
       <text class="pf-step-num" x="90" y="234" text-anchor="middle">4</text>
-      <rect class="cm-node-shape" x="30" y="252" width="116" height="40" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <rect class="cm-node-shape" x="30" y="252" width="116" height="40" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="88" y="270" text-anchor="middle">Transfer agent</text>
       <text class="pf-step-sub" x="88" y="284" text-anchor="middle">Presentment</text>
     </g>
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede &amp; Co. — open definition">
       <circle cx="250" cy="230" r="13" fill="var(--gold)"/>
       <text class="pf-step-num" x="250" y="234" text-anchor="middle">5</text>
-      <rect class="cm-node-shape" x="192" y="252" width="116" height="40" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect class="cm-node-shape" x="192" y="252" width="116" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="250" y="270" text-anchor="middle">Cancel → Cede</text>
       <text class="pf-step-sub" x="250" y="284" text-anchor="middle">Legal title shift</text>
     </g>
     <g class="cm-node" data-modal="book-entry" tabindex="0" role="button" aria-label="Book-entry — open definition">
       <circle cx="460" cy="230" r="13" fill="var(--green)"/>
       <text class="pf-step-num" x="460" y="234" text-anchor="middle">6</text>
-      <rect class="cm-node-shape" x="360" y="252" width="200" height="40" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect class="cm-node-shape" x="360" y="252" width="200" height="40" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="460" y="270" text-anchor="middle">Final book-entry</text>
       <text class="pf-step-sub" x="460" y="284" text-anchor="middle">Beneficial ownership retained</text>
     </g>
@@ -1229,14 +1274,14 @@ The distinction is important: <strong>DTC is the vault and registrar</strong>; <
 
     <!-- DTCC parent -->
     <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
-      <rect class="cm-node-shape" x="250" y="24" width="220" height="54" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="250" y="24" width="220" height="54" rx="12" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="48" text-anchor="middle" fill="#fff">DTCC</text>
       <text class="cm-node-sub" x="360" y="66" text-anchor="middle" fill="var(--accent-muted)">Holding company · SIFMU parent</text>
     </g>
 
     <!-- DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="60" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="60" y="130" width="160" height="66" rx="10" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="140" y="156" text-anchor="middle" fill="var(--accent)">DTC</text>
       <text class="cm-node-sub" x="140" y="174" text-anchor="middle" fill="var(--ink-tertiary)">CSD · custody</text>
       <text class="cm-node-sub" x="140" y="188" text-anchor="middle" fill="var(--ink-tertiary)">asset servicing</text>
@@ -1244,7 +1289,7 @@ The distinction is important: <strong>DTC is the vault and registrar</strong>; <
 
     <!-- NSCC -->
     <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
-      <rect class="cm-node-shape" x="280" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="280" y="130" width="160" height="66" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="156" text-anchor="middle" fill="var(--accent)">NSCC</text>
       <text class="cm-node-sub" x="360" y="174" text-anchor="middle" fill="var(--ink-tertiary)">Equity CCP</text>
       <text class="cm-node-sub" x="360" y="188" text-anchor="middle" fill="var(--ink-tertiary)">netting · guarantee</text>
@@ -1252,7 +1297,7 @@ The distinction is important: <strong>DTC is the vault and registrar</strong>; <
 
     <!-- FICC -->
     <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
-      <rect class="cm-node-shape" x="500" y="130" width="160" height="66" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="500" y="130" width="160" height="66" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="580" y="156" text-anchor="middle" fill="var(--accent)">FICC</text>
       <text class="cm-node-sub" x="580" y="174" text-anchor="middle" fill="var(--ink-tertiary)">Fixed income CCP</text>
       <text class="cm-node-sub" x="580" y="188" text-anchor="middle" fill="var(--ink-tertiary)">govies · MBS</text>
@@ -1260,21 +1305,21 @@ The distinction is important: <strong>DTC is the vault and registrar</strong>; <
 
     <!-- Cede under DTC -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="60" y="230" width="160" height="52" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <rect class="cm-node-shape" x="60" y="230" width="160" height="52" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.6" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="140" y="252" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
       <text class="cm-node-sub" x="140" y="270" text-anchor="middle" fill="var(--gold)">Nominee only</text>
     </g>
 
     <!-- GSD -->
     <g class="cm-node" data-modal="gsd" tabindex="0" role="button" aria-label="GSD — open definition">
-      <rect class="cm-node-shape" x="430" y="240" width="140" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="430" y="240" width="140" height="52" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="500" y="262" text-anchor="middle" fill="var(--ink)" font-size="12">GSD</text>
       <text class="cm-node-sub" x="500" y="280" text-anchor="middle" fill="var(--ink-tertiary)">Treasuries · repos</text>
     </g>
 
     <!-- MBSD -->
     <g class="cm-node" data-modal="mbsd" tabindex="0" role="button" aria-label="MBSD — open definition">
-      <rect class="cm-node-shape" x="590" y="240" width="140" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="590" y="240" width="140" height="52" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="660" y="262" text-anchor="middle" fill="var(--ink)" font-size="12">MBSD</text>
       <text class="cm-node-sub" x="660" y="280" text-anchor="middle" fill="var(--ink-tertiary)">Agency MBS · TBA</text>
     </g>
@@ -1353,9 +1398,9 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
     <!-- Phase bands -->
     <rect x="20" y="20" width="268" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="154" y="36" text-anchor="middle">Trade day</text>
-    <rect x="300" y="20" width="200" height="24" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <rect x="300" y="20" width="200" height="24" rx="6" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="400" y="36" text-anchor="middle" fill="var(--accent)">NSCC clearing</text>
-    <rect x="512" y="20" width="188" height="24" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="512" y="20" width="188" height="24" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="606" y="36" text-anchor="middle" fill="var(--green)">T+1 settle</text>
 
     <!-- Connectors -->
@@ -1368,35 +1413,35 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
     <g>
       <circle cx="80" cy="90" r="14" fill="var(--accent)"/>
       <text class="pf-step-num" x="80" y="94" text-anchor="middle">1</text>
-      <rect x="28" y="112" width="104" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="28" y="112" width="104" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="80" y="134" text-anchor="middle">Execute</text>
       <text class="pf-step-sub" x="80" y="150" text-anchor="middle">Exchange / ATS</text>
     </g>
     <g>
       <circle cx="220" cy="90" r="14" fill="var(--accent)"/>
       <text class="pf-step-num" x="220" y="94" text-anchor="middle">2</text>
-      <rect x="168" y="112" width="104" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="168" y="112" width="104" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="220" y="134" text-anchor="middle">Report</text>
       <text class="pf-step-sub" x="220" y="150" text-anchor="middle">Both sides → NSCC</text>
     </g>
     <g class="cm-node" data-modal="cns" tabindex="0" role="button" aria-label="CNS — open definition">
       <circle cx="360" cy="90" r="14" fill="var(--accent)"/>
       <text class="pf-step-num" x="360" y="94" text-anchor="middle">3</text>
-      <rect class="cm-node-shape" x="308" y="112" width="104" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <rect class="cm-node-shape" x="308" y="112" width="104" height="56" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="360" y="134" text-anchor="middle">CNS / Novate</text>
       <text class="pf-step-sub" x="360" y="150" text-anchor="middle">CCP guarantee</text>
     </g>
     <g>
       <circle cx="500" cy="90" r="14" fill="var(--accent)"/>
       <text class="pf-step-num" x="500" y="94" text-anchor="middle">4</text>
-      <rect x="448" y="112" width="104" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <rect x="448" y="112" width="104" height="56" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="500" y="134" text-anchor="middle">Net EOD</text>
       <text class="pf-step-sub" x="500" y="150" text-anchor="middle">1 oblig. / security</text>
     </g>
     <g>
       <circle cx="640" cy="90" r="14" fill="var(--green)"/>
       <text class="pf-step-num" x="640" y="94" text-anchor="middle">5</text>
-      <rect x="588" y="112" width="104" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="588" y="112" width="104" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="640" y="134" text-anchor="middle">Settle</text>
       <text class="pf-step-sub" x="640" y="150" text-anchor="middle">DTC + Fed</text>
     </g>
@@ -1552,7 +1597,9 @@ FICC's margin methodology includes several components: a value-at-risk (<span cl
 </p>
 
 <div class="warn-box">
-  <strong>Regulatory Note:</strong> Under SEC Treasury Clearing Rules, FICC is required to expand central clearing of U.S. Treasury cash transactions by the end of 2026 and Treasury repo transactions by mid-2027. This will significantly increase the volume of trades flowing through GSD and necessitate rule changes to accommodate new participant types and margin segregation requirements.
+  <strong>Regulatory Note:</strong> Under SEC Treasury Clearing Rules, FICC is required to expand central clearing of U.S. Treasury cash transactions by <strong>December 31, 2026</strong> and Treasury repo transactions by <strong>June 30, 2027</strong>. This will significantly increase the volume of trades flowing through GSD and necessitate rule changes to accommodate new participant types and margin segregation requirements.
+  <p style="margin-top:10px;">Historically, a large share of U.S. Treasury cash and repo trading was cleared bilaterally between counterparties, outside any central clearinghouse. Following liquidity strains in the Treasury market — most notably the March 2020 "dash for cash" — the SEC adopted rules in December 2023 mandating a broad expansion of central clearing to reduce this systemic risk; the compliance dates above reflect a one-year extension the SEC granted in February 2025 from the original December 2025 / June 2026 timeline.</p>
+  <p style="margin-top:10px;"><strong>The impact on infrastructure:</strong> The mandate is pushing trillions of dollars of daily bilateral flow into FICC's Government Securities Division. FICC is expanding its <strong>Sponsored Membership</strong> model to let hedge funds and other indirect participants access clearing through a sponsoring bank or dealer, which will materially change the risk profile of the U.S. sovereign debt market as GSD volumes grow.</p>
 </div>
 
 <h3 class="subsection-title">The DTCC Ecosystem: How DTC, NSCC, and FICC Work Together</h3>
@@ -1572,34 +1619,34 @@ While DTC, NSCC, and FICC are distinct entities with distinct functions, they op
     </defs>
     <rect x="20" y="16" width="130" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="85" y="31" text-anchor="middle">Execute</text>
-    <rect x="160" y="16" width="160" height="22" rx="6" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+    <rect x="160" y="16" width="160" height="22" rx="6" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="240" y="31" text-anchor="middle" fill="var(--accent)">Clear (CCP)</text>
-    <rect x="330" y="16" width="180" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="330" y="16" width="180" height="22" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="420" y="31" text-anchor="middle" fill="var(--green)">Settle DVP</text>
-    <rect x="520" y="16" width="180" height="22" rx="6" fill="var(--gold-light)" stroke="var(--gold)"/>
+    <rect x="520" y="16" width="180" height="22" rx="6" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="610" y="31" text-anchor="middle" fill="var(--gold-deep)">Service</text>
     <line class="pf-edge" x1="118" y1="110" x2="150" y2="110" marker-end="url(#pf-eco-arrow)"/>
     <line class="pf-edge" x1="258" y1="110" x2="290" y2="110" marker-end="url(#pf-eco-arrow)"/>
     <line class="pf-edge" x1="398" y1="110" x2="430" y2="110" marker-end="url(#pf-eco-arrow)"/>
     <line class="pf-edge" x1="538" y1="110" x2="570" y2="110" marker-end="url(#pf-eco-arrow)"/>
     <g><circle cx="70" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="70" y="94" text-anchor="middle">1</text>
-      <rect x="20" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="20" y="112" width="100" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="70" y="134" text-anchor="middle">Trade</text>
       <text class="pf-step-sub" x="70" y="150" text-anchor="middle">Equity / FI / MBS</text></g>
     <g><circle cx="210" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="210" y="94" text-anchor="middle">2</text>
-      <rect x="160" y="112" width="100" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <rect x="160" y="112" width="100" height="56" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="210" y="134" text-anchor="middle">Clear</text>
       <text class="pf-step-sub" x="210" y="150" text-anchor="middle">NSCC / FICC</text></g>
     <g><circle cx="350" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="350" y="94" text-anchor="middle">3</text>
-      <rect x="300" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="300" y="112" width="100" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="350" y="134" text-anchor="middle">Securities</text>
       <text class="pf-step-sub" x="350" y="150" text-anchor="middle">DTC book-entry</text></g>
     <g><circle cx="490" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="490" y="94" text-anchor="middle">4</text>
-      <rect x="440" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="440" y="112" width="100" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="490" y="134" text-anchor="middle">Cash</text>
       <text class="pf-step-sub" x="490" y="150" text-anchor="middle">Federal Reserve</text></g>
     <g><circle cx="630" cy="90" r="14" fill="var(--gold)"/><text class="pf-step-num" x="630" y="94" text-anchor="middle">5</text>
-      <rect x="580" y="112" width="100" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="580" y="112" width="100" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="630" y="134" text-anchor="middle">Service</text>
       <text class="pf-step-sub" x="630" y="150" text-anchor="middle">Dividends · proxies</text></g>
     <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Clearing establishes who owes what · settlement exchanges securities and cash · DTC services the position</text>
@@ -1702,8 +1749,8 @@ By registering securities in the name of a single nominee — Cede &amp; Co. —
     </defs>
 
     <!-- Column backgrounds -->
-    <rect x="28" y="42" width="300" height="280" rx="14" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.2" opacity="0.55"/>
-    <rect x="392" y="42" width="300" height="280" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.45"/>
+    <rect x="28" y="42" width="300" height="280" rx="14" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.2" opacity="0.55" filter="url(#g-shadow)"/>
+    <rect x="392" y="42" width="300" height="280" rx="14" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.2" opacity="0.45" filter="url(#g-shadow)"/>
 
     <text class="cm-zone-label" x="178" y="66" text-anchor="middle" fill="var(--gold-deep)">Legal title</text>
     <text class="cm-edge-label" x="178" y="82" text-anchor="middle" fill="var(--gold)">Issuer&apos;s register</text>
@@ -1728,28 +1775,28 @@ By registering securities in the name of a single nominee — Cede &amp; Co. —
 
     <!-- Left: Issuer books -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="88" y="100" width="180" height="48" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="88" y="100" width="180" height="48" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="178" y="122" text-anchor="middle" fill="var(--ink)">Issuer books</text>
       <text class="cm-node-sub" x="178" y="138" text-anchor="middle" fill="var(--ink-tertiary)">One registered owner</text>
     </g>
 
     <!-- Left: Cede -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="88" y="174" width="180" height="64" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.8"/>
+      <rect class="cm-node-shape" x="88" y="174" width="180" height="64" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="178" y="200" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
       <text class="cm-node-sub" x="178" y="218" text-anchor="middle" fill="var(--gold)">Registered owner</text>
     </g>
 
     <!-- Left: DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="88" y="264" width="180" height="42" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="88" y="264" width="180" height="42" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="178" y="290" text-anchor="middle" fill="var(--accent)">DTC</text>
     </g>
 
     <!-- Right: Investor -->
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor beneficial owner — open definition">
-      <rect class="cm-node-shape" x="452" y="120" width="180" height="80" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.8"/>
-      <rect x="478" y="128" width="128" height="16" rx="4" fill="var(--green)"/>
+      <rect class="cm-node-shape" x="452" y="120" width="180" height="80" rx="10" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.8" filter="url(#g-shadow)"/>
+      <rect x="478" y="128" width="128" height="16" rx="4" fill="url(#g-green-solid)" filter="url(#g-shadow)"/>
       <text class="cm-badge-text" x="542" y="140" text-anchor="middle" fill="#fff">Beneficial owner</text>
       <text class="cm-node-title" x="542" y="168" text-anchor="middle" fill="var(--green)">Investor</text>
       <text class="cm-node-sub" x="542" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Economic rights</text>
@@ -1757,18 +1804,18 @@ By registering securities in the name of a single nominee — Cede &amp; Co. —
 
     <!-- Right: Participant -->
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="DTC Participant — open definition">
-      <rect class="cm-node-shape" x="452" y="226" width="180" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="452" y="226" width="180" height="56" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="542" y="250" text-anchor="middle" fill="var(--accent)">Participant</text>
       <text class="cm-node-sub" x="542" y="268" text-anchor="middle" fill="var(--ink-tertiary)">Broker books</text>
     </g>
 
     <!-- Myth vs truth callouts -->
     <g class="cm-node-static">
-      <rect x="60" y="340" width="280" height="36" rx="8" fill="var(--red-light)" stroke="var(--red-muted)" stroke-width="1"/>
+      <rect x="60" y="340" width="280" height="36" rx="8" fill="url(#g-red)" stroke="var(--red-muted)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="200" y="363" text-anchor="middle" fill="var(--red)" font-size="12">✗ Myth: “DTC owns the stock”</text>
     </g>
     <g class="cm-node-static">
-      <rect x="380" y="340" width="280" height="36" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1"/>
+      <rect x="380" y="340" width="280" height="36" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="520" y="363" text-anchor="middle" fill="var(--green)" font-size="12">✓ Truth: investor is beneficial owner</text>
     </g>
   </svg>
@@ -1812,7 +1859,7 @@ The relationship between DTC, its participants, issuers, and investors is govern
     <!-- Day labels -->
     <rect x="24" y="16" width="330" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="189" y="31" text-anchor="middle">T (trade date)</text>
-    <rect x="366" y="16" width="330" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="366" y="16" width="330" height="22" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="531" y="31" text-anchor="middle" fill="var(--green)">T+1 (settlement date)</text>
 
     <!-- Row 1 connectors -->
@@ -1825,40 +1872,41 @@ The relationship between DTC, its participants, issuers, and investors is govern
     <!-- Steps 1-5 top row -->
     <g>
       <circle cx="70" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="70" y="84" text-anchor="middle">1</text>
-      <rect x="24" y="102" width="92" height="50" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="24" y="102" width="92" height="50" rx="7" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="70" y="122" text-anchor="middle">Execute</text>
       <text class="pf-step-sub" x="70" y="138" text-anchor="middle">Order match</text>
     </g>
     <g>
       <circle cx="200" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="200" y="84" text-anchor="middle">2</text>
-      <rect x="154" y="102" width="92" height="50" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="154" y="102" width="92" height="50" rx="7" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="200" y="122" text-anchor="middle">Report</text>
       <text class="pf-step-sub" x="200" y="138" text-anchor="middle">→ NSCC</text>
     </g>
     <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
       <circle cx="332" cy="80" r="13" fill="var(--accent)"/><text class="pf-step-num" x="332" y="84" text-anchor="middle">3</text>
-      <rect class="cm-node-shape" x="286" y="102" width="92" height="50" rx="7" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <rect class="cm-node-shape" x="286" y="102" width="92" height="50" rx="7" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="332" y="122" text-anchor="middle">Clear / Net</text>
       <text class="pf-step-sub" x="332" y="138" text-anchor="middle">NSCC CCP</text>
     </g>
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
       <circle cx="464" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="464" y="84" text-anchor="middle">4</text>
-      <rect class="cm-node-shape" x="418" y="102" width="92" height="50" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect class="cm-node-shape" x="418" y="102" width="92" height="50" rx="7" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="464" y="122" text-anchor="middle">Book-entry</text>
       <text class="pf-step-sub" x="464" y="138" text-anchor="middle">DTC transfer</text>
     </g>
     <g class="cm-node" data-modal="dvp" tabindex="0" role="button" aria-label="DVP — open definition">
       <circle cx="596" cy="80" r="13" fill="var(--green)"/><text class="pf-step-num" x="596" y="84" text-anchor="middle">5</text>
-      <rect class="cm-node-shape" x="550" y="102" width="92" height="50" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect class="cm-node-shape" x="550" y="102" width="92" height="50" rx="7" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="596" y="122" text-anchor="middle">Cash DVP</text>
       <text class="pf-step-sub" x="596" y="138" text-anchor="middle">Fed settle</text>
     </g>
     <!-- Step 6 bottom -->
     <g>
       <circle cx="464" cy="178" r="13" fill="var(--gold)"/><text class="pf-step-num" x="464" y="182" text-anchor="middle">6</text>
-      <rect x="360" y="168" width="208" height="40" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
-      <text class="pf-step-title" x="464" y="186" text-anchor="middle">Customer confirmation</text>
-      <text class="pf-step-sub" x="464" y="200" text-anchor="middle">Broker updates investor account · no certificate</text>
+      <rect x="320" y="164" width="288" height="52" rx="7" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
+      <text class="pf-step-title" x="464" y="184" text-anchor="middle">Customer confirmation</text>
+      <text class="pf-step-sub" x="464" y="200" text-anchor="middle">Broker updates investor account</text>
+      <text class="pf-step-sub" x="464" y="212" text-anchor="middle">No certificate involved</text>
     </g>
     <path class="pf-edge" d="M646 152 C646 178 560 178 512 178" marker-end="url(#pf-t1-arrow)"/>
   </svg>
@@ -1944,42 +1992,42 @@ Several foundational documents govern these relationships:
 
     <!-- Hub: DTC -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="290" y="168" width="140" height="72" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="290" y="168" width="140" height="72" rx="12" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="198" text-anchor="middle" fill="#fff">DTC</text>
       <text class="cm-node-sub" x="360" y="218" text-anchor="middle" fill="var(--accent-muted)">Contract hub</text>
     </g>
 
     <!-- Issuer -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="48" y="70" width="130" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="48" y="70" width="130" height="52" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="113" y="94" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
       <text class="cm-node-sub" x="113" y="110" text-anchor="middle" fill="var(--ink-tertiary)">deposits issue</text>
     </g>
 
     <!-- Transfer agent -->
     <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
-      <rect class="cm-node-shape" x="40" y="268" width="140" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="40" y="268" width="140" height="52" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="110" y="292" text-anchor="middle" fill="var(--accent)" font-size="12">Transfer agent</text>
       <text class="cm-node-sub" x="110" y="308" text-anchor="middle" fill="var(--ink-tertiary)">issuer agent</text>
     </g>
 
     <!-- Cede -->
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="280" y="302" width="160" height="56" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.6"/>
+      <rect class="cm-node-shape" x="280" y="302" width="160" height="56" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.6" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="326" text-anchor="middle" fill="var(--gold-deep)">Cede &amp; Co.</text>
       <text class="cm-node-sub" x="360" y="344" text-anchor="middle" fill="var(--gold)">Nominee · protected party</text>
     </g>
 
     <!-- Participant -->
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
-      <rect class="cm-node-shape" x="520" y="70" width="140" height="56" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="520" y="70" width="140" height="56" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="590" y="94" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
       <text class="cm-node-sub" x="590" y="112" text-anchor="middle" fill="var(--ink-tertiary)">broker / bank</text>
     </g>
 
     <!-- Investor -->
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
-      <rect class="cm-node-shape" x="600" y="210" width="100" height="52" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <rect class="cm-node-shape" x="600" y="210" width="100" height="52" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="650" y="234" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
       <text class="cm-node-sub" x="650" y="250" text-anchor="middle" fill="var(--ink-tertiary)">customer</text>
     </g>
@@ -2055,22 +2103,22 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
 
     <!-- Stage nodes (top row) -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="48" y="28" width="110" height="50" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="48" y="28" width="110" height="50" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="103" y="50" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer</text>
       <text class="cm-node-sub" x="103" y="66" text-anchor="middle" fill="var(--ink-tertiary)">source</text>
     </g>
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="210" y="24" width="120" height="58" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="210" y="24" width="120" height="58" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="270" y="48" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede / DTC</text>
       <text class="cm-node-sub" x="270" y="66" text-anchor="middle" fill="var(--gold)">registered owner</text>
     </g>
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
-      <rect class="cm-node-shape" x="382" y="28" width="120" height="50" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="382" y="28" width="120" height="50" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="442" y="50" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
       <text class="cm-node-sub" x="442" y="66" text-anchor="middle" fill="var(--ink-tertiary)">pro-rata share</text>
     </g>
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
-      <rect class="cm-node-shape" x="554" y="28" width="120" height="50" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="554" y="28" width="120" height="50" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="614" y="50" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
       <text class="cm-node-sub" x="614" y="66" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
     </g>
@@ -2083,7 +2131,7 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
 
     <!-- Channel bands: label left · arrows only in gaps between columns · no text on arrow line -->
     <!-- Cash -->
-    <rect x="36" y="100" width="648" height="58" rx="8" fill="var(--green-light)" opacity="0.4"/>
+    <rect x="36" y="100" width="648" height="58" rx="8" fill="url(#g-green)" opacity="0.4" filter="url(#g-shadow)"/>
     <text class="cm-zone-label" x="48" y="122" fill="var(--green)" font-size="9">Cash</text>
     <line x1="120" y1="118" x2="248" y2="118" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
     <line x1="292" y1="118" x2="420" y2="118" stroke="var(--green)" stroke-width="1.8" marker-end="url(#cm6-arrow-green)"/>
@@ -2091,7 +2139,7 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
     <text class="cm-edge-label" x="360" y="144" text-anchor="middle" fill="var(--green)">Dividends · interest · distributions</text>
 
     <!-- Proxy -->
-    <rect x="36" y="166" width="648" height="58" rx="8" fill="var(--accent-light)" opacity="0.5"/>
+    <rect x="36" y="166" width="648" height="58" rx="8" fill="url(#g-accent)" opacity="0.5" filter="url(#g-shadow)"/>
     <text class="cm-zone-label" x="48" y="188" fill="var(--accent)" font-size="9">Proxy</text>
     <line x1="120" y1="184" x2="248" y2="184" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
     <line x1="292" y1="184" x2="420" y2="184" stroke="var(--accent-muted)" stroke-width="1.8" marker-end="url(#cm6-arrow-accent)"/>
@@ -2099,7 +2147,7 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
     <text class="cm-edge-label" x="360" y="210" text-anchor="middle" fill="var(--accent)">Proxy materials · voting instructions</text>
 
     <!-- Notices -->
-    <rect x="36" y="232" width="648" height="58" rx="8" fill="var(--gold-light)" opacity="0.5"/>
+    <rect x="36" y="232" width="648" height="58" rx="8" fill="url(#g-gold)" opacity="0.5" filter="url(#g-shadow)"/>
     <text class="cm-zone-label" x="48" y="254" fill="var(--gold-deep)" font-size="9">Notices</text>
     <line x1="120" y1="250" x2="248" y2="250" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
     <line x1="292" y1="250" x2="420" y2="250" stroke="var(--gold)" stroke-width="1.8" marker-end="url(#cm6-arrow-gold)"/>
@@ -2136,30 +2184,30 @@ When an issuer pays a dividend, it sends the total payment to DTC (as registered
         <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
       </marker>
     </defs>
-    <rect x="24" y="16" width="672" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="24" y="16" width="672" height="22" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="360" y="31" text-anchor="middle" fill="var(--green)">Cash pass-through · issuer → Cede/DTC → participants → investors</text>
     <line class="pf-edge" x1="118" y1="110" x2="150" y2="110" marker-end="url(#pf-div-arrow)"/>
     <line class="pf-edge" x1="258" y1="110" x2="290" y2="110" marker-end="url(#pf-div-arrow)"/>
     <line class="pf-edge" x1="398" y1="110" x2="430" y2="110" marker-end="url(#pf-div-arrow)"/>
     <line class="pf-edge" x1="538" y1="110" x2="570" y2="110" marker-end="url(#pf-div-arrow)"/>
     <g><circle cx="70" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="70" y="94" text-anchor="middle">1</text>
-      <rect x="20" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="20" y="112" width="100" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="70" y="134" text-anchor="middle">Declare</text>
       <text class="pf-step-sub" x="70" y="150" text-anchor="middle">Record · pay dates</text></g>
     <g><circle cx="210" cy="90" r="14" fill="var(--accent)"/><text class="pf-step-num" x="210" y="94" text-anchor="middle">2</text>
-      <rect x="160" y="112" width="100" height="56" rx="8" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="160" y="112" width="100" height="56" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="210" y="134" text-anchor="middle">Notify</text>
       <text class="pf-step-sub" x="210" y="150" text-anchor="middle">Issuer → DTC</text></g>
     <g><circle cx="350" cy="90" r="14" fill="var(--gold)"/><text class="pf-step-num" x="350" y="94" text-anchor="middle">3</text>
-      <rect x="300" y="112" width="100" height="56" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="300" y="112" width="100" height="56" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="350" y="134" text-anchor="middle">Pay Cede</text>
       <text class="pf-step-sub" x="350" y="150" text-anchor="middle">Total to DTC</text></g>
     <g><circle cx="490" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="490" y="94" text-anchor="middle">4</text>
-      <rect x="440" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="440" y="112" width="100" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="490" y="134" text-anchor="middle">Allocate</text>
       <text class="pf-step-sub" x="490" y="150" text-anchor="middle">Pro-rata</text></g>
     <g><circle cx="630" cy="90" r="14" fill="var(--green)"/><text class="pf-step-num" x="630" y="94" text-anchor="middle">5</text>
-      <rect x="580" y="112" width="100" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="580" y="112" width="100" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="630" y="134" text-anchor="middle">Credit</text>
       <text class="pf-step-sub" x="630" y="150" text-anchor="middle">Customer a/c</text></g>
     <text class="pf-step-sub" x="360" y="190" text-anchor="middle">Same chain as the Rights Pass-Through map — cash channel only</text>
@@ -2229,7 +2277,7 @@ Corporate actions include <span class="hotspot" data-modal="tender-offer" tabind
   </p>
   <svg class="process-flow-svg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- Four category cards -->
-    <rect x="24" y="28" width="160" height="120" rx="12" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.4"/>
+    <rect x="24" y="28" width="160" height="120" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.4" filter="url(#g-shadow)"/>
     <circle cx="52" cy="52" r="16" fill="var(--accent)"/>
     <text class="pf-step-num" x="52" y="56" text-anchor="middle" font-size="9">VOL</text>
     <text class="pf-step-title" x="104" y="52" text-anchor="start" fill="var(--accent)">Voluntary</text>
@@ -2238,7 +2286,7 @@ Corporate actions include <span class="hotspot" data-modal="tender-offer" tabind
     <text class="pf-step-sub" x="40" y="116" fill="var(--ink-tertiary)">Optional exchanges</text>
     <text class="pf-step-sub" x="40" y="136" fill="var(--accent)">Election required</text>
 
-    <rect x="196" y="28" width="160" height="120" rx="12" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+    <rect x="196" y="28" width="160" height="120" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#g-shadow)"/>
     <circle cx="224" cy="52" r="16" fill="var(--green)"/>
     <text class="pf-step-num" x="224" y="56" text-anchor="middle" font-size="9">MAN</text>
     <text class="pf-step-title" x="276" y="52" text-anchor="start" fill="var(--green)">Mandatory</text>
@@ -2247,7 +2295,7 @@ Corporate actions include <span class="hotspot" data-modal="tender-offer" tabind
     <text class="pf-step-sub" x="212" y="116" fill="var(--ink-tertiary)">Mandatory exchanges</text>
     <text class="pf-step-sub" x="212" y="136" fill="var(--green)">Automatic for all</text>
 
-    <rect x="368" y="28" width="160" height="120" rx="12" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.4"/>
+    <rect x="368" y="28" width="160" height="120" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#g-shadow)"/>
     <circle cx="396" cy="52" r="16" fill="var(--gold)"/>
     <text class="pf-step-num" x="396" y="56" text-anchor="middle" font-size="9">RED</text>
     <text class="pf-step-title" x="448" y="52" text-anchor="start" fill="var(--gold-deep)">Redemption</text>
@@ -2256,7 +2304,7 @@ Corporate actions include <span class="hotspot" data-modal="tender-offer" tabind
     <text class="pf-step-sub" x="384" y="116" fill="var(--ink-tertiary)">Sinking fund</text>
     <text class="pf-step-sub" x="384" y="136" fill="var(--gold-deep)">Principal return</text>
 
-    <rect x="540" y="28" width="160" height="120" rx="12" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.4"/>
+    <rect x="540" y="28" width="160" height="120" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.4" filter="url(#g-shadow)"/>
     <circle cx="568" cy="52" r="16" fill="var(--ink-muted)"/>
     <text class="pf-step-num" x="568" y="56" text-anchor="middle" font-size="9">REO</text>
     <text class="pf-step-title" x="620" y="52" text-anchor="start" fill="var(--ink)">Reorg</text>
@@ -2425,8 +2473,8 @@ Investors have alternatives to holding securities in street name through DTC. Th
     </defs>
 
     <!-- Column panels -->
-    <rect x="28" y="88" width="310" height="300" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.55"/>
-    <rect x="382" y="88" width="310" height="300" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.4"/>
+    <rect x="28" y="88" width="310" height="300" rx="14" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.55" filter="url(#g-shadow)"/>
+    <rect x="382" y="88" width="310" height="300" rx="14" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.2" opacity="0.4" filter="url(#g-shadow)"/>
 
     <text class="cm-zone-label" x="183" y="112" text-anchor="middle" fill="var(--accent)">Street name</text>
     <text class="cm-edge-label" x="183" y="128" text-anchor="middle" fill="var(--ink-tertiary)">Broker / DTC path</text>
@@ -2436,7 +2484,7 @@ Investors have alternatives to holding securities in street name through DTC. Th
 
     <!-- Top choice node -->
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="250" y="20" width="220" height="44" rx="10" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="250" y="20" width="220" height="44" rx="10" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="48" text-anchor="middle" fill="var(--ink)">Investor chooses how to hold</text>
     </g>
 
@@ -2456,26 +2504,26 @@ Investors have alternatives to holding securities in street name through DTC. Th
     <text class="cm-edge-label" x="198" y="376" text-anchor="start">on issuer books</text>
 
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor — open definition">
-      <rect class="cm-node-shape" x="98" y="142" width="170" height="44" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="98" y="142" width="170" height="44" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="183" y="162" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
       <text class="cm-node-sub" x="183" y="178" text-anchor="middle" fill="var(--ink-tertiary)">beneficial owner</text>
     </g>
     <g class="cm-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant — open definition">
-      <rect class="cm-node-shape" x="98" y="204" width="170" height="44" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="98" y="204" width="170" height="44" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="183" y="224" text-anchor="middle" fill="var(--accent)" font-size="12">Participant</text>
       <text class="cm-node-sub" x="183" y="240" text-anchor="middle" fill="var(--ink-tertiary)">broker-dealer</text>
     </g>
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="98" y="266" width="170" height="44" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="98" y="266" width="170" height="44" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="183" y="286" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
       <text class="cm-node-sub" x="183" y="302" text-anchor="middle" fill="var(--ink-tertiary)">book-entry vault</text>
     </g>
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede and Co. — open definition">
-      <rect class="cm-node-shape" x="98" y="328" width="170" height="40" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="98" y="328" width="170" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="183" y="353" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Cede &amp; Co.</text>
     </g>
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="98" y="380" width="170" height="36" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1"/>
+      <rect class="cm-node-shape" x="98" y="380" width="170" height="36" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="183" y="403" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer books</text>
     </g>
 
@@ -2487,18 +2535,18 @@ Investors have alternatives to holding securities in street name through DTC. Th
     <text class="cm-edge-label" x="552" y="314" text-anchor="start">name on register</text>
 
     <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Investor DRS — open definition">
-      <rect class="cm-node-shape" x="452" y="150" width="170" height="56" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.6"/>
-      <rect x="478" y="158" width="118" height="14" rx="3" fill="var(--green)"/>
+      <rect class="cm-node-shape" x="452" y="150" width="170" height="56" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.6" filter="url(#g-shadow)"/>
+      <rect x="478" y="158" width="118" height="14" rx="3" fill="url(#g-green-solid)" filter="url(#g-shadow)"/>
       <text class="cm-badge-text" x="537" y="169" text-anchor="middle" fill="#fff">Registered owner</text>
       <text class="cm-node-title" x="537" y="192" text-anchor="middle" fill="var(--green)" font-size="12">Investor</text>
     </g>
     <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
-      <rect class="cm-node-shape" x="452" y="230" width="170" height="66" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="452" y="230" width="170" height="66" rx="8" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="537" y="258" text-anchor="middle" fill="var(--accent)" font-size="12">Transfer agent</text>
       <text class="cm-node-sub" x="537" y="278" text-anchor="middle" fill="var(--ink-tertiary)">DRS books</text>
     </g>
     <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="452" y="322" width="170" height="56" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1"/>
+      <rect class="cm-node-shape" x="452" y="322" width="170" height="56" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="537" y="346" text-anchor="middle" fill="var(--ink)" font-size="12">Issuer books</text>
       <text class="cm-node-sub" x="537" y="364" text-anchor="middle" fill="var(--ink-tertiary)">investor&apos;s own name</text>
     </g>
@@ -2564,6 +2612,22 @@ Investors have alternatives to holding securities in street name through DTC. Th
 <p class="body-text">
 Most investors hold securities in street name because it is faster, cheaper, and more convenient for trading. However, direct registration offers the certainty of being the registered owner on the issuer's books and eliminates intermediary risk (the risk that a broker fails and its customer accounts are frozen during resolution).
 </p>
+
+<h3 class="subsection-title">DRS Mechanics Deep Dive: How a Withdrawal by Transfer Actually Works</h3>
+
+<p class="body-text">
+The comparison above shows what DRS <em>is</em>; the mechanics below show how a share actually moves out of street name and onto the issuer's books. The key intermediary is the <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent</span> (e.g., Computershare, Equiniti, Broadridge), which maintains the official shareholder ledger on the issuer's behalf and connects to DTC through the <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span> program described earlier in this guide.
+</p>
+
+<ul class="styled-list">
+  <li><strong>Starting point — the FAST balance certificate:</strong> Under FAST, the transfer agent holds a single master "balance certificate" registered to Cede &amp; Co., representing the aggregate shares DTC holds on behalf of all participants for that issue.</li>
+  <li><strong>Withdrawal by Transfer (WT):</strong> When an investor instructs their broker to move shares out of street name and into direct registration, the broker (a DTC participant) transmits a WT instruction through DTC. DTC debits that participant's book-entry position and instructs the transfer agent to reduce the Cede &amp; Co. balance certificate by the corresponding number of shares.</li>
+  <li><strong>Direct book-entry at the transfer agent:</strong> The transfer agent then establishes (or credits) a direct book-entry account on the issuer's own shareholder register in the investor's legal name, and issues a DRS statement (an "advice," not a certificate) confirming the holding.</li>
+</ul>
+
+<div class="tip-box">
+  <strong>The operational trade-off:</strong> A DRS withdrawal fully severs those shares from the DTC / Cede &amp; Co. ownership stack, which removes exposure to intermediary-level risks such as broker insolvency or unauthorized securities lending against the position. The trade-off is settlement speed: because the shares sit outside DTC's electronic ecosystem, they cannot be delivered on a T+1 basis. To sell, the investor must first instruct a broker to pull the shares back from the transfer agent into street name (the reverse of a WT) before the order can route to an exchange — a process that typically takes several business days.
+</div>
 
 <div class="tip-box">
   <strong>Teaching Note:</strong> The existence of DRS does not undermine the legitimacy of the DTC/street name system. It is an alternative designed for investors who prefer direct registration. The vast majority of market participants — including institutional investors, mutual funds, and pension funds — use street name because the efficiency gains outweigh the theoretical risks.
@@ -3433,14 +3497,14 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
 
     <!-- Euroclear parent -->
     <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
-      <rect class="cm-node-shape" x="250" y="20" width="220" height="52" rx="12" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+      <rect class="cm-node-shape" x="250" y="20" width="220" height="52" rx="12" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="#fff">Euroclear Group</text>
       <text class="cm-node-sub" x="360" y="58" text-anchor="middle" fill="var(--accent-muted)">Brussels · post-trade FMI</text>
     </g>
 
     <!-- Euroclear Bank -->
     <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
-      <rect class="cm-node-shape" x="40" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="40" y="120" width="160" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="120" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear Bank</text>
       <text class="cm-node-sub" x="120" y="164" text-anchor="middle" fill="var(--ink-tertiary)">ICSD + bank license</text>
       <text class="cm-node-sub" x="120" y="178" text-anchor="middle" fill="var(--ink-tertiary)">cross-border · ~50 ccy</text>
@@ -3448,7 +3512,7 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
 
     <!-- ESES -->
     <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSD — open definition">
-      <rect class="cm-node-shape" x="220" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="220" y="120" width="160" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="300" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">ESES CSDs</text>
       <text class="cm-node-sub" x="300" y="164" text-anchor="middle" fill="var(--ink-tertiary)">FR · NL · BE</text>
       <text class="cm-node-sub" x="300" y="178" text-anchor="middle" fill="var(--ink-tertiary)">Euronext domestic</text>
@@ -3456,7 +3520,7 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
 
     <!-- UK -->
     <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="UK CSD — open definition">
-      <rect class="cm-node-shape" x="400" y="120" width="160" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="400" y="120" width="160" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="480" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Euroclear UK</text>
       <text class="cm-node-sub" x="480" y="164" text-anchor="middle" fill="var(--ink-tertiary)">CREST system</text>
       <text class="cm-node-sub" x="480" y="178" text-anchor="middle" fill="var(--ink-tertiary)">UK equities · gilts</text>
@@ -3464,7 +3528,7 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
 
     <!-- Nordics -->
     <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="Nordic CSDs — open definition">
-      <rect class="cm-node-shape" x="560" y="120" width="140" height="68" rx="10" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="560" y="120" width="140" height="68" rx="10" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="630" y="146" text-anchor="middle" fill="var(--accent)" font-size="12">Nordic CSDs</text>
       <text class="cm-node-sub" x="630" y="164" text-anchor="middle" fill="var(--ink-tertiary)">Sweden · Finland</text>
       <text class="cm-node-sub" x="630" y="178" text-anchor="middle" fill="var(--ink-tertiary)">domestic markets</text>
@@ -3472,14 +3536,14 @@ Euroclear operates through two complementary layers: <span class="hotspot" data-
 
     <!-- T2S -->
     <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
-      <rect class="cm-node-shape" x="220" y="220" width="160" height="56" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
+      <rect class="cm-node-shape" x="220" y="220" width="160" height="56" rx="10" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="300" y="244" text-anchor="middle" fill="var(--green)" font-size="12">T2S platform</text>
       <text class="cm-node-sub" x="300" y="262" text-anchor="middle" fill="var(--ink-tertiary)">Eurosystem · CB money</text>
     </g>
 
     <!-- Clearstream peer -->
     <g class="cm-node" data-modal="clearstream" tabindex="0" role="button" aria-label="Clearstream — open definition">
-      <rect class="cm-node-shape" x="40" y="250" width="160" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <rect class="cm-node-shape" x="40" y="250" width="160" height="52" rx="8" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="120" y="274" text-anchor="middle" fill="var(--ink)" font-size="12">Clearstream</text>
       <text class="cm-node-sub" x="120" y="290" text-anchor="middle" fill="var(--ink-tertiary)">other major ICSD</text>
     </g>
@@ -3509,10 +3573,25 @@ Euroclear Bank is one of only two major ICSDs worldwide — the other being <spa
 Euroclear Bank operates under a banking license from the National Bank of Belgium and is regulated as a credit institution. This dual status as both CSD and bank allows it to offer <span class="hotspot" data-modal="triparty" tabindex="0" role="button" onclick="openModal('modal-triparty')">triparty collateral management</span>, securities lending, and liquidity services that pure CSDs like DTC cannot provide directly. In 2021, Euroclear acquired <strong>MFEX</strong>, a leading fund trading platform, expanding its capabilities into the global funds market.
 </p>
 
+<h3 class="subsection-title">Clearstream — The Other ICSD Pillar</h3>
+
+<p class="body-text">
+Euroclear is the primary European infrastructure covered in this guide, but the international layer of the European market is a duopoly, not a monopoly: <span class="hotspot" data-modal="clearstream" tabindex="0" role="button" onclick="openModal('modal-clearstream')">Clearstream</span> is the other major ICSD and a direct peer to Euroclear Bank. Owned by <strong>Deutsche Börse Group</strong>, Clearstream operates through two distinct legal entities:
+</p>
+
+<ul class="styled-list">
+  <li><strong>Clearstream Banking S.A. (Luxembourg):</strong> The ICSD layer that processes cross-border transactions. It holds a banking license — like Euroclear Bank — and offers triparty repo and collateral management services alongside custody.</li>
+  <li><strong>Clearstream Banking AG (Frankfurt):</strong> The domestic CSD for German securities, fully connected to the Eurosystem's TARGET2-Securities (T2S) platform described below.</li>
+</ul>
+
+<p class="body-text">
+Clearstream and Euroclear are not directly interconnected by ownership, but they maintain an electronic <strong>"Bridge"</strong> link that allows a participant in one ICSD to settle trades with a counterparty in the other without both parties needing accounts at both depositories — a structure that has preserved cross-border European market liquidity since the 1980s. A 2013 memorandum of understanding between the two firms explored deeper collateral-management cooperation, but that joint venture was wound down in 2020; day-to-day cross-ICSD settlement today continues to run primarily through the Bridge.
+</p>
+
 <h3 class="subsection-title">TARGET2-Securities (T2S) Integration</h3>
 
 <p class="body-text">
-A critical difference between the U.S. and European settlement architectures is <span class="hotspot" data-modal="t2s" tabindex="0" role="button" onclick="openModal('modal-t2s')">TARGET2-Securities (T2S)</span>, a Eurosystem-operated platform that provides centralized securities settlement in <span class="hotspot" data-modal="central-bank-money" tabindex="0" role="button" onclick="openModal('modal-central-bank-money')">central bank money</span>. Launched in 2015 and fully operational by 2017, T2S allows national CSDs across the Eurozone to settle securities transactions on a single, shared technical platform using central bank accounts.
+A critical difference between the U.S. and European settlement architectures is <span class="hotspot" data-modal="t2s" tabindex="0" role="button" onclick="openModal('modal-t2s')">TARGET2-Securities (T2S)</span>, a Eurosystem-operated platform that provides centralized securities settlement in <span class="hotspot" data-modal="central-bank-money" tabindex="0" role="button" onclick="openModal('modal-central-bank-money')">central bank money</span>. Launched in 2015 and fully operational by 2017, T2S allows national CSDs across the Eurozone — including Clearstream Banking Frankfurt — to settle securities transactions on a single, shared technical platform using central bank accounts.
 </p>
 
 <p class="body-text">
@@ -3540,7 +3619,7 @@ Euroclear's settlement process shares conceptual similarities with DTC but diffe
     </defs>
     <rect x="24" y="14" width="300" height="22" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
     <text class="pf-phase" x="174" y="29" text-anchor="middle">Trade date → prep</text>
-    <rect x="340" y="14" width="356" height="22" rx="6" fill="var(--green-light)" stroke="var(--green)"/>
+    <rect x="340" y="14" width="356" height="22" rx="6" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
     <text class="pf-phase" x="518" y="29" text-anchor="middle" fill="var(--green)">Settlement (typically T+2)</text>
     <line class="pf-edge" x1="108" y1="100" x2="132" y2="100" marker-end="url(#pf-eu-arrow)"/>
     <line class="pf-edge" x1="220" y1="100" x2="244" y2="100" marker-end="url(#pf-eu-arrow)"/>
@@ -3548,27 +3627,27 @@ Euroclear's settlement process shares conceptual similarities with DTC but diffe
     <line class="pf-edge" x1="444" y1="100" x2="468" y2="100" marker-end="url(#pf-eu-arrow)"/>
     <line class="pf-edge" x1="556" y1="100" x2="580" y2="100" marker-end="url(#pf-eu-arrow)"/>
     <g><circle cx="64" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="64" y="84" text-anchor="middle">1</text>
-      <rect x="20" y="102" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="20" y="102" width="88" height="52" rx="7" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="64" y="124" text-anchor="middle">Execute</text>
       <text class="pf-step-sub" x="64" y="140" text-anchor="middle">Eurobond / OTC</text></g>
     <g><circle cx="176" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="176" y="84" text-anchor="middle">2</text>
-      <rect x="132" y="102" width="88" height="52" rx="7" fill="var(--bg-ivory)" stroke="var(--border)"/>
+      <rect x="132" y="102" width="88" height="52" rx="7" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="176" y="124" text-anchor="middle">Match</text>
       <text class="pf-step-sub" x="176" y="140" text-anchor="middle">Euroclear Bank</text></g>
     <g><circle cx="288" cy="80" r="12" fill="var(--accent)"/><text class="pf-step-num" x="288" y="84" text-anchor="middle">3</text>
-      <rect x="244" y="102" width="88" height="52" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+      <rect x="244" y="102" width="88" height="52" rx="7" fill="url(#g-accent)" stroke="var(--accent-muted)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="288" y="124" text-anchor="middle">Prepare</text>
       <text class="pf-step-sub" x="288" y="140" text-anchor="middle">Securities · cash</text></g>
     <g><circle cx="400" cy="80" r="12" fill="var(--green)"/><text class="pf-step-num" x="400" y="84" text-anchor="middle">4</text>
-      <rect x="356" y="102" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="356" y="102" width="88" height="52" rx="7" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="400" y="124" text-anchor="middle">DVP</text>
       <text class="pf-step-sub" x="400" y="140" text-anchor="middle">Simultaneous</text></g>
     <g><circle cx="512" cy="80" r="12" fill="var(--green)"/><text class="pf-step-num" x="512" y="84" text-anchor="middle">5</text>
-      <rect x="468" y="102" width="88" height="52" rx="7" fill="var(--green-light)" stroke="var(--green)"/>
+      <rect x="468" y="102" width="88" height="52" rx="7" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="512" y="124" text-anchor="middle">Cash</text>
       <text class="pf-step-sub" x="512" y="140" text-anchor="middle">Comm. / CB $</text></g>
     <g><circle cx="624" cy="80" r="12" fill="var(--gold)"/><text class="pf-step-num" x="624" y="84" text-anchor="middle">6</text>
-      <rect x="580" y="102" width="88" height="52" rx="7" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <rect x="580" y="102" width="88" height="52" rx="7" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="pf-step-title" x="624" y="124" text-anchor="middle">Confirm</text>
       <text class="pf-step-sub" x="624" y="140" text-anchor="middle">Both parties</text></g>
     <text class="pf-step-sub" x="360" y="180" text-anchor="middle">ICSD cash often commercial-bank money · T2S-linked CSDs use central-bank money</text>
@@ -3595,7 +3674,7 @@ Euroclear's settlement process shares conceptual similarities with DTC but diffe
 <h3 class="subsection-title">Euroclear's Relationship with DTCC</h3>
 
 <p class="body-text">
-Euroclear and DTCC are not competitors in the traditional sense — they serve different geographic markets with limited overlap. However, they collaborate on several fronts. In <strong>May 2013</strong>, Euroclear and DTCC established a <strong>collateral bridge</strong> allowing participants to transfer collateral between the two systems automatically. This enables a U.S. broker-dealer to pledge U.S. Treasuries held at DTC as collateral for a Euroclear Bank margin call, and vice versa.
+Euroclear and DTCC are not competitors in the traditional sense — they serve different geographic markets with limited overlap. In <strong>May 2013</strong>, the two firms signed a memorandum of understanding to build joint collateral-processing infrastructure, which was formally established as the DTCC-Euroclear GlobalCollateral joint venture in 2014. The venture's Margin Transit Utility and Collateral Management Utility reached production only in 2019, after which DTCC and Euroclear dissolved the joint venture (effective March 2020), splitting the two utilities between the firms rather than continuing to operate a shared "bridge." Cross-border collateral mobility between the U.S. and European systems continues today, but through each firm's own infrastructure and bilateral arrangements rather than the single joint platform envisioned in 2013.
 </p>
 
 <p class="body-text">
@@ -3607,7 +3686,8 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
   <div class="diagram-title" id="cm9-title">Concept Map — Euroclear &amp; DTCC Links</div>
   <p id="cm9-desc" class="visually-hidden">
     Collaboration map: DTCC and Euroclear serve different geographies with limited market overlap.
-    A 2013 collateral bridge connects DTC-held U.S. Treasuries with Euroclear Bank margin needs.
+    A 2013 memorandum of understanding led to a joint venture that briefly operated a collateral bridge before dissolving in 2020;
+    cross-border collateral mobility now runs through separate infrastructure at each firm.
     A 2024 joint initiative with Clearstream targets tokenized assets and DLT interoperability.
   </p>
   <svg class="concept-map-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3621,26 +3701,26 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
     </defs>
 
     <!-- Region panels -->
-    <rect x="28" y="48" width="280" height="200" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.5"/>
-    <rect x="412" y="48" width="280" height="200" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.4"/>
+    <rect x="28" y="48" width="280" height="200" rx="14" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.5" filter="url(#g-shadow)"/>
+    <rect x="412" y="48" width="280" height="200" rx="14" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.2" opacity="0.4" filter="url(#g-shadow)"/>
     <text class="cm-zone-label" x="168" y="72" text-anchor="middle" fill="var(--accent)">United States</text>
     <text class="cm-zone-label" x="552" y="72" text-anchor="middle" fill="var(--green)">Europe / global ICSD</text>
 
     <!-- Bridge connector -->
     <line x1="308" y1="140" x2="412" y2="140" stroke="var(--gold)" stroke-width="2.2" marker-end="url(#cm9-arrow)"/>
     <line x1="412" y1="160" x2="308" y2="160" stroke="var(--gold)" stroke-width="2.2" marker-end="url(#cm9-arrow)"/>
-    <rect x="300" y="118" width="120" height="64" rx="10" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+    <rect x="280" y="118" width="160" height="64" rx="10" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#g-shadow)"/>
     <text class="cm-node-title" x="360" y="142" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Collateral bridge</text>
-    <text class="cm-node-sub" x="360" y="160" text-anchor="middle" fill="var(--gold)">May 2013</text>
-    <text class="cm-edge-label" x="360" y="176" text-anchor="middle" fill="var(--ink-tertiary)">auto pledge / recall</text>
+    <text class="cm-node-sub" x="360" y="160" text-anchor="middle" fill="var(--gold)">2013 MoU → dissolved 2020</text>
+    <text class="cm-edge-label" x="360" y="176" text-anchor="middle" fill="var(--ink-tertiary)">now separate infrastructure</text>
 
     <!-- US stack -->
     <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
-      <rect class="cm-node-shape" x="78" y="90" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)"/>
+      <rect class="cm-node-shape" x="78" y="90" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="168" y="118" text-anchor="middle" fill="#fff">DTCC</text>
     </g>
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="78" y="180" width="180" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="78" y="180" width="180" height="48" rx="8" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="168" y="202" text-anchor="middle" fill="var(--accent)" font-size="12">DTC</text>
       <text class="cm-node-sub" x="168" y="218" text-anchor="middle" fill="var(--ink-tertiary)">U.S. Treasuries · equities</text>
     </g>
@@ -3648,11 +3728,11 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
 
     <!-- Europe stack -->
     <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
-      <rect class="cm-node-shape" x="462" y="90" width="180" height="44" rx="10" fill="var(--accent)" stroke="var(--accent)"/>
+      <rect class="cm-node-shape" x="462" y="90" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="552" y="118" text-anchor="middle" fill="#fff">Euroclear</text>
     </g>
     <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
-      <rect class="cm-node-shape" x="462" y="180" width="180" height="48" rx="8" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.4"/>
+      <rect class="cm-node-shape" x="462" y="180" width="180" height="48" rx="8" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="552" y="202" text-anchor="middle" fill="var(--green)" font-size="12">Euroclear Bank</text>
       <text class="cm-node-sub" x="552" y="218" text-anchor="middle" fill="var(--ink-tertiary)">margin · triparty · ICSD</text>
     </g>
@@ -3666,7 +3746,7 @@ In <strong>May 2024</strong>, Euroclear, DTCC, and Clearstream announced a joint
     <text class="cm-node-title" x="360" y="292" text-anchor="middle" fill="var(--ink)" font-size="12">Tokenized assets / DLT framework — May 2024</text>
     <text class="cm-edge-label" x="360" y="310" text-anchor="middle" fill="var(--ink-tertiary)">DTCC · Euroclear · Clearstream — shared standards &amp; interoperability</text>
   </svg>
-  <p class="cm-caption">They are <strong>geographic partners more than rivals</strong>: the collateral bridge moves pledges between systems; the 2024 DLT work aims at a common digital-asset playbook with Clearstream.</p>
+  <p class="cm-caption">They are <strong>geographic partners more than rivals</strong>: a 2013 MoU led to a joint collateral venture that dissolved in 2020 (cross-border mobility now runs through separate infrastructure at each firm); the 2024 DLT work aims at a common digital-asset playbook with Clearstream.</p>
   <div class="cm-legend" aria-hidden="true">
     <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> U.S. stack</span>
     <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Euroclear stack</span>
@@ -3702,15 +3782,15 @@ Understanding the differences between the U.S. and European post-trade infrastru
     </defs>
 
     <!-- Columns -->
-    <rect x="24" y="36" width="320" height="340" rx="14" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.45"/>
-    <rect x="376" y="36" width="320" height="340" rx="14" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.2" opacity="0.35"/>
+    <rect x="24" y="36" width="320" height="340" rx="14" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" opacity="0.45" filter="url(#g-shadow)"/>
+    <rect x="376" y="36" width="320" height="340" rx="14" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.2" opacity="0.35" filter="url(#g-shadow)"/>
 
     <text class="cm-zone-label" x="184" y="60" text-anchor="middle" fill="var(--accent)">U.S. — DTCC ecosystem</text>
     <text class="cm-zone-label" x="536" y="60" text-anchor="middle" fill="var(--green)">Europe — Euroclear model</text>
 
     <!-- US nodes -->
     <g class="cm-node" data-modal="dtcc" tabindex="0" role="button" aria-label="DTCC — open definition">
-      <rect class="cm-node-shape" x="94" y="78" width="180" height="36" rx="8" fill="var(--accent)"/>
+      <rect class="cm-node-shape" x="94" y="78" width="180" height="36" rx="8" fill="url(#g-accent-solid)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="184" y="102" text-anchor="middle" fill="#fff" font-size="12">DTCC (user-owned)</text>
     </g>
     <line class="cm-edge" x1="94" y1="114" x2="94" y2="132" marker-end="url(#cm10-arrow)"/>
@@ -3718,23 +3798,23 @@ Understanding the differences between the U.S. and European post-trade infrastru
     <line class="cm-edge" x1="274" y1="114" x2="274" y2="132" marker-end="url(#cm10-arrow)"/>
 
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
-      <rect class="cm-node-shape" x="48" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="48" y="134" width="92" height="44" rx="7" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="94" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">DTC</text>
       <text class="cm-node-sub" x="94" y="170" text-anchor="middle" fill="var(--ink-tertiary)">CSD</text>
     </g>
     <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC — open definition">
-      <rect class="cm-node-shape" x="138" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="138" y="134" width="92" height="44" rx="7" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="184" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">NSCC</text>
       <text class="cm-node-sub" x="184" y="170" text-anchor="middle" fill="var(--ink-tertiary)">equity CCP</text>
     </g>
     <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC — open definition">
-      <rect class="cm-node-shape" x="228" y="134" width="92" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="228" y="134" width="92" height="44" rx="7" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="274" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">FICC</text>
       <text class="cm-node-sub" x="274" y="170" text-anchor="middle" fill="var(--ink-tertiary)">FI CCP</text>
     </g>
 
     <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede — open definition">
-      <rect class="cm-node-shape" x="48" y="196" width="92" height="36" rx="7" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="48" y="196" width="92" height="36" rx="7" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="94" y="219" text-anchor="middle" fill="var(--gold-deep)" font-size="11">Cede &amp; Co.</text>
     </g>
     <line class="cm-edge" x1="94" y1="178" x2="94" y2="194" marker-end="url(#cm10-arrow)"/>
@@ -3748,25 +3828,25 @@ Understanding the differences between the U.S. and European post-trade infrastru
 
     <!-- Europe nodes -->
     <g class="cm-node" data-modal="euroclear" tabindex="0" role="button" aria-label="Euroclear — open definition">
-      <rect class="cm-node-shape" x="446" y="78" width="180" height="36" rx="8" fill="var(--accent)"/>
+      <rect class="cm-node-shape" x="446" y="78" width="180" height="36" rx="8" fill="url(#g-accent-solid)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="536" y="102" text-anchor="middle" fill="#fff" font-size="12">Euroclear Group</text>
     </g>
     <line class="cm-edge" x1="480" y1="114" x2="480" y2="132" marker-end="url(#cm10-arrow)"/>
     <line class="cm-edge" x1="580" y1="114" x2="580" y2="132" marker-end="url(#cm10-arrow)"/>
 
     <g class="cm-node" data-modal="euroclear-bank" tabindex="0" role="button" aria-label="Euroclear Bank — open definition">
-      <rect class="cm-node-shape" x="420" y="134" width="120" height="44" rx="7" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="420" y="134" width="120" height="44" rx="7" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="480" y="154" text-anchor="middle" fill="var(--green)" font-size="11">Euroclear Bank</text>
       <text class="cm-node-sub" x="480" y="170" text-anchor="middle" fill="var(--ink-tertiary)">ICSD + bank</text>
     </g>
     <g class="cm-node" data-modal="national-csd" tabindex="0" role="button" aria-label="National CSDs — open definition">
-      <rect class="cm-node-shape" x="520" y="134" width="120" height="44" rx="7" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <rect class="cm-node-shape" x="520" y="134" width="120" height="44" rx="7" fill="url(#g-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="580" y="154" text-anchor="middle" fill="var(--accent)" font-size="11">National CSDs</text>
       <text class="cm-node-sub" x="580" y="170" text-anchor="middle" fill="var(--ink-tertiary)">domestic books</text>
     </g>
 
     <g class="cm-node" data-modal="t2s" tabindex="0" role="button" aria-label="T2S — open definition">
-      <rect class="cm-node-shape" x="470" y="196" width="132" height="36" rx="7" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.3"/>
+      <rect class="cm-node-shape" x="470" y="196" width="132" height="36" rx="7" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="536" y="219" text-anchor="middle" fill="var(--green)" font-size="11">T2S (public rail)</text>
     </g>
     <line class="cm-edge" x1="580" y1="178" x2="536" y2="194" marker-end="url(#cm10-arrow)"/>
@@ -3867,7 +3947,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
 </div><!-- /doc-frame -->
 
 
-<script src="../js/shared.js" defer></script>
+<script src="../../js/shared.js" defer></script>
 
 <!-- Multilateral Netting -->
 <div class="modal-overlay" id="modal-multilateral-netting" role="dialog" aria-modal="true" aria-labelledby="modal-title-multilateral-netting">
@@ -5154,10 +5234,10 @@ Understanding the differences between the U.S. and European post-trade infrastru
     <div class="quiz-card" data-q="22">
       <div class="quiz-num">22</div>
       <div class="quiz-content">
-        <h4>What does the DTCC–Euroclear collateral bridge (2013) primarily enable?</h4>
+        <h4>What was the DTCC–Euroclear collateral bridge, and what is its status today?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q22" value="a"><span>Cross-listing of European stocks on the NYSE</span></label>
-          <label><input type="radio" name="q22" value="b"><span>Automatic movement of collateral between the two systems (e.g., U.S. Treasuries for Euroclear margin)</span></label>
+          <label><input type="radio" name="q22" value="b"><span>A joint venture (from a 2013 MoU) that briefly enabled automatic cross-system collateral movement, dissolved in 2020</span></label>
           <label><input type="radio" name="q22" value="c"><span>Merger of DTC and Euroclear Bank into one CSD</span></label>
           <label><input type="radio" name="q22" value="d"><span>Elimination of T+2 settlement in Europe</span></label>
         </div>
@@ -5206,7 +5286,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
   <div class="quiz-result" id="quizResult"></div>
 </div>
 
-<script src="../js/quiz.js"></script>
+<script src="../../js/quiz.js"></script>
 <script>
 // DTC Guide Quiz Answers
 const dtcGuideAnswers = {
@@ -5310,15 +5390,15 @@ if (document.readyState === 'loading') {
 <footer class="page-footer">
   <div class="footer-content">
   <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
+    <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
+    <a href="../../index.html#documents">All Documents</a>
   </nav>
 
     <div class="footer-info">
-      <div class="footer-version">July 2026 · Securities Infrastructure Teaching Guide v1.0 · Last updated July 2026</div>
+      <div class="footer-version">July 2026 · Securities Infrastructure Teaching Guide v1.1 · Last updated July 2026</div>
       <div class="footer-links">
         <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
         <span class="footer-divider">•</span>

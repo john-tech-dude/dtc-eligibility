@@ -416,6 +416,52 @@
             margin-bottom: 32px;
             animation: fadeInUp 0.6s 0.2s ease both;
         }
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 36px;
+            animation: fadeInUp 0.6s 0.25s ease both;
+        }
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 22px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: #fff;
+            box-shadow: var(--shadow-md);
+        }
+        .btn-primary:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-primary svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--transition);
+        }
+        .btn-primary:hover svg {
+            transform: translateX(3px);
+        }
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--ink);
+            border: 1.5px solid var(--border);
+        }
+        .btn-secondary:hover {
+            color: var(--ink);
+            border-color: var(--accent-muted);
+            background: var(--accent-light);
+        }
         .hero-stats {
             display: flex;
             flex-wrap: wrap;
@@ -525,6 +571,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        .hub-node.disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.7;
+        }
         .hub-node:hover rect,
         .hub-node:hover circle {
             filter: brightness(1.1);
@@ -538,13 +589,22 @@
             animation: nodePulse 3s ease infinite;
         }
         .hub-node.live:nth-child(2) {
-            animation-delay: 0.5s;
+            animation-delay: 0.4s;
         }
         .hub-node.live:nth-child(3) {
-            animation-delay: 1s;
+            animation-delay: 0.8s;
         }
         .hub-node.live:nth-child(4) {
-            animation-delay: 1.5s;
+            animation-delay: 1.2s;
+        }
+        .hub-node.live:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+        .hub-node.live:nth-child(6) {
+            animation-delay: 2s;
+        }
+        .hub-node.live:nth-child(7) {
+            animation-delay: 2.4s;
         }
         @keyframes nodePulse {
             0%,
@@ -1755,7 +1815,6 @@
             }
         }
     </style>
-    <base target="_blank" />
 </head>
 
 <body>
@@ -1773,15 +1832,15 @@
         <a href="#how-to-use" class="sub">How to Use</a>
         <div class="toc-divider">Documents</div>
         <a href="index.html" class="external">DTC Documents Index</a>
-        <a href="guides/corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
-        <a href="guides/trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
-        <a href="guides/non-profit-foundations.html" class="external">Non-Profit Foundations</a>
-        <a href="guides/dtc-guide.html" class="external">Securities Ownership Wizard</a>
-        <a href="guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
-        <a href="forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-        <a href="docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+        <a href="pages/guides/corporate-structures.html" class="external" target="_blank" rel="noopener">LLCs &amp; Corporate Structures</a>
+        <a href="pages/guides/trusts-fiduciary.html" class="external" target="_blank" rel="noopener">Trusts &amp; Fiduciary Structures</a>
+        <a href="pages/guides/non-profit-foundations.html" class="external" target="_blank" rel="noopener">Non-Profit Foundations</a>
+        <a href="pages/guides/dtc-guide.html" class="external" target="_blank" rel="noopener">Securities Ownership Wizard</a>
+        <a href="pages/guides/sf28-teaching-guide.html" class="external" target="_blank" rel="noopener">SF 28 — Affidavit of Individual Surety</a>
+        <a href="pages/forms/dtc-eligibility-questionnaire.html" class="external" target="_blank" rel="noopener">DTC Eligibility Questionnaire</a>
+        <a href="pages/docs/treasury-international_bill_of_exchange.html" class="external" target="_blank" rel="noopener">Treasury International Bill of Exchange</a>
         <div class="toc-divider">Site</div>
-        <a href="sitemap.html" class="external">Site Map</a>
+        <a href="sitemap.html" class="external" target="_blank" rel="noopener">Site Map</a>
     </div>
 
     <header class="page-header" role="banner">
@@ -1817,6 +1876,12 @@
                 <p class="hero-description">
                     Every document in this collection — a securities questionnaire, a bill of exchange, a federal surety bond, a trust instrument — answers the same underlying question: who owns what, and who can prove it? This site traces that question through the U.S. book-entry settlement system operated by DTC and its nominee, Cede &amp; Co., then follows it outward into trade finance, government contracting, non-profit endowments, trust structures, corporate ownership, and collateralized lending. Each guide pairs plain-language explanations with clickable concept maps, sourced definitions, and a short self-graded quiz.
                 </p>
+                <div class="hero-cta">
+                    <a href="#documents" class="btn-primary">Explore the Guides
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#how-to-use" class="btn-secondary">How This Site Works</a>
+                </div>
             </div>
             <div class="hero-graphic">
                 <svg viewBox="0 0 640 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive diagram showing DTC book-entry settlement at the center, connected to the eight teaching guide topics. Click a node to navigate.">
@@ -1853,46 +1918,44 @@
                     </g>
 
                     <!-- Live nodes (clickable) -->
-                    <a href="forms/dtc-eligibility-questionnaire.html" class="hub-node live" aria-label="DTC Eligibility Questionnaire">
+                    <a href="pages/forms/dtc-eligibility-questionnaire.html" class="hub-node live" aria-label="DTC Eligibility Questionnaire" target="_blank" rel="noopener">
                         <rect x="255" y="36" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
                         <text x="320" y="58" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">DTC Eligibility</text>
                         <text x="320" y="72" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Questionnaire</text>
                     </a>
-                    <a href="docs/treasury-international_bill_of_exchange.html" class="hub-node live" aria-label="Treasury International Bill of Exchange">
+                    <a href="pages/docs/treasury-international_bill_of_exchange.html" class="hub-node live" aria-label="Treasury International Bill of Exchange" target="_blank" rel="noopener">
                         <rect x="372" y="93" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
                         <text x="437" y="115" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trade Finance</text>
                         <text x="437" y="129" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Bill of exchange</text>
                     </a>
-                    <a href="guides/sf28-teaching-guide.html" class="hub-node live" aria-label="SF 28 Affidavit of Individual Surety">
+                    <a href="pages/guides/sf28-teaching-guide.html" class="hub-node live" aria-label="SF 28 Affidavit of Individual Surety" target="_blank" rel="noopener">
                         <rect x="401" y="219" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
                         <text x="466" y="241" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Gov't Surety</text>
                         <text x="466" y="255" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">SF 28 affidavit</text>
                     </a>
-                    <a href="guides/dtc-guide.html" class="hub-node live" aria-label="Securities Ownership Wizard">
+                    <a href="pages/guides/dtc-guide.html" class="hub-node live" aria-label="Securities Ownership Wizard" target="_blank" rel="noopener">
                         <rect x="320" y="321" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
                         <text x="385" y="343" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Securities</text>
                         <text x="385" y="357" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Ownership wizard</text>
                     </a>
-
-                    <!-- In-development nodes (clickable when ready) -->
-                    <a href="guides/non-profit-foundations.html" class="hub-node" aria-label="Non-Profit Foundations">
-                        <rect x="190" y="321" width="130" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
-                        <text x="255" y="343" text-anchor="middle" fill="var(--ink-tertiary)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Foundations</text>
-                        <text x="255" y="357" text-anchor="middle" fill="var(--ink-tertiary)" font-size="7" font-family="'DM Sans',sans-serif">🚧 In development</text>
+                    <a href="pages/guides/non-profit-foundations.html" class="hub-node live" aria-label="Non-Profit Foundations" target="_blank" rel="noopener">
+                        <rect x="190" y="321" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="255" y="343" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Foundations</text>
+                        <text x="255" y="357" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Non-profit endowments</text>
                     </a>
-                    <a href="guides/trusts-fiduciary.html" class="hub-node" aria-label="Trusts & Fiduciary">
-                        <rect x="109" y="219" width="130" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
-                        <text x="174" y="241" text-anchor="middle" fill="var(--ink-tertiary)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trusts &amp; Fiduciary</text>
-                        <text x="174" y="255" text-anchor="middle" fill="var(--ink-tertiary)" font-size="7" font-family="'DM Sans',sans-serif">🚧 In development</text>
+                    <a href="pages/guides/trusts-fiduciary.html" class="hub-node live" aria-label="Trusts & Fiduciary" target="_blank" rel="noopener">
+                        <rect x="109" y="219" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="174" y="241" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trusts &amp; Fiduciary</text>
+                        <text x="174" y="255" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Fiduciary structures</text>
                     </a>
-                    <a href="guides/corporate-structures.html" class="hub-node" aria-label="Corporate Structures">
-                        <rect x="138" y="93" width="130" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
-                        <text x="203" y="115" text-anchor="middle" fill="var(--ink-tertiary)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Corporate Structures</text>
-                        <text x="203" y="129" text-anchor="middle" fill="var(--ink-tertiary)" font-size="7" font-family="'DM Sans',sans-serif">🚧 In development</text>
+                    <a href="pages/guides/corporate-structures.html" class="hub-node live" aria-label="Corporate Structures" target="_blank" rel="noopener">
+                        <rect x="138" y="93" width="130" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="203" y="115" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Corporate Structures</text>
+                        <text x="203" y="129" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">LLCs, C-Corps &amp; S-Corps</text>
                     </a>
 
                     <!-- NEW: Collateral node (in development) -->
-                    <a href="guides/collateral-ucc-article-8.html" class="hub-node" aria-label="Securities as Collateral">
+                    <a href="pages/guides/collateral-ucc-article-8.html" class="hub-node disabled" aria-label="Securities as Collateral (in development)" aria-disabled="true" tabindex="-1" onclick="return false;">
                         <rect x="480" y="146" width="130" height="48" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
                         <text x="545" y="168" text-anchor="middle" fill="var(--ink-tertiary)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Collateral</text>
                         <text x="545" y="182" text-anchor="middle" fill="var(--ink-tertiary)" font-size="7" font-family="'DM Sans',sans-serif">🚧 UCC Art. 8</text>
@@ -1974,377 +2037,7 @@
                 </ul>
             </div>
 
-            <div class="documents-grid" id="docGrid">
-                <!-- Card 1: DTC Eligibility -->
-                <div class="document-card professional" data-module="eligibility" data-title="DTC Eligibility Questionnaire">
-                    <div class="card-completion-badge" id="badge-eligibility"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                    </div>
-                    <div class="document-tag">✅ Eligibility</div>
-                    <h3 class="document-title">DTC Eligibility Questionnaire</h3>
-                    <p class="document-description">Learn DTC eligibility requirements through structured assessments. A security must be sponsored by a DTC participant; the issuer must maintain a transfer agent enrolled in the <span data-term="FAST">FAST</span> program with a valid <span data-term="BLOR">BLOR</span> or <span data-term="LOR">LOR</span> on file. DTC retains the right to deny eligibility without explanation.</p>
-                    <a href="forms/dtc-eligibility-questionnaire.html#concept-map-eligibility" class="card-concept-map" aria-label="Open eligibility path concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Issuer</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">TA</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">FAST</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--accent)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Underwriting</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--accent-muted)" font-size="6.5" font-family="system-ui,sans-serif">UW SOURCE</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC-eligible book-entry</text>
-                        </svg>
-                        <span class="card-concept-map-label">Eligibility path concept map →</span>
-                        <span class="card-concept-map-sub">Issuer · transfer agent · FAST · DTC Underwriting</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">DTC eligibility requirements, FAST enrollment, and participant sponsorship</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Financial professionals, underwriters, compliance officers, transfer agents</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Concept map, eligibility questionnaire, FAST/DRS requirements, assessment</span></div>
-                        </div>
-                    </div>
-                    <a href="forms/dtc-eligibility-questionnaire.html" class="document-button" data-module="eligibility">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- Card 2: Treasury Bill of Exchange -->
-                <div class="document-card professional" data-module="trade" data-title="Treasury International Bill of Exchange">
-                    <div class="card-completion-badge" id="badge-trade"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/><path d="M7 15h.01M11 15h2"/></svg>
-                    </div>
-                    <div class="document-tag">💰 Trade Finance</div>
-                    <h3 class="document-title">Treasury International Bill of Exchange</h3>
-                    <p class="document-description">Master international trade payment processes, documentary collections under <span data-term="URC 522">URC 522</span>, and bill of exchange workflows. Covers sight drafts, time drafts, acceptance, discounting, and the relationship between drawer, drawee, and payee.</p>
-                    <a href="docs/treasury-international_bill_of_exchange.html#concept-map-trade" class="card-concept-map" aria-label="Open trade finance concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Seller</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Bank</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Buyer</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--accent)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Bill of Exchange</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--accent-muted)" font-size="6.5" font-family="system-ui,sans-serif">Payment Instrument</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ Documentary Collection</text>
-                        </svg>
-                        <span class="card-concept-map-label">Trade finance concept map →</span>
-                        <span class="card-concept-map-sub">Seller · bank · buyer · bill of exchange</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">International trade payments, documentary collections, and banking protocols</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Trade finance professionals, international banking specialists, exporters</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Payment wizard, URC 522 workflows, SWIFT MT messages, risk analysis</span></div>
-                        </div>
-                    </div>
-                    <a href="docs/treasury-international_bill_of_exchange.html" class="document-button" data-module="trade">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- Card 3: SF 28 -->
-                <div class="document-card professional" data-module="sf28" data-title="SF 28 — Affidavit of Individual Surety">
-                    <div class="card-completion-badge" id="badge-sf28"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                    </div>
-                    <div class="document-tag">🏛️ Government</div>
-                    <h3 class="document-title">SF 28 — Affidavit of Individual Surety</h3>
-                    <p class="document-description">Understand federal government contracting requirements under <span data-term="FAR">FAR</span> 28.203, individual surety obligations, asset verification, and proper completion procedures. Covers the distinction between corporate sureties (T-list) and individual sureties.</p>
-                    <a href="guides/sf28-teaching-guide.html#concept-map-surety" class="card-concept-map" aria-label="Open surety concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Surety</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Assets</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--accent-light)" stroke="var(--accent)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--accent)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">SF 28</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--accent)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Government</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--accent-muted)" font-size="6.5" font-family="system-ui,sans-serif">Contracting</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ FAR 28.203 Compliance</text>
-                        </svg>
-                        <span class="card-concept-map-label">Surety concept map →</span>
-                        <span class="card-concept-map-sub">Surety · assets · SF 28 · government contracting</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Individual surety affidavits, FAR 28.203, and government contracting bonds</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Contracting officers, surety providers, government contractors, compliance staff</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Form instructions, asset verification, legal obligations, capacity explanations</span></div>
-                        </div>
-                    </div>
-                    <a href="guides/sf28-teaching-guide.html" class="document-button" data-module="sf28">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- Card 4: Securities Ownership Wizard -->
-                <div class="document-card professional" data-module="securities" data-title="Securities Ownership Wizard">
-                    <div class="card-completion-badge" id="badge-securities"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    </div>
-                    <div class="document-tag">📊 Securities</div>
-                    <h3 class="document-title">Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.</h3>
-                    <p class="document-description">Learn the modern securities infrastructure including <span data-term="DTC">DTC</span>, <span data-term="DTCC">DTCC</span>, <span data-term="NSCC">NSCC</span>, <span data-term="FICC">FICC</span>, <span data-term="Cede &amp; Co.">Cede &amp; Co.</span>, and <span data-term="Euroclear">Euroclear</span>. Covers T+1 settlement (effective May 28, 2024), the <span data-term="FAST">FAST</span> program, <span data-term="DRS">DRS</span>, street name vs. registered ownership, and the chain of custody from issuer to beneficial owner.</p>
-                    <a href="guides/dtc-guide.html#concept-map-overview" class="card-concept-map" aria-label="Open entity relationship concept map in the Securities Ownership Wizard">
-                        <svg viewBox="0 0 320 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="160" y1="22" x2="80" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="160" y1="22" x2="160" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="160" y1="22" x2="240" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="160" y1="62" x2="160" y2="72" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="120" y="6" width="80" height="20" rx="5" fill="var(--accent)"/>
-                            <text x="160" y="20" text-anchor="middle" fill="#fff" font-size="9" font-weight="600" font-family="system-ui,sans-serif">DTCC</text>
-                            <rect x="40" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
-                            <text x="68" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">NSCC</text>
-                            <rect x="132" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent)"/>
-                            <text x="160" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">DTC</text>
-                            <rect x="224" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
-                            <text x="252" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">FICC</text>
-                            <rect x="122" y="72" width="76" height="14" rx="4" fill="var(--gold-light)" stroke="var(--gold)"/>
-                            <text x="160" y="82" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Cede &amp; Co.</text>
-                        </svg>
-                        <span class="card-concept-map-label">Interactive concept &amp; process maps →</span>
-                        <span class="card-concept-map-sub">Entities · ownership · certificated deposit · street name vs DRS</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Securities ownership, clearing infrastructure, T+1 settlement &amp; cross-border</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Financial professionals, investors, securities operations, compliance</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Concept maps, DTC/DTCC/Euroclear, T+1 settlement, Cede &amp; Co., fails</span></div>
-                        </div>
-                    </div>
-                    <a href="guides/dtc-guide.html" class="document-button" data-module="securities">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- Card 5: Non-Profit Foundations -->
-                <div class="document-card professional" data-module="non-profit-foundations" data-title="Non-Profit Foundations & Securities">
-                    <div class="card-completion-badge" id="badge-non-profit-foundations"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="2"/><path d="M6 8V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M12 12v4"/><circle cx="12" cy="18" r="1"/></svg>
-                    </div>
-                    <div class="document-tag">Teaching Guide</div>
-                    <h3 class="document-title">Non-Profit Foundations &amp; Securities Ownership</h3>
-                    <p class="document-description">Explore how 501(c)(3) foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear. Covers <span data-term="UPMIFA">UPMIFA</span>, Form 990-PF, and prudent investor standards.</p>
-                    <a href="guides/non-profit-foundations.html" class="card-concept-map" aria-label="Foundation concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Donor</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">DAF</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">501(c)(3)</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Foundation</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Endowment</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Book-Entry Securities</text>
-                        </svg>
-                        <span class="card-concept-map-label">Foundation concept map →</span>
-                        <span class="card-concept-map-sub">Donor · DAF · 501(c)(3) · foundation endowment</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Foundation endowment management &amp; DTC securities custody</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Foundation trustees, endowment managers, nonprofit compliance officers</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">UPMIFA, donor-advised funds, Form 990-PF, custody agreements</span></div>
-                        </div>
-                    </div>
-                    <a href="guides/non-profit-foundations.html" class="document-button">Start Learning</a>
-                </div>
-
-                <!-- Card 6: Trusts & Fiduciary -->
-                <div class="document-card professional" data-module="trusts-fiduciary" data-title="Trusts & Fiduciary Structures">
-                    <div class="card-completion-badge" id="badge-trusts-fiduciary"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 11l3 3 5-5"/></svg>
-                    </div>
-                    <div class="document-tag">Teaching Guide</div>
-                    <h3 class="document-title">Trusts &amp; Fiduciary Structures</h3>
-                    <p class="document-description">Distinguish revocable, irrevocable, testamentary, and charitable trusts, and master fiduciary responsibilities, securities titling, and DTC nominee structures. Covers the Uniform Trust Code and Prudent Investor Rule.</p>
-                    <a href="guides/trusts-fiduciary.html" class="card-concept-map" aria-label="Trust concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Grantor</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Trust</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Beneficiary</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Fiduciary</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Duty</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Nominee Titling</text>
-                        </svg>
-                        <span class="card-concept-map-label">Trust concept map →</span>
-                        <span class="card-concept-map-sub">Grantor · trust · beneficiary · fiduciary duty</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Trust types, fiduciary duties, securities titling, and nominee arrangements</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Trustees, estate planners, fiduciary advisors, trust administrators</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Prudent Investor Rule, Uniform Trust Code, CRTs/CLTs, securities custody</span></div>
-                        </div>
-                    </div>
-                    <a href="guides/trusts-fiduciary.html" class="document-button" data-module="trusts-fiduciary">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- Card 7: LLCs & Corporate Structures -->
-                <div class="document-card professional" data-module="corporate-structures" data-title="LLCs & Corporate Structures">
-                    <div class="card-completion-badge" id="badge-corporate-structures"><span class="badge-icon">○</span> Not started</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="10" y1="18" x2="14" y2="18"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/></svg>
-                    </div>
-                    <div class="document-tag">🏢 Corporate</div>
-                    <h3 class="document-title">LLCs, Corporations &amp; Other Corporate Structures</h3>
-                    <p class="document-description">Understand securities ownership across LLCs, C-corps, S-corps, and partnerships, including governance, voting rights, <span data-term="Rule 144A">Rule 144A</span> and <span data-term="Regulation S">Regulation S</span> restricted securities, and DTC eligibility for private and public offerings.</p>
-                    <a href="guides/corporate-structures.html#concept-map-overview" class="card-concept-map" aria-label="Open entity relationship concept map in the Corporate Structures guide">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">LLC</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">C-Corp</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">S-Corp</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Securities</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Ownership</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ DTC Eligibility &amp; Titling</text>
-                        </svg>
-                        <span class="card-concept-map-label">Interactive concept &amp; process maps →</span>
-                        <span class="card-concept-map-sub">LLC · C-Corp · S-Corp · securities ownership</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">Corporate governance, securities issuance, restricted stock, and transfers</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Corporate counsel, transfer agents, cap table administrators, paralegals</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Rule 144/144A, Reg S, mergers, stock classes, DTC eligibility</span></div>
-                        </div>
-                    </div>
-                    <a href="guides/corporate-structures.html" class="document-button" data-module="corporate-structures">Start Learning <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-
-                <!-- ─── CARD 8: SECURITIES AS COLLATERAL (IN DEVELOPMENT) ─── -->
-                <div class="document-card development" data-module="collateral" data-title="Securities as Collateral & Pledged Assets">
-                    <div class="card-completion-badge" id="badge-collateral"><span class="badge-icon">◐</span> In development</div>
-                    <div class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2" ry="2"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M12 12v4"/><circle cx="12" cy="18" r="1.5"/><path d="M8 12h8"/></svg>
-                    </div>
-                    <div class="document-tag">🔒 Collateral</div>
-                    <h3 class="document-title">Securities as Collateral &amp; Pledged Assets</h3>
-                    <p class="document-description">Explore the legal mechanics of pledging book-entry securities as collateral under <span data-term="UCC Article 8">UCC Article 8</span>. Understand who actually "owns" a security when it is used to back a loan, and how a lender proves their right to an asset sitting in a DTC-linked account.</p>
-                    <a href="guides/collateral-ucc-article-8.html" class="card-concept-map" aria-label="Open collateral concept map">
-                        <svg viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
-                            <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
-                            <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">Borrower</text>
-                            <rect x="80" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold)"/>
-                            <text x="104" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Lender</text>
-                            <rect x="150" y="14" width="48" height="28" rx="5" fill="var(--gold-light)" stroke="var(--gold-muted)"/>
-                            <text x="174" y="32" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">ACA / UCC-1</text>
-                            <rect x="220" y="12" width="88" height="32" rx="5" fill="var(--gold)"/>
-                            <text x="264" y="26" text-anchor="middle" fill="#fff" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Collateral</text>
-                            <text x="264" y="38" text-anchor="middle" fill="var(--gold-muted)" font-size="6.5" font-family="system-ui,sans-serif">Pledged Securities</text>
-                            <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
-                            <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ UCC Article 8 Perfection</text>
-                        </svg>
-                        <span class="card-concept-map-label">Collateral concept map →</span>
-                        <span class="card-concept-map-sub">Borrower · lender · ACA / UCC-1 · pledged securities</span>
-                    </a>
-                    <div class="document-meta-list">
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            <div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">UCC Article 8, perfection of security interests, margin lending, and rehypothecation</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            <div><span class="document-meta-label">For Learners</span><span class="document-meta-text">Credit risk officers, margin lenders, corporate counsel, collateral managers</span></div>
-                        </div>
-                        <div class="document-meta-item">
-                            <svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <div><span class="document-meta-label">Includes</span><span class="document-meta-text">Account Control Agreements (ACAs), UCC-1 Financing Statements, margin workflows</span></div>
-                        </div>
-                    </div>
-                    <a href="#" class="document-button disabled" data-module="collateral">Under Development <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                </div>
-                <!-- ─── END CARD 8 ─── -->
-
-            </div>
+            <div class="documents-grid" id="docGrid"><!-- populated by renderDocumentCards() below --></div>
         </section>
 
         <!-- ─── Infrastructure Deep-Dive ─── -->
@@ -2405,11 +2098,11 @@
     <footer>
         <nav class="footer-nav" aria-label="Site navigation">
             <a href="index.html">Home</a>
-            <a href="sitemap.html">Site Map</a>
+            <a href="sitemap.html" target="_blank" rel="noopener">Site Map</a>
             <a href="#documents">All Documents</a>
         </nav>
         <p class="footer-title">DTC Documents Collection</p>
-        <p class="footer-subtext">July 2026 · Teaching materials for post-trade infrastructure and regulatory processes</p>
+        <p class="footer-subtext">July 2026 · v1.1 · Teaching materials for post-trade infrastructure and regulatory processes</p>
         <p class="footer-disclaimer">Educational materials for learning purposes only. Not legal, financial, or investment advice. Facts sourced from SEC, DTCC, ICMA, and BIS publications.</p>
     </footer>
 
@@ -2433,6 +2126,193 @@
     </div>
 
     <script>
+        // ── Document Cards (data-driven render) ──
+        // Rebuilt from 8 hand-written, ~150-line-each card blocks into a single
+        // data array + template so new guides are a data entry, not a copy-paste.
+        (function() {
+            const ICONS = {
+                doc: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+                bank: '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/><path d="M7 15h.01M11 15h2"/>',
+                shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+                layers: '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>',
+                building2: '<rect x="2" y="8" width="20" height="14" rx="2"/><path d="M6 8V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M12 12v4"/><circle cx="12" cy="18" r="1"/>',
+                shieldCheck: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M8 11l3 3 5-5"/>',
+                building4: '<rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/><line x1="10" y1="6" x2="14" y2="6"/><line x1="10" y1="18" x2="14" y2="18"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/>',
+                lock: '<rect x="2" y="6" width="20" height="14" rx="2" ry="2"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M12 12v4"/><circle cx="12" cy="18" r="1.5"/><path d="M8 12h8"/>'
+            };
+            const METAICONS = {
+                focus: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+                learners: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+                includes: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>'
+            };
+            const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+            function conceptMap3(nodes, resultLabel, viewBox) {
+                viewBox = viewBox || '0 0 320 72';
+                const [a, b, c, d] = nodes;
+                return `<svg viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="58" y1="28" x2="78" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                    <line x1="128" y1="28" x2="148" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                    <line x1="198" y1="28" x2="218" y2="28" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                    <rect x="12" y="14" width="46" height="28" rx="5" fill="var(--bg-ivory)" stroke="var(--border)"/>
+                    <text x="35" y="32" text-anchor="middle" fill="var(--ink)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">${a}</text>
+                    <rect x="80" y="14" width="48" height="28" rx="5" fill="${b.fill}" stroke="${b.stroke}"/>
+                    <text x="104" y="32" text-anchor="middle" fill="${b.text}" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">${b.label}</text>
+                    <rect x="150" y="14" width="48" height="28" rx="5" fill="${c.fill}" stroke="${c.stroke}"/>
+                    <text x="174" y="32" text-anchor="middle" fill="${c.text}" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">${c.label}</text>
+                    <rect x="220" y="12" width="88" height="32" rx="5" fill="${d.fill}"/>
+                    <text x="264" y="26" text-anchor="middle" fill="${d.text}" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">${d.label}</text>
+                    <text x="264" y="38" text-anchor="middle" fill="${d.sub}" font-size="6.5" font-family="system-ui,sans-serif">${d.subLabel}</text>
+                    <rect x="90" y="50" width="140" height="16" rx="4" fill="var(--green-light)" stroke="var(--green)"/>
+                    <text x="160" y="61" text-anchor="middle" fill="var(--green)" font-size="7" font-weight="600" font-family="system-ui,sans-serif">→ ${resultLabel}</text>
+                </svg>`;
+            }
+            const ACCENT_MID = { fill: 'var(--accent-light)', stroke: 'var(--accent-muted)', text: 'var(--accent)' };
+            const ACCENT_STRONG = { fill: 'var(--accent-light)', stroke: 'var(--accent)', text: 'var(--accent)' };
+            const GOLD_MID = { fill: 'var(--gold-light)', stroke: 'var(--gold)', text: 'var(--gold-deep)' };
+            const GOLD_STRONG = { fill: 'var(--gold-light)', stroke: 'var(--gold-muted)', text: 'var(--gold-deep)' };
+            const ACCENT_RESULT = { fill: 'var(--accent)', text: '#fff', sub: 'var(--accent-muted)' };
+            const GOLD_RESULT = { fill: 'var(--gold)', text: '#fff', sub: 'var(--gold-muted)' };
+
+            const hierarchyMap = `<svg viewBox="0 0 320 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <line x1="160" y1="22" x2="80" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                <line x1="160" y1="22" x2="160" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                <line x1="160" y1="22" x2="240" y2="48" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                <line x1="160" y1="62" x2="160" y2="72" stroke="var(--ink-muted)" stroke-width="1.2"/>
+                <rect x="120" y="6" width="80" height="20" rx="5" fill="var(--accent)"/>
+                <text x="160" y="20" text-anchor="middle" fill="#fff" font-size="9" font-weight="600" font-family="system-ui,sans-serif">DTCC</text>
+                <rect x="40" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                <text x="68" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">NSCC</text>
+                <rect x="132" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent)"/>
+                <text x="160" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">DTC</text>
+                <rect x="224" y="48" width="56" height="18" rx="4" fill="var(--accent-light)" stroke="var(--accent-muted)"/>
+                <text x="252" y="60" text-anchor="middle" fill="var(--accent)" font-size="8" font-weight="600" font-family="system-ui,sans-serif">FICC</text>
+                <rect x="122" y="72" width="76" height="14" rx="4" fill="var(--gold-light)" stroke="var(--gold)"/>
+                <text x="160" y="82" text-anchor="middle" fill="var(--gold-deep)" font-size="7.5" font-weight="600" font-family="system-ui,sans-serif">Cede &amp; Co.</text>
+            </svg>`;
+
+            const DOCS = [
+                {
+                    module: 'eligibility', status: 'professional', icon: 'doc', tag: '✅ Eligibility',
+                    title: 'DTC Eligibility Questionnaire',
+                    desc: 'Learn DTC eligibility requirements through structured assessments. A security must be sponsored by a DTC participant; the issuer must maintain a transfer agent enrolled in the <span data-term="FAST">FAST</span> program with a valid <span data-term="BLOR">BLOR</span> or <span data-term="LOR">LOR</span> on file. DTC retains the right to deny eligibility without explanation.',
+                    map: conceptMap3(['Issuer', ACCENT_MID, {...ACCENT_STRONG, label:'FAST'}, {...ACCENT_RESULT,label:'Underwriting',subLabel:'UW SOURCE'}], 'DTC-eligible book-entry'),
+                    mapLabel: 'Eligibility path concept map →', mapSub: 'Issuer · transfer agent · FAST · DTC Underwriting',
+                    focus: 'DTC eligibility requirements, FAST enrollment, and participant sponsorship',
+                    learners: 'Financial professionals, underwriters, compliance officers, transfer agents',
+                    includes: 'Concept map, eligibility questionnaire, FAST/DRS requirements, assessment',
+                    href: 'pages/forms/dtc-eligibility-questionnaire.html'
+                },
+                {
+                    module: 'trade', status: 'professional', icon: 'bank', tag: '💰 Trade Finance',
+                    title: 'Treasury International Bill of Exchange',
+                    desc: 'Master international trade payment processes, documentary collections under <span data-term="URC 522">URC 522</span>, and bill of exchange workflows. Covers sight drafts, time drafts, acceptance, discounting, and the relationship between drawer, drawee, and payee.',
+                    map: conceptMap3(['Seller', ACCENT_MID, {...ACCENT_STRONG,label:'Buyer'}, {...ACCENT_RESULT,label:'Bill of Exchange',subLabel:'Payment Instrument'}], 'Documentary Collection'),
+                    mapLabel: 'Trade finance concept map →', mapSub: 'Seller · bank · buyer · bill of exchange',
+                    focus: 'International trade payments, documentary collections, and banking protocols',
+                    learners: 'Trade finance professionals, international banking specialists, exporters',
+                    includes: 'Payment wizard, URC 522 workflows, SWIFT MT messages, risk analysis',
+                    href: 'pages/docs/treasury-international_bill_of_exchange.html'
+                },
+                {
+                    module: 'sf28', status: 'professional', icon: 'shield', tag: "🏛️ Government",
+                    title: 'SF 28 — Affidavit of Individual Surety',
+                    desc: 'Understand federal government contracting requirements under <span data-term="FAR">FAR</span> 28.203, individual surety obligations, asset verification, and proper completion procedures. Covers the distinction between corporate sureties (T-list) and individual sureties.',
+                    map: conceptMap3(['Surety', {...ACCENT_MID,label:'Assets'}, {...ACCENT_STRONG,label:'SF 28'}, {...ACCENT_RESULT,label:'Government',subLabel:'Contracting'}], 'FAR 28.203 Compliance'),
+                    mapLabel: 'Surety concept map →', mapSub: 'Surety · assets · SF 28 · government contracting',
+                    focus: 'Individual surety affidavits, FAR 28.203, and government contracting bonds',
+                    learners: 'Contracting officers, surety providers, government contractors, compliance staff',
+                    includes: 'Form instructions, asset verification, legal obligations, capacity explanations',
+                    href: 'pages/guides/sf28-teaching-guide.html'
+                },
+                {
+                    module: 'securities', status: 'professional', icon: 'layers', tag: '📊 Securities',
+                    title: 'Securities Ownership Wizard — DTC, DTCC &amp; Cede &amp; Co.',
+                    desc: 'Learn the modern securities infrastructure including <span data-term="DTC">DTC</span>, <span data-term="DTCC">DTCC</span>, <span data-term="NSCC">NSCC</span>, <span data-term="FICC">FICC</span>, <span data-term="Cede &amp; Co.">Cede &amp; Co.</span>, and <span data-term="Euroclear">Euroclear</span>. Covers T+1 settlement (effective May 28, 2024), the <span data-term="FAST">FAST</span> program, <span data-term="DRS">DRS</span>, street name vs. registered ownership, and the chain of custody from issuer to beneficial owner.',
+                    map: hierarchyMap,
+                    mapLabel: 'Interactive concept &amp; process maps →', mapSub: 'Entities · ownership · certificated deposit · street name vs DRS',
+                    focus: 'Securities ownership, clearing infrastructure, T+1 settlement &amp; cross-border',
+                    learners: 'Financial professionals, investors, securities operations, compliance',
+                    includes: 'Concept maps, DTC/DTCC/Euroclear, T+1 settlement, Cede &amp; Co., fails',
+                    href: 'pages/guides/dtc-guide.html'
+                },
+                {
+                    module: 'non-profit-foundations', status: 'professional', icon: 'building2', tag: 'Teaching Guide',
+                    title: 'Non-Profit Foundations &amp; Securities Ownership',
+                    desc: 'Explore how 501(c)(3) foundations manage endowments, donor-advised funds, and securities in book-entry form through DTC, Cede &amp; Co., and Euroclear. Covers <span data-term="UPMIFA">UPMIFA</span>, Form 990-PF, and prudent investor standards.',
+                    map: conceptMap3(['Donor', {...GOLD_MID,label:'DAF'}, {...GOLD_STRONG,label:'501(c)(3)'}, {...GOLD_RESULT,label:'Foundation',subLabel:'Endowment'}], 'DTC Book-Entry Securities'),
+                    mapLabel: 'Foundation concept map →', mapSub: 'Donor · DAF · 501(c)(3) · foundation endowment',
+                    focus: 'Foundation endowment management &amp; DTC securities custody',
+                    learners: 'Foundation trustees, endowment managers, nonprofit compliance officers',
+                    includes: 'UPMIFA, donor-advised funds, Form 990-PF, custody agreements',
+                    href: 'pages/guides/non-profit-foundations.html'
+                },
+                {
+                    module: 'trusts-fiduciary', status: 'professional', icon: 'shieldCheck', tag: 'Teaching Guide',
+                    title: 'Trusts &amp; Fiduciary Structures',
+                    desc: 'Distinguish revocable, irrevocable, testamentary, and charitable trusts, and master fiduciary responsibilities, securities titling, and DTC nominee structures. Covers the Uniform Trust Code and Prudent Investor Rule.',
+                    map: conceptMap3(['Grantor', {...GOLD_MID,label:'Trust'}, {...GOLD_STRONG,label:'Beneficiary'}, {...GOLD_RESULT,label:'Fiduciary',subLabel:'Duty'}], 'DTC Nominee Titling'),
+                    mapLabel: 'Trust concept map →', mapSub: 'Grantor · trust · beneficiary · fiduciary duty',
+                    focus: 'Trust types, fiduciary duties, securities titling, and nominee arrangements',
+                    learners: 'Trustees, estate planners, fiduciary advisors, trust administrators',
+                    includes: 'Prudent Investor Rule, Uniform Trust Code, CRTs/CLTs, securities custody',
+                    href: 'pages/guides/trusts-fiduciary.html'
+                },
+                {
+                    module: 'corporate-structures', status: 'professional', icon: 'building4', tag: '🏢 Corporate',
+                    title: 'LLCs, Corporations &amp; Other Corporate Structures',
+                    desc: 'Understand securities ownership across LLCs, C-corps, S-corps, and partnerships, including governance, voting rights, <span data-term="Rule 144A">Rule 144A</span> and <span data-term="Regulation S">Regulation S</span> restricted securities, and DTC eligibility for private and public offerings.',
+                    map: conceptMap3(['LLC', {...GOLD_MID,label:'C-Corp'}, {...GOLD_STRONG,label:'S-Corp'}, {...GOLD_RESULT,label:'Securities',subLabel:'Ownership'}], 'DTC Eligibility &amp; Titling'),
+                    mapLabel: 'Interactive concept &amp; process maps →', mapSub: 'LLC · C-Corp · S-Corp · securities ownership',
+                    focus: 'Corporate governance, securities issuance, restricted stock, and transfers',
+                    learners: 'Corporate counsel, transfer agents, cap table administrators, paralegals',
+                    includes: 'Rule 144/144A, Reg S, mergers, stock classes, DTC eligibility',
+                    href: 'pages/guides/corporate-structures.html'
+                },
+                {
+                    module: 'collateral', status: 'development', icon: 'lock', tag: '🔒 Collateral',
+                    title: 'Securities as Collateral &amp; Pledged Assets',
+                    desc: 'Explore the legal mechanics of pledging book-entry securities as collateral under <span data-term="UCC Article 8">UCC Article 8</span>. Understand who actually "owns" a security when it is used to back a loan, and how a lender proves their right to an asset sitting in a DTC-linked account.',
+                    map: conceptMap3(['Borrower', {...GOLD_MID,label:'Lender'}, {...GOLD_STRONG,label:'ACA / UCC-1'}, {...GOLD_RESULT,label:'Collateral',subLabel:'Pledged Securities'}], 'UCC Article 8 Perfection'),
+                    mapLabel: 'Collateral concept map →', mapSub: 'Borrower · lender · ACA / UCC-1 · pledged securities',
+                    focus: 'UCC Article 8, perfection of security interests, margin lending, and rehypothecation',
+                    learners: 'Credit risk officers, margin lenders, corporate counsel, collateral managers',
+                    includes: 'Account Control Agreements (ACAs), UCC-1 Financing Statements, margin workflows',
+                    href: '#'
+                }
+            ];
+
+            function renderCard(d) {
+                const inDev = d.status === 'development';
+                const badgeIcon = inDev ? '◐' : '○';
+                const badgeText = inDev ? 'In development' : 'Not started';
+                const buttonHTML = inDev
+                    ? `<a href="#" class="document-button disabled" data-module="${d.module}">Under Development ${ARROW}</a>`
+                    : `<a href="${d.href}" class="document-button" data-module="${d.module}" target="_blank" rel="noopener">Start Learning ${ARROW}</a>`;
+                return `<div class="document-card ${d.status}" data-module="${d.module}" data-title="${d.title.replace(/<[^>]+>/g,'')}">
+                    <div class="card-completion-badge" id="badge-${d.module}"><span class="badge-icon">${badgeIcon}</span> ${badgeText}</div>
+                    <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${ICONS[d.icon]}</svg></div>
+                    <div class="document-tag">${d.tag}</div>
+                    <h3 class="document-title">${d.title}</h3>
+                    <p class="document-description">${d.desc}</p>
+                    <a href="${d.href}${d.href === '#' ? '' : '#concept-map-' + d.module}" class="card-concept-map" aria-label="Open ${d.module} concept map"${d.href === '#' ? '' : ' target="_blank" rel="noopener"'}>
+                        ${d.map}
+                        <span class="card-concept-map-label">${d.mapLabel}</span>
+                        <span class="card-concept-map-sub">${d.mapSub}</span>
+                    </a>
+                    <div class="document-meta-list">
+                        <div class="document-meta-item"><svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${METAICONS.focus}</svg><div><span class="document-meta-label">Learning Focus</span><span class="document-meta-text">${d.focus}</span></div></div>
+                        <div class="document-meta-item"><svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${METAICONS.learners}</svg><div><span class="document-meta-label">For Learners</span><span class="document-meta-text">${d.learners}</span></div></div>
+                        <div class="document-meta-item"><svg class="document-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${METAICONS.includes}</svg><div><span class="document-meta-label">Includes</span><span class="document-meta-text">${d.includes}</span></div></div>
+                    </div>
+                    ${buttonHTML}
+                </div>`;
+            }
+
+            const grid = document.getElementById('docGrid');
+            if (grid) grid.innerHTML = DOCS.map(renderCard).join('');
+        })();
+
         // ── Scroll to top ──
         (function() {
             const btn = document.getElementById('scrollTop');
@@ -2449,34 +2329,34 @@
             const clear = document.getElementById('searchClear');
             const results = document.getElementById('searchResults');
             const searchIndex = [
-                { title: "DTC Eligibility Questionnaire", description: "Structured assessment of DTC eligibility requirements, FAST program enrollment, and participant sponsorship.", url: "forms/dtc-eligibility-questionnaire.html", keywords: ["dtc", "eligibility", "fast", "blor", "lor", "cusip", "participant", "sponsor", "transfer agent"], type: "page" },
-                { title: "Treasury International Bill of Exchange", description: "Trade finance guide covering bills of exchange, documentary collections, URC 522, and SWIFT messages.", url: "docs/treasury-international_bill_of_exchange.html", keywords: ["bill of exchange", "trade finance", "documentary collection", "urc 522", "ucp 600", "swift", "drawer", "drawee"], type: "page" },
-                { title: "SF 28 — Affidavit of Individual Surety", description: "Federal surety bond guide covering FAR 28.203, SF 28 form completion, and asset verification requirements.", url: "guides/sf28-teaching-guide.html", keywords: ["sf 28", "surety", "far 28.203", "government contract", "bond", "affidavit", "t-list"], type: "page" },
-                { title: "Securities Ownership Wizard", description: "Comprehensive guide to DTC, DTCC, NSCC, FICC, Cede & Co., Euroclear, T+1 settlement, and ownership chains.", url: "guides/dtc-guide.html", keywords: ["dtc", "dtcc", "nscc", "ficc", "cede & co", "euroclear", "t+1", "settlement", "book-entry", "street name", "drs"], type: "page" },
-                { title: "LLCs & Corporate Structures", description: "Corporate structures, securities issuance, Rule 144A, Regulation S, and DTC eligibility for private companies.", url: "guides/corporate-structures.html", keywords: ["llc", "c-corp", "s-corp", "rule 144a", "regulation s", "corporate governance", "restricted stock"], type: "page" },
-                { title: "Non-Profit Foundations", description: "Foundation endowment management, DTC securities custody, UPMIFA, and donor-advised funds.", url: "guides/non-profit-foundations.html", keywords: ["foundation", "501c3", "endowment", "upmifa", "donor advised fund", "form 990-pf"], type: "page" },
-                { title: "Trusts & Fiduciary Structures", description: "Trust types, fiduciary duties, securities titling, and DTC nominee structures.", url: "guides/trusts-fiduciary.html", keywords: ["trust", "fiduciary", "grantor", "beneficiary", "prudent investor", "uniform trust code"], type: "page" },
-                { title: "Securities as Collateral & Pledged Assets", description: "Legal mechanics of pledging book-entry securities as collateral under UCC Article 8, including ACAs and margin lending.", url: "guides/collateral-ucc-article-8.html", keywords: ["collateral", "ucc article 8", "aca", "account control agreement", "margin lending", "rehypothecation", "pledge", "security interest"], type: "page" },
-                { title: "DTC", description: "The Depository Trust Company — a central securities depository that holds securities in book-entry form. Designated as a SIFMU under Dodd-Frank.", url: "guides/dtc-guide.html#dtc", keywords: ["dtc", "depository", "book-entry", "sifmu"], type: "term" },
-                { title: "DTCC", description: "The Depository Trust & Clearing Corporation — parent holding company of DTC, NSCC, and FICC. Industry-owned and governed.", url: "guides/dtc-guide.html#dtcc", keywords: ["dtcc", "clearing", "parent company"], type: "term" },
-                { title: "NSCC", description: "National Securities Clearing Corporation — provides trade validation, clearing, and CNS netting for equities and corporate debt.", url: "guides/dtc-guide.html#nscc", keywords: ["nscc", "netting", "cns", "equities"], type: "term" },
-                { title: "FICC", description: "Fixed Income Clearing Corporation — clears U.S. government securities, MBS, and repo transactions through GSD and MBSD.", url: "guides/dtc-guide.html#ficc", keywords: ["ficc", "repo", "treasuries", "mbs", "gsd", "mbsd"], type: "term" },
-                { title: "Cede & Co.", description: "DTC's partnership nominee. All securities deposited with DTC are registered in the name of Cede & Co. The issuer and trustee have no knowledge of beneficial owners.", url: "guides/dtc-guide.html#cede", keywords: ["cede & co", "nominee", "record holder", "beneficial owner"], type: "term" },
-                { title: "Euroclear", description: "International central securities depository (ICSD) headquartered in Brussels. Settles cross-border trades via the Bridge to Clearstream and links to local CSDs.", url: "guides/dtc-guide.html#euroclear", keywords: ["euroclear", "icsd", "cross-border", "bridge", "clearstream"], type: "term" },
-                { title: "FAST", description: "Fast Automated Securities Transfer — DTC program allowing transfer agents to electronically move securities between DTC and the transfer agent without physical certificates.", url: "forms/dtc-eligibility-questionnaire.html#fast", keywords: ["fast", "automated transfer", "transfer agent", "dwac", "drs"], type: "term" },
-                { title: "T+1 Settlement", description: "Trade date plus one business day. The U.S. standard settlement cycle since May 28, 2024, shortening from T+2 to reduce counterparty risk and free up capital.", url: "guides/dtc-guide.html#t1", keywords: ["t+1", "settlement cycle", "may 2024", "sec rule 15c6-1"], type: "term" },
-                { title: "Book-Entry-Only (BEO)", description: "Securities issued without physical certificates. All ownership is maintained electronically on DTC's books through the FAST program.", url: "forms/dtc-eligibility-questionnaire.html#beo", keywords: ["beo", "book-entry-only", "physical certificate", "electronic"], type: "term" },
-                { title: "BLOR", description: "Blanket Letter of Representations — an agreement between an issuer, its transfer agent, and DTC covering all securities of that issuer.", url: "forms/dtc-eligibility-questionnaire.html#blor", keywords: ["blor", "blanket letter", "representations", "issuer"], type: "term" },
-                { title: "CUSIP", description: "Committee on Uniform Securities Identification Procedures — a unique nine-character alphanumeric identifier assigned to securities for clearing and settlement.", url: "guides/dtc-guide.html#cusip", keywords: ["cusip", "identifier", "security id"], type: "term" },
-                { title: "DVP", description: "Delivery Versus Payment — a settlement mechanism ensuring securities are delivered only if payment is simultaneously made, eliminating principal risk.", url: "guides/dtc-guide.html#dvp", keywords: ["dvp", "delivery versus payment", "settlement risk"], type: "term" },
-                { title: "Rule 144A", description: "SEC safe harbor allowing resale of restricted securities to Qualified Institutional Buyers (QIBs) without registration.", url: "guides/corporate-structures.html#rule144a", keywords: ["rule 144a", "qib", "restricted securities", "resale"], type: "term" },
-                { title: "Regulation S", description: "SEC safe harbor for offers and sales of securities outside the United States by domestic and foreign issuers.", url: "guides/corporate-structures.html#regs", keywords: ["regulation s", "offshore", "foreign issuer", "safe harbor"], type: "term" },
-                { title: "SF 28", description: "Standard Form 28 — Affidavit of Individual Surety used in federal government contracting to verify a surety's assets under FAR 28.203.", url: "guides/sf28-teaching-guide.html#sf28", keywords: ["sf 28", "affidavit", "surety", "far 28.203"], type: "term" },
-                { title: "FAR 28.203", description: "Federal Acquisition Regulation section governing individual sureties, including asset verification requirements and acceptance criteria.", url: "guides/sf28-teaching-guide.html#far28203", keywords: ["far 28.203", "federal acquisition", "surety bond"], type: "term" },
-                { title: "UPMIFA", description: "Uniform Prudent Management of Institutional Funds Act — governs investment and expenditure decisions of charitable institutions.", url: "guides/non-profit-foundations.html#upmifa", keywords: ["upmifa", "prudent management", "endowment", "charitable"], type: "term" },
-                { title: "UCC Article 8", description: "Uniform Commercial Code Article 8 — governs the creation and perfection of security interests in securities, including the concept of a 'security entitlement' and the rights of a secured party.", url: "guides/collateral-ucc-article-8.html#ucc8", keywords: ["ucc article 8", "security entitlement", "perfection", "control", "secured party"], type: "term" },
-                { title: "ACA", description: "Account Control Agreement — a tri-party agreement among a borrower, a secured party (lender), and an intermediary (broker/bank) that perfects a security interest in a securities account under UCC Article 8.", url: "guides/collateral-ucc-article-8.html#aca", keywords: ["aca", "account control agreement", "control", "perfection"], type: "term" },
-                { title: "Rehypothecation", description: "The practice whereby a prime broker or lender re-uses collateral posted by a client to finance its own activities or to back its own borrowings.", url: "guides/collateral-ucc-article-8.html#rehypothecation", keywords: ["rehypothecation", "re-use", "collateral", "prime broker"], type: "term" },
+                { title: "DTC Eligibility Questionnaire", description: "Structured assessment of DTC eligibility requirements, FAST program enrollment, and participant sponsorship.", url: "pages/forms/dtc-eligibility-questionnaire.html", keywords: ["dtc", "eligibility", "fast", "blor", "lor", "cusip", "participant", "sponsor", "transfer agent"], type: "page" },
+                { title: "Treasury International Bill of Exchange", description: "Trade finance guide covering bills of exchange, documentary collections, URC 522, and SWIFT messages.", url: "pages/docs/treasury-international_bill_of_exchange.html", keywords: ["bill of exchange", "trade finance", "documentary collection", "urc 522", "ucp 600", "swift", "drawer", "drawee"], type: "page" },
+                { title: "SF 28 — Affidavit of Individual Surety", description: "Federal surety bond guide covering FAR 28.203, SF 28 form completion, and asset verification requirements.", url: "pages/guides/sf28-teaching-guide.html", keywords: ["sf 28", "surety", "far 28.203", "government contract", "bond", "affidavit", "t-list"], type: "page" },
+                { title: "Securities Ownership Wizard", description: "Comprehensive guide to DTC, DTCC, NSCC, FICC, Cede & Co., Euroclear, T+1 settlement, and ownership chains.", url: "pages/guides/dtc-guide.html", keywords: ["dtc", "dtcc", "nscc", "ficc", "cede & co", "euroclear", "t+1", "settlement", "book-entry", "street name", "drs"], type: "page" },
+                { title: "LLCs & Corporate Structures", description: "Corporate structures, securities issuance, Rule 144A, Regulation S, and DTC eligibility for private companies.", url: "pages/guides/corporate-structures.html", keywords: ["llc", "c-corp", "s-corp", "rule 144a", "regulation s", "corporate governance", "restricted stock"], type: "page" },
+                { title: "Non-Profit Foundations", description: "Foundation endowment management, DTC securities custody, UPMIFA, and donor-advised funds.", url: "pages/guides/non-profit-foundations.html", keywords: ["foundation", "501c3", "endowment", "upmifa", "donor advised fund", "form 990-pf"], type: "page" },
+                { title: "Trusts & Fiduciary Structures", description: "Trust types, fiduciary duties, securities titling, and DTC nominee structures.", url: "pages/guides/trusts-fiduciary.html", keywords: ["trust", "fiduciary", "grantor", "beneficiary", "prudent investor", "uniform trust code"], type: "page" },
+                { title: "Securities as Collateral & Pledged Assets", description: "Legal mechanics of pledging book-entry securities as collateral under UCC Article 8, including ACAs and margin lending.", url: "pages/guides/collateral-ucc-article-8.html", keywords: ["collateral", "ucc article 8", "aca", "account control agreement", "margin lending", "rehypothecation", "pledge", "security interest"], type: "page" },
+                { title: "DTC", description: "The Depository Trust Company — a central securities depository that holds securities in book-entry form. Designated as a SIFMU under Dodd-Frank.", url: "pages/guides/dtc-guide.html#dtc", keywords: ["dtc", "depository", "book-entry", "sifmu"], type: "term" },
+                { title: "DTCC", description: "The Depository Trust & Clearing Corporation — parent holding company of DTC, NSCC, and FICC. Industry-owned and governed.", url: "pages/guides/dtc-guide.html#dtcc", keywords: ["dtcc", "clearing", "parent company"], type: "term" },
+                { title: "NSCC", description: "National Securities Clearing Corporation — provides trade validation, clearing, and CNS netting for equities and corporate debt.", url: "pages/guides/dtc-guide.html#nscc", keywords: ["nscc", "netting", "cns", "equities"], type: "term" },
+                { title: "FICC", description: "Fixed Income Clearing Corporation — clears U.S. government securities, MBS, and repo transactions through GSD and MBSD.", url: "pages/guides/dtc-guide.html#ficc", keywords: ["ficc", "repo", "treasuries", "mbs", "gsd", "mbsd"], type: "term" },
+                { title: "Cede & Co.", description: "DTC's partnership nominee. All securities deposited with DTC are registered in the name of Cede & Co. The issuer and trustee have no knowledge of beneficial owners.", url: "pages/guides/dtc-guide.html#cede", keywords: ["cede & co", "nominee", "record holder", "beneficial owner"], type: "term" },
+                { title: "Euroclear", description: "International central securities depository (ICSD) headquartered in Brussels. Settles cross-border trades via the Bridge to Clearstream and links to local CSDs.", url: "pages/guides/dtc-guide.html#euroclear", keywords: ["euroclear", "icsd", "cross-border", "bridge", "clearstream"], type: "term" },
+                { title: "FAST", description: "Fast Automated Securities Transfer — DTC program allowing transfer agents to electronically move securities between DTC and the transfer agent without physical certificates.", url: "pages/forms/dtc-eligibility-questionnaire.html#fast", keywords: ["fast", "automated transfer", "transfer agent", "dwac", "drs"], type: "term" },
+                { title: "T+1 Settlement", description: "Trade date plus one business day. The U.S. standard settlement cycle since May 28, 2024, shortening from T+2 to reduce counterparty risk and free up capital.", url: "pages/guides/dtc-guide.html#t1", keywords: ["t+1", "settlement cycle", "may 2024", "sec rule 15c6-1"], type: "term" },
+                { title: "Book-Entry-Only (BEO)", description: "Securities issued without physical certificates. All ownership is maintained electronically on DTC's books through the FAST program.", url: "pages/forms/dtc-eligibility-questionnaire.html#beo", keywords: ["beo", "book-entry-only", "physical certificate", "electronic"], type: "term" },
+                { title: "BLOR", description: "Blanket Letter of Representations — an agreement between an issuer, its transfer agent, and DTC covering all securities of that issuer.", url: "pages/forms/dtc-eligibility-questionnaire.html#blor", keywords: ["blor", "blanket letter", "representations", "issuer"], type: "term" },
+                { title: "CUSIP", description: "Committee on Uniform Securities Identification Procedures — a unique nine-character alphanumeric identifier assigned to securities for clearing and settlement.", url: "pages/guides/dtc-guide.html#cusip", keywords: ["cusip", "identifier", "security id"], type: "term" },
+                { title: "DVP", description: "Delivery Versus Payment — a settlement mechanism ensuring securities are delivered only if payment is simultaneously made, eliminating principal risk.", url: "pages/guides/dtc-guide.html#dvp", keywords: ["dvp", "delivery versus payment", "settlement risk"], type: "term" },
+                { title: "Rule 144A", description: "SEC safe harbor allowing resale of restricted securities to Qualified Institutional Buyers (QIBs) without registration.", url: "pages/guides/corporate-structures.html#rule144a", keywords: ["rule 144a", "qib", "restricted securities", "resale"], type: "term" },
+                { title: "Regulation S", description: "SEC safe harbor for offers and sales of securities outside the United States by domestic and foreign issuers.", url: "pages/guides/corporate-structures.html#regs", keywords: ["regulation s", "offshore", "foreign issuer", "safe harbor"], type: "term" },
+                { title: "SF 28", description: "Standard Form 28 — Affidavit of Individual Surety used in federal government contracting to verify a surety's assets under FAR 28.203.", url: "pages/guides/sf28-teaching-guide.html#sf28", keywords: ["sf 28", "affidavit", "surety", "far 28.203"], type: "term" },
+                { title: "FAR 28.203", description: "Federal Acquisition Regulation section governing individual sureties, including asset verification requirements and acceptance criteria.", url: "pages/guides/sf28-teaching-guide.html#far28203", keywords: ["far 28.203", "federal acquisition", "surety bond"], type: "term" },
+                { title: "UPMIFA", description: "Uniform Prudent Management of Institutional Funds Act — governs investment and expenditure decisions of charitable institutions.", url: "pages/guides/non-profit-foundations.html#upmifa", keywords: ["upmifa", "prudent management", "endowment", "charitable"], type: "term" },
+                { title: "UCC Article 8", description: "Uniform Commercial Code Article 8 — governs the creation and perfection of security interests in securities, including the concept of a 'security entitlement' and the rights of a secured party.", url: "pages/guides/collateral-ucc-article-8.html#ucc8", keywords: ["ucc article 8", "security entitlement", "perfection", "control", "secured party"], type: "term" },
+                { title: "ACA", description: "Account Control Agreement — a tri-party agreement among a borrower, a secured party (lender), and an intermediary (broker/bank) that perfects a security interest in a securities account under UCC Article 8.", url: "pages/guides/collateral-ucc-article-8.html#aca", keywords: ["aca", "account control agreement", "control", "perfection"], type: "term" },
+                { title: "Rehypothecation", description: "The practice whereby a prime broker or lender re-uses collateral posted by a client to finance its own activities or to back its own borrowings.", url: "pages/guides/collateral-ucc-article-8.html#rehypothecation", keywords: ["rehypothecation", "re-use", "collateral", "prime broker"], type: "term" },
             ];
 
             function highlight(text, query) {
@@ -2513,7 +2393,7 @@
                     return `
                 <div class="search-result-item" style="animation-delay: ${i * 0.05}s">
                     <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <div class="search-result-title"><a href="${m.url}">${highlight(m.title, query)}</a></div>
+                        <div class="search-result-title"><a href="${m.url}" target="_blank" rel="noopener">${highlight(m.title, query)}</a></div>
                         <span class="search-badge ${badgeClass}">${badgeText}</span>
                     </div>
                     <div class="search-result-desc">${highlight(m.description, query)}</div>

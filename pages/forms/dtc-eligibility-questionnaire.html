@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/shared.css">
-<script src="../js/theme-init.js"></script>
+<link rel="stylesheet" href="../../styles/shared.css">
+<script src="../../js/theme-init.js"></script>
 <style>
 /* Shared CSS for DTC Eligibility Project */
 /* This file contains common styles used across all non-biblical documents */
@@ -2675,6 +2675,25 @@ body,
 
 /* Concept map styles: styles/shared.css */
 
+/* ── Quiz score-bar pass / fail colour states ── */
+.quiz-score-fill.pass { background: var(--green); }
+.quiz-score-fill.fail { background: var(--red-muted); }
+
+/* ── Premium SVG node hover lift ── */
+.concept-map-svg .cm-node:hover rect,
+.process-flow-svg .cm-node:hover rect {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+/* Focus ring for keyboard-accessible SVG nodes */
+.concept-map-svg .cm-node:focus-visible rect,
+.process-flow-svg .cm-node:focus-visible rect {
+  stroke: var(--gold) !important;
+  stroke-width: 2.8 !important;
+  outline: none;
+}
+
 /* ── Utility Classes for Inline Styles ── */
 .pad-left-28 { padding-left: 28px; }
 .min-w-60 { min-width: 60px; }
@@ -2793,6 +2812,69 @@ body,
 </head>
 <body>
 
+<!-- ══════════════════════════════════════════════════════════
+     GLOBAL SVG GRADIENT & FILTER DEFS
+     All gradients use CSS custom properties so they
+     automatically adapt to light / dark mode.
+     Reference with:  fill="url(#gdef-accent)"
+                      filter="url(#gdef-shadow)"
+     ══════════════════════════════════════════════════════════ -->
+<svg aria-hidden="true" focusable="false" width="0" height="0"
+     style="position:absolute;overflow:hidden;pointer-events:none">
+  <defs>
+    <!-- ── Gradients ── -->
+    <!-- Neutral: ivory → cream  (static / info nodes) -->
+    <linearGradient id="gdef-neutral" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--bg-ivory)"/>
+      <stop offset="100%" style="stop-color:var(--bg-cream)"/>
+    </linearGradient>
+    <!-- Accent light: accent-light → faint accent-muted tint  (interactive nodes) -->
+    <linearGradient id="gdef-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--accent-light)"/>
+      <stop offset="100%" style="stop-color:var(--accent-muted);stop-opacity:0.22"/>
+    </linearGradient>
+    <!-- Accent solid: accent → accent-hover  (primary / DTC nodes) -->
+    <linearGradient id="gdef-accent-solid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--accent)"/>
+      <stop offset="100%" style="stop-color:var(--accent-hover)"/>
+    </linearGradient>
+    <!-- Gold: gold-light → faint gold-muted tint  (required-document nodes) -->
+    <linearGradient id="gdef-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--gold-light)"/>
+      <stop offset="100%" style="stop-color:var(--gold-muted);stop-opacity:0.20"/>
+    </linearGradient>
+    <!-- Green: green-light → faint green tint  (success / outcome nodes) -->
+    <linearGradient id="gdef-green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--green-light)"/>
+      <stop offset="100%" style="stop-color:var(--green);stop-opacity:0.14"/>
+    </linearGradient>
+    <!-- ── Filters ── -->
+    <!-- Soft shadow — neutral ink undertone -->
+    <filter id="gdef-shadow" x="-10%" y="-14%" width="120%" height="136%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5"
+                    flood-color="var(--ink)" flood-opacity="0.09"/>
+    </filter>
+    <!-- Medium shadow — accent-tinted, for primary nodes -->
+    <filter id="gdef-shadow-md" x="-12%" y="-16%" width="124%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5"
+                    flood-color="var(--accent)" flood-opacity="0.14"/>
+    </filter>
+    <!-- ── Shared arrow markers ── -->
+    <marker id="gdef-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+    </marker>
+    <marker id="gdef-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+    </marker>
+    <marker id="gdef-arrow-green" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+    </marker>
+  </defs>
+</svg>
+
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -2817,7 +2899,7 @@ body,
   <a href="#quiz">Comprehensive Knowledge Check</a>
   <a href="#footnotes">Footnotes</a>
   <div class="toc-divider">Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
   <a href="../guides/corporate-structures.html" class="external">LLCs & Corporate Structures</a>
   <a href="../guides/trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
   <a href="../guides/non-profit-foundations.html" class="external">Non-Profit Foundations</a>
@@ -2860,9 +2942,9 @@ body,
 <div class="wrap">
 
 <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-  <a href="../index.html">Home</a>
+  <a href="../../index.html">Home</a>
   <span class="breadcrumb-separator">›</span>
-  <a href="../index.html">Documents</a>
+  <a href="../../index.html">Documents</a>
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Forms & Questionnaires</span>
   <span class="breadcrumb-separator">›</span>
@@ -2906,69 +2988,79 @@ body,
     Flow from Issuer through Transfer Agent and FAST program, with questionnaire and Letter of Representations
     submitted to DTC Underwriting via UW SOURCE, resulting in DTC-eligible book-entry securities registered to Cede and Co.
   </p>
-  <svg class="concept-map-svg" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <marker id="cme-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
-      </marker>
-    </defs>
+  <svg class="concept-map-svg" viewBox="0 0 760 292" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Uses global gdef-* gradients + filters defined in the body-level <defs> block -->
 
-    <!-- Main pipeline edges -->
-    <line class="cm-edge" x1="118" y1="70" x2="173" y2="70" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="293" y1="70" x2="345" y2="70" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="461" y1="70" x2="528" y2="70" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="360" y1="150" x2="360" y2="100" marker-end="url(#cme-arrow)"/>
-    <line class="cm-edge" x1="602" y1="100" x2="602" y2="214"/>
-    <line class="cm-edge" x1="602" y1="214" x2="468" y2="214" marker-end="url(#cme-arrow)"/>
+    <!-- ── Main pipeline edges ── -->
+    <line class="cm-edge" x1="122" y1="72" x2="178" y2="72" marker-end="url(#gdef-arrow)"/>
+    <line class="cm-edge" x1="304" y1="72" x2="354" y2="72" marker-end="url(#gdef-arrow)"/>
+    <line class="cm-edge" x1="480" y1="72" x2="536" y2="72" marker-end="url(#gdef-arrow)"/>
+    <!-- vertical drop from docs node to main pipeline -->
+    <line class="cm-edge" x1="372" y1="158" x2="372" y2="104" marker-end="url(#gdef-arrow)"/>
+    <!-- approval line from Underwriting down and left to outcome -->
+    <line class="cm-edge" x1="616" y1="104" x2="616" y2="224"/>
+    <line class="cm-edge" x1="616" y1="224" x2="492" y2="224" marker-end="url(#gdef-arrow)"/>
 
-    <!-- 1 Issuer -->
-    <g class="cm-node cm-node-static">
-      <rect class="cm-node-shape" x="38" y="44" width="80" height="52" rx="8" fill="var(--bg-ivory)" stroke="var(--border)" stroke-width="1.2"/>
-      <text class="cm-node-title" x="78" y="68" text-anchor="middle" fill="var(--ink)">Issuer</text>
-      <text class="cm-node-sub" x="78" y="84" text-anchor="middle" fill="var(--ink-tertiary)">new issue</text>
+    <!-- ── 1  Issuer (neutral gradient) ── -->
+    <g class="cm-node cm-node-static" filter="url(#gdef-shadow)">
+      <rect class="cm-node-shape" x="38" y="46" width="84" height="52" rx="9"
+            fill="url(#gdef-neutral)" stroke="var(--border)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="80" y="70" text-anchor="middle" fill="var(--ink)">Issuer</text>
+      <text class="cm-node-sub"   x="80" y="86" text-anchor="middle" fill="var(--ink-tertiary)">new issue</text>
     </g>
 
-    <!-- 2 Transfer agent -->
-    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer agent — open definition">
-      <rect class="cm-node-shape" x="175" y="44" width="118" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent-muted)" stroke-width="1.2"/>
-      <text class="cm-node-title" x="234" y="68" text-anchor="middle" fill="var(--accent)">Transfer agent</text>
-      <text class="cm-node-sub" x="234" y="84" text-anchor="middle" fill="var(--ink-tertiary)">registrar</text>
+    <!-- ── 2  Transfer Agent (accent gradient) ── -->
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button"
+       aria-label="Transfer agent — open definition" filter="url(#gdef-shadow)">
+      <rect class="cm-node-shape" x="180" y="46" width="124" height="52" rx="9"
+            fill="url(#gdef-accent)" stroke="var(--accent-muted)" stroke-width="1.3"/>
+      <text class="cm-node-title" x="242" y="70" text-anchor="middle" fill="var(--accent)">Transfer Agent</text>
+      <text class="cm-node-sub"   x="242" y="86" text-anchor="middle" fill="var(--ink-tertiary)">registrar / FAST agent</text>
     </g>
 
-    <!-- 3 FAST -->
-    <g class="cm-node" data-modal="fast" tabindex="0" role="button" aria-label="FAST — open definition">
-      <rect class="cm-node-shape" x="347" y="44" width="114" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.3"/>
-      <text class="cm-node-title" x="404" y="68" text-anchor="middle" fill="var(--accent)">FAST program</text>
-      <text class="cm-node-sub" x="404" y="84" text-anchor="middle" fill="var(--ink-tertiary)">agent at DTC</text>
+    <!-- ── 3  FAST Program (accent gradient, stronger border) ── -->
+    <g class="cm-node" data-modal="fast" tabindex="0" role="button"
+       aria-label="FAST — open definition" filter="url(#gdef-shadow)">
+      <rect class="cm-node-shape" x="356" y="46" width="122" height="52" rx="9"
+            fill="url(#gdef-accent)" stroke="var(--accent)" stroke-width="1.6"/>
+      <text class="cm-node-title" x="417" y="70" text-anchor="middle" fill="var(--accent)">FAST Program</text>
+      <text class="cm-node-sub"   x="417" y="86" text-anchor="middle" fill="var(--ink-tertiary)">agent at DTC</text>
     </g>
 
-    <!-- 4 Underwriting -->
-    <g class="cm-node" data-modal="underwriting-dept" tabindex="0" role="button" aria-label="Underwriting Department — open definition">
-      <rect class="cm-node-shape" x="530" y="44" width="144" height="56" rx="8" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
-      <text class="cm-node-title" x="602" y="68" text-anchor="middle" fill="#fff">DTC Underwriting</text>
-      <text class="cm-node-sub" x="602" y="86" text-anchor="middle" fill="var(--accent-muted)">UW SOURCE / UWC</text>
+    <!-- ── 4  DTC Underwriting (solid accent gradient — primary) ── -->
+    <g class="cm-node" data-modal="underwriting-dept" tabindex="0" role="button"
+       aria-label="Underwriting Department — open definition" filter="url(#gdef-shadow-md)">
+      <rect class="cm-node-shape" x="538" y="44" width="154" height="60" rx="9"
+            fill="url(#gdef-accent-solid)" stroke="var(--accent-hover)" stroke-width="1"/>
+      <text class="cm-node-title" x="615" y="69" text-anchor="middle" fill="#fff">DTC Underwriting</text>
+      <text class="cm-node-sub"   x="615" y="87" text-anchor="middle"
+            style="fill:rgba(255,255,255,0.75)">UW SOURCE / UWC</text>
     </g>
 
-    <!-- Supporting package -->
-    <g class="cm-node" data-modal="lor" tabindex="0" role="button" aria-label="Letter of Representations — open definition">
-      <rect class="cm-node-shape" x="250" y="152" width="220" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.4"/>
-      <text class="cm-node-title" x="360" y="174" text-anchor="middle" fill="var(--gold-deep)">LoR + questionnaire</text>
-      <text class="cm-node-sub" x="360" y="192" text-anchor="middle" fill="var(--gold)">CUSIP · prospectus · agent letter</text>
+    <!-- ── 5  Required Documents (gold gradient) — widened for subtext ── -->
+    <g class="cm-node" data-modal="lor" tabindex="0" role="button"
+       aria-label="Letter of Representations — open definition" filter="url(#gdef-shadow)">
+      <rect class="cm-node-shape" x="248" y="160" width="248" height="56" rx="9"
+            fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.5"/>
+      <text class="cm-node-title" x="372" y="182" text-anchor="middle" fill="var(--gold-deep)">LoR + Questionnaire</text>
+      <text class="cm-node-sub"   x="372" y="200" text-anchor="middle" fill="var(--gold)">CUSIP · prospectus · agent letter</text>
     </g>
 
-    <!-- Outcome -->
-    <g class="cm-node" data-modal="dtc-eligible" tabindex="0" role="button" aria-label="DTC eligible — open definition">
-      <rect class="cm-node-shape" x="250" y="222" width="220" height="44" rx="10" fill="var(--green-light)" stroke="var(--green)" stroke-width="1.5"/>
-      <text class="cm-node-title" x="360" y="242" text-anchor="middle" fill="var(--green)">DTC-eligible · book-entry</text>
-      <text class="cm-node-sub" x="360" y="256" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. on issuer books</text>
+    <!-- ── 6  Outcome (green gradient) — widened for clean padding ── -->
+    <g class="cm-node" data-modal="dtc-eligible" tabindex="0" role="button"
+       aria-label="DTC eligible — open definition" filter="url(#gdef-shadow)">
+      <rect class="cm-node-shape" x="248" y="234" width="244" height="46" rx="11"
+            fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.6"/>
+      <text class="cm-node-title" x="370" y="255" text-anchor="middle" fill="var(--green)">DTC-Eligible · Book-Entry</text>
+      <text class="cm-node-sub"   x="370" y="271" text-anchor="middle" fill="var(--ink-tertiary)">Cede &amp; Co. on issuer books</text>
     </g>
 
-    <!-- Edge labels (drawn last so they are guaranteed to sit on top of any overlapping graphics) -->
-    <text class="cm-edge-label" x="145" y="60" text-anchor="middle">appoints</text>
-    <text class="cm-edge-label" x="319" y="60" text-anchor="middle">joins FAST</text>
-    <text class="cm-edge-label" x="494" y="60" text-anchor="middle">submits to</text>
-    <text class="cm-edge-label" x="372" y="130" text-anchor="start">docs required</text>
-    <text class="cm-edge-label" x="614" y="150" text-anchor="start">approves</text>
+    <!-- ── Edge labels (drawn last — always on top) ── -->
+    <text class="cm-edge-label" x="151" y="62" text-anchor="middle">appoints</text>
+    <text class="cm-edge-label" x="330" y="62" text-anchor="middle">joins FAST</text>
+    <text class="cm-edge-label" x="507" y="62" text-anchor="middle">submits to</text>
+    <text class="cm-edge-label" x="386" y="138" text-anchor="start">docs required</text>
+    <text class="cm-edge-label" x="628" y="158" text-anchor="start">approves</text>
   </svg>
   <p class="cm-caption">Eligibility is an operational path: the issuer and transfer agent prepare the issue for <strong>FAST</strong>, then DTC Underwriting reviews the questionnaire and representations before book-entry goes live.</p>
   <div class="cm-legend" aria-hidden="true">
@@ -3436,6 +3528,108 @@ body,
   <p class="section-subtitle">
     A visual timeline of how DTC processes an eligibility request from submission to closing.
   </p>
+
+  <!-- Premium process-flow SVG timeline -->
+  <div class="diagram-box concept-map" role="img" aria-label="DTC eligibility process timeline: six sequential phases from pre-closing submission through post-closing Agent Confirmation">
+    <div class="diagram-title">Eligibility Timeline — Working Back from Closing</div>
+    <svg class="process-flow-svg" viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+      <!-- Horizontal spine -->
+      <line x1="54" y1="72" x2="706" y2="72"
+            stroke="var(--accent-muted)" stroke-width="2" stroke-dasharray="0"/>
+
+      <!-- ── Step 1: 10 BD Pre-Close ── -->
+      <g filter="url(#gdef-shadow)">
+        <circle cx="80" cy="72" r="18" fill="url(#gdef-accent-solid)"/>
+        <text x="80" y="77" text-anchor="middle" class="pf-step-num" fill="#fff">1</text>
+      </g>
+      <rect x="32" y="98" width="96" height="66" rx="7" fill="url(#gdef-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#gdef-shadow)"/>
+      <line x1="80" y1="90" x2="80" y2="98" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text x="80" y="114" text-anchor="middle" class="pf-phase" fill="var(--accent)">10 BD</text>
+      <text x="80" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Submit</text>
+      <text x="80" y="141" text-anchor="middle" class="pf-step-sub">Questionnaire</text>
+      <text x="80" y="155" text-anchor="middle" class="pf-step-sub">+ Prospectus</text>
+
+      <!-- connector -->
+      <line x1="98" y1="72" x2="202" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
+
+      <!-- ── Step 2: DTC Review ── -->
+      <g filter="url(#gdef-shadow)">
+        <circle cx="220" cy="72" r="18" fill="url(#gdef-accent-solid)"/>
+        <text x="220" y="77" text-anchor="middle" class="pf-step-num" fill="#fff">2</text>
+      </g>
+      <rect x="172" y="98" width="96" height="66" rx="7" fill="url(#gdef-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#gdef-shadow)"/>
+      <line x1="220" y1="90" x2="220" y2="98" stroke="var(--accent-muted)" stroke-width="1.2"/>
+      <text x="220" y="114" text-anchor="middle" class="pf-phase" fill="var(--accent)">DTC Review</text>
+      <text x="220" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Underwriting</text>
+      <text x="220" y="141" text-anchor="middle" class="pf-step-sub">Review &amp;</text>
+      <text x="220" y="155" text-anchor="middle" class="pf-step-sub">Opinion Eval.</text>
+
+      <!-- connector -->
+      <line x1="238" y1="72" x2="342" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
+
+      <!-- ── Step 3: CUSIP Info ── -->
+      <g filter="url(#gdef-shadow)">
+        <circle cx="360" cy="72" r="18" fill="url(#gdef-gold)"/>
+        <text x="360" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">3</text>
+      </g>
+      <rect x="312" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
+      <line x1="360" y1="90" x2="360" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
+      <text x="360" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">7 BD / Pricing</text>
+      <text x="360" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">CUSIP Info</text>
+      <text x="360" y="141" text-anchor="middle" class="pf-step-sub">Rates · Maturities</text>
+      <text x="360" y="155" text-anchor="middle" class="pf-step-sub">· Amounts</text>
+
+      <!-- connector -->
+      <line x1="378" y1="72" x2="482" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
+
+      <!-- ── Step 4: LOR + Securities ── -->
+      <g filter="url(#gdef-shadow)">
+        <circle cx="500" cy="72" r="18" fill="url(#gdef-gold)"/>
+        <text x="500" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">4</text>
+      </g>
+      <rect x="452" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
+      <line x1="500" y1="90" x2="500" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
+      <text x="500" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">1 BD Pre-Close</text>
+      <text x="500" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">LOR + Securities</text>
+      <text x="500" y="141" text-anchor="middle" class="pf-step-sub">Signed LOR by</text>
+      <text x="500" y="155" text-anchor="middle" class="pf-step-sub">noon ET</text>
+
+      <!-- connector -->
+      <line x1="518" y1="72" x2="618" y2="72" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#gdef-arrow-green)"/>
+
+      <!-- ── Step 5: Closing ── -->
+      <g filter="url(#gdef-shadow-md)">
+        <circle cx="636" cy="72" r="20" fill="url(#gdef-accent-solid)"/>
+        <text x="636" y="77" text-anchor="middle" class="pf-step-num" fill="#fff" style="font-size:12px">5</text>
+      </g>
+      <rect x="584" y="98" width="104" height="66" rx="7" fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.6" filter="url(#gdef-shadow-md)"/>
+      <line x1="636" y1="92" x2="636" y2="98" stroke="var(--green)" stroke-width="1.4"/>
+      <text x="636" y="114" text-anchor="middle" class="pf-phase" fill="var(--green)">Closing Day</text>
+      <text x="636" y="127" text-anchor="middle" class="pf-step-title" fill="var(--green)">DTC Eligible ✓</text>
+      <text x="636" y="141" text-anchor="middle" class="pf-step-sub">Participant acct</text>
+      <text x="636" y="155" text-anchor="middle" class="pf-step-sub">credited</text>
+
+      <!-- ── Step 6: Agent Confirmation (post-close, below) ── -->
+      <line x1="636" y1="164" x2="636" y2="178" stroke="var(--ink-faint)" stroke-width="1.3" stroke-dasharray="4 3"/>
+      <rect x="582" y="178" width="108" height="26" rx="6" fill="url(#gdef-neutral)" stroke="var(--border)" stroke-width="1.1" filter="url(#gdef-shadow)"/>
+      <text x="636" y="189" text-anchor="middle" class="pf-phase" fill="var(--ink-muted)">+10 BD Post-Close</text>
+      <text x="636" y="200" text-anchor="middle" class="pf-step-sub">Agent Confirmation</text>
+
+      <!-- Phase rail labels above spine -->
+      <text x="80"  y="46" text-anchor="middle" class="cm-zone-label">Pre-Close Preparation</text>
+      <text x="360" y="46" text-anchor="middle" class="cm-zone-label">Documentation</text>
+      <text x="636" y="46" text-anchor="middle" class="cm-zone-label">Settlement</text>
+    </svg>
+    <p class="cm-caption">Timelines are "standards, not deadlines" per the June 2026 OA — DTC may extend at its sole discretion, but always plan to the standard windows. <strong>BD = Business Days.</strong></p>
+    <div class="cm-legend" aria-hidden="true">
+      <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Review phase</span>
+      <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Documentation phase</span>
+      <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Closing &amp; settlement</span>
+      <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Post-close requirement</span>
+    </div>
+  </div>
+
   <div class="flow-diagram">
     <div class="flow-step">
       <div class="flow-step-num">1</div>
@@ -3734,7 +3928,7 @@ body,
     <div class="legacy-field" style="text-align:center; color:#7a6a45;">— 10 blank rows for CUSIP entries —</div>
     <div class="legacy-field" style="margin-top:10px;">* C = Capital Appreciation, P = Put, S = Serial, T = Term</div>
     <div class="legacy-section">DTC Underwriting Department Phone Numbers (Area Code 212)</div>
-    <div class="legacy-field">Issue Eligibility — Corporate: 855-3704 · Municipal: 855-3782 · Fax: 855-3726/3728</div>
+    <div class="legacy-field">Issue Eligibility — <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-phone-swap')">Corporate: 855-3704 · Municipal: 855-3782 · Fax: 855-3726/3728</span></div>
     <div class="legacy-field">Underwriting Processing: 855-3744/3774 · Fax: 855-5003</div>
     <div class="legacy-field">Interface/Underwriting: 855-8820/8821 · Fax: 855-8703/8707</div>
     <div class="legacy-field">Authorization for Closing: 855-3752/3753/3754/3755 · Fax: 855-3607</div>
@@ -4136,11 +4330,11 @@ body,
 <footer class="page-footer">
   <div class="footer-content">
   <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
+    <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
+    <a href="../../index.html#documents">All Documents</a>
   </nav>
 
     <div class="footer-info">
@@ -4171,7 +4365,7 @@ const quizAnswers = {
   q10: { correct: 'b', explanation: 'The Transfer Agent lacking an executed OA Agent Letter is a hard stop — DTC will deny eligibility. Missed deadlines may be extendable (DTC discretion), Reg S is eligible, and correspondent relationships are valid alternatives. <strong>Definition:</strong> OA Agent Letter is the agreement between Transfer Agent and DTC defining operational responsibilities.' },
   q11: { correct: 'b', explanation: 'Regulation S distribution compliance periods are 40 days for debt securities (Categories 2 and 3). For equity securities, the period is one year for non-reporting issuers or six months for reporting issuers. During these periods, securities cannot be offered or sold to U.S. persons except in limited circumstances. <strong>Definition:</strong> Regulation S is an SEC exemption that allows companies to raise capital abroad without SEC registration, provided sales are made offshore to non-U.S. persons.' },
   q12: { correct: 'b', explanation: 'Regulation S securities require a distinct CUSIP from any U.S. registered securities of the same class to prevent commingling and ensure proper restriction compliance. <strong>Definition:</strong> Distinct CUSIP means a completely different 9-character identifier, not just a variation.' },
-  q13: { correct: 'a', explanation: 'Section 3(c)(7) funds are exempt from SEC registration only if all owners are Qualified Purchasers — generally institutions with at least $5 million in investments. <strong>Definition:</strong> Qualified Purchasers under the Investment Company Act are entities or individuals owning at least $5 million in investments, excluding certain employee benefit plans and retirement accounts.' },
+  q13: { correct: 'a', explanation: 'Section 3(c)(7) funds are exempt from the Investment Company Act only if <em>all</em> outstanding securities are owned exclusively by "Qualified Purchasers." The threshold differs by investor type: <strong>individuals</strong> (natural persons) must own at least $5 million in investments; <strong>entities</strong> acting on their own account must own at least $25 million in investments. There is no ownership cap (unlike Section 3(c)(1) which caps beneficial owners at 100). <strong>Definition:</strong> Qualified Purchaser is defined in Section 2(a)(51) of the Investment Company Act of 1940 — a higher standard than the Qualified Institutional Buyer (QIB) threshold under Rule 144A.' },
   q14: { correct: 'b', explanation: 'The certificate sizing rule applies to amounts exceeding $500 million. Exactly $500M or less does not require multiple certificates. <strong>Key detail:</strong> $500,000,001 would require two certificates ($500M + $1).' },
   q15: { correct: 'c', explanation: 'A UK issuer of euro-denominated bonds requires both the UK/Ireland rider (for insolvency/conflicts of law issues) AND the non-U.S. currency rider (for FX mechanics and settlement). <strong>Definition:</strong> Non-U.S. currency rider addresses DTC\'s ability to process payments and manage foreign exchange for non-USD securities.' },
   q16: { correct: 'b', explanation: 'The June 2026 OA permits electronic signatures for U.S. entities but retains the requirement for original manual signatures for non-U.S. entities and legal opinions. <strong>Key distinction:</strong> This reflects different legal frameworks and enforceability across jurisdictions.' },
@@ -4776,24 +4970,24 @@ function resetQuiz() {
   </div>
 </div>
 
-<!-- RULE 3(A)(2) -->
+<!-- SECTION 3(A)(2) -->
 <div class="modal-overlay" id="modal-rule3a2" role="dialog" aria-modal="true" aria-labelledby="modal-title-rule3a2">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-rule3a2">Rule 3(a)(2) — Exempt Securities</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-rule3a2">Section 3(a)(2) — Government &amp; Bank Securities Exemption</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
-        <div class="def-type">Exemption</div>
-        <div class="def-word">Rule 3(a)(2)</div>
-        <p>An exemption from SEC registration for certain categories of securities, including government obligations, bank securities, and short-term commercial paper.</p>
+        <div class="def-type">Exemption — Securities Act of 1933</div>
+        <div class="def-word">Section 3(a)(2) — Not "Rule 3(a)(2)"</div>
+        <p>A statutory exemption from SEC registration for securities issued or guaranteed by governmental entities and regulated banking institutions. <strong>Note:</strong> The DTC questionnaire uses the informal shorthand "Rule 3(a)(2)," but the actual legal provision is <em>Section</em> 3(a)(2) of the Securities Act of 1933 — it is a statutory exemption, not an SEC-promulgated rule.</p>
       </div>
-      <p>Exempt categories include:</p>
+      <p class="modal-section-title">Securities Covered by Section 3(a)(2)</p>
       <ul>
-        <li>U.S. government or agency securities</li>
-        <li>State or municipal government securities</li>
-        <li>National bank or federal savings association securities</li>
-        <li>Short-term commercial paper (maturity ≤ 9 months)</li>
-        <li>Nonprofit religious, educational, or charitable organization securities</li>
+        <li><strong>U.S. government securities:</strong> Obligations issued or guaranteed by the United States or any U.S. territorial government.</li>
+        <li><strong>State and municipal securities:</strong> Obligations issued by any state, territory, or political subdivision thereof (including municipal bonds).</li>
+        <li><strong>Regulated bank securities:</strong> Securities issued by national banks (OCC-chartered), state member banks (Federal Reserve-supervised), state non-member insured banks (FDIC-supervised), or savings associations regulated by the OCC.</li>
+        <li><strong>Federally-supervised common trust funds:</strong> Interests in collective trust funds maintained by banks for tax-qualified retirement plan assets.</li>
       </ul>
+      <div class="tip-box"><strong>Commonly confused exemptions:</strong> <em>Short-term commercial paper</em> (≤9 months) is exempt under <strong>Section 3(a)(3)</strong>, not 3(a)(2). Securities of non-profit religious, educational, and charitable organizations are exempt under <strong>Section 3(a)(4)</strong>. These are separate exemption categories.</div>
       <p>While exempt from SEC registration, these securities may still be DTC-eligible if they meet DTC's operational criteria. Standard eligibility documentation (questionnaire, Letter of Representations) is still required.</p>
       <div class="citation"><strong>Source:</strong> Securities Act of 1933, §3(a)(2) (15 U.S.C. §77c(a)(2)); DTC Operational Arrangements. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
@@ -6022,6 +6216,27 @@ function resetQuiz() {
   </div>
 </div>
 
+<!-- LEGACY PHONE SWAP NOTE -->
+<div class="modal-overlay" id="modal-legacy-phone-swap" role="dialog" aria-modal="true" aria-labelledby="modal-title-legacy-phone-swap">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-legacy-phone-swap">Phone Number Reassignment — 2000 vs. 2026</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Historical Note — Directory Discrepancy</div>
+        <div class="def-word">Issue Eligibility Direct Lines</div>
+        <p>The 2000 form and the current directory list different assignments for the same phone numbers. The current (2026) directory reflects re-labeling of lines that occurred between the two versions.</p>
+      </div>
+      <p class="modal-section-title">2000 Form vs. Current Directory</p>
+      <ul>
+        <li><strong>2000 form:</strong> Corporate Eligibility — 855-3704; Municipal Eligibility — 855-3782; Fax — 855-3726/3728</li>
+        <li><strong>Current directory:</strong> Corporate — 855-3782; Municipal — 855-3726/3728; Fax — 855-3704</li>
+      </ul>
+      <div class="warn-box"><strong>Verify before calling.</strong> All phone numbers from the original 2000 questionnaire should be confirmed before use — DTC reorganized its underwriting lines between 2000 and 2026. Use DTC's main client services line at <strong>(866) 724-4402</strong> for current routing, or contact your DTCC relationship manager.</div>
+      <div class="citation"><strong>Source:</strong> DTC Eligibility Questionnaire (06/00); DTC Operational Arrangements Directory (June 2026). <a href="https://www.dtcc.com">dtcc.com</a></div>
+    </div>
+  </div>
+</div>
+
 <!-- Beneficial Owner -->
 <div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
   <div class="modal-card">
@@ -6090,7 +6305,7 @@ function resetQuiz() {
   </div>
 </div>
 
-<script src="../js/shared.js" defer></script>
+<script src="../../js/shared.js" defer></script>
 
 <script>
 /* Document-specific JavaScript */
