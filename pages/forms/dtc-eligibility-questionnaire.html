@@ -1684,8 +1684,125 @@ body,
   position: relative;
 }
 [data-theme="dark"] .dtc-facsimile {
-  background: #f4f2ec;
-  color: #111;
+  background: #1a1a1a;
+  color: #e8e8e8;
+  border-color: #444;
+}
+[data-theme="dark"] .dtc-facsimile .form-title-bar {
+  border-bottom-color: #444;
+}
+[data-theme="dark"] .dtc-facsimile .form-title-bar .form-subline {
+  color: #bbb;
+}
+[data-theme="dark"] .dtc-facsimile .form-title-bar .form-instructions {
+  color: #aaa;
+}
+[data-theme="dark"] .dtc-facsimile .form-col-left {
+  border-right-color: #444;
+}
+@media (max-width: 720px) {
+  [data-theme="dark"] .dtc-facsimile .form-col-left {
+    border-bottom-color: #444;
+  }
+}
+[data-theme="dark"] .dtc-facsimile .section-heading {
+  border-bottom-color: #444;
+  color: #e8e8e8;
+}
+[data-theme="dark"] .dtc-facsimile .form-subheading {
+  color: #bbb;
+}
+[data-theme="dark"] .dtc-facsimile .form-row .bullet {
+  border-color: #666;
+  background: #2a2a2a;
+}
+[data-theme="dark"] .dtc-facsimile .form-row .label {
+  color: #e8e8e8;
+}
+[data-theme="dark"] .dtc-facsimile .form-row .label strong {
+  color: #fff;
+}
+[data-theme="dark"] .dtc-facsimile .inline-checkbox {
+  border-color: #666;
+  background: #2a2a2a;
+}
+[data-theme="dark"] .dtc-facsimile .inline-field {
+  border-bottom-color: #666;
+}
+[data-theme="dark"] .dtc-facsimile .hint-text,
+[data-theme="dark"] .dtc-facsimile .italic-hint {
+  color: #999;
+}
+[data-theme="dark"] .dtc-facsimile .hotspot {
+  color: #e8e8e8;
+}
+[data-theme="dark"] .dtc-facsimile .delivery-box {
+  border-color: #444;
+  background: rgba(255,255,255,0.03);
+}
+[data-theme="dark"] .dtc-facsimile .footnote {
+  color: #aaa;
+  border-top-color: #444;
+}
+[data-theme="dark"] .dtc-facsimile .req-note {
+  color: #aaa;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-table th {
+  background: #2a2a2a !important;
+  color: #e8e8e8 !important;
+  border-color: #444 !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-table td {
+  background: #1a1a1a !important;
+  color: #e8e8e8 !important;
+  border-color: #444 !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-table tbody tr:hover td {
+  background: #2a2a2a !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-table tr:nth-child(even) td {
+  background: #222 !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-table tr:nth-child(even):hover td {
+  background: #2a2a2a !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-example-row td.filled {
+  color: #e8e8e8 !important;
+}
+[data-theme="dark"] .dtc-facsimile .cusip-note {
+  color: #aaa !important;
+}
+[data-theme="dark"] .dtc-facsimile .directory-section {
+  border-top-color: #444 !important;
+}
+[data-theme="dark"] .dtc-facsimile .directory-card {
+  background: #222 !important;
+  border-color: #444 !important;
+}
+[data-theme="dark"] .dtc-facsimile .directory-card h4 {
+  color: #d4a843 !important;
+  border-bottom-color: #444 !important;
+}
+[data-theme="dark"] .dtc-facsimile .directory-card p,
+[data-theme="dark"] .dtc-facsimile .directory-card li {
+  color: #ccc !important;
+}
+[data-theme="dark"] .dtc-facsimile .directory-card .phone {
+  color: #e8e8e8 !important;
+}
+[data-theme="dark"] .dtc-facsimile .address-block {
+  background: #222 !important;
+  color: #ccc !important;
+}
+[data-theme="dark"] .dtc-facsimile .section-subtitle {
+  color: #aaa;
+}
+[data-theme="dark"] .dtc-facsimile .req-note {
+  color: #aaa;
+  background: rgba(255,255,255,0.03);
+}
+[data-theme="dark"] .dtc-facsimile .req-note strong {
+  color: #fff;
 }
 .facsimile-label {
   position: absolute;
@@ -1999,129 +2116,48 @@ body,
   margin: 0 3px;
 }
 
-/* ── Legacy Toggle Bar ── */
-.legacy-toggle-bar {
+/* ── Field Diff: inline then/now annotations nested in the facsimile ── */
+.dtc-facsimile .field-diff {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
   flex-wrap: wrap;
-  padding: 12px 20px;
-  background: var(--bg-ivory);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  width: fit-content;
+  max-width: 100%;
+  gap: 5px;
   font-family: 'DM Sans', sans-serif;
-}
-.legacy-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.legacy-toggle-btn:hover, .legacy-toggle-btn:focus-visible {
-  background: var(--accent-light);
-  border-color: var(--accent);
-  outline: none;
-}
-.legacy-toggle-btn[aria-expanded="true"] {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-.legacy-toggle-hint {
-  font-size: 0.68rem;
-  color: var(--ink-muted);
-}
-
-/* ── Legacy Comparison Panel: compact changelog ── */
-.legacy-compare {
-  max-width: 760px;
-  margin: 0 auto 32px;
-  display: none;
-}
-.legacy-compare.open { display: block; }
-.legacy-compare-intro {
-  font-size: 0.82rem;
-  color: var(--ink-secondary);
-  line-height: 1.7;
-  padding: 18px 4px 16px;
-}
-.legacy-compare-intro strong { color: var(--ink); }
-.legacy-changelog {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.legacy-changelog-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
-  background: var(--bg);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.legacy-changelog-item:hover, .legacy-changelog-item:focus-visible {
-  border-color: var(--accent-muted);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
-  outline: none;
-}
-.legacy-changelog-body { flex: 1; min-width: 0; }
-.legacy-changelog-title {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  color: var(--ink);
-  margin-bottom: 5px;
-}
-.legacy-changelog-diff {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.78rem;
+  font-size: 9px;
   line-height: 1.5;
+  padding: 3px 8px;
+  margin: 5px 0 2px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
-.legacy-changelog-diff .was {
-  color: var(--ink-faint);
+.dtc-facsimile .field-diff .fd-was {
   text-decoration: line-through;
-  text-decoration-color: var(--border);
+  opacity: 0.62;
 }
-.legacy-changelog-diff .arrow { color: var(--accent-muted); }
-.legacy-changelog-diff .now {
-  color: var(--ink-secondary);
-  font-weight: 500;
+.dtc-facsimile .field-diff .fd-arrow { opacity: 0.55; }
+.dtc-facsimile .field-diff .fd-now { font-weight: 600; }
+.dtc-facsimile .field-diff-updated {
+  background: rgba(13,115,119,0.07);
+  border: 1px solid rgba(13,115,119,0.25);
+  color: #0d5357;
 }
-.legacy-changelog-chevron {
-  flex-shrink: 0;
-  color: var(--ink-faint);
-  font-size: 1.1rem;
-  transition: transform 0.2s ease, color 0.2s ease;
+.dtc-facsimile .field-diff-updated .fd-now { color: #0a5060; }
+.dtc-facsimile .field-diff-updated:hover, .dtc-facsimile .field-diff-updated:focus-visible {
+  background: rgba(13,115,119,0.15);
+  outline: none;
 }
-.legacy-changelog-item:hover .legacy-changelog-chevron,
-.legacy-changelog-item:focus-visible .legacy-changelog-chevron {
-  transform: translateX(3px);
-  color: var(--accent);
+.dtc-facsimile .field-diff-legacy {
+  background: rgba(166,124,0,0.07);
+  border: 1px solid rgba(166,124,0,0.3);
+  color: #6b5200;
 }
-.legacy-changelog-note {
-  font-size: 0.72rem;
-  color: var(--ink-muted);
-  text-align: center;
-  margin-top: 14px;
+.dtc-facsimile .field-diff-legacy .fd-now { color: #7a5c00; }
+.dtc-facsimile .field-diff-legacy:hover, .dtc-facsimile .field-diff-legacy:focus-visible {
+  background: rgba(166,124,0,0.15);
+  outline: none;
 }
 
 /* ── CUSIP Table ── */
@@ -3093,13 +3129,9 @@ body,
     <h3>The Depository Trust Company (DTC) Eligibility Questionnaire</h3>
     <div class="form-subline">DTC is a subsidiary of The Depository Trust &amp; Clearing Corporation</div>
     <div class="form-instructions">To make a new issue of securities DTC eligible, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to DTC's Underwriting Dept. at least 10 business days prior to the issue's closing date. If complete CUSIP INFORMATION (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least seven business days prior to the closing date. (With respect to corporate issues, upon pricing of the issue.)</div>
-  </div>
-  <div class="legacy-toggle-bar">
-    <button type="button" class="legacy-toggle-btn" id="legacyToggleBtn" onclick="toggleLegacyPanel()" aria-expanded="false" aria-controls="legacy-compare">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span id="legacyToggleLabel">See What Changed Since 2000</span>
-    </button>
-    <span class="legacy-toggle-hint">5 fields differ from the original June 2000 questionnaire</span>
+    <div class="field-diff field-diff-updated" tabindex="0" role="button" aria-label="How you submit: then vs. now" onclick="openModal('modal-legacy-submission')">
+      <span class="fd-was">2000: mail or fax to 55 Water Street</span><span class="fd-arrow">→</span><span class="fd-now">2026: UW SOURCE / Underwriting Central (UWC)</span>
+    </div>
   </div>
   <div class="form-page form-page-1">
     <div class="form-grid-2col">
@@ -3293,6 +3325,9 @@ body,
 
 <div class="delivery-box">
   <strong>Note:</strong> Please use the address listed on the CUSIP INFORMATION page to deliver securities to DTC at least one business day before closing, <span class="updated-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-noon-deadline')">Updated</span> by 12:00 noon ET. For additional information, please contact DTC's <span class="hotspot" data-modal="interface-dept" tabindex="0" role="button" onclick="openModal('modal-interface-dept')">Interface/Underwriting Department</span>.
+  <div class="field-diff field-diff-updated" tabindex="0" role="button" aria-label="Delivery deadline: then vs. now" onclick="openModal('modal-legacy-noon-deadline')">
+    <span class="fd-was">2000: no time-of-day cutoff stated</span><span class="fd-arrow">→</span><span class="fd-now">2026: 12:00 noon ET cutoff added</span>
+  </div>
   <div class="address-block">
     Attention: Interface/Underwriting Dept.<br>
     The Depository Trust Company<br>
@@ -3320,7 +3355,11 @@ body,
 
 <div class="form-row form-margin-top">
   <div class="bullet"></div>
-  <div class="label"><strong><span class="hotspot" data-modal="signature" tabindex="0" role="button" onclick="openModal('modal-signature')">Authorized Signature</span></strong><span class="updated-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-signature')">Updated</span> <span class="inline-field wide"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="signature" tabindex="0" role="button" onclick="openModal('modal-signature')">Authorized Signature</span></strong><span class="updated-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-signature')">Updated</span> <span class="inline-field wide"></span>
+    <div class="field-diff field-diff-updated" tabindex="0" role="button" aria-label="Authorized signature: then vs. now" onclick="openModal('modal-legacy-signature')">
+      <span class="fd-was">2000: original wet-ink signature only</span><span class="fd-arrow">→</span><span class="fd-now">2026: e-signatures permitted (U.S. entities)</span>
+    </div>
+  </div>
 </div>
 
 <div class="form-row margin-top-8">
@@ -3333,6 +3372,9 @@ body,
 <div class="footnote footnote-top-margin" id="footnotes">
   <sup>1</sup> Service available for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.<br>
   <sup>2</sup> <span class="legacy-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">Legacy</span> For non-investment grade issues eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>, a distinct CUSIP and <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> rider are required. <span class="strikethrough-muted"><span class="hotspot" data-modal="portal" tabindex="0" role="button" onclick="openModal('modal-portal')">PORTAL</span> eligibility was historically required; this system has been succeeded by private trading venues.</span>
+  <div class="field-diff field-diff-legacy" tabindex="0" role="button" aria-label="PORTAL / NASD footnote: then vs. now" onclick="openModal('modal-legacy-portal')">
+    <span class="fd-was">2000: apply for PORTAL via NASD, (202) 728-8479</span><span class="fd-arrow">→</span><span class="fd-now">2026: PORTAL retired; NASD absorbed into FINRA (2007)</span>
+  </div>
 </div>
 
       </div><!-- /form-col-right -->
@@ -3801,12 +3843,15 @@ body,
   </p>
   <div class="directory-grid">
     <div class="directory-card">
-      <h4>Issue Eligibility</h4>
+      <h4>Issue Eligibility <span class="legacy-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-phone-swap')">Legacy</span></h4>
       <ul>
         <li>Corporate: <span class="phone">855-3782</span></li>
         <li>Municipal: <span class="phone">855-3726 / 3728</span></li>
         <li>Fax: <span class="phone">855-3704</span></li>
       </ul>
+      <div class="field-diff field-diff-legacy" tabindex="0" role="button" aria-label="Underwriting phone directory: then vs. now" onclick="openModal('modal-legacy-phone-swap')">
+        <span class="fd-was">2000: Corporate 855-3704 · Municipal 855-3782</span><span class="fd-arrow">→</span><span class="fd-now">2026: numbers reassigned — verify before calling</span>
+      </div>
     </div>
     <div class="directory-card">
       <h4>Underwriting Processing</h4>
@@ -3855,75 +3900,6 @@ body,
   <div class="form-page-footer">06/00 &nbsp;·&nbsp; Page 2 of 2</div>
 </div><!-- /dtc-facsimile page 2 -->
 
-<div class="legacy-compare" id="legacy-compare">
-  <p class="legacy-compare-intro">
-    The questionnaire's layout, required certifications, and DTC Participant / CUSIP fields are <strong>unchanged in substance</strong> since it was first filed in June 2000. Five things have genuinely changed under the June 2026 Operational Arrangements — click any one for the full then-vs-now detail.
-  </p>
-
-  <div class="legacy-changelog">
-    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="How you submit: then vs. now" onclick="openModal('modal-legacy-submission')">
-      <div class="legacy-changelog-body">
-        <div class="legacy-changelog-title">How You Submit <span class="updated-tag">Updated</span></div>
-        <div class="legacy-changelog-diff">
-          <span class="was">2000: mail or fax to 55 Water Street</span>
-          <span class="arrow">→</span>
-          <span class="now">2026: UW SOURCE / Underwriting Central (UWC)</span>
-        </div>
-      </div>
-      <div class="legacy-changelog-chevron">›</div>
-    </div>
-
-    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Delivery deadline: then vs. now" onclick="openModal('modal-legacy-noon-deadline')">
-      <div class="legacy-changelog-body">
-        <div class="legacy-changelog-title">Delivery Deadline <span class="updated-tag">Updated</span></div>
-        <div class="legacy-changelog-diff">
-          <span class="was">2000: one business day before closing, no time stated</span>
-          <span class="arrow">→</span>
-          <span class="now">2026: same, plus a 12:00 noon ET cutoff</span>
-        </div>
-      </div>
-      <div class="legacy-changelog-chevron">›</div>
-    </div>
-
-    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Authorized signature: then vs. now" onclick="openModal('modal-legacy-signature')">
-      <div class="legacy-changelog-body">
-        <div class="legacy-changelog-title">Authorized Signature <span class="updated-tag">Updated</span></div>
-        <div class="legacy-changelog-diff">
-          <span class="was">2000: original wet-ink signature only</span>
-          <span class="arrow">→</span>
-          <span class="now">2026: electronic signatures permitted for U.S. entities</span>
-        </div>
-      </div>
-      <div class="legacy-changelog-chevron">›</div>
-    </div>
-
-    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="PORTAL / NASD footnote: then vs. now" onclick="openModal('modal-legacy-portal')">
-      <div class="legacy-changelog-body">
-        <div class="legacy-changelog-title">PORTAL / NASD Footnote <span class="legacy-tag">Legacy</span></div>
-        <div class="legacy-changelog-diff">
-          <span class="was">2000: apply for PORTAL via NASD, (202) 728-8479</span>
-          <span class="arrow">→</span>
-          <span class="now">2026: PORTAL retired; NASD absorbed into FINRA (2007)</span>
-        </div>
-      </div>
-      <div class="legacy-changelog-chevron">›</div>
-    </div>
-
-    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Underwriting phone directory: then vs. now" onclick="openModal('modal-legacy-phone-swap')">
-      <div class="legacy-changelog-body">
-        <div class="legacy-changelog-title">Underwriting Phone Directory <span class="legacy-tag">Legacy</span></div>
-        <div class="legacy-changelog-diff">
-          <span class="was">2000: Corporate 855-3704 · Municipal 855-3782</span>
-          <span class="arrow">→</span>
-          <span class="now">2026: numbers reassigned — verify before calling</span>
-        </div>
-      </div>
-      <div class="legacy-changelog-chevron">›</div>
-    </div>
-  </div>
-
-  <p class="legacy-changelog-note">Everything else — CUSIP fields, mailing addresses, required certifications — carries over from the original 2000 filing.</p>
-</div>
 
 
 <!-- ── STUDY GUIDE ── -->
@@ -6381,20 +6357,6 @@ window.addEventListener('hashchange', checkUrlHash);
 </script>
 <script>
 /* Document-specific JavaScript */
-
-// ── Legacy 2000 form comparison toggle ──
-function toggleLegacyPanel() {
-  const panel = document.getElementById('legacy-compare');
-  const btn = document.getElementById('legacyToggleBtn');
-  const label = document.getElementById('legacyToggleLabel');
-  if (!panel || !btn) return;
-  const isOpen = panel.classList.toggle('open');
-  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  if (label) label.textContent = isOpen ? 'Hide Changes Since 2000' : 'See What Changed Since 2000';
-  if (isOpen) {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
 
 // ── CUSIP example row fill-in ──
 function initCusipExampleRows() {
