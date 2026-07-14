@@ -2004,37 +2004,46 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: var(--bg-ivory);
-  border-bottom: 2px solid #1a1a1a;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
   font-family: 'DM Sans', sans-serif;
 }
 .legacy-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--ink);
-  color: #fff;
-  border: none;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
   border-radius: 100px;
-  padding: 7px 16px;
+  padding: 6px 14px;
   font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
-.legacy-toggle-btn:hover, .legacy-toggle-btn:focus-visible { background: var(--accent); outline: none; }
-.legacy-toggle-btn[aria-expanded="true"] { background: var(--accent); }
+.legacy-toggle-btn:hover, .legacy-toggle-btn:focus-visible {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  outline: none;
+}
+.legacy-toggle-btn[aria-expanded="true"] {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
 .legacy-toggle-hint {
   font-size: 0.68rem;
   color: var(--ink-muted);
 }
 
-/* ── Legacy Comparison Panel ── */
+/* ── Legacy Comparison Panel: compact changelog ── */
 .legacy-compare {
-  max-width: 900px;
+  max-width: 760px;
   margin: 0 auto 32px;
   display: none;
 }
@@ -2043,89 +2052,76 @@ body,
   font-size: 0.82rem;
   color: var(--ink-secondary);
   line-height: 1.7;
-  padding: 14px 4px 18px;
+  padding: 18px 4px 16px;
 }
 .legacy-compare-intro strong { color: var(--ink); }
-.legacy-sheet {
-  background: #f7f2e6;
-  color: #2b2418;
-  border: 1.5px solid #7a6a45;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 11px;
-  line-height: 1.55;
-  padding: 22px 26px;
-  margin-bottom: 18px;
-  position: relative;
+.legacy-changelog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.legacy-sheet::before {
-  content: "ORIGINAL — 06/00";
-  position: absolute;
-  top: -11px;
-  left: 20px;
-  background: #7a6a45;
-  color: #fdfaf1;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 100px;
-}
-.legacy-sheet h4 {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.legacy-sheet .legacy-sub {
-  text-align: center;
-  font-size: 10.5px;
-  margin-bottom: 12px;
-}
-.legacy-sheet .legacy-para {
-  font-size: 10px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid #7a6a45;
-  padding-bottom: 12px;
-}
-.legacy-sheet .legacy-field {
-  margin-bottom: 6px;
-}
-.legacy-sheet .legacy-section {
-  font-weight: 700;
-  text-decoration: underline;
-  text-transform: uppercase;
-  margin: 14px 0 8px;
-}
-.legacy-sheet .legacy-changed {
-  background: rgba(166,124,0,0.18);
-  border-bottom: 1.5px dotted #7a6a45;
+.legacy-changelog-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  padding: 0 1px;
+  transition: all 0.2s ease;
 }
-.legacy-sheet .legacy-changed:hover, .legacy-sheet .legacy-changed:focus-visible {
-  background: rgba(166,124,0,0.35);
+.legacy-changelog-item:hover, .legacy-changelog-item:focus-visible {
+  border-color: var(--accent-muted);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
   outline: none;
 }
-.legacy-diff-key {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
+.legacy-changelog-body { flex: 1; min-width: 0; }
+.legacy-changelog-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.legacy-changelog-diff {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+.legacy-changelog-diff .was {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+}
+.legacy-changelog-diff .arrow { color: var(--accent-muted); }
+.legacy-changelog-diff .now {
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+.legacy-changelog-chevron {
+  flex-shrink: 0;
+  color: var(--ink-faint);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.legacy-changelog-item:hover .legacy-changelog-chevron,
+.legacy-changelog-item:focus-visible .legacy-changelog-chevron {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+.legacy-changelog-note {
+  font-size: 0.72rem;
   color: var(--ink-muted);
   text-align: center;
-  margin-top: 4px;
-}
-.legacy-diff-key .swatch {
-  display: inline-block;
-  width: 12px; height: 12px;
-  background: rgba(166,124,0,0.35);
-  border: 1px solid #7a6a45;
-  vertical-align: middle;
-  margin-right: 4px;
-  border-radius: 2px;
+  margin-top: 14px;
 }
 
 /* ── CUSIP Table ── */
@@ -3101,9 +3097,9 @@ body,
   <div class="legacy-toggle-bar">
     <button type="button" class="legacy-toggle-btn" id="legacyToggleBtn" onclick="toggleLegacyPanel()" aria-expanded="false" aria-controls="legacy-compare">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span id="legacyToggleLabel">View Original 2000 Form (as filed)</span>
+      <span id="legacyToggleLabel">See What Changed Since 2000</span>
     </button>
-    <span class="legacy-toggle-hint">Compare field-by-field · <span class="legacy-tag">Legacy</span> = changed since 2000 · <span class="updated-tag">Updated</span> = new in 2026</span>
+    <span class="legacy-toggle-hint">5 fields differ from the original June 2000 questionnaire</span>
   </div>
   <div class="form-page form-page-1">
     <div class="form-grid-2col">
@@ -3861,84 +3857,72 @@ body,
 
 <div class="legacy-compare" id="legacy-compare">
   <p class="legacy-compare-intro">
-    Below is the questionnaire <strong>as originally filed in June 2000</strong> — before the June 2026 Operational Arrangements update. Text highlighted in <span class="legacy-diff-key"><span class="swatch"></span></span>gold is clickable and shows exactly what changed and why. Everything else on the 2000 form is unchanged in substance today.
+    The questionnaire's layout, required certifications, and DTC Participant / CUSIP fields are <strong>unchanged in substance</strong> since it was first filed in June 2000. Five things have genuinely changed under the June 2026 Operational Arrangements — click any one for the full then-vs-now detail.
   </p>
 
-  <div class="legacy-sheet">
-    <h4>The Depository Trust Company (DTC) Eligibility Questionnaire</h4>
-    <div class="legacy-sub">DTC is a subsidiary of The Depository Trust &amp; Clearing Corporation</div>
-    <div class="legacy-para">
-      To make a new issue of securities DTC eligible, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be
-      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-submission')">submitted to DTC's Underwriting Dept.</span>
-      at least 10 business days prior to the issue's closing date. If complete CUSIP INFORMATION (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least seven business days prior to the closing date. (With respect to corporate issues, upon pricing of the issue.)
+  <div class="legacy-changelog">
+    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="How you submit: then vs. now" onclick="openModal('modal-legacy-submission')">
+      <div class="legacy-changelog-body">
+        <div class="legacy-changelog-title">How You Submit <span class="updated-tag">Updated</span></div>
+        <div class="legacy-changelog-diff">
+          <span class="was">2000: mail or fax to 55 Water Street</span>
+          <span class="arrow">→</span>
+          <span class="now">2026: UW SOURCE / Underwriting Central (UWC)</span>
+        </div>
+      </div>
+      <div class="legacy-changelog-chevron">›</div>
     </div>
 
-    <div class="legacy-section">Issue Information</div>
-    <div class="legacy-field">Please check one of the following: ▢ Municipal ▢ Corporate ▢ Limited Underwriting¹ ▢ ABS ▢ CMO</div>
-    <div class="legacy-field">Please indicate whether or not the issue is a "security" as such term is defined in Article 8 of the New York Uniform Commercial Code. ▢ Yes ▢ No</div>
-    <div class="legacy-field">Please indicate whether or not the issuer is a United Kingdom entity. ▢ Yes ▢ No</div>
-    <div class="legacy-field">Please check at least one of the following, the issue is:</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Registered with the SEC</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Eligible for resale under Rule 144A² of the '33 Act</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Eligible for resale under Regulation S of the '33 Act</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Issuer relying on Section 3(c)(7) of the '40 Act</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Exempt under Rule 3(a)(2) of the '33 Act</div>
-    <div class="legacy-field" style="padding-left:16px">▢ Exempt under another exemption(s); indicate exemption(s): ______________</div>
-    <div class="legacy-field">Issuer Name/Issue Description: ______________________________________</div>
-    <div class="legacy-field">State of Incorporation or Municipality: ______________________________</div>
-    <div class="legacy-field">Issue Principal/Offering Amount: ____________________________________</div>
-    <div class="legacy-field">Share Quantity: ______________________________________________________</div>
-    <div class="legacy-field">Closing Date: ________/________/________</div>
-    <div class="legacy-field">Is this a Book-Entry-Only issue (with no certificates available to investors)? ▢ Yes ▢ No (If yes, a Letter of Representations is required.)</div>
-    <div class="legacy-field">Does this issue contain a put/tender feature? ▢ Yes ▢ No (If yes, for certificated issues a Tender Letter of Representations is required).</div>
-
-    <div class="legacy-section">Contact Information</div>
-    <div class="legacy-field">Lead Underwriter: ____________________________________________________</div>
-    <div class="legacy-field">Lead Underwriter Contact Phone: (____) ______________________________</div>
-    <div class="legacy-field">DTC Participant account number to be credited at the time of closing: __________</div>
-    <div class="legacy-field">If Lead Underwriter is not a DTC Participant, please provide clearing DTC Participant contact information.</div>
-    <div class="legacy-field">Clearing DTC Participant Contact Phone: (____) ______________________</div>
-    <div class="legacy-field">Transfer Agent / Contact Phone, Paying Agent / Contact Phone, Issuer's Counsel / Contact Phone, Remarketing Agent (if applicable), Tender Agent (if applicable) — <em>each with its own name and phone line, as on the current form.</em></div>
-
-    <div class="legacy-section">Delivery of Securities</div>
-    <div class="legacy-field">Will the securities be eligible as a FAST (Fast Automated Securities Transfer) issue? ▢ Yes ▢ No</div>
-    <div class="legacy-field">If no, provide the date the securities will be delivered to DTC: _____/_____/_____</div>
-    <div class="legacy-field">
-      Note: Please use the address listed on the CUSIP INFORMATION page to deliver securities to DTC
-      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-noon-deadline')">at least one business day before closing.</span>
-      For additional information, please contact DTC's Interface/Underwriting Department at the numbers provided.
+    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Delivery deadline: then vs. now" onclick="openModal('modal-legacy-noon-deadline')">
+      <div class="legacy-changelog-body">
+        <div class="legacy-changelog-title">Delivery Deadline <span class="updated-tag">Updated</span></div>
+        <div class="legacy-changelog-diff">
+          <span class="was">2000: one business day before closing, no time stated</span>
+          <span class="arrow">→</span>
+          <span class="now">2026: same, plus a 12:00 noon ET cutoff</span>
+        </div>
+      </div>
+      <div class="legacy-changelog-chevron">›</div>
     </div>
 
-    <div class="legacy-section">Submitted By [Please Check One]</div>
-    <div class="legacy-field">▢ Underwriter &nbsp; ▢ Financial Advisor &nbsp; ▢ Clearing DTC Participant</div>
-    <div class="legacy-field" style="margin-top:10px">
-      X ________________________________________
-      <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-signature')">(Authorized Signature)</span>
+    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Authorized signature: then vs. now" onclick="openModal('modal-legacy-signature')">
+      <div class="legacy-changelog-body">
+        <div class="legacy-changelog-title">Authorized Signature <span class="updated-tag">Updated</span></div>
+        <div class="legacy-changelog-diff">
+          <span class="was">2000: original wet-ink signature only</span>
+          <span class="arrow">→</span>
+          <span class="now">2026: electronic signatures permitted for U.S. entities</span>
+        </div>
+      </div>
+      <div class="legacy-changelog-chevron">›</div>
     </div>
-    <div class="legacy-field" style="margin-top:6px; font-size:9px;">06/00</div>
-    <div class="legacy-field" style="margin-top:10px; font-size:9px; border-top:1px solid #7a6a45; padding-top:8px;">
-      ¹ Service available for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.<br>
-      ² <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">For non-investment grade issues eligible for resale under Rule 144A, PORTAL eligibility is required. Contact the NASD at (202) 728-8479 to apply for PORTAL.</span>
+
+    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="PORTAL / NASD footnote: then vs. now" onclick="openModal('modal-legacy-portal')">
+      <div class="legacy-changelog-body">
+        <div class="legacy-changelog-title">PORTAL / NASD Footnote <span class="legacy-tag">Legacy</span></div>
+        <div class="legacy-changelog-diff">
+          <span class="was">2000: apply for PORTAL via NASD, (202) 728-8479</span>
+          <span class="arrow">→</span>
+          <span class="now">2026: PORTAL retired; NASD absorbed into FINRA (2007)</span>
+        </div>
+      </div>
+      <div class="legacy-changelog-chevron">›</div>
+    </div>
+
+    <div class="legacy-changelog-item" tabindex="0" role="button" aria-label="Underwriting phone directory: then vs. now" onclick="openModal('modal-legacy-phone-swap')">
+      <div class="legacy-changelog-body">
+        <div class="legacy-changelog-title">Underwriting Phone Directory <span class="legacy-tag">Legacy</span></div>
+        <div class="legacy-changelog-diff">
+          <span class="was">2000: Corporate 855-3704 · Municipal 855-3782</span>
+          <span class="arrow">→</span>
+          <span class="now">2026: numbers reassigned — verify before calling</span>
+        </div>
+      </div>
+      <div class="legacy-changelog-chevron">›</div>
     </div>
   </div>
 
-  <div class="legacy-sheet">
-    <h4>CUSIP Information</h4>
-    <div class="legacy-field" style="text-align:center; margin-bottom:10px;">CUSIP Number · Interest Rate · Final Maturity/Expiration Date · Principal/Offering Amount · Type of Issue* · Initial Offering Price (to the Public)</div>
-    <div class="legacy-field" style="text-align:center; color:#7a6a45;">— 10 blank rows for CUSIP entries —</div>
-    <div class="legacy-field" style="margin-top:10px;">* C = Capital Appreciation, P = Put, S = Serial, T = Term</div>
-    <div class="legacy-section">DTC Underwriting Department Phone Numbers (Area Code 212)</div>
-    <div class="legacy-field">Issue Eligibility — <span class="legacy-changed" tabindex="0" role="button" onclick="openModal('modal-legacy-phone-swap')">Corporate: 855-3704 · Municipal: 855-3782 · Fax: 855-3726/3728</span></div>
-    <div class="legacy-field">Underwriting Processing: 855-3744/3774 · Fax: 855-5003</div>
-    <div class="legacy-field">Interface/Underwriting: 855-8820/8821 · Fax: 855-8703/8707</div>
-    <div class="legacy-field">Authorization for Closing: 855-3752/3753/3754/3755 · Fax: 855-3607</div>
-    <div class="legacy-field">Department Managers: 855-3793/3733 · Fax: 855-3726/3728</div>
-    <div class="legacy-section">DTC Mailing Addresses</div>
-    <div class="legacy-field">Underwriting Department (to forward issue information) — Attention: Eligibility Department, The Depository Trust Company, 55 Water Street - 19th Floor, New York, NY 10041-0099</div>
-    <div class="legacy-field">Delivery of Securities to DTC (for underwriting distribution only) — Attention: Interface/Underwriting Dept., The Depository Trust Company, 55 Water Street; 1SL - (Underwriting Securities), New York, NY 10041-0099</div>
-  </div>
-
-  <p class="legacy-diff-key"><span class="swatch"></span> Click any highlighted passage above to see what changed and why, per the June 2026 Operational Arrangements.</p>
+  <p class="legacy-changelog-note">Everything else — CUSIP fields, mailing addresses, required certifications — carries over from the original 2000 filing.</p>
 </div>
 
 
@@ -6406,7 +6390,7 @@ function toggleLegacyPanel() {
   if (!panel || !btn) return;
   const isOpen = panel.classList.toggle('open');
   btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  if (label) label.textContent = isOpen ? 'Hide Original 2000 Form' : 'View Original 2000 Form (as filed)';
+  if (label) label.textContent = isOpen ? 'Hide Changes Since 2000' : 'See What Changed Since 2000';
   if (isOpen) {
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
