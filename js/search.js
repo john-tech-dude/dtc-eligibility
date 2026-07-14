@@ -1,58 +1,11 @@
 /* Client-side Search Functionality for DTC Eligibility Project */
 
-// Search index - will be populated with content from all documents
-let searchIndex = [];
-
-// Initialize search index with document content
-function initializeSearchIndex() {
-  // Define the documents and their content
-  const documents = [
-    {
-      id: 'index',
-      title: 'DTC Documents Collection',
-      url: 'index.html',
-      description: 'Main navigation and document collection index',
-      keywords: ['dtc', 'depository trust company', 'documents', 'index', 'navigation', 'teaching materials', 'forms', 'guides']
-    },
-    {
-      id: 'dtc-guide',
-      title: 'Securities Ownership Wizard — DTC Teaching Guide',
-      url: 'guides/dtc-guide.html',
-      description: 'Comprehensive teaching guide for DTC, DTCC & Cede & Co. securities infrastructure with interactive concept maps',
-      keywords: ['dtc', 'dtcc', 'cede & co', 'securities', 'ownership', 'clearing', 'settlement', 'broker', 'participant', 'nominee', 'book-entry', 'concept map', 'concept maps', 'euroclear', 't2s', 'nscc', 'ficc', 'ownership stack', 'street name', 'drs', 'collateral bridge', 'deposit', 'certificated deposit', 'provisional credit', 'physical certificate', 'medallion', 'jumbo certificate']
-    },
-    {
-      id: 'sf28-guide',
-      title: 'SF 28 — Affidavit of Individual Surety Teaching Guide',
-      url: 'guides/sf28-teaching-guide.html',
-      description: 'Enhanced teaching guide for SF 28 Affidavit of Individual Surety form',
-      keywords: ['sf 28', 'affidavit', 'individual surety', 'bond', 'guarantee', 'teaching guide', 'form']
-    },
-    {
-      id: 'questionnaire',
-      title: 'DTC Eligibility Questionnaire',
-      url: 'forms/dtc-eligibility-questionnaire.html',
-      description: 'Interactive eligibility assessment tool for DTC requirements with eligibility path concept map',
-      keywords: ['questionnaire', 'eligibility', 'assessment', 'requirements', 'operational arrangements', 'quiz', 'concept map', 'fast', 'transfer agent', 'letter of representations']
-    },
-    {
-      id: 'treasury',
-      title: 'Treasury International Bill of Exchange',
-      url: 'docs/treasury-international_bill_of_exchange.html',
-      description: 'Technical documentation for international bill of exchange transactions',
-      keywords: ['treasury', 'bill of exchange', 'international', 'trade finance', 'documentary collection', 'payment']
-    },
-    {
-      id: 'biblical',
-      title: 'DTC Biblical Exegesis',
-      url: 'docs/dtc-biblical-exegesis.html',
-      description: 'Theological analysis of DTC documents through Hebrew gematria and biblical typology',
-      keywords: ['biblical', 'exegesis', 'theology', 'hebrew', 'gematria', 'typology', 'sacred architecture', 'religious analysis']
-    }
-  ];
-
-  searchIndex = documents;
-}
+// The document/term index itself lives in search-index.js (auto-generated,
+// declared there as `const searchIndex = [...]`). Load search-index.js
+// BEFORE this file. This file only implements the query/render/wire-up
+// logic on top of that shared index — it must not redeclare `searchIndex`
+// itself, or the second <script> tag throws a redeclaration error and both
+// scripts fail to run.
 
 // Perform search query
 function performSearch(query) {
@@ -161,12 +114,16 @@ function setupSearch(searchInputId, resultsContainerId) {
 }
 
 // Initialize search when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initializeSearchIndex();
-    setupSearch('search-input', 'search-results');
-  });
-} else {
-  initializeSearchIndex();
+function initSearchUI() {
+  if (typeof searchIndex === 'undefined') {
+    console.error('search.js: `searchIndex` is not defined — make sure search-index.js is included before search.js.');
+    return;
+  }
   setupSearch('search-input', 'search-results');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSearchUI);
+} else {
+  initSearchUI();
 }

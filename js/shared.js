@@ -345,6 +345,25 @@ function initHotspots() {
   });
 }
 
+// Generic keyboard support for other clickable "pseudo-buttons"
+// (.legacy-tag, .updated-tag, .field-diff, and similar) that are marked
+// tabindex="0" role="button" with an inline onclick attribute. Real
+// <button>/<a> elements fire their click handler on Enter/Space
+// automatically; plain <span>/<div> elements do not, so without this a
+// keyboard user can Tab to one of these but Enter/Space does nothing.
+// .hotspot and .cm-node already have their own dedicated handling above,
+// so they're excluded here to avoid double-firing.
+function initGenericRoleButtons() {
+  document.querySelectorAll('[role="button"][tabindex="0"]:not(.hotspot):not(.cm-node)').forEach(el => {
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+}
+
 // Check URL hash to automatically open modals
 function checkUrlHash() {
   const hash = window.location.hash;
@@ -362,6 +381,7 @@ if (document.readyState === 'loading') {
     initTheme();
     initTOCSidebar();
     initHotspots();
+    initGenericRoleButtons();
     initConceptMapScrollHints();
     initReturnToTop();
     checkUrlHash();
@@ -370,6 +390,7 @@ if (document.readyState === 'loading') {
   initTheme();
   initTOCSidebar();
   initHotspots();
+  initGenericRoleButtons();
   initConceptMapScrollHints();
   initReturnToTop();
   checkUrlHash();

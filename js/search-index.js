@@ -1667,7 +1667,7 @@ const searchIndex = [
     "id": "modal-agent-confirmation",
     "title": "Agent Confirmation",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-agent-confirmation",
-    "description": "A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department within ten (10) business days after the Closing Date, confirming the agent has executed an Operational Arrangements Age...",
+    "description": "A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date, confirming the agent has executed an Operational Arrangements Age...",
     "keywords": [
       "agent",
       "confirmation"

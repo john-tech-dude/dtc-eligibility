@@ -2863,33 +2863,63 @@ body,
     <!-- Accent light: accent-light → faint accent-muted tint  (interactive nodes) -->
     <linearGradient id="gdef-accent" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   style="stop-color:var(--accent-light)"/>
-      <stop offset="100%" style="stop-color:var(--accent-muted);stop-opacity:0.22"/>
+      <stop offset="100%" style="stop-color:var(--accent-muted);stop-opacity:0.32"/>
     </linearGradient>
     <!-- Accent solid: accent → accent-hover  (primary / DTC nodes) -->
     <linearGradient id="gdef-accent-solid" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   style="stop-color:var(--accent)"/>
       <stop offset="100%" style="stop-color:var(--accent-hover)"/>
     </linearGradient>
-    <!-- Gold: gold-light → faint gold-muted tint  (required-document nodes) -->
+    <!-- Gold vivid: warm gold gradient (required-document nodes) -->
     <linearGradient id="gdef-gold" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   style="stop-color:var(--gold-light)"/>
-      <stop offset="100%" style="stop-color:var(--gold-muted);stop-opacity:0.20"/>
+      <stop offset="100%" style="stop-color:var(--gold-muted);stop-opacity:0.35"/>
     </linearGradient>
-    <!-- Green: green-light → faint green tint  (success / outcome nodes) -->
+    <!-- Gold solid: rich warm amber for step circles -->
+    <linearGradient id="gdef-gold-solid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--gold-muted)"/>
+      <stop offset="100%" style="stop-color:var(--gold-deep)"/>
+    </linearGradient>
+    <!-- Green: green-light → richer green tint  (success / outcome nodes) -->
     <linearGradient id="gdef-green" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   style="stop-color:var(--green-light)"/>
-      <stop offset="100%" style="stop-color:var(--green);stop-opacity:0.14"/>
+      <stop offset="100%" style="stop-color:var(--green);stop-opacity:0.22"/>
+    </linearGradient>
+    <!-- Green solid: for closing step circle -->
+    <linearGradient id="gdef-green-solid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--green)"/>
+      <stop offset="100%" style="stop-color:var(--green);stop-opacity:0.75"/>
+    </linearGradient>
+    <!-- Teal: for FAST program node — vibrant mid-tone -->
+    <linearGradient id="gdef-teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--teal-light)"/>
+      <stop offset="100%" style="stop-color:var(--teal);stop-opacity:0.28"/>
+    </linearGradient>
+    <!-- Teal solid: for FAST node circle accent -->
+    <linearGradient id="gdef-teal-solid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   style="stop-color:var(--teal)"/>
+      <stop offset="100%" style="stop-color:var(--teal-light);stop-opacity:0.6"/>
     </linearGradient>
     <!-- ── Filters ── -->
     <!-- Soft shadow — neutral ink undertone -->
-    <filter id="gdef-shadow" x="-10%" y="-14%" width="120%" height="136%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3.5"
-                    flood-color="var(--ink)" flood-opacity="0.09"/>
+    <filter id="gdef-shadow" x="-12%" y="-18%" width="124%" height="144%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4"
+                    flood-color="var(--ink)" flood-opacity="0.11"/>
     </filter>
     <!-- Medium shadow — accent-tinted, for primary nodes -->
-    <filter id="gdef-shadow-md" x="-12%" y="-16%" width="124%" height="140%">
-      <feDropShadow dx="0" dy="3" stdDeviation="5"
-                    flood-color="var(--accent)" flood-opacity="0.14"/>
+    <filter id="gdef-shadow-md" x="-14%" y="-20%" width="128%" height="148%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6"
+                    flood-color="var(--accent)" flood-opacity="0.18"/>
+    </filter>
+    <!-- Gold shadow for documentation nodes -->
+    <filter id="gdef-shadow-gold" x="-12%" y="-18%" width="124%" height="144%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4"
+                    flood-color="var(--gold)" flood-opacity="0.15"/>
+    </filter>
+    <!-- Green shadow for outcome/close nodes -->
+    <filter id="gdef-shadow-green" x="-12%" y="-18%" width="124%" height="144%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5"
+                    flood-color="var(--green)" flood-opacity="0.18"/>
     </filter>
     <!-- ── Shared arrow markers ── -->
     <marker id="gdef-arrow" viewBox="0 0 10 10" refX="9" refY="5"
@@ -2898,11 +2928,19 @@ body,
     </marker>
     <marker id="gdef-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent)"/>
+    </marker>
+    <marker id="gdef-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
     </marker>
     <marker id="gdef-arrow-green" viewBox="0 0 10 10" refX="9" refY="5"
             markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+    </marker>
+    <marker id="gdef-arrow-teal" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--teal)"/>
     </marker>
   </defs>
 </svg>
@@ -2998,7 +3036,7 @@ body,
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-  <span><strong>Content Updated:</strong> This guide reflects the <strong>June 2026 DTC Operational Arrangements</strong>. Obsolete references to PORTAL/NASD have been removed. Current requirements: UW SOURCE/UWC submission, Agent Confirmation (now due 10 business days after closing), OFAC compliance, and electronic signature guidance. <span class="legacy-tag">Legacy</span> tags mark original 2000 form fields that now have updated processes.</span>
+  <span><strong>Content Updated:</strong> This guide reflects the <strong>June 2026 DTC Operational Arrangements</strong>. Obsolete references to PORTAL/NASD have been removed. Current requirements: UW SOURCE/UWC submission, Agent Confirmation (due at least 3 business days prior to closing), OFAC compliance, and electronic signature guidance. <span class="legacy-tag">Legacy</span> tags mark original 2000 form fields that now have updated processes.</span>
 </div>
 
 <div class="doc-frame">
@@ -3108,7 +3146,7 @@ body,
   <ul>
     <li><strong>10 business days before closing:</strong> Submit completed questionnaire + offering statement/prospectus to DTC's <span class="hotspot" data-modal="underwriting-dept" tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> via <span class="hotspot" data-modal="uw-source" tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE or UWC</span>.</li>
     <li><strong>7 business days before closing:</strong> Provide complete <span class="hotspot" data-modal="cusip" tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (numbers, interest rates, final maturities) in writing.</li>
-    <li><strong>10 business days after closing:</strong> Transfer Agent must submit <span class="hotspot" data-modal="agent-confirmation" tabindex="0" role="button" onclick="openModal('modal-agent-confirmation')">Agent Confirmation</span> via email to DTC's Underwriting Department.</li>
+    <li><strong>At least 3 business days prior to closing:</strong> Transfer Agent must submit <span class="hotspot" data-modal="agent-confirmation" tabindex="0" role="button" onclick="openModal('modal-agent-confirmation')">Agent Confirmation</span> via email to DTC's Underwriting Department.</li>
     <li><strong>1 business day before closing:</strong> Deliver signed <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">Letter of Representations</span> (if BEO) and physical securities by 12:00 noon ET.</li>
     <li><strong>Corporate issues:</strong> CUSIP info due <em>upon pricing</em> (not a fixed pre-closing deadline).</li>
   </ul>
@@ -3120,7 +3158,7 @@ body,
 <div class="instruction-box">
   To make a new issue of securities <span class="hotspot" data-modal="dtc-eligible" data-tooltip="Registered to Cede &amp; Co. and serviceable through DTC's book-entry system." tabindex="0" role="button" onclick="openModal('modal-dtc-eligible')">DTC eligible</span>, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to <span class="hotspot" data-modal="dtc" data-tooltip="The Depository Trust Company — the central securities depository." tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span>'s <span class="hotspot" data-modal="underwriting-dept" data-tooltip="DTC's department that reviews and approves new issues for eligibility." tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> at least <strong>10 business days</strong> prior to the issue's <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>. (With respect to <span class="hotspot" data-modal="corporate" data-tooltip="A security issued by a business corporation, as opposed to a municipal or government issuer." tabindex="0" role="button" onclick="openModal('modal-corporate')">corporate</span> issues, upon pricing of the issue.)<br><br>
   If complete <span class="hotspot" data-modal="cusip" data-tooltip="CUSIP numbers, interest rates, and final maturities for each tranche of the issue." tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least <strong>seven business days</strong> prior to the <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>.<br><br>
-  <strong>Agent Confirmation:</strong> The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department within ten (10) business days after the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter and is prepared to perform its duties.<br><br>
+  <strong>Agent Confirmation:</strong> The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter and is prepared to perform its duties.<br><br>
   <strong>Electronic submission:</strong> DTC now accepts submissions through the <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's electronic portal for submitting new issue eligibility requests." tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE</span> or <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's newer electronic platform for underwriting submissions." tabindex="0" role="button" onclick="openModal('modal-uw-source')">Underwriting Central (UWC)</span> platforms. Paper submissions are still accepted but electronic is preferred.
 </div>
 
@@ -3456,7 +3494,7 @@ body,
       <li><strong>CUSIP Table:</strong> You need 10 rows (one per serial maturity). Each gets its own CUSIP, interest rate, and maturity date. Type code = "S" for Serial.</li>
       <li><strong>BEO:</strong> Yes — no certificates for investors. A <strong>Letter of Representations</strong> is required. Check if the State of Franklin already has a Blanket LOR on file with DTC. If yes, no new LOR needed.</li>
       <li><strong>Put/Tender:</strong> No — standard GO bonds without optional redemption features.</li>
-      <li><strong>Agent Confirmation:</strong> U.S. Bank (Transfer Agent) must submit confirmation via email within 10 business days after closing.</li>
+      <li><strong>Agent Confirmation:</strong> U.S. Bank (Transfer Agent) must submit confirmation via email at least 3 business days prior to closing.</li>
     </ul>
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Serial maturities multiply your CUSIP workload. Each maturity is a separate security in DTC's system. Verify the issuer's <span class="hotspot" data-modal="blor" tabindex="0" role="button" onclick="openModal('modal-blor')">BLOR</span> status before closing to avoid last-minute LOR execution.</div>
   </div>
@@ -3497,7 +3535,7 @@ body,
       <li><strong>State of Incorporation:</strong> "United Kingdom" — this may trigger a request for a UK legal opinion confirming DTC's rights.</li>
       <li><strong>LOR:</strong> Standard Issuer LOR plus the UK/Ireland rider. Because this is registered (not 144A/Reg S), no additional restriction rider is needed.</li>
       <li><strong>Signatures:</strong> Because the issuer is non-U.S., <strong>original manual signatures</strong> are required on the LOR. Electronic signatures are NOT permitted for non-U.S. entities per the OA.</li>
-      <li><strong>Agent Confirmation:</strong> Computershare must confirm within 10 business days after closing. Ensure they have an executed Operational Arrangements Agent Letter on file with DTC.</li>
+      <li><strong>Agent Confirmation:</strong> Computershare must confirm at least 3 business days prior to closing. Ensure they have an executed Operational Arrangements Agent Letter on file with DTC.</li>
       <li><strong>OFAC:</strong> The underwriter must confirm no <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')">OFAC sanctions</span> apply to Thames Industries or its principals.</li>
     </ul>
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Foreign issuers add layers. The UK rider, potential foreign legal opinion, and original signature requirement can each add days to the timeline. Start the LOR process early.</div>
@@ -3524,7 +3562,7 @@ body,
       <li><strong>Signatures:</strong> <strong>Original manual signatures</strong> required on ALL LOR components because the issuer is non-U.S. Electronic signatures are not permitted.</li>
       <li><strong>CUSIP:</strong> Must be <strong>distinct</strong> from any registered British Telecom notes. The dual 144A/Reg S structure requires separation from any U.S. registered securities of the same class.</li>
       <li><strong>Currency:</strong> £ (GBP) denomination — may trigger a <strong>non-U.S. currency rider</strong> in addition to the UK rider. Verify with DTC if both riders are required for GBP-denominated UK issuer securities.</li>
-      <li><strong>Agent Confirmation:</strong> Euroclear Bank must confirm within 10 business days after closing. Ensure they have an executed Operational Arrangements Agent Letter with DTC and understand BEO mechanics.</li>
+      <li><strong>Agent Confirmation:</strong> Euroclear Bank must confirm at least 3 business days prior to closing. Ensure they have an executed Operational Arrangements Agent Letter with DTC and understand BEO mechanics.</li>
       <li><strong>OFAC:</strong> Underwriter must confirm no <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')">OFAC sanctions</span> apply to British Telecom or its principals.</li>
     </ul>
     <div class="scenario-tip"><strong>Key Takeaway:</strong> This scenario represents maximum complexity — UK entity + dual 144A/Reg S + BEO + put feature + foreign currency. The combination of UK rider, potential currency rider, Tender LOR, and 144A restrictions means the LOR package becomes quite involved. Start the LOR process at least 3-4 weeks before closing, and verify with DTC whether both UK and currency riders are required for GBP-denominated issues.</div>
@@ -3536,7 +3574,7 @@ body,
   <div class="section-heading">Common Mistakes & How to Avoid Them</div>
   <div class="mistake-card">
     <h4>❌ Missing the Agent Confirmation</h4>
-    <p>The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department within 10 business days after the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties. This requirement was updated in the June 2026 OA (changed from pre-closing to post-closing timing).</p>
+    <p>The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department at least 3 business days prior to the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties. This requirement was updated in the June 2026 OA (changed from post-closing to pre-closing timing).</p>
   </div>
   <div class="mistake-card">
     <h4>❌ Wrong Certificate Size for Large Maturities</h4>
@@ -3568,12 +3606,12 @@ body,
   </p>
 
   <!-- Premium process-flow SVG timeline -->
-  <div class="diagram-box concept-map" role="img" aria-label="DTC eligibility process timeline: six sequential phases from pre-closing submission through post-closing Agent Confirmation">
+  <div class="diagram-box concept-map" role="img" aria-label="DTC eligibility process timeline: six sequential phases from pre-closing submission through closing day with Agent Confirmation at 3 business days prior">
     <div class="diagram-title">Eligibility Timeline — Working Back from Closing</div>
-    <svg class="process-flow-svg" viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg class="process-flow-svg" viewBox="0 0 780 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
       <!-- Horizontal spine -->
-      <line x1="54" y1="72" x2="706" y2="72"
+      <line x1="54" y1="72" x2="726" y2="72"
             stroke="var(--accent-muted)" stroke-width="2" stroke-dasharray="0"/>
 
       <!-- ── Step 1: 10 BD Pre-Close ── -->
@@ -3619,52 +3657,61 @@ body,
       <text x="360" y="155" text-anchor="middle" class="pf-step-sub">· Amounts</text>
 
       <!-- connector -->
-      <line x1="378" y1="72" x2="482" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
+      <line x1="378" y1="72" x2="422" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
 
-      <!-- ── Step 4: LOR + Securities ── -->
+      <!-- ── Step 4: Agent Confirmation ── -->
       <g filter="url(#gdef-shadow)">
-        <circle cx="500" cy="72" r="18" fill="url(#gdef-gold)"/>
-        <text x="500" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">4</text>
+        <circle cx="440" cy="72" r="18" fill="url(#gdef-gold)"/>
+        <text x="440" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">4</text>
       </g>
-      <rect x="452" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
-      <line x1="500" y1="90" x2="500" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
-      <text x="500" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">1 BD Pre-Close</text>
-      <text x="500" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">LOR + Securities</text>
-      <text x="500" y="141" text-anchor="middle" class="pf-step-sub">Signed LOR by</text>
-      <text x="500" y="155" text-anchor="middle" class="pf-step-sub">noon ET</text>
+      <rect x="392" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
+      <line x1="440" y1="90" x2="440" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
+      <text x="440" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">3 BD Pre-Close</text>
+      <text x="440" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Agent Confirm</text>
+      <text x="440" y="141" text-anchor="middle" class="pf-step-sub">Transfer Agent</text>
+      <text x="440" y="155" text-anchor="middle" class="pf-step-sub">via email</text>
 
       <!-- connector -->
-      <line x1="518" y1="72" x2="618" y2="72" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#gdef-arrow-green)"/>
+      <line x1="458" y1="72" x2="502" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
 
-      <!-- ── Step 5: Closing ── -->
-      <g filter="url(#gdef-shadow-md)">
-        <circle cx="636" cy="72" r="20" fill="url(#gdef-accent-solid)"/>
-        <text x="636" y="77" text-anchor="middle" class="pf-step-num" fill="#fff" style="font-size:12px">5</text>
+      <!-- ── Step 5: LOR + Securities ── -->
+      <g filter="url(#gdef-shadow)">
+        <circle cx="520" cy="72" r="18" fill="url(#gdef-gold)"/>
+        <text x="520" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">5</text>
       </g>
-      <rect x="584" y="98" width="104" height="66" rx="7" fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.6" filter="url(#gdef-shadow-md)"/>
-      <line x1="636" y1="92" x2="636" y2="98" stroke="var(--green)" stroke-width="1.4"/>
-      <text x="636" y="114" text-anchor="middle" class="pf-phase" fill="var(--green)">Closing Day</text>
-      <text x="636" y="127" text-anchor="middle" class="pf-step-title" fill="var(--green)">DTC Eligible ✓</text>
-      <text x="636" y="141" text-anchor="middle" class="pf-step-sub">Participant acct</text>
-      <text x="636" y="155" text-anchor="middle" class="pf-step-sub">credited</text>
+      <rect x="472" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
+      <line x1="520" y1="90" x2="520" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
+      <text x="520" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">1 BD Pre-Close</text>
+      <text x="520" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">LOR + Securities</text>
+      <text x="520" y="141" text-anchor="middle" class="pf-step-sub">Signed LOR by</text>
+      <text x="520" y="155" text-anchor="middle" class="pf-step-sub">noon ET</text>
 
-      <!-- ── Step 6: Agent Confirmation (post-close, below) ── -->
-      <line x1="636" y1="164" x2="636" y2="178" stroke="var(--ink-faint)" stroke-width="1.3" stroke-dasharray="4 3"/>
-      <rect x="582" y="178" width="108" height="26" rx="6" fill="url(#gdef-neutral)" stroke="var(--border)" stroke-width="1.1" filter="url(#gdef-shadow)"/>
-      <text x="636" y="189" text-anchor="middle" class="pf-phase" fill="var(--ink-muted)">+10 BD Post-Close</text>
-      <text x="636" y="200" text-anchor="middle" class="pf-step-sub">Agent Confirmation</text>
+      <!-- connector -->
+      <line x1="538" y1="72" x2="642" y2="72" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#gdef-arrow-green)"/>
+
+      <!-- ── Step 6: Closing ── -->
+      <g filter="url(#gdef-shadow-md)">
+        <circle cx="660" cy="72" r="20" fill="url(#gdef-accent-solid)"/>
+        <text x="660" y="77" text-anchor="middle" class="pf-step-num" fill="#fff" style="font-size:12px">6</text>
+      </g>
+      <rect x="608" y="98" width="104" height="66" rx="7" fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.6" filter="url(#gdef-shadow-md)"/>
+      <line x1="660" y1="92" x2="660" y2="98" stroke="var(--green)" stroke-width="1.4"/>
+      <text x="660" y="114" text-anchor="middle" class="pf-phase" fill="var(--green)">Closing Day</text>
+      <text x="660" y="127" text-anchor="middle" class="pf-step-title" fill="var(--green)">DTC Eligible ✓</text>
+      <text x="660" y="141" text-anchor="middle" class="pf-step-sub">Participant acct</text>
+      <text x="660" y="155" text-anchor="middle" class="pf-step-sub">credited</text>
 
       <!-- Phase rail labels above spine -->
       <text x="80"  y="46" text-anchor="middle" class="cm-zone-label">Pre-Close Preparation</text>
       <text x="360" y="46" text-anchor="middle" class="cm-zone-label">Documentation</text>
-      <text x="636" y="46" text-anchor="middle" class="cm-zone-label">Settlement</text>
+      <text x="660" y="46" text-anchor="middle" class="cm-zone-label">Settlement</text>
     </svg>
     <p class="cm-caption">Timelines are "standards, not deadlines" per the June 2026 OA — DTC may extend at its sole discretion, but always plan to the standard windows. <strong>BD = Business Days.</strong></p>
     <div class="cm-legend" aria-hidden="true">
       <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Review phase</span>
       <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Documentation phase</span>
       <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light);border-color:var(--green)"></span> Closing &amp; settlement</span>
-      <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Post-close requirement</span>
+      <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> Pre-close requirement</span>
     </div>
   </div>
 
@@ -3696,25 +3743,25 @@ body,
     <div class="flow-step">
       <div class="flow-step-num">4</div>
       <div class="flow-step-content">
+        <div class="flow-time">3 Business Days Pre-Close</div>
+        <h5>Agent Confirmation Received</h5>
+        <p>Transfer Agent submits Agent Confirmation via email to DTC's Underwriting Department, confirming it has executed an Operational Arrangements Agent Letter with DTC and can perform its duties. This timing was updated in the June 2026 OA from post-closing to pre-closing.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">5</div>
+      <div class="flow-step-content">
         <div class="flow-time">1 Business Day Pre-Close</div>
         <h5>LOR Delivery & Securities Deposit</h5>
         <p>Signed Letter of Representations delivered to DTC. Physical certificates (or FAST confirmation) delivered by 12:00 noon ET. For BEO issues, the master certificate is registered in the name of Cede &amp; Co.</p>
       </div>
     </div>
     <div class="flow-step">
-      <div class="flow-step-num">5</div>
+      <div class="flow-step-num">6</div>
       <div class="flow-step-content">
         <div class="flow-time">Closing Date</div>
         <h5>Closing & Eligibility Determination</h5>
         <p>DTC credits the Participant's account. Securities become available for book-entry trading and settlement. DTC issues final eligibility determination. If any issues arise, they are escalated to the Lead Underwriter contact.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-num">6</div>
-      <div class="flow-step-content">
-        <div class="flow-time">10 Business Days Post-Close</div>
-        <h5>Agent Confirmation Received</h5>
-        <p>Transfer Agent submits Agent Confirmation via email to DTC's Underwriting Department, confirming it has executed an Operational Arrangements Agent Letter with DTC and can perform its duties. This timing was updated in the June 2026 OA from pre-closing to post-closing.</p>
       </div>
     </div>
   </div>
@@ -3925,7 +3972,7 @@ body,
       <ul>
         <li>Lead Underwriter is a DTC Participant or has clearing Participant</li>
         <li>Transfer Agent has executed OA Agent Letter with DTC</li>
-        <li>Transfer Agent will submit Agent Confirmation within 10 business days after closing</li>
+        <li>Transfer Agent will submit Agent Confirmation at least 3 business days prior to closing</li>
         <li>Paying Agent coordinated with DTC income collection system</li>
         <li>Issuer's Counsel is independent, licensed, and experienced</li>
         <li>All phone numbers are direct lines (not general desks)</li>
@@ -3937,7 +3984,7 @@ body,
         <li><strong>10 days pre-close:</strong> Questionnaire + docs via UW SOURCE/UWC</li>
         <li><strong>7 days pre-close:</strong> CUSIP info in writing (municipal)</li>
         <li><strong>Upon pricing:</strong> CUSIP info (corporate)</li>
-        <li><strong>10 days post-close:</strong> Agent Confirmation from Transfer Agent</li>
+        <li><strong>3 days pre-close:</strong> Agent Confirmation from Transfer Agent (at least 3 business days prior)</li>
         <li><strong>1 day pre-close:</strong> LOR + securities delivery by noon ET</li>
         <li><strong>Closing day:</strong> DTC credits Participant account</li>
       </ul>
@@ -4042,7 +4089,7 @@ body,
       <div class="quiz-content">
         <h4>When must the Transfer Agent submit an Agent Confirmation to DTC?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q5" value="a"><span>3 business days before closing</span></label>
+          <label><input type="radio" name="q5" value="a"><span>At least 3 business days prior to closing</span></label>
           <label><input type="radio" name="q5" value="b"><span>10 business days after closing</span></label>
           <label><input type="radio" name="q5" value="c"><span>7 business days before closing</span></label>
           <label><input type="radio" name="q5" value="d"><span>15 business days after closing</span></label>
@@ -4292,7 +4339,7 @@ body,
   <nav class="footer-site-nav" aria-label="Site navigation">
     <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../sitemap.html">Site Map</a>
+    <a href="../../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../../index.html#documents">All Documents</a>
   </nav>
@@ -4313,11 +4360,11 @@ body,
 <script>
 // ── Quiz Logic ──
 const quizAnswers = {
-  q1: { correct: 'c', explanation: 'The June 2026 OA requires submission at least 10 business days prior to closing (7 days for CUSIP info, 10 days after closing for Agent Confirmation). <strong>Definition:</strong> Closing date is when securities are issued and funds are exchanged.' },
+  q1: { correct: 'c', explanation: 'The June 2026 OA requires submission at least 10 business days prior to closing (7 days for CUSIP info, 3 days prior to closing for Agent Confirmation). <strong>Definition:</strong> Closing date is when securities are issued and funds are exchanged.' },
   q2: { correct: 'b', explanation: 'BEO issues require a Letter of Representations (LOR) — either a Blanket LOR (BLOR) or Issuer LOR (ILOR). Agent Confirmation is separate, Tender LOR is for put features, and Indemnity Letters are for restricted issuers. <strong>Definition:</strong> BEO (Book-Entry-Only) means no physical certificates exist; securities exist only as electronic entries.' },
   q3: { correct: 'b', explanation: 'PORTAL is obsolete. Per the current OA, Rule 144A issues require a distinct CUSIP and a rider to the LOR. No separate "PORTAL eligibility" is required. <strong>Definition:</strong> Rule 144A allows resale of restricted securities to Qualified Institutional Buyers (QIBs).' },
   q4: { correct: 'b', explanation: 'If any single maturity exceeds $500 million, the issuer must provide multiple certificates: one for each $500M tranche plus one for the remainder. A single oversized certificate will be rejected. <strong>Note:</strong> Exactly $500M requires only one certificate; the rule applies to amounts exceeding $500M.' },
-  q5: { correct: 'b', explanation: 'The Transfer Agent must submit an Agent Confirmation via email to DTC\'s Underwriting Department within 10 business days after the Closing Date, per the June 2026 OA. This timing was changed from pre-closing to post-closing. <strong>Definition:</strong> Agent Confirmation confirms the Transfer Agent has executed an OA Agent Letter and is prepared to perform its duties.' },
+  q5: { correct: 'a', explanation: 'The Transfer Agent must submit an Agent Confirmation via email to DTC\'s Underwriting Department at least 3 business days prior to the Closing Date, per the June 2026 OA. This timing was changed from post-closing to pre-closing. <strong>Definition:</strong> Agent Confirmation confirms the Transfer Agent has executed an OA Agent Letter and is prepared to perform its duties.' },
   q6: { correct: 'b', explanation: 'For non-U.S. entities, original manual signatures are required on the LOR. Electronic signatures are NOT permitted for non-U.S. entities per the OA. <strong>Key distinction:</strong> U.S. entities may use electronic signatures per June 2026 OA.' },
   q7: { correct: 'c', explanation: 'Each serial maturity receives its own CUSIP and row in the CUSIP table. A 2026–2035 serial issue with 10 maturities requires 10 CUSIPs. <strong>Definition:</strong> Serial maturities mean multiple principal payment dates instead of a single bullet maturity.' },
   q8: { correct: 'b', explanation: 'A Blanket Issuer LOR (BLOR) covers all DTC-eligible securities of a particular issuer and does not expire. An ILOR applies only to a single issuance. <strong>Definition:</strong> BLOR provides ongoing eligibility without requiring new LORs for each issue.' },
@@ -4497,7 +4544,7 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Electronic Submission Platform</div>
         <div class="def-word">UW SOURCE / UWC</div>
-        <p>DTC's online platforms for submitting eligibility requests, offering documents, and supporting materials. UW SOURCE (Securities Origination, Underwriting and Reliable Corporate Action Environment) and Underwriting Central (UWC) have replaced paper-based submission as the preferred method.</p>
+        <p>DTC's online platforms for submitting eligibility requests, offering documents, and supporting materials. UW SOURCE and Underwriting Central (UWC) have replaced paper-based submission as the preferred method.</p>
       </div>
       <p class="modal-section-title">What Changes with Electronic Submission</p>
       <ul>
@@ -4520,17 +4567,17 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Updated Requirement (June 2026 OA)</div>
         <div class="def-word">Agent Confirmation</div>
-        <p>A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department within ten (10) business days after the Closing Date, confirming the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties.</p>
+        <p>A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date, confirming the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties for the specific issue.</p>
       </div>
       <p class="modal-section-title">Why This Matters</p>
-      <p>The Agent Confirmation requirement was updated in the June 2026 OA to provide post-closing timing (changed from 3 business days before closing). This ensures Transfer Agents are properly onboarded and contractually bound to DTC while providing flexibility for the closing process.</p>
+      <p>The Agent Confirmation requirement was updated in the June 2026 OA to provide pre-closing timing (changed from post-closing to at least 3 business days before closing). This ensures Transfer Agents are properly onboarded and contractually bound to DTC before the security can be marked eligible for book-entry delivery and settlement.</p>
       <p class="modal-section-title">What the Transfer Agent Must Confirm</p>
       <ul>
         <li>It has executed an <strong>Operational Arrangements Agent Letter</strong> with DTC.</li>
         <li>It understands its responsibilities for the specific issue (income collection, transfers, corporate actions).</li>
         <li>It will comply with DTC's instructions and timelines.</li>
       </ul>
-      <div class="tip-box"><strong>Action item:</strong> Confirm with your Transfer Agent that they have an active OA Agent Letter with DTC <em>before</em> the closing date. If they don't, the agent must execute one, which can take several days. The Agent Confirmation itself is due within 10 business days after closing.</div>
+      <div class="tip-box"><strong>Action item:</strong> Confirm with your Transfer Agent that they have an active OA Agent Letter with DTC <em>before</em> the closing date. If they don't, the agent must execute one, which can take several days. The Agent Confirmation itself is due at least 3 business days prior to closing.</div>
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A — Eligibility Requirements (June 2026). <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>
@@ -4550,7 +4597,7 @@ function resetQuiz() {
       <ul>
         <li><strong>10 business days before closing:</strong> Completed questionnaire + preliminary offering document (via UW SOURCE/UWC preferred)</li>
         <li><strong>7 business days before closing:</strong> CUSIP numbers, principal amount, interest rate, maturity date</li>
-        <li><strong>10 business days after closing:</strong> Agent Confirmation from Transfer Agent</li>
+        <li><strong>At least 3 business days prior to closing:</strong> Agent Confirmation from Transfer Agent</li>
         <li><strong>1 business day before closing:</strong> Signed Letter of Representations</li>
         <li><strong>12:00 p.m. ET, business day before closing:</strong> Physical certificates or FAST confirmation</li>
       </ul>
@@ -5152,7 +5199,7 @@ function resetQuiz() {
       <ul>
         <li><strong>2000:</strong> Questionnaire and offering documents submitted on paper via mail or fax; no electronic portal existed.</li>
         <li><strong>Today:</strong> DTC accepts submissions through the UW SOURCE or Underwriting Central (UWC) electronic platforms. Paper submissions are still technically accepted but electronic is strongly preferred and faster.</li>
-        <li><strong>Also new since 2000:</strong> The requirement for Transfer Agents to submit an Agent Confirmation via email within 10 business days after closing — this had no equivalent on the 2000 form.</li>
+        <li><strong>Also new since 2000:</strong> The requirement for Transfer Agents to submit an Agent Confirmation via email at least 3 business days prior to closing — this had no equivalent on the 2000 form.</li>
       </ul>
     </div>
   </div>
@@ -5226,13 +5273,13 @@ function resetQuiz() {
         <p>An institution (typically a bank or trust company) that maintains the official record of security ownership, processes transfers, and interfaces with DTC's book-entry systems.</p>
       </div>
       <p>The Transfer Agent must have executed an Operational Arrangements Agent Letter with DTC before it can act as a FAST Agent or process transfers through DTC's systems. The Transfer Agent is a required contact on the eligibility questionnaire because DTC needs direct coordination with them to process book-entry movements.</p>
-      <p><strong>Current requirement:</strong> The Transfer Agent must submit an <strong>Agent Confirmation</strong> via email to DTC's Underwriting Department within 10 business days after the Closing Date, per the June 2026 OA. This timing was changed from pre-closing to post-closing.</p>
+      <p><strong>Current requirement:</strong> The Transfer Agent must submit an <strong>Agent Confirmation</strong> via email to DTC's Underwriting Department at least 3 business days prior to the Closing Date, per the June 2026 OA. This timing was changed from post-closing to pre-closing.</p>
       
       <p class="modal-section-title">Transfer Agent Compliance Requirements</p>
       <p>DTC's operational arrangements specify detailed compliance requirements for transfer agents:</p>
       <ul>
         <li><strong>Operational Arrangements Agent Letter:</strong> Must execute this agreement with DTC before processing any DTC-eligible securities</li>
-        <li><strong>Agent Confirmation:</strong> Must confirm within 10 business days after closing that they have executed required agreements and are prepared to perform duties</li>
+        <li><strong>Agent Confirmation:</strong> Must confirm at least 3 business days prior to closing that they have executed required agreements and are prepared to perform duties</li>
         <li><strong>Authentication Dates:</strong> Must properly date all certificate authentications and transfer processing</li>
         <li><strong>Notice Requirements:</strong> Must provide required notices to DTC for name changes, address changes, and other corporate events</li>
         <li><strong>Legal/Tax Notices:</strong> Must post legal and tax notices to DTC's LENS system when required</li>
