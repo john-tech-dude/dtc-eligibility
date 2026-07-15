@@ -846,13 +846,13 @@
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
-  <a href="../index.html" class="external">DTC Documents Index</a>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
   <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
   <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
   <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
-  <a href="../docs/treasury-international_bill_of_exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
   <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
 </div>
 
@@ -891,9 +891,9 @@
 <div class="wrap">
 
 <nav class="breadcrumbs" aria-label="Breadcrumb navigation">
-  <a href="../index.html">Home</a>
+  <a href="../../index.html">Home</a>
   <span class="breadcrumb-separator">›</span>
-  <a href="../index.html">Documents</a>
+  <a href="../../index.html">Documents</a>
   <span class="breadcrumb-separator">›</span>
   <span class="breadcrumb-current">Teaching Guides</span>
   <span class="breadcrumb-separator">›</span>
@@ -1161,7 +1161,7 @@
     </div>
     <div class="red-flag-card">
       <h4>Unattached Asset Documentation</h4>
-      <p>The form explicitly states: <strong>"Documentation Of The Pledged Asset Must Be Attached."</strong> Missing certified evidence of title, recorded liens, tax assessments, or appraisals will delay or prevent acceptance.</p>
+      <p>The form explicitly states: <strong>"Documentation Of The Pledged Asset Must Be Attached."</strong> Under current FAR 28.203-1, that documentation centers on Treasury-eligible securities (CUSIP, par amount, account statements, broker/financial-institution confirmations). Historical real-estate packages (evidence of title, tax assessments, appraisals) applied under pre-2021 practice and are not acceptable collateral today.</p>
     </div>
     <div class="red-flag-card">
       <h4>Undisclosed Prior Pledges (3-Year Lookback)</h4>
@@ -1184,23 +1184,25 @@
     Work through realistic surety situations to see how SF 28 applies in practice. Click a tab to switch scenarios.
   </p>
   <p style="font-size: 0.78rem; color: var(--red); margin-bottom: 16px; padding: 8px 12px; background: var(--red-light); border-left: 3px solid var(--red);">
-    <strong>Note:</strong> Following a February 2021 FAR rule change, real estate is no longer acceptable collateral for individual sureties. Current rules require Treasury-eligible securities (31 CFR part 225). The real estate scenarios below reflect historical practice.
+    <strong>Current rule (post–February 2021):</strong> FAR 28.203-1 requires individual sureties to pledge assets that meet Treasury Bureau of the Fiscal Service eligibility (31 CFR part 225) — typically U.S. government securities and other listed eligible obligations. <strong>Real estate is not acceptable collateral under current rules.</strong> Scenario A is retained only as a historical teaching case (pre-2021 practice). Scenario B reflects current securities-based pledging.
   </p>
   <div class="scenario-tabs" role="tablist">
-    <button class="scenario-tab active" data-target="sc-a" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate Surety</button>
-    <button class="scenario-tab" data-target="sc-b" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Securities Portfolio Surety</button>
-    <button class="scenario-tab" data-target="sc-c" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: Co-Surety Arrangement</button>
-    <button class="scenario-tab" data-target="sc-d" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Foreign Contract Surety</button>
+    <button class="scenario-tab active" data-target="sc-a" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Real Estate (Historical)</button>
+    <button class="scenario-tab" data-target="sc-b" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Securities Portfolio (Current)</button>
+    <button class="scenario-tab" data-target="sc-c" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: Co-Surety (Historical)</button>
+    <button class="scenario-tab" data-target="sc-d" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Outlying Area Surety</button>
   </div>
 
   <div class="scenario-panel active" id="sc-a">
     <div class="scenario-meta">
+      <span class="scenario-tag">Historical (pre-2021)</span>
       <span class="scenario-tag">Real Estate</span>
       <span class="scenario-tag">$500K Bond</span>
       <span class="scenario-tag">Single Surety</span>
     </div>
-    <h4>Scenario A: John Doe — <span class="hotspot" data-modal="performance-bond" tabindex="0" role="button" onclick="openModal('modal-performance-bond')">Performance Bond</span> on <span class="hotspot" data-modal="construction-company" tabindex="0" role="button" onclick="openModal('modal-construction-company')">Construction Contract</span></h4>
-    <p><strong>The Situation:</strong> John Doe owns a $1.2 million home free and clear in Fairfax County, Virginia. He is asked to serve as individual surety on a $500,000 performance bond for a friend's construction company.</p>
+    <h4>Scenario A (Historical): John Doe — <span class="hotspot" data-modal="performance-bond" tabindex="0" role="button" onclick="openModal('modal-performance-bond')">Performance Bond</span> on <span class="hotspot" data-modal="construction-company" tabindex="0" role="button" onclick="openModal('modal-construction-company')">Construction Contract</span></h4>
+    <p style="font-size:0.85rem;padding:8px 12px;background:var(--gold-light);border-left:3px solid var(--gold);margin-bottom:12px;"><strong>Historical teaching case only:</strong> This walkthrough shows how real estate was commonly documented on SF 28 <em>before</em> the February 2021 FAR individual-surety reforms. It is <strong>not</strong> a model for a current affidavit under FAR 28.203-1.</p>
+    <p><strong>The Situation (pre-2021 rules):</strong> John Doe owns a $1.2 million home free and clear in Fairfax County, Virginia. He is asked to serve as individual surety on a $500,000 performance bond for a friend's construction company.</p>
     <p><strong>SF 28 Walkthrough:</strong></p>
     <ul>
       <li><strong>Field 1 (Name):</strong> John Michael Doe — must match the name on the property deed exactly.</li>
@@ -1213,11 +1215,12 @@
       <li><strong>Field 10 (Signature):</strong> Original ink signature required. John signs in blue or black ink.</li>
       <li><strong>Field 12 (Notary):</strong> A Virginia notary public administers the oath, signs, affixes <span class="hotspot" data-modal="notary-seal" tabindex="0" role="button" onclick="openModal('modal-notary-seal')">seal</span>, and notes <span class="hotspot" data-modal="notary-commission" tabindex="0" role="button" onclick="openModal('modal-notary-commission')">commission expiration</span> date.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Real estate is the most common pledged asset for individual sureties. The legal description must be precise, the appraisal must be current (within 6 months), and the title must be clean. Net worth ($1.2M) exceeds penal amount ($500K) by a comfortable margin.</div>
+    <div class="scenario-tip"><strong>Historical takeaway (pre-2021):</strong> Under the old rules, real estate was a common pledged asset. Practitioners required a precise legal description, a current appraisal (within 6 months), and clean title so unencumbered equity could support the penal amount ($1.2M value vs. $500K bond in this example). <strong>Under current FAR 28.203-1, real property is not acceptable collateral</strong> — use Scenario B for modern practice.</div>
   </div>
 
   <div class="scenario-panel" id="sc-b">
     <div class="scenario-meta">
+      <span class="scenario-tag">Current practice</span>
       <span class="scenario-tag">Securities</span>
       <span class="scenario-tag">$250K Bond</span>
       <span class="scenario-tag">Broker-Held</span>
@@ -1234,7 +1237,7 @@
         <ul>
           <li>CUSIP: 912828XM6 | Description: U.S. Treasury Note 2.875% due 05/15/2028 | Par: $150,000 | Market Value: $148,500</li>
           <li>CUSIP: 912828XN4 | Description: U.S. Treasury Note 3.125% due 11/15/2029 | Par: $100,000 | Market Value: $102,000</li>
-          <li>CUSIP: 912828XO2 | Description: U.S. Treasury Bill due 08/15/2025 | Par: $150,000 | Market Value: $149,250</li>
+          <li>CUSIP: 91282CJL6 | Description: U.S. Treasury Note 4.250% due 02/15/2030 | Par: $150,000 | Market Value: $149,250</li>
         </ul>
         Total pledged value: $399,750 (exceeds $250K penal amount).
       </li>
@@ -1242,17 +1245,19 @@
       <li><strong>Field 9 (Prior Pledges):</strong> "None. These Treasury securities have never been pledged as surety on any prior bond within the past three years."</li>
       <li><strong>Attached Documentation:</strong> Fidelity account statement (most recent month), CUSIP verification printout, broker attestation letter confirming sole ownership and no encumbrances.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Securities are excellent surety assets because they are liquid and easily valued. U.S. Treasuries are preferred because they carry minimal credit risk. Always verify the account is non-margin (no loans against the securities) and obtain a broker attestation letter.</div>
+    <div class="scenario-tip"><strong>Key Takeaway (current practice):</strong> Under FAR 28.203-1, Treasury-eligible securities are the standard pledged assets for individual sureties. They are liquid and easily valued by CUSIP and market price. Always verify the account is non-margin (no loans against the securities), document CUSIP and par amounts, and obtain a broker attestation letter.</div>
   </div>
 
   <div class="scenario-panel" id="sc-c">
     <div class="scenario-meta">
+      <span class="scenario-tag">Historical (pre-2021)</span>
       <span class="scenario-tag">Co-Surety</span>
       <span class="scenario-tag">$1M Bond</span>
       <span class="scenario-tag">Two Sureties</span>
     </div>
-    <h4>Scenario C: Brothers Serving as Co-Sureties</h4>
-    <p><strong>The Situation:</strong> Two brothers, Robert and William Chen, each own a $750,000 condominium in Manhattan. Their father's construction company needs a $1,000,000 performance bond. Each brother agrees to pledge his condo as co-surety.</p>
+    <h4>Scenario C (Historical): Brothers Serving as Co-Sureties</h4>
+    <p style="font-size:0.85rem;padding:8px 12px;background:var(--gold-light);border-left:3px solid var(--gold);margin-bottom:12px;"><strong>Historical teaching case only:</strong> Co-surety mechanics still matter, but real-property pledges are not acceptable under current FAR 28.203-1. For a current co-surety example, each surety would need sufficient Treasury-eligible securities.</p>
+    <p><strong>The Situation (pre-2021 rules):</strong> Two brothers, Robert and William Chen, each own a $750,000 condominium in Manhattan. Their father's construction company needs a $1,000,000 performance bond. Each brother agrees to pledge his condo as co-surety.</p>
     <p><strong>SF 28 Walkthrough:</strong></p>
     <ul>
       <li><strong>Two separate SF 28 forms are required</strong> — one for each co-surety. Each brother completes his own affidavit.</li>
@@ -1264,12 +1269,13 @@
       <li><strong>Field 9 (Prior Pledges):</strong> Both: "None within the past three years."</li>
       <li><strong>Notarization:</strong> Each brother must have his own affidavit notarized separately. They cannot share a single notarization.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Co-sureties must each file a separate SF 28. The "jointly and severally" language means each surety is individually liable for the full bond amount. Net worth calculations must account for ALL encumbrances, not just the pledged property. A mortgage reduces available equity.</div>
+    <div class="scenario-tip"><strong>Historical takeaway:</strong> Co-sureties must each file a separate SF 28. The "jointly and severally" language means each surety is individually liable for the full bond amount. Net worth calculations must account for ALL encumbrances. Under current FAR 28.203-1, each co-surety would need sufficient Treasury-eligible securities rather than real estate equity.</div>
   </div>
 
   <div class="scenario-panel" id="sc-d">
     <div class="scenario-meta">
-      <span class="scenario-tag">Foreign Contract</span>
+      <span class="scenario-tag">Current citizenship rule</span>
+      <span class="scenario-tag">Outlying area</span>
       <span class="scenario-tag">Permanent Resident</span>
       <span class="scenario-tag">Guam</span>
     </div>
@@ -1277,17 +1283,17 @@
     <p><strong>The Situation:</strong> Maria Santos is a permanent resident of Guam (a U.S. territory) but not a U.S. citizen. She holds a Green Card. A contracting officer in Guam awards a $300,000 construction contract to a local builder, and Maria is asked to serve as individual surety.</p>
     <p><strong>SF 28 Walkthrough:</strong></p>
     <ul>
-      <li><strong>Citizenship Exception:</strong> Because the contracting officer is located in an outlying area (Guam), Maria <strong>does not need to be a U.S. citizen</strong>. Her permanent residency in Guam satisfies the requirement per FAR 28.203 and SF 28 Instructions, Item 3.</li>
+      <li><strong>Citizenship Exception (still current):</strong> Because the contracting officer is located in an outlying area (Guam), Maria <strong>does not need to be a U.S. citizen</strong>. Her permanent residency in Guam satisfies the requirement per SF 28 Instructions, Item 3, and FAR 28.203.</li>
       <li><strong>Field 1 (Name):</strong> Maria Elena Santos.</li>
       <li><strong>Field 2A (Address):</strong> 123 Beach Road, Tamuning, GU 96913.</li>
       <li><strong>Field 3 (Occupation):</strong> Small business owner, 15 years — operates a retail store in Guam.</li>
-      <li><strong>Field 7 (Assets):</strong> Commercial property at 456 Marine Drive, Tamuning, GU. Legal description per Guam Recorder of Deeds. Market value: $500,000 (certified appraisal). Tax assessment: $480,000.</li>
-      <li><strong>Field 8 (Encumbrances):</strong> "First mortgage with Bank of Guam in amount of $200,000, current balance $150,000. Current on all payments." Attach mortgage statement and payment history.</li>
-      <li><strong>Net Worth:</strong> $500,000 value - $150,000 mortgage = $350,000 equity. This exceeds the $300,000 penal amount.</li>
-      <li><strong>Field 9 (Prior Pledges):</strong> "This property was pledged as surety on a $100,000 bid bond for Guam Public Works Contract #2022-044, executed March 15, 2022. That contract closed successfully on June 30, 2022, and the bond was released."</li>
+      <li><strong>Field 7 (Assets — current rules):</strong> U.S. Treasury securities held at Bank of Guam Trust: CUSIP 912828ZM7 | U.S. Treasury Note due 08/15/2031 | Par $400,000 | Market value $398,000 (Treasury-eligible under 31 CFR part 225).</li>
+      <li><strong>Field 8 (Encumbrances):</strong> "None. Securities are held in a non-margin account; no loans or liens."</li>
+      <li><strong>Net Worth / pledged value:</strong> $398,000 market value exceeds the $300,000 penal amount after any applicable Treasury margin/haircut is applied per FAR 28.203-1.</li>
+      <li><strong>Field 9 (Prior Pledges):</strong> "These securities were pledged as surety on a $100,000 bid bond for Guam Public Works Contract #2022-044, executed March 15, 2022. That contract closed successfully on June 30, 2022, and the bond was released."</li>
       <li><strong>Notarization:</strong> Must be notarized by a Guam notary public or other authorized official.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> The citizenship requirement is relaxed for outlying areas and foreign countries — permanent residency suffices. However, all other requirements (original signatures, notarization, <span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span> verification, documentation) remain strict. Prior pledges within the 3-year lookback must be fully disclosed even if the bond was successfully released.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> The citizenship requirement is relaxed for outlying areas and foreign countries — permanent residency suffices. Asset rules still follow FAR 28.203-1 (Treasury-eligible securities, not real estate). Original signatures, notarization, <span class="hotspot" data-modal="net-worth" tabindex="0" role="button" onclick="openModal('modal-net-worth')">net worth</span> / pledged-value verification, and the 3-year prior-pledge disclosure remain strict.</div>
   </div>
 </div>
 
@@ -1298,8 +1304,8 @@
     <p>SF 28 Instructions, Item 4 explicitly states: "All signatures of the affidavit submitted must be originals. Affidavits bearing reproduced signatures are not acceptable." DocuSign, Adobe Sign, stamped signatures, and photocopies are all rejected. The surety must physically sign the form in the presence of a notary (or have the notary witness the signature).</p>
   </div>
   <div class="mistake-card">
-    <h4>❌ Failing to Disclose a Mortgage on Pledged Real Estate</h4>
-    <p>A $600,000 house with a $400,000 mortgage has only $200,000 in equity. If the bond penal amount is $250,000, the surety is under-capitalized. The contracting officer will reject the affidavit. Always calculate net equity (market value minus all liens and encumbrances) and ensure it exceeds the penal amount.</p>
+    <h4>❌ Pledging Real Estate Under Current FAR Rules</h4>
+    <p>Since the February 2021 individual-surety reforms, FAR 28.203-1 requires assets that meet Treasury eligibility under 31 CFR part 225 (typically U.S. government securities). Real property is no longer acceptable collateral. A current affidavit that lists only real estate will be rejected regardless of equity. (Under the historical pre-2021 regime, failing to net out a mortgage was a related error — e.g., a $600,000 house with a $400,000 mortgage left only $200,000 equity against a $250,000 bond.)</p>
   </div>
   <div class="mistake-card">
     <h4>❌ Omitting the 3-Year Prior Pledge History</h4>
@@ -1348,14 +1354,15 @@
       </ul>
     </div>
     <div class="study-card">
-      <h4>Asset & Documentation Checklist (Fields 7–9)</h4>
+      <h4>Asset &amp; Documentation Checklist (Fields 7–9) — Current Rules</h4>
       <ul>
-        <li>Field 7: All CUSIP numbers are valid and securities are in a <strong>non-margin account</strong></li>
-        <li>Real estate: Legal description, street address, market value, and tax assessment attached</li>
-        <li>Certified appraisal for real estate (dated within 6 months)</li>
-        <li>Field 8: All liens, judgments, mortgages, and tax delinquencies fully disclosed</li>
-        <li>Field 9: Complete 3-year history of all prior bond pledges disclosed</li>
+        <li>Field 7: Assets are Treasury-eligible under 31 CFR part 225 (typically U.S. government securities); all CUSIP numbers and par amounts are complete and accurate</li>
+        <li>Securities are held in a <strong>non-margin account</strong> and available to be pledged; market values and any required haircuts/margins are documented</li>
+        <li>Financial institution / RTN and contact details support verification of the pledge</li>
+        <li>Field 8: All liens, claims, and encumbrances on pledged assets are fully disclosed</li>
+        <li>Field 9: Complete 3-year history of all prior bond pledges is disclosed</li>
         <li><strong>All supporting documentation physically attached</strong> to the affidavit</li>
+        <li style="color:var(--ink-tertiary);"><em>Historical only (pre-2021):</em> real-estate legal description, appraisal, and tax assessment — not acceptable collateral under current FAR 28.203-1</li>
       </ul>
     </div>
     <div class="study-card">
@@ -1451,10 +1458,10 @@
     <div class="quiz-card" data-q="5">
       <div class="quiz-num">5</div>
       <div class="quiz-content">
-        <h4>What is the Miller Act threshold for requiring performance bonds on federal construction contracts?</h4>
+        <h4>What is the FAR-implemented threshold commonly applied for Miller Act performance and payment bonds on federal construction contracts?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q5" value="a"><span>$100,000</span></label>
-          <label><input type="radio" name="q5" value="b"><span>$150,000</span></label>
+          <label><input type="radio" name="q5" value="a"><span>$100,000 (the statutory figure in 40 U.S.C. § 3131, without FAR adjustment)</span></label>
+          <label><input type="radio" name="q5" value="b"><span>$150,000 (FAR 28.102-1 practice)</span></label>
           <label><input type="radio" name="q5" value="c"><span>$250,000</span></label>
           <label><input type="radio" name="q5" value="d"><span>$500,000</span></label>
         </div>
@@ -1704,15 +1711,15 @@
 <footer class="page-footer">
   <div class="footer-content">
   <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../index.html" class="footer-home-link">Home</a>
+    <a href="../../index.html" class="footer-home-link">Home</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
     <a href="../../sitemap.html">Site Map</a>
     <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../index.html#documents">All Documents</a>
+    <a href="../../index.html#documents">All Documents</a>
   </nav>
 
     <div class="footer-info">
-      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.0 · Last updated July 2026</div>
+      <div class="footer-version">SF 28 Rev. 10/2023 · Enhanced Teaching Guide v1.1 · Last updated July 2026 · FAR 28.203-1 securities collateral</div>
       <div>Prescribed by GSA-FAR (48 CFR) 53.228(e) · OMB Control No. 9000-0001 · Expires 1/31/2027</div>
       <div class="footer-links">
         <a href="https://www.gsa.gov/reference/forms" rel="noopener">GSA Forms</a>
@@ -2464,7 +2471,7 @@
         <div class="def-word">Payment Bond</div>
         <p>A bond that guarantees the principal (contractor) will pay subcontractors, laborers, and material suppliers. If the principal fails to pay, the surety must pay these parties up to the penal amount.</p>
       </div>
-      <p><strong>Miller Act requirement:</strong> On federal construction contracts exceeding $150,000, the Miller Act (40 U.S.C. §§ 3131-3134) requires both a performance bond and a payment bond. The payment bond protects the subcontractors and suppliers who work on the project.</p>
+      <p><strong>Miller Act / FAR requirement:</strong> On federal construction contracts expected to exceed the FAR bonding threshold (generally <strong>$150,000</strong> under FAR 28.102-1; statute often cited at more than $100,000 under 40 U.S.C. § 3131), both a performance bond and a payment bond are required. The payment bond protects the subcontractors and suppliers who work on the project.</p>
       <p><strong>Penal amount:</strong> Payment bonds are typically set at 100% of the contract price, matching the performance bond amount. For a $500,000 contract, both bonds would be $500,000.</p>
       <p><strong>Relationship to performance bonds:</strong> Performance bonds guarantee the work gets done; payment bonds guarantee the workers and suppliers get paid. Both are commonly required on construction projects.</p>
       <p><strong>Individual surety eligibility:</strong> Individual sureties can guarantee payment bonds just as they can guarantee performance bonds, provided they meet all SF 28 requirements.</p>
@@ -2519,13 +2526,14 @@
       <div class="def-callout">
         <div class="def-type">Federal Law</div>
         <div class="def-word">Miller Act</div>
-        <p>A federal law (40 U.S.C. §§ 3131-3134) requiring performance and payment bonds for federal construction contracts exceeding $150,000. Enacted in 1935, it protects subcontractors and laborers on federal projects.</p>
+        <p>A federal law (40 U.S.C. §§ 3131–3134) requiring performance and payment bonds on many federal public building and public work construction contracts. Enacted in 1935, it protects subcontractors, laborers, and material suppliers on federal projects.</p>
       </div>
-      <p><strong>Bond requirements:</strong> The Miller Act requires performance bonds (guaranteeing contract completion) and payment bonds (guaranteeing payment to subcontractors, laborers, and material suppliers) for construction contracts above the threshold.</p>
-      <p><strong>Penal amounts:</strong> Performance bonds must be for 100% of the contract price. Payment bonds must be for the amount of the performance bond, with a minimum determined by a formula based on contract size.</p>
-      <p><strong>Relationship to SF 28:</strong> When an individual (rather than a corporate surety company) provides the Miller Act-required bonds, they must complete SF 28 to demonstrate they meet the financial and citizenship requirements.</p>
-      <p><strong>Waiver for small contracts:</strong> Contracts of $150,000 or less may be performed without Miller Act bonds at the contracting officer's discretion, though other bond requirements may still apply.</p>
-      <div class="citation"><strong>Source:</strong> 40 U.S.C. §§ 3131-3134; FAR 28.102-1. <a href="https://www.law.cornell.edu/uscode/text/40/3131">Cornell Law (40 U.S.C. § 3131)</a></div>
+      <p><strong>Statute vs. FAR threshold:</strong> The statute is often summarized as applying to contracts of more than <strong>$100,000</strong> (40 U.S.C. § 3131(b)). In procurement practice, agencies apply <strong>FAR 28.102-1</strong>, which generally requires performance and payment bonds when a construction contract is expected to exceed <strong>$150,000</strong> (with alternative payment protection rules for certain lower-value contracts). Treat the FAR figure as the operative threshold for most teaching and bidding purposes.</p>
+      <p><strong>Bond requirements:</strong> Above the applicable threshold, the framework requires performance bonds (guaranteeing contract completion) and payment bonds (guaranteeing payment to subcontractors, laborers, and material suppliers).</p>
+      <p><strong>Penal amounts:</strong> Performance bonds must generally be for 100% of the contract price. Payment bonds must be for the amount of the performance bond, with a minimum determined by a formula based on contract size under the FAR.</p>
+      <p><strong>Relationship to SF 28:</strong> When an individual (rather than a corporate surety company) provides the Miller Act–required bonds, they must complete SF 28 to demonstrate they meet the financial and citizenship requirements under FAR 28.203.</p>
+      <p><strong>Lower-value contracts:</strong> Contracts at or below the FAR bonding threshold may still require alternative payment protection or other security at the contracting officer's discretion; do not assume zero bonding risk merely because the contract is under $150,000.</p>
+      <div class="citation"><strong>Source:</strong> 40 U.S.C. §§ 3131–3134; FAR 28.102-1. <a href="https://www.acquisition.gov/far/28.102-1" rel="noopener">acquisition.gov (FAR 28.102-1)</a>; <a href="https://www.law.cornell.edu/uscode/text/40/3131" rel="noopener">40 U.S.C. § 3131</a></div>
     </div>
   </div>
 </div>
@@ -2639,7 +2647,7 @@ const sf28Answers = {
   q2: { correct: 'b', explanation: 'There is no flat dollar minimum. FAR 28.203-1 requires that the net adjusted value of an individual surety\'s pledged, unencumbered assets equal or exceed the penal amount of the specific bond — so the required net worth scales with the bond, not a fixed threshold.' },
   q3: { correct: 'a', explanation: 'Individual sureties must be U.S. citizens. However, when the Contracting Officer is located in an outlying area or foreign country, the individual surety is only required to be a permanent resident of that area or country, per SF 28 instructions.' },
   q4: { correct: 'b', explanation: 'The False Statements Act (18 U.S.C. § 1001) makes it a criminal offense to knowingly and willfully make false statements on government forms, punishable by fine and/or imprisonment.' },
-  q5: { correct: 'b', explanation: 'The Miller Act requires performance and payment bonds for federal construction contracts exceeding $150,000, protecting subcontractors and laborers on federal projects.' },
+  q5: { correct: 'b', explanation: 'The Miller Act statute (40 U.S.C. § 3131) uses a base statutory figure often stated at more than $100,000, but FAR 28.102-1 implements the operative bonding threshold for most federal construction procurements at contracts expected to exceed $150,000. Agencies follow the FAR for award practice.' },
   q6: { correct: 'b', explanation: 'Corporate surety companies are insurance companies authorized by state insurance commissioners to issue surety bonds, using their corporate assets rather than personal assets.' },
   q7: { correct: 'b', explanation: 'Individual sureties pledge their personal assets, exposing them to personal liability if the bond is called. Corporate sureties use company resources and spread risk across many bonds.' },
   q8: { correct: 'c', explanation: 'The certification statement is a legally binding declaration that all information provided on SF 28 is true and correct, made under penalty of perjury under 18 U.S.C. § 1001.' },
@@ -2651,8 +2659,8 @@ const sf28Answers = {
   q14: { correct: 'b', explanation: 'FAR 28.203 establishes the qualifications and requirements for individual sureties, including citizenship, net worth, and asset requirements for federal contracts.' },
   q15: { correct: 'b', explanation: 'Surety brokers are intermediaries who help arrange surety bonds, connecting principals with suitable sureties and handling administrative aspects of bond procurement.' },
   q16: { correct: 'b', explanation: 'Performance bonds guarantee the principal will complete the contract according to terms, while payment bonds guarantee the principal will pay subcontractors, laborers, and material suppliers.' },
-  q17: { correct: 'b', explanation: 'Evidence of title proves ownership of real estate pledged as security, ensuring the surety actually owns the property being offered to guarantee the bond.' },
-  q18: { correct: 'b', explanation: 'A recorded lien is a legal claim against property that appears in public records, such as mortgages, tax liens, or judgment liens that reduce the property\'s unencumbered value.' },
+  q17: { correct: 'b', explanation: 'Historically, evidence of title proved ownership of real estate pledged as surety. Under current FAR 28.203-1, real estate is not acceptable collateral; documentation for securities pledges centers on CUSIP, par amount, account statements, and broker/financial-institution confirmations. The quiz still tests the traditional definition of "evidence of title."' },
+  q18: { correct: 'b', explanation: 'A recorded lien is a legal claim against property that appears in public records, such as mortgages, tax liens, or judgment liens that reduce the property\'s unencumbered value. For current individual-surety practice, focus on liens or loans against pledged Treasury-eligible securities rather than real-property mortgages.' },
   q19: { correct: 'b', explanation: 'The Little Miller Act refers to state laws that mirror the federal Miller Act for state construction contracts, while SF 28 applies to federal contracts.' },
   q20: { correct: 'c', explanation: 'False statements on government forms under 18 U.S.C. § 1001 are punishable by fine and/or imprisonment up to 5 years (the statute\'s 8-year maximum applies only to offenses involving terrorism or certain sex-trafficking-related crimes, not to a false SF 28 affidavit), making accurate completion critically important.' }
 };

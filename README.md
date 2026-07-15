@@ -30,7 +30,7 @@ dtc_teaching_tool/
 │   │   ├── trusts-fiduciary.html     # Trusts & Fiduciary Structures
 │   │   ├── non-profit-foundations.html # Non-Profit Foundations
 │   │   ├── sf28-teaching-guide.html  # SF 28 Affidavit of Individual Surety
-│   │   └── collateral-ucc-article-8.html # Securities as Collateral (in development)
+│   │   └── collateral-ucc-article-8.html # Securities as Collateral (UCC Article 8)
 │   ├── forms/                         # Interactive forms & questionnaires
 │   │   └── dtc-eligibility-questionnaire.html
 │   └── docs/                          # Reference documentation

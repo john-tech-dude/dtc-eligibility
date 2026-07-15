@@ -83,7 +83,7 @@ const searchIndex = [
     "id": "questionnaire",
     "title": "DTC Eligibility Questionnaire",
     "url": "pages/forms/dtc-eligibility-questionnaire.html",
-    "description": "Interactive eligibility assessment tool for DTC requirements",
+    "description": "Interactive DTC eligibility teaching guide aligned to the June 10, 2026 Operational Arrangements (timelines, LOR/riders, UW SOURCE/UWC, OFAC, other paths).",
     "keywords": [
       "questionnaire",
       "eligibility",
@@ -1526,7 +1526,7 @@ const searchIndex = [
     "id": "modal-miller-act",
     "title": "Miller Act",
     "url": "pages/guides/sf28-teaching-guide.html#modal-miller-act",
-    "description": "A federal law (40 U.S.C. \u00a7\u00a7 3131-3134) requiring performance and payment bonds for federal construction contracts exceeding $150,000. Enacted in 1935, it protects subcontractors and laborers on federal projects. Bond requirements:The Miller Act re...",
+    "description": "Federal law (40 U.S.C. \u00a7\u00a7 3131-3134) requiring performance and payment bonds on many federal construction contracts. Statute often cited above $100,000; FAR 28.102-1 generally applies a $150,000 operative threshold for agency procurements. Protects subcontractors and laborers...",
     "keywords": [
       "miller",
       "act"
@@ -1653,7 +1653,7 @@ const searchIndex = [
     "id": "modal-uw-source",
     "title": "UW SOURCE / Underwriting Central (UWC)",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-uw-source",
-    "description": "DTC's online platforms for submitting eligibility requests, offering documents, and supporting materials. UW SOURCE (Securities Origination, Underwriting and Reliable Corporate Action Environment) and Underwriting Central (UWC) have replaced paper...",
+    "description": "DTC underwriting systems (UW SOURCE and Underwriting Central/UWC). OA \u00a7 I.A.1 requires Participants to submit full-service eligibility requests through UW SOURCE or UWC at a minimum. Exhibit B standard package timing is at least six business days prior to closing.",
     "keywords": [
       "uw",
       "source",
@@ -1664,10 +1664,26 @@ const searchIndex = [
     "type": "term"
   },
   {
+    "id": "modal-niids",
+    "title": "NIIDS — New Issue Information Dissemination Service",
+    "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-niids",
+    "description": "Automated municipal new-issue data service in UW SOURCE (OA § I.C.3). Dissemination Agents input NIIDS Data Elements and select Disseminate Security Information so MSRB-related trade reporting, matching, and confirmation data reach subscribers. Separate from DTC eligibility—completing one does not complete the other. Exhibit B Note 2 points munis to NIIDS for required trade/settlement data.",
+    "keywords": [
+      "niids",
+      "municipal",
+      "msrb",
+      "dissemination",
+      "new issue",
+      "uw source",
+      "trade reporting"
+    ],
+    "type": "term"
+  },
+  {
     "id": "modal-agent-confirmation",
     "title": "Agent Confirmation",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-agent-confirmation",
-    "description": "A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date, confirming the agent has executed an Operational Arrangements Age...",
+    "description": "For UW SOURCE/UWC new issues, the Agent emails DTC Underwriting a confirmation of securities features/attributes (matching underwriter data and the offering document) within ten (10) business days after the Closing Date (OA \u00a7 I.A.1). Separate from the pre-eligibility Agent Letter.",
     "keywords": [
       "agent",
       "confirmation"
@@ -1690,7 +1706,7 @@ const searchIndex = [
     "id": "modal-closing-date",
     "title": "Closing Date",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-closing-date",
-    "description": "The date on which the issuer delivers the securities to the underwriter and receives the proceeds of the offering. All DTC eligibility documentation must be completed before this date. The 10-business-day submission deadline is measured backward f...",
+    "description": "The date securities are delivered and offering proceeds exchanged. OA Exhibit B underwriting standards (e.g., \u2265 6 BD UW SOURCE/UWC package; LOR and noon-ET cert/FRAC rules; closing notice by 1:15 p.m. ET) are measured from this date. Agent Confirmation of attributes is due within 10 BD after closing.",
     "keywords": [
       "closing",
       "date"
@@ -1919,7 +1935,7 @@ const searchIndex = [
     "id": "modal-ofac",
     "title": "OFAC Compliance \u2014 Sanctions Screening",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-ofac",
-    "description": "U.S. Treasury agency that administers and enforces economic and trade sanctions based on U.S. foreign policy and national security goals. OFAC maintains the Specially Designated Nationals (SDN) list and other sanctions programs. OFAC Requirements ...",
+    "description": "U.S. Treasury sanctions administrator (SDN list and programs). OA: Issuers/Agents/Underwriters must not violate OFAC through DTC; securities of SDN or otherwise OFAC-sanctioned issuers are not DTC eligible; Participants represent screening; transfer agents provide OFAC certifications.",
     "keywords": [
       "ofac",
       "compliance",
@@ -1988,7 +2004,7 @@ const searchIndex = [
     "id": "modal-lor",
     "title": "Letter of Representations (LOR)",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-lor",
-    "description": "A legal agreement between the issuer, its agent, and DTC that sets forth the operational terms under which DTC will provide depository and book-entry services for the securities. There are two types:",
+    "description": "BEO issuer agreement on DTC's form (BLOR covers the issuer's DTC-eligible securities except MMI rules; ILOR is issue-specific). Riders required for older 144A/Reg S issues, non-U.S. currency, and U.K./Ireland issuers (OA \u00a7 I.B.1). Timing per Exhibit B (U.S. final PDF \u2265 3 BD pre-close).",
     "keywords": [
       "letter",
       "of",
@@ -2364,7 +2380,7 @@ const searchIndex = [
     "id": "modal-blor",
     "title": "Blanket Letter of Representations (BLOR)",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-blor",
-    "description": "A Blanket Letter of Representations that covers all DTC-eligible securities of a particular issuer. Once executed and filed with DTC, it does not expire and applies to all future issuances by that issuer. How BLOR Differs from ILOR",
+    "description": "OA \u00a7 I.B.1.a: issuer-specific BEO LOR covering DTC-eligible securities of that issuer (except MMI special forms). Once on file, a new BLOR is not required for future non-MMI issuances unless the issuer's name changes (opinion may also be required).",
     "keywords": [
       "blanket",
       "letter",
@@ -2406,7 +2422,7 @@ const searchIndex = [
     "id": "modal-indemnity-letter",
     "title": "Indemnity Letter",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-indemnity-letter",
-    "description": "A letter in which the issuer agrees to indemnify (compensate) DTC and its Participants for losses arising from the issuer's ownership restrictions or other special requirements. The letter protects DTC from liability when processing restricted sec...",
+    "description": "Issuer letter indemnifying DTC/Participants for losses tied to ownership restrictions. OA \u00a7 I.B.4: tax-threshold issuers (e.g., REIT/NOL) must give assurances restrictions will not be enforced against DTC/Cede; indemnity often also required; some regulated regimes (e.g., gaming) must use a prescribed form.",
     "keywords": [
       "indemnity",
       "letter"
@@ -2417,7 +2433,7 @@ const searchIndex = [
     "id": "modal-commercial-paper",
     "title": "Commercial Paper",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-commercial-paper",
-    "description": "Unsecured, short-term debt instrument issued by corporations to meet short-term liabilities. Maturities typically range from 1 to 270 days. Commercial paper is usually issued at a discount from face value. Characteristics",
+    "description": "Short-term unsecured corporate debt, typically sold at a discount. At DTC, commercial paper runs in the MMI Program: general OA arrangements apply plus DTC Rules/guides; MMI BLOR/forms; maturities \u2264 30 calendar days only via MMI; help line (866) 724-4402.",
     "keywords": [
       "commercial",
       "paper"

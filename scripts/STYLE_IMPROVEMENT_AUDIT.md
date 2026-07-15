@@ -1,5 +1,7 @@
 # DTC Documents - Style & Design Audit Report
 
+> **OUTDATED (as of July 2026):** This snapshot describes an earlier design state. The live hub (`index.html`) now uses Cormorant Garamond + DM Sans with a light/dark theme switcher (not a Cinzel/Playfair dark-only system). Guides largely share that stack and `styles/shared.css`. Prefer a fresh codebase scan over this document for planning.
+
 ## Overview
 
 This audit analyzes the styling, consistency, accessibility, and user experience across all DTC eligibility documents. The project contains 6 HTML documents with **inconsistent design approaches** that could be unified for better user experience and maintainability.

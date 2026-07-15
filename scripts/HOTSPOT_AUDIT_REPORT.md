@@ -1,5 +1,7 @@
 # Comprehensive Hotspot Audit Report - All Documents
 
+> **OUTDATED (as of July 2026):** Point-in-time hotspot counts and path names may not match the current tree (e.g. pages under `pages/guides/`, collateral module live). Re-count hotspots in the HTML before using this report for coverage decisions.
+
 ## Executive Summary
 
 This audit covers all HTML documents in the DTC Eligibility project to identify critical hotspots needed across the documentation suite.

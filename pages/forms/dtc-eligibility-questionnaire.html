@@ -2963,6 +2963,7 @@ body,
   <a href="#mistakes">Common Mistakes</a>
   <a href="#review-flow">DTC Review Flow</a>
   <a href="#other-paths">Other Eligibility Paths</a>
+  <a href="#other-paths" class="sub">NIIDS (Municipal Data)</a>
   <a href="#cusip-table">CUSIP Information Table</a>
   <a href="#directory">DTC Directory & Contacts</a>
   <a href="#study-guide">Study Guide & Checklist</a>
@@ -3036,7 +3037,7 @@ body,
 
 <div class="update-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-  <span><strong>Content Updated:</strong> This guide reflects the <strong>June 2026 DTC Operational Arrangements</strong>. Obsolete references to PORTAL/NASD have been removed. Current requirements: UW SOURCE/UWC submission, Agent Confirmation (due at least 3 business days prior to closing), OFAC compliance, and electronic signature guidance. <span class="legacy-tag">Legacy</span> tags mark original 2000 form fields that now have updated processes.</span>
+  <span><strong>Content Updated (OA crosswalk A–C + NIIDS):</strong> Aligned to the <strong>DTC Operational Arrangements as of June 10, 2026</strong>. Includes Exhibit B / Agent Confirmation, LOR/riders, other paths, and municipal <strong>NIIDS</strong> (§ I.C.3 — separate from eligibility). <span class="legacy-tag">Legacy</span> tags mark 2000 form wording (phones, facsimile text) that differs from the current OA.</span>
 </div>
 
 <div class="doc-frame">
@@ -3142,24 +3143,25 @@ body,
 </div>
 
 <div class="deadline-callout" id="instructions">
-  <h4>⏱ Critical Deadlines at a Glance</h4>
+  <h4>⏱ Critical Timeframes at a Glance (OA Exhibit B + § I.A — June 10, 2026)</h4>
   <ul>
-    <li><strong>10 business days before closing:</strong> Submit completed questionnaire + offering statement/prospectus to DTC's <span class="hotspot" data-modal="underwriting-dept" tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> via <span class="hotspot" data-modal="uw-source" tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE or UWC</span>.</li>
-    <li><strong>7 business days before closing:</strong> Provide complete <span class="hotspot" data-modal="cusip" tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (numbers, interest rates, final maturities) in writing.</li>
-    <li><strong>At least 3 business days prior to closing:</strong> Transfer Agent must submit <span class="hotspot" data-modal="agent-confirmation" tabindex="0" role="button" onclick="openModal('modal-agent-confirmation')">Agent Confirmation</span> via email to DTC's Underwriting Department.</li>
-    <li><strong>1 business day before closing:</strong> Deliver signed <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">Letter of Representations</span> (if BEO) and physical securities by 12:00 noon ET.</li>
-    <li><strong>Corporate issues:</strong> CUSIP info due <em>upon pricing</em> (not a fixed pre-closing deadline).</li>
+    <li><strong>≥ 6 business days before closing:</strong> Participant submits the eligibility package via <span class="hotspot" data-modal="uw-source" tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE or UWC</span> — preliminary offering document, lead underwriter identity, <span class="hotspot" data-modal="cusip" tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP</span>(s), principal/share amounts, and interest rates/maturities as applicable (OA Exhibit B). Late surcharges may apply per the DTC Fee Schedule. <strong>Municipals:</strong> also plan <span class="hotspot" data-modal="niids" tabindex="0" role="button" onclick="openModal('modal-niids')">NIIDS</span> trade/settlement data dissemination in UW SOURCE (Exhibit B Note 2; § I.C.3) — separate from eligibility.</li>
+    <li><strong>BEO LOR — U.S. issuers:</strong> Final executed PDF of the <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">Letter of Representations</span> (BLOR/ILOR) at least <strong>3 business days</strong> prior to closing (Exhibit B).</li>
+    <li><strong>BEO LOR — Non-U.S. issuers:</strong> Draft LOR at least <strong>10 business days</strong> prior; original signed hard copy by <strong>3 business days</strong> prior (Exhibit B).</li>
+    <li><strong>Business day before closing, by 12:00 noon ET:</strong> Physical security certificate for inspection, <em>or</em> on closing date by noon ET: Agent <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FRAC</span> FAST balance confirmation (OA § II.B / Exhibit B).</li>
+    <li><strong>Closing Date:</strong> Underwriter and Agent notify DTC of closing by <strong>1:15 p.m. ET</strong> (extension requests for ≥ $100M issues by 1:00 p.m. ET) (Exhibit B).</li>
+    <li><strong>Within 10 business days after closing:</strong> Agent supplies <span class="hotspot" data-modal="agent-confirmation" tabindex="0" role="button" onclick="openModal('modal-agent-confirmation')">Agent Confirmation</span> by email to DTC Underwriting for UW SOURCE/UWC issues (OA § I.A.1) — confirms features/attributes vs. underwriter data and offering document.</li>
   </ul>
   <div class="deadline-note">
-    <strong>Note:</strong> Per the June 2026 OA, these timeframes are "standards and not deadlines" — DTC may extend any timeframe in its sole discretion. However, do not rely on extensions; plan for the standard timelines.
+    <strong>Note:</strong> OA Important Legal Information: DTC may extend deadlines/timeframes it sets, and times applicable to DTC are <strong>standards and not deadlines</strong> (processing may vary). Still plan to the published standards; late filings can draw surcharges and delay eligibility.
   </div>
 </div>
 
 <div class="instruction-box">
-  To make a new issue of securities <span class="hotspot" data-modal="dtc-eligible" data-tooltip="Registered to Cede &amp; Co. and serviceable through DTC's book-entry system." tabindex="0" role="button" onclick="openModal('modal-dtc-eligible')">DTC eligible</span>, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to <span class="hotspot" data-modal="dtc" data-tooltip="The Depository Trust Company — the central securities depository." tabindex="0" role="button" onclick="openModal('modal-dtc')">DTC</span>'s <span class="hotspot" data-modal="underwriting-dept" data-tooltip="DTC's department that reviews and approves new issues for eligibility." tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Underwriting Dept.</span> at least <strong>10 business days</strong> prior to the issue's <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>. (With respect to <span class="hotspot" data-modal="corporate" data-tooltip="A security issued by a business corporation, as opposed to a municipal or government issuer." tabindex="0" role="button" onclick="openModal('modal-corporate')">corporate</span> issues, upon pricing of the issue.)<br><br>
-  If complete <span class="hotspot" data-modal="cusip" data-tooltip="CUSIP numbers, interest rates, and final maturities for each tranche of the issue." tabindex="0" role="button" onclick="openModal('modal-cusip')">CUSIP INFORMATION</span> (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least <strong>seven business days</strong> prior to the <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">closing date</span>.<br><br>
-  <strong>Agent Confirmation:</strong> The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter and is prepared to perform its duties.<br><br>
-  <strong>Electronic submission:</strong> DTC now accepts submissions through the <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's electronic portal for submitting new issue eligibility requests." tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE</span> or <span class="hotspot" data-modal="uw-source" data-tooltip="DTC's newer electronic platform for underwriting submissions." tabindex="0" role="button" onclick="openModal('modal-uw-source')">Underwriting Central (UWC)</span> platforms. Paper submissions are still accepted but electronic is preferred.
+  To make a new issue of securities <span class="hotspot" data-modal="dtc-eligible" data-tooltip="Registered to Cede &amp; Co. and serviceable through DTC's book-entry system." tabindex="0" role="button" onclick="openModal('modal-dtc-eligible')">DTC eligible</span>, a DTC <span class="hotspot" data-modal="underwriting-dept" data-tooltip="A DTC Participant firm sponsors eligibility and settles book-entry transfers; only Participants (or approved correspondents) may request eligibility." tabindex="0" role="button" onclick="openModal('modal-underwriting-dept')">Participant</span> (or approved correspondent) must submit required issuer/security data and offering documents through <span class="hotspot" data-modal="uw-source" data-tooltip="DTC underwriting platforms for eligibility requests." tabindex="0" role="button" onclick="openModal('modal-uw-source')">UW SOURCE or Underwriting Central (UWC)</span> — OA § I.A.1 requires submission through those systems at a minimum for full-service eligibility. Standard underwriting time frames appear in <strong>OA Exhibit B</strong> (at least <strong>six business days</strong> prior to the <span class="hotspot" data-modal="closing-date" data-tooltip="The date the securities are issued and funds are exchanged." tabindex="0" role="button" onclick="openModal('modal-closing-date')">Closing Date</span> for the core package).<br><br>
+  The Agent for the issue must have a completed <strong>Operational Arrangements Agent Letter</strong> on file with DTC before the security becomes eligible (OA § I introduction). Agents of new issues must complete a confirmation of securities features/attributes supplied by the underwriter; for UW SOURCE/UWC issues that <span class="hotspot" data-modal="agent-confirmation" data-tooltip="Agent email confirmation of issue attributes to DTC Underwriting." tabindex="0" role="button" onclick="openModal('modal-agent-confirmation')">Agent Confirmation</span> is emailed to DTC Underwriting and must be provided <strong>within ten (10) business days after the Closing Date</strong> (OA § I.A.1).<br><br>
+  <strong>Signatures (OA § I.A.6):</strong> DTC may, at its option, rely on electronic signatures in many circumstances. Documents from non-U.S. entities are often required with original manual signatures; legal opinions must be hard-copy with original manual signatures.<br><br>
+  <strong>OFAC:</strong> Issuers, Agents, and Underwriters must not conduct transactions through DTC that violate OFAC sanctions. Securities of issuers on the SDN list or otherwise OFAC-sanctioned are not DTC eligible; transfer-agent Agents provide OFAC certifications DTC may rely on (OA § I.D).
 </div>
 
 <div class="dtc-facsimile" id="form-facsimile">
@@ -3168,7 +3170,7 @@ body,
     <div class="form-subline">DTC is a subsidiary of The Depository Trust &amp; Clearing Corporation</div>
     <div class="form-instructions">To make a new issue of securities DTC eligible, the completed questionnaire and a copy of the offering statement/prospectus (preliminary or final) must be submitted to DTC's Underwriting Dept. at least 10 business days prior to the issue's closing date. If complete CUSIP INFORMATION (CUSIP numbers, interest rates, and final maturities) is not included with the questionnaire, please provide to DTC in writing at least seven business days prior to the closing date. (With respect to corporate issues, upon pricing of the issue.)</div>
     <div class="field-diff field-diff-updated" tabindex="0" role="button" aria-label="How you submit: then vs. now" onclick="openModal('modal-legacy-submission')">
-      <span class="fd-was">2000: mail or fax to 55 Water Street</span><span class="fd-arrow">→</span><span class="fd-now">2026: UW SOURCE / Underwriting Central (UWC)</span>
+      <span class="fd-was">2000 form: mail/fax · 10 BD / 7 BD CUSIP wording</span><span class="fd-arrow">→</span><span class="fd-now">OA June 10, 2026: UW SOURCE/UWC · Exhibit B ≥ 6 BD package</span>
     </div>
   </div>
   <div class="form-page form-page-1">
@@ -3403,13 +3405,13 @@ body,
 <div class="form-row margin-top-8">
   <div class="bullet"></div>
   <div class="label req-note">
-    <strong>Requirement:</strong> The submitter must be a DTC Participant or directly associated with one. Electronic signatures are permitted in many circumstances per the June 2026 OA (Section I.A.6), but original manual signatures are still required for non-U.S. entities and legal opinions.
+    <strong>Requirement:</strong> The submitter must be a DTC Participant or directly associated with one (OA § I.A.1). Electronic signatures may be relied on in many circumstances per OA § I.A.6; original manual signatures are often required for non-U.S. entities, and legal opinions require hard-copy original manual signatures.
   </div>
 </div>
 
 <div class="footnote footnote-top-margin" id="footnotes">
   <sup>1</sup> Service available for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.<br>
-  <sup>2</sup> <span class="legacy-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">Legacy</span> For non-investment grade issues eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>, a distinct CUSIP and <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> rider are required. <span class="strikethrough-muted"><span class="hotspot" data-modal="portal" tabindex="0" role="button" onclick="openModal('modal-portal')">PORTAL</span> eligibility was historically required; this system has been succeeded by private trading venues.</span>
+  <sup>2</sup> <span class="legacy-tag" tabindex="0" role="button" onclick="openModal('modal-legacy-portal')">Legacy</span> For issues eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>, a <strong>distinct restricted CUSIP</strong> is required (OA § II.A.1.b). LOR riders are expressly required for older 144A/Reg S issues (OA § I.B.1.b). <span class="strikethrough-muted"><span class="hotspot" data-modal="portal" tabindex="0" role="button" onclick="openModal('modal-portal')">PORTAL</span> eligibility was historically required; private QIB venues replaced it.</span>
   <div class="field-diff field-diff-legacy" tabindex="0" role="button" aria-label="PORTAL / NASD footnote: then vs. now" onclick="openModal('modal-legacy-portal')">
     <span class="fd-was">2000: apply for PORTAL via NASD, (202) 728-8479</span><span class="fd-arrow">→</span><span class="fd-now">2026: PORTAL retired; NASD absorbed into FINRA (2007)</span>
   </div>
@@ -3434,15 +3436,15 @@ body,
     </div>
     <div class="red-flag-card">
       <h4>Deadline Extensions Are Discretionary</h4>
-      <p>The OA states all timeframes are "standards and not deadlines." DTC <em>may</em> extend deadlines, but never count on it. Missing the 10-day submission window can delay or derail a closing.</p>
+      <p>OA Important Legal Information: times applicable to DTC are <strong>standards and not deadlines</strong>, and DTC may extend timeframes it sets. Still plan to Exhibit B standards (e.g., ≥ 6 BD UW SOURCE/UWC package). Late filings can draw surcharges and delay or derail a closing.</p>
     </div>
     <div class="red-flag-card">
       <h4>Indemnity Letters for Restricted Issuers</h4>
-      <p>Issuers with ownership restrictions (<span class="hotspot" data-modal="reit" tabindex="0" role="button" onclick="openModal('modal-reit')">REITs</span>, <span class="hotspot" data-modal="nol" tabindex="0" role="button" onclick="openModal('modal-nol')">NOL</span> preservation provisions, maritime issuers) must provide an <strong><span class="hotspot" data-modal="indemnity-letter" tabindex="0" role="button" onclick="openModal('modal-indemnity-letter')">indemnity letter</span></strong> protecting DTC and Participants. DTC may require this even if not explicitly listed in the standard questionnaire.</p>
+      <p>Ownership-threshold issuers (<span class="hotspot" data-modal="reit" tabindex="0" role="button" onclick="openModal('modal-reit')">REITs</span>, <span class="hotspot" data-modal="nol" tabindex="0" role="button" onclick="openModal('modal-nol')">NOL</span> structures, maritime/comms, etc.): OA § I.B.4 requires written assurances that restrictions will not be enforced against DTC/Cede &amp; Co./holders through DTC; DTC <em>may also</em> require an <strong><span class="hotspot" data-modal="indemnity-letter" tabindex="0" role="button" onclick="openModal('modal-indemnity-letter')">indemnity letter</span></strong> in its discretion. Certain regulated regimes (e.g., gaming) <em>must</em> provide a prescribed indemnity letter. Not always on the standard questionnaire checklist.</p>
     </div>
     <div class="red-flag-card">
       <h4>OFAC Sanctions Compliance</h4>
-      <p>All issuers, agents, and underwriters must agree not to conduct any transaction through DTC that violates <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')"><strong>OFAC sanctions</strong></span>. This is a hard stop — DTC will deny eligibility if sanctions concerns exist.</p>
+      <p>Issuers, Agents, and Underwriters must not conduct any transaction through DTC that violates <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')"><strong>OFAC sanctions</strong></span> (OA Important Legal Information + § I.D). If the issuer is on the SDN list, formed in a sanctioned country, or otherwise OFAC-sanctioned, the securities are <strong>not DTC eligible</strong>. Participants represent screening; transfer-agent Agents provide OFAC certifications DTC may rely on.</p>
     </div>
     <div class="red-flag-card">
       <h4>Certificate Sizing >$500M</h4>
@@ -3458,7 +3460,7 @@ body,
     </div>
     <div class="red-flag-card">
       <h4>Non-U.S. Currency Requires Special Rider</h4>
-      <p>Securities denominated in or paying interest in <strong>non-USD currencies</strong> require a distinct LOR rider separate from the UK/Ireland rider. This is often overlooked for euro-denominated bonds from non-UK issuers. The rider addresses FX conversion mechanics and payment timing.</p>
+      <p>OA § I.B.1.b: LOR <strong>riders are required</strong> for securities denominated or having payments in non-U.S. currencies (list all CUSIPs on the rider). That is separate from the UK/Ireland issuer rider — a euro bond from a French issuer still needs the currency rider even without a UK rider. Settlement of non-USD principal/income has additional OA payment rules (e.g., § I.C.5 / § IV).</p>
     </div>
 
   </div>
@@ -3471,32 +3473,37 @@ body,
     Work through four realistic offerings to see how the questionnaire applies in practice. Click a tab to switch scenarios.
   </p>
   <div class="scenario-tabs" role="tablist">
-    <button class="scenario-tab active" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: Municipal GO Bond</button>
+    <button class="scenario-tab active" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: UK Dual Eligibility (144A/Reg S)</button>
     <button class="scenario-tab" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Rule 144A High-Yield Note</button>
     <button class="scenario-tab" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: UK Corporate Issuer</button>
-    <button class="scenario-tab" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Complex UK Dual Eligibility</button>
+    <button class="scenario-tab" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Municipal GO Bond</button>
   </div>
 
   <div class="scenario-panel active" id="sc-a">
     <div class="scenario-meta">
-      <span class="scenario-tag">Municipal</span>
-      <span class="scenario-tag">Serial Maturities</span>
+      <span class="scenario-tag">Corporate</span>
+      <span class="scenario-tag">UK Entity</span>
+      <span class="scenario-tag">Rule 144A + Reg S</span>
       <span class="scenario-tag">BEO</span>
+      <span class="scenario-tag">Put Feature</span>
     </div>
-    <h4>Scenario A: State of Franklin General Obligation Bonds, Series 2025A</h4>
-    <p><strong>The Offering:</strong> $250 million GO bond with <span class="hotspot" data-modal="serial-maturities" tabindex="0" role="button" onclick="openModal('modal-serial-maturities')">serial maturities</span> from 2026–2035, issued as Book-Entry-Only. Lead underwriter is a DTC Participant. Transfer Agent is U.S. Bank.</p>
+    <h4>Scenario A: British Telecom plc — Dual 144A/Reg S Notes with Put Option</h4>
+    <p><strong>The Offering:</strong> £400 million notes issued by a UK-incorporated entity, eligible for resale under both Rule 144A to QIBs and Regulation S to non-U.S. persons. Book-Entry-Only with a 3-year put option. Lead underwriter is a DTC Participant. Transfer Agent is Euroclear Bank.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
-      <li><strong>Issue Type:</strong> Check "Municipal." Do NOT check "Limited Underwriting" because principal exceeds $1 million.</li>
-      <li><strong>Article 8 Security:</strong> Yes — municipal bonds are clearly securities under NY UCC Article 8.</li>
-      <li><strong>UK Entity:</strong> No — issuer is a U.S. state.</li>
-      <li><strong>Registration:</strong> Municipal securities are exempt from SEC registration under Rule 3(a)(2). Check "Exempt under Rule 3(a)(2)."</li>
-      <li><strong>CUSIP Table:</strong> You need 10 rows (one per serial maturity). Each gets its own CUSIP, interest rate, and maturity date. Type code = "S" for Serial.</li>
-      <li><strong>BEO:</strong> Yes — no certificates for investors. A <strong>Letter of Representations</strong> is required. Check if the State of Franklin already has a Blanket LOR on file with DTC. If yes, no new LOR needed.</li>
-      <li><strong>Put/Tender:</strong> No — standard GO bonds without optional redemption features.</li>
-      <li><strong>Agent Confirmation:</strong> U.S. Bank (Transfer Agent) must submit confirmation via email at least 3 business days prior to closing.</li>
+      <li><strong>UK Entity:</strong> Check "Yes." OA § I.B.1.b requires a <strong>UK/Ireland LOR rider</strong> for each U.K./Ireland issuer security (list all CUSIPs on the rider).</li>
+      <li><strong>Article 8 Security:</strong> Yes — notes are clearly securities under <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">NY UCC Article 8</span>.</li>
+      <li><strong>Registration:</strong> Check BOTH "Eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>" AND "Eligible for resale under <span class="hotspot" data-modal="regs" tabindex="0" role="button" onclick="openModal('modal-regs')">Regulation S</span>." Dual eligibility is common for global issuers.</li>
+      <li><strong>BEO:</strong> Yes — <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> (no investor certificates; Cede &amp; Co. holds the entire balance via DTC/FAST). Requires fully executed BEO <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> (BLOR or ILOR) on DTC’s form before eligibility (OA § I.B.1.a).</li>
+      <li><strong>Put/Tender:</strong> Yes — 3-year put. The questionnaire form calls for a <span class="hotspot" data-modal="tender-lor" tabindex="0" role="button" onclick="openModal('modal-tender-lor')">Tender LOR</span> for put/tender features on <strong>certificated</strong> issues. This deal is BEO — do not assume Tender LOR is automatic; confirm put-processing rules with DTC (OA special rules for daily/weekly puts) and tender-agent setup.</li>
+      <li><strong>LOR package (OA § I.B.1):</strong> (1) Standard Issuer LOR/BLOR, (2) <strong>UK/Ireland rider</strong> (required), (3) <strong>non-U.S. currency rider</strong> (required for GBP). List CUSIPs on each rider. For 144A/Reg S: <strong>distinct restricted CUSIP(s)</strong> (OA § II.A.1.b); OA expressly requires LOR riders for <em>older</em> 144A/Reg S issues — use current DTCC forms for new issues.</li>
+      <li><strong>Signatures / timing:</strong> Non-U.S. issuer — original manual signatures commonly required (§ I.A.6); Exhibit B: draft LOR ≥ 10 BD, original hard copy by 3 BD pre-close.</li>
+      <li><strong>CUSIP:</strong> Restricted 144A/Reg S CUSIP(s) must be <strong>distinct</strong> from unrestricted British Telecom notes of the same class.</li>
+      <li><strong>Currency:</strong> £ (GBP) — OA requires the non-U.S. currency rider <em>in addition to</em> the UK/Ireland rider (not optional).</li>
+      <li><strong>Agent Letter + Confirmation:</strong> <span class="hotspot" data-modal="euroclear" tabindex="0" role="button" onclick="openModal('modal-euroclear')">Euroclear Bank</span> (as Agent) must have an executed Operational Arrangements Agent Letter on file before eligibility, understand <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">BEO</span> mechanics, and supply Agent Confirmation by email within <strong>10 business days after closing</strong> (OA § I.A.1).</li>
+      <li><strong>OFAC:</strong> Screen issuer/principals; sanctioned issuers are not DTC eligible (OA § I.D). Transfer agents also provide OFAC certifications.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Serial maturities multiply your CUSIP workload. Each maturity is a separate security in DTC's system. Verify the issuer's <span class="hotspot" data-modal="blor" tabindex="0" role="button" onclick="openModal('modal-blor')">BLOR</span> status before closing to avoid last-minute LOR execution.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Maximum complexity under OA § I.B: UK/Ireland rider <em>and</em> non-U.S. currency rider are both required for a GBP UK issuer; BEO needs BLOR/ILOR on DTC’s form with Exhibit B timing; 144A/Reg S needs distinct restricted CUSIP(s). Tender LOR is a certificated-form concept — don’t bolt it onto BEO without checking. Start LOR/rider packages early (non-U.S. original signatures and 10 BD draft LOR).</div>
   </div>
 
   <div class="scenario-panel" id="sc-b">
@@ -3511,13 +3518,13 @@ body,
     <ul>
       <li><strong>Issue Type:</strong> Check "Corporate."</li>
       <li><strong>Registration:</strong> Check "Eligible for resale under Rule 144A of the '33 Act."</li>
-      <li><strong>CUSIP:</strong> Must be <strong>distinct</strong> from any registered Acme Corp. notes. The CUSIP table gets one row (<span class="hotspot" data-modal="term-bond" tabindex="0" role="button" onclick="openModal('modal-term-bond')">term bond</span>). Type code = "T" for Term.</li>
-      <li><strong>LOR Requirements:</strong> Because this is Rule 144A, a <strong>rider to the LOR</strong> is required. The rider confirms that the securities are legally restricted and that <span class="hotspot" data-modal="cede-co" tabindex="0" role="button" onclick="openModal('modal-cede-co')">Cede &amp; Co.</span> will be the registered owner of the restricted securities.</li>
-      <li><strong>PORTAL:</strong> <span class="strike-through">Historically required for non-IG 144A issues.</span> Per current OA, only the distinct CUSIP and LOR rider are required. Private trading venues have replaced PORTAL.</li>
-      <li><strong>Electronic Submission:</strong> Submit through UW SOURCE upon pricing. CUSIP info is due upon pricing (not 7 days pre-close).</li>
-      <li><strong>Certificate Sizing:</strong> $500 million exactly — one certificate for the full amount is acceptable (threshold is <em>exceeding</em> $500M). If it were $500,000,001, you'd need two certificates.</li>
+      <li><strong>CUSIP table:</strong> One row (<span class="hotspot" data-modal="term-bond" tabindex="0" role="button" onclick="openModal('modal-term-bond')">term bond</span>, type "T"). At deposit in Cede &amp; Co., securities must be Legally or Contractually Restricted with a <strong>distinct CUSIP/CINS</strong> from unrestricted securities of the same class (OA § II.A.1.b).</li>
+      <li><strong>LOR / riders:</strong> Use BLOR or ILOR for BEO as applicable. OA § I.B.1.b expressly requires LOR riders for <em>older</em> 144A and Reg S issues (list all CUSIPs on the rider). Confirm current DTCC LOR/rider forms for new 144A offerings; issuer also makes OA restricted-security representations.</li>
+      <li><strong>PORTAL:</strong> <span class="strike-through">Historically required for non-IG 144A issues.</span> PORTAL is retired; private QIB venues replaced it. Distinct CUSIP remains mandatory.</li>
+      <li><strong>Electronic Submission:</strong> UW SOURCE/UWC package per Exhibit B (≥ 6 BD pre-close).</li>
+      <li><strong>Certificate Sizing:</strong> $500 million exactly — one certificate is acceptable; the multi-certificate rule applies when a maturity <em>exceeds</em> $500M (OA § I.B.1.d).</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Rule 144A issues trigger the most LOR complexity. Always confirm the CUSIP is distinct from registered securities of the same class. The LOR rider is easy to overlook but mandatory.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> For Rule 144A, never reuse an unrestricted CUSIP. Distinct restricted identification is non-negotiable under the OA; treat LOR riders carefully for older 144A deposits and always use current DTCC forms for new issues.</div>
   </div>
 
   <div class="scenario-panel" id="sc-c">
@@ -3530,42 +3537,39 @@ body,
     <p><strong>The Offering:</strong> UK-incorporated issuer doing a registered offering of $300 million notes under Form F-3. Lead underwriter is a DTC Participant. Transfer Agent is Computershare.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
-      <li><strong>UK Entity:</strong> Check "Yes." This triggers the <strong>UK/Ireland LOR rider</strong>, which addresses conflicts of law and insolvency considerations.</li>
+      <li><strong>UK Entity:</strong> Check "Yes." OA § I.B.1.b requires a <strong>UK/Ireland LOR rider</strong> (list CUSIPs on the rider).</li>
       <li><strong>Registration:</strong> Check "Registered with the SEC."</li>
-      <li><strong>State of Incorporation:</strong> "United Kingdom" — this may trigger a request for a UK legal opinion confirming DTC's rights.</li>
-      <li><strong>LOR:</strong> Standard Issuer LOR plus the UK/Ireland rider. Because this is registered (not 144A/Reg S), no additional restriction rider is needed.</li>
-      <li><strong>Signatures:</strong> Because the issuer is non-U.S., <strong>original manual signatures</strong> are required on the LOR. Electronic signatures are NOT permitted for non-U.S. entities per the OA.</li>
-      <li><strong>Agent Confirmation:</strong> Computershare must confirm at least 3 business days prior to closing. Ensure they have an executed Operational Arrangements Agent Letter on file with DTC.</li>
-      <li><strong>OFAC:</strong> The underwriter must confirm no <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')">OFAC sanctions</span> apply to Thames Industries or its principals.</li>
+      <li><strong>Foreign issuer:</strong> OA § I.B.3 — DTC may require special representations and/or a foreign legal opinion under the issuer’s organizational law (and securities governing law if different).</li>
+      <li><strong>LOR:</strong> BEO LOR (BLOR/ILOR) plus UK/Ireland rider. USD registered offering: no currency rider; no 144A/Reg S restricted-CUSIP split unless also sold under those exemptions.</li>
+      <li><strong>Signatures / timing:</strong> Non-U.S. — original manual signatures commonly required (§ I.A.6); Exhibit B non-U.S. LOR draft ≥ 10 BD, original hard copy by 3 BD pre-close.</li>
+      <li><strong>Agent Letter + Confirmation:</strong> Computershare must have an OA Agent Letter on file before eligibility and email Agent Confirmation of issue attributes within <strong>10 business days after closing</strong> (OA § I.A.1).</li>
+      <li><strong>OFAC:</strong> Screen issuer/principals; OA § I.D bars eligibility for OFAC-sanctioned issuers. Agents that are transfer agents provide OFAC certifications.</li>
     </ul>
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Foreign issuers add layers. The UK rider, potential foreign legal opinion, and original signature requirement can each add days to the timeline. Start the LOR process early.</div>
   </div>
 
   <div class="scenario-panel" id="sc-d">
     <div class="scenario-meta">
-      <span class="scenario-tag">Corporate</span>
-      <span class="scenario-tag">UK Entity</span>
-      <span class="scenario-tag">Rule 144A + Reg S</span>
+      <span class="scenario-tag">Municipal</span>
+      <span class="scenario-tag">Serial Maturities</span>
       <span class="scenario-tag">BEO</span>
-      <span class="scenario-tag">Put Feature</span>
     </div>
-    <h4>Scenario D: British Telecom plc — Dual 144A/Reg S Notes with Put Option</h4>
-    <p><strong>The Offering:</strong> £400 million notes issued by a UK-incorporated entity, eligible for resale under both Rule 144A to QIBs and Regulation S to non-U.S. persons. Book-Entry-Only with a 3-year put option. Lead underwriter is a DTC Participant. Transfer Agent is Euroclear Bank.</p>
+    <h4>Scenario D: State of Franklin General Obligation Bonds, Series 2025A</h4>
+    <p><strong>The Offering:</strong> $250 million GO bond with <span class="hotspot" data-modal="serial-maturities" tabindex="0" role="button" onclick="openModal('modal-serial-maturities')">serial maturities</span> from 2026–2035, issued as Book-Entry-Only. Lead underwriter is a DTC Participant. Transfer Agent is U.S. Bank.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
-      <li><strong>UK Entity:</strong> Check "Yes." This triggers the <strong>UK/Ireland LOR rider</strong> addressing conflicts of law, insolvency, and enforceability under UK law.</li>
-      <li><strong>Article 8 Security:</strong> Yes — notes are clearly securities under NY UCC Article 8.</li>
-      <li><strong>Registration:</strong> Check BOTH "Eligible for resale under Rule 144A of the '33 Act" AND "Eligible for resale under Regulation S of the '33 Act." This dual eligibility is increasingly common for global issuers.</li>
-      <li><strong>BEO:</strong> Yes — Book-Entry-Only with no certificates available to investors. Requires LOR execution.</li>
-      <li><strong>Put/Tender:</strong> Yes — the notes have a 3-year put option requiring a <strong>Tender Letter of Representations (Tender LOR)</strong> in addition to the standard Issuer LOR.</li>
-      <li><strong>LOR Requirements:</strong> This is the most complex scenario requiring <strong>THREE LOR components</strong>: (1) Standard Issuer LOR, (2) UK/Ireland rider, and (3) Tender LOR. Because of the 144A eligibility, ensure the LOR rider addresses restricted securities and Cede & Co. ownership.</li>
-      <li><strong>Signatures:</strong> <strong>Original manual signatures</strong> required on ALL LOR components because the issuer is non-U.S. Electronic signatures are not permitted.</li>
-      <li><strong>CUSIP:</strong> Must be <strong>distinct</strong> from any registered British Telecom notes. The dual 144A/Reg S structure requires separation from any U.S. registered securities of the same class.</li>
-      <li><strong>Currency:</strong> £ (GBP) denomination — may trigger a <strong>non-U.S. currency rider</strong> in addition to the UK rider. Verify with DTC if both riders are required for GBP-denominated UK issuer securities.</li>
-      <li><strong>Agent Confirmation:</strong> Euroclear Bank must confirm at least 3 business days prior to closing. Ensure they have an executed Operational Arrangements Agent Letter with DTC and understand BEO mechanics.</li>
-      <li><strong>OFAC:</strong> Underwriter must confirm no <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')">OFAC sanctions</span> apply to British Telecom or its principals.</li>
+      <li><strong>Issue Type:</strong> Check "Municipal." Do NOT check "Limited Underwriting" because principal exceeds $1 million.</li>
+      <li><strong>Article 8 Security:</strong> Yes — municipal bonds are clearly securities under NY UCC Article 8.</li>
+      <li><strong>UK Entity:</strong> No — issuer is a U.S. state.</li>
+      <li><strong>Registration:</strong> Municipal securities are exempt from SEC registration under Rule 3(a)(2). Check "Exempt under Rule 3(a)(2)."</li>
+      <li><strong>CUSIP Table:</strong> You need 10 rows (one per serial maturity). Each gets its own CUSIP, interest rate, and maturity date. Type code = "S" for Serial.</li>
+      <li><strong>BEO:</strong> Yes — BEO LOR required (OA § I.B.1.a). Check for an existing <span class="hotspot" data-modal="blor" tabindex="0" role="button" onclick="openModal('modal-blor')">BLOR</span> under the exact issuer legal name (name change → new BLOR and possibly opinion).</li>
+      <li><strong>Serial CUSIPs:</strong> OA § II.A.1 — each municipal serial/term needs a distinct CUSIP printed on the certificate(s).</li>
+      <li><strong><span class="hotspot" data-modal="niids" tabindex="0" role="button" onclick="openModal('modal-niids')">NIIDS</span> (muni data path):</strong> In UW SOURCE, the underwriter/dissemination agent must input NIIDS Data Elements and select <strong>Disseminate Security Information</strong> so key trade/settlement data reach NIIDS subscribers (OA § I.C.3; Exhibit B Note 2). This is <em>separate</em> from the eligibility request — finishing NIIDS does not finish eligibility, and vice versa.</li>
+      <li><strong>Put/Tender:</strong> No — standard GO without optional put/tender (no Tender LOR analysis).</li>
+      <li><strong>Agent Confirmation:</strong> U.S. Bank (Transfer Agent) emails confirmation of securities features/attributes within <strong>10 business days after closing</strong> (OA § I.A.1); Agent Letter must already be on file for eligibility.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> This scenario represents maximum complexity — UK entity + dual 144A/Reg S + BEO + put feature + foreign currency. The combination of UK rider, potential currency rider, Tender LOR, and 144A restrictions means the LOR package becomes quite involved. Start the LOR process at least 3-4 weeks before closing, and verify with DTC whether both UK and currency riders are required for GBP-denominated issues.</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> Serial maturities multiply CUSIP workload; each maturity is its own DTC security. Confirm <span class="hotspot" data-modal="blor" tabindex="0" role="button" onclick="openModal('modal-blor')">BLOR</span> name match, run the eligibility package on Exhibit B timing, <em>and</em> complete NIIDS dissemination in UW SOURCE for MSRB/market data — three parallel tracks, not one form.</div>
   </div>
 </div>
 
@@ -3573,8 +3577,8 @@ body,
 <div class="mistakes-section" id="mistakes">
   <div class="section-heading">Common Mistakes & How to Avoid Them</div>
   <div class="mistake-card">
-    <h4>❌ Missing the Agent Confirmation</h4>
-    <p>The Transfer Agent must submit an Agent Confirmation via email to DTC's Underwriting Department at least 3 business days prior to the Closing Date. This confirms the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties. This requirement was updated in the June 2026 OA (changed from post-closing to pre-closing timing).</p>
+    <h4>❌ Missing the Agent Confirmation (or confusing it with the Agent Letter)</h4>
+    <p>Two separate requirements: (1) The Agent must have a completed <strong>Operational Arrangements Agent Letter</strong> on file <em>before</em> the security can become eligible. (2) For UW SOURCE/UWC new issues, the Agent must email an <strong>Agent Confirmation</strong> of securities features/attributes to DTC Underwriting <strong>within ten (10) business days after the Closing Date</strong> (OA § I.A.1). Do not teach a pre-closing Agent Confirmation deadline — that is not the June 10, 2026 OA rule.</p>
   </div>
   <div class="mistake-card">
     <h4>❌ Wrong Certificate Size for Large Maturities</h4>
@@ -3585,12 +3589,16 @@ body,
     <p>If the issuer's legal name on the offering document differs from the name on the existing Blanket LOR (e.g., due to a merger or reorganization), DTC will require a new LOR or legal opinion. Always verify the exact name match.</p>
   </div>
   <div class="mistake-card">
+    <h4>❌ Treating NIIDS Dissemination as “Done” for DTC Eligibility</h4>
+    <p>OA § I.C.3 is explicit: NIIDS Data Elements support muni trade reporting, matching, and confirmation; a DTC eligibility request may require the same, different, or additional data. Completing NIIDS input/dissemination in UW SOURCE does <strong>not</strong> complete eligibility, and completing eligibility does not disseminate NIIDS data. For munis, plan both tracks (Exhibit B Note 2).</p>
+  </div>
+  <div class="mistake-card">
     <h4>❌ Using the Same CUSIP for 144A and Registered Securities</h4>
     <p>DTC requires distinct CUSIPs for restricted and unrestricted securities of the same class. Using the same CUSIP will cause eligibility rejection and may create settlement failures.</p>
   </div>
   <div class="mistake-card">
-    <h4>❌ Forgetting the Indemnity Letter for REITs / NOL Issuers</h4>
-    <p>Issuers with ownership restrictions (e.g., REITs preserving their tax status, or companies with NOL carryforwards) must provide an indemnity letter. DTC will not process eligibility without it, and it's not explicitly requested on the standard questionnaire.</p>
+    <h4>❌ Ignoring Ownership-Restriction Documentation (REIT / NOL / Regulated)</h4>
+    <p>OA § I.B.4: for tax-driven ownership caps (REIT/NOL, etc.), the issuer must give written assurances restrictions will not be enforced against DTC/Cede &amp; holders through DTC; an indemnity letter is often required at DTC’s discretion. Gaming and similar regimes require a prescribed indemnity letter. Don’t assume the blank questionnaire form lists every special letter.</p>
   </div>
   <div class="mistake-card">
     <h4>❌ Electronic Signature for Non-U.S. Entities</h4>
@@ -3606,25 +3614,25 @@ body,
   </p>
 
   <!-- Premium process-flow SVG timeline -->
-  <div class="diagram-box concept-map" role="img" aria-label="DTC eligibility process timeline: six sequential phases from pre-closing submission through closing day with Agent Confirmation at 3 business days prior">
-    <div class="diagram-title">Eligibility Timeline — Working Back from Closing</div>
+  <div class="diagram-box concept-map" role="img" aria-label="DTC eligibility timeline: 6 BD UW SOURCE package, LOR by 3 BD, securities noon ET, closing, Agent Confirmation within 10 BD after close">
+    <div class="diagram-title">Eligibility Timeline — OA Exhibit B + § I.A (June 10, 2026)</div>
     <svg class="process-flow-svg" viewBox="0 0 850 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
       <!-- Horizontal spine -->
       <line x1="54" y1="72" x2="796" y2="72"
             stroke="var(--accent-muted)" stroke-width="2" stroke-dasharray="0"/>
 
-      <!-- ── Step 1: 10 BD Pre-Close ── -->
+      <!-- ── Step 1: 6 BD package ── -->
       <g filter="url(#gdef-shadow)">
         <circle cx="80" cy="72" r="18" fill="url(#gdef-accent-solid)"/>
         <text x="80" y="77" text-anchor="middle" class="pf-step-num" fill="#fff">1</text>
       </g>
       <rect x="32" y="98" width="96" height="66" rx="7" fill="url(#gdef-accent)" stroke="var(--accent-muted)" stroke-width="1.2" filter="url(#gdef-shadow)"/>
       <line x1="80" y1="90" x2="80" y2="98" stroke="var(--accent-muted)" stroke-width="1.2"/>
-      <text x="80" y="114" text-anchor="middle" class="pf-phase" fill="var(--accent)">10 BD</text>
-      <text x="80" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Submit</text>
-      <text x="80" y="141" text-anchor="middle" class="pf-step-sub">Questionnaire</text>
-      <text x="80" y="155" text-anchor="middle" class="pf-step-sub">+ Prospectus</text>
+      <text x="80" y="114" text-anchor="middle" class="pf-phase" fill="var(--accent)">≥ 6 BD</text>
+      <text x="80" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">UW SOURCE</text>
+      <text x="80" y="141" text-anchor="middle" class="pf-step-sub">Offering +</text>
+      <text x="80" y="155" text-anchor="middle" class="pf-step-sub">CUSIPs/data</text>
 
       <!-- connector -->
       <line x1="98" y1="72" x2="202" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
@@ -3644,69 +3652,69 @@ body,
       <!-- connector -->
       <line x1="238" y1="72" x2="362" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
 
-      <!-- ── Step 3: CUSIP Info ── -->
+      <!-- ── Step 3: LOR ── -->
       <g filter="url(#gdef-shadow)">
         <circle cx="380" cy="72" r="18" fill="url(#gdef-gold)"/>
         <text x="380" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">3</text>
       </g>
       <rect x="332" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
       <line x1="380" y1="90" x2="380" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
-      <text x="380" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">7 BD / Pricing</text>
-      <text x="380" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">CUSIP Info</text>
-      <text x="380" y="141" text-anchor="middle" class="pf-step-sub">Rates · Maturities</text>
-      <text x="380" y="155" text-anchor="middle" class="pf-step-sub">· Amounts</text>
+      <text x="380" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">3 BD / 10 BD</text>
+      <text x="380" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">BEO LOR</text>
+      <text x="380" y="141" text-anchor="middle" class="pf-step-sub">U.S. PDF · Non-U.S.</text>
+      <text x="380" y="155" text-anchor="middle" class="pf-step-sub">hard copy rules</text>
 
       <!-- connector -->
       <line x1="398" y1="72" x2="462" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
 
-      <!-- ── Step 4: Agent Confirmation ── -->
+      <!-- ── Step 4: Securities noon ── -->
       <g filter="url(#gdef-shadow)">
         <circle cx="480" cy="72" r="18" fill="url(#gdef-gold)"/>
         <text x="480" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">4</text>
       </g>
       <rect x="432" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
       <line x1="480" y1="90" x2="480" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
-      <text x="480" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">3 BD Pre-Close</text>
-      <text x="480" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Agent Confirm</text>
-      <text x="480" y="141" text-anchor="middle" class="pf-step-sub">Transfer Agent</text>
-      <text x="480" y="155" text-anchor="middle" class="pf-step-sub">via email</text>
+      <text x="480" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">Noon ET</text>
+      <text x="480" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Cert / FRAC</text>
+      <text x="480" y="141" text-anchor="middle" class="pf-step-sub">1 BD prior cert</text>
+      <text x="480" y="155" text-anchor="middle" class="pf-step-sub">or close-day FRAC</text>
 
       <!-- connector -->
       <line x1="498" y1="72" x2="562" y2="72" stroke="var(--accent-muted)" stroke-width="2" marker-end="url(#gdef-arrow-accent)"/>
 
-      <!-- ── Step 5: LOR + Securities ── -->
+      <!-- ── Step 5: Closing ── -->
       <g filter="url(#gdef-shadow)">
-        <circle cx="580" cy="72" r="18" fill="url(#gdef-gold)"/>
-        <text x="580" y="77" text-anchor="middle" class="pf-step-num" fill="var(--gold-deep)">5</text>
+        <circle cx="580" cy="72" r="18" fill="url(#gdef-green)"/>
+        <text x="580" y="77" text-anchor="middle" class="pf-step-num" fill="var(--green)">5</text>
       </g>
-      <rect x="532" y="98" width="96" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
-      <line x1="580" y1="90" x2="580" y2="98" stroke="var(--gold)" stroke-width="1.2"/>
-      <text x="580" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">1 BD Pre-Close</text>
-      <text x="580" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">LOR + Securities</text>
-      <text x="580" y="141" text-anchor="middle" class="pf-step-sub">Signed LOR by</text>
-      <text x="580" y="155" text-anchor="middle" class="pf-step-sub">noon ET</text>
+      <rect x="532" y="98" width="96" height="66" rx="7" fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.4" filter="url(#gdef-shadow)"/>
+      <line x1="580" y1="90" x2="580" y2="98" stroke="var(--green)" stroke-width="1.2"/>
+      <text x="580" y="114" text-anchor="middle" class="pf-phase" fill="var(--green)">Closing Day</text>
+      <text x="580" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Notify by 1:15</text>
+      <text x="580" y="141" text-anchor="middle" class="pf-step-sub">Credit Participant</text>
+      <text x="580" y="155" text-anchor="middle" class="pf-step-sub">account</text>
 
       <!-- connector -->
       <line x1="598" y1="72" x2="682" y2="72" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#gdef-arrow-green)"/>
 
-      <!-- ── Step 6: Closing ── -->
+      <!-- ── Step 6: Post-close Agent Confirm ── -->
       <g filter="url(#gdef-shadow-md)">
         <circle cx="700" cy="72" r="20" fill="url(#gdef-accent-solid)"/>
         <text x="700" y="77" text-anchor="middle" class="pf-step-num" fill="#fff" style="font-size:12px">6</text>
       </g>
-      <rect x="648" y="98" width="104" height="66" rx="7" fill="url(#gdef-green)" stroke="var(--green)" stroke-width="1.6" filter="url(#gdef-shadow-md)"/>
-      <line x1="700" y1="92" x2="700" y2="98" stroke="var(--green)" stroke-width="1.4"/>
-      <text x="700" y="114" text-anchor="middle" class="pf-phase" fill="var(--green)">Closing Day</text>
-      <text x="700" y="127" text-anchor="middle" class="pf-step-title" fill="var(--green)">DTC Eligible ✓</text>
-      <text x="700" y="141" text-anchor="middle" class="pf-step-sub">Participant acct</text>
-      <text x="700" y="155" text-anchor="middle" class="pf-step-sub">credited</text>
+      <rect x="648" y="98" width="104" height="66" rx="7" fill="url(#gdef-gold)" stroke="var(--gold)" stroke-width="1.6" filter="url(#gdef-shadow-md)"/>
+      <line x1="700" y1="92" x2="700" y2="98" stroke="var(--gold)" stroke-width="1.4"/>
+      <text x="700" y="114" text-anchor="middle" class="pf-phase" fill="var(--gold-deep)">≤ 10 BD After</text>
+      <text x="700" y="127" text-anchor="middle" class="pf-step-title" fill="var(--ink)">Agent Confirm</text>
+      <text x="700" y="141" text-anchor="middle" class="pf-step-sub">Email features</text>
+      <text x="700" y="155" text-anchor="middle" class="pf-step-sub">to Underwriting</text>
 
       <!-- Phase rail labels above spine -->
-      <text x="80"  y="46" text-anchor="middle" class="cm-zone-label">Pre-Close Preparation</text>
-      <text x="380" y="46" text-anchor="middle" class="cm-zone-label">Documentation</text>
-      <text x="700" y="46" text-anchor="middle" class="cm-zone-label">Settlement</text>
+      <text x="150" y="46" text-anchor="middle" class="cm-zone-label">Pre-Close (Exhibit B)</text>
+      <text x="480" y="46" text-anchor="middle" class="cm-zone-label">Closing</text>
+      <text x="700" y="46" text-anchor="middle" class="cm-zone-label">Post-Close</text>
     </svg>
-    <p class="cm-caption">Timelines are "standards, not deadlines" per the June 2026 OA — DTC may extend at its sole discretion, but always plan to the standard windows. <strong>BD = Business Days.</strong></p>
+    <p class="cm-caption">OA Important Legal Information: times applicable to DTC are <strong>standards, not deadlines</strong>; DTC may extend timeframes it sets. Plan to Exhibit B / § I.A standards. <strong>BD = Business Days.</strong> Agent Letter on file is a pre-eligibility requirement separate from post-close Agent Confirmation.</p>
     <div class="cm-legend" aria-hidden="true">
       <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Review phase</span>
       <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Documentation phase</span>
@@ -3719,49 +3727,49 @@ body,
     <div class="flow-step">
       <div class="flow-step-num">1</div>
       <div class="flow-step-content">
-        <div class="flow-time">10+ Business Days Pre-Close</div>
+        <div class="flow-time">≥ 6 Business Days Pre-Close (Exhibit B)</div>
         <h5>Submission via UW SOURCE / UWC</h5>
-        <p>Lead underwriter submits the completed questionnaire, offering statement/prospectus, and any required legal opinions. DTC Underwriting begins review.</p>
+        <p>Participant submits the eligibility package: preliminary offering document, lead underwriter identity, CUSIP(s), principal/share amounts, and rates/maturities as applicable. OA § I.A.1 requires UW SOURCE/UWC at a minimum. Late surcharges may apply.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-step-num">2</div>
       <div class="flow-step-content">
         <div class="flow-time">DTC Review Period</div>
-        <h5>Underwriting Review & Opinion Evaluation</h5>
-        <p>DTC evaluates the issue type, registration status, and documentation. If a legal opinion is required, DTC reviews it for form and substance. DTC has absolute discretion to approve or reject counsel.</p>
+        <h5>Underwriting Review &amp; Opinion Evaluation</h5>
+        <p>DTC evaluates issue type, registration/exemption path, and documentation. If a legal opinion is required, DTC reviews form and substance and may reject counsel in its discretion. Agent must already have an OA Agent Letter on file for eligibility.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-step-num">3</div>
       <div class="flow-step-content">
-        <div class="flow-time">7 Business Days Pre-Close (Municipal) / Upon Pricing (Corporate)</div>
-        <h5>CUSIP Information Delivered</h5>
-        <p>Complete CUSIP numbers, interest rates, final maturities, and principal amounts provided in writing. DTC creates the security master record.</p>
+        <div class="flow-time">BEO LOR — Exhibit B</div>
+        <h5>Letter of Representations</h5>
+        <p><strong>U.S. issuers:</strong> final executed PDF at least 3 BD prior. <strong>Non-U.S. issuers:</strong> draft at least 10 BD prior; original signed hard copy by 3 BD prior. Do not wait until the day before closing.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-step-num">4</div>
       <div class="flow-step-content">
-        <div class="flow-time">3 Business Days Pre-Close</div>
-        <h5>Agent Confirmation Received</h5>
-        <p>Transfer Agent submits Agent Confirmation via email to DTC's Underwriting Department, confirming it has executed an Operational Arrangements Agent Letter with DTC and can perform its duties. This timing was updated in the June 2026 OA from post-closing to pre-closing.</p>
+        <div class="flow-time">Noon ET — Day Before and/or Closing Day</div>
+        <h5>Certificate Inspection or FRAC</h5>
+        <p>Physical certificate for inspection by 12:00 noon ET on the business day prior to closing, <em>or</em> Agent FRAC FAST balance confirmation on the Closing Date by noon ET (OA § II.B / Exhibit B).</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-step-num">5</div>
       <div class="flow-step-content">
-        <div class="flow-time">1 Business Day Pre-Close</div>
-        <h5>LOR Delivery & Securities Deposit</h5>
-        <p>Signed Letter of Representations delivered to DTC. Physical certificates (or FAST confirmation) delivered by 12:00 noon ET. For BEO issues, the master certificate is registered in the name of Cede &amp; Co.</p>
+        <div class="flow-time">Closing Date</div>
+        <h5>Closing Notice &amp; Book-Entry Credit</h5>
+        <p>Underwriter and Agent notify DTC of closing by 1:15 p.m. ET. After required confirmations, DTC credits the Participant account for book-entry trading and settlement.</p>
       </div>
     </div>
     <div class="flow-step">
       <div class="flow-step-num">6</div>
       <div class="flow-step-content">
-        <div class="flow-time">Closing Date</div>
-        <h5>Closing & Eligibility Determination</h5>
-        <p>DTC credits the Participant's account. Securities become available for book-entry trading and settlement. DTC issues final eligibility determination. If any issues arise, they are escalated to the Lead Underwriter contact.</p>
+        <div class="flow-time">Within 10 Business Days After Closing</div>
+        <h5>Agent Confirmation (Post-Close)</h5>
+        <p>Agent emails confirmation of securities features/attributes (matching underwriter data and offering document) to DTC Underwriting for UW SOURCE/UWC issues (OA § I.A.1). This is <em>after</em> closing — not a pre-close gate.</p>
       </div>
     </div>
   </div>
@@ -3780,68 +3788,79 @@ body,
   <div class="other-paths-grid">
     <div class="other-path-card">
       <h4>Older Issue Eligibility</h4>
-      <p>For <strong>already-issued and outstanding securities</strong> (not new underwritten offerings), DTC uses a distinct process:</p>
+      <p>For <strong>already issued and outstanding securities</strong> (OA § I.A.1 “Older Issue Eligibility Request”), the Participant must present:</p>
       <ul class="compact-list">
-        <li>Submit an <strong>Older Eligibility Questionnaire</strong> (different form)</li>
-        <li>Present <strong>physical certificates</strong> for the outstanding securities</li>
-        <li>Provide an <strong>Agent Attestation form</strong></li>
-        <li>Submit through UW SOURCE as an "Eligibility Only" request</li>
+        <li>Completed <strong>Older Eligibility Questionnaire</strong></li>
+        <li>Copy of the <strong>physical certificate(s)</strong> representing the securities</li>
+        <li><strong>Agent Attestation</strong> form</li>
+        <li>Submission through <strong>UW SOURCE as an “Eligibility Only”</strong> request</li>
+        <li><strong>Offering documentation</strong> for review (required for all eligibility requests, including older issues)</li>
       </ul>
-      <div class="path-note">This path is common for secondary market listings, private placements becoming tradable, or legacy securities seeking DTC access.</div>
+      <div class="path-note">Further documents (opinions, riders, etc.) may be required after DTC’s review. Common for secondary listings and legacy issues seeking full-service eligibility.</div>
     </div>
     <div class="other-path-card">
       <h4>Custody-Only Services</h4>
-      <p>Some securities qualify only for <strong>limited custody service</strong>, not full nominee registration or book-entry transfer:</p>
+      <p>OA footnote 3: securities may be eligible for <strong>limited custody</strong> rather than full book-entry/nominee service when, for example, they are subject to transfer restrictions and not part of a fungible bulk:</p>
       <ul class="compact-list">
-        <li>Securities with <strong>transfer restrictions</strong> that prevent free book-entry movement</li>
-        <li><strong>Non-fungible bulk</strong> securities (e.g., physical commodities, unique certificates)</li>
-        <li>Issues where DTC holds certificates but does not register Cede &amp; Co. as nominee</li>
+        <li>Not eligible for Cede &amp; Co. nominee registration or free book-entry services in the usual sense</li>
+        <li>Physical / restricted holdings patterns differ from full-service eligibility</li>
+        <li>This OA document primarily addresses <strong>full book-entry</strong> eligibility</li>
       </ul>
-      <div class="path-note">Custody-only securities cannot be settled through DTC's book-entry system. They are held physically and transferred manually.</div>
+      <div class="path-note">See DTCC Custody Service materials for operational detail. Custody-only is not a substitute for full-service underwriting eligibility.</div>
     </div>
     <div class="other-path-card">
       <h4>Money Market Instruments (MMI)</h4>
-      <p>MMI are processed under <strong>dedicated DTC Rules</strong> with special form letters and a separate help line:</p>
+      <p>OA § I.A.2: the <strong>general OA arrangements apply</strong> to MMI, but MMI are processed differently under the DTC Rules and service guides:</p>
       <ul class="compact-list">
-        <li><span class="hotspot" data-modal="commercial-paper" tabindex="0" role="button" onclick="openModal('modal-commercial-paper')">Commercial paper</span>, <span class="hotspot" data-modal="bankers-acceptance" tabindex="0" role="button" onclick="openModal('modal-bankers-acceptance')">banker's acceptances</span>, and short-term notes</li>
-        <li>Dedicated customer help line: <strong>(866) 724-4402</strong></li>
-        <li>Specialized <strong>MMI form letters</strong> instead of standard LORs</li>
-        <li>Processing under DTC Rules rather than Operational Arrangements</li>
+        <li>Commercial paper, BAs, institutional CDs, short-term notes, and related instruments</li>
+        <li>Securities maturing in <strong>≤ 30 calendar days</strong> from issuance/eligibility date are made eligible only under the <strong>MMI Program</strong> (not as non-MMI)</li>
+        <li>MMI use dedicated <strong>BLOR / form letters</strong> and IPA pairing rules (see dtcc.com/legal/issue-eligibility)</li>
+        <li>Underwriting help line: <strong>(866) 724-4402</strong> (OA-published)</li>
       </ul>
-      <div class="path-note">MMI eligibility is faster but has different documentation requirements. Always use the MMI-specific forms.</div>
+      <div class="path-note">Do not teach “MMI ignores the OA.” Teach OA + Rules/guides + MMI-specific forms.</div>
     </div>
     <div class="other-path-card">
       <h4>Segregation Account 100 (Seg 100)</h4>
-      <p>For issuers with <strong>ownership restrictions</strong> (shipping, FCC, gaming licenses), DTC offers the Seg 100 compliance tool:</p>
+      <p>OA § I.B.4: for equity issues with legal/regulatory ownership percentage limits (e.g., Shipping Act / FCC-style foreign ownership caps), Participants should use DTC’s elective <strong>Seg 100</strong> tool:</p>
       <ul class="compact-list">
-        <li>Allows Participants to track and restrict ownership for regulatory compliance</li>
-        <li>DTC <strong>does not monitor</strong> compliance — it provides the tool only</li>
-        <li>Requires an <strong>indemnity letter</strong> from the issuer</li>
-        <li>Commonly used by REITs, maritime issuers, and broadcast licensees</li>
+        <li>DTC <strong>does not monitor</strong> compliance — it makes the tool available</li>
+        <li>Issuer must provide a <strong>Seg 100 letter</strong> for equity issues with such limitations</li>
+        <li>Distinct from REIT/NOL tax-threshold <strong>assurances / indemnity</strong> path (also § I.B.4)</li>
       </ul>
-      <div class="path-note">Seg 100 is not an eligibility path per se, but a post-eligibility compliance mechanism. The standard questionnaire still applies.</div>
+      <div class="path-note">Seg 100 is a post-eligibility compliance tool, not a separate underwriting questionnaire. See DTC Deposits Service Guide for Seg 100 detail.</div>
     </div>
     <div class="other-path-card">
       <h4>Retail Certificates of Deposit (E-CD)</h4>
-      <p>Retail CDs use a <strong>dedicated Electronic Master Certificate BLOR</strong>:</p>
+      <p>OA § I.C.1: Retail (brokered) CDs have additional eligibility requirements; electronic master certificates are optional via UWC:</p>
       <ul class="compact-list">
-        <li>Specialized form distinct from standard corporate or municipal LORs</li>
-        <li>Covers all CDs issued under a master certificate program</li>
-        <li>Requires bank issuer to maintain the master certificate at DTC</li>
-        <li>Individual CDs are issued in book-entry form without separate certificates</li>
+        <li>Issuer books must show deposit held for <strong>Cede &amp; Co.</strong> as exclusive registered owner (FDIC-compatible records)</li>
+        <li>Electronic path: UWC <strong>System E-CD Templates</strong> → underwriter populates → issuer <strong>e-signs prior to closing</strong> → vault storage at DTC</li>
+        <li>Non-conforming CDs need a <strong>physical master certificate</strong> delivered pre-close (noon ET day before per Exhibit B)</li>
+        <li>E-CD <strong>BLOR + associated Rider</strong> for each base CUSIP (forms: dtcc.com/legal/issue-eligibility)</li>
       </ul>
-      <div class="path-note">Bank issuers should contact DTC's Corporate Eligibility team (212-855-3782) for the E-CD BLOR template.</div>
+      <div class="path-note">Contact DTC Underwriting customer help line <strong>(866) 724-4402</strong> for E-CD/MMI questions (OA). Do not rely on old 212-855-xxxx extensions without verifying.</div>
     </div>
     <div class="other-path-card">
       <h4>Unit Securities — Separation Rules</h4>
-      <p>Unit securities (debt + equity/warrant combined) have special separation rules:</p>
+      <p>OA § I.C.2: a Unit has two or more components (debt, equity, and/or warrants) and may separate on or after closing:</p>
       <ul class="compact-list">
-        <li><strong>Voluntary separation:</strong> At closing, the underwriter may elect to separate the unit into its components, each receiving its own CUSIP</li>
-        <li><strong>Mandatory separation:</strong> After closing, DTC may require separation if the components trade independently</li>
-        <li>Each component must independently qualify for DTC eligibility</li>
-        <li>The unit itself receives a CUSIP, plus each component receives its own</li>
+        <li><strong>Immediately separable on closing:</strong> Reviewed as separate components; separate CUSIPs per component; separate UW SOURCE eligibility requests; Unit CUSIP not required if immediately separable</li>
+        <li><strong>Separable only after closing:</strong> Unit CUSIP + component CUSIPs; eligibility request for Unit and each component; indicate mandatory vs voluntary separation</li>
+        <li><strong>Voluntary post-close separation:</strong> Unit/components in FAST; Agent processes separations via DWAC</li>
+        <li><strong>Mandatory post-close separation:</strong> Follow OA notice timeframes (see § VI.B.2)</li>
       </ul>
-      <div class="path-note">Coordinate with DTC Underwriting before closing if your offering includes units. The separation decision affects CUSIP assignment and settlement.</div>
+      <div class="path-note">Coordinate CUSIPs and UW SOURCE submissions before closing. Separation design drives eligibility packaging.</div>
+    </div>
+    <div class="other-path-card" id="niids">
+      <h4>NIIDS — Municipal New-Issue Data <span class="hotspot" data-modal="niids" tabindex="0" role="button" onclick="openModal('modal-niids')" style="font-weight:600;text-decoration:underline;cursor:pointer;">(?)</span></h4>
+      <p>OA § I.C.3: the <strong>New Issue Information Dissemination Service (NIIDS)</strong> is built into <strong>UW SOURCE</strong> so muni underwriters (and other authorized <em>Dissemination Agents</em>) can meet <strong>MSRB</strong> expectations for disseminating key new-issue data elements:</p>
+      <ul class="compact-list">
+        <li>Agent inputs <strong>NIIDS Data Elements</strong> in UW SOURCE and selects <strong>Disseminate Security Information</strong></li>
+        <li>That action authorizes DTC to send the data to <strong>NIIDS Subscribers</strong> (market participants who subscribe)</li>
+        <li>If elements are not input or dissemination is not selected, data are <strong>not</strong> disseminated</li>
+        <li>NIIDS records who input the data and when, and discloses that contact info to subscribers for questions</li>
+      </ul>
+      <div class="path-note"><strong>Critical distinction (OA):</strong> NIIDS data support trade reporting, matching, and confirmation of munis. A DTC <em>eligibility</em> request may use the same, different, or additional fields. <strong>Completing NIIDS ≠ completing eligibility</strong> (and vice versa). Exhibit B Note 2: for munis, required trade/settlement-eligible data are submitted via NIIDS — see § I.C.3. DTC is a conduit only (“as is”); it does not validate NIIDS content.</div>
     </div>
   </div>
 </div>
@@ -3886,7 +3905,7 @@ body,
 <div class="directory-section" id="directory">
   <div class="section-heading">DTC Underwriting Department Directory</div>
   <p class="section-subtitle">
-    Contact information from the original PDF questionnaire. <strong>Verify current numbers before calling</strong> — use DTC's main line at (866) 724-4402 for general inquiries. All numbers below are in area code (212).
+    Contact block from the <strong>historical 2000 questionnaire facsimile</strong> (area code 212 extensions below). <strong>Do not treat as current routing.</strong> The June 10, 2026 OA publishes DTC Underwriting customer help at <strong>(866) 724-4402</strong> for MMI/E-CD and general underwriting questions. Prefer DTCC Client Center / your relationship manager for live contacts.
   </p>
   <div class="directory-grid">
     <div class="directory-card">
@@ -3960,19 +3979,20 @@ body,
       <h4>Before You Start (Issue Information)</h4>
       <ul>
         <li>Confirm issuer name matches organizational documents exactly</li>
-        <li>Verify BLOR status or prepare new LOR/ILOR</li>
-        <li>Request CUSIP assignment from CGS (S&P Global)</li>
-        <li>Determine if issue is BEO (triggers LOR requirement)</li>
-        <li>Check for put/tender features (triggers Tender LOR)</li>
-        <li>Confirm UK/Ireland status (triggers special LOR rider)</li>
+        <li>Verify BLOR under exact legal name or prepare ILOR (OA § I.B.1.a)</li>
+        <li>Request CUSIP assignment from CGS; plan Exhibit B package data</li>
+        <li>Determine if issue is BEO (triggers LOR on DTC form)</li>
+        <li>Put/tender: Tender LOR for certificated issues per form; confirm BEO put processing with DTC</li>
+        <li>UK/Ireland issuer → LOR rider; non-U.S. currency → currency rider (§ I.B.1.b)</li>
+        <li>144A/Reg S → distinct restricted CUSIP; riders for older restricted issues</li>
       </ul>
     </div>
     <div class="study-card">
       <h4>Contact Information Checklist</h4>
       <ul>
         <li>Lead Underwriter is a DTC Participant or has clearing Participant</li>
-        <li>Transfer Agent has executed OA Agent Letter with DTC</li>
-        <li>Transfer Agent will submit Agent Confirmation at least 3 business days prior to closing</li>
+        <li>Transfer Agent has executed OA Agent Letter with DTC (required before eligibility)</li>
+        <li>Transfer Agent will email Agent Confirmation of issue attributes within 10 business days after closing</li>
         <li>Paying Agent coordinated with DTC income collection system</li>
         <li>Issuer's Counsel is independent, licensed, and experienced</li>
         <li>All phone numbers are direct lines (not general desks)</li>
@@ -3981,27 +4001,28 @@ body,
     <div class="study-card">
       <h4>Timing Checklist (Working Back from Closing)</h4>
       <ul>
-        <li><strong>10 days pre-close:</strong> Questionnaire + docs via UW SOURCE/UWC</li>
-        <li><strong>7 days pre-close:</strong> CUSIP info in writing (municipal)</li>
-        <li><strong>Upon pricing:</strong> CUSIP info (corporate)</li>
-        <li><strong>3 days pre-close:</strong> Agent Confirmation from Transfer Agent (at least 3 business days prior)</li>
-        <li><strong>1 day pre-close:</strong> LOR + securities delivery by noon ET</li>
-        <li><strong>Closing day:</strong> DTC credits Participant account</li>
+        <li><strong>≥ 6 BD pre-close:</strong> UW SOURCE/UWC package (offering doc, underwriter, CUSIPs, amounts, rates/maturities) — Exhibit B</li>
+        <li><strong>3 BD pre-close (U.S. BEO):</strong> Final executed LOR PDF; non-U.S. draft at 10 BD + original by 3 BD</li>
+        <li><strong>Noon ET:</strong> Physical cert inspection day before, or FRAC on closing day</li>
+        <li><strong>Closing day:</strong> Closing notice by 1:15 p.m. ET; Participant credit after confirmations</li>
+        <li><strong>≤ 10 BD after close:</strong> Agent Confirmation email to Underwriting (OA § I.A.1)</li>
       </ul>
     </div>
     <div class="study-card">
       <h4>Special Cases & Red Flags</h4>
       <ul>
-        <li><strong>UK/Ireland issuers:</strong> Special LOR rider + original signatures</li>
-        <li><strong>Rule 144A:</strong> Distinct CUSIP + LOR rider</li>
-        <li><strong>Reg S:</strong> Distinct CUSIP + distribution compliance period</li>
-        <li><strong>3(c)(7):</strong> All owners must be Qualified Purchasers</li>
-        <li><strong>Foreign issuers:</strong> Additional legal opinions may be required</li>
-        <li><strong>REITs/NOL issuers:</strong> Indemnity letter required</li>
-        <li><strong>OFAC:</strong> Confirm no <span class="hotspot" data-modal="ofac" tabindex="0" role="button" onclick="openModal('modal-ofac')">sanctions</span> apply to issuer or principals</li>
-      
-        <li><strong>Non-USD currency:</strong> Non-U.S. currency LOR rider required (distinct from UK rider)</li>
-        <li><strong>Correspondent relationships:</strong> Non-Participant submitters must have approved correspondent agreement</li>
+        <li><strong>UK/Ireland issuers:</strong> LOR rider (§ I.B.1.b) + non-U.S. signature/timing</li>
+        <li><strong>Rule 144A / Reg S:</strong> Distinct restricted CUSIP; riders for older issues; compliance periods for Reg S</li>
+        <li><strong>3(c)(7):</strong> QP-only ownership; DTC Important Notice regime</li>
+        <li><strong>Foreign issuers:</strong> Possible foreign legal opinions (§ I.B.3)</li>
+        <li><strong>REIT/NOL:</strong> Assurances; indemnity may be required (§ I.B.4)</li>
+        <li><strong>Citizenship/FCC caps:</strong> Seg 100 + Seg 100 letter (not the same as REIT indemnity)</li>
+        <li><strong>OFAC:</strong> Sanctioned issuers not eligible; Agent OFAC certs</li>
+        <li><strong>Non-USD currency:</strong> Currency LOR rider (separate from UK rider)</li>
+        <li><strong>MMI / ≤30-day maturity:</strong> MMI Program path</li>
+        <li><strong>Older issues:</strong> Older Eligibility Questionnaire + certs + Agent Attestation + Eligibility Only</li>
+        <li><strong>Municipal NIIDS:</strong> Separate UW SOURCE dissemination for MSRB/market data — not the same as eligibility (§ I.C.3)</li>
+        <li><strong>Correspondent:</strong> Non-Participant submitters need approved correspondent to a Participant</li>
 </ul>
     </div>
   </div>
@@ -4027,11 +4048,11 @@ body,
     <div class="quiz-card" data-q="1">
       <div class="quiz-num">1</div>
       <div class="quiz-content">
-        <h4>How many business days before closing must the completed questionnaire and offering documents be submitted to DTC?</h4>
+        <h4>Under OA Exhibit B (June 10, 2026), what is the standard minimum window to submit the UW SOURCE/UWC eligibility package (offering document, underwriter, CUSIPs, amounts, rates/maturities as applicable) before closing?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q1" value="a"><span>5 business days</span></label>
-          <label><input type="radio" name="q1" value="b"><span>7 business days</span></label>
-          <label><input type="radio" name="q1" value="c"><span>10 business days</span></label>
+          <label><input type="radio" name="q1" value="a"><span>3 business days</span></label>
+          <label><input type="radio" name="q1" value="b"><span>6 business days</span></label>
+          <label><input type="radio" name="q1" value="c"><span>10 business days (legacy form wording only)</span></label>
           <label><input type="radio" name="q1" value="d"><span>15 business days</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q1"></div>
@@ -4087,12 +4108,12 @@ body,
     <div class="quiz-card" data-q="5">
       <div class="quiz-num">5</div>
       <div class="quiz-content">
-        <h4>When must the Transfer Agent submit an Agent Confirmation to DTC?</h4>
+        <h4>For UW SOURCE/UWC new issues, when must the Agent submit Agent Confirmation of securities features/attributes to DTC Underwriting?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q5" value="a"><span>At least 3 business days prior to closing</span></label>
-          <label><input type="radio" name="q5" value="b"><span>10 business days after closing</span></label>
+          <label><input type="radio" name="q5" value="b"><span>Within 10 business days after the Closing Date</span></label>
           <label><input type="radio" name="q5" value="c"><span>7 business days before closing</span></label>
-          <label><input type="radio" name="q5" value="d"><span>15 business days after closing</span></label>
+          <label><input type="radio" name="q5" value="d"><span>Only if DTC requests it after a fail</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q5"></div>
       </div>
@@ -4164,7 +4185,7 @@ body,
       <div class="quiz-content">
         <h4>Which of the following is a "hard stop" that will cause DTC to deny eligibility?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q10" value="a"><span>The issuer missed the 10-day submission deadline by one day</span></label>
+          <label><input type="radio" name="q10" value="a"><span>The issuer missed the Exhibit B 6-day package window by one day (may incur surcharge; not always a hard deny)</span></label>
           <label><input type="radio" name="q10" value="b"><span>The Transfer Agent lacks an executed OA Agent Letter</span></label>
           <label><input type="radio" name="q10" value="c"><span>The issue is eligible for resale under Regulation S</span></label>
           <label><input type="radio" name="q10" value="d"><span>The lead underwriter is not a DTC Participant but has a correspondent relationship</span></label>
@@ -4267,10 +4288,10 @@ body,
     <div class="quiz-card" data-q="17">
       <div class="quiz-num">17</div>
       <div class="quiz-content">
-        <h4>What OFAC compliance requirement applies to DTC eligibility?</h4>
+        <h4>What OFAC rule applies under the OA for DTC eligibility?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q17" value="a"><span>OFAC clearance is handled entirely by DTC; underwriter has no responsibility</span></label>
-          <label><input type="radio" name="q17" value="b"><span>Underwriter must confirm no OFAC sanctions apply to issuer or principals before submission</span></label>
+          <label><input type="radio" name="q17" value="a"><span>OFAC clearance is handled entirely by DTC; market participants have no duty</span></label>
+          <label><input type="radio" name="q17" value="b"><span>Issuers/Agents/Underwriters must not violate OFAC; sanctioned issuers are not DTC eligible; Participants represent screening and transfer agents provide OFAC certifications</span></label>
           <label><input type="radio" name="q17" value="c"><span>OFAC compliance only applies to non-U.S. issuers</span></label>
           <label><input type="radio" name="q17" value="d"><span>OFAC screening occurs only after closing</span></label>
         </div>
@@ -4297,12 +4318,12 @@ body,
     <div class="quiz-card" data-q="19">
       <div class="quiz-num">19</div>
       <div class="quiz-content">
-        <h4>What is the timing difference for CUSIP information between corporate and municipal issues?</h4>
+        <h4>For a municipal new issue, how does NIIDS relate to a DTC eligibility request under the OA?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q19" value="a"><span>Municipal: 7 days pre-close; Corporate: 10 days pre-close</span></label>
-          <label><input type="radio" name="q19" value="b"><span>Municipal: 7 days pre-close; Corporate: upon pricing</span></label>
-          <label><input type="radio" name="q19" value="c"><span>Both require CUSIP info 10 days pre-close</span></label>
-          <label><input type="radio" name="q19" value="d"><span>Both require CUSIP info upon pricing</span></label>
+          <label><input type="radio" name="q19" value="a"><span>Completing NIIDS dissemination automatically completes DTC eligibility</span></label>
+          <label><input type="radio" name="q19" value="b"><span>NIIDS and eligibility are separate: data may overlap, but finishing one does not finish the other</span></label>
+          <label><input type="radio" name="q19" value="c"><span>NIIDS replaces the need for CUSIPs and LORs on municipal issues</span></label>
+          <label><input type="radio" name="q19" value="d"><span>NIIDS applies only to corporate Rule 144A offerings</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q19"></div>
       </div>
@@ -4312,12 +4333,12 @@ body,
     <div class="quiz-card" data-q="20">
       <div class="quiz-num">20</div>
       <div class="quiz-content">
-        <h4>For a security with a put feature, which additional document is required?</h4>
+        <h4>When does the eligibility questionnaire form state that a Tender Letter of Representations is required for put/tender features?</h4>
         <div class="quiz-options">
-          <label><input type="radio" name="q20" value="a"><span>Standard LOR only</span></label>
-          <label><input type="radio" name="q20" value="b"><span>Tender Letter of Representations (Tender LOR)</span></label>
-          <label><input type="radio" name="q20" value="c"><span>Additional Agent Confirmation</span></label>
-          <label><input type="radio" name="q20" value="d"><span>OFAC certification</span></label>
+          <label><input type="radio" name="q20" value="a"><span>For every BEO issue, regardless of put features</span></label>
+          <label><input type="radio" name="q20" value="b"><span>For certificated issues that contain put/tender features (per form instructions)</span></label>
+          <label><input type="radio" name="q20" value="c"><span>Only after the Agent Confirmation is filed</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Never — Tender LORs were abolished in 2021</span></label>
         </div>
         <div class="quiz-feedback" id="fb-q20"></div>
       </div>
@@ -4345,7 +4366,7 @@ body,
   </nav>
 
     <div class="footer-info">
-      <div class="footer-version">July 2026 v1.0</div>
+      <div class="footer-version">July 2026 v1.4 · OA crosswalk A–C + NIIDS (§ I.C.3)</div>
       <div>© 2026 DTC Eligibility Guide</div>
       <div class="footer-links">
         <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
@@ -4360,26 +4381,26 @@ body,
 <script>
 // ── Quiz Logic ──
 const quizAnswers = {
-  q1: { correct: 'c', explanation: 'The June 2026 OA requires submission at least 10 business days prior to closing (7 days for CUSIP info, 3 days prior to closing for Agent Confirmation). <strong>Definition:</strong> Closing date is when securities are issued and funds are exchanged.' },
-  q2: { correct: 'b', explanation: 'BEO issues require a Letter of Representations (LOR) — either a Blanket LOR (BLOR) or Issuer LOR (ILOR). Agent Confirmation is separate, Tender LOR is for put features, and Indemnity Letters are for restricted issuers. <strong>Definition:</strong> BEO (Book-Entry-Only) means no physical certificates exist; securities exist only as electronic entries.' },
+  q1: { correct: 'b', explanation: 'OA Exhibit B (Underwriting Standard Time Frames) sets at least <strong>six (6) business days</strong> prior to the Closing Date for the UW SOURCE/UWC package (preliminary offering document, lead underwriter, CUSIP(s), principal/share amounts, rates/maturities as applicable). The older 10 BD questionnaire form wording is legacy. Late surcharges may apply. <strong>Definition:</strong> Closing Date is when securities are issued and payment is exchanged.' },
+  q2: { correct: 'b', explanation: 'BEO issues require a fully executed LOR on DTC’s form — BLOR or ILOR (OA § I.B.1.a). Agent Confirmation is a separate post-close attribute email; Tender LOR is form-language for certificated put/tender issues; ownership-threshold issuers need OA § I.B.4 assurances (and sometimes indemnity letters).' },
   q3: { correct: 'b', explanation: 'PORTAL is obsolete. Per the current OA, Rule 144A issues require a distinct CUSIP and a rider to the LOR. No separate "PORTAL eligibility" is required. <strong>Definition:</strong> Rule 144A allows resale of restricted securities to Qualified Institutional Buyers (QIBs).' },
   q4: { correct: 'b', explanation: 'If any single maturity exceeds $500 million, the issuer must provide multiple certificates: one for each $500M tranche plus one for the remainder. A single oversized certificate will be rejected. <strong>Note:</strong> Exactly $500M requires only one certificate; the rule applies to amounts exceeding $500M.' },
-  q5: { correct: 'a', explanation: 'The Transfer Agent must submit an Agent Confirmation via email to DTC\'s Underwriting Department at least 3 business days prior to the Closing Date, per the June 2026 OA. This timing was changed from post-closing to pre-closing. <strong>Definition:</strong> Agent Confirmation confirms the Transfer Agent has executed an OA Agent Letter and is prepared to perform its duties.' },
-  q6: { correct: 'b', explanation: 'For non-U.S. entities, original manual signatures are required on the LOR. Electronic signatures are NOT permitted for non-U.S. entities per the OA. <strong>Key distinction:</strong> U.S. entities may use electronic signatures per June 2026 OA.' },
+  q5: { correct: 'b', explanation: 'OA § I.A.1: Agents of new issues must complete a confirmation of securities features/attributes provided by the underwriter. For UW SOURCE/UWC issues, that confirmation is emailed to DTC Underwriting and must be provided <strong>within ten (10) business days after the Closing Date</strong>. Separately, the Agent must already have an OA Agent Letter on file before eligibility. Pre-closing "3 BD Agent Confirmation" is not the June 10, 2026 OA rule.' },
+  q6: { correct: 'b', explanation: 'OA § I.A.6: DTC may rely on electronic signatures in many circumstances, but documents signed/submitted by non-U.S. entities are often required with original manual signatures; legal opinions require hard-copy original manual signatures. <strong>Key distinction:</strong> U.S. entity e-sign flexibility is not universal for non-U.S. parties or opinions.' },
   q7: { correct: 'c', explanation: 'Each serial maturity receives its own CUSIP and row in the CUSIP table. A 2026–2035 serial issue with 10 maturities requires 10 CUSIPs. <strong>Definition:</strong> Serial maturities mean multiple principal payment dates instead of a single bullet maturity.' },
   q8: { correct: 'b', explanation: 'A Blanket Issuer LOR (BLOR) covers all DTC-eligible securities of a particular issuer and does not expire. An ILOR applies only to a single issuance. <strong>Definition:</strong> BLOR provides ongoing eligibility without requiring new LORs for each issue.' },
   q9: { correct: 'c', explanation: 'A UK entity issuing euro-denominated bonds needs BOTH the UK/Ireland rider (jurisdiction) AND the non-U.S. currency rider (FX mechanics). These are distinct requirements. <strong>Definition:</strong> LOR riders are addendum documents that address special circumstances beyond standard representations.' },
-  q10: { correct: 'b', explanation: 'The Transfer Agent lacking an executed OA Agent Letter is a hard stop — DTC will deny eligibility. Missed deadlines may be extendable (DTC discretion), Reg S is eligible, and correspondent relationships are valid alternatives. <strong>Definition:</strong> OA Agent Letter is the agreement between Transfer Agent and DTC defining operational responsibilities.' },
+  q10: { correct: 'b', explanation: 'An Agent without a completed OA Agent Letter on file cannot support eligibility — DTC can deny eligibility when OA requirements cannot be met. Missed Exhibit B windows may draw late surcharges and delay processing (times are standards; DTC may extend), Reg S can be eligible, and approved correspondents may sponsor. <strong>Definition:</strong> OA Agent Letter binds the Agent to OA terms for the security.' },
   q11: { correct: 'b', explanation: 'Regulation S distribution compliance periods are 40 days for debt securities (Categories 2 and 3). For equity securities, the period is one year for non-reporting issuers or six months for reporting issuers. During these periods, securities cannot be offered or sold to U.S. persons except in limited circumstances. <strong>Definition:</strong> Regulation S is an SEC exemption that allows companies to raise capital abroad without SEC registration, provided sales are made offshore to non-U.S. persons.' },
   q12: { correct: 'b', explanation: 'Regulation S securities require a distinct CUSIP from any U.S. registered securities of the same class to prevent commingling and ensure proper restriction compliance. <strong>Definition:</strong> Distinct CUSIP means a completely different 9-character identifier, not just a variation.' },
   q13: { correct: 'a', explanation: 'Section 3(c)(7) funds are exempt from the Investment Company Act only if <em>all</em> outstanding securities are owned exclusively by "Qualified Purchasers." The threshold differs by investor type: <strong>individuals</strong> (natural persons) must own at least $5 million in investments; <strong>entities</strong> acting on their own account must own at least $25 million in investments. There is no ownership cap (unlike Section 3(c)(1) which caps beneficial owners at 100). <strong>Definition:</strong> Qualified Purchaser is defined in Section 2(a)(51) of the Investment Company Act of 1940 — a higher standard than the Qualified Institutional Buyer (QIB) threshold under Rule 144A.' },
   q14: { correct: 'b', explanation: 'The certificate sizing rule applies to amounts exceeding $500 million. Exactly $500M or less does not require multiple certificates. <strong>Key detail:</strong> $500,000,001 would require two certificates ($500M + $1).' },
   q15: { correct: 'c', explanation: 'A UK issuer of euro-denominated bonds requires both the UK/Ireland rider (for insolvency/conflicts of law issues) AND the non-U.S. currency rider (for FX mechanics and settlement). <strong>Definition:</strong> Non-U.S. currency rider addresses DTC\'s ability to process payments and manage foreign exchange for non-USD securities.' },
-  q16: { correct: 'b', explanation: 'The June 2026 OA permits electronic signatures for U.S. entities but retains the requirement for original manual signatures for non-U.S. entities and legal opinions. <strong>Key distinction:</strong> This reflects different legal frameworks and enforceability across jurisdictions.' },
-  q17: { correct: 'b', explanation: 'The underwriting firm must confirm that neither the issuer nor its principals (officers, directors, significant shareholders) appear on OFAC sanctions lists before submission. <strong>Definition:</strong> OFAC (Office of Foreign Assets Control) administers sanctions programs; DTC cannot process securities for sanctioned entities.' },
-  q18: { correct: 'c', explanation: 'Dual 144A/Reg S eligibility requires the 144A LOR rider addressing that Cede & Co. will be the registered owner of restricted securities. Reg S itself doesn\'t require a separate rider — the 144A rider covers the restricted nature. <strong>Definition:</strong> Dual eligibility means the securities can be sold under both Rule 144A to QIBs and Regulation S offshore to non-U.S. persons.' },
-  q19: { correct: 'b', explanation: 'Corporate CUSIP information is due upon pricing (when terms are finalized), while municipal CUSIP information is due 7 business days before closing. <strong>Definition:</strong> Pricing is when the interest rate, spread, and final terms are set between issuer and underwriters.' },
-  q20: { correct: 'b', explanation: 'Securities with put or tender features require a Tender Letter of Representations (Tender LOR) in addition to the standard LOR. <strong>Definition:</strong> Put/tender features give investors the right to require the issuer to repurchase the securities at specified times and prices, creating additional operational complexity for DTC.' }
+  q16: { correct: 'b', explanation: 'OA § I.A.6 allows DTC to rely on electronic signatures in many cases, while non-U.S. entity documents often require original manual signatures and legal opinions require hard-copy original manual signatures. Plan signature logistics early for foreign issuers.' },
+  q17: { correct: 'b', explanation: 'OA Important Legal Information and § I.D: Issuers, Agents, and Underwriters must not conduct OFAC-violating activity through DTC. Participants represent SDN/OFAC screening of the registered owner context; if the issuer is SDN-listed, in a sanctioned country, or otherwise OFAC-sanctioned, securities are not DTC eligible. Transfer-agent Agents provide OFAC certifications DTC may rely on.' },
+  q18: { correct: 'c', explanation: 'Dual 144A/Reg S structures need distinct restricted CUSIP identification (OA § II.A.1.b) and issuer restricted-security representations. OA § I.B.1.b expressly requires LOR riders for older 144A/Reg S issues (list CUSIPs on the rider); UK/currency riders apply when those facts exist. Use current DTCC LOR forms for new dual deals.' },
+  q19: { correct: 'b', explanation: 'OA § I.C.3: NIIDS helps muni Dissemination Agents send MSRB-related new-issue data (trade reporting, matching, confirmation) via UW SOURCE’s Disseminate Security Information function. The OA states that eligibility may use the same, different, or additional data — the requests are separate and distinct; completion of one does not complete the other. Exhibit B Note 2 points munis to NIIDS for required trade/settlement-eligible data. CUSIPs and LORs remain part of eligibility/BEO packaging, not replaced by NIIDS.' },
+  q20: { correct: 'b', explanation: 'The DTC eligibility questionnaire form states that if the issue has a put/tender feature, a Tender Letter of Representations is required for <strong>certificated</strong> issues. Do not assume every BEO put automatically needs a Tender LOR; confirm form instructions and put-processing eligibility with DTC. OA also has special eligibility rules for daily/weekly put structures.' }
 };
 
 function checkAllAnswers() {
@@ -4544,17 +4565,51 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Electronic Submission Platform</div>
         <div class="def-word">UW SOURCE / UWC</div>
-        <p>DTC's online platforms for submitting eligibility requests, offering documents, and supporting materials. UW SOURCE and Underwriting Central (UWC) have replaced paper-based submission as the preferred method.</p>
+        <p>DTC's online underwriting systems — Securities Origination, Underwriting and Reliable Corporate Action Environment (UW SOURCE) and Underwriting Central (UWC). OA § I.A.1 requires Participants to submit eligibility requests through UW SOURCE or UWC at a minimum for full-service eligibility.</p>
       </div>
       <p class="modal-section-title">What Changes with Electronic Submission</p>
       <ul>
         <li><strong>Faster processing:</strong> Electronic submissions are routed directly into DTC's underwriting workflow, reducing manual data entry delays.</li>
         <li><strong>Document management:</strong> Offering statements, prospectuses, and legal opinions can be uploaded as PDFs rather than mailed or faxed.</li>
         <li><strong>Status tracking:</strong> Submitters can track the status of their eligibility request in real time.</li>
-        <li><strong>Not mandatory:</strong> Paper submissions are still accepted, but electronic is strongly preferred and may process faster.</li>
+        <li><strong>Required channel:</strong> OA § I.A.1 requires eligibility requests through UW SOURCE or UWC at a minimum for full-service eligibility (not a paper-first process).</li>
+        <li><strong>Exhibit B timing:</strong> Standard package (offering document, underwriter, CUSIPs, amounts, rates/maturities as applicable) at least <strong>six business days</strong> prior to closing; late surcharges may apply.</li>
+        <li><strong>Municipal NIIDS:</strong> For munis, UW SOURCE also hosts <span class="hotspot" data-modal="niids" tabindex="0" role="button" onclick="openModal('modal-niids')">NIIDS</span> data entry and dissemination (§ I.C.3) — a separate track from eligibility.</li>
       </ul>
-      <div class="tip-box"><strong>Access:</strong> UW SOURCE and UWC are available to DTC Participants and authorized users. Contact your DTC relationship manager or DTC's Client Services for access credentials.</div>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A.1 — Submission Requirements (June 2026). <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+      <div class="tip-box"><strong>Access:</strong> UW SOURCE and UWC are available to DTC Participants and authorized users. Contact your DTC relationship manager or DTCC Client Center for access credentials.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.A.1, § I.C.3, and Exhibit B. <a href="../../pdf/operational-arrangements.pdf" rel="noopener">bundled OA PDF</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- NIIDS -->
+<div class="modal-overlay" id="modal-niids" role="dialog" aria-modal="true" aria-labelledby="modal-title-niids">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-niids">NIIDS — New Issue Information Dissemination Service</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Municipal Data Service (OA § I.C.3)</div>
+        <div class="def-word">NIIDS</div>
+        <p>An automated system incorporated into DTC’s underwriting system, <strong>UW SOURCE</strong>, that helps underwriters and other authorized representatives (<strong>Dissemination Agents</strong>) of newly issued <em>municipal</em> securities meet <strong>MSRB</strong> requirements for disseminating key data elements of those securities (<strong>NIIDS Data Elements</strong>).</p>
+      </div>
+      <p class="modal-section-title">How dissemination works</p>
+      <ol>
+        <li>The Dissemination Agent inputs applicable NIIDS Data Elements into <strong>UW SOURCE</strong>.</li>
+        <li>The agent selects the <strong>Disseminate Security Information</strong> function.</li>
+        <li>That selection authorizes DTC to disseminate the data to market participants that subscribe (<strong>NIIDS Subscribers</strong>).</li>
+        <li>If the agent does <em>not</em> input the elements or does <em>not</em> choose dissemination, the NIIDS Data Elements are <strong>not</strong> disseminated.</li>
+      </ol>
+      <p>NIIDS also collects the Dissemination Agent’s name, contact information, and input time, and discloses that information to subscribers so they can follow up with questions.</p>
+      <p class="modal-section-title">What NIIDS Data Elements are for</p>
+      <p>Per the OA, NIIDS Data Elements are certain data elements needed for <strong>trade reporting, matching, and confirmation</strong> of municipal securities. The detailed element list and procedures are published on DTCC.com (Underwriting / Asset Services). Exhibit B Note 2: for municipal issues, required trade and settlement–eligible data are submitted via NIIDS (refer to § I.C.3).</p>
+      <p class="modal-section-title">Eligibility vs NIIDS — separate requests</p>
+      <div class="warn-box">
+        <strong>OA warning:</strong> A DTC eligibility request may require the same, different, or additional data elements than NIIDS. Although data can overlap, <strong>the requests are separate and distinct. Completion of one does not mean completion of the other.</strong>
+      </div>
+      <p class="modal-section-title">DTC’s role (liability notice, condensed)</p>
+      <p>DTC is a <strong>conduit</strong> of information disseminated via NIIDS. It does not validate or confirm the accuracy of NIIDS Data Elements. Data are provided “as is”; DTC disclaims warranties and liability for adequacy, quality, accuracy, completeness, or timeliness (see full Important Legal Notice in OA § I.C.3).</p>
+      <div class="tip-box"><strong>Desk practice:</strong> For a muni closing, calendar (1) Exhibit B eligibility package in UW SOURCE/UWC, (2) BEO LOR if applicable, (3) NIIDS input + Disseminate Security Information, and (4) Agent Letter / post-close Agent Confirmation. Different owners may touch different steps — don’t assume one person “did DTC.”</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.C.3 (New Issue Eligibility Requirements for Municipal Securities) and Exhibit B Note 2; <a href="../../pdf/operational-arrangements.pdf" rel="noopener">bundled OA PDF</a>; element list on DTCC.com Underwriting / Asset Services.</div>
     </div>
   </div>
 </div>
@@ -4565,20 +4620,53 @@ function resetQuiz() {
     <div class="modal-header"><h3 id="modal-title-agent-confirmation">Agent Confirmation</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
-        <div class="def-type">Updated Requirement (June 2026 OA)</div>
+        <div class="def-type">OA § I.A.1 (as of June 10, 2026)</div>
         <div class="def-word">Agent Confirmation</div>
-        <p>A written confirmation from the Transfer Agent (or other designated agent) submitted via email to DTC's Underwriting Department at least three (3) business days prior to the Closing Date, confirming the agent has executed an Operational Arrangements Agent Letter with DTC and is prepared to perform its duties for the specific issue.</p>
+        <p>For securities issued via UW SOURCE and UWC, the Agent must email DTC's Underwriting Department a confirmation of the securities features and attributes that the underwriter provided to DTC. Agreement among underwriter data, agent confirmation, and the offering document supports accurate asset servicing. This confirmation must be provided <strong>within ten (10) business days after the Closing Date</strong>.</p>
       </div>
-      <p class="modal-section-title">Why This Matters</p>
-      <p>The Agent Confirmation requirement was updated in the June 2026 OA to provide pre-closing timing (changed from post-closing to at least 3 business days before closing). This ensures Transfer Agents are properly onboarded and contractually bound to DTC before the security can be marked eligible for book-entry delivery and settlement.</p>
-      <p class="modal-section-title">What the Transfer Agent Must Confirm</p>
+      <p class="modal-section-title">Do not confuse with the Agent Letter</p>
+      <p>The <strong>Operational Arrangements Agent Letter</strong> must be on file with DTC <em>before</em> a security can become eligible (OA § I introduction). Agent Confirmation is a separate post-close attribute confirmation for UW SOURCE/UWC issues — not a 3-business-day pre-close deadline.</p>
+      <p class="modal-section-title">What the Agent Confirms</p>
       <ul>
-        <li>It has executed an <strong>Operational Arrangements Agent Letter</strong> with DTC.</li>
-        <li>It understands its responsibilities for the specific issue (income collection, transfers, corporate actions).</li>
-        <li>It will comply with DTC's instructions and timelines.</li>
+        <li>Securities features and attributes match what the underwriter supplied to DTC.</li>
+        <li>Alignment with the offering document for accurate ongoing servicing.</li>
       </ul>
-      <div class="tip-box"><strong>Action item:</strong> Confirm with your Transfer Agent that they have an active OA Agent Letter with DTC <em>before</em> the closing date. If they don't, the agent must execute one, which can take several days. The Agent Confirmation itself is due at least 3 business days prior to closing.</div>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A — Eligibility Requirements (June 2026). <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+      <div class="tip-box"><strong>Action item:</strong> Ensure the Agent Letter is executed and on file well before closing. Calendar the post-close Agent Confirmation email for no later than 10 business days after closing.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements (as of June 10, 2026), § I.A.1; bundled <a href="../../pdf/operational-arrangements.pdf" rel="noopener">pdf/operational-arrangements.pdf</a>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EUROCLEAR BANK (as Agent on DTC eligibility) -->
+<div class="modal-overlay" id="modal-euroclear" role="dialog" aria-modal="true" aria-labelledby="modal-title-euroclear">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-euroclear">Euroclear Bank (as Agent)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">ICSD · Transfer / Paying Agent</div>
+        <div class="def-word">Euroclear Bank</div>
+        <p>Belgium-based International Central Securities Depository (ICSD) with a banking license. On cross-border or dual-market offerings it may also serve as <strong>Transfer Agent / Paying Agent</strong> for a DTC-eligible issue. In that role it is an “Agent” under DTC’s Operational Arrangements — subject to the same Agent Letter and Agent Confirmation rules as any other agent.</p>
+      </div>
+      <p class="modal-section-title">Why Scenario A names Euroclear Bank</p>
+      <p>In Scenario A (UK dual 144A/Reg S notes), Euroclear Bank is the named Transfer Agent. DTC still needs a U.S. book-entry path (Cede &amp; Co. / FAST or physical deposit mechanics as applicable), but the <em>issuer’s Agent</em> for register and confirmation duties can be Euroclear Bank. Eligibility fails if that Agent has not met OA prerequisites.</p>
+      <p class="modal-section-title">Three OA requirements (do not skip any)</p>
+      <ul>
+        <li><strong>Operational Arrangements Agent Letter (pre-eligibility):</strong> Euroclear Bank must have a completed OA Agent Letter on file with DTC <em>before</em> the security can become eligible (OA § I introduction). No letter → no eligibility, regardless of underwriter package quality.</li>
+        <li><strong>BEO mechanics:</strong> For Book-Entry-Only issues, the Agent must understand BEO deposit, Cede &amp; Co. registration, and (where used) FAST balance / FRAC confirmation. Investor certificates are not available; the Agent services the book-entry position against DTC’s systems.</li>
+        <li><strong>Agent Confirmation (post-close):</strong> For UW SOURCE/UWC issues, the Agent emails DTC Underwriting a confirmation of securities features/attributes supplied by the underwriter — <strong>within ten (10) business days after the Closing Date</strong> (OA § I.A.1). This is separate from the Agent Letter and is <em>not</em> a pre-close deadline.</li>
+      </ul>
+      <p class="modal-section-title">Agent Letter vs. Agent Confirmation</p>
+      <ul>
+        <li><strong>Agent Letter</strong> → executed agreement on file <em>before</em> eligibility.</li>
+        <li><strong>Agent Confirmation</strong> → attribute email ≤ 10 business days <em>after</em> closing.</li>
+      </ul>
+      <div class="warn-box">
+        <strong>Common mistake:</strong> Treating Euroclear only as “the European depository” and forgetting its Agent duties on a DTC eligibility package. ICSD status does not waive the OA Agent Letter or the 10-BD post-close confirmation.
+      </div>
+      <div class="tip-box">
+        <strong>Action item:</strong> Confirm early that Euroclear Bank’s OA Agent Letter is current and on file; calendar the post-close confirmation email to Underwriting no later than 10 business days after close. For a deeper ICSD overview, see the <a href="../guides/dtc-guide.html#euroclear" rel="noopener">Securities Ownership Wizard — Euroclear</a>.
+      </div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements (as of June 10, 2026), § I introduction and § I.A.1; bundled <a href="../../pdf/operational-arrangements.pdf" rel="noopener">pdf/operational-arrangements.pdf</a>. Euroclear Bank institutional overview: <a href="https://www.euroclear.com" rel="noopener">euroclear.com</a>.</div>
     </div>
   </div>
 </div>
@@ -4593,15 +4681,15 @@ function resetQuiz() {
         <div class="def-word">Underwriting Department</div>
         <p>DTC's division responsible for reviewing and processing all new issue eligibility requests, evaluating whether proposed securities meet DTC's operational, legal, and risk criteria.</p>
       </div>
-      <p class="modal-section-title">Key Deadlines for Submission</p>
+      <p class="modal-section-title">Key Timeframes (OA Exhibit B + § I.A)</p>
       <ul>
-        <li><strong>10 business days before closing:</strong> Completed questionnaire + preliminary offering document (via UW SOURCE/UWC preferred)</li>
-        <li><strong>7 business days before closing:</strong> CUSIP numbers, principal amount, interest rate, maturity date</li>
-        <li><strong>At least 3 business days prior to closing:</strong> Agent Confirmation from Transfer Agent</li>
-        <li><strong>1 business day before closing:</strong> Signed Letter of Representations</li>
-        <li><strong>12:00 p.m. ET, business day before closing:</strong> Physical certificates or FAST confirmation</li>
+        <li><strong>≥ 6 BD pre-close:</strong> UW SOURCE/UWC package (offering document, underwriter, CUSIPs, amounts, rates/maturities)</li>
+        <li><strong>BEO LOR:</strong> U.S. final PDF ≥ 3 BD pre-close; non-U.S. draft ≥ 10 BD, original hard copy by 3 BD</li>
+        <li><strong>Noon ET:</strong> Physical cert inspection day before closing, or FRAC on closing day</li>
+        <li><strong>Closing day:</strong> Underwriter/Agent closing notice by 1:15 p.m. ET</li>
+        <li><strong>≤ 10 BD after close:</strong> Agent Confirmation email (features/attributes)</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; NABL "Demystifying DTC" (2023), Appendix I. <a href="https://www.nabl.org/wp-content/uploads/2023/02/20170331-NABL-Demystifying-DTC.pdf">nabl.org</a></div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.A and Exhibit B; bundled <a href="../../pdf/operational-arrangements.pdf" rel="noopener">pdf/operational-arrangements.pdf</a>.</div>
     </div>
   </div>
 </div>
@@ -4616,9 +4704,9 @@ function resetQuiz() {
         <div class="def-word">Closing Date</div>
         <p>The date on which the issuer delivers the securities to the underwriter and receives the proceeds of the offering. All DTC eligibility documentation must be completed before this date.</p>
       </div>
-      <p>The 10-business-day submission deadline is measured backward from this date. For corporate issues, the CUSIP information trigger is "upon pricing" rather than a fixed pre-closing deadline, reflecting that corporate pricing often occurs closer to closing than in municipal offerings.</p>
-      <div class="tip-box"><strong>Critical:</strong> If the closing date changes (a "delayed closing"), notify DTC's Underwriting Department immediately. DTC may need to adjust its processing schedule, and the Letter of Representations may need to be re-dated. Per the OA, DTC may extend deadlines in its sole discretion, but never rely on this.</div>
-      <div class="citation"><strong>Source:</strong> DTC Eligibility Questionnaire instructions; DTC Operational Arrangements, Section II.A.2. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
+      <p>OA Exhibit B underwriting standards are measured backward from the Closing Date (e.g., ≥ 6 BD for the UW SOURCE/UWC package; LOR and noon-ET certificate/FRAC rules; closing notice by 1:15 p.m. ET). Agent Confirmation of attributes is due within 10 BD <em>after</em> closing for UW SOURCE/UWC issues.</p>
+      <div class="tip-box"><strong>Critical:</strong> If the closing date changes (a "delayed closing"), notify DTC's Underwriting Department immediately. DTC may need to adjust processing, and documentation may need re-dating. Per OA Important Legal Information, DTC may extend timeframes it sets — do not plan on extensions.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, Exhibit B and § I.A; bundled <a href="../../pdf/operational-arrangements.pdf" rel="noopener">pdf/operational-arrangements.pdf</a>.</div>
     </div>
   </div>
 </div>
@@ -4633,20 +4721,20 @@ function resetQuiz() {
         <div class="def-word">CUSIP Number</div>
         <p>A unique 9-character alphanumeric identifier assigned to each security issue, enabling standardized tracking across the U.S. financial system. Administered by CUSIP Global Services (CGS), a division of S&amp;P Global.</p>
       </div>
-      <p>For DTC eligibility, complete CUSIP information must be provided according to specific timing requirements. For corporate issues, this is triggered upon pricing rather than a fixed pre-closing deadline.</p>
+      <p>For DTC eligibility, CUSIP number(s) (and principal/share amounts, rates, and maturities as applicable) form part of the standard UW SOURCE/UWC package under <strong>OA Exhibit B</strong> — due at least <strong>six business days</strong> prior to the Closing Date. Late surcharges may apply. Municipal issues also interact with NIIDS trade/settlement data requirements referenced in the OA.</p>
       <div class="def-callout">
         <div class="def-type">CUSIP Format</div>
         <div class="def-word">9-character code (e.g. "037833100")</div>
         <p>First 6 characters: Issuer code · Characters 7–8: Security type and issue identifier · Character 9: Check digit</p>
       </div>
       
-      <p class="modal-section-title">CUSIP Assignment Procedures</p>
-      <p>DTC's operational arrangements specify detailed CUSIP assignment requirements:</p>
+      <p class="modal-section-title">CUSIP in the Eligibility Package</p>
+      <p>Per OA Exhibit B (as of June 10, 2026):</p>
       <ul>
-        <li><strong>Municipal Securities:</strong> CUSIP information due 7 business days before closing</li>
-        <li><strong>Corporate Securities:</strong> CUSIP information due upon pricing (no fixed pre-closing deadline)</li>
-        <li><strong>MMI Securities:</strong> Special CUSIP assignment for Money Market Instruments</li>
-        <li><strong>Rapid Issuance:</strong> Expedited CUSIP assignment for certain programmatic issuances</li>
+        <li><strong>Standard package (≥ 6 BD pre-close):</strong> CUSIP number(s), principal/share amount per CUSIP, interest rates and maturity dates as applicable</li>
+        <li><strong>Legacy form wording:</strong> Older questionnaires said 10 BD package / 7 BD CUSIP or corporate “upon pricing” — teach Exhibit B as current</li>
+        <li><strong>MMI Securities:</strong> Special CUSIP/MMI program rules apply</li>
+        <li><strong>Rapid Issuance:</strong> Expedited assignment paths may exist for programmatic programs</li>
       </ul>
       
       <p class="modal-section-title">Special CUSIP Requirements</p>
@@ -4700,8 +4788,14 @@ function resetQuiz() {
         <div class="def-word">Municipal Securities</div>
         <p>Debt obligations issued by states, cities, counties, and other governmental entities to fund public projects. Typically exempt from federal income tax under Section 103 of the Internal Revenue Code.</p>
       </div>
-      <p>For DTC eligibility, municipal issues follow a distinct processing path from corporate issues. DTC offers a <strong>Limited Underwriting service</strong> for non-Book-Entry-Only municipal issues with a principal value of $1 million or less.</p>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements; SEC Form of Letter of Representations (Municipal Issues). <a href="https://www.sec.gov/Archives/edgar/data/882153/000119312505173687/dex99k5.htm">sec.gov</a></div>
+      <p>Municipal debt (states, cities, authorities, etc.) generally uses the same DTC eligibility framework as other full-service issues (Participant sponsorship, UW SOURCE/UWC, LOR for BEO, CUSIPs, Agent Letter). Distinct muni features under the OA include:</p>
+      <ul>
+        <li><strong><span class="hotspot" data-modal="niids" tabindex="0" role="button" onclick="openModal('modal-niids')">NIIDS</span> (§ I.C.3):</strong> New-issue data dissemination for MSRB/market trade reporting, matching, and confirmation — separate from eligibility.</li>
+        <li><strong>Exhibit B Note 2:</strong> Required trade/settlement-eligible muni data are submitted via NIIDS.</li>
+        <li><strong>Serial structures:</strong> Each serial/term needs its own CUSIP (§ II.A.1).</li>
+        <li><strong>Limited Underwriting:</strong> Historical questionnaire checkbox for certain small non-BEO munis — not a defined OA full-service path; confirm current practice with DTC.</li>
+      </ul>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, §§ I.C.3, II.A.1, Exhibit B.</div>
     </div>
   </div>
 </div>
@@ -4717,8 +4811,8 @@ function resetQuiz() {
         <p>Debt (bonds, notes, debentures) and equity (common stock, preferred stock) issued by private and public corporations.</p>
       </div>
       <p>Corporate issues must comply with SEC registration requirements or qualify for an exemption. If issued under Rule 144A or Regulation S, additional riders to the Letter of Representations are required, and the securities must carry a distinct CUSIP from any registered securities of the same class.</p>
-      <p>For corporate issues, CUSIP information must be provided to DTC <strong>upon pricing</strong> of the issue (rather than at a fixed pre-closing deadline), reflecting that pricing often occurs close to closing.</p>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.1; SEC Exhibit 4.4 (Becton Dickinson 144A/Reg S Notes). <a href="https://www.sec.gov/Archives/edgar/data/10795/000119312517383523/d517273dex44.htm">sec.gov</a></div>
+      <p>Corporate issues follow the same OA Exhibit B underwriting package standards (≥ 6 BD pre-close via UW SOURCE/UWC, including CUSIPs/amounts/rates as applicable). Pricing still drives when final terms exist — but teach Exhibit B, not the legacy form’s separate “upon pricing only” CUSIP rule, as the current OA standard.</p>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.A and Exhibit B.</div>
     </div>
   </div>
 </div>
@@ -4731,10 +4825,10 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">DTC Service</div>
         <div class="def-word">Limited Underwriting</div>
-        <p>A streamlined DTC service for non-Book-Entry-Only municipal issues with a principal value of $1 million or less, reducing documentation and operational burden for smaller offerings.</p>
+        <p>A checkbox/concept on the <strong>historical DTC Eligibility Questionnaire form</strong> for certain smaller non-BEO municipal issues (form language often referenced principal of $1 million or less), intended to reduce documentation burden for small munis.</p>
       </div>
-      <p>Unlike full underwriting eligibility, limited underwriting does not require the same level of operational infrastructure, making it accessible to smaller issuers. Even under limited underwriting, the issuer must still submit the eligibility questionnaire and comply with DTC's basic eligibility criteria.</p>
-      <div class="citation"><strong>Source:</strong> DTC Eligibility Questionnaire Footnote 1; DTC Operational Arrangements. <a href="https://www.colonialstock.com/Forms/EligibilityQuestionnaire.pdf">colonialstock.com</a></div>
+      <p><strong>OA note:</strong> “Limited Underwriting” is <em>not</em> a defined full-service eligibility path in the June 10, 2026 Operational Arrangements. Teach it as form-facsimile vocabulary. Full book-entry eligibility still follows OA § I (Participant sponsorship, UW SOURCE/UWC, documentation standards). For current small-issue practice, confirm with DTC Underwriting rather than assuming the 2000 form footnote is still operative.</p>
+      <div class="citation"><strong>Source:</strong> DTC Eligibility Questionnaire form (historical facsimile); contrast OA as of June 10, 2026 § I (no “Limited Underwriting” section).</div>
     </div>
   </div>
 </div>
@@ -4890,14 +4984,14 @@ function resetQuiz() {
         <div class="def-word">Rule 144A</div>
         <p>A safe harbor under the Securities Act of 1933 that permits the resale of restricted securities to Qualified Institutional Buyers (QIBs) — institutions that own and invest on a discretionary basis at least $100 million in securities of unaffiliated issuers — without SEC registration.</p>
       </div>
-      <p class="modal-section-title">Key Requirements for DTC Eligibility</p>
+      <p class="modal-section-title">Key Requirements for DTC Eligibility (OA)</p>
       <ul>
-        <li>Securities must be <strong>Legally or Contractually Restricted</strong> at the time of initial registration in the name of Cede &amp; Co.</li>
-        <li>Must carry a <strong>distinct CUSIP or CINS number</strong> different from any unrestricted securities of the same class.</li>
-        <li>A <strong>rider to the Letter of Representations</strong> is required.</li>
-        <li>For non-investment grade issues, private trading venues (successors to PORTAL) facilitate QIB trading. No separate "PORTAL eligibility" is required by DTC.</li>
+        <li>At initial registration in Cede &amp; Co., securities must be <strong>Legally or Contractually Restricted</strong> and eligible for transfer under Rule 144A (OA § II.A.1.b).</li>
+        <li>Must carry a <strong>distinct CUSIP or CINS</strong> different from unrestricted securities of the same class (OA § II.A.1.b).</li>
+        <li><strong>LOR riders:</strong> OA § I.B.1.b expressly requires riders for <em>all older issues</em> of Rule 144A (and Reg S) securities — list all CUSIPs on the rider. Confirm current DTCC LOR/rider templates for new issuances; issuer restricted-security representations still apply.</li>
+        <li>PORTAL is retired; private QIB venues facilitate secondary trading. No separate PORTAL application is a DTC eligibility step.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> SEC Rule 144A (17 CFR §230.144A); DTC Operational Arrangements, Section II.A.1.b. <a href="https://www.sec.gov/Archives/edgar/data/10795/000119312517383523/d517273dex44.htm">sec.gov</a></div>
+      <div class="citation"><strong>Source:</strong> SEC Rule 144A; DTC Operational Arrangements as of June 10, 2026, §§ I.B.1.b and II.A.1.b.</div>
     </div>
   </div>
 </div>
@@ -4919,15 +5013,14 @@ function resetQuiz() {
         <div class="def-word">U.S. Person Prohibition</div>
         <p>During the compliance period, securities cannot be purchased or held by U.S. persons, except in limited circumstances. This includes direct purchases and indirect holdings through U.S. intermediaries.</p>
       </div>
-      <p class="modal-section-title">Key Requirements for DTC Eligibility</p>
+      <p class="modal-section-title">Key Requirements for DTC Eligibility (OA)</p>
       <ul>
-        <li>Must have a <strong>distinct CUSIP or CINS number</strong> different from any registered securities of the same class.</li>
-        <li>Prior to expiration of the <strong>Distribution Compliance Period</strong> (40 days for debt, 1 year for equity), beneficial interests may only be held through Euroclear and Clearstream as DTC participants.</li>
-        <li>A <strong>rider to the Letter of Representations</strong> is required to address the restricted nature of Regulation S securities.</li>
-        <li><strong>Dual 144A/Reg S:</strong> Many offerings combine Rule 144A and Regulation S eligibility. In these cases, the 144A LOR rider (addressing restricted securities and Cede & Co. ownership) typically covers both exemptions.</li>
-        <li><strong>Global offerings:</strong> Regulation S is commonly used in global offerings where issuers want to reach both U.S. institutional investors (via 144A) and international investors (via Reg S).</li>
+        <li>Distinct <strong>CUSIP/CINS</strong> from unrestricted securities of the same class when held as restricted under Reg S / 144A (OA § II.A.1.b).</li>
+        <li>Distribution compliance period market practice (often ~40 days debt; equity periods longer) constrains U.S. person holdings during the period — coordinate with offering docs and intermediaries.</li>
+        <li><strong>LOR riders:</strong> OA § I.B.1.b requires riders for <em>older</em> Reg S (and 144A) issues; list CUSIPs on the rider. Use current DTCC forms for new Reg S deals.</li>
+        <li><strong>Dual 144A/Reg S:</strong> Common structure; still needs correct restricted CUSIP identification and applicable jurisdiction/currency riders.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> SEC Regulation S (17 CFR §230.901 et seq.); DTC Operational Arrangements, Section II.A.1.b. <a href="https://www.sec.gov/Archives/edgar/data/10795/000119312517383523/d517273dex44.htm">sec.gov</a></div>
+      <div class="citation"><strong>Source:</strong> SEC Regulation S; DTC Operational Arrangements as of June 10, 2026, §§ I.B.1.b and II.A.1.b.</div>
     </div>
   </div>
 </div>
@@ -4958,12 +5051,12 @@ function resetQuiz() {
         <div class="def-word">OFAC (Office of Foreign Assets Control)</div>
         <p>U.S. Treasury agency that administers and enforces economic and trade sanctions based on U.S. foreign policy and national security goals. OFAC maintains the Specially Designated Nationals (SDN) list and other sanctions programs.</p>
       </div>
-      <p class="modal-section-title">OFAC Requirements for DTC Eligibility</p>
-      <p>Underwriters must confirm that neither the issuer nor its principals (officers, directors, significant shareholders) appear on OFAC sanctions lists. This is a <strong>hard stop</strong> — DTC will deny eligibility if sanctions concerns exist.</p>
+      <p class="modal-section-title">OFAC Requirements for DTC Eligibility (OA)</p>
+      <p>Issuers, Agents, and Underwriters must not conduct OFAC-violating transactions through DTC. <strong>If the issuer is on the SDN list, formed in a sanctioned country, or otherwise OFAC-sanctioned, the securities are not DTC eligible</strong> (OA § I.D). Participants represent screening against the SDN list/OFAC rules; transfer-agent Agents provide OFAC certifications DTC may rely on.</p>
       <div class="def-callout">
         <div class="def-type">Compliance Steps</div>
-        <div class="def-word">OFAC Screening Process</div>
-        <p>Before submitting the eligibility questionnaire, underwriters should: (1) Screen the issuer's legal name against the SDN list, (2) Screen officers, directors, and 10%+ shareholders, (3) Check for matches against all OFAC sanctions programs (not just SDN list), (4) Document the screening process and results.</p>
+        <div class="def-word">Practical Screening Checklist</div>
+        <p>Before sponsoring eligibility: (1) Screen the issuer against the SDN list and other OFAC programs, (2) Diligence ownership/control parties as required, (3) Confirm the Agent can provide required OFAC certification, (4) Document results. Sanctioned issuers cannot be made eligible.</p>
       </div>
       <p class="modal-section-title">Red Flags</p>
       <ul>
@@ -5051,7 +5144,7 @@ function resetQuiz() {
       </div>
       <p>For BEO securities, investors never receive physical certificates. Ownership is recorded only as a book-entry on the records of DTC Participants (broker-dealers, banks) who maintain accounts for beneficial owners.</p>
       <div class="tip-box"><strong>If answer is "Yes":</strong>
-        A Letter of Representations (LOR) is required — either a Blanket Issuer LOR (BLOR) covering all securities of the issuer, or an Issuer LOR (ILOR) for the specific issue. Must be on DTC's preprinted form and delivered no later than one business day prior to closing.
+        A Letter of Representations (LOR) is required — either a Blanket Issuer LOR (BLOR) covering all securities of the issuer, or an Issuer LOR (ILOR) for the specific issue. Must be on DTC's preprinted form. Timing follows OA Exhibit B (U.S.: final PDF ≥ 3 BD pre-close; non-U.S.: draft ≥ 10 BD, original hard copy by 3 BD).
       </div>
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.B.1.a; DTC Underwriting FAQ. <a href="https://dtcclearning.com/documents/asset-services/underwriting/3453-underwriting-frequently-asked-questions.html">dtcclearning.com</a></div>
     </div>
@@ -5068,15 +5161,20 @@ function resetQuiz() {
         <div class="def-word">Letter of Representations (LOR)</div>
         <p>A legal agreement between the issuer, its agent, and DTC that sets forth the operational terms under which DTC will provide depository and book-entry services for the securities.</p>
       </div>
-      <p>There are two types:</p>
+      <p>There are two types for corporate/municipal BEO (OA § I.B.1.a):</p>
       <ul>
-        <li><strong>Blanket Issuer LOR (BLOR):</strong> Covers <em>all</em> DTC-eligible securities of a particular issuer. Once on file, it does not expire and no new BLOR is needed for future issuances unless the issuer's name changes.</li>
-        <li><strong>Issuer LOR (ILOR):</strong> Applicable only to a <em>single, discrete issuance</em>, such as trust issuances or special-purpose vehicles.</li>
+        <li><strong>Blanket Issuer LOR (BLOR):</strong> Issuer-specific; except for MMI, applies to all DTC-eligible securities of that issuer. Once on file, a new BLOR is not required for future non-MMI issuances unless the issuer’s name changes (opinion of counsel may also be required).</li>
+        <li><strong>Issuer LOR (ILOR):</strong> For discrete issuances only (e.g., trust issuances).</li>
       </ul>
-      <p>Required riders to the LOR are needed for: Rule 144A/Reg S issues, non-US currency securities, and UK/Ireland issuers. The LOR must be delivered to DTC no later than one business day prior to closing.</p>
-      <p><strong>Electronic signatures:</strong> Permitted for U.S. entities in many circumstances per the June 2026 OA. <strong>Original manual signatures are still required for non-U.S. entities and for legal opinions.</strong></p>
-      <p><strong>Non-U.S. Currency Rider:</strong> If the security is denominated in or pays interest in a currency other than U.S. dollars, a <strong>separate currency rider</strong> is required in addition to any jurisdiction-specific riders. This addresses FX conversion mechanics and payment timing.</p>
-<div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; SEC Form of Letter of Representations. <a href="https://www.sec.gov/Archives/edgar/data/882153/000119312505173687/dex99k5.htm">sec.gov (ILOR)</a> | <a href="https://www.sec.gov/Archives/edgar/data/1173557/000119312505140329/dex99k4b.htm">sec.gov (BLOR)</a></div>
+      <p class="modal-section-title">Required riders (OA § I.B.1.b)</p>
+      <p>Riders are required for: (1) <strong>all older issues</strong> of Rule 144A and Reg S securities, (2) securities denominated or having payments in <strong>non-U.S. currencies</strong>, and (3) <strong>each security of an Ireland or U.K. issuer</strong>. List all relevant CUSIP numbers on each rider. Forms: dtcc.com/legal/issue-eligibility.</p>
+      <p class="modal-section-title">Timing (OA Exhibit B)</p>
+      <ul>
+        <li><strong>U.S. issuers:</strong> final executed PDF LOR at least <strong>3 business days</strong> prior to Closing Date.</li>
+        <li><strong>Non-U.S. issuers:</strong> draft at least <strong>10 business days</strong> prior; original signed hard copy by <strong>3 business days</strong> prior.</li>
+      </ul>
+      <p><strong>Signatures (§ I.A.6):</strong> DTC may rely on electronic signatures in many cases; non-U.S. entity documents often require original manual signatures; legal opinions require hard-copy original manual signatures.</p>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.B.1 and Exhibit B; bundled <a href="../../pdf/operational-arrangements.pdf" rel="noopener">pdf/operational-arrangements.pdf</a>.</div>
     </div>
   </div>
 </div>
@@ -5117,7 +5215,7 @@ function resetQuiz() {
       <ul>
         <li><strong>Historical requirement:</strong> The original questionnaire required PORTAL eligibility for non-investment-grade Rule 144A resales.</li>
         <li><strong>Succeeded by private venues:</strong> PORTAL has been succeeded by private trading platforms for Rule 144A securities; issuers should confirm current venue requirements rather than applying to PORTAL directly.</li>
-        <li><strong>Practical effect:</strong> A distinct CUSIP and LOR rider are still required for these issues even though the PORTAL application step itself is no longer the operative path.</li>
+        <li><strong>Practical effect:</strong> Distinct restricted CUSIP remains required; LOR riders follow OA § I.B.1.b (expressly for older 144A/Reg S issues). PORTAL application is not a DTC step.</li>
       </ul>
       <div class="citation"><strong>Source:</strong> Historical NASD PORTAL rules; current market practice for Rule 144A resale platforms.</div>
     </div>
@@ -5138,7 +5236,7 @@ function resetQuiz() {
       <ul>
         <li><strong>2000:</strong> Non-investment-grade Rule 144A issues had to separately apply for PORTAL eligibility through the NASD by phone.</li>
         <li><strong>Today:</strong> PORTAL no longer exists as an active system. The NASD itself was absorbed into FINRA in 2007. Private trading platforms now serve this role.</li>
-        <li><strong>What survived:</strong> The underlying substantive requirement — a distinct CUSIP and an LOR rider for these issues — is unchanged; only the specific venue and phone number are obsolete.</li>
+        <li><strong>What survived:</strong> Distinct restricted CUSIP/CINS remains mandatory (OA § II.A.1.b). LOR riders are expressly required for older 144A/Reg S issues (OA § I.B.1.b); use current DTCC forms for new deals. PORTAL venue/phone steps are obsolete.</li>
       </ul>
       <div class="tip-box"><strong>Practice tip:</strong> If you see PORTAL referenced in an older internal checklist or precedent document, treat it as a signal the checklist predates 2007 and should be refreshed.</div>
     </div>
@@ -5158,7 +5256,7 @@ function resetQuiz() {
       <p class="modal-section-title">What Changed</p>
       <ul>
         <li><strong>2000:</strong> No specific intraday cutoff was printed on the form itself (though DTC operationally had cutoff times internally).</li>
-        <li><strong>Today:</strong> The June 2026 Operational Arrangements make the <strong>12:00 noon ET</strong> cutoff explicit on the day-before-closing delivery requirement, for both physical certificates and FAST confirmations.</li>
+        <li><strong>Today:</strong> OA § II.B / Exhibit B: physical certificate for inspection by <strong>12:00 noon ET</strong> on the business day prior to closing, <em>or</em> Agent FRAC FAST balance confirmation on the Closing Date by noon ET.</li>
         <li><strong>Why it matters:</strong> Missing the noon cutoff can push a closing to the next business day — this is one of the most common operational delays in the process.</li>
       </ul>
     </div>
@@ -5198,8 +5296,8 @@ function resetQuiz() {
       <p class="modal-section-title">What Changed</p>
       <ul>
         <li><strong>2000:</strong> Questionnaire and offering documents submitted on paper via mail or fax; no electronic portal existed.</li>
-        <li><strong>Today:</strong> DTC accepts submissions through the UW SOURCE or Underwriting Central (UWC) electronic platforms. Paper submissions are still technically accepted but electronic is strongly preferred and faster.</li>
-        <li><strong>Also new since 2000:</strong> The requirement for Transfer Agents to submit an Agent Confirmation via email at least 3 business days prior to closing — this had no equivalent on the 2000 form.</li>
+        <li><strong>Today:</strong> OA § I.A.1 requires eligibility requests through UW SOURCE or UWC at a minimum for full-service eligibility. Exhibit B standard package timing is ≥ 6 business days pre-close (not the 2000 form's 10 BD wording).</li>
+        <li><strong>Agent Confirmation (current OA):</strong> Email confirmation of features/attributes within 10 business days <em>after</em> closing for UW SOURCE/UWC issues — separate from the pre-eligibility Agent Letter.</li>
       </ul>
     </div>
   </div>
@@ -5273,13 +5371,13 @@ function resetQuiz() {
         <p>An institution (typically a bank or trust company) that maintains the official record of security ownership, processes transfers, and interfaces with DTC's book-entry systems.</p>
       </div>
       <p>The Transfer Agent must have executed an Operational Arrangements Agent Letter with DTC before it can act as a FAST Agent or process transfers through DTC's systems. The Transfer Agent is a required contact on the eligibility questionnaire because DTC needs direct coordination with them to process book-entry movements.</p>
-      <p><strong>Current requirement:</strong> The Transfer Agent must submit an <strong>Agent Confirmation</strong> via email to DTC's Underwriting Department at least 3 business days prior to the Closing Date, per the June 2026 OA. This timing was changed from post-closing to pre-closing.</p>
+      <p><strong>Current requirement:</strong> Agent must have an OA Agent Letter on file before eligibility. For UW SOURCE/UWC issues, Agent Confirmation of features/attributes is emailed to Underwriting <strong>within 10 business days after the Closing Date</strong> (OA § I.A.1).</p>
       
       <p class="modal-section-title">Transfer Agent Compliance Requirements</p>
       <p>DTC's operational arrangements specify detailed compliance requirements for transfer agents:</p>
       <ul>
         <li><strong>Operational Arrangements Agent Letter:</strong> Must execute this agreement with DTC before processing any DTC-eligible securities</li>
-        <li><strong>Agent Confirmation:</strong> Must confirm at least 3 business days prior to closing that they have executed required agreements and are prepared to perform duties</li>
+        <li><strong>Agent Confirmation:</strong> For UW SOURCE/UWC issues, email confirmation of securities features/attributes within 10 business days after closing (OA § I.A.1)</li>
         <li><strong>Authentication Dates:</strong> Must properly date all certificate authentications and transfer processing</li>
         <li><strong>Notice Requirements:</strong> Must provide required notices to DTC for name changes, address changes, and other corporate events</li>
         <li><strong>Legal/Tax Notices:</strong> Must post legal and tax notices to DTC's LENS system when required</li>
@@ -5630,7 +5728,7 @@ function resetQuiz() {
       <ul>
         <li>The Lead Underwriter (or its clearing DTC Participant) <strong>must be a DTC Participant</strong> or have an approved correspondent relationship with one. Only Participants can request eligibility.</li>
         <li>The Lead Underwriter is responsible for the <strong>accuracy of all information</strong> on the questionnaire.</li>
-        <li>The Lead Underwriter must ensure the <strong>Letter of Representations</strong> is delivered to DTC no later than one business day before closing.</li>
+        <li>The Lead Underwriter / Participant must ensure the BEO <strong>Letter of Representations</strong> meets OA Exhibit B timing (U.S. final PDF ≥ 3 BD pre-close; non-U.S. draft ≥ 10 BD, original by 3 BD).</li>
         <li>For municipal offerings, the MSRB requires underwriters to comply with DTC's time frames.</li>
       </ul>
       <div class="tip-box"><strong>If the Lead Underwriter is NOT a DTC Participant:</strong> You must identify a Clearing DTC Participant (below) who will handle the book-entry settlement. The clearing participant becomes the direct counterparty with DTC, even though the lead underwriter manages the offering.</div>
@@ -5706,7 +5804,7 @@ function resetQuiz() {
         <li>Direct phone number</li>
         <li>Email address</li>
       </ul>
-      <div class="tip-box"><strong>Pro tip:</strong> If DTC requests a legal opinion, do not wait until the last minute. Drafting, reviewing, and delivering a securities opinion can take several days. Build this into your 10-business-day timeline.</div>
+      <div class="tip-box"><strong>Pro tip:</strong> If DTC requests a legal opinion, do not wait until the last minute. Drafting, reviewing, and delivering a securities opinion can take several days. Build this into the Exhibit B package window (standard ≥ 6 business days pre-close) and any non-U.S. LOR timing.</div>
       <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section I.A.1 — Opinions of Counsel; Section I.B.2 — Documentation Requirements. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>
@@ -5960,12 +6058,12 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">DTC Agreement</div>
         <div class="def-word">BLOR</div>
-        <p>A Blanket Letter of Representations that covers all DTC-eligible securities of a particular issuer. Once executed and filed with DTC, it does not expire and applies to all future issuances by that issuer.</p>
+        <p>Per OA § I.B.1.a: a BLOR is issuer-specific and, except with respect to MMI securities, applicable to all DTC-eligible securities (debt and/or equity) of the same issuer. Once a BLOR is on file, a new BLOR is not required for future non-MMI issuances unless the issuer’s name changes (an opinion of counsel may also be required).</p>
       </div>
       <p class="modal-section-title">How BLOR Differs from ILOR</p>
       <ul>
-        <li><strong>BLOR:</strong> Covers all securities of the issuer. Ongoing coverage. Does not expire unless issuer name changes.</li>
-        <li><strong>ILOR:</strong> Issuer Letter of Representations for a specific issuance only. Single-issue coverage. May be used when BLOR unavailable.</li>
+        <li><strong>BLOR:</strong> Covers the issuer’s DTC-eligible securities (non-MMI) on an ongoing basis until name change / replacement.</li>
+        <li><strong>ILOR:</strong> Discrete issuance only (e.g., trusts). MMI uses dedicated BLOR forms with IPA pairing rules.</li>
       </ul>
       <p class="modal-section-title">BLOR Advantages</p>
       <ul>
@@ -5981,7 +6079,7 @@ function resetQuiz() {
         <li>Some specialized securities (MMI, E-CD) use dedicated forms.</li>
       </ul>
       <div class="tip-box"><strong>Verification:</strong> Before closing, verify with DTC whether the issuer has a BLOR on file. If not, an ILOR will be required. Check that the issuer name matches exactly — even minor discrepancies (e.g., "Inc." vs "Inc") can invalidate BLOR coverage.</div>
-      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements, Section II.A.2; SEC Form of Letter of Representations. <a href="https://www.sec.gov/Archives/edgar/data/1173557/000119312505140329/dex99k4b.htm">sec.gov (BLOR form)</a></div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.B.1.a; DTCC issue-eligibility BLOR templates.</div>
     </div>
   </div>
 </div>
@@ -6006,7 +6104,7 @@ function resetQuiz() {
       </ul>
       <p class="modal-section-title">DTC Eligibility Impact</p>
       <p>Because REITs have ownership restrictions to preserve tax status, DTC requires an <strong>indemnity letter</strong> from the issuer. This letter protects DTC and its Participants in case the REIT's ownership restrictions are violated through DTC's book-entry system.</p>
-      <div class="tip-box"><strong>Seg 100 Option:</strong> REITs may use DTC's Segregation Account 100 (Seg 100) tool to track ownership for compliance. However, DTC does not monitor compliance — Seg 100 is a tracking tool only. The indemnity letter remains required.</div>
+      <div class="tip-box"><strong>Seg 100 vs tax thresholds:</strong> Seg 100 (OA § I.B.4) is aimed at equity ownership-percentage regimes (e.g., shipping/FCC-style caps) and requires a Seg 100 letter. REIT/NOL tax thresholds use assurances and may use an indemnity letter — don’t conflate the two tools.</div>
       <div class="citation"><strong>Source:</strong> Internal Revenue Code §856; DTC Operational Arrangements, Section I.B.4. <a href="https://www.irs.gov/irb/2005-25_IRB/ar13.html">irs.gov</a> | <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
   </div>
@@ -6051,14 +6149,13 @@ function resetQuiz() {
         <div class="def-word">Indemnity Letter</div>
         <p>A letter in which the issuer agrees to indemnify (compensate) DTC and its Participants for losses arising from the issuer's ownership restrictions or other special requirements. The letter protects DTC from liability when processing restricted securities.</p>
       </div>
-      <p class="modal-section-title">When Required</p>
-      <p>DTC requires indemnity letters for issuers with ownership restrictions or special legal considerations:</p>
+      <p class="modal-section-title">When Required (OA § I.B.4)</p>
+      <p>For tax-driven ownership thresholds (e.g., REIT/NOL), the issuer must provide <strong>written assurances</strong> that restrictions will not be enforced against DTC, Cede &amp; Co., or parties holding through DTC. DTC <em>may also</em> require an indemnity letter protecting DTC/Participants/customers, in its sole discretion. Certain regulated regimes (e.g., gaming) <em>must</em> provide a prescribed indemnity letter. Templates are on DTCC’s issue-eligibility site.</p>
       <ul>
-        <li><strong>REITs:</strong> Preserving tax-advantaged status requires ownership limits.</li>
-        <li><strong>NOL issuers:</strong> Companies with net operating loss carryforwards subject to Section 382 limitations.</li>
-        <li><strong>Maritime issuers:</strong> Subject to Jones Act ownership restrictions (U.S. citizenship requirements).</li>
-        <li><strong>Broadcast licensees:</strong> FCC ownership restrictions apply.</li>
-        <li><strong>Foreign issuers:</strong> May require indemnity for foreign legal opinion enforceability.</li>
+        <li><strong>REIT / NOL:</strong> Assurances required; indemnity letter often requested depending on facts.</li>
+        <li><strong>Maritime / FCC / citizenship caps:</strong> Often use Seg 100 and/or prescribed letters — confirm path with DTC.</li>
+        <li><strong>Gaming and similar:</strong> Prescribed indemnity letter as condition of eligibility.</li>
+        <li><strong>Foreign issuers:</strong> May need foreign legal opinions (§ I.B.3) separate from indemnity letters.</li>
       </ul>
       <p class="modal-section-title">Content of Indemnity Letter</p>
       <ul>
@@ -6090,16 +6187,16 @@ function resetQuiz() {
         <li><strong>Discount pricing:</strong> Sold at discount, redeemed at face value.</li>
         <li><strong>Low cost:</strong> Interest rates typically lower than bank loans.</li>
       </ul>
-      <p class="modal-section-title">DTC Processing</p>
-      <p>Commercial paper is processed under DTC's <strong>Money Market Instruments (MMI)</strong> program with special requirements:</p>
+      <p class="modal-section-title">DTC Processing (OA § I.A.2)</p>
+      <p>Commercial paper runs in DTC’s <strong>MMI Program</strong>. The general OA arrangements apply, and MMI are also processed under dedicated DTC Rules and service guides:</p>
       <ul>
-        <li><strong>MMI forms:</strong> Specialized form letters instead of standard LORs.</li>
-        <li><strong>Dedicated help line:</strong> (866) 724-4402 for MMI-specific questions.</li>
-        <li><strong>Separate rules:</strong> Processed under dedicated DTC Rules rather than Operational Arrangements.</li>
-        <li><strong>Banker's acceptances:</strong> Also processed under MMI program.</li>
+        <li><strong>MMI BLOR / form letters:</strong> Use MMI-specific BLOR and IPA forms from dtcc.com/legal/issue-eligibility (not standard corp/muni LOR templates).</li>
+        <li><strong>≤ 30 calendar days:</strong> Maturities this short are made eligible only under the MMI Program (not as non-MMI).</li>
+        <li><strong>Help line:</strong> (866) 724-4402 (OA-published Underwriting customer help).</li>
+        <li><strong>Banker's acceptances / short-term notes:</strong> Also typically MMI-program instruments.</li>
       </ul>
-      <div class="tip-box"><strong>Registration exemption:</strong> Commercial paper with maturity ≤ 270 days is exempt from SEC registration under Rule 3(a)(2) if it meets certain requirements. This exemption is why commercial paper programs can operate efficiently.</div>
-      <div class="citation"><strong>Source:</strong> SEC Rule 3(a)(2); DTC MMI Guidelines. <a href="https://www.sec.gov/rules/final/33-8497.htm">sec.gov</a> | <a href="https://www.dtcc.com">dtcc.com (MMI)</a></div>
+      <div class="tip-box"><strong>Registration exemption:</strong> Commercial paper with maturity ≤ 270 days often relies on Securities Act exemptions (e.g., § 3(a)(3) commercial paper concepts) — confirm with counsel; DTC eligibility is separate from SEC registration analysis.</div>
+      <div class="citation"><strong>Source:</strong> DTC Operational Arrangements as of June 10, 2026, § I.A.2; DTC Rules / MMI guides; SEC commercial-paper exemption analysis.</div>
     </div>
   </div>
 </div>
