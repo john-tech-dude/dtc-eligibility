@@ -275,11 +275,17 @@ body {
 
 /* ─── Diagrams ─── */
 .diagram-box {
-  background: var(--bg-cream); border: 1px solid var(--border-light);
+  background: linear-gradient(165deg, var(--bg-ivory) 0%, var(--bg-cream) 100%);
+  border: 1px solid var(--border-light); position: relative; overflow: hidden;
   border-radius: var(--radius-lg); padding: 32px 36px; margin: 28px 0;
   box-shadow: var(--shadow-sm); transition: var(--transition);
 }
-.diagram-box:hover { box-shadow: var(--shadow-md); }
+.diagram-box::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 50%, var(--green) 100%);
+  opacity: 0.7;
+}
+.diagram-box:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
 .diagram-title {
   font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
   font-weight: 600; color: var(--ink); margin-bottom: 20px;
@@ -291,14 +297,15 @@ body {
   margin: 0 auto; font-family: 'DM Sans', sans-serif;
 }
 .concept-map-svg .cm-edge {
-  fill: none; stroke: var(--ink-muted); stroke-width: 1.5;
-  transition: stroke 0.3s;
+  fill: none; stroke: var(--ink-muted); stroke-width: 1.5; stroke-linecap: round;
+  transition: stroke 0.3s, stroke-width 0.3s; opacity: 0.85;
 }
 .concept-map-svg .cm-edge-dashed {
   fill: none; stroke: var(--ink-faint); stroke-width: 1.4; stroke-dasharray: 5 4;
+  stroke-linecap: round;
 }
 .concept-map-svg .cm-edge-pass {
-  fill: none; stroke: var(--green); stroke-width: 1.8;
+  fill: none; stroke: var(--green); stroke-width: 1.8; stroke-linecap: round;
   stroke-dasharray: 6 4; opacity: 0.85;
 }
 .concept-map-svg .cm-edge-label {
@@ -319,15 +326,22 @@ body {
   text-transform: uppercase; fill: var(--ink-muted); pointer-events: none;
 }
 .concept-map-svg .cm-node {
-  cursor: pointer; transition: filter 0.2s ease, transform 0.2s ease;
+  cursor: pointer; transition: filter 0.25s ease, transform 0.25s cubic-bezier(0.4,0,0.2,1);
 }
-.concept-map-svg .cm-node:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.concept-map-svg .cm-node:hover {
+  filter: brightness(1.1) saturate(1.08); transform: translateY(-2px) scale(1.015);
+}
+.concept-map-svg .cm-node:hover .cm-node-shape { filter: url(#g-glow-accent); }
 .concept-map-svg .cm-node:focus { outline: none; }
 .concept-map-svg .cm-node:focus-visible .cm-node-shape {
-  stroke: var(--gold); stroke-width: 2.5;
+  stroke: var(--gold); stroke-width: 2.5; filter: url(#g-glow-gold);
 }
 .concept-map-svg .cm-node-static { cursor: default; }
 .concept-map-svg .cm-node-static:hover { filter: none; transform: none; }
+.concept-map-svg .cm-node-static:hover .cm-node-shape { filter: url(#g-shadow); }
+.concept-map-svg .cm-node-sheen {
+  fill: url(#g-sheen); pointer-events: none;
+}
 .cm-caption {
   text-align: center; font-size: 0.85rem; color: var(--ink-tertiary);
   margin: 16px auto 0; line-height: 1.6; max-width: 600px;
@@ -727,37 +741,64 @@ body {
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
-    <!-- ─── Shared gradients & filter for all diagram nodes (theme-aware via CSS variables) ─── -->
+    <!-- ─── Shared gradients & filters for all diagram nodes (theme-aware via CSS variables) ─── -->
     <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--bg-ivory)"/>
-      <stop offset="1" stop-color="var(--bg-cream)"/>
+      <stop offset="0.55" stop-color="var(--bg-cream)"/>
+      <stop offset="1" stop-color="var(--border-faint)"/>
     </linearGradient>
     <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="0.5" stop-color="var(--accent-muted)"/>
       <stop offset="1" stop-color="var(--accent-muted)"/>
     </linearGradient>
     <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="0.6" stop-color="var(--accent)"/>
       <stop offset="1" stop-color="var(--accent-hover)"/>
     </linearGradient>
     <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--gold-light)"/>
-      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+      <stop offset="0.55" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.4"/>
     </linearGradient>
     <linearGradient id="g-gold-solid" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="var(--gold-deep)"/>
-      <stop offset="1" stop-color="var(--gold)"/>
+      <stop offset="0.5" stop-color="var(--gold)"/>
+      <stop offset="1" stop-color="var(--gold-deep)"/>
     </linearGradient>
     <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--green-light)"/>
-      <stop offset="1" stop-color="var(--green)" stop-opacity="0.32"/>
+      <stop offset="0.55" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.36"/>
     </linearGradient>
     <linearGradient id="g-green-solid" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="var(--green)"/>
-      <stop offset="1" stop-color="var(--green)" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="var(--green)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.82"/>
     </linearGradient>
-    <filter id="g-shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    <!-- Subtle top-edge gloss overlay for a glass-like sheen on solid nodes -->
+    <linearGradient id="g-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Layered, softer premium elevation shadow (ambient + directional) -->
+    <filter id="g-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.10)"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="rgba(0,0,0,0.14)"/>
+    </filter>
+    <!-- Soft ambient shadow for larger/zone nodes -->
+    <filter id="g-shadow-md" x="-45%" y="-45%" width="190%" height="190%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.10)"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="rgba(0,0,0,0.14)"/>
+    </filter>
+    <!-- Colored glow used on hover/focus for premium emphasis -->
+    <filter id="g-glow-accent" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="var(--accent)" flood-opacity="0.35"/>
+    </filter>
+    <filter id="g-glow-gold" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="var(--gold)" flood-opacity="0.35"/>
     </filter>
   </defs>
 </svg>
@@ -769,8 +810,8 @@ body {
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
   <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
-  <a href="#overview">Overview — Trusts & Fiduciaries</a>
-  <a href="#overview" class="sub">Fiduciary Duty & Prudent Investor Rule</a>
+  <a href="#overview">Overview — Trusts &amp; Fiduciaries</a>
+  <a href="#overview" class="sub">Fiduciary Duty &amp; Prudent Investor Rule</a>
   <a href="#concept-map-trust-ecosystem" class="sub">Concept Map — Trust Ecosystem</a>
   <a href="#trust-types">Types of Trusts</a>
   <a href="#concept-map-trust-types" class="sub">Concept Map — Trust Types</a>
@@ -778,12 +819,12 @@ body {
   <a href="#trust-types" class="sub">Testamentary vs Inter Vivos</a>
   <a href="#trust-types" class="sub">Charitable Trusts (CRT, CLT)</a>
   <a href="#fiduciary">Fiduciary Responsibilities</a>
-  <a href="#fiduciary" class="sub">Duty of Loyalty & Care</a>
+  <a href="#fiduciary" class="sub">Duty of Loyalty &amp; Care</a>
   <a href="#fiduciary" class="sub">Prudent Investor Rule</a>
   <a href="#process-trust-funding" class="sub">Process Map — Funding a Trust</a>
-  <a href="#securities-titling">Securities Titling & DTC Nominee</a>
+  <a href="#securities-titling">Securities Titling &amp; DTC Nominee</a>
   <a href="#concept-map-dtc-trust" class="sub">Concept Map — DTC Trust Stack</a>
-  <a href="#securities-titling" class="sub">Titling & Transfer Mechanics</a>
+  <a href="#securities-titling" class="sub">Titling &amp; Transfer Mechanics</a>
   <a href="#process-dtc-transfer" class="sub">Process Map — DTC Transfer into Trust</a>
   <a href="#tax">Tax Considerations</a>
   <a href="#concept-map-tax" class="sub">Concept Map — Trust Tax Framework</a>
@@ -793,7 +834,7 @@ body {
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
   <a href="../../index.html" class="external">DTC Documents Index</a>
-  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
   <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
@@ -908,11 +949,11 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
   </p>
   <svg class="concept-map-svg" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <marker id="cm1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      <marker id="cm1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--ink-muted)"/>
       </marker>
-      <marker id="cm1-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      <marker id="cm1-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--gold)"/>
       </marker>
     </defs>
 
@@ -928,6 +969,7 @@ This guide covers the principal trust architectures, the fiduciary responsibilit
     <!-- Trust Document (center top) -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
       <rect class="cm-node-shape" x="222" y="18" width="176" height="72" rx="14" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
+      <rect class="cm-node-sheen" x="222" y="18" width="176" height="32" rx="14"/>
       <text class="cm-node-title" x="310" y="40" text-anchor="middle" fill="#fff">Trust</text>
       <text class="cm-node-sub" x="310" y="58" text-anchor="middle" fill="var(--accent-muted)">Legal entity /</text>
       <text class="cm-node-sub" x="310" y="70" text-anchor="middle" fill="var(--accent-muted)">Fiduciary arrangement</text>
@@ -1007,14 +1049,15 @@ Trusts are classified along three principal axes: <strong>revocability</strong> 
   </p>
   <svg class="concept-map-svg" viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      <marker id="cm2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--ink-muted)"/>
       </marker>
     </defs>
 
     <!-- Root: Trust -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
       <rect class="cm-node-shape" x="310" y="16" width="140" height="50" rx="14" fill="url(#g-accent-solid)" filter="url(#g-shadow)"/>
+      <rect class="cm-node-sheen" x="310" y="16" width="140" height="22" rx="14"/>
       <text class="cm-node-title" x="380" y="46" text-anchor="middle" fill="#fff">Trust</text>
     </g>
 
@@ -1232,8 +1275,8 @@ The Prudent Investor Rule, as articulated in the <span class="hotspot" data-moda
   </p>
   <svg class="process-flow-svg" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <marker id="pf-fund-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      <marker id="pf-fund-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--accent-muted)"/>
       </marker>
     </defs>
     <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
@@ -1323,8 +1366,8 @@ This layered intermediary structure is identical for individual investors, found
   </p>
   <svg class="concept-map-svg" viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="max-width:680px">
     <defs>
-      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      <marker id="cm3-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--ink-muted)"/>
       </marker>
     </defs>
     <rect x="28" y="40" width="8" height="56" rx="3" fill="var(--border)" opacity="0.55"/>
@@ -1434,8 +1477,8 @@ This precise titling is critical for four reasons:
   </p>
   <svg class="process-flow-svg" viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <marker id="pf-transfer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent-muted)"/>
+      <marker id="pf-transfer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--accent-muted)"/>
       </marker>
     </defs>
     <rect x="28" y="16" width="130" height="24" rx="6" fill="var(--bg)" stroke="var(--border-light)"/>
@@ -1523,14 +1566,15 @@ Trusts are subject to a complex web of tax rules. The two primary income tax reg
   </p>
   <svg class="concept-map-svg" viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      <marker id="cm4-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0.5 1.2 L 9.5 5 L 0.5 8.8 Q 3 5 0.5 1.2 z" fill="var(--ink-muted)"/>
       </marker>
     </defs>
 
     <!-- Center: Trust -->
     <g class="cm-node" data-modal="trust" tabindex="0" role="button" aria-label="Trust — open definition">
       <rect class="cm-node-shape" x="300" y="150" width="160" height="60" rx="14" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
+      <rect class="cm-node-sheen" x="300" y="150" width="160" height="26" rx="14"/>
       <text class="cm-node-title" x="380" y="176" text-anchor="middle" fill="#fff">Trust</text>
       <text class="cm-node-sub" x="380" y="196" text-anchor="middle" fill="var(--accent-muted)">Taxpayer / Fiduciary entity</text>
     </g>

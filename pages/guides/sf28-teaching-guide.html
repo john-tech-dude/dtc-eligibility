@@ -790,37 +790,56 @@
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
-    <!-- ─── Shared gradients & filter for diagram nodes (theme-aware via CSS variables) ─── -->
+    <!-- ─── Shared gradients &amp; filters for diagram nodes (theme-aware via CSS variables) ─── -->
     <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--bg-ivory)"/>
-      <stop offset="1" stop-color="var(--bg-cream)"/>
+      <stop offset="0.55" stop-color="var(--bg-cream)"/>
+      <stop offset="1" stop-color="var(--border-faint)"/>
     </linearGradient>
     <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="0.5" stop-color="var(--accent-muted)"/>
       <stop offset="1" stop-color="var(--accent-muted)"/>
     </linearGradient>
     <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="0.6" stop-color="var(--accent)"/>
       <stop offset="1" stop-color="var(--accent-hover)"/>
     </linearGradient>
     <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--gold-light)"/>
-      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.35"/>
+      <stop offset="0.55" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.4"/>
     </linearGradient>
     <linearGradient id="g-gold-solid" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="var(--gold-deep)"/>
-      <stop offset="1" stop-color="var(--gold)"/>
+      <stop offset="0.5" stop-color="var(--gold)"/>
+      <stop offset="1" stop-color="var(--gold-deep)"/>
     </linearGradient>
     <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="var(--green-light)"/>
-      <stop offset="1" stop-color="var(--green)" stop-opacity="0.32"/>
+      <stop offset="0.55" stop-color="var(--green-light)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.36"/>
     </linearGradient>
     <linearGradient id="g-green-solid" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="var(--green)"/>
-      <stop offset="1" stop-color="var(--green)" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="var(--green)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.82"/>
     </linearGradient>
-    <filter id="g-shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,0.16)"/>
+    <linearGradient id="g-sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="g-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.10)"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="rgba(0,0,0,0.14)"/>
+    </filter>
+    <filter id="g-glow-accent" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="var(--accent)" flood-opacity="0.35"/>
+    </filter>
+    <filter id="g-glow-gold" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="var(--gold)" flood-opacity="0.35"/>
     </filter>
   </defs>
 </svg>
@@ -833,22 +852,22 @@
   <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
   <a href="#form">SF 28 Form</a>
-  <a href="#oath" class="sub">Oath & Affirmation</a>
+  <a href="#oath" class="sub">Oath &amp; Affirmation</a>
   <a href="#personal-info" class="sub">Personal Information</a>
   <a href="#assets" class="sub">Pledged Assets</a>
-  <a href="#encumbrances" class="sub">Liens & Encumbrances</a>
-  <a href="#signature" class="sub">Signature & Notary</a>
+  <a href="#encumbrances" class="sub">Liens &amp; Encumbrances</a>
+  <a href="#signature" class="sub">Signature &amp; Notary</a>
   <a href="#instructions" class="sub">Instructions (Page 4)</a>
-  <a href="#red-flags">Red Flags & Discretion</a>
+  <a href="#red-flags">Red Flags &amp; Discretion</a>
   <a href="#scenarios">Scenario-Based Learning</a>
   <a href="#mistakes">Common Mistakes</a>
-  <a href="#study-guide">Study Guide & Checklist</a>
+  <a href="#study-guide">Study Guide &amp; Checklist</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
   <a href="../../index.html" class="external">DTC Documents Index</a>
-  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
-  <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
   <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
@@ -1033,7 +1052,7 @@
         <th style="width: 25%;">CUSIP Number</th>
         <th style="width: 25%;">Security Description</th>
         <th style="width: 25%;">Par (Face) Amount</th>
-        <th style="width: 25%;">Current Market Value</th>
+        <th style="width: 25%;"><span class="hotspot" data-modal="market-value" tabindex="0" role="button" onclick="openModal('modal-market-value')">Current Market Value</span></th>
       </tr>
     </thead>
     <tbody>
@@ -1161,7 +1180,7 @@
     </div>
     <div class="red-flag-card">
       <h4>Unattached Asset Documentation</h4>
-      <p>The form explicitly states: <strong>"Documentation Of The Pledged Asset Must Be Attached."</strong> Under current FAR 28.203-1, that documentation centers on Treasury-eligible securities (CUSIP, par amount, account statements, broker/financial-institution confirmations). Historical real-estate packages (evidence of title, tax assessments, appraisals) applied under pre-2021 practice and are not acceptable collateral today.</p>
+      <p>The form explicitly states: <strong>"Documentation Of The Pledged Asset Must Be Attached."</strong> Under current FAR 28.203-1, that documentation centers on Treasury-eligible securities (CUSIP, par amount, account statements, broker/financial-institution confirmations). Historical real-estate packages (<span class="hotspot" data-modal="evidence-of-title" tabindex="0" role="button" onclick="openModal('modal-evidence-of-title')">evidence of title</span>, <span class="hotspot" data-modal="tax-assessment" tabindex="0" role="button" onclick="openModal('modal-tax-assessment')">tax assessments</span>, appraisals) applied under pre-2021 practice and are not acceptable collateral today.</p>
     </div>
     <div class="red-flag-card">
       <h4>Undisclosed Prior Pledges (3-Year Lookback)</h4>
@@ -1298,7 +1317,7 @@
 </div>
 
 <div class="mistakes-section" id="mistakes">
-  <div class="section-heading">Common Mistakes & How to Avoid Them</div>
+  <div class="section-heading">Common Mistakes &amp; How to Avoid Them</div>
   <div class="mistake-card">
     <h4>❌ Using a Scanned or Electronic Signature</h4>
     <p>SF 28 Instructions, Item 4 explicitly states: "All signatures of the affidavit submitted must be originals. Affidavits bearing reproduced signatures are not acceptable." DocuSign, Adobe Sign, stamped signatures, and photocopies are all rejected. The surety must physically sign the form in the presence of a notary (or have the notary witness the signature).</p>
@@ -1328,7 +1347,7 @@
 <div class="study-guide" id="study-guide">
   <h3>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;" aria-label="Document icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-    Study Guide & Section-by-Section Checklist
+    Study Guide &amp; Section-by-Section Checklist
   </h3>
   <div class="study-grid">
     <div class="study-card">
@@ -1359,14 +1378,14 @@
         <li>Field 7: Assets are Treasury-eligible under 31 CFR part 225 (typically U.S. government securities); all CUSIP numbers and par amounts are complete and accurate</li>
         <li>Securities are held in a <strong>non-margin account</strong> and available to be pledged; market values and any required haircuts/margins are documented</li>
         <li>Financial institution / RTN and contact details support verification of the pledge</li>
-        <li>Field 8: All liens, claims, and encumbrances on pledged assets are fully disclosed</li>
+        <li>Field 8: All liens, claims, and encumbrances on pledged assets — including any <span class="hotspot" data-modal="recorded-lien" tabindex="0" role="button" onclick="openModal('modal-recorded-lien')">recorded liens</span> — are fully disclosed</li>
         <li>Field 9: Complete 3-year history of all prior bond pledges is disclosed</li>
         <li><strong>All supporting documentation physically attached</strong> to the affidavit</li>
         <li style="color:var(--ink-tertiary);"><em>Historical only (pre-2021):</em> real-estate legal description, appraisal, and tax assessment — not acceptable collateral under current FAR 28.203-1</li>
       </ul>
     </div>
     <div class="study-card">
-      <h4>Signature & Notary Checklist (Fields 10–12)</h4>
+      <h4>Signature &amp; Notary Checklist (Fields 10–12)</h4>
       <ul>
         <li>Field 10: <strong>Original ink signature only</strong> — no reproductions, scans, or e-signatures</li>
         <li>Field 11: Bond and contract number clearly identified</li>
@@ -2073,7 +2092,7 @@
       <div class="def-callout">
         <div class="def-type">Securities Identifier</div>
         <div class="def-word">CUSIP Number</div>
-        <p>A unique 9-character alphanumeric code used to identify securities (stocks, bonds, notes) in the U.S. and Canada. Administered by CUSIP Global Services (CGS), a division of S&P Global.</p>
+        <p>A unique 9-character alphanumeric code used to identify securities (stocks, bonds, notes) in the U.S. and Canada. Administered by CUSIP Global Services (CGS), a division of S&amp;P Global.</p>
       </div>
       <p>On SF 28, the surety must list the CUSIP number for each security being pledged. This allows the contracting officer to:</p>
       <ul>
@@ -2170,7 +2189,7 @@
       <ul>
         <li><strong>Liens:</strong> Mortgages, tax liens, judgment liens, mechanic's liens</li>
         <li><strong>Easements:</strong> Rights of others to use the property (e.g., utility easements, access easements)</li>
-        <li><strong>Restrictions:</strong> Covenants, conditions, and restrictions (CC&Rs) in subdivisions</li>
+        <li><strong>Restrictions:</strong> Covenants, conditions, and restrictions (CC&amp;Rs) in subdivisions</li>
         <li><strong>Encroachments:</strong> Structures that extend onto neighboring property</li>
         <li><strong>Zoning violations:</strong> Non-conforming uses that may require remediation</li>
         <li><strong>Pending condemnation:</strong> Government proceedings to take the property</li>

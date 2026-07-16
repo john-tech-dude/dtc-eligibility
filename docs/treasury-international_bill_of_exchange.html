@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Payment Wizard — International Documentary Collection & Bill of Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/shared.css">
+<style>
+
+/* CSS variables and base styles moved to shared.css */
+
+/* TOC Sidebar */
+.toc-sidebar {
+  position: fixed; left: 0; top: 0; width: 280px; height: 100vh;
+  background: var(--bg); border-right: 1px solid var(--border-light);
+  padding: 24px 20px; overflow-y: auto; z-index: 60;
+  transform: translateX(-100%); transition: transform 0.3s ease;
+}
+.toc-sidebar.open { transform: translateX(0); }
+.toc-toggle {
+  position: fixed; left: 16px; top: 44px; z-index: 70;
+  width: 40px; height: 40px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); transition: all 0.2s;
+}
+[data-theme="dark"] .toc-toggle { color: var(--bg); }
+.toc-toggle:hover { background: var(--accent-hover); }
+.toc-sidebar h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
+  margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
+}
+.toc-sidebar a {
+  display: block; padding: 6px 0; font-size: 0.78rem;
+  color: var(--ink-tertiary); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: all 0.15s;
+}
+.toc-sidebar a:hover { color: var(--accent); padding-left: 4px; }
+.toc-sidebar a.sub { padding-left: 12px; font-size: 0.72rem; }
+.toc-sidebar a.external { color: var(--accent); font-style: italic; }
+.toc-sidebar .toc-divider {
+  margin: 16px 0 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-faint);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.toc-sidebar .toc-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; font-size: 1.4rem;
+  color: var(--ink-muted); cursor: pointer;
+}
+
+.toc-desc {
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+.toc-sidebar a.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+.toc-sidebar a.disabled:hover,
+.toc-sidebar a.disabled:focus-visible {
+  color: var(--ink-muted);
+  padding-left: 0;
+}
+
+.toc-sidebar a.disabled .toc-desc {
+  color: var(--ink-faint);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+
+/* Page Header */
+.page-header {
+  background: var(--bg); border-bottom: 1px solid var(--border-light);
+  padding: 0; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 24px 32px 20px; display: flex;
+  align-items: center; justify-content: space-between; gap: 24px;
+}
+.header-brand { display: flex; align-items: center; gap: 14px; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent; border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm); padding: 8px 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; color: var(--ink-muted);
+  transition: all 0.2s ease; font-size: 0.8rem; font-weight: 500;
+}
+.theme-toggle:hover { background: var(--bg-cream); border-color: var(--border); color: var(--ink); }
+.theme-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.theme-toggle .sun-icon { display: block; }
+.theme-toggle .moon-icon { display: none; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+.header-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  font-family: 'Cormorant Garamond', serif; flex-shrink: 0;
+}
+[data-theme="dark"] .header-icon { color: var(--bg); }
+.header-text h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+.header-text .sub {
+  font-size: 0.72rem; color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 2px;
+}
+.header-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 14px; background: var(--gold-light);
+  border: 1px solid rgba(166,124,0,0.15); border-radius: 100px;
+  font-size: 0.68rem; font-weight: 600; color: var(--gold-deep);
+  letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+}
+.header-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+/* Main Layout */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 80px; }
+
+/* Banners */
+.update-banner {
+  background: var(--accent-light); border: 1px solid var(--accent-muted);
+  border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.82rem; color: var(--accent);
+}
+.update-banner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.update-banner strong { color: var(--ink); }
+
+.teach-banner {
+  background: var(--teal-light); border: 1px solid rgba(13,115,119,0.15);
+  border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.84rem; color: var(--teal);
+}
+.teach-banner svg { flex-shrink: 0; width: 22px; height: 22px; }
+.teach-banner strong { color: var(--ink); }
+
+/* Doc Frame */
+.doc-frame {
+  background: var(--bg); border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 48px 52px 56px; position: relative;
+}
+.doc-frame::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Original Page Styles */
+.page {
+  width: 8.5in; min-height: 11in; margin: 0 auto 30px auto;
+  padding: 0.5in; border: 1px solid #ccc; background: var(--bg); position: relative;
+}
+[data-theme="dark"] .page { border-color: var(--border); }
+.page1 .header { text-align: center; margin-bottom: 15px; }
+.page1 .header h1 { font-size: 14px; font-weight: bold; margin-bottom: 3px; }
+.page1 .header h2 { font-size: 12px; font-weight: bold; }
+.page1 .description { margin-bottom: 15px; font-size: 10px; }
+.page1 .description p { margin-bottom: 5px; }
+.instructions-title { font-weight: bold; font-size: 11px; margin-bottom: 8px; }
+.instructions-list { margin-left: 15px; margin-bottom: 15px; font-size: 10px; }
+.instructions-list li { margin-bottom: 3px; }
+.form-section { margin-bottom: 12px; }
+.form-row { display: flex; margin-bottom: 4px; align-items: baseline; }
+.form-row label { white-space: nowrap; font-size: 10px; }
+.form-row .underline { flex: 1; border-bottom: 1px solid #000; min-height: 14px; margin-left: 3px; }
+.form-row .short-underline { width: 80px; border-bottom: 1px solid #000; min-height: 14px; margin-left: 3px; }
+[data-theme="dark"] .form-row .underline, [data-theme="dark"] .form-row .short-underline { border-color: var(--border); }
+.docs-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 9px; }
+.docs-table th, .docs-table td { border: 1px solid #000; padding: 3px 4px; text-align: center; vertical-align: bottom; }
+.docs-table th { font-weight: normal; background: var(--bg); }
+[data-theme="dark"] .docs-table th, [data-theme="dark"] .docs-table td { border-color: var(--border); }
+.docs-table td { height: 18px; }
+.docs-table .doc-label { text-align: left; font-size: 9px; white-space: nowrap; }
+.two-col { display: flex; gap: 20px; margin-bottom: 10px; }
+.two-col .col { flex: 1; }
+.boxed-section { border: 1px solid #000; padding: 8px; margin-bottom: 10px; }
+[data-theme="dark"] .boxed-section { border-color: var(--border); }
+.boxed-title { font-weight: bold; font-size: 10px; margin-bottom: 5px; }
+.page2 .top-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 10px; }
+.page2 .bank-header { text-align: center; margin-bottom: 15px; }
+.page2 .bank-header h2 { font-size: 13px; font-weight: bold; margin-bottom: 3px; }
+.page2 .bank-header p { font-size: 9px; line-height: 1.4; }
+.page2 .form-line { display: flex; align-items: baseline; margin-bottom: 3px; font-size: 9px; }
+.page2 .form-line label { white-space: nowrap; font-size: 9px; }
+.page2 .form-line .line { flex: 1; border-bottom: 1px solid #000; min-height: 12px; margin-left: 2px; }
+.checkbox-row { display: flex; align-items: center; margin-bottom: 2px; font-size: 9px; }
+.checkbox-row .box { width: 10px; height: 10px; border: 1px solid #000; margin-right: 5px; display: inline-block; }
+[data-theme="dark"] .page2 .form-line .line, [data-theme="dark"] .checkbox-row .box { border-color: var(--border); }
+.page3 .top-header { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 9px; }
+.page3 .bank-info { text-align: right; font-size: 9px; line-height: 1.4; }
+.page3 .main-title { text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+.page3 .sub-title { text-align: center; font-size: 10px; margin-bottom: 30px; }
+.bill-content { font-size: 11px; line-height: 2; }
+.bill-line { display: flex; align-items: baseline; margin-bottom: 8px; }
+.bill-line .label { white-space: nowrap; }
+.bill-line .fill-line { flex: 1; border-bottom: 1px solid #000; min-height: 16px; margin: 0 3px; }
+.bill-line .short-fill { width: 120px; border-bottom: 1px solid #000; min-height: 16px; margin: 0 3px; }
+[data-theme="dark"] .bill-line .fill-line, [data-theme="dark"] .bill-line .short-fill { border-color: var(--border); }
+.convention-text { font-size: 9px; line-height: 1.4; margin: 20px 0; text-align: justify; }
+.signature-section { display: flex; justify-content: space-between; margin-top: 30px; font-size: 10px; }
+.signature-block { text-align: center; }
+.signature-block .sig-line { width: 200px; border-bottom: 1px solid #000; min-height: 30px; margin-bottom: 3px; }
+.bottom-code { text-align: right; font-size: 8px; margin-top: 20px; }
+hr.section-divider { border: none; border-top: 1px solid #000; margin: 15px 0; }
+[data-theme="dark"] .signature-block .sig-line, [data-theme="dark"] hr.section-divider { border-color: var(--border); }
+
+/* Dark mode for inline border styles */
+[data-theme="dark"] div[style*="border: 1px solid #000"],
+[data-theme="dark"] div[style*="border-bottom: 1px solid #000"] {
+  border-color: var(--border) !important;
+}
+
+/* Hotspot */
+.hotspot {
+  position: relative; display: inline; cursor: pointer;
+  border-bottom: 1.5px dotted var(--accent); color: var(--ink);
+  transition: all 0.2s ease; padding: 0 1px;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  background: var(--accent-light); border-bottom-style: solid;
+  border-bottom-color: var(--accent); border-radius: 2px; outline: none;
+}
+.hotspot::after {
+  content: "i"; font-size: 0.55em; color: var(--accent);
+  margin-left: 3px; vertical-align: super;
+  font-family: 'DM Sans', sans-serif; font-weight: 700;
+  opacity: 0.7; transition: opacity 0.2s;
+  display: inline-block; width: 12px; height: 12px;
+  line-height: 12px; text-align: center; border-radius: 50%;
+  border: 1px solid var(--accent); background: var(--accent-light);
+}
+.hotspot:hover::after, .hotspot:focus-visible::after { opacity: 1; }
+
+/* MODAL SYSTEM */
+.modal-overlay {
+  position: fixed; inset: 0; background: var(--modal-overlay);
+  display: none; align-items: center; justify-content: center;
+  z-index: 1000; padding: 24px; opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active { display: flex; opacity: 1; }
+.modal-overlay.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.modal-overlay.loading .modal-card {
+  transform: translateY(20px) scale(0.98);
+}
+.modal-card {
+  background: var(--bg); border-radius: var(--radius-lg);
+  max-width: 720px; width: 100%; max-height: 88vh; overflow: hidden;
+  box-shadow: var(--shadow-xl); border: 1px solid var(--border-light);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
+.modal-header {
+  background: var(--bg-cream); border-bottom: 1px solid var(--border-light);
+  padding: 28px 32px 22px; display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 20px; position: relative;
+}
+.modal-header::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.modal-header h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--ink);
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.6rem;
+  color: var(--ink-muted); cursor: pointer; padding: 0;
+  width: 36px; height: 36px; display: flex; align-items: center;
+  justify-content: center; border-radius: var(--radius-sm);
+  flex-shrink: 0; transition: all 0.2s; margin-top: -4px;
+}
+.modal-close:hover { background: var(--border-light); color: var(--ink); }
+.modal-body {
+  padding: 24px 32px 32px; overflow-y: auto;
+  max-height: calc(88vh - 90px); font-size: 0.88rem;
+  line-height: 1.85; color: var(--ink-secondary);
+}
+.modal-body p { margin-bottom: 14px; }
+.modal-body p:last-child { margin-bottom: 0; }
+.modal-body .citation {
+  display: block; margin-top: 16px; padding: 16px 20px;
+  background: var(--gold-light); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem; color: var(--ink-tertiary);
+  font-style: italic; line-height: 1.7;
+}
+.modal-body .citation strong {
+  font-style: normal; font-weight: 600; color: var(--gold-deep);
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.modal-body ul { margin: 12px 0 12px 24px; padding: 0; }
+.modal-body li { margin-bottom: 8px; line-height: 1.7; }
+.modal-body .modal-section-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+  font-weight: 600; color: var(--ink); margin: 20px 0 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-faint);
+}
+.modal-body .modal-section-title:first-child { margin-top: 0; }
+.def-callout {
+  background: var(--bg-cream); border: 1px solid var(--border-faint);
+  border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0;
+}
+.def-callout .def-word {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-weight: 600; color: var(--accent); margin-bottom: 6px;
+}
+.def-callout .def-type {
+  font-size: 0.68rem; font-weight: 600; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.tip-box {
+  background: var(--green-light); border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.82rem;
+  color: var(--ink-secondary); line-height: 1.7;
+}
+.tip-box strong { font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+
+/* Print */
+@media print {
+  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  body { background: #fff; color: #000; }
+  .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
+  .wrap { padding: 0; max-width: 100%; }
+  .page-header { position: static; border-bottom: 2px solid #000; }
+  .header-inner { padding: 12px 0; }
+  .hotspot { border-bottom: 1px dotted #000; }
+  .hotspot::after { display: none; }
+  a { text-decoration: none; color: #000; }
+}
+@media (max-width: 720px) {
+  .header-inner { padding: 18px 20px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wrap { padding: 20px 14px 48px; }
+  .doc-frame { padding: 28px 22px 36px; }
+  .modal-card { max-width: 100%; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-overlay.active .modal-card { transform: translateY(0); }
+  .toc-sidebar { width: 100%; }
+}
+
+/* Page Footer */
+.page-footer {
+  background: var(--bg); border-top: 1px solid var(--border-light);
+  padding: 24px 20px 32px; margin-top: 32px;
+}
+.footer-content { max-width: 1100px; margin: 0 auto; }
+.footer-info {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center; font-size: 0.8rem; color: var(--ink-secondary);
+}
+.footer-version { font-weight: 500; color: var(--ink-tertiary); }
+.footer-links { display: flex; align-items: center; gap: 16px; margin-top: 4px; }
+.footer-links a { color: var(--ink-tertiary); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-divider { color: var(--border); font-size: 0.7rem; }
+.footer-legal { margin-top: 12px; font-size: 0.7rem; color: var(--ink-muted); line-height: 1.5; max-width: 800px; text-align: center; }
+
+@media (max-width: 768px) {
+  .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
+  .footer-info { gap: 6px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+</style>
+
+</head>
+<body>
+
+<button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#page1">Page 1 — Collection Instructions</a>
+  <a href="#page1" class="sub">Drawer & Drawee</a>
+  <a href="#page1" class="sub">Documents & Tenor</a>
+  <a href="#page2">Page 2 — Documentary Collection Form</a>
+  <a href="#page2" class="sub">Payment Terms</a>
+  <a href="#page2" class="sub">Charges & Protest</a>
+  <a href="#page3">Page 3 — Bill of Exchange</a>
+  <a href="#page3" class="sub">UNCITRAL Convention</a>
+  <a href="#page3" class="sub">Endorsement & Signature</a>
+  <div class="toc-divider">Assessment</div>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <div class="toc-divider">Related Documents</div>
+  <a href="../index.html" class="external">DTC Documents Index <span class="toc-desc">↗ Overview of all documentation</span></a>
+  <a href="../guides/dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide <span class="toc-desc">↗ Infrastructure & processes</span></a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire <span class="toc-desc">↗ Interactive assessment tool</span></a>
+  <a href="../guides/sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety <span class="toc-desc">↗ Bond guarantee requirements</span></a>
+  <a href="javascript:void(0)" class="external disabled">DTC Biblical Exegesis <span class="toc-desc">🔒 No Access</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">TP</div>
+      <div class="header-text">
+        <h1>Trade Payment Wizard — International Documentary Collection</h1>
+        <div class="sub">Enhanced Teaching Guide with Interactive Definitions · Zions Bank</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-badge">Teaching Tool</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../index.html">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Documentation</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Treasury International Bill of Exchange</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Information icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+  <span><strong>Document Guide:</strong> This is an interactive version of the Zions Bank International Documentary Collection form and Bill of Exchange. Click any <strong>underlined term</strong> for definitions and explanations.</span>
+</div>
+
+<!-- Updated Teaching Banner with UNCITRAL reference -->
+<div class="teach-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Teaching icon">
+    <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+  </svg>
+  <span>
+    <strong>International Trade Finance Teaching Tool</strong> — This interactive form teaches the mechanics of documentary collections, bills of exchange, and international payment processes. 
+    <strong>This module references the UNCITRAL Convention on International Bills of Exchange</strong>, providing a legal framework for cross‑border negotiable instruments. Click underlined terms for detailed explanations.
+  </span>
+</div>
+
+<div class="doc-frame">
+
+<!-- PAGE 1 -->
+<div class="page page1" id="page1">
+  <div class="header">
+    <h1>Trade Payment Wizard<sup>tm</sup></h1>
+    <h2>International Documentary Collection Against Payment</h2>
+  </div>
+
+  <div class="description">
+    <p>International Documentary Collection Against Payment or "<span class="hotspot" data-modal="dp" tabindex="0" role="button" onclick="openModal('modal-dp')">D/P</span>".</p>
+    <p>An International Documentary Collection Against Payment is a formal request for payment made by a bank on behalf of its customer. The bank acts solely as an agent and assumes no responsibility for the requested payment.</p>
+  </div>
+
+  <div class="instructions-title">Collection Instructions:</div>
+  <ol class="instructions-list">
+    <li>Complete the Collection Request Wizard form (use upper case only).</li>
+    <li>Print and sign the International Documentary Collection instructions and <span class="hotspot" data-modal="bill-of-exchange" tabindex="0" role="button" onclick="openModal('modal-bill-of-exchange')">Bill of Exchange (Draft)</span>.</li>
+    <li>Send the International Documentary Collection and Bill of Exchange to <span class="hotspot" data-modal="zions-bank" tabindex="0" role="button" onclick="openModal('modal-zions-bank')">Zions Bank</span> for collection.</li>
+  </ol>
+
+  <div class="form-section">
+    <div class="form-row">
+      <label>Date (DD MON YY)</label>
+      <div class="underline"></div>
+      <label style="margin-left: 15px;">Customer Reference</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label><span class="hotspot" data-modal="drawer" tabindex="0" role="button" onclick="openModal('modal-drawer')">Drawer (customer /seller)</span></label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Address (street,district)</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Address (city,state,country)</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Contact (person)</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Tel</label>
+      <div class="short-underline"></div>
+      <label style="margin-left: 15px;">Fax</label>
+      <div class="short-underline"></div>
+      <label style="margin-left: 15px;">Email</label>
+      <div class="underline"></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 5px; font-size: 10px;">Documents for Payment Include:</div>
+  <table class="docs-table">
+    <tr>
+      <th style="text-align: left;">DOCUMENT</th>
+      <th><span class="hotspot" data-modal="draft-doc" tabindex="0" role="button" onclick="openModal('modal-draft-doc')">Draft</span></th>
+      <th><span class="hotspot" data-modal="air-waybill" tabindex="0" role="button" onclick="openModal('modal-air-waybill')">Air<br>Waybill</span></th>
+      <th><span class="hotspot" data-modal="bol" tabindex="0" role="button" onclick="openModal('modal-bol')">BoL</span></th>
+      <th><span class="hotspot" data-modal="nn-bol" tabindex="0" role="button" onclick="openModal('modal-nn-bol')">N/N BoL</span></th>
+      <th><span class="hotspot" data-modal="invoice" tabindex="0" role="button" onclick="openModal('modal-invoice')">Invoice</span></th>
+      <th><span class="hotspot" data-modal="packing-list" tabindex="0" role="button" onclick="openModal('modal-packing-list')">Packing<br>List</span></th>
+      <th><span class="hotspot" data-modal="certificate-origin" tabindex="0" role="button" onclick="openModal('modal-certificate-origin')">Certificate<br>of Origin</span></th>
+      <th><span class="hotspot" data-modal="insurance" tabindex="0" role="button" onclick="openModal('modal-insurance')">Insurance</span></th>
+      <th><span class="hotspot" data-modal="courier-receipt" tabindex="0" role="button" onclick="openModal('modal-courier-receipt')">Courier<br>Receipt</span></th>
+      <th><span>Other<br>Documents</span></th>
+    </tr>
+    <tr>
+      <td class="doc-label"><span class="hotspot" data-modal="originals" tabindex="0" role="button" onclick="openModal('modal-originals')">ORIGINALS</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="doc-label"><span class="hotspot" data-modal="duplicates" tabindex="0" role="button" onclick="openModal('modal-duplicates')">DUPLICATES</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+  </table>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="form-row">
+        <label>Bill of Lading Date(s) (DD MON YY)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Draft No (assigned by customer)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label><span>Currency</span> (USD or symbol)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label><span>Amount (in words)</span></label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label><span class="hotspot" data-modal="tenor" tabindex="0" role="button" onclick="openModal('modal-tenor')">Tenor: At</span></label>
+        <div class="short-underline"></div>
+        <label>(sight or number of days)</label>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-row">
+        <label><span class="hotspot" data-modal="drawee" tabindex="0" role="button" onclick="openModal('modal-drawee')">Drawee (buyer)</span></label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Address (street,district)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Address (city,state,country)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Tel</label>
+        <div class="short-underline"></div>
+      </div>
+      <div class="form-row">
+        <label><span class="hotspot" data-modal="drawee-bank" tabindex="0" role="button" onclick="openModal('modal-drawee-bank')">Drawee Bank (buyer's bank)</span></label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Address (street,district)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Fax</label>
+        <div class="short-underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Address (city,state,country)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Bill of Lading No(s)</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Amount</label>
+        <div class="underline"></div>
+      </div>
+      <div class="form-row">
+        <label><span>Days After</span></label>
+        <div class="short-underline"></div>
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <div class="underline"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="boxed-section">
+    <div class="boxed-title"><span class="hotspot" data-modal="credit-account" tabindex="0" role="button" onclick="openModal('modal-credit-account')">Credit Our Commercial Account (Drawer/customer's account):</span></div>
+    <div class="form-row">
+      <label>Account Name</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Bank Name</label>
+      <div class="underline"></div>
+    </div>
+    <div class="form-row">
+      <label>Address</label>
+      <div class="underline"></div>
+    </div>
+    <div class="two-col">
+      <div class="col">
+        <div class="form-row">
+          <label>Account Number</label>
+          <div class="underline"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-row">
+          <label><span class="hotspot" data-modal="aba" tabindex="0" role="button" onclick="openModal('modal-aba')">ABA /Bank Transit No</span></label>
+          <div class="underline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label>Covering Shipment or Reason for Payment:</label>
+  </div>
+  <div style="border-bottom: 1px solid #000; min-height: 40px; margin-bottom: 5px;"></div>
+
+  <div class="form-row">
+    <label><span>Special Instructions:</span></label>
+  </div>
+  <div style="border-bottom: 1px solid #000; min-height: 60px;"></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page page2" id="page2">
+  <div class="top-info">
+    <div>BANK Reference</div>
+    <div>FILE Reference</div>
+  </div>
+
+  <div class="bank-header">
+    <h2>INTERNATIONAL DOCUMENTARY COLLECTION</h2>
+    <p><strong>Zions Bank</strong><br>
+    International Trade Finance<br>
+    One South Main, 2nd Floor, Salt Lake City, UT USA 84111<br>
+    Tel: 801-524-8868 &nbsp;&nbsp; Fax: 801-322-5931<br>
+    Email: s184acl@zionsbank.com</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 9px;">
+    <div>DATE</div>
+    <div>DTC Cost Center:</div>
+  </div>
+
+  <div class="form-line" style="margin-bottom: 8px;">
+    <label>TO BANK AND ADDRESS</label>
+    <div class="line" style="min-height: 50px;"></div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>WE ENCLOSE THE FOLLOWING FOR COLLECTION</label>
+      </div>
+      <div style="border: 1px solid #000; min-height: 60px; margin-top: 3px;"></div>
+    </div>
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>FURTHER INSTRUCTIONS</label>
+      </div>
+      <div style="border: 1px solid #000; min-height: 60px; margin-top: 3px;"></div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>DRAFT / CHECK NUMBER</label>
+        <div class="line"></div>
+      </div>
+      <div class="form-line">
+        <label>FORWARD TO YOUR CORRESPONDENT</label>
+        <div class="line" style="min-height: 30px;"></div>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>DRAWEE BANK AND ADDRESS</label>
+        <div class="line" style="min-height: 40px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>DRAWN ON</label>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div style="display: flex; gap: 10px;">
+        <div class="form-line" style="flex: 1;">
+          <label>TEL</label>
+          <div class="line"></div>
+        </div>
+        <div class="form-line" style="flex: 1;">
+          <label>FAX</label>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-line">
+    <label>EMAIL</label>
+    <div class="line"></div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin: 10px 0;">
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label><span class="hotspot" data-modal="tenor-term" tabindex="0" role="button" onclick="openModal('modal-tenor-term')">TENOR</span></label>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>AMOUNT</label>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div class="checkbox-row"><span class="box"></span> <span>DELIVER DOCUMENTS AGAINST PAYMENT</span></div>
+      <div class="checkbox-row"><span class="box"></span> <span class="hotspot" data-modal="sight" tabindex="0" role="button" onclick="openModal('modal-sight')">PAYABLE AT SIGHT</span></div>
+      <div class="checkbox-row"><span class="box"></span> <span class="hotspot" data-modal="da" tabindex="0" role="button" onclick="openModal('modal-da')">DELIVER DOCUMENTS AGAINST ACCEPTANCE</span></div>
+      <div class="checkbox-row"><span class="box"></span> <span>PAYABLE ON DATE</span></div>
+      <div class="checkbox-row"><span class="box"></span> <span class="hotspot" data-modal="protest" tabindex="0" role="button" onclick="openModal('modal-protest')">DO NOT PROTEST</span></div>
+      <div class="checkbox-row"><span class="box"></span> OTHER</div>
+    </div>
+    <div style="flex: 1;">
+      <div style="margin-bottom: 5px;"><span>PROTEST FOR</span></div>
+      <div class="checkbox-row"><span class="box"></span> <span>NON PAYMENT</span> &nbsp;&nbsp; <span class="box"></span> <span>NONACCEPTANCE</span></div>
+      <div class="checkbox-row"><span class="box"></span> ADVISE NONACCEPTANCE AND/OR NONPAYMENT BY CABLE</div>
+      <div class="checkbox-row"><span class="box"></span> ADVISE PAYMENT BY CABLE</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <div class="checkbox-row"><span class="box"></span> Your correspondence's charges are to be paid by Drawee(s)</div>
+    <div class="checkbox-row"><span class="box"></span> Your charges are to be paid by Drawee(s)</div>
+    <div class="checkbox-row"><span class="box"></span> Waive all charges if refused by the Drawee and charge them to us</div>
+    <div class="checkbox-row"><span class="box"></span> Do not waive charges</div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;"><span>COLLECT INTEREST FROM DRAWEE(S)</span></div>
+      <div style="border: 1px solid #000; min-height: 25px;"></div>
+    </div>
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;">If necessary, contact:</div>
+      <div style="border: 1px solid #000; min-height: 25px;"></div>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-weight: bold; font-size: 10px; margin: 10px 0;">CREDIT OUR COMMERCIAL ACCOUNT</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 10px;">
+    <div class="form-line">
+      <label><span class="hotspot" data-modal="account-name" tabindex="0" role="button" onclick="openModal('modal-account-name')">ACCOUNT NAME</span></label>
+      <div class="line"></div>
+    </div>
+    <div class="form-line">
+      <label><span class="hotspot" data-modal="account-number" tabindex="0" role="button" onclick="openModal('modal-account-number')">ACCOUNT NUMBER</span></label>
+      <div class="line"></div>
+    </div>
+    <div class="form-line">
+      <label><span class="hotspot" data-modal="bank-name" tabindex="0" role="button" onclick="openModal('modal-bank-name')">BANK NAME</span></label>
+      <div class="line"></div>
+    </div>
+    <div class="form-line">
+      <label><span class="hotspot" data-modal="bank-address" tabindex="0" role="button" onclick="openModal('modal-bank-address')">BANK ADDRESS</span></label>
+      <div class="line"></div>
+    </div>
+    <div class="form-line" style="grid-column: 1 / -1;">
+      <label><span class="hotspot" data-modal="bank-aba" tabindex="0" role="button" onclick="openModal('modal-bank-aba')">BANK ABA/TRANSIT NO.</span></label>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <table class="docs-table">
+    <tr>
+      <th style="text-align: left;">DOCUMENT</th>
+      <th><span class="hotspot" data-modal="draft-doc" tabindex="0" role="button" onclick="openModal('modal-draft-doc')">Draft</span></th>
+      <th><span class="hotspot" data-modal="air-waybill" tabindex="0" role="button" onclick="openModal('modal-air-waybill')">Air<br>Waybill</span></th>
+      <th><span class="hotspot" data-modal="bol" tabindex="0" role="button" onclick="openModal('modal-bol')">BoL</span></th>
+      <th><span class="hotspot" data-modal="nn-bol" tabindex="0" role="button" onclick="openModal('modal-nn-bol')">N/N BoL</span></th>
+      <th><span class="hotspot" data-modal="invoice" tabindex="0" role="button" onclick="openModal('modal-invoice')">Invoice</span></th>
+      <th><span class="hotspot" data-modal="packing-list" tabindex="0" role="button" onclick="openModal('modal-packing-list')">Packing<br>List</span></th>
+      <th><span class="hotspot" data-modal="certificate-origin" tabindex="0" role="button" onclick="openModal('modal-certificate-origin')">Certificate<br>of Origin</span></th>
+      <th><span class="hotspot" data-modal="insurance" tabindex="0" role="button" onclick="openModal('modal-insurance')">Insurance</span></th>
+      <th><span class="hotspot" data-modal="courier-receipt" tabindex="0" role="button" onclick="openModal('modal-courier-receipt')">Courier<br>Receipt</span></th>
+      <th><span class="hotspot" data-modal="other-documents" tabindex="0" role="button" onclick="openModal('modal-other-documents')">Other<br>Documents</span></th>
+    </tr>
+    <tr>
+      <td class="doc-label"><span class="hotspot" data-modal="originals" tabindex="0" role="button" onclick="openModal('modal-originals')">ORIGINALS</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td class="doc-label"><span class="hotspot" data-modal="duplicates" tabindex="0" role="button" onclick="openModal('modal-duplicates')">DUPLICATES</span></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr>
+  </table>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 2;">
+      <div class="form-line">
+        <label>COVERING SHIPMENT OF</label>
+      </div>
+      <div style="border: 1px solid #000; min-height: 30px;"></div>
+    </div>
+    <div style="flex: 1;">
+      <div class="form-line">
+        <label>BOL NO(s)</label>
+      </div>
+      <div style="border: 1px solid #000; min-height: 30px;"></div>
+    </div>
+  </div>
+
+  <div class="form-line">
+    <label>SPECIAL INSTRUCTIONS</label>
+  </div>
+  <div style="border: 1px solid #000; min-height: 40px; margin-bottom: 10px;"></div>
+
+  <div style="text-align: right; font-size: 8px; margin-bottom: 10px;">ZIBTFxIDCrevJ4</div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;">SIGN</div>
+      <div style="border-bottom: 1px solid #000; min-height: 25px;"></div>
+      <div style="font-size: 8px; margin-top: 2px;">AUTHORIZED BANK SIGNATURE & TITLE</div>
+    </div>
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;">BANK</div>
+      <div style="border-bottom: 1px solid #000; min-height: 25px;"></div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;">DRAWER</div>
+      <div style="border-bottom: 1px solid #000; min-height: 25px;"></div>
+      <div style="font-size: 8px; margin-top: 2px;">DRAWER'S SIGNATURE & TITLE</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div style="text-align: center; font-weight: bold; font-size: 10px; margin-bottom: 5px;">COLLECTION REFERENCE INFORMATION</div>
+
+  <div style="display: flex; gap: 10px;">
+    <div style="flex: 1;">
+      <div style="font-size: 9px; margin-bottom: 3px;">DRAWER NAME & ADDRESS</div>
+      <div style="border: 1px solid #000; min-height: 60px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page page3" id="page3">
+  <div class="top-header">
+    <div><span>DTC Participant ID:</span></div>
+    <div class="bank-info">
+      <strong>Zions Bank</strong><br>
+      International Trade Finance<br>
+      One Main Street, 2nd Floor<br>
+      Salt Lake City, UT USA 84111<br>
+      Tel: 801-524-8868 &nbsp;&nbsp; Fax: 801-322-5931<br>
+      Email: s184acl@zionsbank.com
+    </div>
+  </div>
+
+  <div class="main-title">BILL OF EXCHANGE</div>
+  <div class="sub-title"><span class="hotspot" data-modal="uncitral" tabindex="0" role="button" onclick="openModal('modal-uncitral')">International bill of exchange (UNCITRAL Convention)</span></div>
+
+  <div class="bill-content">
+    <div class="bill-line">
+      <span class="label"><span class="hotspot" data-modal="place-drawing" tabindex="0" role="button" onclick="openModal('modal-place-drawing')">Place of Drawing</span></span>
+      <div class="fill-line"></div>
+    </div>
+
+    <div class="bill-line">
+      <span class="label"><span class="hotspot" data-modal="pay-order" tabindex="0" role="button" onclick="openModal('modal-pay-order')">Pay To The Order Of</span></span>
+      <div class="fill-line"></div>
+    </div>
+
+    <div class="bill-line">
+      <span class="label">Amount</span>
+      <div class="fill-line"></div>
+    </div>
+
+    <div class="bill-line">
+      <span class="label"><span class="hotspot" data-modal="value-received" tabindex="0" role="button" onclick="openModal('modal-value-received')">Value Received</span> And Charge To Account Of</span>
+      <div class="fill-line"></div>
+    </div>
+
+    <div class="bill-line">
+      <span class="label">At</span>
+      <div class="short-fill"></div>
+      <span class="label">Date</span>
+      <div class="short-fill"></div>
+      <span class="label">Days After</span>
+      <div class="short-fill"></div>
+    </div>
+
+    <div style="text-align: right; margin: 10px 0; font-style: italic;">iC</div>
+  </div>
+
+  <div class="convention-text">
+    This International bill of exchange (UNCITRAL Convention) is drawn in particular to Articles 1-7, 11, 12, 13, 46(1)-(3), 47(1)-(4) and 51-53 of the
+  </div>
+
+  <div class="bill-line">
+    <span class="label">To:</span>
+    <div class="fill-line"></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <div class="bill-line">
+      <span class="label"><span class="hotspot" data-modal="drawer-boe" tabindex="0" role="button" onclick="openModal('modal-drawer-boe')">Drawer</span></span>
+      <div class="fill-line"></div>
+    </div>
+    <div class="bill-line">
+      <span class="label">Location</span>
+      <div class="fill-line"></div>
+    </div>
+  </div>
+
+  <div class="signature-section">
+    <div class="signature-block">
+      <div><span class="hotspot" data-modal="good-aval" tabindex="0" role="button" onclick="openModal('modal-good-aval')">Good as Aval</span>. Without</div>
+      <div class="sig-line"></div>
+      <div><span class="hotspot" data-modal="authorized-representative" tabindex="0" role="button" onclick="openModal('modal-authorized-representative')">Authorized Representative</span></div>
+    </div>
+    <div class="signature-block">
+      <div><span class="hotspot" data-modal="endorsement" tabindex="0" role="button" onclick="openModal('modal-endorsement')">Endorsement</span></div>
+      <div class="sig-line"></div>
+      <div>Signature</div>
+    </div>
+  </div>
+
+  <div class="bottom-code">ZIBTFxDDRrevJ4</div>
+</div>
+
+</div><!-- /doc-frame -->
+
+</div><!-- /wrap -->
+
+<!-- ═══════════════════════════════════════════════════
+     MODAL LIBRARY
+════════════════════════════════════════════════════ -->
+
+<!-- how-to-use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-how-to-use">How to Use This Guide</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <p>This interactive guide presents the Zions Bank International Documentary Collection form and Bill of Exchange with clickable definitions and trade finance guidance.</p>
+      <p><strong>How to navigate:</strong></p>
+      <ul>
+        <li>Click the <strong>☰ menu</strong> to jump between pages.</li>
+        <li>Click any <strong>underlined term</strong> to open a detailed explanation.</li>
+        <li>Use this guide to understand the roles, documents, and legal framework behind documentary collections.</li>
+      </ul>
+      <div class="tip-box"><strong>Learning tip:</strong> Work through the form sequentially. Each field builds on the previous. If you encounter an unfamiliar term, click it before moving on.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bill of Exchange -->
+<div class="modal-overlay" id="modal-bill-of-exchange" role="dialog" aria-modal="true" aria-labelledby="modal-title-bill-of-exchange">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bill-of-exchange">Bill of Exchange (Draft)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Negotiable Instrument</div>
+        <div class="def-word">Bill of Exchange / Draft</div>
+        <p>An unconditional written order from one party (the drawer) to another (the drawee), directing the drawee to pay a specified sum of money to a third party (the payee) either on demand or at a determinable future date.</p>
+      </div>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li><strong>Unconditional:</strong> The order to pay must not depend on any other event or condition.</li>
+        <li><strong>In writing:</strong> Must be a physical or electronic document with the required formal elements.</li>
+        <li><strong>Three parties:</strong> Drawer (seller), Drawee (buyer/buyer's bank), and Payee (usually the drawer or their bank).</li>
+        <li><strong>Negotiable:</strong> Can be transferred by endorsement, making it a liquid instrument in trade finance.</li>
+      </ul>
+      <p class="modal-section-title">Types of Drafts</p>
+      <ul>
+        <li><strong>Sight Draft:</strong> Payable on demand, upon presentation to the drawee. Used in D/P (Documents Against Payment) collections.</li>
+        <li><strong>Time Draft / Usance Draft:</strong> Payable at a specified future date (e.g., 30, 60, 90 days after sight or after date). Used in D/A (Documents Against Acceptance) collections.</li>
+      </ul>
+      <div class="tip-box"><strong>Trade Finance Tip:</strong> In a D/P collection, the buyer cannot take possession of the shipping documents (and thus the goods) until they pay the sight draft. This gives the seller significant security.</div>
+      <div class="citation"><strong>Source:</strong> Uniform Customs and Practice for Documentary Collections (UCP 600), ICC Publication No. 600; UNCITRAL Convention on International Bills of Exchange and International Promissory Notes (1988).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Zions Bank -->
+<div class="modal-overlay" id="modal-zions-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-zions-bank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-zions-bank">Zions Bank — International Trade Finance</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collecting Bank / Remitting Bank</div>
+        <div class="def-word">Zions Bank</div>
+        <p>A U.S. regional bank headquartered in Salt Lake City, Utah, providing international trade finance services including documentary collections, letters of credit, and foreign exchange.</p>
+      </div>
+      <p class="modal-section-title">Role in Documentary Collection</p>
+      <ul>
+        <li><strong>Remitting Bank:</strong> The bank that receives the collection documents from the seller (drawer) and forwards them to the buyer's bank (collecting bank) in the buyer's country.</li>
+        <li><strong>Agent:</strong> Acts solely as an intermediary — assumes no responsibility for payment. The bank's role is limited to presenting documents and collecting funds.</li>
+      </ul>
+      <div class="tip-box"><strong>Important:</strong> Under UCP 600, banks deal in documents, not goods. Zions Bank is not responsible for the quality, quantity, or condition of the underlying merchandise. Its obligation is strictly to follow the collection instructions.</div>
+      <div class="citation"><strong>Source:</strong> Zions Bank International Trade Finance, One South Main, 2nd Floor, Salt Lake City, UT 84111. Tel: 801-524-8868.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Drawer -->
+<div class="modal-overlay" id="modal-drawer" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawer">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-drawer">Drawer (Customer / Seller)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Party to the Draft</div>
+        <div class="def-word">Drawer</div>
+        <p>The party (typically the seller/exporter) who creates and signs the Bill of Exchange, ordering the drawee to pay a specified amount. The drawer is also the beneficiary of the collection.</p>
+      </div>
+      <p class="modal-section-title">Responsibilities of the Drawer</p>
+      <ul>
+        <li>Prepares and signs the Bill of Exchange and collection instructions accurately.</li>
+        <li>Provides complete and correct shipping documents to the remitting bank.</li>
+        <li>Ensures the draft amount matches the invoice and contract terms.</li>
+        <li>Specifies clear instructions on how documents are to be released (D/P or D/A).</li>
+      </ul>
+      <p class="modal-section-title">Relationship to Other Parties</p>
+      <ul>
+        <li><strong>Drawer → Remitting Bank:</strong> Submits documents and draft for collection.</li>
+        <li><strong>Drawer → Drawee:</strong> The underlying commercial relationship (sale of goods).</li>
+        <li><strong>Drawer as Payee:</strong> Often the drawer is also the payee on the draft — the party to whom payment is made.</li>
+      </ul>
+      <div class="tip-box"><strong>Risk Note:</strong> In a D/P collection, the drawer retains control of the goods until payment. In a D/A collection, the drawer releases documents against acceptance of a time draft, bearing the credit risk of the buyer until maturity.</div>
+      <div class="citation"><strong>Source:</strong> UCP 600, Article 2 (Definitions); Uniform Commercial Code (UCC) Article 3 (Negotiable Instruments).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Drawee -->
+<div class="modal-overlay" id="modal-drawee" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawee">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-drawee">Drawee (Buyer)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Party to the Draft</div>
+        <div class="def-word">Drawee</div>
+        <p>The party (typically the buyer/importer) on whom the Bill of Exchange is drawn — the party ordered to make payment. In trade collections, this is the importer who purchased the goods.</p>
+      </div>
+      <p class="modal-section-title">Drawee's Role in D/P vs. D/A</p>
+      <ul>
+        <li><strong>D/P (Documents Against Payment):</strong> The drawee must pay the sight draft in full before receiving the shipping documents and taking possession of the goods.</li>
+        <li><strong>D/A (Documents Against Acceptance):</strong> The drawee accepts (signs) the time draft, promising to pay at a future date, and receives the documents immediately. Payment is due later.</li>
+      </ul>
+      <p class="modal-section-title">Drawee Bank</p>
+      <p>The drawee's bank (buyer's bank) acts as the <strong>collecting bank</strong> or <strong>presenting bank</strong> — the bank in the buyer's country that presents the documents and draft to the drawee for payment or acceptance.</p>
+      <div class="tip-box"><strong>Credit Risk:</strong> D/P is safer for the seller because the buyer cannot obtain the goods without paying. D/A is riskier for the seller but more convenient for the buyer, who can sell the goods before payment is due.</div>
+      <div class="citation"><strong>Source:</strong> UCP 600, Articles 7-8; ICC Uniform Rules for Collections (URC 522).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Drawee Bank -->
+<div class="modal-overlay" id="modal-drawee-bank" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawee-bank">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-drawee-bank">Drawee Bank (Buyer's Bank)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collecting Bank / Presenting Bank</div>
+        <div class="def-word">Drawee Bank</div>
+        <p>The bank in the buyer's country that receives the collection documents from the remitting bank, presents them to the drawee (buyer), and collects payment or acceptance.</p>
+      </div>
+      <p class="modal-section-title">Functions of the Drawee Bank</p>
+      <ul>
+        <li><strong>Receipt:</strong> Receives the collection order, draft, and documents from the remitting bank.</li>
+        <li><strong>Presentation:</strong> Presents the draft and documents to the buyer for payment (D/P) or acceptance (D/A).</li>
+        <li><strong>Collection:</strong> Collects funds from the buyer and remits them to the remitting bank.</li>
+        <li><strong>Document Release:</strong> Releases documents to the buyer only upon payment or acceptance, per the collection instructions.</li>
+      </ul>
+      <p class="modal-section-title">Liability</p>
+      <p>Under URC 522, the collecting bank acts as an agent only and assumes no liability for payment unless it has specifically guaranteed payment (avalized the draft). Its duty is to follow the collection instructions in good faith and with reasonable care.</p>
+      <div class="tip-box"><strong>Practical Note:</strong> The seller should verify that the drawee bank is reputable and has a correspondent relationship with the remitting bank. Using a bank known to the buyer can facilitate smoother collection.</div>
+      <div class="citation"><strong>Source:</strong> URC 522 (Uniform Rules for Collections), ICC Publication No. 522, Articles 1-26.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Draft Document -->
+<div class="modal-overlay" id="modal-draft-doc" role="dialog" aria-modal="true" aria-labelledby="modal-title-draft-doc">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-draft-doc">Draft — Document in Collection</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collection Document</div>
+        <div class="def-word">Draft</div>
+        <p>The Bill of Exchange included in the documentary collection. It serves as the formal demand for payment and is typically accompanied by shipping documents (Bill of Lading, Invoice, etc.).</p>
+      </div>
+      <p class="modal-section-title">Why the Draft Matters</p>
+      <ul>
+        <li><strong>Legal instrument:</strong> Creates an enforceable obligation to pay under negotiable instruments law.</li>
+        <li><strong>Collection trigger:</strong> The collecting bank presents the draft to the buyer for payment or acceptance.</li>
+        <li><strong>Evidence of debt:</strong> An accepted time draft becomes a trade acceptance — a marketable instrument that the seller can discount or sell.</li>
+      </ul>
+      <div class="tip-box"><strong>Document Check:</strong> The draft must be properly signed by the drawer, show the correct amount, and specify the drawee. Mismatches between the draft and invoice will cause delays or rejection by the collecting bank.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4 (Form of Collection); UCC Article 3, Section 3-104.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bill of Lading -->
+<div class="modal-overlay" id="modal-bol" role="dialog" aria-modal="true" aria-labelledby="modal-title-bol">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bol">Bill of Lading (BoL)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transport Document</div>
+        <div class="def-word">Bill of Lading</div>
+        <p>A document issued by a carrier to a shipper, acknowledging receipt of cargo for shipment. It serves as a contract of carriage, a receipt for goods, and — in its original form — a document of title enabling the holder to take possession of the goods.</p>
+      </div>
+      <p class="modal-section-title">Types of Bills of Lading</p>
+      <ul>
+        <li><strong>Original BoL:</strong> A document of title. The buyer must present the original to claim goods at the destination port. This is the most secure form for the seller.</li>
+        <li><strong>Non-Negotiable (N/N) BoL:</strong> A receipt only, not a document of title. Named consignee can claim goods without presenting the original. Less secure for the seller.</li>
+        <li><strong>Sea Waybill:</strong> Similar to N/N BoL but used for sea transport. The consignee is named and no original is needed for delivery.</li>
+        <li><strong>Air Waybill:</strong> Used for air freight. Always non-negotiable; the consignee is named at issuance.</li>
+      </ul>
+      <p class="modal-section-title">Role in Documentary Collection</p>
+      <p>The Bill of Lading is the most critical shipping document in a collection. The seller retains control of the goods by retaining the original BoL until payment is received. The collecting bank releases the original BoL to the buyer only upon payment (D/P) or acceptance (D/A).</p>
+      <div class="tip-box"><strong>Security Tip:</strong> Always use an Original (negotiable) Bill of Lading for D/P collections. The N/N BoL does not give the seller control over the goods once they arrive at the destination.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4; Hague-Visby Rules (Carriage of Goods by Sea).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tenor -->
+<div class="modal-overlay" id="modal-tenor" role="dialog" aria-modal="true" aria-labelledby="modal-title-tenor">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-tenor">Tenor — Payment Timing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Draft Term</div>
+        <div class="def-word">Tenor</div>
+        <p>The period of time after which a draft becomes due and payable. It determines when the drawee must pay.</p>
+      </div>
+      <p class="modal-section-title">Common Tenor Expressions</p>
+      <ul>
+        <li><strong>"At sight"</strong> — Payable immediately upon presentation. Used in D/P collections. No delay; the buyer pays to get the documents.</li>
+        <li><strong>"30/60/90 days after sight"</strong> — Payable 30, 60, or 90 days after the drawee has seen (accepted) the draft. The clock starts when the buyer acknowledges the draft.</li>
+        <li><strong>"30/60/90 days after date"</strong> — Payable 30, 60, or 90 days after the date written on the draft. The clock starts from the draft date, regardless of when the buyer sees it.</li>
+        <li><strong>"On [specific date]"</strong> — Payable on a fixed calendar date.</li>
+      </ul>
+      <p class="modal-section-title">Practical Impact</p>
+      <p>The tenor determines the seller's cash flow and the buyer's financing period. A 90-day usance draft gives the buyer three months to sell the goods before payment is due, but exposes the seller to 90 days of credit risk.</p>
+      <div class="tip-box"><strong>Best Practice:</strong> For new buyers or high-risk markets, use "at sight" (D/P). For established relationships, a 30-60 day usance draft (D/A) may be acceptable. Always align the tenor with the underlying sales contract.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 7 (Release of Documents); UCC Article 3, Section 3-108.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tenor Term (Page 2) -->
+<div class="modal-overlay" id="modal-tenor-term" role="dialog" aria-modal="true" aria-labelledby="modal-title-tenor-term">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-tenor-term">TENOR — Collection Form Field</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Form Field</div>
+        <div class="def-word">TENOR</div>
+        <p>The field on the collection form where the payment timing is specified. Must match the tenor stated on the Bill of Exchange.</p>
+      </div>
+      <p class="modal-section-title">What to Enter</p>
+      <ul>
+        <li><strong>Sight:</strong> Enter "SIGHT" or "AT SIGHT" for D/P collections.</li>
+        <li><strong>Usance:</strong> Enter the number of days and basis, e.g., "60 DAYS AFTER SIGHT" or "90 DAYS AFTER DATE".</li>
+        <li><strong>Fixed date:</strong> Enter "PAYABLE ON [DATE]" for maturity-date drafts.</li>
+      </ul>
+      <div class="tip-box"><strong>Consistency Check:</strong> The tenor on the collection form, the tenor on the draft, and the payment terms in the sales contract must all match. Any discrepancy will cause the collecting bank to seek clarification, delaying the collection.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4 (Form of Collection).</div>
+    </div>
+  </div>
+</div>
+
+<!-- D/A -->
+<div class="modal-overlay" id="modal-da" role="dialog" aria-modal="true" aria-labelledby="modal-title-da">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-da">Documents Against Acceptance (D/A)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collection Type</div>
+        <div class="def-word">Documents Against Acceptance (D/A)</div>
+        <p>A documentary collection arrangement where the collecting bank releases the shipping documents to the buyer upon the buyer's acceptance (signature) of a time draft, rather than upon immediate payment. The buyer pays at maturity.</p>
+      </div>
+      <p class="modal-section-title">How D/A Works</p>
+      <ol>
+        <li>Seller ships goods and sends documents + time draft to remitting bank.</li>
+        <li>Remitting bank forwards to collecting bank in buyer's country.</li>
+        <li>Collecting bank presents draft to buyer for acceptance.</li>
+        <li>Buyer signs (accepts) the draft, promising to pay at maturity.</li>
+        <li>Collecting bank releases documents to buyer immediately upon acceptance.</li>
+        <li>Buyer can now clear customs and take possession of goods.</li>
+        <li>At maturity, buyer pays the accepted draft amount.</li>
+        <li>Collecting bank remits funds to remitting bank, who credits the seller.</li>
+      </ol>
+      <p class="modal-section-title">Risk Analysis</p>
+      <ul>
+        <li><strong>Seller Risk:</strong> HIGH. Once documents are released, the seller has no control over the goods. If the buyer defaults at maturity, the seller must pursue legal remedies abroad.</li>
+        <li><strong>Buyer Benefit:</strong> The buyer gets goods immediately and can sell them before paying, effectively using trade credit.</li>
+      </ul>
+      <div class="tip-box"><strong>When to Use D/A:</strong> Only for trusted, long-standing buyers in stable markets. Consider requiring a bank aval (guarantee) on the accepted draft for additional security. For new buyers, always use D/P.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 7; ICC Guide to Documentary Collections.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Credit Account -->
+<div class="modal-overlay" id="modal-credit-account" role="dialog" aria-modal="true" aria-labelledby="modal-title-credit-account">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-credit-account">Credit Our Commercial Account</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Settlement Instruction</div>
+        <div class="def-word">Credit Our Commercial Account</div>
+        <p>The instruction specifying where the remitting bank (Zions Bank) should deposit the collected funds once payment is received from the buyer. This is the seller's (drawer's) bank account.</p>
+      </div>
+      <p class="modal-section-title">Required Information</p>
+      <ul>
+        <li><strong>Account Name:</strong> The legal name on the bank account. Should match the drawer's name.</li>
+        <li><strong>Bank Name:</strong> The full name of the depository institution.</li>
+        <li><strong>Bank Address:</strong> The bank's physical address (may be required for international wires).</li>
+        <li><strong>Account Number:</strong> The specific account where funds should be deposited.</li>
+        <li><strong>ABA / Bank Transit Number:</strong> The 9-digit routing number for U.S. banks. For international transfers, a SWIFT/BIC code may also be needed.</li>
+      </ul>
+      <div class="tip-box"><strong>Wire Transfer Tip:</strong> For international collections, ensure the account can receive foreign currency wires or confirm with your bank that USD wires are accepted. Provide the SWIFT/BIC code if the bank is outside the U.S.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 19 (Interest, Charges and Expenses); Zions Bank Wire Transfer Guidelines.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABA -->
+<div class="modal-overlay" id="modal-aba" role="dialog" aria-modal="true" aria-labelledby="modal-title-aba">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-aba">ABA / Bank Transit Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Identifier</div>
+        <div class="def-word">ABA / Bank Transit Number</div>
+        <p>A 9-digit routing number used to identify U.S. financial institutions. It tells the Federal Reserve and other banks where to send funds during wire transfers and ACH transactions.</p>
+      </div>
+      <p class="modal-section-title">Structure</p>
+      <ul>
+        <li><strong>Digits 1-4:</strong> Federal Reserve routing symbol (identifies the Federal Reserve district and processing center).</li>
+        <li><strong>Digits 5-8:</strong> Institution identifier (unique to the bank or credit union).</li>
+        <li><strong>Digit 9:</strong> Check digit (calculated using a checksum algorithm to detect errors).</li>
+      </ul>
+      <p class="modal-section-title">For International Transfers</p>
+      <p>For collections from overseas buyers, the ABA number is used to route the incoming wire to the correct U.S. bank. The seller may also need to provide:</p>
+      <ul>
+        <li><strong>SWIFT/BIC Code:</strong> An international bank identifier used for cross-border wires.</li>
+        <li><strong>IBAN:</strong> International Bank Account Number (used mainly in Europe and other regions).</li>
+        <li><strong>Intermediary Bank:</strong> A correspondent bank that handles the transfer if the seller's bank does not have a direct relationship with the foreign bank.</li>
+      </ul>
+      <div class="tip-box"><strong>Verification:</strong> Always verify the ABA number with your bank before submitting. An incorrect routing number will cause wire delays or returns. You can verify ABA numbers at the Federal Reserve's official directory.</div>
+      <div class="citation"><strong>Source:</strong> American Bankers Association; Federal Reserve Bank Services.</div>
+    </div>
+  </div>
+</div>
+
+<!-- UNCITRAL -->
+<div class="modal-overlay" id="modal-uncitral" role="dialog" aria-modal="true" aria-labelledby="modal-title-uncitral">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-uncitral">UNCITRAL Convention on International Bills of Exchange</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">International Convention</div>
+        <div class="def-word">UNCITRAL Convention (1988)</div>
+        <p>The United Nations Convention on International Bills of Exchange and International Promissory Notes, adopted by the UN Commission on International Trade Law (UNCITRAL) in 1988. It provides a uniform legal framework for negotiable instruments used in international trade.</p>
+      </div>
+      <p class="modal-section-title">Key Articles Referenced on the Bill</p>
+      <ul>
+        <li><strong>Articles 1-7:</strong> Scope of application, definitions, and interpretation of the Convention.</li>
+        <li><strong>Articles 11-13:</strong> Form and content requirements for an international bill of exchange.</li>
+        <li><strong>Articles 46(1)-(3):</strong> Rules governing acceptance of a bill — when, how, and the legal effect of acceptance.</li>
+        <li><strong>Articles 47(1)-(4):</strong> Rules governing payment — the drawee's obligation to pay at maturity and discharge upon payment.</li>
+        <li><strong>Articles 51-53:</strong> Rules governing endorsement — transfer of rights, liability of endorsers, and conditions of endorsement.</li>
+      </ul>
+      <p class="modal-section-title">Why It Matters</p>
+      <p>The Convention harmonizes the law of bills of exchange across signatory countries, reducing legal uncertainty in international trade. By referencing the Convention on the bill, the parties agree that the instrument is governed by these uniform rules rather than purely domestic law.</p>
+      <div class="tip-box"><strong>Note:</strong> The U.S. has signed but not ratified the UNCITRAL Convention. In practice, bills of exchange in U.S. trade are typically governed by the Uniform Commercial Code (UCC) Article 3. The Convention reference on this form is a standard Zions Bank template provision.</div>
+      <div class="citation"><strong>Source:</strong> UNCITRAL Convention on International Bills of Exchange and International Promissory Notes (1988); U.S. UCC Article 3 (Negotiable Instruments). <a href="https://uncitral.un.org/" rel="noopener" target="_blank">UNCITRAL Website</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Drawer on Bill of Exchange -->
+<div class="modal-overlay" id="modal-drawer-boe" role="dialog" aria-modal="true" aria-labelledby="modal-title-drawer-boe">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-drawer-boe">Drawer — Bill of Exchange</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bill of Exchange Party</div>
+        <div class="def-word">Drawer</div>
+        <p>The person or entity who creates and signs the Bill of Exchange, ordering the drawee to pay. On this form, the drawer is the seller (customer) who is exporting goods and seeking payment.</p>
+      </div>
+      <p class="modal-section-title">Required Signature</p>
+      <p>The drawer must sign the Bill of Exchange in the space provided. An unauthorized signature or a signature by an agent without disclosed authority may make the bill non-enforceable.</p>
+      <p class="modal-section-title">Location</p>
+      <p>The "Location" field indicates where the drawer is situated (city, state/country). This may be relevant for determining applicable law and jurisdiction in case of disputes.</p>
+      <div class="tip-box"><strong>Signature Requirement:</strong> The Bill of Exchange must be signed by the drawer to be valid. An unsigned draft is not a negotiable instrument and cannot be enforced. The signature should match the name in the "Drawer" field exactly.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-401 (Signature); UNCITRAL Convention, Article 11.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Air Waybill -->
+<div class="modal-overlay" id="modal-air-waybill" role="dialog" aria-modal="true" aria-labelledby="modal-title-air-waybill">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-air-waybill">Air Waybill (AWB)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transport Document</div>
+        <div class="def-word">Air Waybill</div>
+        <p>A transport document issued by an airline or air freight forwarder acknowledging receipt of goods for air shipment. Unlike a Bill of Lading, it is not a document of title and is always non-negotiable.</p>
+      </div>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li><strong>Non-negotiable:</strong> The consignee named on the AWB can claim the goods without presenting the original document. The AWB is typically sent directly to the consignee upon arrival.</li>
+        <li><strong>Receipt and contract:</strong> Serves as a receipt for the goods and evidence of the contract of carriage between the shipper and the carrier.</li>
+        <li><strong>Speed:</strong> Air freight is faster than sea transport, so AWBs are used when time is critical.</li>
+      </ul>
+      <p class="modal-section-title">Role in Documentary Collection</p>
+      <p>For air shipments, the AWB is included in the collection documents. However, since it is non-negotiable, the seller has less control than with a negotiable Bill of Lading. The buyer may be able to claim goods before payment unless special arrangements are made.</p>
+      <div class="tip-box"><strong>Security Note:</strong> For high-value air shipments, consider using a bank aval or letter of credit instead of documentary collection, as the non-negotiable nature of AWBs reduces the seller's leverage.</div>
+      <div class="citation"><strong>Source:</strong> IATA Air Waybill Rules; URC 522, Article 4.</div>
+    </div>
+  </div>
+</div>
+
+<!-- N/N BoL -->
+<div class="modal-overlay" id="modal-nn-bol" role="dialog" aria-modal="true" aria-labelledby="modal-title-nn-bol">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-nn-bol">Non-Negotiable Bill of Lading (N/N BoL)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transport Document</div>
+        <div class="def-word">N/N BoL</div>
+        <p>A Bill of Lading marked "non-negotiable" that serves as a receipt for goods and contract of carriage but is not a document of title. The named consignee can claim the goods without presenting the original.</p>
+      </div>
+      <p class="modal-section-title">How It Differs from Original BoL</p>
+      <ul>
+        <li><strong>Original BoL:</strong> Document of title. Must be presented to claim goods. Gives seller control over goods until payment.</li>
+        <li><strong>N/N BoL:</strong> Receipt only. Named consignee claims goods by identity. Seller loses control once goods are shipped.</li>
+      </ul>
+      <p class="modal-section-title">When Used</p>
+      <p>N/N BoLs are typically used when the buyer and seller have a trusted relationship, or when the goods are shipped to a branch office or affiliate of the seller. They may also be used for domestic shipments where control is less critical.</p>
+      <div class="tip-box"><strong>Risk Warning:</strong> In documentary collections, avoid N/N BoLs for new buyers or high-risk markets. Once the carrier releases goods to the named consignee, the seller has no recourse if payment is not received.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4; Hague-Visby Rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Invoice -->
+<div class="modal-overlay" id="modal-invoice" role="dialog" aria-modal="true" aria-labelledby="modal-title-invoice">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-invoice">Commercial Invoice</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trade Document</div>
+        <div class="def-word">Invoice</div>
+        <p>A commercial document issued by the seller to the buyer, detailing the goods or services provided, their quantities, prices, and payment terms. It serves as a demand for payment and is used for customs valuation.</p>
+      </div>
+      <p class="modal-section-title">Required Information</p>
+      <ul>
+        <li><strong>Seller and buyer details:</strong> Complete names and addresses of both parties.</li>
+        <li><strong>Goods description:</strong> Clear description of the merchandise, including HS codes if required.</li>
+        <li><strong>Quantity and unit price:</strong> Number of units and price per unit.</li>
+        <li><strong>Total amount:</strong> The final amount due, typically in the currency of payment.</li>
+        <li><strong>Payment terms:</strong> How and when payment is due (e.g., "Net 30 days").</li>
+      </ul>
+      <p class="modal-section-title">Role in Documentary Collection</p>
+      <p>The invoice is a key document in the collection. The collecting bank presents it to the buyer along with other documents. The draft amount must match the invoice total. Discrepancies can cause payment delays or rejection.</p>
+      <div class="tip-box"><strong>Accuracy Check:</strong> Ensure the invoice amount matches the draft amount exactly. Banks are strict about discrepancies — even minor differences can cause the collection to be rejected.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4; ICC Guide to Export-Import.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Packing List -->
+<div class="modal-overlay" id="modal-packing-list" role="dialog" aria-modal="true" aria-labelledby="modal-title-packing-list">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-packing-list">Packing List</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trade Document</div>
+        <div class="def-word">Packing List</div>
+        <p>A document that provides detailed information about the shipment's packaging, including the number of packages, their contents, weights, and measurements. It complements the commercial invoice.</p>
+      </div>
+      <p class="modal-section-title">Key Information</p>
+      <ul>
+        <li><strong>Package count:</strong> Total number of boxes, crates, pallets, or containers.</li>
+        <li><strong>Contents per package:</strong> What each package contains.</li>
+        <li><strong>Weight and dimensions:</strong> Gross and net weight, plus measurements of each package.</li>
+        <li><strong>Marks and numbers:</strong> Shipping marks on each package for identification.</li>
+      </ul>
+      <p class="modal-section-title">Purpose in Trade</p>
+      <p>The packing list helps customs officials verify the shipment and assists the buyer in checking the goods upon arrival. It is particularly important for partial shipments or when goods are packed in multiple containers.</p>
+      <div class="tip-box"><strong>Verification:</strong> The packing list should match the commercial invoice in terms of quantity and description. Any discrepancies may cause customs delays or questions from the buyer.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4; ICC Guide to Export-Import.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Certificate of Origin -->
+<div class="modal-overlay" id="modal-certificate-origin" role="dialog" aria-modal="true" aria-labelledby="modal-title-certificate-origin">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-certificate-origin">Certificate of Origin</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trade Document</div>
+        <div class="def-word">Certificate of Origin</div>
+        <p>A document certifying that the goods in a particular export shipment are wholly obtained, produced, manufactured, or processed in a specific country. It is often required for customs clearance and to determine tariff rates.</p>
+      </div>
+      <p class="modal-section-title">Why It Matters</p>
+      <ul>
+        <li><strong>Customs duty:</strong> Determines the tariff rate applied — preferential rates may apply under free trade agreements.</li>
+        <li><strong>Trade restrictions:</strong> Some countries restrict imports from certain origins; the certificate verifies compliance.</li>
+        <li><strong>Quota management:</strong> Used to track import quotas from specific countries.</li>
+      </ul>
+      <p class="modal-section-title">Who Issues It</p>
+      <p>Certificates of Origin are typically issued by chambers of commerce, trade associations, or government authorities. The exporter must provide supporting documentation to prove the origin of the goods.</p>
+      <div class="tip-box"><strong>Free Trade Agreements:</strong> If shipping under a free trade agreement (e.g., USMCA, EU agreements), a specific certificate format may be required to claim preferential duty rates. Check the destination country's requirements.</div>
+      <div class="citation"><strong>Source:</strong> World Trade Organization; ICC Certificate of Origin Guidelines.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Insurance -->
+<div class="modal-overlay" id="modal-insurance" role="dialog" aria-modal="true" aria-labelledby="modal-title-insurance">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-insurance">Insurance Certificate / Policy</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trade Document</div>
+        <div class="def-word">Insurance Certificate</div>
+        <p>A document evidencing that insurance coverage has been obtained for the goods during transit. It specifies the risks covered, the insured value, and the duration of coverage.</p>
+      </div>
+      <p class="modal-section-title">Types of Coverage</p>
+      <ul>
+        <li><strong>All-risk:</strong> Covers all physical loss or damage from external causes, with specific exclusions.</li>
+        <li><strong>With average:</strong> Covers partial losses; general average contribution may apply.</li>
+        <li><strong>Free of particular average (FPA):</strong> Covers only total losses or specified partial losses.</li>
+      </ul>
+      <p class="modal-section-title">When Required</p>
+      <p>Insurance documents are typically required when the sales contract specifies CIF or CIP terms (Cost, Insurance and Freight), where the seller is responsible for obtaining insurance. Under other terms (FOB, EXW), insurance may be optional or the buyer's responsibility.</p>
+      <div class="tip-box"><strong>Coverage Amount:</strong> The insured value should typically be at least 110% of the CIF value to cover expected profit and incidental costs. Check the sales contract for specific requirements.</div>
+      <div class="citation"><strong>Source:</strong> Institute Cargo Clauses; Incoterms 2020 Rules.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Courier Receipt -->
+<div class="modal-overlay" id="modal-courier-receipt" role="dialog" aria-modal="true" aria-labelledby="modal-title-courier-receipt">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-courier-receipt">Courier Receipt</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Transport Document</div>
+        <div class="def-word">Courier Receipt</div>
+        <p>A receipt issued by a courier service (e.g., FedEx, DHL, UPS) acknowledging receipt of documents or small packages for delivery. It provides tracking information and proof of shipment.</p>
+      </div>
+      <p class="modal-section-title">Purpose in Trade</p>
+      <ul>
+        <li><strong>Document delivery:</strong> Used to send original documents (BoL, drafts, etc.) to banks or buyers.</li>
+        <li><strong>Proof of dispatch:</strong> Establishes when documents were sent and provides tracking for security.</li>
+        <li><strong>Sample shipments:</strong> Used for small parcel shipments that don't require full freight documentation.</li>
+      </ul>
+      <p class="modal-section-title">Bank Requirements</p>
+      <p>In documentary collections, banks may require courier receipts as evidence that documents have been dispatched to the appropriate parties. The receipt should show the date of dispatch and the recipient's details.</p>
+      <div class="tip-box"><strong>Tracking:</strong> Always retain the courier tracking number and receipt copy. If documents are delayed or lost, the tracking number is essential for tracing and making claims.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 4; ICC Guide to Documentary Collections.</div>
+    </div>
+  </div>
+</div>
+
+<!-- D/P -->
+<div class="modal-overlay" id="modal-dp" role="dialog" aria-modal="true" aria-labelledby="modal-title-dp">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-dp">Documents Against Payment (D/P)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Collection Type</div>
+        <div class="def-word">Documents Against Payment (D/P)</div>
+        <p>A documentary collection arrangement where the collecting bank releases the shipping documents to the buyer only upon payment of the draft. The buyer cannot take possession of the goods without paying.</p>
+      </div>
+      <p class="modal-section-title">How D/P Works</p>
+      <ol>
+        <li>Seller ships goods and sends documents + sight draft to remitting bank.</li>
+        <li>Remitting bank forwards to collecting bank in buyer's country.</li>
+        <li>Collecting bank presents documents and draft to buyer for payment.</li>
+        <li>Buyer pays the draft amount in full.</li>
+        <li>Collecting bank releases documents to buyer only after payment is received.</li>
+        <li>Buyer can now clear customs and take possession of goods.</li>
+        <li>Collecting bank remits funds to remitting bank, who credits the seller.</li>
+      </ol>
+      <p class="modal-section-title">Security for Seller</p>
+      <p>D/P provides good security for the seller because the buyer cannot obtain the goods without paying. The seller retains control through the documents until payment is received.</p>
+      <div class="tip-box"><strong>Best Practice:</strong> D/P is recommended for new buyers or high-risk markets. For trusted buyers with established relationships, D/A (Documents Against Acceptance) may be appropriate to offer financing terms.</div>
+      <div class="citation"><strong>Source:</strong> URC 522, Article 7; ICC Guide to Documentary Collections.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGHT -->
+<div class="modal-overlay" id="modal-sight" role="dialog" aria-modal="true" aria-labelledby="modal-title-sight">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-sight">Sight Draft / At Sight</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Draft Type</div>
+        <div class="def-word">Sight Draft</div>
+        <p>A draft payable immediately upon presentation to the drawee. No waiting period — payment is due when the draft is presented (at "sight").</p>
+      </div>
+      <p class="modal-section-title">Characteristics</p>
+      <ul>
+        <li><strong>Immediate payment:</strong> The drawee must pay when the draft is presented.</li>
+        <li><strong>No credit period:</strong> No days-after-sight or days-after-date calculation.</li>
+        <li><strong>Used with D/P:</strong> Sight drafts are the standard for Documents Against Payment collections.</li>
+      </ul>
+      <p class="modal-section-title">Sample Wording</p>
+      <p>"At sight" or "Payable at sight" or "Upon presentation". The draft should clearly indicate that payment is due immediately.</p>
+      <div class="tip-box"><strong>Advantage for Seller:</strong> Sight drafts provide immediate payment (subject to bank processing times) and are the most secure form of draft for documentary collections. The buyer cannot delay payment by accepting a time draft.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-108; URC 522, Article 7.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTEST -->
+<div class="modal-overlay" id="modal-protest" role="dialog" aria-modal="true" aria-labelledby="modal-title-protest">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-protest">Protest (of a Draft)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Action</div>
+        <div class="def-word">Protest</div>
+        <p>A formal legal declaration made by a notary public or other authorized official that a draft or bill of exchange was presented for payment or acceptance and was refused. It creates legal evidence of the refusal.</p>
+      </div>
+      <p class="modal-section-title">Purpose of Protest</p>
+      <ul>
+        <li><strong>Evidence of dishonor:</strong> Provides official proof that the draft was not paid or accepted.</li>
+        <li><strong>Legal recourse:</strong> Required in some jurisdictions to preserve the right to sue the drawer or endorsers.</li>
+        <li><strong>Holder protection:</strong> Protects the holder's rights against prior parties to the instrument.</li>
+      </ul>
+      <p class="modal-section-title">When Not Required</p>
+      <p>Many collection instructions specify "DO NOT PROTEST" because protest is expensive, time-consuming, and may not be required under modern law or banking practices. Banks typically handle dishonor through formal notices rather than protest.</p>
+      <div class="tip-box"><strong>Modern Practice:</strong> In most international trade, protest is rarely used. Banks prefer to handle dishonor through swift communication and notice procedures. The "DO NOT PROTEST" instruction is standard to avoid unnecessary costs.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-507; URC 522, Article 16.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Place of Drawing -->
+<div class="modal-overlay" id="modal-place-drawing" role="dialog" aria-modal="true" aria-labelledby="modal-title-place-drawing">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-place-drawing">Place of Drawing</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bill of Exchange Field</div>
+        <div class="def-word">Place of Drawing</div>
+        <p>The location (city, state/country) where the Bill of Exchange is created and signed by the drawer. This field identifies the legal jurisdiction of the instrument's creation.</p>
+      </div>
+      <p class="modal-section-title">Legal Significance</p>
+      <ul>
+        <li><strong>Governing law:</strong> May determine which country's law applies to interpretation of the bill.</li>
+        <li><strong>Jurisdiction:</strong> Relevant for disputes and legal proceedings.</li>
+        <li><strong>UNCITRAL:</strong> For international bills, the place of drawing is one factor in determining whether the Convention applies.</li>
+      </ul>
+      <p class="modal-section-title">What to Enter</p>
+      <p>Enter the city and country where the drawer is located when creating the bill. For example: "New York, USA" or "London, UK".</p>
+      <div class="tip-box"><strong>Consistency:</strong> The place of drawing should match the drawer's location and the location where the bill is actually signed. Inconsistencies may raise questions about the bill's validity.</div>
+      <div class="citation"><strong>Source:</strong> UNCITRAL Convention, Article 1; UCC Article 3.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pay To The Order Of -->
+<div class="modal-overlay" id="modal-pay-order" role="dialog" aria-modal="true" aria-labelledby="modal-title-pay-order">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-pay-order">Pay To The Order Of</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Negotiable Instrument Language</div>
+        <div class="def-word">Pay To The Order Of</div>
+        <p>The standard wording used on negotiable instruments (bills of exchange, checks, promissory notes) to indicate that payment is to be made to a specific person or entity, or to that person's order (meaning it can be transferred to others by endorsement).</p>
+      </div>
+      <p class="modal-section-title">Why This Wording Matters</p>
+      <ul>
+        <li><strong>Negotiability:</strong> "To the order of" makes the instrument negotiable — it can be transferred by endorsement.</li>
+        <li><strong>Identification of payee:</strong> Clearly specifies who is entitled to receive payment.</li>
+        <li><strong>Legal requirement:</strong> Under negotiable instruments law, this wording helps establish the instrument as negotiable.</li>
+      </ul>
+      <p class="modal-section-title">Alternatives</p>
+      <ul>
+        <li><strong>"Pay to the order of [Name]":</strong> Standard negotiable form.</li>
+        <li><strong>"Pay to bearer":</strong> Payable to whoever holds the instrument — rare in trade finance due to security concerns.</li>
+        <li><strong>"Pay to [Name]":</strong> May be non-negotiable depending on jurisdiction.</li>
+      </ul>
+      <div class="tip-box"><strong>Payee Identification:</strong> The payee name should match the name on the account where funds will be deposited. In documentary collections, the payee is typically the drawer (seller) or the remitting bank.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-104; UNCITRAL Convention, Article 11.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Value Received -->
+<div class="modal-overlay" id="modal-value-received" role="dialog" aria-modal="true" aria-labelledby="modal-title-value-received">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-value-received">Value Received</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bill of Exchange Clause</div>
+        <div class="def-word">Value Received</div>
+        <p>A standard clause on bills of exchange indicating that the drawer has received value (goods, services, or other consideration) in exchange for the instrument. It confirms that the bill is supported by an underlying transaction.</p>
+      </div>
+      <p class="modal-section-title">Legal Purpose</p>
+      <ul>
+        <li><strong>Consideration:</strong> Establishes that the bill is given for value, making it a valid negotiable instrument.</li>
+        <li><strong>Defense against claims:</strong> Helps prevent claims that the bill was given without consideration.</li>
+        <li><strong>Standard practice:</strong> Traditional wording that confirms the underlying trade transaction.</li>
+      </ul>
+      <p class="modal-section-title">What It Means</p>
+      <p>"Value Received" means the drawer has received something of value (typically the goods being exported) in return for the buyer's promise to pay. It links the bill to the underlying commercial transaction.</p>
+      <div class="tip-box"><strong>Modern Practice:</strong> While traditional, some modern bills omit this clause. However, including it maintains standard form and provides clarity about the underlying transaction.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Section 3-303; Bills of Exchange Act 1882 (UK).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Good as Aval -->
+<div class="modal-overlay" id="modal-good-aval" role="dialog" aria-modal="true" aria-labelledby="modal-title-good-aval">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-good-aval">Aval</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Guarantee</div>
+        <div class="def-word">Aval</div>
+        <p>A guarantee by a bank (or other party) on a bill of exchange, whereby the bank undertakes to pay the bill if the drawee defaults. The bank's signature on the face of the bill constitutes the aval.</p>
+      </div>
+      <p class="modal-section-title">How Aval Works</p>
+      <ul>
+        <li><strong>Bank signature:</strong> The bank signs the bill, adding words like "Good as Aval" or "Per Aval".</li>
+        <li><strong>Guaranteed payment:</strong> The bank becomes jointly and severally liable for payment.</li>
+        <li><strong>Enhanced security:</strong> The seller can rely on the bank's credit rather than the buyer's.</li>
+      </ul>
+      <p class="modal-section-title">Benefits</p>
+      <p>An aval transforms a trade acceptance (buyer's promise to pay) into a bank-guaranteed instrument. The seller can discount or sell the avalized draft more easily, as banks are more creditworthy than most commercial buyers.</p>
+      <div class="tip-box"><strong>When to Use:</strong> Avals are particularly useful in D/A collections where the seller is concerned about the buyer's creditworthiness. The aval provides bank-backed security while still offering the buyer credit terms.</div>
+      <div class="citation"><strong>Source:</strong> UNCITRAL Convention, Articles 46-48; UCC Article 3, Section 3-419.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Endorsement -->
+<div class="modal-overlay" id="modal-endorsement" role="dialog" aria-modal="true" aria-labelledby="modal-title-endorsement">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-endorsement">Endorsement</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Negotiable Instrument Action</div>
+        <div class="def-word">Endorsement</div>
+        <p>The signature of the holder of a negotiable instrument (bill of exchange, draft, or check) on the back of the instrument, which transfers ownership or rights to another party.</p>
+      </div>
+      <p class="modal-section-title">Types of Endorsement</p>
+      <ul>
+        <li><strong>Blank endorsement:</strong> Signature only — makes the instrument payable to bearer (risky).</li>
+        <li><strong>Special endorsement:</strong> Signature + "Pay to the order of [Name]" — transfers to a specific payee.</li>
+        <li><strong>Restrictive endorsement:</strong> Limits further transfer (e.g., "For deposit only").</li>
+        <li><strong>Conditional endorsement:</strong> Includes conditions (may not be valid in all jurisdictions).</li>
+      </ul>
+      <p class="modal-section-title">Role in Documentary Collection</p>
+      <p>When a seller endorses a draft to their bank, they transfer the right to collect payment. The bank then presents the endorsed draft to the buyer's bank for collection. Proper endorsement is essential for the chain of title.</p>
+      <div class="tip-box"><strong>Bank Endorsement:</strong> When remitting documents to your bank, ensure endorsements are properly completed. An improperly endorsed draft may be rejected by the collecting bank, causing delays.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3, Sections 3-204 to 3-206; UNCITRAL Convention, Articles 51-53.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Account Name -->
+<div class="modal-overlay" id="modal-account-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-account-name">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-account-name">Account Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Account Field</div>
+        <div class="def-word">Account Name</div>
+        <p>The legal name of the account holder as registered with the bank. This must match exactly the name on the account to ensure proper credit of funds.</p>
+      </div>
+      <p class="modal-section-title">Requirements</p>
+      <ul>
+        <li><strong>Exact match:</strong> Must match the bank's records exactly, including spacing and punctuation.</li>
+        <li><strong>Business or personal:</strong> Can be either a business name or individual's name, depending on account type.</li>
+        <li><strong>International accounts:</strong> For international transfers, use the name as it appears on SWIFT documentation.</li>
+      </ul>
+      <p class="modal-section-title">What to Enter</p>
+      <p>Enter the complete legal name of the account holder. For businesses, use the full corporate name. For individuals, use first and last name as registered with the bank.</p>
+      <div class="tip-box"><strong>Accuracy Critical:</strong> Incorrect account names can cause payment delays or rejection. Banks may reject transfers with name mismatches under anti-money laundering regulations.</div>
+      <div class="citation"><strong>Source:</strong> International Banking Standards; SWIFT MT202 Field 50A/K.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Account Number -->
+<div class="modal-overlay" id="modal-account-number" role="dialog" aria-modal="true" aria-labelledby="modal-title-account-number">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-account-number">Account Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Account Field</div>
+        <div class="def-word">Account Number</div>
+        <p>The unique identifier for a specific bank account, used to route funds to the correct account within a financial institution.</p>
+      </div>
+      <p class="modal-section-title">Format Variations</p>
+      <ul>
+        <li><strong>US accounts:</strong> Typically 8-17 digits, varies by bank.</li>
+        <li><strong>IBAN:</strong> International Bank Account Number, used in Europe and other regions (up to 34 alphanumeric characters).</li>
+        <li><strong>UK accounts:</strong> 8-digit account number plus 6-digit sort code.</li>
+      </ul>
+      <p class="modal-section-title">What to Enter</p>
+      <p>Enter the complete account number without spaces or dashes. For international payments, include the IBAN if required by the destination country.</p>
+      <div class="tip-box"><strong>Verification:</strong> Always verify account numbers with the bank before initiating international transfers. Errors can result in misdirected payments that are difficult to recover.</div>
+      <div class="citation"><strong>Source:</strong> SWIFT Standards; ISO 13616 (IBAN); Federal Reserve Regulation J.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bank Name -->
+<div class="modal-overlay" id="modal-bank-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-name">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bank-name">Bank Name</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Account Field</div>
+        <div class="def-word">Bank Name</div>
+        <p>The official legal name of the financial institution where the account is held. This identifies the receiving bank in international transfers.</p>
+      </div>
+      <p class="modal-section-title">Importance in International Transfers</p>
+      <ul>
+        <li><strong>SWIFT identification:</strong> Bank name must match SWIFT directory listings.</li>
+        <li><strong>Correspondent banking:</strong> Some banks use different legal names for various operations.</li>
+        <li><strong>Branch identification:</strong> Large banks may require specific branch names for proper routing.</li>
+      </ul>
+      <p class="modal-section-title">What to Enter</p>
+      <p>Enter the full official bank name as it appears on bank statements and SWIFT documentation. Avoid abbreviations unless they are part of the official legal name.</p>
+      <div class="tip-box"><strong>Official Names:</strong> Use "JPMorgan Chase Bank, N.A." not "Chase Bank". Use "Bank of America, N.A." not "BOA". Exact official names prevent routing errors.</div>
+      <div class="citation"><strong>Source:</strong> SWIFT Directory; Financial Institution Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bank Address -->
+<div class="modal-overlay" id="modal-bank-address" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-address">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bank-address">Bank Address</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Account Field</div>
+        <div class="def-word">Bank Address</div>
+        <p>The physical location of the bank branch where the account is maintained. Required for international wire transfers and correspondence.</p>
+      </div>
+      <p class="modal-section-title">Address Requirements</p>
+      <ul>
+        <li><strong>Street address:</strong> Required for most international transfers.</li>
+        <li><strong>City and country:</strong> Essential for routing through correspondent banks.</li>
+        <li><strong>Postal code:</strong> Required for many countries' banking systems.</li>
+      </ul>
+      <p class="modal-section-title">International Format</p>
+      <p>Use standard international addressing format: Street address, City, State/Province (if applicable), Postal Code, Country. Country name should be in English.</p>
+      <div class="tip-box"><strong>Head Office vs. Branch:</strong> For large banks, use the specific branch address where the account is held, not the bank's headquarters address, unless instructed otherwise by the bank.</div>
+      <div class="citation"><strong>Source:</strong> SWIFT Messaging Standards; Universal Postal Union guidelines.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bank ABA/Transit No -->
+<div class="modal-overlay" id="modal-bank-aba" role="dialog" aria-modal="true" aria-labelledby="modal-title-bank-aba">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-bank-aba">Bank ABA/Transit Number</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Bank Routing Identifier</div>
+        <div class="def-word">ABA/Transit Number</div>
+        <p>A 9-digit code used to identify financial institutions in the United States. Also known as Routing Transit Number (RTN) or ABA Routing Number.</p>
+      </div>
+      <p class="modal-section-title">Structure and Purpose</p>
+      <ul>
+        <li><strong>9 digits:</strong> First 4 digits Federal Reserve routing, next 4 ABA institution identifier, last digit check digit.</li>
+        <li><strong>Domestic transfers:</strong> Required for all U.S. bank-to-bank transfers (ACH, wire transfers).</li>
+        <li><strong>Check processing:</strong> Printed on checks (bottom left, MICR line).</li>
+      </ul>
+      <p class="modal-section-title">International Context</p>
+      <p>For international transfers to U.S. accounts, the ABA number works with SWIFT codes to route funds through correspondent banking networks.</p>
+      <div class="tip-box"><strong>Verification:</strong> ABA numbers can be verified on the Federal Reserve's ABA Routing Number lookup website. Always verify before initiating transfers to avoid errors.</div>
+      <div class="citation"><strong>Source:</strong> American Bankers Association; Federal Reserve Regulation J; SWIFT Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Other Documents -->
+<div class="modal-overlay" id="modal-other-documents" role="dialog" aria-modal="true" aria-labelledby="modal-title-other-documents">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-other-documents">Other Documents</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Trade Document Category</div>
+        <div class="def-word">Other Documents</div>
+        <p>A catch-all category for any additional documents required by the documentary collection that don't fit into standard document types like invoices or bills of lading.</p>
+      </div>
+      <p class="modal-section-title">Common Examples</p>
+      <ul>
+        <li><strong>Certificates of analysis:</strong> For chemicals, pharmaceuticals, or food products.</li>
+        <li><strong>Quality certificates:</strong> Inspection reports certifying product quality.</li>
+        <li><strong>Weight lists:</strong> Detailed breakdown of shipment weights.</li>
+        <li><strong>Phytosanitary certificates:</strong> For agricultural products.</li>
+        <li><strong>Export licenses:</strong> Required for controlled goods.</li>
+      </ul>
+      <p class="modal-section-title">When to Use</p>
+      <p>Use this category when the collection instructions specify documents not listed in the standard table, or when special certificates are required by the importer's country regulations.</p>
+      <div class="tip-box"><strong>Country-Specific Requirements:</strong> Many countries have unique documentation requirements. Always verify what documents are required for the specific destination country before shipment.</div>
+      <div class="citation"><strong>Source:</strong> ICC Uniform Rules for Collections (URC 522); Country-specific import regulations.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Originals -->
+<div class="modal-overlay" id="modal-originals" role="dialog" aria-modal="true" aria-labelledby="modal-title-originals">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-originals">Originals</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Document Classification</div>
+        <div class="def-word">Original Documents</div>
+        <p>The primary, authoritative versions of trade documents that represent legal title to goods and are required for customs clearance and payment collection.</p>
+      </div>
+      <p class="modal-section-title">Critical Original Documents</p>
+      <ul>
+        <li><strong>Bill of Lading:</strong> Originals represent title to goods - typically 3 originals issued.</li>
+        <li><strong>Drafts:</strong> Signed originals required for negotiation and payment.</li>
+        <li><strong>Commercial invoices:</strong> Original may be required for customs purposes.</li>
+        <li><strong>Certificates of origin:</strong> Often required as originals for preferential tariff treatment.</li>
+      </ul>
+      <p class="modal-section-title">Documentary Collection Requirements</p>
+      <p>In documentary collections, banks require specified numbers of originals to present to the drawee. Original negotiable documents (like bills of lading) are essential because only originals convey title to goods.</p>
+      <div class="tip-box"><strong>Safe Handling:</strong> Original documents are valuable and should be handled carefully. Loss of original bills of lading can require expensive court bonds to obtain replacement documents.</div>
+      <div class="citation"><strong>Source:</strong> ICC Uniform Rules for Collections (URC 522) Articles 4-5; Standard Trade Documentation Practices.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Duplicates -->
+<div class="modal-overlay" id="modal-duplicates" role="dialog" aria-modal="true" aria-labelledby="modal-title-duplicates">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-duplicates">Duplicates (Copies)</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Document Classification</div>
+        <div class="def-word">Duplicates/Copies</div>
+        <p>Reproductions of original documents used for record-keeping, informational purposes, or as non-negotiable copies when originals are not required.</p>
+      </div>
+      <p class="modal-section-title">Uses for Duplicates</p>
+      <ul>
+        <li><strong>Record keeping:</strong> Seller's files and internal documentation.</li>
+        <li><strong>Customs copies:</strong> Some countries accept copies for certain customs procedures.</li>
+        <li><strong>Informational:</strong> Advance copies sent to buyers for shipment planning.</li>
+        <li><strong>Non-negotiable:</strong> Copies that cannot transfer title to goods.</li>
+      </ul>
+      <p class="modal-section-title">Collection Instructions</p>
+      <p>The documentary collection instructions specify how many copies of each document are required. Banks may present copies when originals are not needed or when multiple parties require documentation.</p>
+      <div class="tip-box"><strong>Marking:</strong> Duplicates should be clearly marked "COPY" or "DUPLICATE" to avoid confusion with originals. However, ensure such markings don't interfere with required document formatting.</div>
+      <div class="citation"><strong>Source:</strong> ICC Uniform Rules for Collections (URC 522); International Trade Documentation Standards.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Authorized Representative -->
+<div class="modal-overlay" id="modal-authorized-representative" role="dialog" aria-modal="true" aria-labelledby="modal-title-authorized-representative">
+  <div class="modal-card">
+    <div class="modal-header"><h3 id="modal-title-authorized-representative">Authorized Representative</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Legal Authority</div>
+        <div class="def-word">Authorized Representative</div>
+        <p>An individual who has been granted legal authority by a company, organization, or principal to act on their behalf in signing documents, making commitments, and conducting transactions.</p>
+      </div>
+      <p class="modal-section-title">Role in Trade Finance</p>
+      <ul>
+        <li><strong>Signature authority:</strong> Can legally bind the company to obligations through their signature.</li>
+        <li><strong>Drawing authority:</strong> Authorized to sign bills of exchange, drafts, and other negotiable instruments.</li>
+        <li><strong>Bank mandates:</strong> Named in bank resolution documents as having authority to operate accounts.</li>
+        <li><strong>Legal representation:</strong> Acts as the company's agent in documentary collections and trade transactions.</li>
+      </ul>
+      <p class="modal-section-title">Requirements for Validity</p>
+      <p>An authorized representative must have proper documentation demonstrating their authority, such as a board resolution, power of attorney, or corporate secretary certificate. Banks typically verify this authority before accepting signed documents.</p>
+      <div class="tip-box"><strong>Bank Verification:</strong> When signing on behalf of a company, ensure your bank has current documentation of your authorization. Outdated or missing authorization documents can cause rejection of transactions.</div>
+      <div class="citation"><strong>Source:</strong> UCC Article 3; Corporate Law Principles; UNCITRAL Convention on Bills of Exchange.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Quiz Section -->
+<div class="quiz-section" id="quiz">
+  <div class="section-heading">International Bill of Exchange Knowledge Check</div>
+  <p class="quiz-intro">
+    Test your understanding of international bills of exchange, documentary collections, and trade finance procedures. Select the best answer for each question. Your score updates in real time. A passing score is 80% (16/20 correct).
+  </p>
+
+  <div class="quiz-score-bar">
+    <div class="quiz-score-fill" id="quizScoreFill"></div>
+  </div>
+  <div class="quiz-score-text" id="quizScoreText">0 / 20 correct (0%)</div>
+
+  <div class="quiz-container">
+
+    <!-- Question 1 -->
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>What is a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>A government tax document</span></label>
+          <label><input type="radio" name="q1" value="b"><span>A written order to pay a specified amount of money</span></label>
+          <label><input type="radio" name="q1" value="c"><span>A type of insurance policy</span></label>
+          <label><input type="radio" name="q1" value="d"><span>A bank account statement</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q1"></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>What is documentary collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>Collecting old documents</span></label>
+          <label><input type="radio" name="q2" value="b"><span>A payment method where banks handle documents in exchange for payment</span></label>
+          <label><input type="radio" name="q2" value="c"><span>A library service</span></label>
+          <label><input type="radio" name="q2" value="d"><span>A tax collection system</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q2"></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a bill of exchange and a promissory note?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q3" value="b"><span>A bill is an order to pay; a note is a promise to pay</span></label>
+          <label><input type="radio" name="q3" value="c"><span>A bill is for international use only</span></label>
+          <label><input type="radio" name="q3" value="d"><span>A note requires witnesses</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q3"></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>What is the role of the drawer in a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>The person who pays the bill</span></label>
+          <label><input type="radio" name="q4" value="b"><span>The person who creates the bill and orders payment</span></label>
+          <label><input type="radio" name="q4" value="c"><span>The bank that processes the bill</span></label>
+          <label><input type="radio" name="q4" value="d"><span>The government regulator</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q4"></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>What is the drawee?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>The person who draws the bill</span></label>
+          <label><input type="radio" name="q5" value="b"><span>The person or entity ordered to pay the bill</span></label>
+          <label><input type="radio" name="q5" value="c"><span>The bank that receives payment</span></label>
+          <label><input type="radio" name="q5" value="d"><span>The person who receives payment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q5"></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>What is a documentary collection with payment at sight?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>Payment is made when documents are presented</span></label>
+          <label><input type="radio" name="q6" value="b"><span>Payment is made 30 days later</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Payment is made upon acceptance</span></label>
+          <label><input type="radio" name="q6" value="d"><span>Payment is made upon shipment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q6"></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>What is acceptance on a bill of exchange?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>Refusing to pay the bill</span></label>
+          <label><input type="radio" name="q7" value="b"><span>The drawee's written agreement to pay the bill</span></label>
+          <label><input type="radio" name="q7" value="c"><span>The bank's approval of the transaction</span></label>
+          <label><input type="radio" name="q7" value="d"><span>The government's authorization</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q7"></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>What is the difference between D/P and D/A in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q8" value="b"><span>D/P requires payment for documents; D/A requires acceptance</span></label>
+          <label><input type="radio" name="q8" value="c"><span>D/P is for domestic use; D/A is international</span></label>
+          <label><input type="radio" name="q8" value="d"><span>D/P requires acceptance; D/A requires payment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q8"></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>What is the role of the collecting bank in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>To provide loans to the buyer</span></label>
+          <label><input type="radio" name="q9" value="b"><span>To present documents and collect payment from the drawee</span></label>
+          <label><input type="radio" name="q9" value="c"><span>To insure the shipment</span></label>
+          <label><input type="radio" name="q9" value="d"><span>To regulate international trade</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q9"></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the bill of lading in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>To prove ownership of goods</span></label>
+          <label><input type="radio" name="q10" value="b"><span>To document the shipping terms and title to goods</span></label>
+          <label><input type="radio" name="q10" value="c"><span>To calculate shipping costs</span></label>
+          <label><input type="radio" name="q10" value="d"><span>To prove insurance coverage</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q10"></div>
+      </div>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="quiz-card" data-q="11">
+      <div class="quiz-num">11</div>
+      <div class="quiz-content">
+        <h4>What is the beneficiary in a documentary collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="a"><span>The bank that receives payment</span></label>
+          <label><input type="radio" name="q11" value="b"><span>The seller/exporter who will receive payment</span></label>
+          <label><input type="radio" name="q11" value="c"><span>The government authority</span></label>
+          <label><input type="radio" name="q11" value="d"><span>The insurance company</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q11"></div>
+      </div>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="quiz-card" data-q="12">
+      <div class="quiz-num">12</div>
+      <div class="quiz-content">
+        <h4>What is a usance bill?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="a"><span>A bill payable immediately upon presentation</span></label>
+          <label><input type="radio" name="q12" value="b"><span>A bill payable at a specified future date</span></label>
+          <label><input type="radio" name="q12" value="c"><span>A bill that is not legally valid</span></label>
+          <label><input type="radio" name="q12" value="d"><span>A bill used only in domestic trade</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q12"></div>
+      </div>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="quiz-card" data-q="13">
+      <div class="quiz-num">13</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the commercial invoice in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="a"><span>To calculate customs duties and describe the goods</span></label>
+          <label><input type="radio" name="q13" value="b"><span>To prove insurance coverage</span></label>
+          <label><input type="radio" name="q13" value="c"><span>To document shipping terms</span></label>
+          <label><input type="radio" name="q13" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q13"></div>
+      </div>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="quiz-card" data-q="14">
+      <div class="quiz-num">14</div>
+      <div class="quiz-content">
+        <h4>What is the difference between a documentary collection and a letter of credit?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q14" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q14" value="b"><span>LC involves bank guarantee; collection does not</span></label>
+          <label><input type="radio" name="q14" value="c"><span>Collection involves bank guarantee; LC does not</span></label>
+          <label><input type="radio" name="q14" value="d"><span>LC is for domestic use only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q14"></div>
+      </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="quiz-card" data-q="15">
+      <div class="quiz-num">15</div>
+      <div class="quiz-content">
+        <h4>What is the role of the remitting bank in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q15" value="a"><span>The bank that receives payment from the buyer</span></label>
+          <label><input type="radio" name="q15" value="b"><span>The seller's bank that forwards documents to the collecting bank</span></label>
+          <label><input type="radio" name="q15" value="c"><span>The bank that provides insurance</span></label>
+          <label><input type="radio" name="q15" value="d"><span>The government regulatory bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q15"></div>
+      </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="quiz-card" data-q="16">
+      <div class="quiz-num">16</div>
+      <div class="quiz-content">
+        <h4>What is a clean collection?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q16" value="a"><span>A collection that is error-free</span></label>
+          <label><input type="radio" name="q16" value="b"><span>A collection of financial documents without commercial documents</span></label>
+          <label><input type="radio" name="q16" value="c"><span>A collection that has been approved by regulators</span></label>
+          <label><input type="radio" name="q16" value="d"><span>A collection that uses electronic documents only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q16"></div>
+      </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="quiz-card" data-q="17">
+      <div class="quiz-num">17</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the insurance certificate in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q17" value="a"><span>To prove the shipment was made</span></label>
+          <label><input type="radio" name="q17" value="b"><span>To provide insurance coverage for the goods during transit</span></label>
+          <label><input type="radio" name="q17" value="c"><span>To calculate customs duties</span></label>
+          <label><input type="radio" name="q17" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q17"></div>
+      </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="quiz-card" data-q="18">
+      <div class="quiz-num">18</div>
+      <div class="quiz-content">
+        <h4>What is the difference between an endorsed bill and a bearer bill?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q18" value="a"><span>No difference</span></label>
+          <label><input type="radio" name="q18" value="b"><span>Endorsed bill requires transfer endorsement; bearer bill is payable to holder</span></label>
+          <label><input type="radio" name="q18" value="c"><span>Endorsed bill is for international use only</span></label>
+          <label><input type="radio" name="q18" value="d"><span>Bearer bill requires witnesses</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q18"></div>
+      </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="quiz-card" data-q="19">
+      <div class="quiz-num">19</div>
+      <div class="quiz-content">
+        <h4>What is the purpose of the certificate of origin in documentary collections?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q19" value="a"><span>To prove where the goods were manufactured</span></label>
+          <label><input type="radio" name="q19" value="b"><span>To prove insurance coverage</span></label>
+          <label><input type="radio" name="q19" value="c"><span>To calculate shipping costs</span></label>
+          <label><input type="radio" name="q19" value="d"><span>To prove ownership of goods</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q19"></div>
+      </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="quiz-card" data-q="20">
+      <div class="quiz-num">20</div>
+      <div class="quiz-content">
+        <h4>What is the primary advantage of documentary collection for the seller?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q20" value="a"><span>Lower bank fees than letters of credit</span></label>
+          <label><input type="radio" name="q20" value="b"><span>Bank guarantee of payment</span></label>
+          <label><input type="radio" name="q20" value="c"><span>No paperwork required</span></label>
+          <label><input type="radio" name="q20" value="d"><span>Immediate payment upon shipment</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-q20"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quiz-actions">
+    <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+  </div>
+
+  <div class="quiz-result" id="quizResult"></div>
+</div>
+
+<script src="../js/quiz.js"></script>
+<script>
+// Treasury Bill of Exchange Quiz Answers
+const treasuryAnswers = {
+  q1: { correct: 'b', explanation: 'A bill of exchange is a written, unconditional order by one party (the drawer) to another party (the drawee) to pay a specified amount of money on demand or at a specified future date.' },
+  q2: { correct: 'b', explanation: 'Documentary collection is a payment method in international trade where banks handle the exchange of documents for payment or acceptance, without providing a bank guarantee like letters of credit.' },
+  q3: { correct: 'b', explanation: 'A bill of exchange is an order to pay (three-party instrument), while a promissory note is a promise to pay (two-party instrument). Bills involve drawer, drawee, and payee; notes involve maker and payee.' },
+  q4: { correct: 'b', explanation: 'The drawer is the party that creates the bill of exchange and orders the drawee to pay the specified amount to the payee. In international trade, this is typically the exporter.' },
+  q5: { correct: 'b', explanation: 'The drawee is the party ordered to pay the bill of exchange. In documentary collections, this is typically the buyer/importer who must pay to receive shipping documents.' },
+  q6: { correct: 'a', explanation: 'In documentary collection with payment at sight (D/P), documents are released to the buyer only upon immediate payment. The buyer must pay to receive the commercial documents needed to claim the goods.' },
+  q7: { correct: 'b', explanation: 'Acceptance is the drawee\'s written agreement to pay the bill of exchange at maturity. For usance bills, acceptance is required before documents are released, with payment due at a future date.' },
+  q8: { correct: 'b', explanation: 'D/P (Documents against Payment) requires payment before documents are released, while D/A (Documents against Acceptance) requires acceptance of a bill of exchange before documents are released.' },
+  q9: { correct: 'b', explanation: 'The collecting bank presents documents to the drawee for payment or acceptance according to the seller\'s instructions, and collects payment on the seller\'s behalf, typically for a fee.' },
+  q10: { correct: 'b', explanation: 'The bill of lading serves as a receipt for goods, evidence of the contract of carriage, and document of title. In documentary collections, it is a critical document that controls possession of the goods.' },
+  q11: { correct: 'b', explanation: 'The beneficiary is the seller/exporter who will receive payment through the documentary collection process. They are the party entitled to receive payment when the buyer pays or accepts the bill.' },
+  q12: { correct: 'b', explanation: 'A usance bill (or time bill) is payable at a specified future date rather than immediately upon presentation. It allows the buyer deferred payment, typically 30, 60, or 90 days from acceptance or bill date.' },
+  q13: { correct: 'a', explanation: 'The commercial invoice describes the goods, their value, and terms of sale. It is essential for customs authorities to assess duties and taxes, and for the buyer to understand what they are purchasing.' },
+  q14: { correct: 'b', explanation: 'A letter of credit involves a bank\'s guarantee of payment, providing security for both parties. Documentary collection does not provide a bank guarantee; payment risk remains with the buyer.' },
+  q15: { correct: 'b', explanation: 'The remitting bank is the seller\'s bank that receives documents and payment instructions from the seller and forwards them to the collecting bank in the buyer\'s country for processing.' },
+  q16: { correct: 'b', explanation: 'A clean collection involves only financial documents (bills, drafts) without commercial documents (shipping documents). This is less common in trade, typically used for services or debt collection.' },
+  q17: { correct: 'b', explanation: 'The insurance certificate provides evidence of insurance coverage for the goods during transit, protecting against loss or damage. It is often required under Incoterms that place insurance responsibility on the seller.' },
+  q18: { correct: 'b', explanation: 'An endorsed bill requires a transfer endorsement to be negotiated, transferring rights to a specific party. A bearer bill is payable to whoever holds it, requiring no endorsement for transfer.' },
+  q19: { correct: 'a', explanation: 'The certificate of origin certifies the country where the goods were manufactured or produced. It may be required for customs purposes, trade agreements, or import quotas, and is often issued by chambers of commerce.' },
+  q20: { correct: 'a', explanation: 'Documentary collection typically has lower bank fees than letters of credit since banks provide fewer services and take on less risk. However, it also provides less security for the seller since there is no bank guarantee.' }
+};
+
+function resetQuiz() {
+  const currentScore = 0;
+  const answeredQuestions = new Set();
+  
+  document.getElementById('quizScoreFill').style.width = '0%';
+  document.getElementById('quizScoreText').textContent = '0 / 20 correct (0%)';
+  document.getElementById('quizResult').className = 'quiz-result';
+  
+  document.querySelectorAll('.quiz-card input[type="radio"]').forEach(input => {
+    input.checked = false;
+  });
+  
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    card.classList.remove('correct', 'incorrect');
+  });
+  
+  document.querySelectorAll('.quiz-feedback').forEach(fb => {
+    fb.className = 'quiz-feedback';
+    fb.innerHTML = '';
+  });
+}
+
+// Initialize quiz when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    setupQuiz(treasuryAnswers, 20);
+  });
+} else {
+  setupQuiz(treasuryAnswers, 20);
+}
+</script>
+
+<!-- Page Footer -->
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · International Bill of Exchange Teaching Guide v1.0</div>
+      <div class="footer-links">
+        <a href="https://uncitral.un.org/en/texts/payments/conventions/bills_of_exchange" rel="noopener">UNCITRAL Convention</a>
+        <span class="footer-divider">•</span>
+        <a href="https://uncitral.un.org/en/about/faq/copyrightpolicy" rel="noopener">UNCITRAL Copyright Policy</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. UNCITRAL-based materials are copyrighted by the United Nations and reproduced with acknowledgment. For official use, consult the original sources. This guide does not constitute legal advice.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/shared.js"></script>
+
+</body>
+</html>

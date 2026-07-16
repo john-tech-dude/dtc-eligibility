@@ -3812,7 +3812,7 @@ body,
       <h4>Money Market Instruments (MMI)</h4>
       <p>OA § I.A.2: the <strong>general OA arrangements apply</strong> to MMI, but MMI are processed differently under the DTC Rules and service guides:</p>
       <ul class="compact-list">
-        <li>Commercial paper, BAs, institutional CDs, short-term notes, and related instruments</li>
+        <li><span class="hotspot" data-modal="commercial-paper" tabindex="0" role="button" onclick="openModal('modal-commercial-paper')">Commercial paper</span>, <span class="hotspot" data-modal="bankers-acceptance" tabindex="0" role="button" onclick="openModal('modal-bankers-acceptance')">BAs</span>, institutional CDs, short-term notes, and related instruments</li>
         <li>Securities maturing in <strong>≤ 30 calendar days</strong> from issuance/eligibility date are made eligible only under the <strong>MMI Program</strong> (not as non-MMI)</li>
         <li>MMI use dedicated <strong>BLOR / form letters</strong> and IPA pairing rules (see dtcc.com/legal/issue-eligibility)</li>
         <li>Underwriting help line: <strong>(866) 724-4402</strong> (OA-published)</li>
@@ -3833,7 +3833,7 @@ body,
       <h4>Retail Certificates of Deposit (E-CD)</h4>
       <p>OA § I.C.1: Retail (brokered) CDs have additional eligibility requirements; electronic master certificates are optional via UWC:</p>
       <ul class="compact-list">
-        <li>Issuer books must show deposit held for <strong>Cede &amp; Co.</strong> as exclusive registered owner (FDIC-compatible records)</li>
+        <li>Issuer books must show deposit held for <strong><span class="hotspot" data-modal="cede-co" tabindex="0" role="button" onclick="openModal('modal-cede-co')">Cede &amp; Co.</span></strong> as exclusive registered owner (FDIC-compatible records)</li>
         <li>Electronic path: UWC <strong>System E-CD Templates</strong> → underwriter populates → issuer <strong>e-signs prior to closing</strong> → vault storage at DTC</li>
         <li>Non-conforming CDs need a <strong>physical master certificate</strong> delivered pre-close (noon ET day before per Exhibit B)</li>
         <li>E-CD <strong>BLOR + associated Rider</strong> for each base CUSIP (forms: dtcc.com/legal/issue-eligibility)</li>
@@ -4509,7 +4509,7 @@ function resetQuiz() {
         <p>The world's largest securities depository, holding over $100 trillion in assets. (DTC surpassed this milestone in June 2025; the exact figure moves quarter to quarter.) Founded in 1973 and headquartered in New York City, DTC is a subsidiary of The Depository Trust & Clearing Corporation (DTCC).</p>
       </div>
       <p>DTC provides custody and book-entry transfer services for eligible securities. When securities are "DTC-eligible," they can be held, transferred, and settled electronically through DTC's systems rather than via physical certificate delivery.</p>
-      <p>DTC's nominee, <strong>Cede & Co.</strong>, is the registered owner of record for all securities held in DTC's depository. Beneficial owners hold their interests through DTC Participants (broker-dealers, banks, and other financial institutions).</p>
+      <p>DTC's nominee, <strong>Cede &amp; Co.</strong>, is the registered owner of record for all securities held in DTC's depository. Beneficial owners hold their interests through DTC Participants (broker-dealers, banks, and other financial institutions).</p>
       <p>DTC was created to solve the "paperwork crisis" of the late 1960s and early 1970s, when the surge in trading volume overwhelmed the manual, certificate-based settlement system.</p>
       <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, §17A(a); DTC Operational Arrangements, Section I. <a href="https://www.dtcc.com/-/media/Files/Downloads/legal/issue-eligibility/eligibility/operational-arrangements.pdf">dtcc.com</a></div>
     </div>
@@ -5483,7 +5483,7 @@ function resetQuiz() {
         <li>Execute an Operational Arrangements Agent Letter with DTC</li>
         <li>Execute a Balance Certificate Agreement for FAST processing</li>
         <li>Meet operational criteria for FAST Transfer Agent Processing</li>
-        <li>Maintain a single balance certificate registered to Cede & Co.</li>
+        <li>Maintain a single balance certificate registered to Cede &amp; Co.</li>
         <li>Process electronic deposits and withdrawals per DTC specifications</li>
       </ul>
       
@@ -6349,15 +6349,15 @@ function resetQuiz() {
       <div class="def-callout">
         <div class="def-type">Ownership Concept</div>
         <div class="def-word">Beneficial Owner</div>
-        <p>The person or entity that enjoys the benefits of ownership (economic interest, voting rights, dividend entitlement) even though the security may be registered in the name of another (such as Cede & Co. or a broker).</p>
+        <p>The person or entity that enjoys the benefits of ownership (economic interest, voting rights, dividend entitlement) even though the security may be registered in the name of another (such as Cede &amp; Co. or a broker).</p>
       </div>
       <p class="modal-section-title">Indirect Holding System</p>
       <p>Under the modern securities system (post-1994 UCC Article 8 revisions):</p>
       <ul>
-        <li><strong>Registered owner:</strong> Cede & Co. appears on issuer's books as owner of record.</li>
+        <li><strong>Registered owner:</strong> Cede &amp; Co. appears on issuer's books as owner of record.</li>
         <li><strong>Intermediaries:</strong> DTC Participants (brokers, banks) hold positions with DTC.</li>
         <li><strong>Beneficial owners:</strong> Investors hold economic interests through their intermediaries.</li>
-        <li><strong>Chain of title:</strong> Issuer → Cede & Co. → DTC → Participants → Beneficial owners.</li>
+        <li><strong>Chain of title:</strong> Issuer → Cede &amp; Co. → DTC → Participants → Beneficial owners.</li>
       </ul>
       <p class="modal-section-title">Rights of Beneficial Owners</p>
       <ul>
@@ -6366,7 +6366,7 @@ function resetQuiz() {
         <li><strong>Corporate actions:</strong> Can participate in tender offers, exchanges, and rights offerings.</li>
         <li><strong>Sale proceeds:</strong> Can sell their position through their broker.</li>
       </ul>
-      <div class="tip-box"><strong>Legal protection:</strong> The 1994 revisions to NY UCC Article 8 specifically validated the rights of beneficial owners through intermediaries. Notice to Cede & Co. constitutes notice to all beneficial owners under §8-503.</div>
+      <div class="tip-box"><strong>Legal protection:</strong> The 1994 revisions to NY UCC Article 8 specifically validated the rights of beneficial owners through intermediaries. Notice to Cede &amp; Co. constitutes notice to all beneficial owners under §8-503.</div>
       <div class="citation"><strong>Source:</strong> NY UCC Article 8 (1994 Revised); SEC Release No. 34-38067. <a href="https://www.law.cornell.edu/ucc/8">cornell.edu</a></div>
     </div>
   </div>
@@ -6382,11 +6382,11 @@ function resetQuiz() {
         <div class="def-word">Nominee</div>
         <p>A person or entity that holds legal title to securities on behalf of another, who is the beneficial owner. The nominee has no beneficial interest and holds the securities only as a matter of convenience or legal structure.</p>
       </div>
-      <p class="modal-section-title">Cede & Co. as Nominee</p>
-      <p>DTC's nominee, Cede & Co., is the classic example:</p>
+      <p class="modal-section-title">Cede &amp; Co. as Nominee</p>
+      <p>DTC's nominee, Cede &amp; Co., is the classic example:</p>
       <ul>
-        <li><strong>Legal title:</strong> Cede & Co. is registered owner on issuer's books.</li>
-        <li><strong>No beneficial interest:</strong> Cede & Co. cannot benefit from ownership.</li>
+        <li><strong>Legal title:</strong> Cede &amp; Co. is registered owner on issuer's books.</li>
+        <li><strong>No beneficial interest:</strong> Cede &amp; Co. cannot benefit from ownership.</li>
         <li><strong>Administrative convenience:</strong> Eliminates need to register millions of individual owners.</li>
         <li><strong>Indirect holding system:</strong> Made possible by 1994 UCC Article 8 revisions.</li>
       </ul>
