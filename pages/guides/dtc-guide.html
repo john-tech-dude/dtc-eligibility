@@ -29,6 +29,20 @@
   box-shadow: var(--shadow-md); cursor: pointer; transition: var(--transition);
 }
 .toc-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* Mirrors toc-toggle's fixed 20px edge inset and 44px circular footprint
+   on the opposite corner, so the two fixed controls share one visual axis. */
+.back-to-top {
+  position: fixed; right: 20px; bottom: 20px;
+  width: 44px; height: 44px; border-radius: 50%; z-index: 90;
+  background: var(--bg); border: 1px solid var(--border-light); color: var(--ink-muted);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); cursor: pointer;
+  transition: var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.back-to-top svg { width: 20px; height: 20px; }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
   margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
@@ -599,7 +613,7 @@
 
 /* Print */
 @media print {
-  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  .toc-sidebar, .toc-toggle, .back-to-top, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
   body { background: #fff; color: #000; }
   .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
   .wrap { padding: 0; max-width: 100%; }
@@ -697,6 +711,10 @@
 
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Scroll back to top" tabindex="0">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
@@ -712,8 +730,8 @@
   <a href="#dtcc">DTCC — The Parent Organization</a>
   <a href="#concept-map-dtcc-org" class="sub">Concept Map — DTCC Org Tree</a>
   <a href="#nscc">National Securities Clearing Corporation (NSCC)</a>
-  <a href="#nscc" class="sub">Multilateral Netting & CCP</a>
-  <a href="#nscc" class="sub">NSCC Services & Membership</a>
+  <a href="#nscc" class="sub">Multilateral Netting &amp; CCP</a>
+  <a href="#nscc" class="sub">NSCC Services &amp; Membership</a>
   <a href="#ficc">Fixed Income Clearing Corporation (FICC)</a>
   <a href="#ficc" class="sub">GSD — Government Securities Division</a>
   <a href="#ficc" class="sub">MBSD — Mortgage-Backed Securities Division</a>
@@ -732,7 +750,7 @@
   <a href="#euroclear">Euroclear — The European Counterpart</a>
   <a href="#concept-map-euroclear-org" class="sub">Concept Map — Euroclear Group</a>
   <a href="#euroclear" class="sub">Euroclear Bank (ICSD)</a>
-  <a href="#euroclear" class="sub">National CSDs & ESES</a>
+  <a href="#euroclear" class="sub">National CSDs &amp; ESES</a>
   <a href="#euroclear" class="sub">TARGET2-Securities (T2S)</a>
   <a href="#concept-map-euroclear-dtcc" class="sub">Concept Map — Euroclear &amp; DTCC Links</a>
   <a href="#global-comparison">Global Comparison: DTC vs. Euroclear</a>
@@ -741,8 +759,8 @@
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
   <a href="../../index.html" class="external">DTC Documents Index</a>
-  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
-  <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
   <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
   <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
@@ -1492,7 +1510,7 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
     <td>Mutual funds, money market funds</td>
   </tr>
   <tr>
-    <td><strong>Insurance & Annuity Services</strong></td>
+    <td><strong>Insurance &amp; Annuity Services</strong></td>
     <td>Processing for variable insurance products and annuity contracts</td>
     <td>Variable life, variable annuities</td>
   </tr>
@@ -1502,7 +1520,7 @@ When NSCC acts as a <span class="hotspot" data-modal="central-counterparty" tabi
   <strong>Teaching Note:</strong> The NSCC guarantee is what makes the T+1 settlement cycle feasible. Without a CCP guaranteeing trades, brokers would need to hold far more capital against the risk that their counterparty fails before settlement. NSCC's guarantee, backed by its clearing fund and loss allocation rules, allows the market to operate with dramatically less capital tied up in unsettled trades.
 </div>
 
-<h3 class="subsection-title">NSCC Membership & Risk Framework</h3>
+<h3 class="subsection-title">NSCC Membership &amp; Risk Framework</h3>
 
 <p class="body-text">
 NSCC members include broker-dealers, banks, and other financial institutions that meet net capital and operational requirements. Members must maintain connectivity to NSCC systems and post margin based on their trading activity and portfolio risk. NSCC collects margin at least daily and monitors intraday exposure, with the authority to make intraday margin calls when risk thresholds are breached or markets display elevated volatility.
@@ -1526,12 +1544,12 @@ FICC operates through two distinct divisions — the <span class="hotspot" data-
 <div class="entity-grid">
   <div class="entity-card">
     <div class="entity-name">GSD — Government Securities Division</div>
-    <div class="entity-role">Treasury & Agency Securities</div>
+    <div class="entity-role">Treasury &amp; Agency Securities</div>
     <div class="entity-desc">Provides CCP clearing, netting, and settlement for U.S. Treasury bills, notes, bonds, strips, agency securities, and <span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">repurchase agreements (repos)</span>. Also offers sponsored membership and agent clearing services for broader market access.</div>
   </div>
   <div class="entity-card">
     <div class="entity-name">MBSD — Mortgage-Backed Securities Division</div>
-    <div class="entity-role">MBS & TBA Market</div>
+    <div class="entity-role">MBS &amp; TBA Market</div>
     <div class="entity-desc">Provides real-time trade matching, confirmation, netting, risk management, and settlement for to-be-announced (<span class="hotspot" data-modal="tba" tabindex="0" role="button" onclick="openModal('modal-tba')">TBA</span>) transactions, specified pool trades, and stipulated trades in agency MBS.</div>
   </div>
 </div>
@@ -1560,7 +1578,7 @@ FICC maintains separate <span class="hotspot" data-modal="clearing-fund" tabinde
     <td>Automated trade matching with immediate legal confirmation</td>
   </tr>
   <tr>
-    <td><strong>Netting & Settlement</strong></td>
+    <td><strong>Netting &amp; Settlement</strong></td>
     <td>Centralized clearance for Treasuries, agencies, and repos; T+1 settlement</td>
     <td>Netting for TBA, specified pool, and stipulated trades</td>
   </tr>
@@ -1586,7 +1604,7 @@ FICC maintains separate <span class="hotspot" data-modal="clearing-fund" tabinde
   </tr>
 </table>
 
-<h3 class="subsection-title">Risk Management & Margin</h3>
+<h3 class="subsection-title">Risk Management &amp; Margin</h3>
 
 <p class="body-text">
 FICC employs sophisticated risk-based <span class="hotspot" data-modal="margin" tabindex="0" role="button" onclick="openModal('modal-margin')">margin</span> systems that mark participant positions to market and collect margin at least daily. Both GSD and MBSD monitor intraday exposure — GSD every 15 minutes and MBSD hourly (with plans to move to 15-minute intervals by end of 2025). FICC can make intraday margin calls when risk thresholds are breached or when markets display elevated volatility, such as sudden swings in MBS spreads.
@@ -1677,12 +1695,12 @@ While DTC, NSCC, and FICC are distinct entities with distinct functions, they op
   <tr>
     <td><strong>DTC</strong></td>
     <td>Securities Depository</td>
-    <td>Holds & transfers securities in book-entry form</td>
+    <td>Holds &amp; transfers securities in book-entry form</td>
     <td>Segregation of participant assets; DVP settlement</td>
   </tr>
   <tr>
     <td><strong>NSCC</strong></td>
-    <td>Equity CCP & Clearinghouse</td>
+    <td>Equity CCP &amp; Clearinghouse</td>
     <td>Equities, corporate bonds, municipal bonds, ETFs, ADRs, UITs</td>
     <td>Multilateral netting; clearing fund; loss allocation</td>
   </tr>
@@ -2369,7 +2387,7 @@ Beneficial owners vote through their brokers, who aggregate the votes and transm
   <strong>Investor Tip:</strong> If you want to receive proxy materials and annual reports directly from the issuer rather than through your broker, you can request to be treated as a <span class="hotspot" data-modal="nobo-obo" tabindex="0" role="button" onclick="openModal('modal-nobo-obo')">"non-objecting beneficial owner" (NOBO)</span>. Some brokers default to <span class="hotspot" data-modal="nobo-obo" tabindex="0" role="button" onclick="openModal('modal-nobo-obo')">"objecting beneficial owner" (OBO)</span> status, which means the issuer cannot see your name or contact you directly.
 </div>
 
-<h3 class="subsection-title">Record Date & Payment Requirements</h3>
+<h3 class="subsection-title">Record Date &amp; Payment Requirements</h3>
 
 <p class="body-text">
 <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">Record dates</span> determine which shareholders are entitled to dividends, corporate action benefits, or other rights. DTC's operational arrangements establish specific requirements for <span class="hotspot" data-modal="record-date" tabindex="0" role="button" onclick="openModal('modal-record-date')">record date</span> notifications and payment instructions.
@@ -2678,7 +2696,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Clearstream Banking Luxembourg:</strong> The other major ICSD, owned by Deutsche Börse.</li>
         <li><strong>Clearstream Banking Frankfurt:</strong> National CSD for German securities.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> SEC Regulation S-K; DTC Rules, Article 1; Euroclear Annual Report 2022; ESMA.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, By-Laws and Organization Certificate; Euroclear Annual Report 2022; ESMA.</div>
     </div>
   </div>
 </div>
@@ -2756,7 +2774,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Corporate Actions:</strong> Processes dividends, stock splits, mergers, and redemptions.</li>
         <li><strong>Proxy Services:</strong> Distributes proxy materials to participants for forwarding to beneficial owners.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832 (Clearing Agency Standards).</div>
+      <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 17A; SEC Rule 17Ad-22 (Clearing Agency Standards); DTC Rules.</div>
     </div>
   </div>
 </div>
@@ -2805,7 +2823,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       <p class="modal-section-title">Role on Issuer Books</p>
       <p>When securities are deposited with DTC, the issuer's transfer agent registers Cede &amp; Co. as the registered owner. All subsequent transfers among investors occur electronically within DTC's system. The issuer never knows the identity of the beneficial owners unless they opt out of the street name system.</p>
       <div class="tip-box"><strong>Important:</strong> Cede &amp; Co. cannot sell, pledge, or otherwise deal with the securities for its own benefit. It is a bare nominee with a strict fiduciary duty to the beneficial owners.</div>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rule 1 (Definitions; Governing Law); DTC Rule 2 (Participants and Pledgees); New York Partnership Law.</div>
     </div>
   </div>
 </div>
@@ -2889,7 +2907,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       </div>
       <p class="modal-section-title">Netting Function</p>
       <p>NSCC's most important function is <strong>trade netting</strong>. Instead of settling each trade individually, NSCC nets all buy and sell obligations of each participant at the end of the day, reducing the number of settlement obligations by over 98%. This dramatically reduces liquidity requirements and systemic risk.</p>
-      <div class="citation"><strong>Source:</strong> NSCC Rules and Procedures; SEC Release No. 34-86832.</div>
+      <div class="citation"><strong>Source:</strong> NSCC Rules and Procedures; SEC Rule 17Ad-22.</div>
     </div>
   </div>
 </div>
@@ -2965,7 +2983,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Security:</strong> Reduces risk of loss, theft, and forgery.</li>
         <li><strong>Efficiency:</strong> Enables real-time position tracking and corporate action processing.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Release No. 33-7496 (Dematerialization of Securities).</div>
+      <div class="citation"><strong>Source:</strong> New York UCC Article 8; SEC Concept Release on the U.S. Proxy System and related dematerialization initiatives.</div>
     </div>
   </div>
 </div>
@@ -3004,7 +3022,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li>Must agree to DTC rules and indemnify DTC and Cede &amp; Co.</li>
         <li>Must maintain connectivity to DTC's systems.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 2 (Participant Application).</div>
+      <div class="citation"><strong>Source:</strong> DTC Rule 2 (Participants and Pledgees); DTC Rule 3 (Participants Qualifications).</div>
     </div>
   </div>
 </div>
@@ -3027,7 +3045,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li>The security must be freely tradable (not restricted, unless eligible for deposit under Rule 144A or Regulation S).</li>
       </ul>
       <div class="tip-box"><strong>Issuer Note:</strong> If a security is not DTC-eligible, brokers cannot accept it in street name, severely limiting liquidity and marketability. Most public companies ensure DTC eligibility as a matter of course.</div>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 3 (Deposits and Withdrawals); DTC Form of Letter of Representations.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rule 5 (Eligible Securities); DTC Operational Arrangements (Necessary for Securities to Become and Remain Eligible for DTC Services); DTC Form of Letter of Representations.</div>
     </div>
   </div>
 </div>
@@ -3044,7 +3062,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       </div>
       <p class="modal-section-title">How It Works</p>
       <p>Under FAST, the transfer agent maintains a single balance certificate representing the total shares held by DTC. When shares move into or out of DTC, the transfer agent adjusts its records electronically. This eliminates the need to print, sign, and deliver physical certificates for every transaction.</p>
-      <div class="citation"><strong>Source:</strong> DTC FAST Operational Procedures; DTC Rules, Article 3.</div>
+      <div class="citation"><strong>Source:</strong> DTC FAST Operational Procedures; DTC Rule 5 (Eligible Securities).</div>
     </div>
   </div>
 </div>
@@ -3064,7 +3082,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>GSD:</strong> Clears and nets trades in U.S. Treasury securities, agency securities, and repurchase agreements.</li>
         <li><strong>MBSD:</strong> Clears and nets trades in mortgage-backed securities issued by Fannie Mae, Freddie Mac, and Ginnie Mae.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> FICC Rules and Procedures; SEC Release No. 34-86832.</div>
+      <div class="citation"><strong>Source:</strong> FICC Rules and Procedures; SEC Rule 17Ad-22.</div>
     </div>
   </div>
 </div>
@@ -3199,7 +3217,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Indemnification Agreement:</strong> Protects DTC and Cede &amp; Co. from liability.</li>
         <li><strong>Issuer Letter of Representations:</strong> The issuer's agreement to recognize DTC and follow its procedures.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Preamble and Article 1; SEC Rule 17Ad-22.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules, By-Laws and Organization Certificate; DTC Rule 1 (Definitions; Governing Law); SEC Rule 17Ad-22.</div>
     </div>
   </div>
 </div>
@@ -3233,7 +3251,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       </div>
       <p class="modal-section-title">Why It Matters</p>
       <p>Without indemnification, DTC and Cede &amp; Co. could be sued every time a beneficial owner had a dispute. The indemnification agreement ensures that participants — who know their customers and control the customer relationship — bear the cost of such disputes, allowing the depository to operate efficiently.</p>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 1, Section 11; Participant Application.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rule 2, Section 2(k) (nominee registration and indemnification); Participant Application.</div>
     </div>
   </div>
 </div>
@@ -3250,7 +3268,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       </div>
       <p class="modal-section-title">Issuer Letter of Representations</p>
       <p>This standard-form letter is the primary depository agreement for most issuers. By signing it, the issuer agrees to recognize DTC and Cede &amp; Co., to make distributions to DTC for forwarding to participants, and to follow DTC's procedures for proxy voting and corporate actions.</p>
-      <div class="citation"><strong>Source:</strong> DTC Form of Letter of Representations; DTC Rules, Article 3.</div>
+      <div class="citation"><strong>Source:</strong> DTC Form of Letter of Representations; DTC Rule 5 (Eligible Securities).</div>
     </div>
   </div>
 </div>
@@ -3271,7 +3289,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Lower capital requirements:</strong> Firms need less capital to cover unsettled trades.</li>
         <li><strong>Global alignment:</strong> Brings the U.S. closer to same-day or T+1 standards in other major markets.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> SEC Release No. 34-94062 (T+1 Settlement); DTCC T+1 Implementation Guide.</div>
+      <div class="citation"><strong>Source:</strong> SEC Release No. 34-96930, "Shortening the Securities Transaction Settlement Cycle" (Feb. 15, 2023); DTCC T+1 Implementation Guide.</div>
     </div>
   </div>
 </div>
@@ -3292,7 +3310,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
         <li><strong>Model 2:</strong> Securities settle on a gross basis in real time; cash settles on a net basis at end of day.</li>
         <li><strong>Model 3:</strong> Both securities and cash settle on a net basis at end of day. Used by NSCC for T+1 settlement.</li>
       </ul>
-      <div class="citation"><strong>Source:</strong> CPMI-IOSCO PFMI; DTC Rules, Article 9.</div>
+      <div class="citation"><strong>Source:</strong> CPMI-IOSCO PFMI; DTC Rule 9(A) and Rule 9(B) (Transactions in Securities and Money Payments).</div>
     </div>
   </div>
 </div>
@@ -3343,7 +3361,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       </div>
       <p class="modal-section-title">Example</p>
       <p>If DTC holds 1 million shares of XYZ Corp. on behalf of all participants, and Broker A holds 100,000 shares in its DTC account, Broker A receives 10% of the total dividend payment. Broker A then allocates the dividend to its customers based on their holdings.</p>
-      <div class="citation"><strong>Source:</strong> DTC Rules, Article 7 (Distributions).</div>
+      <div class="citation"><strong>Source:</strong> DTC Distributions Service Guide; DTC Rules, By-Laws and Organization Certificate.</div>
     </div>
   </div>
 </div>
@@ -3422,7 +3440,7 @@ The comparison above shows what DRS <em>is</em>; the mechanics below show how a 
       <p class="modal-section-title">How It Works</p>
       <p>Instead of Cede &amp; Co. being the registered owner, the investor's own name appears on the issuer's shareholder register. The investor receives a statement of ownership (like a bank statement) rather than a certificate. To sell, the investor must transfer the shares to a broker, which takes longer than selling street-name shares.</p>
       <div class="tip-box"><strong>Investor Note:</strong> DRS eliminates broker intermediary risk but reduces liquidity. It is most suitable for long-term investors who do not trade frequently. Shares held in DRS are not protected by SIPC because they are not held by a broker.</div>
-      <div class="citation"><strong>Source:</strong> SEC Release No. 34-36935 (Direct Registration System); DTC DRS Procedures.</div>
+      <div class="citation"><strong>Source:</strong> SEC Rule 17Ad-22; DTC DRS Procedures; DTCC Direct Registration System documentation.</div>
     </div>
   </div>
 </div>
@@ -4019,7 +4037,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
       </div>
       <p class="modal-section-title">Key Services</p>
       <ul>
-        <li><strong>Netting & Settlement:</strong> Centralized clearance for eligible government securities with guaranteed settlement.</li>
+        <li><strong>Netting &amp; Settlement:</strong> Centralized clearance for eligible government securities with guaranteed settlement.</li>
         <li><strong>GCF Repo Service:</strong> General collateral financing repo trading without intraday DVP settlement.</li>
         <li><strong>CCIT Service:</strong> Central counterparty services for tri-party repo transactions.</li>
         <li><strong>Sponsored Service:</strong> Allows Netting Members to sponsor institutional firms for indirect access.</li>
@@ -4043,7 +4061,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
       <p class="modal-section-title">Key Services</p>
       <ul>
         <li><strong>Real-Time Trade Matching (RTTM):</strong> Immediate legal confirmation of trade executions.</li>
-        <li><strong>Netting & Settlement:</strong> Multilateral netting for TBA, specified pool, and stipulated trades.</li>
+        <li><strong>Netting &amp; Settlement:</strong> Multilateral netting for TBA, specified pool, and stipulated trades.</li>
         <li><strong>Electronic Pool Notification:</strong> Automated notification of pool assignments for TBA trades.</li>
         <li><strong>Risk Management:</strong> VaR-based margin, intraday monitoring, and mark-to-market charges.</li>
       </ul>
@@ -4934,7 +4952,7 @@ Understanding the differences between the U.S. and European post-trade infrastru
     <div class="quiz-card" data-q="2">
       <div class="quiz-num">2</div>
       <div class="quiz-content">
-        <h4>What is Cede & Co.?</h4>
+        <h4>What is Cede &amp; Co.?</h4>
         <div class="quiz-options">
           <label><input type="radio" name="q2" value="a"><span>DTC's parent company</span></label>
           <label><input type="radio" name="q2" value="b"><span>DTC's nominee that holds legal title to securities</span></label>
@@ -5288,6 +5306,16 @@ Understanding the differences between the U.S. and European post-trade infrastru
 
 <script src="../../js/quiz.js"></script>
 <script>
+// ─── Back to Top ───
+(function () {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  const toggle = () => btn.classList.toggle('visible', window.scrollY > 480);
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
 // DTC Guide Quiz Answers
 const dtcGuideAnswers = {
   q1: { correct: 'c', explanation: 'DTC\'s primary function is safekeeping and transfer of securities in book-entry (electronic) form, eliminating physical certificate movement and enabling efficient settlement.' },

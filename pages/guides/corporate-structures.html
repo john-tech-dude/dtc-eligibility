@@ -54,6 +54,43 @@
             color: #fff;
             border-color: var(--accent);
         }
+        /* Mirrors toc-toggle's fixed 20px edge inset and 44px circular
+           footprint on the opposite corner, sharing one visual axis. */
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            z-index: 90;
+            background: var(--bg);
+            border: 1px solid var(--border-light);
+            color: var(--ink-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: all var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
         .toc-sidebar h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.1rem;
@@ -1174,6 +1211,7 @@
         @media print {
             .toc-sidebar,
             .toc-toggle,
+            .back-to-top,
             .modal-overlay,
             .teach-banner,
             .update-banner {
@@ -1250,6 +1288,10 @@
 
     <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Scroll back to top" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+    </button>
+
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
@@ -1280,7 +1322,7 @@
         <a href="#quiz">Knowledge Check Quiz</a>
         <div class="toc-divider">Documents</div>
         <a href="../../index.html" class="external">DTC Documents Index</a>
-        <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+        <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
         <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
         <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
         <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
@@ -2007,29 +2049,29 @@
                         <text class="cm-node-title" x="350" y="42" text-anchor="middle" fill="#fff">Restricted Securities</text>
                     </g>
 
-                    <path class="cm-edge" d="M260 62 L160 100" marker-end="url(#cm5-arrow)" />
-                    <path class="cm-edge" d="M350 62 L350 100" marker-end="url(#cm5-arrow)" />
-                    <path class="cm-edge" d="M440 62 L540 100" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M260 62 L160 115" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M350 62 L350 115" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M440 62 L540 115" marker-end="url(#cm5-arrow)" />
 
                     <!-- Rule 144 -->
                     <g class="cm-node" data-modal="rule144" tabindex="0" role="button" aria-label="Rule 144 — open definition">
-                        <rect class="cm-node-shape" x="60" y="102" width="200" height="60" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
-                        <text class="cm-node-title" x="160" y="126" text-anchor="middle" fill="var(--ink)" font-size="12">Rule 144</text>
-                        <text class="cm-node-sub" x="160" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Public resale</text>
+                        <rect class="cm-node-shape" x="60" y="117" width="200" height="60" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+                        <text class="cm-node-title" x="160" y="141" text-anchor="middle" fill="var(--ink)" font-size="12">Rule 144</text>
+                        <text class="cm-node-sub" x="160" y="159" text-anchor="middle" fill="var(--ink-tertiary)">Public resale</text>
                     </g>
 
                     <!-- Rule 144A -->
                     <g class="cm-node" data-modal="rule144a" tabindex="0" role="button" aria-label="Rule 144A — open definition">
-                        <rect class="cm-node-shape" x="250" y="102" width="200" height="60" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
-                        <text class="cm-node-title" x="350" y="126" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Rule 144A</text>
-                        <text class="cm-node-sub" x="350" y="144" text-anchor="middle" fill="var(--gold)">QIB private market</text>
+                        <rect class="cm-node-shape" x="250" y="117" width="200" height="60" rx="10" fill="url(#grad-gold)" stroke="var(--gold)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+                        <text class="cm-node-title" x="350" y="141" text-anchor="middle" fill="var(--gold-deep)" font-size="12">Rule 144A</text>
+                        <text class="cm-node-sub" x="350" y="159" text-anchor="middle" fill="var(--gold)">QIB private market</text>
                     </g>
 
                     <!-- Regulation S -->
                     <g class="cm-node" data-modal="regulation-s" tabindex="0" role="button" aria-label="Regulation S — open definition">
-                        <rect class="cm-node-shape" x="460" y="102" width="200" height="60" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
-                        <text class="cm-node-title" x="560" y="126" text-anchor="middle" fill="var(--green)" font-size="12">Regulation S</text>
-                        <text class="cm-node-sub" x="560" y="144" text-anchor="middle" fill="var(--ink-tertiary)">Offshore resale</text>
+                        <rect class="cm-node-shape" x="460" y="117" width="200" height="60" rx="10" fill="url(#grad-green)" stroke="var(--green)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+                        <text class="cm-node-title" x="560" y="141" text-anchor="middle" fill="var(--green)" font-size="12">Regulation S</text>
+                        <text class="cm-node-sub" x="560" y="159" text-anchor="middle" fill="var(--ink-tertiary)">Offshore resale</text>
                     </g>
 
                     <text class="cm-edge-label" x="190" y="92" text-anchor="middle">holding period</text>
@@ -2037,23 +2079,23 @@
                     <text class="cm-edge-label" x="520" y="92" text-anchor="middle">foreign investors</text>
 
                     <!-- Outcomes -->
-                    <path class="cm-edge" d="M60 162 L60 220" marker-end="url(#cm5-arrow)" />
-                    <path class="cm-edge" d="M260 162 L260 220" marker-end="url(#cm5-arrow)" />
-                    <path class="cm-edge" d="M460 162 L460 220" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M60 177 L60 235" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M260 177 L260 235" marker-end="url(#cm5-arrow)" />
+                    <path class="cm-edge" d="M460 177 L460 235" marker-end="url(#cm5-arrow)" />
 
-                    <rect x="10" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
-                    <text class="cm-node-title" x="70" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">Public resale</text>
+                    <rect x="10" y="237" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
+                    <text class="cm-node-title" x="70" y="261" text-anchor="middle" fill="var(--ink)" font-size="10">Public resale</text>
 
-                    <rect x="190" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
-                    <text class="cm-node-title" x="250" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">QIB market</text>
+                    <rect x="190" y="237" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
+                    <text class="cm-node-title" x="250" y="261" text-anchor="middle" fill="var(--ink)" font-size="10">QIB market</text>
 
-                    <rect x="390" y="222" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
-                    <text class="cm-node-title" x="450" y="246" text-anchor="middle" fill="var(--ink)" font-size="10">Offshore</text>
+                    <rect x="390" y="237" width="120" height="40" rx="6" fill="var(--bg-ivory)" stroke="var(--border-light)" />
+                    <text class="cm-node-title" x="450" y="261" text-anchor="middle" fill="var(--ink)" font-size="10">Offshore</text>
 
                     <!-- DTC note -->
-                    <rect x="40" y="300" width="640" height="40" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1" />
-                    <text class="cm-edge-label" x="360" y="322" text-anchor="middle" fill="var(--ink-tertiary)">Restricted securities can be held at DTC if they meet eligibility requirements and are properly deposited</text>
-                    <text class="cm-edge-label" x="360" y="338" text-anchor="middle" fill="var(--ink-muted)">Rule 144A securities are typically held in DTC with a restricted CUSIP</text>
+                    <rect x="40" y="315" width="640" height="40" rx="10" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1" />
+                    <text class="cm-edge-label" x="360" y="337" text-anchor="middle" fill="var(--ink-tertiary)">Restricted securities can be held at DTC if they meet eligibility requirements and are properly deposited</text>
+                    <text class="cm-edge-label" x="360" y="353" text-anchor="middle" fill="var(--ink-muted)">Rule 144A securities are typically held in DTC with a restricted CUSIP</text>
                 </svg>
                 <p class="cm-caption"><strong>Restricted securities framework:</strong> Rule 144 (public resale), Rule 144A (QIB private market), and Regulation S (offshore resale).</p>
                 <div class="cm-legend" aria-hidden="true">
@@ -3415,7 +3457,7 @@
                     <p><strong>Key functions:</strong> DTC holds securities in book-entry form, processes securities settlements (T+1 for most equity and many corporate cash trades since May 2024), maintains records of securities positions for participants, facilitates corporate actions and proxy voting, and provides asset servicing (dividends, interest, redemptions).</p>
                     <p><strong>DTC eligibility:</strong> Not all securities are eligible for DTC services. Eligibility requires the issuer to have a transfer agent that participates in FAST, execute a Letter of Representations with DTC, and meet DTC's operational and legal requirements.</p>
                     <p><strong>Cede &amp; Co.:</strong> Cede &amp; Co. is the nominee of DTC and is the registered owner of all securities held in DTC's book-entry system. It holds legal title on behalf of DTC participants and their customers.</p>
-                    <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832.</div>
+                    <div class="citation"><strong>Source:</strong> Securities Exchange Act of 1934, Section 17A; SEC Rule 17Ad-22 (Clearing Agency Standards); DTC Rules.</div>
                 </div>
             </div>
         </div>
@@ -3433,7 +3475,7 @@
                     <p><strong>Role in the DTC system:</strong> Cede &amp; Co. is the registered owner of all securities held in DTC's book-entry system. On the issuer's books, Cede &amp; Co. is the only shareholder of record for DTC-eligible securities. This simplifies record-keeping for issuers and allows for efficient processing of corporate actions.</p>
                     <p><strong>Beneficial ownership:</strong> The actual owners of securities — the beneficial owners — are not named on the issuer's books. Their ownership is recorded in the books of DTC participants (brokers, banks) who hold positions in their customers' accounts. This is the street name system.</p>
                     <p><strong>Legal nature:</strong> Cede &amp; Co. is a general partnership formed under New York law. It has no separate existence apart from its role as DTC's nominee. It does not conduct business or have any economic interest in the securities it holds.</p>
-                    <div class="citation"><strong>Source:</strong> DTC Rules, Article 1; New York Partnership Law.</div>
+                    <div class="citation"><strong>Source:</strong> DTC Rule 1 (Definitions; Governing Law); DTC Rule 2 (Participants and Pledgees); New York Partnership Law.</div>
                 </div>
             </div>
         </div>
@@ -3451,7 +3493,7 @@
                     <p><strong>Key roles:</strong> Participants hold securities on behalf of their customers (beneficial owners), process securities trades through DTC's settlement system, receive proxy materials and corporate action notifications from DTC, and forward them to beneficial owners, and facilitate the exercise of voting rights by beneficial owners.</p>
                     <p><strong>Types of participants:</strong> Banks, broker-dealers, custodians, and other financial institutions that meet DTC's membership requirements. Participants must have a clearing agency relationship with DTC and meet regulatory and operational standards.</p>
                     <p><strong>DTC eligibility:</strong> Participants are essential to DTC eligibility — securities must be held through a participant to be traded on the DTC system. The participant chain is how beneficial owners hold securities in street name.</p>
-                    <div class="citation"><strong>Source:</strong> DTC Rules, Article 2.</div>
+                    <div class="citation"><strong>Source:</strong> DTC Rule 2 (Participants and Pledgees); DTC Rule 3 (Participants Qualifications).</div>
                 </div>
             </div>
         </div>
@@ -3542,6 +3584,16 @@
     <script src="../../js/shared.js" defer></script>
 
     <script>
+        // ─── Back to Top ───
+        (function () {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const toggle = () => btn.classList.toggle('visible', window.scrollY > 480);
+            window.addEventListener('scroll', toggle, { passive: true });
+            toggle();
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+
         // ─── Concept Map Node Interactivity ───
         document.addEventListener('click', function(e) {
             const node = e.target.closest && e.target.closest('.cm-node[data-modal]');

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Non-Profit Foundations & Securities Ownership — Teaching Guide</title>
+<title>Non-Profit Foundations &amp; Securities Ownership — Teaching Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -27,6 +27,20 @@
   box-shadow: var(--shadow-md); cursor: pointer; transition: var(--transition);
 }
 .toc-toggle:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* Mirrors toc-toggle's fixed 20px edge inset and 44px circular footprint
+   on the opposite corner, sharing one visual axis. */
+.back-to-top {
+  position: fixed; right: 20px; bottom: 20px;
+  width: 44px; height: 44px; border-radius: 50%; z-index: 90;
+  background: var(--bg); border: 1px solid var(--border-light); color: var(--ink-muted);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md); cursor: pointer;
+  transition: var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.back-to-top svg { width: 20px; height: 20px; }
 .toc-sidebar h4 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink);
   margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);
@@ -771,7 +785,7 @@
 }
 
 @media print {
-  .toc-sidebar, .toc-toggle, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
+  .toc-sidebar, .toc-toggle, .back-to-top, .modal-overlay, .teach-banner, .update-banner { display: none !important; }
   body { background: #fff; color: #000; }
   .doc-frame { box-shadow: none; border: 1px solid #ccc; padding: 24px; }
   .wrap { padding: 0; max-width: 100%; }
@@ -819,19 +833,23 @@
 
 <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
 
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Scroll back to top" tabindex="0">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
   <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
   <h4>Contents</h4>
-  <a href="#overview">Overview — Foundations & Securities</a>
-  <a href="#overview" class="sub">501(c)(3) & Tax-Exempt Status</a>
+  <a href="#overview">Overview — Foundations &amp; Securities</a>
+  <a href="#overview" class="sub">501(c)(3) &amp; Tax-Exempt Status</a>
   <a href="#concept-map-foundation" class="sub">Concept Map — Foundation Ecosystem</a>
   <a href="#endowment">Endowment Management</a>
   <a href="#concept-map-endowment" class="sub">Concept Map — Endowment Lifecycle</a>
-  <a href="#endowment" class="sub">UPMIFA & Investment Policies</a>
+  <a href="#endowment" class="sub">UPMIFA &amp; Investment Policies</a>
   <a href="#process-endowment-flow" class="sub">Process Map — Endowment Funding</a>
-  <a href="#securities-ownership">Securities Ownership — DTC & Cede & Co.</a>
+  <a href="#securities-ownership">Securities Ownership — DTC &amp; Cede &amp; Co.</a>
   <a href="#concept-map-dtc-foundation" class="sub">Concept Map — Foundation DTC Stack</a>
   <a href="#securities-ownership" class="sub">Book-Entry vs Physical</a>
   <a href="#process-dtc-deposit" class="sub">Process Map — DTC Deposit for Foundations</a>
@@ -842,15 +860,15 @@
   <a href="#compliance">Regulatory Compliance</a>
   <a href="#compliance" class="sub">Form 990-PF · UBIT · Excise Taxes</a>
   <a href="#concept-map-compliance" class="sub">Concept Map — Compliance Framework</a>
-  <a href="#euroclear-foundations">Euroclear & Cross-Border</a>
+  <a href="#euroclear-foundations">Euroclear &amp; Cross-Border</a>
   <a href="#concept-map-euroclear-foundation" class="sub">Concept Map — Euroclear for Foundations</a>
   <a href="#global-comparison-foundation">Global Comparison</a>
   <div class="toc-divider">Assessment</div>
   <a href="#quiz">Knowledge Check Quiz</a>
   <div class="toc-divider">Documents</div>
   <a href="../../index.html" class="external">DTC Documents Index</a>
-  <a href="corporate-structures.html" class="external">LLCs & Corporate Structures</a>
-  <a href="trusts-fiduciary.html" class="external">Trusts & Fiduciary Structures</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
@@ -973,27 +991,27 @@ This guide explains the legal and operational framework for foundation securitie
 
     <!-- Donor top-left -->
     <g class="cm-node" data-modal="donor" tabindex="0" role="button" aria-label="Donor — open definition">
-      <rect class="cm-node-shape" x="36" y="30" width="120" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
-      <text class="cm-node-title" x="96" y="52" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
-      <text class="cm-node-sub" x="96" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
+      <rect class="cm-node-shape" x="36" y="50" width="120" height="46" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+      <text class="cm-node-title" x="96" y="72" text-anchor="middle" fill="var(--ink)" font-size="12">Donor</text>
+      <text class="cm-node-sub" x="96" y="86" text-anchor="middle" fill="var(--ink-tertiary)">Contributor</text>
     </g>
 
     <!-- Donor → Foundation -->
-    <line class="cm-edge" x1="156" y1="53" x2="200" y2="53" marker-end="url(#cm1-arrow)"/>
+    <line class="cm-edge" x1="156" y1="73" x2="200" y2="73" marker-end="url(#cm1-arrow)"/>
     <text class="cm-edge-label" x="180" y="26" text-anchor="middle">contributes</text>
 
     <!-- Foundation hub -->
     <g class="cm-node" data-modal="foundation" tabindex="0" role="button" aria-label="Foundation — open definition">
-      <rect class="cm-node-shape" x="200" y="26" width="140" height="54" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
-      <text class="cm-node-title" x="270" y="48" text-anchor="middle" fill="#fff">Foundation</text>
-      <text class="cm-node-sub" x="270" y="66" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) entity</text>
+      <rect class="cm-node-shape" x="200" y="46" width="140" height="54" rx="12" fill="url(#grad-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#diagram-shadow)"/>
+      <text class="cm-node-title" x="270" y="68" text-anchor="middle" fill="#fff">Foundation</text>
+      <text class="cm-node-sub" x="270" y="86" text-anchor="middle" fill="var(--accent-muted)">501(c)(3) entity</text>
     </g>
 
     <!-- Board / Investment Committee -->
-    <rect x="380" y="24" width="164" height="58" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
-    <text class="cm-node-title" x="462" y="48" text-anchor="middle" fill="var(--ink)" font-size="12">Board / Investment</text>
-    <text class="cm-node-sub" x="462" y="66" text-anchor="middle" fill="var(--ink-tertiary)">Committee</text>
-    <line class="cm-edge" x1="340" y1="53" x2="380" y2="53" marker-end="url(#cm1-arrow)"/>
+    <rect x="380" y="44" width="164" height="58" rx="10" fill="url(#grad-neutral)" stroke="var(--border)" stroke-width="1.3" filter="url(#diagram-shadow)"/>
+    <text class="cm-node-title" x="462" y="68" text-anchor="middle" fill="var(--ink)" font-size="12">Board / Investment</text>
+    <text class="cm-node-sub" x="462" y="86" text-anchor="middle" fill="var(--ink-tertiary)">Committee</text>
+    <line class="cm-edge" x1="340" y1="73" x2="380" y2="73" marker-end="url(#cm1-arrow)"/>
     <text class="cm-edge-label" x="362" y="26" text-anchor="middle">oversees</text>
 
     <!-- Investment Manager / Custodian -->
@@ -1002,8 +1020,8 @@ This guide explains the legal and operational framework for foundation securitie
       <text class="cm-node-title" x="138" y="168" text-anchor="middle" fill="var(--accent)" font-size="12">Investment Manager</text>
       <text class="cm-node-sub" x="138" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Custodian / DTC Participant</text>
     </g>
-    <path class="cm-edge" d="M270 80 L270 110 L138 110 L138 144" marker-end="url(#cm1-arrow)"/>
-    <text class="cm-edge-label" x="270" y="95" text-anchor="middle">hires / directs</text>
+    <path class="cm-edge" d="M270 100 L270 120 L138 120 L138 144" marker-end="url(#cm1-arrow)"/>
+    <text class="cm-edge-label" x="270" y="128" text-anchor="middle">hires / directs</text>
 
     <!-- DTC / Cede -->
     <g class="cm-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC — open definition">
@@ -1012,7 +1030,7 @@ This guide explains the legal and operational framework for foundation securitie
       <text class="cm-node-sub" x="376" y="186" text-anchor="middle" fill="var(--ink-tertiary)">Book-entry vault</text>
     </g>
     <line class="cm-edge" x1="228" y1="174" x2="288" y2="174" marker-end="url(#cm1-arrow)"/>
-    <text class="cm-edge-label" x="260" y="142" text-anchor="middle">securities held via</text>
+    <text class="cm-edge-label" x="260" y="128" text-anchor="middle">securities held via</text>
 
     <!-- Grants -->
     <g class="cm-node" data-modal="grant" tabindex="0" role="button" aria-label="Grant — open definition">
@@ -1020,7 +1038,7 @@ This guide explains the legal and operational framework for foundation securitie
       <text class="cm-node-title" x="128" y="318" text-anchor="middle" fill="var(--green)" font-size="12">Charitable Grants</text>
       <text class="cm-node-sub" x="128" y="334" text-anchor="middle" fill="var(--ink-tertiary)">→ Beneficiaries</text>
     </g>
-    <path class="cm-edge" d="M270 80 L270 250 L128 250 L128 296" marker-end="url(#cm1-arrow-gold)"/>
+    <path class="cm-edge" d="M270 100 L270 250 L128 250 L128 296" marker-end="url(#cm1-arrow-gold)"/>
     <text class="cm-edge-label" x="280" y="235" text-anchor="start" fill="var(--gold)">makes grants</text>
 
     <!-- IRS / Compliance -->
@@ -2494,7 +2512,7 @@ function resetFoundationQuiz() {
       </ul>
       <p class="modal-section-title">Foundation Relevance</p>
       <p>Foundations use DTC to hold the vast majority of their public market investments. The DTC system provides the infrastructure for trading, settlement, and corporate action processing. Custodians hold securities at DTC on behalf of foundations, providing the foundation with beneficial ownership while Cede &amp; Co. holds legal title.</p>
-      <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-86832.</div>
+      <div class="citation"><strong>Source:</strong> DTC Rules; DTCC Operational Arrangements (Necessary for Securities to Become and Remain Eligible for DTC Services).</div>
     </div>
   </div>
 </div>
@@ -2984,7 +3002,7 @@ function resetFoundationQuiz() {
         <li><strong>Spending Policy:</strong> Formula for annual spending (e.g., 5% of trailing 3-year average market value).</li>
         <li><strong>Responsible Investing:</strong> ESG (environmental, social, governance) considerations, if applicable.</li>
         <li><strong>Manager Selection:</strong> Criteria for selecting and monitoring investment managers.</li>
-        <li><strong>Performance Benchmarks:</strong> Indices used to evaluate performance (e.g., S&P 500, Bloomberg Aggregate).</li>
+        <li><strong>Performance Benchmarks:</strong> Indices used to evaluate performance (e.g., S&amp;P 500, Bloomberg Aggregate).</li>
       </ul>
       <p class="modal-section-title">Why It Matters</p>
       <p>The IPS is the foundation's "investment constitution." It provides clarity to investment managers, protects against inconsistent decision-making, and demonstrates the board's fiduciary diligence. It should be reviewed at least annually and updated as the foundation's circumstances change.</p>
@@ -3206,6 +3224,16 @@ function resetFoundationQuiz() {
 <script src="../../js/shared.js" defer></script>
 
 <script>
+// ─── Back to Top ───
+(function () {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  const toggle = () => btn.classList.toggle('visible', window.scrollY > 480);
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
 // ─── Concept Map Node Interactivity ───
 document.addEventListener('click', function(e) {
   const node = e.target.closest && e.target.closest('.cm-node[data-modal]');

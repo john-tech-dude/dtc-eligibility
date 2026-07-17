@@ -136,6 +136,45 @@
             color: #fff;
             border-color: var(--accent);
         }
+        /* Shares the toc-toggle's fixed 20px edge inset and 44px circular
+           footprint so both controls sit on the same visual axis: toc-toggle
+           anchors the top-of-viewport control on the left, back-to-top
+           anchors the bottom-of-viewport control on the right. */
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            z-index: 90;
+            background: var(--bg);
+            border: 1px solid var(--border-light);
+            color: var(--ink-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: var(--transition), opacity 0.25s ease, visibility 0.25s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+        }
         .toc-sidebar h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
@@ -1402,6 +1441,7 @@
         @media print {
             .toc-sidebar,
             .toc-toggle,
+            .back-to-top,
             .modal-overlay,
             .teach-banner,
             .update-banner,
@@ -1492,6 +1532,10 @@
 <body>
 
     <button class="toc-toggle" title="Table of Contents" aria-label="Toggle table of contents" tabindex="0">☰</button>
+
+    <button class="back-to-top" id="backToTop" title="Back to top" aria-label="Scroll back to top" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+    </button>
 
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
@@ -2368,7 +2412,7 @@
                     <li><strong>Collateral eligibility:</strong> DTC-eligible securities are the primary collateral for margin lending, repo, and secured lending.</li>
                 </ul>
                 <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede &amp; Co.</a>, <a href="#" onclick="openModal('modal-intermediary');return false;">Securities Intermediary</a></div>
-                <div class="citation"><strong>Source:</strong> DTC Rules; SEC Release No. 34-96818; DTCC website.</div>
+                <div class="citation"><strong>Source:</strong> DTC Rules; DTCC website.</div>
             </div>
         </div>
     </div>
@@ -2383,7 +2427,7 @@
                     <div class="def-word">Cede &amp; Co.</div>
                     <p>A New York general partnership formed by DTC to serve as the registered owner of securities on the books of issuers. Cede &amp; Co. holds legal title as nominee for DTC participants and their customers. It does not have beneficial ownership — it is purely a nominee. The beneficial ownership chain runs through DTC to the participant, to the borrower, and then to the lender (through the ACA) for collateral purposes.</p>
                 </div>
-                <div class="citation"><strong>Source:</strong> DTC Rules; New York Partnership Law; SEC Concept Release No. 34-69225.</div>
+                <div class="citation"><strong>Source:</strong> DTC Rules; New York Partnership Law; SEC Concept Release on the U.S. Proxy System, Release No. 34-62495 (2010).</div>
             </div>
         </div>
     </div>
@@ -2411,6 +2455,16 @@
     </div>
 
     <script>
+        // ─── Back to Top ───
+        (function () {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            const toggle = () => btn.classList.toggle('visible', window.scrollY > 480);
+            window.addEventListener('scroll', toggle, { passive: true });
+            toggle();
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        })();
+
         // ─── Concept Map Node Interactivity ───
         document.addEventListener('click', function(e) {
             const node = e.target.closest && e.target.closest('.cm-node[data-modal]');
