@@ -2,6 +2,37 @@
 
 This guide explains how to deploy the DTC Eligibility project to Vercel with automatic GitHub deployments.
 
+## Production = `main` (required)
+
+| Environment | Branch | Rule |
+|-------------|--------|------|
+| **Production** | `main` | Every push/merge to `main` must deploy production |
+| Preview | PR branches | Optional; use for review only |
+
+**Do not ship fixes only on disk.** Local edits (e.g. CUSIP CSS) are invisible on the live URL until they are committed and deployed.
+
+### Checklist so prod matches git
+
+1. Commit on `main` (or merge PR into `main`).
+2. `git push origin main`
+3. Confirm Vercel project **dtc-eligibility** (see `.vercel/repo.json`) is linked to this GitHub repo and Production Branch = `main`.
+4. In Vercel dashboard → Deployments: latest Production deployment commit SHA matches `git rev-parse HEAD`.
+5. Hard-refresh the production site (Cmd+Shift+R). HTML uses `must-revalidate` via `vercel.json`.
+6. Smoke: open eligibility form → **OA Canon** section loads (JSON fetch works); CUSIP grid aligned.
+
+### Repo config files
+
+- `vercel.json` — static headers/cache; project name `dtc-eligibility`
+- `.vercel/repo.json` — local CLI link metadata (project id)
+
+### Quick redeploy from CLI (optional)
+
+```bash
+npx vercel --prod
+```
+
+Prefer Git-based deploys so Production always tracks `main`.
+
 ## Prerequisites
 
 - Node.js and npm installed

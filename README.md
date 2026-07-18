@@ -35,12 +35,14 @@ dtc_teaching_tool/
 │   │   └── dtc-eligibility-questionnaire.html
 │   └── docs/                          # Reference documentation
 │       └── treasury-international-bill-of-exchange.html
-├── js/                                # Shared JavaScript (shared, quiz, oa-canon, scenarios)
-├── styles/                            # shared.css + teaching.css
+├── js/                                # shared, quiz, oa-canon, scenarios, search-index
+├── styles/                            # shared + teaching + page CSS (forms/guides)
 ├── data/                              # OA canon + scenario JSON
 ├── tests/                             # Playwright smoke tests
+├── docs/                              # Visual QA checklist, etc.
+├── vercel.json                        # Production static config
 ├── pdf/                               # Reference PDFs
-└── scripts/                           # Audits / crosswalk notes
+└── scripts/                           # build-search-index, audits, deploy notes
 ```
 
 ## Features
@@ -64,18 +66,23 @@ python3 -m http.server 8000
 
 Opening files via `file://` will load most HTML, but **`data/oa-canon.json` will not fetch**.
 
-### Day 31–60 teaching features
+### Teaching features (Days 1–60)
 
 | Feature | Where |
 |---------|--------|
-| **OA Canon (Then→Now)** | `data/oa-canon.json` → rendered on eligibility form `#oa-crosswalk` |
-| **Scenario engine** | `js/scenarios.js` + `data/eligibility-scenarios.json` (markup or JSON mode) |
-| **Mobile form / CUSIP** | `styles/teaching.css` |
-| **Smoke tests** | Playwright — `npm test` |
+| **Shared design tokens** | `styles/shared.css` (do not re-copy `:root` into pages) |
+| **Page CSS** | `styles/forms-eligibility.css`, `guides-dtc.css`, `guides-sf28.css`, `guides-corporate.css`, `teaching.css` |
+| **OA Canon (Then→Now)** | `data/oa-canon.json` → eligibility form `#oa-crosswalk` |
+| **Scenario engine** | `js/scenarios.js` + `data/eligibility-scenarios.json` |
+| **Search index** | `python3 scripts/build-search-index.py` → `js/search-index.js` ([docs](scripts/SEARCH_INDEX.md)) |
+| **Visual QA** | [docs/VISUAL_QA_CHECKLIST.md](docs/VISUAL_QA_CHECKLIST.md) |
+| **Deploy** | Push `main` → Vercel production ([guide](scripts/VERCEL_DEPLOYMENT_GUIDE.md)) |
+| **Smoke tests** | `npm test` |
 
 ```bash
 npm install
 npx playwright install chromium   # first time
+npm run build:search              # regenerate search index after content edits
 npm test
 ```
 
@@ -126,6 +133,12 @@ This teaching tool is provided for educational purposes only. It does not consti
 Educational use only. See individual source citations for specific reference materials.
 
 ## Changelog
+
+### v1.3 (July 2026) — stabilize pass (Days 1–30)
+- Extracted shared/page CSS; removed duplicate `:root` block from eligibility form
+- Page stylesheets: `forms-eligibility.css`, `guides-dtc|sf28|corporate.css`
+- `vercel.json` cache headers; deploy docs (production = `main`)
+- Search index generator (`scripts/build-search-index.py`) + visual QA checklist
 
 ### v1.2 (July 2026) — teach-better pass (Days 31–60)
 - OA canon JSON + live Then→Now crosswalk UI on eligibility questionnaire
