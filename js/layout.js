@@ -50,6 +50,12 @@
       if (el.getAttribute('data-layout-filled') === '1') return;
       var nav = el.querySelector('.footer-site-nav');
       if (nav && !nav.querySelector('a[href*="learning-paths"]')) {
+        // Match existing separators if the footer uses them
+        var sep = nav.querySelector('.footer-nav-sep');
+        if (sep) {
+          var sepClone = sep.cloneNode(true);
+          nav.appendChild(sepClone);
+        }
         var a = document.createElement('a');
         a.href = prefix + 'index.html#learning-paths';
         a.textContent = 'Learning Paths';

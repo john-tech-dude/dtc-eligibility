@@ -43,6 +43,24 @@ test.describe('Layout partials', () => {
       page.locator('.page-footer .footer-site-nav a[href*="learning-paths"]')
     ).toBeVisible({ timeout: 5000 });
   });
+
+  const guidesWithLayout = [
+    '/pages/guides/sf28-teaching-guide.html',
+    '/pages/guides/corporate-structures.html',
+    '/pages/guides/trusts-fiduciary.html',
+    '/pages/guides/non-profit-foundations.html',
+    '/pages/guides/collateral-ucc-article-8.html',
+    '/pages/docs/treasury-international-bill-of-exchange.html',
+  ];
+
+  for (const path of guidesWithLayout) {
+    test(`footer Learning Paths on ${path.split('/').pop()}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(
+        page.locator('.page-footer[data-layout="enhance"] .footer-site-nav a[href*="learning-paths"]')
+      ).toBeVisible({ timeout: 8000 });
+    });
+  }
 });
 
 test.describe('Deposit lifecycle cleanup', () => {
