@@ -148,21 +148,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button — single icon slot so sun/moon never stack as a ghost */
 .theme-toggle {
-  background: transparent;
+  background: var(--bg);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 8px 12px;
+  padding: 0;
+  width: 40px;
+  height: 36px;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   color: var(--ink-muted);
   transition: all 0.2s ease;
   font-size: 0.8rem;
   font-weight: 500;
+  position: relative;
+  flex-shrink: 0;
+  isolation: isolate;
+  overflow: hidden;
 }
 .theme-toggle:hover {
   background: var(--bg-cream);
@@ -173,11 +178,53 @@ body {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+  display: block;
 }
+/* Only one icon is in the layout tree at a time */
 .theme-toggle .sun-icon { display: block; }
-.theme-toggle .moon-icon { display: none; }
-[data-theme="dark"] .theme-toggle .sun-icon { display: none; }
-[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+.theme-toggle .moon-icon { display: none !important; }
+[data-theme="dark"] .theme-toggle .sun-icon { display: none !important; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: block !important; }
+
+/* Help control (do not reuse .theme-toggle — that left a duplicate “image” beside the sun/moon) */
+.help-btn {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.help-btn:hover,
+.help-btn:focus-visible {
+  background: var(--bg-cream);
+  border-color: var(--border);
+  color: var(--ink);
+  outline: none;
+}
+.help-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Sticky headers must fully cover content scrolling underneath (no ghost diagram bleed) */
+.page-header {
+  background: var(--bg) !important;
+  background-color: var(--bg) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
 
 /* Common Container */
 .container {
