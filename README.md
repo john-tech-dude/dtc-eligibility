@@ -35,10 +35,12 @@ dtc_teaching_tool/
 │   │   └── dtc-eligibility-questionnaire.html
 │   └── docs/                          # Reference documentation
 │       └── treasury-international-bill-of-exchange.html
-├── js/                                # Shared JavaScript
-├── styles/                            # Shared CSS
+├── js/                                # Shared JavaScript (shared, quiz, oa-canon, scenarios)
+├── styles/                            # shared.css + teaching.css
+├── data/                              # OA canon + scenario JSON
+├── tests/                             # Playwright smoke tests
 ├── pdf/                               # Reference PDFs
-└── scripts/                           # Build/utilities
+└── scripts/                           # Audits / crosswalk notes
 ```
 
 ## Features
@@ -52,14 +54,29 @@ dtc_teaching_tool/
 
 ## Getting Started
 
-Simply open `index.html` in a web browser. No build process required.
+Serve over HTTP (required for OA canon JSON, scenarios data, and accurate paths):
 
-For development:
 ```bash
-# Serve locally (optional)
-python -m http.server 8000
-# or
-npx serve
+# From repo root
+python3 -m http.server 8000
+# then open http://127.0.0.1:8000/index.html
+```
+
+Opening files via `file://` will load most HTML, but **`data/oa-canon.json` will not fetch**.
+
+### Day 31–60 teaching features
+
+| Feature | Where |
+|---------|--------|
+| **OA Canon (Then→Now)** | `data/oa-canon.json` → rendered on eligibility form `#oa-crosswalk` |
+| **Scenario engine** | `js/scenarios.js` + `data/eligibility-scenarios.json` (markup or JSON mode) |
+| **Mobile form / CUSIP** | `styles/teaching.css` |
+| **Smoke tests** | Playwright — `npm test` |
+
+```bash
+npm install
+npx playwright install chromium   # first time
+npm test
 ```
 
 ## Key Concepts Covered
@@ -109,6 +126,12 @@ This teaching tool is provided for educational purposes only. It does not consti
 Educational use only. See individual source citations for specific reference materials.
 
 ## Changelog
+
+### v1.2 (July 2026) — teach-better pass (Days 31–60)
+- OA canon JSON + live Then→Now crosswalk UI on eligibility questionnaire
+- Shared scenario tab engine (keyboard, ARIA, deep links)
+- Mobile pass for form facsimile + CUSIP grid
+- Playwright smoke tests (`npm test`)
 
 ### v1.1 (July 2026)
 - Added global SVG gradient/filter system for consistent styling

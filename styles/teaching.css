@@ -1,0 +1,489 @@
+/**
+ * Teaching enhancements: OA canon crosswalk, scenario engine polish, mobile form/table pass.
+ * Loaded after shared.css on teaching pages.
+ */
+
+/* ── OA Canon / Crosswalk ── */
+.oa-canon-root {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 2px solid var(--border-light);
+}
+.oa-canon-header .section-heading {
+  margin-top: 0;
+}
+.oa-canon-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 20px;
+}
+.oa-filter-btn {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.oa-filter-btn:hover,
+.oa-filter-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+.oa-filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.oa-canon-block {
+  margin-bottom: 28px;
+}
+.oa-canon-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.oa-canon-lead {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+.oa-canon-table {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+.oa-canon-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.6fr 0.9fr;
+  border-bottom: 1px solid var(--border-light);
+}
+.oa-canon-row:last-child {
+  border-bottom: none;
+}
+.oa-canon-row-head {
+  background: var(--bg-cream);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-secondary);
+}
+.oa-canon-cell {
+  padding: 10px 12px;
+  border-right: 1px solid var(--border-light);
+  min-width: 0;
+  line-height: 1.45;
+}
+.oa-canon-cell:last-child {
+  border-right: none;
+}
+.oa-was {
+  color: var(--ink-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(166, 124, 0, 0.45);
+}
+.oa-now {
+  color: var(--ink);
+  font-weight: 500;
+}
+.oa-cite,
+code.oa-cite {
+  font-family: ui-monospace, 'DM Sans', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  word-break: break-word;
+}
+.oa-crosswalk-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.oa-crosswalk-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.oa-crosswalk-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 8px;
+  background: var(--bg-cream);
+  border-bottom: 1px solid var(--border-light);
+}
+.oa-crosswalk-card-head h4 {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.oa-status-badge {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.oa-status-match {
+  background: rgba(34, 120, 80, 0.12);
+  color: #1a6b45;
+}
+.oa-status-partial {
+  background: rgba(166, 124, 0, 0.14);
+  color: #7a5c00;
+}
+.oa-status-legacy {
+  background: rgba(160, 80, 40, 0.12);
+  color: #8a4020;
+}
+.oa-crosswalk-card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.oa-diff-line {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 8px;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.oa-diff-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding-top: 2px;
+}
+.oa-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.oa-rule-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md, 8px);
+  padding: 14px 16px;
+  background: var(--bg-ivory, var(--bg-warm));
+}
+.oa-rule-card h4 {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.oa-rule-card p {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+}
+.oa-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+.oa-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.oa-contact-list {
+  margin: 0 0 12px;
+  padding-left: 1.2em;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-secondary);
+}
+.oa-legacy-note {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin: 0;
+}
+.oa-canon-error {
+  padding: 14px 16px;
+  border: 1px solid rgba(180, 60, 40, 0.35);
+  background: rgba(180, 60, 40, 0.06);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+}
+.oa-canon-error-detail {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  font-family: ui-monospace, monospace;
+}
+
+[data-theme="dark"] .oa-filter-btn.active {
+  background: var(--gold, #d4a843);
+  border-color: var(--gold, #d4a843);
+  color: #111;
+}
+[data-theme="dark"] .oa-status-match {
+  background: rgba(80, 180, 120, 0.18);
+  color: #8fd9b0;
+}
+[data-theme="dark"] .oa-status-partial {
+  background: rgba(212, 168, 67, 0.18);
+  color: #e8c86a;
+}
+[data-theme="dark"] .oa-was {
+  text-decoration-color: rgba(212, 168, 67, 0.5);
+}
+[data-theme="dark"] .oa-cite,
+[data-theme="dark"] code.oa-cite {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold, #d4a843);
+}
+
+/* ── Scenario engine polish ── */
+.scenario-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.scenario-tab {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.scenario-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.scenario-panel[hidden] {
+  display: none !important;
+}
+.scenario-panel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Mobile pass: facsimile + tables + teaching blocks ── */
+@media (max-width: 720px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+  .wrap,
+  .doc-frame,
+  .page-header,
+  .header-inner {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .oa-canon-row {
+    grid-template-columns: 1fr;
+  }
+  .oa-canon-row-head {
+    display: none;
+  }
+  .oa-canon-cell {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 8px 12px;
+  }
+  .oa-canon-cell::before {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+  .oa-canon-row .oa-canon-cell:nth-child(1)::before { content: "Topic"; }
+  .oa-canon-row .oa-canon-cell:nth-child(2)::before { content: "2000 form (legacy)"; }
+  .oa-canon-row .oa-canon-cell:nth-child(3)::before { content: "OA June 10, 2026"; }
+  .oa-canon-row .oa-canon-cell:nth-child(4)::before { content: "Cite"; }
+
+  .oa-crosswalk-list,
+  .oa-rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scenario-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    scroll-snap-type: x proximity;
+  }
+  .scenario-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    padding: 8px 12px;
+  }
+
+  /* Facsimile: allow horizontal pan without blowing page width */
+  .dtc-facsimile {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .form-page {
+    padding: 14px 12px 16px;
+    min-width: 0;
+  }
+  .form-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .form-col-left {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-light);
+    padding-right: 0 !important;
+    padding-bottom: 16px;
+  }
+  .form-col-right {
+    padding-left: 0 !important;
+  }
+
+  /* CUSIP grid: stack label + value pairs for readability */
+  .cusip-table-wrap {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .cusip-table {
+    display: block;
+    min-width: 0;
+    border: none;
+    font-size: 0.8rem;
+  }
+  .cusip-table > .cusip-head {
+    display: none;
+  }
+  .cusip-table > .cusip-cell {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    gap: 6px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 8px 10px;
+    min-height: 0;
+    align-items: start;
+  }
+  .cusip-table > .cusip-cell::before {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--ink-muted);
+    line-height: 1.3;
+  }
+  /* 6 data columns repeating: label via nth-child among cells only.
+     Heads are display:none but still in DOM — use cell type classes if present.
+     Fallback: map every 6th cell position among all children after first 6 heads. */
+  .cusip-table > .cusip-cell:nth-child(6n + 7)::before { content: "CUSIP Number"; }
+  .cusip-table > .cusip-cell:nth-child(6n + 8)::before { content: "Interest Rate"; }
+  .cusip-table > .cusip-cell:nth-child(6n + 9)::before { content: "Final Maturity"; }
+  .cusip-table > .cusip-cell:nth-child(6n + 10)::before { content: "Principal / Amount"; }
+  .cusip-table > .cusip-cell:nth-child(6n + 11)::before { content: "Type of Issue*"; }
+  .cusip-table > .cusip-cell:nth-child(6n + 12)::before { content: "Offering Price"; }
+
+  /* Row grouping visual: stronger separator before each CUSIP cell */
+  .cusip-table > .cusip-cell:nth-child(6n + 7) {
+    border-top: 2px solid var(--border);
+    margin-top: 0;
+    background: var(--bg-cream) !important;
+  }
+  .cusip-table > .cusip-cell.empty {
+    display: none;
+  }
+
+  .directory-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .deadline-callout ul {
+    padding-left: 1.1em;
+  }
+  .deadline-callout li {
+    margin-bottom: 10px;
+  }
+
+  .field-diff {
+    max-width: 100%;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* Slightly larger tablets: keep grid but allow scroll */
+@media (min-width: 721px) and (max-width: 900px) {
+  .cusip-table-wrap {
+    overflow-x: auto;
+  }
+  .cusip-table {
+    min-width: 640px;
+  }
+  .oa-canon-row {
+    grid-template-columns: 1fr 1.2fr 1.4fr 0.8fr;
+    font-size: 0.78rem;
+  }
+}
+
+/* Print: show all scenario panels; keep canon tables readable */
+@media print {
+  .oa-canon-filters {
+    display: none !important;
+  }
+  .oa-canon-block[hidden] {
+    display: block !important;
+  }
+  .scenario-tabs {
+    display: none !important;
+  }
+  .scenario-panel,
+  .scenario-panel[hidden] {
+    display: block !important;
+    break-inside: avoid;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+}

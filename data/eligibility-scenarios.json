@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "page": "pages/forms/dtc-eligibility-questionnaire.html",
+    "source": "OA crosswalk Slice B scenarios A–D",
+    "asOf": "2026-06-10"
+  },
+  "scenarios": [
+    {
+      "id": "sc-a",
+      "shortLabel": "A: UK Dual 144A/Reg S",
+      "title": "Scenario A: British Telecom plc — Dual 144A/Reg S Notes with Put Option",
+      "tags": ["Corporate", "UK Entity", "Rule 144A + Reg S", "BEO", "Put Feature"],
+      "offering": "£400 million notes issued by a UK-incorporated entity, eligible for resale under both Rule 144A to QIBs and Regulation S to non-U.S. persons. Book-Entry-Only with a 3-year put option. Lead underwriter is a DTC Participant. Transfer Agent is Euroclear Bank.",
+      "walkthrough": [
+        { "label": "UK Entity", "text": "Check \"Yes.\" OA § I.B.1.b requires a UK/Ireland LOR rider for each U.K./Ireland issuer security (list all CUSIPs on the rider)." },
+        { "label": "Article 8 Security", "text": "Yes — notes are securities under NY UCC Article 8." },
+        { "label": "Registration", "text": "Check BOTH Rule 144A and Regulation S. Dual eligibility is common for global issuers." },
+        { "label": "BEO", "text": "Yes — Book-Entry-Only. Requires fully executed BEO LOR (BLOR or ILOR) on DTC’s form before eligibility (OA § I.B.1.a)." },
+        { "label": "Put/Tender", "text": "Yes — 3-year put. Tender LOR on the form is for certificated put/tender issues. This deal is BEO — do not assume Tender LOR is automatic." },
+        { "label": "LOR package", "text": "(1) Standard Issuer LOR/BLOR, (2) UK/Ireland rider (required), (3) non-U.S. currency rider (required for GBP). Distinct restricted CUSIP(s) for 144A/Reg S (OA § II.A.1.b)." },
+        { "label": "Signatures / timing", "text": "Non-U.S. issuer — original manual signatures commonly required (§ I.A.6); Exhibit B: draft LOR ≥ 10 BD, original hard copy by 3 BD pre-close." },
+        { "label": "CUSIP", "text": "Restricted 144A/Reg S CUSIP(s) must be distinct from unrestricted notes of the same class." },
+        { "label": "Currency", "text": "GBP — non-U.S. currency rider is required in addition to the UK/Ireland rider." },
+        { "label": "Agent Letter + Confirmation", "text": "Agent Letter on file before eligibility; Agent Confirmation by email within 10 business days after closing (OA § I.A.1)." },
+        { "label": "OFAC", "text": "Screen issuer/principals; sanctioned issuers are not DTC eligible (OA § I.D)." }
+      ],
+      "takeaway": "Maximum complexity under OA § I.B: UK/Ireland rider and non-U.S. currency rider are both required for a GBP UK issuer; BEO needs BLOR/ILOR with Exhibit B timing; 144A/Reg S needs distinct restricted CUSIP(s). Tender LOR is a certificated-form concept — don’t bolt it onto BEO without checking."
+    },
+    {
+      "id": "sc-b",
+      "shortLabel": "B: Rule 144A High-Yield",
+      "title": "Scenario B: Acme Corp. 8.500% Senior Notes due 2030 (Rule 144A)",
+      "tags": ["Corporate", "Rule 144A", "Non-Investment Grade"],
+      "offering": "$500 million high-yield notes sold only to QIBs under Rule 144A. Distinct CUSIP from any registered notes. Lead underwriter is a DTC Participant.",
+      "walkthrough": [
+        { "label": "Issue Type", "text": "Check \"Corporate.\"" },
+        { "label": "Registration", "text": "Check \"Eligible for resale under Rule 144A of the '33 Act.\"" },
+        { "label": "CUSIP table", "text": "One row (term bond, type \"T\"). Distinct CUSIP/CINS from unrestricted securities of the same class (OA § II.A.1.b)." },
+        { "label": "LOR / riders", "text": "BLOR or ILOR for BEO. OA expressly requires LOR riders for older 144A/Reg S issues; use current DTCC forms for new issues." },
+        { "label": "PORTAL", "text": "PORTAL is retired; private QIB venues replaced it. Distinct CUSIP remains mandatory." },
+        { "label": "Electronic Submission", "text": "UW SOURCE/UWC package per Exhibit B (≥ 6 BD pre-close)." },
+        { "label": "Certificate Sizing", "text": "$500 million exactly — one certificate is acceptable; multi-certificate rule applies when a maturity exceeds $500M (OA § I.B.1.d)." }
+      ],
+      "takeaway": "For Rule 144A, never reuse an unrestricted CUSIP. Distinct restricted identification is non-negotiable under the OA."
+    },
+    {
+      "id": "sc-c",
+      "shortLabel": "C: UK Corporate Issuer",
+      "title": "Scenario C: Thames Industries plc — SEC-Registered Notes",
+      "tags": ["Corporate", "UK Entity", "SEC Registered"],
+      "offering": "UK-incorporated issuer doing a registered offering of $300 million notes under Form F-3. Lead underwriter is a DTC Participant. Transfer Agent is Computershare.",
+      "walkthrough": [
+        { "label": "UK Entity", "text": "Check \"Yes.\" UK/Ireland LOR rider required (list CUSIPs on the rider)." },
+        { "label": "Registration", "text": "Check \"Registered with the SEC.\"" },
+        { "label": "Foreign issuer", "text": "OA § I.B.3 — DTC may require special representations and/or a foreign legal opinion." },
+        { "label": "LOR", "text": "BEO LOR (BLOR/ILOR) plus UK/Ireland rider. USD registered offering: no currency rider; no 144A restricted-CUSIP split unless also sold under those exemptions." },
+        { "label": "Signatures / timing", "text": "Non-U.S. — original manual signatures commonly required; Exhibit B non-U.S. LOR draft ≥ 10 BD, original hard copy by 3 BD pre-close." },
+        { "label": "Agent Letter + Confirmation", "text": "Agent Letter on file before eligibility; Agent Confirmation within 10 business days after closing." },
+        { "label": "OFAC", "text": "Screen issuer/principals; OA § I.D bars eligibility for OFAC-sanctioned issuers." }
+      ],
+      "takeaway": "Foreign issuers add layers. The UK rider, potential foreign legal opinion, and original signature requirement can each add days — start the LOR process early."
+    },
+    {
+      "id": "sc-d",
+      "shortLabel": "D: Municipal GO Bond",
+      "title": "Scenario D: State of Franklin General Obligation Bonds, Series 2025A",
+      "tags": ["Municipal", "Serial Maturities", "BEO", "NIIDS"],
+      "offering": "$250 million GO bond with serial maturities from 2026–2035, issued as Book-Entry-Only. Lead underwriter is a DTC Participant. Transfer Agent is U.S. Bank.",
+      "walkthrough": [
+        { "label": "Issue Type", "text": "Check \"Municipal.\" Do NOT check \"Limited Underwriting\" because principal exceeds $1 million." },
+        { "label": "Article 8 Security", "text": "Yes — municipal bonds are securities under NY UCC Article 8." },
+        { "label": "UK Entity", "text": "No — issuer is a U.S. state." },
+        { "label": "Registration", "text": "Municipal securities are exempt from SEC registration under Rule 3(a)(2). Check \"Exempt under Rule 3(a)(2).\"" },
+        { "label": "CUSIP Table", "text": "10 rows (one per serial maturity). Each gets its own CUSIP, interest rate, and maturity date. Type code = \"S\" for Serial." },
+        { "label": "BEO", "text": "Yes — BEO LOR required (OA § I.B.1.a). Check for an existing BLOR under the exact issuer legal name." },
+        { "label": "Serial CUSIPs", "text": "OA § II.A.1 — each municipal serial/term needs a distinct CUSIP printed on the certificate(s)." },
+        { "label": "NIIDS (muni data path)", "text": "In UW SOURCE, input NIIDS Data Elements and select Disseminate Security Information. Separate from the eligibility request (OA § I.C.3; Exhibit B Note 2)." },
+        { "label": "Put/Tender", "text": "No — standard GO without optional put/tender." },
+        { "label": "Agent Confirmation", "text": "Transfer Agent emails confirmation within 10 business days after closing (OA § I.A.1); Agent Letter must already be on file." }
+      ],
+      "takeaway": "Serial maturities multiply CUSIP workload; each maturity is its own DTC security. Confirm BLOR name match, run the eligibility package on Exhibit B timing, and complete NIIDS dissemination as parallel tracks."
+    }
+  ]
+}

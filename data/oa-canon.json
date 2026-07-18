@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "source": "The Depository Trust Company Operational Arrangements",
+    "asOf": "2026-06-10",
+    "teachingPage": "pages/forms/dtc-eligibility-questionnaire.html",
+    "version": "1.0",
+    "note": "Single teaching canon for timelines, LOR/CUSIP rules, and legacy form deltas. Not legal advice."
+  },
+  "timelines": [
+    {
+      "id": "uw-package",
+      "label": "UW SOURCE / UWC eligibility package",
+      "legacyForm": "≥ 10 business days pre-close questionnaire + prospectus; CUSIP 7 BD / corp upon pricing",
+      "oaRule": "≥ 6 business days prior to Closing Date via UW SOURCE or UWC (offering document, lead underwriter, CUSIP(s), principal/share amounts, rates/maturities as applicable)",
+      "cite": "OA Exhibit B",
+      "tags": ["timing", "submission"]
+    },
+    {
+      "id": "lor-us",
+      "label": "BEO LOR — U.S. issuers",
+      "legacyForm": "Often taught as 1 BD pre-close with securities",
+      "oaRule": "Final executed PDF of BLOR/ILOR at least 3 business days prior to closing",
+      "cite": "OA Exhibit B; § I.B.1",
+      "tags": ["lor", "timing"]
+    },
+    {
+      "id": "lor-non-us",
+      "label": "BEO LOR — Non-U.S. issuers",
+      "legacyForm": "Same window as U.S. (stale)",
+      "oaRule": "Draft LOR ≥ 10 business days prior; original signed hard copy by 3 business days prior",
+      "cite": "OA Exhibit B; § I.A.6",
+      "tags": ["lor", "timing", "non-us"]
+    },
+    {
+      "id": "securities-delivery",
+      "label": "Securities / FRAC for inspection",
+      "legacyForm": "1 BD pre-close by noon ET (LOR + securities bundled)",
+      "oaRule": "Physical certificate for inspection by noon ET business day before closing, or Agent FRAC FAST balance confirmation by noon ET on Closing Date",
+      "cite": "OA § II.B; Exhibit B",
+      "tags": ["fast", "timing"]
+    },
+    {
+      "id": "closing-notice",
+      "label": "Closing notification",
+      "legacyForm": "Not on 2000 questionnaire form",
+      "oaRule": "Underwriter and Agent notify DTC of closing by 1:15 p.m. ET on Closing Date (≥ $100M extension requests by 1:00 p.m. ET)",
+      "cite": "OA Exhibit B",
+      "tags": ["timing", "closing"]
+    },
+    {
+      "id": "agent-confirmation",
+      "label": "Agent Confirmation (features/attributes)",
+      "legacyForm": "Sometimes confused with Agent Letter or pre-close delivery",
+      "oaRule": "Within 10 business days after Closing Date, Agent emails confirmation of securities features/attributes for UW SOURCE/UWC issues",
+      "cite": "OA § I.A.1",
+      "tags": ["agent", "timing"]
+    },
+    {
+      "id": "agent-letter",
+      "label": "Operational Arrangements Agent Letter",
+      "legacyForm": "Often conflated with Agent Confirmation",
+      "oaRule": "Agent must have completed Agent Letter on file with DTC before the security becomes eligible",
+      "cite": "OA § I introduction",
+      "tags": ["agent"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "uw-source-required",
+      "label": "Submission channel",
+      "summary": "Full-service eligibility requests must go through UW SOURCE or Underwriting Central (UWC) at a minimum.",
+      "cite": "OA § I.A.1",
+      "tags": ["submission"]
+    },
+    {
+      "id": "distinct-cusip-144a",
+      "label": "Rule 144A / Reg S CUSIP",
+      "summary": "Restricted securities must carry a distinct CUSIP/CINS from unrestricted securities of the same class.",
+      "cite": "OA § II.A.1.b",
+      "tags": ["cusip", "144a", "regs"]
+    },
+    {
+      "id": "lor-riders",
+      "label": "Required LOR riders",
+      "summary": "Riders required for: (1) older 144A and Reg S issues, (2) non-U.S. currency denomination/payments, (3) each Ireland or U.K. issuer security. List all CUSIPs on each rider.",
+      "cite": "OA § I.B.1.b",
+      "tags": ["lor", "riders"]
+    },
+    {
+      "id": "serial-cusip",
+      "label": "Serial / term CUSIPs",
+      "summary": "Each municipal serial or term maturity needs its own CUSIP (and table row).",
+      "cite": "OA § II.A.1",
+      "tags": ["cusip", "municipal"]
+    },
+    {
+      "id": "certificate-500m",
+      "label": "Certificate sizing",
+      "summary": "If a maturity exceeds $500 million, multiple certificates are required (one per $500M tranche).",
+      "cite": "OA § I.B.1.d",
+      "tags": ["certificates"]
+    },
+    {
+      "id": "ofac",
+      "label": "OFAC",
+      "summary": "Issuers, Agents, and Underwriters must not violate OFAC. SDN/sanctioned issuers are not DTC eligible. Participants screen; transfer-agent Agents provide OFAC certifications.",
+      "cite": "OA Important Legal Information; § I.D",
+      "tags": ["ofac"]
+    },
+    {
+      "id": "niids",
+      "label": "NIIDS (municipals)",
+      "summary": "Municipal trade/settlement data dissemination via UW SOURCE is separate from the eligibility request. Completing NIIDS ≠ completing eligibility.",
+      "cite": "OA § I.C.3; Exhibit B Note 2",
+      "tags": ["municipal", "niids"]
+    },
+    {
+      "id": "standards-not-deadlines",
+      "label": "Standards vs deadlines",
+      "summary": "Times applicable to DTC are standards, not hard deadlines; DTC may extend timeframes. Still plan to published Exhibit B standards; late filings can draw surcharges.",
+      "cite": "OA Important Legal Information",
+      "tags": ["timing"]
+    },
+    {
+      "id": "portal-retired",
+      "label": "PORTAL (legacy)",
+      "summary": "PORTAL is retired. Distinct restricted CUSIP remains mandatory for 144A; no PORTAL eligibility step.",
+      "cite": "Market history; OA § II.A.1.b",
+      "tags": ["legacy", "144a"]
+    },
+    {
+      "id": "uw-help-phone",
+      "label": "Underwriting customer help",
+      "summary": "OA publishes (866) 724-4402 for MMI/E-CD and general underwriting questions. 2000 form 212-855-xxxx numbers are legacy facsimile only.",
+      "cite": "OA (contacts); form facsimile 06/00",
+      "tags": ["contacts", "legacy"]
+    }
+  ],
+  "crosswalk": [
+    {
+      "id": "package-timing",
+      "topic": "Eligibility package timing",
+      "was": "≥ 10 BD questionnaire + prospectus; CUSIP 7 BD / corp upon pricing",
+      "now": "≥ 6 BD UW SOURCE/UWC package (Exhibit B)",
+      "status": "match",
+      "slice": "A"
+    },
+    {
+      "id": "agent-confirm",
+      "topic": "Agent Confirmation",
+      "was": "Often taught as ≥ 3 BD prior to closing",
+      "now": "Within 10 BD after Closing Date (email) for UW SOURCE/UWC issues",
+      "status": "match",
+      "slice": "A"
+    },
+    {
+      "id": "lor-timing",
+      "topic": "BEO LOR delivery",
+      "was": "1 BD pre-close with securities",
+      "now": "U.S. final PDF ≥ 3 BD; non-U.S. draft ≥ 10 BD, original by 3 BD",
+      "status": "match",
+      "slice": "B"
+    },
+    {
+      "id": "currency-rider",
+      "topic": "Non-U.S. currency LOR rider",
+      "was": "Sometimes optional in scenarios",
+      "now": "Required for non-U.S. currency denomination/payments (§ I.B.1.b)",
+      "status": "match",
+      "slice": "B"
+    },
+    {
+      "id": "144a-riders",
+      "topic": "144A / Reg S LOR riders",
+      "was": "Always required for all 144A/Reg S",
+      "now": "Expressly required for older issues; distinct CUSIP always (§ II.A.1.b)",
+      "status": "match",
+      "slice": "B"
+    },
+    {
+      "id": "tender-lor",
+      "topic": "Tender LOR for puts",
+      "was": "Auto-required on any put (including BEO)",
+      "now": "Form language is for certificated put/tender; BEO needs separate confirmation",
+      "status": "match",
+      "slice": "B"
+    },
+    {
+      "id": "mmi-path",
+      "topic": "MMI path",
+      "was": "OA does not apply",
+      "now": "OA applies with MMI-specific Rules/guides; help 866-724-4402",
+      "status": "match",
+      "slice": "C"
+    },
+    {
+      "id": "niids-split",
+      "topic": "NIIDS vs eligibility",
+      "was": "Light muni footnote only",
+      "now": "Separate from eligibility; Exhibit B Note 2 + § I.C.3",
+      "status": "match",
+      "slice": "C"
+    },
+    {
+      "id": "directory-phones",
+      "topic": "Directory phone numbers",
+      "was": "Presented as live contacts",
+      "now": "Legacy 2000 facsimile; prefer OA 866-724-4402 / Client Center",
+      "status": "match",
+      "slice": "C"
+    }
+  ],
+  "contacts": {
+    "preferred": [
+      {
+        "label": "DTC Underwriting customer help (OA)",
+        "value": "(866) 724-4402",
+        "use": "MMI, E-CD, general underwriting questions"
+      },
+      {
+        "label": "DTCC Client Center / relationship manager",
+        "value": "dtcc.com",
+        "use": "Live routing and operational support"
+      }
+    ],
+    "legacyFacsimile": {
+      "note": "2000 questionnaire 212-855-xxxx extensions are historical only — verify before calling.",
+      "examples": ["Corporate eligibility 855-3704 (reassigned)", "Municipal 855-3782 (reassigned)"]
+    }
+  }
+}

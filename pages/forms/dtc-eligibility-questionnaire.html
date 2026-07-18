@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../styles/shared.css">
+<link rel="stylesheet" href="../../styles/teaching.css">
 <script src="../../js/theme-init.js"></script>
 <style>
 /* Shared CSS for DTC Eligibility Project */
@@ -2366,6 +2367,9 @@ body,
 }
 .scenario-panel {
   display: none;
+}
+.scenario-panel[hidden] {
+  display: none !important;
   background: var(--bg-ivory);
   border: 1px solid var(--border-faint);
   border-radius: var(--radius-md);
@@ -3005,6 +3009,7 @@ body,
   <a href="#delivery" class="sub">Delivery of Securities</a>
   <a href="#submitted-by" class="sub">Submitted By</a>
   <a href="#red-flags">Red Flags &amp; Discretion</a>
+  <a href="#oa-crosswalk">OA Canon — Then vs Now</a>
   <a href="#scenarios">Scenario-Based Learning</a>
   <a href="#mistakes">Common Mistakes</a>
   <a href="#review-flow">DTC Review Flow</a>
@@ -3074,6 +3079,7 @@ body,
     <a href="#instructions" class="quick-nav-link">Instructions</a>
     <a href="#issue-info" class="quick-nav-link">Issue Information</a>
     <a href="#delivery" class="quick-nav-link">Delivery</a>
+    <a href="#oa-crosswalk" class="quick-nav-link">OA Canon</a>
     <a href="#scenarios" class="quick-nav-link">Scenarios</a>
     <a href="#mistakes" class="quick-nav-link">Common Mistakes</a>
     <a href="#study-guide" class="quick-nav-link">Study Guide</a>
@@ -3512,20 +3518,23 @@ body,
   </div>
 </div>
 
+<!-- ── OA CANON CROSSWALK (data-driven from data/oa-canon.json) ── -->
+<div id="oa-crosswalk" data-oa-canon-src="../../data/oa-canon.json" aria-live="polite"></div>
+
 <!-- ── SCENARIOS ── -->
-<div class="scenarios-section" id="scenarios">
+<div class="scenarios-section" id="scenarios" data-scenario-root>
   <div class="section-heading">Scenario-Based Learning</div>
   <p class="section-subtitle">
-    Work through four realistic offerings to see how the questionnaire applies in practice. Click a tab to switch scenarios.
+    Work through four realistic offerings to see how the questionnaire applies in practice. Use tabs or ← → keys. Deep-link with <code>#sc-a</code> … <code>#sc-d</code>.
   </p>
-  <div class="scenario-tabs" role="tablist">
-    <button class="scenario-tab active" onclick="showScenario('sc-a')" role="tab" aria-selected="true" tabindex="0">A: UK Dual Eligibility (144A/Reg S)</button>
-    <button class="scenario-tab" onclick="showScenario('sc-b')" role="tab" aria-selected="false" tabindex="0">B: Rule 144A High-Yield Note</button>
-    <button class="scenario-tab" onclick="showScenario('sc-c')" role="tab" aria-selected="false" tabindex="0">C: UK Corporate Issuer</button>
-    <button class="scenario-tab" onclick="showScenario('sc-d')" role="tab" aria-selected="false" tabindex="0">D: Municipal GO Bond</button>
+  <div class="scenario-tabs" role="tablist" aria-label="Eligibility scenarios">
+    <button type="button" class="scenario-tab active" data-scenario-target="sc-a" role="tab" aria-controls="sc-a" aria-selected="true" tabindex="0">A: UK Dual Eligibility (144A/Reg S)</button>
+    <button type="button" class="scenario-tab" data-scenario-target="sc-b" role="tab" aria-controls="sc-b" aria-selected="false" tabindex="-1">B: Rule 144A High-Yield Note</button>
+    <button type="button" class="scenario-tab" data-scenario-target="sc-c" role="tab" aria-controls="sc-c" aria-selected="false" tabindex="-1">C: UK Corporate Issuer</button>
+    <button type="button" class="scenario-tab" data-scenario-target="sc-d" role="tab" aria-controls="sc-d" aria-selected="false" tabindex="-1">D: Municipal GO Bond</button>
   </div>
 
-  <div class="scenario-panel active" id="sc-a">
+  <div class="scenario-panel active" id="sc-a" data-scenario-panel role="tabpanel" tabindex="0">
     <div class="scenario-meta">
       <span class="scenario-tag">Corporate</span>
       <span class="scenario-tag">UK Entity</span>
@@ -3552,7 +3561,7 @@ body,
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Maximum complexity under OA § I.B: UK/Ireland rider <em>and</em> non-U.S. currency rider are both required for a GBP UK issuer; BEO needs BLOR/ILOR on DTC’s form with Exhibit B timing; 144A/Reg S needs distinct restricted CUSIP(s). Tender LOR is a certificated-form concept — don’t bolt it onto BEO without checking. Start LOR/rider packages early (non-U.S. original signatures and 10 BD draft LOR).</div>
   </div>
 
-  <div class="scenario-panel" id="sc-b">
+  <div class="scenario-panel" id="sc-b" data-scenario-panel role="tabpanel" tabindex="0" hidden>
     <div class="scenario-meta">
       <span class="scenario-tag">Corporate</span>
       <span class="scenario-tag">Rule 144A</span>
@@ -3573,7 +3582,7 @@ body,
     <div class="scenario-tip"><strong>Key Takeaway:</strong> For Rule 144A, never reuse an unrestricted CUSIP. Distinct restricted identification is non-negotiable under the OA; treat LOR riders carefully for older 144A deposits and always use current DTCC forms for new issues.</div>
   </div>
 
-  <div class="scenario-panel" id="sc-c">
+  <div class="scenario-panel" id="sc-c" data-scenario-panel role="tabpanel" tabindex="0" hidden>
     <div class="scenario-meta">
       <span class="scenario-tag">Corporate</span>
       <span class="scenario-tag">UK Entity</span>
@@ -3594,7 +3603,7 @@ body,
     <div class="scenario-tip"><strong>Key Takeaway:</strong> Foreign issuers add layers. The UK rider, potential foreign legal opinion, and original signature requirement can each add days to the timeline. Start the LOR process early.</div>
   </div>
 
-  <div class="scenario-panel" id="sc-d">
+  <div class="scenario-panel" id="sc-d" data-scenario-panel role="tabpanel" tabindex="0" hidden>
     <div class="scenario-meta">
       <span class="scenario-tag">Municipal</span>
       <span class="scenario-tag">Serial Maturities</span>
@@ -6481,6 +6490,8 @@ function resetQuiz() {
 </div>
 
 <script src="../../js/shared.js" defer></script>
+<script src="../../js/oa-canon.js" defer></script>
+<script src="../../js/scenarios.js" defer></script>
 
 <script>
 /* Document-specific JavaScript */
@@ -6571,27 +6582,15 @@ if (document.readyState === 'loading') {
 window.addEventListener('hashchange', checkUrlHash);
 </script>
 <script>
-/* Document-specific JavaScript */
-
-// ── Scenario Tabs ──
-function showScenario(id) {
-  document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.scenario-tab').forEach(t => {
-    t.classList.remove('active');
-    t.setAttribute('aria-selected', 'false');
-  });
-  const panel = document.getElementById(id);
-  if (panel) {
-    panel.classList.add('active');
-    const activeTab = Array.from(document.querySelectorAll('.scenario-tab')).find(t => t.getAttribute('onclick').includes(id));
-    if (activeTab) {
-      activeTab.classList.add('active');
-      activeTab.setAttribute('aria-selected', 'true');
-    }
+/* Document-specific JavaScript — scenarios via js/scenarios.js (showScenario global) */
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof initScenarioEngine === 'function') {
+    initScenarioEngine('#scenarios');
   }
-}
-
-
+  if (typeof initOaCanon === 'function') {
+    initOaCanon('#oa-crosswalk');
+  }
+});
 </script>
 
 </body>
