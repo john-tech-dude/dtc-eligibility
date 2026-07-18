@@ -72,6 +72,8 @@ Opening files via `file://` will load most HTML, but **`data/oa-canon.json` will
 |---------|--------|
 | **Shared design tokens** | `styles/shared.css` (do not re-copy `:root` into pages) |
 | **Page CSS** | `styles/forms-eligibility.css`, `guides-dtc.css`, `guides-sf28.css`, `guides-corporate.css`, `teaching.css` |
+| **Learning paths** | Hub `#learning-paths` ← `data/learning-paths.json` + `js/learning-paths.js` |
+| **Layout partials** | `js/layout.js` — inject/enhance footer + breadcrumbs (`data-layout`) |
 | **OA Canon (Then→Now)** | `data/oa-canon.json` → eligibility form `#oa-crosswalk` |
 | **Scenario engine** | `js/scenarios.js` + `data/eligibility-scenarios.json` |
 | **Search index** | `python3 scripts/build-search-index.py` → `js/search-index.js` ([docs](scripts/SEARCH_INDEX.md)) |
@@ -133,6 +135,11 @@ This teaching tool is provided for educational purposes only. It does not consti
 Educational use only. See individual source citations for specific reference materials.
 
 ## Changelog
+
+### v1.4 (July 2026) — paths, layout partials, tests
+- Hub learning paths (5 tracks) from JSON
+- Shared `layout.js` footer/breadcrumb partials
+- Expanded Playwright coverage (paths, deposit lifecycle, theme/help)
 
 ### v1.3 (July 2026) — stabilize pass (Days 1–30)
 - Extracted shared/page CSS; removed duplicate `:root` block from eligibility form

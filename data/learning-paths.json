@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "title": "Learning Paths",
+    "description": "Suggested sequences through the DTC teaching collection. Follow a track or jump to any guide."
+  },
+  "paths": [
+    {
+      "id": "post-trade",
+      "title": "Post-Trade & DTC Core",
+      "blurb": "How U.S. securities sit at DTC, become eligible, and settle in book-entry form.",
+      "duration": "≈ 2–3 hours",
+      "level": "Core",
+      "color": "accent",
+      "steps": [
+        {
+          "label": "Ownership & infrastructure",
+          "href": "pages/guides/dtc-guide.html",
+          "module": "securities"
+        },
+        {
+          "label": "Eligibility questionnaire (OA)",
+          "href": "pages/forms/dtc-eligibility-questionnaire.html",
+          "module": "eligibility"
+        },
+        {
+          "label": "Certificated deposit lifecycle",
+          "href": "pages/guides/dtc-guide.html#process-certificated-deposit",
+          "module": "securities"
+        }
+      ]
+    },
+    {
+      "id": "collateral",
+      "title": "Collateral & UCC Article 8",
+      "blurb": "Pledging book-entry securities: security entitlements, ACAs, and perfection.",
+      "duration": "≈ 1–1.5 hours",
+      "level": "Advanced",
+      "color": "gold",
+      "steps": [
+        {
+          "label": "Street name & Cede & Co.",
+          "href": "pages/guides/dtc-guide.html#cede",
+          "module": "securities"
+        },
+        {
+          "label": "UCC Article 8 collateral",
+          "href": "pages/guides/collateral-ucc-article-8.html",
+          "module": "collateral"
+        }
+      ]
+    },
+    {
+      "id": "govcon",
+      "title": "Govcon Surety (SF 28)",
+      "blurb": "Federal individual surety affidavits under FAR 28.203 and asset representation.",
+      "duration": "≈ 45–60 min",
+      "level": "Specialized",
+      "color": "green",
+      "steps": [
+        {
+          "label": "SF 28 teaching guide",
+          "href": "pages/guides/sf28-teaching-guide.html",
+          "module": "sf28"
+        }
+      ]
+    },
+    {
+      "id": "entities",
+      "title": "Entity Structures",
+      "blurb": "How LLCs, corporations, trusts, and foundations hold and title securities.",
+      "duration": "≈ 2 hours",
+      "level": "Supporting",
+      "color": "accent",
+      "steps": [
+        {
+          "label": "Corporate structures",
+          "href": "pages/guides/corporate-structures.html",
+          "module": "corporate-structures"
+        },
+        {
+          "label": "Trusts & fiduciary",
+          "href": "pages/guides/trusts-fiduciary.html",
+          "module": "trusts-fiduciary"
+        },
+        {
+          "label": "Non-profit foundations",
+          "href": "pages/guides/non-profit-foundations.html",
+          "module": "non-profit-foundations"
+        }
+      ]
+    },
+    {
+      "id": "trade-finance",
+      "title": "Trade Finance",
+      "blurb": "Documentary collections and the Treasury International Bill of Exchange.",
+      "duration": "≈ 45–60 min",
+      "level": "Specialized",
+      "color": "gold",
+      "steps": [
+        {
+          "label": "Bill of exchange guide",
+          "href": "pages/docs/treasury-international-bill-of-exchange.html",
+          "module": "trade"
+        }
+      ]
+    }
+  ]
+}

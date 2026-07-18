@@ -7,7 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/learning-paths.css" />
     <script src="js/shared.js" defer></script>
+    <script src="js/learning-paths.js" defer></script>
+    <script src="js/layout.js" defer></script>
     <style>
         /* ─── same as original, plus a few additions for new card ─── */
         :root {
@@ -1837,6 +1840,7 @@
         <a href="#mainContent">Overview</a>
         <a href="#timeline" class="sub">Settlement Timeline</a>
         <a href="#search" class="sub">Search Documentation</a>
+        <a href="#learning-paths" class="sub">Learning Paths</a>
         <a href="#documents" class="sub">Teaching Materials</a>
         <a href="#infrastructure" class="sub">Infrastructure Map</a>
         <a href="#how-to-use" class="sub">How to Use</a>
@@ -1887,10 +1891,10 @@
                     At the center is the Depository Trust Company and its nominee, Cede &amp; Co. — the mechanism that holds nearly all U.S. securities in electronic form and settles trades between them. This collection starts there, then follows how corporations, non-profits, and trusts each interact with that system for eligibility, custody, and titling, and how securities held in it get pledged as collateral under UCC Article 8. Two related guides round out the picture: a Treasury bill of exchange in trade finance, and an SF 28 surety bond affidavit in federal contracting — different instruments, but the same underlying discipline of verifying a claim before a transaction goes through. Each guide pairs a plain-language walkthrough with a clickable concept map, sourced definitions, and a short self-graded quiz.
                 </p>
                 <div class="hero-cta">
-                    <a href="#documents" class="btn-primary">Explore the Guides
+                    <a href="#learning-paths" class="btn-primary">Choose a Learning Path
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="#how-to-use" class="btn-secondary">How This Site Works</a>
+                    <a href="#documents" class="btn-secondary">Browse All Guides</a>
                 </div>
             </div>
             <div class="hero-graphic">
@@ -2047,6 +2051,11 @@
             <div id="searchResults" class="search-results"></div>
         </section>
 
+        <!-- ─── LEARNING PATHS ─── -->
+        <section class="learning-paths-section" id="learning-paths" aria-label="Learning paths">
+            <div id="learning-paths-root" data-paths-src="data/learning-paths.json"></div>
+        </section>
+
         <!-- ─── TEACHING MATERIALS ─── -->
         <section class="documents-section" id="documents" aria-label="Teaching materials">
             <h2 class="section-title">
@@ -2132,7 +2141,8 @@
             <a href="#documents">All Documents</a>
         </nav>
         <p class="footer-title">DTC Documents Collection</p>
-        <p class="footer-subtext">July 2026 · v1.1 · Teaching materials for post-trade infrastructure and regulatory processes</p>
+        <p class="footer-subtext">July 2026 · v1.3 · Teaching materials for post-trade infrastructure and regulatory processes</p>
+        <div data-layout="site-footer" style="border:none;padding-top:8px;margin-top:8px;"></div>
         <p class="footer-disclaimer">Educational materials for learning purposes only. Not legal, financial, or investment advice. Facts sourced from SEC, DTCC, ICMA, and BIS publications.</p>
     </footer>
 
