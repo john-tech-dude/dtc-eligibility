@@ -135,6 +135,15 @@
   color: var(--accent, #1a3a5c);
   border-bottom-color: var(--accent, #1a3a5c);
 }
+.lp-step-link.disabled {
+  color: var(--ink-muted, #6b6b7b);
+  cursor: not-allowed;
+  text-decoration: none;
+  border-bottom: none;
+}
+.lp-step-link.disabled:hover {
+  color: var(--ink-muted, #6b6b7b);
+}
 .lp-step-arrow {
   color: var(--ink-faint, #b5b5c0);
   font-size: 0.75rem;
@@ -152,6 +161,14 @@
 }
 .lp-start:hover {
   text-decoration: underline;
+}
+.lp-start.disabled {
+  color: var(--ink-muted, #6b6b7b);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+.lp-start.disabled:hover {
+  text-decoration: none;
 }
 .lp-error {
   padding: 14px 16px;

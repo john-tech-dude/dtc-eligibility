@@ -28,8 +28,8 @@
       '<div class="layout-footer-inner">' +
       '<nav class="footer-site-nav layout-footer-nav" aria-label="Site navigation">' +
       '<a href="' + prefix + 'index.html">Home</a>' +
-      '<a href="' + prefix + 'sitemap.html">Site Map</a>' +
-      '<a href="' + prefix + 'index.html#learning-paths">Learning Paths</a>' +
+      '<span class="no-access">Site Map — No Access</span>' +
+      '<span class="no-access">Learning Paths — No Access</span>' +
       '<a href="' + prefix + 'index.html#documents">All Guides</a>' +
       '</nav>' +
       '<p class="layout-footer-meta">DTC Teaching Tool · Educational use only · Not legal or investment advice</p>' +
@@ -49,17 +49,17 @@
     document.querySelectorAll('.page-footer[data-layout="enhance"]').forEach(function (el) {
       if (el.getAttribute('data-layout-filled') === '1') return;
       var nav = el.querySelector('.footer-site-nav');
-      if (nav && !nav.querySelector('a[href*="learning-paths"]')) {
+      if (nav && !nav.querySelector('a[href*="learning-paths"]') && !nav.querySelector('.no-access')) {
         // Match existing separators if the footer uses them
         var sep = nav.querySelector('.footer-nav-sep');
         if (sep) {
           var sepClone = sep.cloneNode(true);
           nav.appendChild(sepClone);
         }
-        var a = document.createElement('a');
-        a.href = prefix + 'index.html#learning-paths';
-        a.textContent = 'Learning Paths';
-        nav.appendChild(a);
+        var span = document.createElement('span');
+        span.className = 'no-access';
+        span.textContent = 'Learning Paths — No Access';
+        nav.appendChild(span);
       }
       el.setAttribute('data-layout-filled', '1');
     });
@@ -121,6 +121,7 @@
       '.layout-footer-nav{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:center;margin-bottom:12px;font-size:0.85rem;}' +
       '.layout-footer-nav a{color:var(--accent,#0a2a4a);text-decoration:none;font-weight:500;}' +
       '.layout-footer-nav a:hover{text-decoration:underline;}' +
+      '.layout-footer-nav .no-access{color:var(--ink-muted,#6a6a7a);cursor:not-allowed;opacity:0.7;}' +
       '.layout-footer-meta{font-size:0.72rem;color:var(--ink-muted,#6a6a7a);margin:0;line-height:1.5;}' +
       '.layout-breadcrumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:0.78rem;color:var(--ink-muted,#6a6a7a);margin:12px 0 20px;}' +
       '.layout-breadcrumbs a{color:var(--accent,#0a2a4a);text-decoration:none;}' +

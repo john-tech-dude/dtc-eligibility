@@ -13,18 +13,18 @@
       "color": "accent",
       "steps": [
         {
-          "label": "Ownership & infrastructure",
-          "href": "pages/guides/dtc-guide.html",
+          "label": "Ownership & infrastructure — No Access",
+          "href": "#",
           "module": "securities"
         },
         {
-          "label": "Eligibility questionnaire (OA)",
-          "href": "pages/forms/dtc-eligibility-questionnaire.html",
+          "label": "Eligibility questionnaire (OA) — No Access",
+          "href": "#",
           "module": "eligibility"
         },
         {
-          "label": "Certificated deposit lifecycle",
-          "href": "pages/guides/dtc-guide.html#process-certificated-deposit",
+          "label": "Certificated deposit lifecycle — No Access",
+          "href": "#",
           "module": "securities"
         }
       ]
@@ -38,13 +38,13 @@
       "color": "gold",
       "steps": [
         {
-          "label": "Street name & Cede & Co.",
-          "href": "pages/guides/dtc-guide.html#cede",
+          "label": "Street name & Cede & Co. — No Access",
+          "href": "#",
           "module": "securities"
         },
         {
-          "label": "UCC Article 8 collateral",
-          "href": "pages/guides/collateral-ucc-article-8.html",
+          "label": "UCC Article 8 collateral — No Access",
+          "href": "#",
           "module": "collateral"
         }
       ]
@@ -58,8 +58,8 @@
       "color": "green",
       "steps": [
         {
-          "label": "SF 28 teaching guide",
-          "href": "pages/guides/sf28-teaching-guide.html",
+          "label": "SF 28 teaching guide — No Access",
+          "href": "#",
           "module": "sf28"
         }
       ]
@@ -73,18 +73,18 @@
       "color": "accent",
       "steps": [
         {
-          "label": "Corporate structures",
-          "href": "pages/guides/corporate-structures.html",
+          "label": "Corporate structures — No Access",
+          "href": "#",
           "module": "corporate-structures"
         },
         {
-          "label": "Trusts & fiduciary",
-          "href": "pages/guides/trusts-fiduciary.html",
+          "label": "Trusts & fiduciary — No Access",
+          "href": "#",
           "module": "trusts-fiduciary"
         },
         {
-          "label": "Non-profit foundations",
-          "href": "pages/guides/non-profit-foundations.html",
+          "label": "Non-profit foundations — No Access",
+          "href": "#",
           "module": "non-profit-foundations"
         }
       ]
@@ -98,8 +98,8 @@
       "color": "gold",
       "steps": [
         {
-          "label": "Bill of exchange guide",
-          "href": "pages/docs/treasury-international-bill-of-exchange.html",
+          "label": "Bill of exchange guide — No Access",
+          "href": "#",
           "module": "trade"
         }
       ]

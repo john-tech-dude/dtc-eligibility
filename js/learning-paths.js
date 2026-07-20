@@ -16,16 +16,16 @@
   function renderPath(path) {
     var steps = (path.steps || [])
       .map(function (step, i) {
+        var isDisabled = step.href === '#';
+        var linkHtml = isDisabled
+          ? '<span class="lp-step-link disabled">' + escapeHtml(step.label) + '</span>'
+          : '<a class="lp-step-link" href="' + escapeHtml(step.href) + '">' + escapeHtml(step.label) + '</a>';
         return (
           '<li class="lp-step">' +
           '<span class="lp-step-num" aria-hidden="true">' +
           (i + 1) +
           '</span>' +
-          '<a class="lp-step-link" href="' +
-          escapeHtml(step.href) +
-          '">' +
-          escapeHtml(step.label) +
-          '</a>' +
+          linkHtml +
           (i < path.steps.length - 1 ? '<span class="lp-step-arrow" aria-hidden="true">→</span>' : '') +
           '</li>'
         );
@@ -33,6 +33,10 @@
       .join('');
 
     var firstHref = path.steps && path.steps[0] ? path.steps[0].href : '#documents';
+    var isStartDisabled = firstHref === '#';
+    var startButtonHtml = isStartDisabled
+      ? '<span class="lp-start disabled">Start this path → No Access</span>'
+      : '<a class="lp-start" href="' + escapeHtml(firstHref) + '">Start this path →</a>';
 
     return (
       '<article class="lp-card lp-color-' +
@@ -57,9 +61,7 @@
       '<ol class="lp-steps">' +
       steps +
       '</ol>' +
-      '<a class="lp-start" href="' +
-      escapeHtml(firstHref) +
-      '">Start this path →</a>' +
+      startButtonHtml +
       '</article>'
     );
   }
