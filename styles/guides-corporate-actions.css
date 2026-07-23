@@ -714,3 +714,138 @@
   .modal-overlay { align-items: flex-end; padding: 0; }
   .modal-card { border-radius: var(--radius-md, 10px) var(--radius-md, 10px) 0 0; }
 }
+
+/* Interactive diagram styles */
+.diagram-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.diagram-node:hover .diagram-rect {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+  transform-origin: center;
+}
+
+.diagram-node:hover .diagram-text {
+  font-weight: 700;
+}
+
+.diagram-rect {
+  transition: all 0.3s ease;
+}
+
+.diagram-text {
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.diagram-line {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawLine 1.5s ease forwards;
+}
+
+.diagram-line:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.diagram-line:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.diagram-line:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.diagram-line:nth-child(4) {
+  animation-delay: 0.65s;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.diagram-dash {
+  stroke-dasharray: 3 3;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+.diagram-dash:nth-child(1) {
+  animation-delay: 0.8s;
+}
+
+.diagram-dash:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.diagram-dash:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.diagram-node {
+  animation: nodeFadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.diagram-node:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.diagram-node:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.diagram-node:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.diagram-node:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.diagram-node:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.diagram-node:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.diagram-node:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.diagram-node:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+@keyframes nodeFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.diagram-node[data-info="cede"] .diagram-rect,
+.diagram-node[data-info="election"] .diagram-rect {
+  animation: nodePulse 3s ease infinite;
+}
+
+@keyframes nodePulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0px var(--gold));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px var(--gold));
+  }
+}

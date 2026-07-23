@@ -273,49 +273,65 @@
       </marker>
     </defs>
     <!-- boxes -->
-    <rect x="20" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-    <text x="80" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">Issuer</text>
-    <text x="80" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Paying agent</text>
+    <g class="diagram-node" data-info="issuer">
+      <rect x="20" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
+      <text x="80" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Issuer</text>
+      <text x="80" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Paying agent</text>
+    </g>
 
-    <rect x="180" y="40" width="120" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-    <text x="240" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">Cede &amp; Co.</text>
-    <text x="240" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Record holder</text>
+    <g class="diagram-node" data-info="cede">
+      <rect x="180" y="40" width="120" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" class="diagram-rect"/>
+      <text x="240" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Cede &amp; Co.</text>
+      <text x="240" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Record holder</text>
+    </g>
 
-    <rect x="340" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-    <text x="400" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">DTC</text>
-    <text x="400" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Allocate</text>
+    <g class="diagram-node" data-info="dtc">
+      <rect x="340" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
+      <text x="400" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">DTC</text>
+      <text x="400" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Allocate</text>
+    </g>
 
-    <rect x="500" y="40" width="90" height="52" rx="8" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.5"/>
-    <text x="545" y="62" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700" font-family="DM Sans,sans-serif">Participant</text>
-    <text x="545" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Broker / bank</text>
+    <g class="diagram-node" data-info="participant">
+      <rect x="500" y="40" width="90" height="52" rx="8" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.5" class="diagram-rect"/>
+      <text x="545" y="62" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Participant</text>
+      <text x="545" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Broker / bank</text>
+    </g>
 
-    <rect x="620" y="40" width="80" height="52" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" stroke-width="1.5"/>
-    <text x="660" y="62" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">B.O.</text>
-    <text x="660" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Customer</text>
+    <g class="diagram-node" data-info="bo">
+      <rect x="620" y="40" width="80" height="52" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" stroke-width="1.5" class="diagram-rect"/>
+      <text x="660" y="62" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">B.O.</text>
+      <text x="660" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Customer</text>
+    </g>
 
     <!-- arrows -->
-    <line x1="140" y1="66" x2="178" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
-    <line x1="300" y1="66" x2="338" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
-    <line x1="460" y1="66" x2="498" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
-    <line x1="590" y1="66" x2="618" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
+    <line x1="140" y1="66" x2="178" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
+    <line x1="300" y1="66" x2="338" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
+    <line x1="460" y1="66" x2="498" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
+    <line x1="590" y1="66" x2="618" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
 
     <!-- bottom lanes -->
-    <rect x="40" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
-    <text x="140" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Cash / securities</text>
-    <text x="140" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Dividends · splits · spin-offs</text>
+    <g class="diagram-node" data-info="cash">
+      <rect x="40" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
+      <text x="140" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Cash / securities</text>
+      <text x="140" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Dividends · splits · spin-offs</text>
+    </g>
 
-    <rect x="260" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
-    <text x="360" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Elections</text>
-    <text x="360" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Tenders · rights · options</text>
+    <g class="diagram-node" data-info="elections">
+      <rect x="260" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
+      <text x="360" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Elections</text>
+      <text x="360" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Tenders · rights · options</text>
+    </g>
 
-    <rect x="480" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
-    <text x="580" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Votes &amp; notices</text>
-    <text x="580" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Omnibus proxy · NOBO/OBO</text>
+    <g class="diagram-node" data-info="votes">
+      <rect x="480" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
+      <text x="580" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Votes &amp; notices</text>
+      <text x="580" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Omnibus proxy · NOBO/OBO</text>
+    </g>
 
     <text x="360" y="280" text-anchor="middle" fill="var(--ink-muted)" font-size="11" font-family="DM Sans,sans-serif">Same stack · three payload types</text>
-    <line x1="140" y1="120" x2="140" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
-    <line x1="360" y1="120" x2="360" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
-    <line x1="580" y1="120" x2="580" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="140" y1="120" x2="140" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3" class="diagram-dash"/>
+    <line x1="360" y1="120" x2="360" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3" class="diagram-dash"/>
+    <line x1="580" y1="120" x2="580" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3" class="diagram-dash"/>
   </svg>
   <p class="diagram-caption">Cash, stock, elections, and votes all travel the nominee stack—but voluntary elections reverse the instruction flow (BO → participant → DTC) before results settle back down.</p>
 </div>
@@ -358,29 +374,41 @@
   <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- vertical steps -->
     <g font-family="DM Sans,sans-serif">
-      <rect x="48" y="24" width="624" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
-      <text x="72" y="46" fill="var(--accent)" font-size="12" font-weight="700">1 · Announcement</text>
-      <text x="72" y="62" fill="var(--ink-secondary)" font-size="11">Issuer / offeror publishes terms, CUSIP, price or exchange ratio, and deadlines</text>
+      <g class="diagram-node" data-info="announcement">
+        <rect x="48" y="24" width="624" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)" class="diagram-rect"/>
+        <text x="72" y="46" fill="var(--accent)" font-size="12" font-weight="700" class="diagram-text">1 · Announcement</text>
+        <text x="72" y="62" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Issuer / offeror publishes terms, CUSIP, price or exchange ratio, and deadlines</text>
+      </g>
 
-      <rect x="48" y="88" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
-      <text x="72" y="110" fill="var(--ink)" font-size="12" font-weight="700">2 · Intermediary notice</text>
-      <text x="72" y="126" fill="var(--ink-secondary)" font-size="11">Broker/custodian posts corporate-action notice; internal cut-off is earlier than DTC/agent deadline</text>
+      <g class="diagram-node" data-info="notice">
+        <rect x="48" y="88" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
+        <text x="72" y="110" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">2 · Intermediary notice</text>
+        <text x="72" y="126" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Broker/custodian posts corporate-action notice; internal cut-off is earlier than DTC/agent deadline</text>
+      </g>
 
-      <rect x="48" y="152" width="624" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
-      <text x="72" y="174" fill="var(--gold-deep)" font-size="12" font-weight="700">3 · BO / fiduciary election</text>
-      <text x="72" y="190" fill="var(--ink-secondary)" font-size="11">Elect tender, rights exercise, cash/stock option, etc. Silence may default to “do not participate”</text>
+      <g class="diagram-node" data-info="election">
+        <rect x="48" y="152" width="624" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" class="diagram-rect"/>
+        <text x="72" y="174" fill="var(--gold-deep)" font-size="12" font-weight="700" class="diagram-text">3 · BO / fiduciary election</text>
+        <text x="72" y="190" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Elect tender, rights exercise, cash/stock option, etc. Silence may default to "do not participate"</text>
+      </g>
 
-      <rect x="48" y="216" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
-      <text x="72" y="238" fill="var(--ink)" font-size="12" font-weight="700">4 · Participant → DTC</text>
-      <text x="72" y="254" fill="var(--ink-secondary)" font-size="11">Instructions aggregated; positions protected / delivered per DTC procedures for the event type</text>
+      <g class="diagram-node" data-info="participant-dtc">
+        <rect x="48" y="216" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
+        <text x="72" y="238" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">4 · Participant → DTC</text>
+        <text x="72" y="254" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Instructions aggregated; positions protected / delivered per DTC procedures for the event type</text>
+      </g>
 
-      <rect x="48" y="280" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
-      <text x="72" y="302" fill="var(--ink)" font-size="12" font-weight="700">5 · Agent / offer settlement</text>
-      <text x="72" y="318" fill="var(--ink-secondary)" font-size="11">Offer closes; proration, odd-lot priority, or exchange mechanics applied</text>
+      <g class="diagram-node" data-info="settlement">
+        <rect x="48" y="280" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
+        <text x="72" y="302" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">5 · Agent / offer settlement</text>
+        <text x="72" y="318" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Offer closes; proration, odd-lot priority, or exchange mechanics applied</text>
+      </g>
 
-      <rect x="48" y="344" width="624" height="48" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)"/>
-      <text x="72" y="366" fill="var(--green)" font-size="12" font-weight="700">6 · Results down the stack</text>
-      <text x="72" y="382" fill="var(--ink-secondary)" font-size="11">Cash/securities posted to participants and customers; unaccepted shares released from protect</text>
+      <g class="diagram-node" data-info="results">
+        <rect x="48" y="344" width="624" height="48" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" class="diagram-rect"/>
+        <text x="72" y="366" fill="var(--green)" font-size="12" font-weight="700" class="diagram-text">6 · Results down the stack</text>
+        <text x="72" y="382" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Cash/securities posted to participants and customers; unaccepted shares released from protect</text>
+      </g>
     </g>
   </svg>
   <p class="diagram-caption">Retail cut-offs are almost always earlier than headline offer deadlines so firms can aggregate and meet DTC/agent times.</p>
