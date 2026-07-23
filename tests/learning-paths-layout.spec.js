@@ -13,6 +13,10 @@ test.describe('Learning paths (hub)', () => {
     const ids = json.paths.map((p) => p.id);
     expect(ids).toContain('post-trade');
     expect(ids).toContain('collateral');
+    expect(ids).toContain('verification');
+    const postTrade = json.paths.find((p) => p.id === 'post-trade');
+    expect(postTrade.steps.some((s) => s.module === 'corporate-actions')).toBeTruthy();
+    expect(postTrade.steps.some((s) => s.module === 'transfer-agent')).toBeTruthy();
   });
 
   test('hub renders path cards and start links', async ({ page }) => {
@@ -20,8 +24,9 @@ test.describe('Learning paths (hub)', () => {
     const root = page.locator('#learning-paths-root');
     await expect(root).toBeVisible({ timeout: 10_000 });
     await expect(root.locator('.lp-card').first()).toBeVisible();
-    await expect(root.locator('.lp-card')).toHaveCount(5);
+    await expect(root.locator('.lp-card')).toHaveCount(7);
     await expect(root.getByText(/Post-Trade & DTC Core/i)).toBeVisible();
+    await expect(root.getByText(/Verification of Claims/i)).toBeVisible();
     const start = root.locator('.lp-start').first();
     await expect(start).toHaveAttribute('href', /pages\//);
   });
@@ -50,6 +55,8 @@ test.describe('Layout partials', () => {
     '/pages/guides/trusts-fiduciary.html',
     '/pages/guides/non-profit-foundations.html',
     '/pages/guides/collateral-ucc-article-8.html',
+    '/pages/guides/corporate-actions.html',
+    '/pages/guides/transfer-agent-operations.html',
     '/pages/docs/treasury-international-bill-of-exchange.html',
   ];
 
@@ -97,9 +104,13 @@ test.describe('Critical CSS assets', () => {
       '/styles/forms-eligibility.css',
       '/styles/guides-dtc.css',
       '/styles/learning-paths.css',
+      '/styles/guides-corporate-actions.css',
+      '/styles/guides-transfer-agent.css',
       '/js/layout.js',
       '/js/learning-paths.js',
       '/data/learning-paths.json',
+      '/pages/guides/corporate-actions.html',
+      '/pages/guides/transfer-agent-operations.html',
     ]) {
       const res = await request.get(path);
       expect(res.ok(), path).toBeTruthy();

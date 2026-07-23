@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "title": "Glossary",
+    "description": "Core terms across the DTC teaching collection. Definitions are teaching-level summaries with links into the guides—not official legal text."
+  },
+  "terms": [
+    {
+      "id": "dtc",
+      "term": "DTC",
+      "definition": "The Depository Trust Company — a central securities depository that holds securities in book-entry form. Designated as a SIFMU under Dodd-Frank.",
+      "url": "pages/guides/dtc-guide.html#dtc",
+      "tags": ["infrastructure", "core"]
+    },
+    {
+      "id": "dtcc",
+      "term": "DTCC",
+      "definition": "The Depository Trust & Clearing Corporation — parent holding company of DTC, NSCC, and FICC. Industry-owned and governed.",
+      "url": "pages/guides/dtc-guide.html#dtcc",
+      "tags": ["infrastructure", "core"]
+    },
+    {
+      "id": "nscc",
+      "term": "NSCC",
+      "definition": "National Securities Clearing Corporation — provides trade validation, clearing, and CNS netting for equities and corporate debt.",
+      "url": "pages/guides/dtc-guide.html#nscc",
+      "tags": ["infrastructure", "clearing"]
+    },
+    {
+      "id": "ficc",
+      "term": "FICC",
+      "definition": "Fixed Income Clearing Corporation — clears U.S. government securities, MBS, and repo transactions through GSD and MBSD.",
+      "url": "pages/guides/dtc-guide.html#ficc",
+      "tags": ["infrastructure", "fixed-income"]
+    },
+    {
+      "id": "cede",
+      "term": "Cede & Co.",
+      "definition": "DTC's partnership nominee. Securities deposited with DTC are registered in the name of Cede & Co. The issuer and trustee typically have no direct knowledge of beneficial owners.",
+      "url": "pages/guides/dtc-guide.html#cede",
+      "tags": ["ownership", "core"]
+    },
+    {
+      "id": "street-name",
+      "term": "Street name",
+      "definition": "Securities registered in the name of a broker, bank, or nominee (commonly through Cede & Co.) rather than in the name of the beneficial owner.",
+      "url": "pages/guides/dtc-guide.html#concept-map-street-vs-drs",
+      "tags": ["ownership", "core"]
+    },
+    {
+      "id": "beneficial-owner",
+      "term": "Beneficial owner",
+      "definition": "The person or entity with the economic interest in a security, even when legal title is held by a nominee such as Cede & Co.",
+      "url": "pages/guides/dtc-guide.html#concept-map-legal-beneficial",
+      "tags": ["ownership", "core"]
+    },
+    {
+      "id": "euroclear",
+      "term": "Euroclear",
+      "definition": "International central securities depository (ICSD) headquartered in Brussels. Settles cross-border trades and links to local CSDs and DTCC via bridges and links.",
+      "url": "pages/guides/dtc-guide.html#euroclear",
+      "tags": ["infrastructure", "cross-border"]
+    },
+    {
+      "id": "fast",
+      "term": "FAST",
+      "definition": "Fast Automated Securities Transfer — DTC program allowing transfer agents to electronically move securities between DTC and the transfer agent without physical certificates.",
+      "url": "pages/guides/transfer-agent-operations.html#fast",
+      "tags": ["eligibility", "transfer-agent", "core"]
+    },
+    {
+      "id": "drs",
+      "term": "DRS",
+      "definition": "Direct Registration System — book-entry registration on the issuer's (transfer agent's) books in the investor's name, outside street name at a broker.",
+      "url": "pages/guides/transfer-agent-operations.html#drs",
+      "tags": ["ownership", "transfer-agent", "core"]
+    },
+    {
+      "id": "dwac",
+      "term": "DWAC",
+      "definition": "Deposit/Withdrawal at Custodian — electronic deposit or withdrawal of securities between a transfer agent and DTC, typically under FAST.",
+      "url": "pages/guides/transfer-agent-operations.html#dwac",
+      "tags": ["eligibility", "transfer-agent", "core"]
+    },
+    {
+      "id": "balance-certificate",
+      "term": "Balance certificate",
+      "definition": "Under FAST, the aggregate position registered to Cede & Co. on the transfer agent’s books representing DTC-held shares of an issue; adjusted electronically rather than reissued for each movement.",
+      "url": "pages/guides/transfer-agent-operations.html#fast",
+      "tags": ["transfer-agent"]
+    },
+    {
+      "id": "t1",
+      "term": "T+1 settlement",
+      "definition": "Trade date plus one business day. The U.S. standard settlement cycle since May 28, 2024, shortening from T+2 to reduce counterparty risk and free up capital.",
+      "url": "pages/guides/dtc-guide.html#t1",
+      "tags": ["settlement", "core"]
+    },
+    {
+      "id": "dvp",
+      "term": "DVP",
+      "definition": "Delivery Versus Payment — a settlement mechanism ensuring securities are delivered only if payment is simultaneously made, eliminating principal risk.",
+      "url": "pages/guides/dtc-guide.html#dvp",
+      "tags": ["settlement"]
+    },
+    {
+      "id": "beo",
+      "term": "Book-Entry-Only (BEO)",
+      "definition": "Securities issued without physical certificates. Ownership is maintained electronically on DTC's books through programs such as FAST.",
+      "url": "pages/forms/dtc-eligibility-questionnaire.html#beo",
+      "tags": ["eligibility"]
+    },
+    {
+      "id": "blor",
+      "term": "BLOR",
+      "definition": "Blanket Letter of Representations — an agreement between an issuer, its transfer agent, and DTC covering all (or a series of) securities of that issuer.",
+      "url": "pages/forms/dtc-eligibility-questionnaire.html#blor",
+      "tags": ["eligibility"]
+    },
+    {
+      "id": "cusip",
+      "term": "CUSIP",
+      "definition": "Committee on Uniform Securities Identification Procedures — a unique nine-character alphanumeric identifier assigned to securities for clearing and settlement.",
+      "url": "pages/guides/dtc-guide.html#cusip",
+      "tags": ["identifiers"]
+    },
+    {
+      "id": "rule-144a",
+      "term": "Rule 144A",
+      "definition": "SEC safe harbor allowing resale of restricted securities to Qualified Institutional Buyers (QIBs) without registration.",
+      "url": "pages/guides/corporate-structures.html#rule144a",
+      "tags": ["corporate", "regulation"]
+    },
+    {
+      "id": "regulation-s",
+      "term": "Regulation S",
+      "definition": "SEC safe harbor for offers and sales of securities outside the United States by domestic and foreign issuers.",
+      "url": "pages/guides/corporate-structures.html#regs",
+      "tags": ["corporate", "regulation"]
+    },
+    {
+      "id": "sf28",
+      "term": "SF 28",
+      "definition": "Standard Form 28 — Affidavit of Individual Surety used in federal government contracting to verify a surety's assets under FAR 28.203.",
+      "url": "pages/guides/sf28-teaching-guide.html#sf28",
+      "tags": ["govcon", "forms"]
+    },
+    {
+      "id": "far-28-203",
+      "term": "FAR 28.203",
+      "definition": "Federal Acquisition Regulation section governing individual sureties, including asset verification requirements and acceptance criteria.",
+      "url": "pages/guides/sf28-teaching-guide.html#far28203",
+      "tags": ["govcon", "regulation"]
+    },
+    {
+      "id": "upmifa",
+      "term": "UPMIFA",
+      "definition": "Uniform Prudent Management of Institutional Funds Act — governs investment and expenditure decisions of charitable institutions.",
+      "url": "pages/guides/non-profit-foundations.html#upmifa",
+      "tags": ["foundations", "regulation"]
+    },
+    {
+      "id": "ucc-8",
+      "term": "UCC Article 8",
+      "definition": "Uniform Commercial Code Article 8 — governs investment securities, including security entitlements and rights of entitlement holders and secured parties.",
+      "url": "pages/guides/collateral-ucc-article-8.html#ucc8",
+      "tags": ["collateral", "core"]
+    },
+    {
+      "id": "security-entitlement",
+      "term": "Security entitlement",
+      "definition": "Under UCC Article 8, the rights and property interest of a person who holds a financial asset through a securities intermediary (not a direct claim on a certificate).",
+      "url": "pages/guides/collateral-ucc-article-8.html#ucc8",
+      "tags": ["collateral", "ownership"]
+    },
+    {
+      "id": "aca",
+      "term": "ACA",
+      "definition": "Account Control Agreement — a tri-party agreement among a borrower, a secured party (lender), and an intermediary that perfects a security interest in a securities account under UCC Article 8.",
+      "url": "pages/guides/collateral-ucc-article-8.html#aca",
+      "tags": ["collateral"]
+    },
+    {
+      "id": "rehypothecation",
+      "term": "Rehypothecation",
+      "definition": "The practice whereby a prime broker or lender re-uses collateral posted by a client to finance its own activities or to back its own borrowings.",
+      "url": "pages/guides/collateral-ucc-article-8.html#rehypothecation",
+      "tags": ["collateral"]
+    },
+    {
+      "id": "bill-of-exchange",
+      "term": "Bill of exchange",
+      "definition": "A written order by one party (drawer) directing another (drawee) to pay a sum to a payee—central to documentary collections and trade finance.",
+      "url": "pages/docs/treasury-international-bill-of-exchange.html",
+      "tags": ["trade-finance"]
+    },
+    {
+      "id": "urc-522",
+      "term": "URC 522",
+      "definition": "ICC Uniform Rules for Collections — market standard rules governing documentary collections, including bills of exchange presented with shipping documents.",
+      "url": "pages/docs/treasury-international-bill-of-exchange.html",
+      "tags": ["trade-finance"]
+    },
+    {
+      "id": "participant",
+      "term": "DTC participant",
+      "definition": "A broker-dealer, bank, or other entity that holds a direct account at DTC and settles through its systems on behalf of itself and customers.",
+      "url": "pages/guides/dtc-guide.html#dtc",
+      "tags": ["infrastructure", "ops"]
+    },
+    {
+      "id": "transfer-agent",
+      "term": "Transfer agent",
+      "definition": "The agent that maintains the issuer's register of holders, processes transfers, and interfaces with DTC under FAST for electronic deposits and withdrawals (DWAC) and DRS.",
+      "url": "pages/guides/transfer-agent-operations.html",
+      "tags": ["eligibility", "transfer-agent", "core"]
+    },
+    {
+      "id": "fast-program",
+      "term": "FAST (detailed)",
+      "definition": "Fast Automated Securities Transfer — DTC program enabling transfer agents to adjust Cede-registered balance positions electronically instead of printing a new jumbo certificate for each deposit or withdrawal.",
+      "url": "pages/guides/transfer-agent-operations.html#fast",
+      "tags": ["transfer-agent", "core"]
+    },
+    {
+      "id": "sifmu",
+      "term": "SIFMU",
+      "definition": "Systemically Important Financial Market Utility — designation under Dodd-Frank for critical post-trade infrastructure such as DTC, NSCC, and FICC.",
+      "url": "pages/guides/dtc-guide.html#dtc",
+      "tags": ["infrastructure", "regulation"]
+    },
+    {
+      "id": "record-date",
+      "term": "Record date",
+      "definition": "The date used to determine who is entitled to a distribution or certain rights, tested against the registered holder (often Cede & Co. for street-name securities).",
+      "url": "pages/guides/corporate-actions.html#record-date",
+      "tags": ["corporate-actions", "core"]
+    },
+    {
+      "id": "ex-date",
+      "term": "Ex-date",
+      "definition": "The first day a security trades without an upcoming dividend or similar entitlement; settlement conventions align buyers with record-date entitlement.",
+      "url": "pages/guides/corporate-actions.html#ex-date",
+      "tags": ["corporate-actions", "settlement"]
+    },
+    {
+      "id": "omnibus-proxy",
+      "term": "Omnibus proxy",
+      "definition": "A proxy covering bulk Cede-held positions so voting authority and beneficial owner instructions can be processed through the intermediary chain.",
+      "url": "pages/guides/corporate-actions.html#proxy",
+      "tags": ["corporate-actions", "governance"]
+    },
+    {
+      "id": "mandatory-ca",
+      "term": "Mandatory corporate action",
+      "definition": "An event where positions on the relevant date automatically receive the entitlement without a beneficial owner election (e.g., cash dividend, stock split).",
+      "url": "pages/guides/corporate-actions.html#taxonomy",
+      "tags": ["corporate-actions"]
+    },
+    {
+      "id": "voluntary-ca",
+      "term": "Voluntary corporate action",
+      "definition": "An event requiring a beneficial owner or fiduciary election before a deadline (e.g., tender offer, rights exercise); silence often means default or non-participation.",
+      "url": "pages/guides/corporate-actions.html#voluntary",
+      "tags": ["corporate-actions"]
+    },
+    {
+      "id": "nobo-obo",
+      "term": "NOBO / OBO",
+      "definition": "Non-objecting vs objecting beneficial owner status — governs whether a street-name holder’s identity may be disclosed to the issuer for communications.",
+      "url": "pages/guides/corporate-actions.html#proxy",
+      "tags": ["corporate-actions", "governance"]
+    }
+  ]
+}

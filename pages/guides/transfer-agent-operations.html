@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Agents &amp; the Issuer–DTC Interface — Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/shared.css">
+<link rel="stylesheet" href="../../styles/teaching.css">
+<link rel="stylesheet" href="../../styles/guides-transfer-agent.css">
+<script src="../../js/theme-init.js"></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory, #f9f8f6)"/>
+      <stop offset="0.55" stop-color="var(--bg-cream)"/>
+      <stop offset="1" stop-color="var(--border-faint, #f0ede6)"/>
+    </linearGradient>
+    <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="0.5" stop-color="var(--accent-muted)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="0.6" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover, #0d314a)"/>
+    </linearGradient>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="0.55" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light, #e8f5ec)"/>
+      <stop offset="0.55" stop-color="var(--green-light, #e8f5ec)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.36"/>
+    </linearGradient>
+    <filter id="g-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.10)"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="rgba(0,0,0,0.12)"/>
+    </filter>
+    <filter id="g-glow-gold" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="var(--gold)" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+</svg>
+
+<button class="toc-toggle" aria-label="Toggle table of contents">☰</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#overview">Overview</a>
+  <a href="#roles">Who Does What</a>
+  <a href="#fast">FAST Program</a>
+  <a href="#concept-map-interface" class="sub">Concept map — interface</a>
+  <a href="#dwac">DWAC Deposits &amp; Withdrawals</a>
+  <a href="#process-dwac" class="sub">Process map — DWAC</a>
+  <a href="#concept-map-dwac-balance" class="sub">Concept map — FAST balance</a>
+  <a href="#drs">DRS vs Street Name</a>
+  <a href="#concept-map-drs-street" class="sub">Concept map — two paths</a>
+  <a href="#restricted">Restricted Stock &amp; Legends</a>
+  <a href="#fails">Common Fail Points</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <a href="#sources">Sources</a>
+  <div class="toc-divider">Documents</div>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="corporate-actions.html" class="external">Corporate Actions &amp; Omnibus Proxy</a>
+  <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
+  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../../glossary.html" class="external">Glossary</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">Companion: Biblical Exegesis <span class="toc-desc">optional</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">TA</div>
+      <div class="header-text">
+        <h1>Transfer Agents &amp; the Issuer–DTC Interface</h1>
+        <div class="sub">FAST, DWAC, DRS, and the day-to-day job of moving shares between issuer books and Cede &amp; Co.</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="header-badge">Core · Issuer Ops</div>
+      <button type="button" class="help-btn" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap prose">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../../index.html#documents">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Transfer Agent Operations</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <span><strong>Teaching focus:</strong> the transfer agent as protagonist at the issuer–DTC boundary. Pair with the <a href="../forms/dtc-eligibility-questionnaire.html">eligibility questionnaire</a> (why FAST matters for eligibility) and the <a href="dtc-guide.html#process-certificated-deposit">certificated deposit lifecycle</a> (paper into Cede).</span>
+</div>
+
+<div class="ta-thesis" id="overview">
+  <p><strong>This guide answers one question:</strong> who keeps the issuer’s register accurate when nearly all public float sits in the name of Cede &amp; Co., and how do shares move between that register and DTC without a truck full of certificates? Eligibility explains <em>whether</em> an issue may sit at DTC. This module explains <em>how the transfer agent runs the pipe</em>.</p>
+</div>
+
+<p>
+  The transfer agent (TA) maintains the issuer’s official list of registered holders, processes transfers, handles certificates when they still exist, and—under DTC’s
+  <strong>FAST</strong> program—adjusts electronic balances so Cede’s position and the TA’s books stay reconciled.
+  Broker participants face DTC; investors face brokers; the TA faces the <em>issuer’s books</em> and the <em>DTC interface</em>.
+</p>
+
+<nav class="quick-nav" aria-label="Quick navigation">
+  <div class="quick-nav-title">Jump to</div>
+  <div class="quick-nav-links">
+    <a class="quick-nav-link" href="#roles">Roles</a>
+    <a class="quick-nav-link" href="#fast">FAST</a>
+    <a class="quick-nav-link" href="#dwac">DWAC</a>
+    <a class="quick-nav-link" href="#drs">DRS vs street</a>
+    <a class="quick-nav-link" href="#restricted">Restricted stock</a>
+    <a class="quick-nav-link" href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<!-- Roles -->
+<h2 class="section-title" id="roles">Who Does What</h2>
+<p>Three roles are often conflated. Separate them before any process map will stick.</p>
+
+<table class="ta-compare" aria-label="Role comparison">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Primary books</th>
+      <th>Typical counterparty</th>
+      <th>Not responsible for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Transfer agent</strong></td>
+      <td>Issuer’s registered holders (including Cede as bulk holder)</td>
+      <td>Issuer, DTC (FAST), registered holders / DRS</td>
+      <td>Customer brokerage statements; NSCC netting</td>
+    </tr>
+    <tr>
+      <td><strong>Registrar</strong> (often same firm as TA)</td>
+      <td>Authorized vs outstanding share control</td>
+      <td>Issuer / board authorization</td>
+      <td>Day-to-day DWAC ops (unless dual-hatted)</td>
+    </tr>
+    <tr>
+      <td><strong>DTC participant</strong></td>
+      <td>Participant inventory at DTC; customer sub-ledgers</td>
+      <td>DTC, customers, other participants</td>
+      <td>Maintaining the issuer’s official register</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ta-callout tip">
+  <strong>Teaching rule:</strong> If the question is “whose name is on the issuer’s books?”, start with the TA. If the question is “can I sell tomorrow on the exchange?”, start with the participant / street-name path.
+</div>
+
+<div class="ta-grid-2">
+  <div class="ta-type-card mandatory">
+    <span class="ta-badge mandatory">Issuer view</span>
+    <h3>What the TA protects</h3>
+    <ul>
+      <li>Accurate registered ownership (Cede bulk + registered holders)</li>
+      <li>Authorized share count vs outstanding</li>
+      <li>Legend / restriction compliance on the register</li>
+      <li>Corporate action coordination on the books</li>
+    </ul>
+  </div>
+  <div class="ta-type-card voluntary">
+    <span class="ta-badge voluntary">Market view</span>
+    <h3>What the participant protects</h3>
+    <ul>
+      <li>Customer beneficial positions</li>
+      <li>Settlement with DTC / NSCC</li>
+      <li>Prompt DWAC instructions for deposits/withdrawals</li>
+      <li>Street-name communications and voting path</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FAST -->
+<h2 class="section-title" id="fast">FAST — Fast Automated Securities Transfer</h2>
+<p>
+  <strong>FAST</strong> is DTC’s program that lets an enrolled transfer agent keep a <em>balance certificate</em> (or electronic equivalent) registered to Cede &amp; Co. representing the aggregate DTC-held position.
+  Daily activity becomes balance <em>adjustments</em> between the TA and DTC—not a new jumbo certificate for every deposit or withdrawal.
+</p>
+<p>
+  Without FAST, many movements still require physical presentment and reregistration (see the
+  <a href="dtc-guide.html#process-certificated-deposit">certificated deposit lifecycle</a>).
+  With FAST, the issuer side of DTC eligibility becomes operationally feasible at modern volumes.
+</p>
+
+<div class="diagram-box concept-map" id="concept-map-interface" role="img" aria-labelledby="cm-ta-title" aria-describedby="cm-ta-desc">
+  <div class="diagram-title" id="cm-ta-title">Concept Map — Issuer–TA–DTC Interface</div>
+  <p id="cm-ta-desc" class="visually-hidden">
+    Issuer oversees transfer agent; transfer agent maintains register and FAST balance with DTC and Cede and Co; participants hold street name; DRS holders sit on TA books in investor name. DWAC connects participants and the transfer agent.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="ta-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="ta-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--gold)"/>
+      </marker>
+      <marker id="ta-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+    </defs>
+
+    <!-- Zone: TA register truth -->
+    <rect x="36" y="168" width="648" height="196" rx="16" fill="var(--bg)" stroke="var(--border-light)" stroke-width="1" stroke-dasharray="5 4" opacity="0.95"/>
+    <text class="cm-zone-label" x="52" y="190">Register truth · three holding styles</text>
+
+    <!-- Edges under nodes -->
+    <line class="cm-edge" x1="360" y1="68" x2="360" y2="98" marker-end="url(#ta-arrow)"/>
+    <path class="cm-edge" d="M300 168 L140 250" marker-end="url(#ta-arrow-green)"/>
+    <line class="cm-edge" x1="360" y1="168" x2="360" y2="250" marker-end="url(#ta-arrow-gold)"/>
+    <path class="cm-edge" d="M420 168 L580 250" marker-end="url(#ta-arrow)"/>
+    <line class="cm-edge" x1="440" y1="280" x2="500" y2="280" marker-end="url(#ta-arrow)"/>
+    <!-- DWAC loop participant ↔ TA -->
+    <path class="cm-edge-dashed" d="M500 250 C500 210, 420 200, 400 168" marker-end="url(#ta-arrow)"/>
+
+    <text class="cm-edge-label" x="372" y="88">appoints</text>
+    <text class="cm-edge-label" x="190" y="210" text-anchor="middle">DRS books</text>
+    <text class="cm-edge-label" x="372" y="218">FAST balance</text>
+    <text class="cm-edge-label" x="530" y="210" text-anchor="middle">street path</text>
+    <text class="cm-edge-label" x="470" y="268">DWAC</text>
+    <text class="cm-edge-label" x="460" y="188">DWAC instruct</text>
+
+    <!-- Issuer -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="270" y="24" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="#fff">Issuer</text>
+      <text class="cm-node-sub" x="360" y="57" text-anchor="middle" fill="var(--accent-muted)">Corporation · board authority</text>
+    </g>
+
+    <!-- Transfer Agent hub -->
+    <g class="cm-node cm-node-static">
+      <circle class="ta-hub-ring" cx="360" cy="134" r="78"/>
+      <rect class="cm-node-shape" x="250" y="104" width="220" height="64" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-glow-gold)"/>
+      <text class="cm-node-title" x="360" y="128" text-anchor="middle" fill="var(--gold-deep)" font-size="15">Transfer Agent</text>
+      <text class="cm-node-sub" x="360" y="146" text-anchor="middle" fill="var(--gold)">Register · FAST · DRS · legends</text>
+      <text class="cm-badge-text" x="360" y="160" text-anchor="middle" fill="var(--gold-deep)">Operational hub</text>
+    </g>
+
+    <!-- DRS holders -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="48" y="252" width="184" height="72" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="140" y="278" text-anchor="middle" fill="var(--green)">DRS holders</text>
+      <text class="cm-node-sub" x="140" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Investor name on TA books</text>
+      <text class="cm-badge-text" x="140" y="312" text-anchor="middle" fill="var(--green)">Direct registration</text>
+    </g>
+
+    <!-- DTC / Cede -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="268" y="252" width="184" height="72" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.6" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="360" y="278" text-anchor="middle" fill="var(--accent)">DTC / Cede &amp; Co.</text>
+      <text class="cm-node-sub" x="360" y="296" text-anchor="middle" fill="var(--ink-tertiary)">FAST balance certificate</text>
+      <text class="cm-badge-text" x="360" y="312" text-anchor="middle" fill="var(--accent)">Bulk record holder</text>
+    </g>
+
+    <!-- Participants -->
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="488" y="252" width="184" height="72" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.4" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="580" y="278" text-anchor="middle" fill="var(--ink)">Participants</text>
+      <text class="cm-node-sub" x="580" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank</text>
+      <text class="cm-badge-text" x="580" y="312" text-anchor="middle" fill="var(--ink-muted)">Street-name customers</text>
+    </g>
+
+    <!-- Footer strip -->
+    <rect x="48" y="380" width="624" height="40" rx="10" fill="var(--bg-cream)" stroke="var(--border-light)" stroke-width="1"/>
+    <text x="360" y="405" text-anchor="middle" fill="var(--ink-secondary)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Same CUSIP · one TA register · three ways to hold</text>
+  </svg>
+  <p class="cm-caption">FAST keeps <strong>Cede’s</strong> bulk position synchronized with the TA. <strong>DRS</strong> uses the same TA books with the investor’s name—not Cede’s—on the line. <strong>DWAC</strong> is the instruction path between participant and TA.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Transfer agent hub</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> DTC / Cede (FAST)</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light,#e8f5ec);border-color:var(--green)"></span> DRS holders</span>
+    <span class="cm-legend-item"><span class="cm-legend-line dashed"></span> DWAC instruction path</span>
+  </div>
+</div>
+
+<div class="ta-callout warn">
+  <strong>Eligibility link:</strong> DTC eligibility materials expect a FAST-capable TA (or equivalent arrangements). See the <a href="../forms/dtc-eligibility-questionnaire.html">eligibility teaching form</a> and Operational Arrangements—not just a checklist item on a PDF.
+</div>
+
+<ul class="sources-list">
+  <li><strong>Balance certificate:</strong> represents the aggregate DTC position in Cede’s name on the TA’s books.</li>
+  <li><strong>Daily reconciliation:</strong> TA and DTC must agree on the FAST balance; breaks are operational incidents.</li>
+  <li><strong>Not “DTC owns the company”:</strong> Cede is nominee holder of record for deposited shares; economic owners remain beneficial holders through participants.</li>
+</ul>
+
+<!-- DWAC -->
+<h2 class="section-title" id="dwac">DWAC — Deposit / Withdrawal at Custodian</h2>
+<p>
+  <strong>DWAC</strong> is the electronic instruction path for depositing securities into DTC (increasing Cede’s FAST balance) or withdrawing them (decreasing Cede’s balance, often into DRS or a certificated/registered form).
+  The participant initiates; the TA approves or rejects against the register, restrictions, and documentation.
+</p>
+
+<section class="ta-process" id="process-dwac" aria-labelledby="pf-dwac-title">
+  <div class="diagram-title" id="pf-dwac-title">Process Map — DWAC Deposit</div>
+  <p class="ta-process-lead">Electronic deposit into DTC under FAST. Six steps from eligible register position to street-name credit. Withdrawal reverses the balance direction.</p>
+  <div class="ta-process-phases" aria-hidden="true">
+    <span class="ta-process-phase">1–2 · Instruct</span>
+    <span class="ta-process-phase review">3–4 · TA review</span>
+    <span class="ta-process-phase final">5–6 · Book &amp; credit</span>
+  </div>
+  <ol class="ta-process-steps">
+    <li class="ta-process-step">
+      <span class="ta-process-num" aria-hidden="true">1</span>
+      <div class="ta-process-body">
+        <h4>Eligible position ready</h4>
+        <p>Shares sit on the TA register (e.g. DRS or free registered) without blocking stops, freezes, or legends that prevent free deposit.</p>
+        <span class="ta-process-meta">Register · clean status</span>
+      </div>
+    </li>
+    <li class="ta-process-step">
+      <span class="ta-process-num" aria-hidden="true">2</span>
+      <div class="ta-process-body">
+        <h4>Participant DWAC deposit instruction</h4>
+        <p>Broker or bank submits a deposit request for CUSIP and quantity into DTC—timing, quantity, and account must match the register.</p>
+        <span class="ta-process-meta">Participant → DTC / TA channel</span>
+      </div>
+    </li>
+    <li class="ta-process-step review">
+      <span class="ta-process-num" aria-hidden="true">3</span>
+      <div class="ta-process-body">
+        <h4>TA review</h4>
+        <p>Match holder, quantity, authority/medallion if needed, stop-transfer checks, legend status, and any Rule 144 / opinion package.</p>
+        <span class="ta-process-meta">Legal + ops gate</span>
+      </div>
+    </li>
+    <li class="ta-process-step review">
+      <span class="ta-process-num" aria-hidden="true">4</span>
+      <div class="ta-process-body">
+        <h4>Approve or reject</h4>
+        <p>Reject returns a reason to the participant (docs, legend, mismatch). Approve commits the books and proceeds to FAST adjustment.</p>
+        <span class="ta-process-meta">Decision · audit trail</span>
+      </div>
+    </li>
+    <li class="ta-process-step final">
+      <span class="ta-process-num" aria-hidden="true">5</span>
+      <div class="ta-process-body">
+        <h4>FAST balance ↑ to Cede</h4>
+        <p>TA and DTC adjust the balance certificate; Cede’s registered bulk on the issuer books increases by the deposited quantity.</p>
+        <span class="ta-process-meta">Electronic balance · no jumbo print</span>
+      </div>
+    </li>
+    <li class="ta-process-step final">
+      <span class="ta-process-num" aria-hidden="true">6</span>
+      <div class="ta-process-body">
+        <h4>Participant credits customer</h4>
+        <p>Street-name inventory posts to the customer (subject to firm holds). Shares can enter the settlement path for trading.</p>
+        <span class="ta-process-meta">Street name · settle-ready</span>
+      </div>
+    </li>
+  </ol>
+  <p class="cm-caption" style="margin-top:18px">A DWAC <strong>withdrawal</strong> reverses the balance: participant instruction → TA approval → FAST balance ↓ → shares land in DRS or other registered form.</p>
+</section>
+
+<!-- Mini SVG: deposit vs withdrawal balance -->
+<div class="diagram-box concept-map" id="concept-map-dwac-balance" role="img" aria-labelledby="cm-bal-title" aria-describedby="cm-bal-desc">
+  <div class="diagram-title" id="cm-bal-title">Concept Map — FAST Balance Moves</div>
+  <p id="cm-bal-desc" class="visually-hidden">
+    Deposit increases Cede FAST balance and street name; withdrawal decreases Cede FAST balance and increases DRS or registered holdings.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="bal-arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="bal-arr-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+
+    <!-- Deposit lane -->
+    <rect x="24" y="24" width="320" height="172" rx="14" fill="var(--bg-cream)" stroke="var(--border-light)"/>
+    <text class="cm-zone-label" x="44" y="48" fill="var(--green)">Deposit → street</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="48" y="68" width="110" height="44" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="103" y="88" text-anchor="middle" fill="var(--green)" font-size="12">DRS / reg</text>
+      <text class="cm-node-sub" x="103" y="102" text-anchor="middle" fill="var(--ink-tertiary)">on TA books</text>
+    </g>
+    <line class="cm-edge-pass" x1="162" y1="90" x2="198" y2="90" marker-end="url(#bal-arr-g)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="204" y="68" width="120" height="44" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="264" y="88" text-anchor="middle" fill="var(--accent)" font-size="12">Cede FAST ↑</text>
+      <text class="cm-node-sub" x="264" y="102" text-anchor="middle" fill="var(--ink-tertiary)">balance +N</text>
+    </g>
+    <text x="184" y="140" text-anchor="middle" fill="var(--ink-muted)" font-size="11" font-family="DM Sans,sans-serif">DWAC deposit</text>
+    <text x="184" y="168" text-anchor="middle" fill="var(--ink-secondary)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Participant credits BO</text>
+
+    <!-- Withdrawal lane -->
+    <rect x="376" y="24" width="320" height="172" rx="14" fill="var(--bg-cream)" stroke="var(--border-light)"/>
+    <text class="cm-zone-label" x="396" y="48" fill="var(--accent)">Withdrawal → DRS</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="396" y="68" width="120" height="44" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="456" y="88" text-anchor="middle" fill="var(--accent)" font-size="12">Cede FAST ↓</text>
+      <text class="cm-node-sub" x="456" y="102" text-anchor="middle" fill="var(--ink-tertiary)">balance −N</text>
+    </g>
+    <line class="cm-edge" x1="520" y1="90" x2="556" y2="90" marker-end="url(#bal-arr-a)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="562" y="68" width="110" height="44" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="617" y="88" text-anchor="middle" fill="var(--green)" font-size="12">DRS / reg</text>
+      <text class="cm-node-sub" x="617" y="102" text-anchor="middle" fill="var(--ink-tertiary)">investor name</text>
+    </g>
+    <text x="536" y="140" text-anchor="middle" fill="var(--ink-muted)" font-size="11" font-family="DM Sans,sans-serif">DWAC withdrawal</text>
+    <text x="536" y="168" text-anchor="middle" fill="var(--ink-secondary)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Trade path needs redeposit</text>
+  </svg>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light,#e8f5ec);border-color:var(--green)"></span> TA register (named)</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Cede FAST bulk</span>
+  </div>
+</div>
+
+<div class="ta-grid-2">
+  <div class="ta-type-card mandatory">
+    <span class="ta-badge mandatory">Deposit</span>
+    <h3>Into DTC / street name</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      Used when an investor or underwriter needs shares in street name for trading or settlement. Free-trading status and clean legends matter as much as the button-click.
+    </p>
+  </div>
+  <div class="ta-type-card voluntary">
+    <span class="ta-badge voluntary">Withdrawal</span>
+    <h3>Out of DTC (often to DRS)</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      Used for direct registration, gifting, estate, or preference to hold on issuer books. Trading speed usually falls until shares return via deposit.
+    </p>
+  </div>
+</div>
+
+<!-- DRS -->
+<h2 class="section-title" id="drs">DRS vs Street Name — Decision Tree</h2>
+<p>
+  <strong>DRS (Direct Registration System)</strong> holds book-entry shares on the TA’s register in the investor’s (or entity’s) name—not through a broker’s DTC participant account.
+  It is not a paper certificate; it is not street name. See also the DTC guide’s
+  <a href="dtc-guide.html#concept-map-street-vs-drs">Street Name vs DRS map</a>.
+</p>
+
+<div class="ta-dual-paths" aria-label="Street name versus DRS holding paths">
+  <div class="ta-path-card street">
+    <h3>Street name path</h3>
+    <div class="ta-path-flow">
+      <span class="ta-path-chip">Investor</span>
+      <span class="ta-path-arrow">→</span>
+      <span class="ta-path-chip hl">Participant</span>
+      <span class="ta-path-arrow">→</span>
+      <span class="ta-path-chip hl">DTC / Cede</span>
+      <span class="ta-path-arrow">→</span>
+      <span class="ta-path-chip">TA register</span>
+    </div>
+    <p>Fast trading and settlement. Issuer books show <strong>Cede</strong> as holder. Communications and votes ride the intermediary stack.</p>
+  </div>
+  <div class="ta-path-card drs">
+    <h3>DRS path</h3>
+    <div class="ta-path-flow">
+      <span class="ta-path-chip">Investor</span>
+      <span class="ta-path-arrow">→</span>
+      <span class="ta-path-chip hl">Transfer agent</span>
+      <span class="ta-path-arrow">→</span>
+      <span class="ta-path-chip hl">Named on register</span>
+    </div>
+    <p>Direct registration on issuer/TA books. Selling usually requires a <strong>DWAC deposit</strong> back into street name first—plan lead time under T+1.</p>
+  </div>
+</div>
+
+<div class="diagram-box concept-map" id="concept-map-drs-street" role="img" aria-labelledby="cm-drs-title" aria-describedby="cm-drs-desc">
+  <div class="diagram-title" id="cm-drs-title">Concept Map — Two Paths, One Register</div>
+  <p id="cm-drs-desc" class="visually-hidden">
+    Split diagram: street name routes investor through participant and Cede on the left; DRS routes investor straight to transfer agent books on the right; both connect to the issuer register.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="drs-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+
+    <!-- Shared register base -->
+    <rect x="180" y="230" width="360" height="48" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.5" filter="url(#g-shadow)"/>
+    <text class="cm-node-title" x="360" y="252" text-anchor="middle" fill="var(--gold-deep)">Issuer register (TA books)</text>
+    <text class="cm-node-sub" x="360" y="268" text-anchor="middle" fill="var(--gold)">Single source of registered truth</text>
+
+    <!-- Street column -->
+    <rect x="40" y="20" width="280" height="190" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
+    <text class="cm-zone-label" x="56" y="42">Street name</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="90" y="56" width="180" height="36" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="180" y="79" text-anchor="middle" fill="var(--green)" font-size="12">Beneficial owner</text>
+    </g>
+    <line class="cm-edge" x1="180" y1="92" x2="180" y2="112" marker-end="url(#drs-arr)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="90" y="114" width="180" height="36" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="180" y="137" text-anchor="middle" fill="var(--ink)" font-size="12">Participant</text>
+    </g>
+    <line class="cm-edge" x1="180" y1="150" x2="180" y2="170" marker-end="url(#drs-arr)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="90" y="172" width="180" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="180" y="191" text-anchor="middle" fill="var(--accent)" font-size="12">Cede on register</text>
+    </g>
+    <line class="cm-edge" x1="180" y1="200" x2="280" y2="230" marker-end="url(#drs-arr)"/>
+
+    <!-- DRS column -->
+    <rect x="400" y="20" width="280" height="190" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
+    <text class="cm-zone-label" x="416" y="42">DRS</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="450" y="56" width="180" height="36" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="540" y="79" text-anchor="middle" fill="var(--green)" font-size="12">Investor (named)</text>
+    </g>
+    <line class="cm-edge-pass" x1="540" y1="92" x2="540" y2="140" marker-end="url(#drs-arr)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="450" y="142" width="180" height="48" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="540" y="164" text-anchor="middle" fill="var(--gold-deep)" font-size="12">TA books</text>
+      <text class="cm-node-sub" x="540" y="180" text-anchor="middle" fill="var(--gold)">Investor as holder of record</text>
+    </g>
+    <line class="cm-edge" x1="540" y1="190" x2="440" y2="230" marker-end="url(#drs-arr)"/>
+  </svg>
+  <p class="cm-caption">Both paths end in the <strong>same TA register</strong>. Street name lines the register with Cede; DRS lines it with the investor. Liquidity lives almost entirely on the street path.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent-light);border-color:var(--accent)"></span> Cede / DTC layer</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> TA / register</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light,#e8f5ec);border-color:var(--green)"></span> Investor</span>
+  </div>
+</div>
+
+<table class="ta-compare" aria-label="DRS versus street name">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Prefer street name</th>
+      <th>Prefer DRS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Need same-day / next-day trading liquidity?</td>
+      <td>Yes — broker inventory at DTC</td>
+      <td>No — plan time to DWAC deposit before sale</td>
+    </tr>
+    <tr>
+      <td>Want issuer-facing registered holder status?</td>
+      <td>No — Cede is record holder</td>
+      <td>Yes — name on TA books</td>
+    </tr>
+    <tr>
+      <td>Fiduciary titling precision?</td>
+      <td>Possible, but via broker account title</td>
+      <td>Strong — TA register can show full fiduciary style</td>
+    </tr>
+    <tr>
+      <td>Operational complexity for retail</td>
+      <td>Lower day-to-day</td>
+      <td>Higher when moving in/out for trades</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ta-callout tip">
+  <strong>Issuer counsel tip:</strong> DRS does not remove securities law restrictions. A legended restricted share on DRS is still restricted—the holding form changed, not the exemption path.
+</div>
+
+<!-- Restricted -->
+<h2 class="section-title" id="restricted">Restricted Stock, Legends &amp; Documentation</h2>
+<p>
+  Most TA rejects on DWAC deposits are not “DTC is down.” They are register, authority, or restriction failures.
+</p>
+<ol class="ta-chain">
+  <li>
+    <strong>Legend mismatch</strong>
+    <span>Certificate or book-entry notation still shows restricted legend while the participant requests free deposit without a removal package.</span>
+  </li>
+  <li>
+    <strong>Rule 144 / exemption package incomplete</strong>
+    <span>Missing seller’s representation, broker’s representation, legal opinion, or Form 144 when required—TA will not free the shares.</span>
+  </li>
+  <li>
+    <strong>Stop-transfer / freeze</strong>
+    <span>Court order, lost certificate stop, compliance hold, or issuer instruction blocks movement until cleared.</span>
+  </li>
+  <li>
+    <strong>Medallion / authority failure</strong>
+    <span>Endorsement, POA, corporate resolution, or medallion guarantee insufficient for the transfer type.</span>
+  </li>
+  <li>
+    <strong>Quantity or CUSIP mismatch</strong>
+    <span>Instruction does not match the registered position, class, or CUSIP (including post-split identifiers).</span>
+  </li>
+</ol>
+
+<p>
+  For private / Rule 144A / Reg S context at the entity level, see
+  <a href="corporate-structures.html">Corporate Structures</a>.
+  For “who owns the claim once it is at DTC,” see
+  <a href="dtc-guide.html">ownership stack</a> and
+  <a href="collateral-ucc-article-8.html">UCC Article 8</a>.
+</p>
+
+<!-- Fails -->
+<h2 class="section-title" id="fails">Common Fail Points (Ops Checklist)</h2>
+<ul class="sources-list">
+  <li><strong>Assuming FAST means automatic free trading</strong> — FAST moves balances; legends and exemptions still govern.</li>
+  <li><strong>Confusing TA reject with broker error only</strong> — read the reject reason; many are legal/docs, not “try again.”</li>
+  <li><strong>DRS for a sale tomorrow</strong> — build in DWAC deposit lead time under T+1.</li>
+  <li><strong>Wrong fiduciary title on DRS</strong> — same trust-titling risks as any register error.</li>
+  <li><strong>Ignoring corporate actions mid-move</strong> — record dates and CUSIP changes during a pending DWAC create breaks; coordinate with CA desks.</li>
+  <li><strong>Reconciliation neglect</strong> — FAST balance breaks between TA and DTC are priority incidents, not “IT noise.”</li>
+</ul>
+
+<!-- Scenarios -->
+<h2 class="section-title" id="scenarios">Scenario-Based Learning</h2>
+<p>Work each as TA ops, issuer counsel, or broker CA/transfer desk.</p>
+
+<div class="scenario-tabs" role="tablist" aria-label="Transfer agent scenarios">
+  <button type="button" class="scenario-tab active" role="tab" aria-selected="true" data-target="sc-a" id="tab-sc-a">A · Restricted deposit</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-b" id="tab-sc-b">B · DRS before sale</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-c" id="tab-sc-c">C · FAST break</button>
+</div>
+
+<div class="scenario-panel active" id="sc-a" role="tabpanel" aria-labelledby="tab-sc-a">
+  <h4>Scenario A — DWAC deposit rejected</h4>
+  <p>
+    A broker submits a DWAC deposit for 50,000 shares. The TA rejects: “Restricted legend; no opinion package.”
+    The client says the holding period is “long enough” under Rule 144.
+  </p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>What does the TA need before approving free deposit?</li>
+    <li>Who assembles the package—issuer counsel, selling shareholder counsel, or broker?</li>
+    <li>Does FAST enrollment change the legal standard for legend removal?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> FAST/DWAC are pipes. Legend removal is a securities-law and register decision, not a settlement-system override.
+  </div>
+</div>
+
+<div class="scenario-panel" id="sc-b" role="tabpanel" aria-labelledby="tab-sc-b" hidden>
+  <h4>Scenario B — “I’ll just DRS it and sell Friday”</h4>
+  <p>
+    An investor holds free shares in street name, withdraws by DWAC to DRS “for safety,” then instructs a sale for Friday settlement under T+1 without redepositing.
+  </p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>Can the broker settle that sale from DRS inventory?</li>
+    <li>What sequence restores street-name position?</li>
+    <li>How would you explain the trade-off in one sentence to a retail client?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> DRS improves direct registration; it does not replace DTC inventory for exchange settlement. Plan the DWAC deposit before the trade.
+  </div>
+</div>
+
+<div class="scenario-panel" id="sc-c" role="tabpanel" aria-labelledby="tab-sc-c" hidden>
+  <h4>Scenario C — FAST balance out of balance</h4>
+  <p>
+    DTC shows a Cede FAST balance 1,200 shares higher than the TA’s balance certificate for the same CUSIP after a busy earnings week with splits-related adjustments on a related class.
+  </p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>Why is this a priority for both TA and DTC?</li>
+    <li>Which teams must coordinate (CA, transfer, participant services)?</li>
+    <li>What investor-facing symptoms might appear before the break is fixed?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> The FAST balance is the operational truth link between issuer books and the depository. Breaks threaten wrong allocations and failed movements.
+  </div>
+</div>
+
+<!-- Quiz -->
+<section class="quiz-section" id="quiz" aria-label="Knowledge check quiz">
+  <h2 class="section-heading">Knowledge Check Quiz</h2>
+  <p class="quiz-intro">Ten questions. Passing score: 80%. Progress key: module <code>transfer-agent</code>.</p>
+  <div class="quiz-score-bar" aria-hidden="true"><div class="quiz-score-fill" id="quizScoreFill"></div></div>
+  <p class="quiz-score-text" id="quizScoreText">0 / 10 correct (0%)</p>
+  <div class="quiz-container">
+
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>The transfer agent’s primary books are:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>NSCC CNS netting reports only</span></label>
+          <label><input type="radio" name="q1" value="b"><span>The issuer’s register of holders (including Cede for deposited shares)</span></label>
+          <label><input type="radio" name="q1" value="c"><span>Retail brokerage confirmations</span></label>
+          <label><input type="radio" name="q1" value="d"><span>Federal Reserve Fedwire only</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-1"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>FAST primarily enables:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>Electronic balance adjustments between the TA and DTC against a Cede balance position</span></label>
+          <label><input type="radio" name="q2" value="b"><span>Automatic removal of all Rule 144 legends</span></label>
+          <label><input type="radio" name="q2" value="c"><span>Retail customers to bypass brokers forever</span></label>
+          <label><input type="radio" name="q2" value="d"><span>Issuers to avoid transfer agents</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-2"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>A DWAC deposit typically moves shares:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>From customer cash to Treasury only</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Onto DTC / Cede’s FAST position so participants can hold street name</span></label>
+          <label><input type="radio" name="q3" value="c"><span>From one country CSD to another without a TA</span></label>
+          <label><input type="radio" name="q3" value="d"><span>Only for mutual funds</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-3"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>DRS holds the investor’s shares:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>As a paper certificate in DTC’s vault only</span></label>
+          <label><input type="radio" name="q4" value="b"><span>In book-entry form on the TA’s register in the investor’s name</span></label>
+          <label><input type="radio" name="q4" value="c"><span>Always in Cede’s name</span></label>
+          <label><input type="radio" name="q4" value="d"><span>Only at Euroclear Bank</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-4"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>Who usually initiates a DWAC instruction?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>The SEC Division of Trading and Markets</span></label>
+          <label><input type="radio" name="q5" value="b"><span>The DTC participant (broker/bank), subject to TA approval</span></label>
+          <label><input type="radio" name="q5" value="c"><span>Any retail customer via Twitter</span></label>
+          <label><input type="radio" name="q5" value="d"><span>The county recorder</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-5"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>A TA rejects a free DWAC deposit because of a restricted legend. FAST enrollment means:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>The reject is invalid; FAST overrides legends</span></label>
+          <label><input type="radio" name="q6" value="b"><span>The legal restriction still controls; documentation/legend removal is still required</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Shares automatically become Treasuries</span></label>
+          <label><input type="radio" name="q6" value="d"><span>Only DRS can hold restricted shares</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-6"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>Compared with street name, DRS generally offers:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>Faster exchange settlement with no extra steps</span></label>
+          <label><input type="radio" name="q7" value="b"><span>Direct registration on issuer/TA books, usually with slower path back to trading inventory</span></label>
+          <label><input type="radio" name="q7" value="c"><span>Elimination of CUSIPs</span></label>
+          <label><input type="radio" name="q7" value="d"><span>Automatic 144A QIB status</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-7"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>A FAST balance break between the TA and DTC is best treated as:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>A low-priority cosmetic reporting difference</span></label>
+          <label><input type="radio" name="q8" value="b"><span>A priority reconciliation incident affecting the issuer–depository truth link</span></label>
+          <label><input type="radio" name="q8" value="c"><span>Proof that NSCC has failed</span></label>
+          <label><input type="radio" name="q8" value="d"><span>Irrelevant under T+1</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-8"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>Which statement best separates TA from DTC participant?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>They are always the same legal entity with identical books</span></label>
+          <label><input type="radio" name="q9" value="b"><span>The TA maintains the issuer register; the participant maintains DTC inventory and customer accounts</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Participants never interact with TAs</span></label>
+          <label><input type="radio" name="q9" value="d"><span>TAs clear equities through CNS</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-9"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>This module’s thesis is best captured by:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>Transfer agents are optional once FAST exists</span></label>
+          <label><input type="radio" name="q10" value="b"><span>The TA runs the issuer–DTC pipe (FAST/DWAC/DRS); eligibility and ownership modules explain why that pipe exists</span></label>
+          <label><input type="radio" name="q10" value="c"><span>All shares must be paper certificates</span></label>
+          <label><input type="radio" name="q10" value="d"><span>Corporate actions never involve transfer agents</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-actions">
+    <button type="button" class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check all answers</button>
+    <button type="button" class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset quiz</button>
+  </div>
+  <div class="quiz-result" id="quizResult"></div>
+</section>
+
+<h2 class="section-title" id="sources">Sources &amp; Further Reading</h2>
+<ul class="sources-list">
+  <li>DTCC / DTC materials on FAST and issue eligibility (Operational Arrangements).</li>
+  <li>Transfer agent industry practice on DWAC and DRS (agent-specific procedures vary—always use the issuer’s TA guides for live deals).</li>
+  <li>SEC concepts on direct registration and street-name ownership.</li>
+  <li>Within this collection: <a href="../forms/dtc-eligibility-questionnaire.html">Eligibility questionnaire</a>, <a href="dtc-guide.html">Ownership / deposit lifecycle</a>, <a href="corporate-actions.html">Corporate actions</a>, <a href="../../glossary.html">Glossary</a>.</li>
+</ul>
+<p class="citation">Educational use only. Not legal, operational, or investment advice. Firm and agent procedures control live transactions.</p>
+
+</div><!-- /.wrap -->
+
+<footer class="page-footer" data-layout="enhance">
+  <div class="footer-content">
+    <nav class="footer-site-nav" aria-label="Site navigation">
+      <a href="../../index.html" class="footer-home-link">Home</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../sitemap.html">Site Map</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../index.html#documents">All Documents</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../glossary.html">Glossary</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../forms/dtc-eligibility-questionnaire.html">Eligibility</a>
+    </nav>
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Transfer Agent Operations Teaching Guide v1.0 · FAST · DWAC · DRS</div>
+      <div>Issuer–DTC interface · Balance certificates · Restricted-stock operations</div>
+      <div class="footer-links">
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.sec.gov" rel="noopener">SEC</a>
+        <span class="footer-divider">•</span>
+        <a href="dtc-guide.html">Ownership guide</a>
+        <span class="footer-divider">•</span>
+        <a href="../forms/dtc-eligibility-questionnaire.html">Eligibility form</a>
+        <span class="footer-divider">•</span>
+        <a href="corporate-actions.html">Corporate actions</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, operational, investment, or regulatory advice. Procedures vary by transfer agent, participant, and issue. For official rules, consult DTCC Operational Arrangements, the issuer’s transfer agent procedures, and applicable SEC rules.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- How to use -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Teaching module</div>
+        <div class="def-word">Transfer Agents &amp; the Issuer–DTC Interface</div>
+        <p>Operational literacy for FAST, DWAC, DRS, and restriction rejects—how the transfer agent keeps the issuer register synchronized with Cede &amp; Co.</p>
+      </div>
+      <p class="modal-section-title">How to navigate</p>
+      <ul>
+        <li>Open the <strong>☰ menu</strong> to jump between sections and related guides.</li>
+        <li>Read in order: <strong>Roles → FAST → DWAC → DRS → Restricted stock</strong>. Each step depends on the previous.</li>
+        <li>Use the <strong>concept maps</strong> and the six-step DWAC process map as the visual spine of the module.</li>
+        <li>Work all three <strong>Scenarios</strong> before the quiz—they mirror real TA/broker rejects and cut-offs.</li>
+        <li>Complete the <strong>Knowledge Check</strong> (passing score <strong>80%</strong>). Progress is stored locally as module <code>transfer-agent</code>.</li>
+      </ul>
+      <p class="modal-section-title">Prerequisites</p>
+      <ul>
+        <li><a href="../forms/dtc-eligibility-questionnaire.html">DTC Eligibility Questionnaire</a> — why FAST enrollment matters for eligibility</li>
+        <li><a href="dtc-guide.html">Securities Ownership Wizard</a> — ownership stack, Cede &amp; Co., certificated deposit lifecycle</li>
+      </ul>
+      <div class="tip-box">
+        <strong>Learning tip</strong>
+        Treat FAST and DWAC as pipes, not free-trading magic. Legend removal and Rule 144 packages are legal/register decisions; the systems only move what the TA approves.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/shared.js" defer></script>
+<script src="../../js/layout.js" defer></script>
+<script src="../../js/quiz.js"></script>
+<script>
+const taAnswers = {
+  q1: { correct: 'b', explanation: 'The TA maintains the issuer’s register of holders, including Cede for deposited bulk positions.' },
+  q2: { correct: 'a', explanation: 'FAST supports electronic balance adjustments between the TA and DTC against the Cede balance position.' },
+  q3: { correct: 'b', explanation: 'A DWAC deposit increases the DTC/Cede FAST position so participants can hold street name.' },
+  q4: { correct: 'b', explanation: 'DRS is book-entry on the TA register in the investor’s name—not Cede, not paper by default.' },
+  q5: { correct: 'b', explanation: 'Participants submit DWAC instructions; the TA approves or rejects against the register.' },
+  q6: { correct: 'b', explanation: 'FAST does not override legends or Rule 144 requirements.' },
+  q7: { correct: 'b', explanation: 'DRS gives direct registration but usually needs a deposit path before liquid street-name trading.' },
+  q8: { correct: 'b', explanation: 'FAST breaks are priority reconciliations between issuer books and the depository.' },
+  q9: { correct: 'b', explanation: 'TA = issuer register; participant = DTC inventory and customers.' },
+  q10: { correct: 'b', explanation: 'This module is the issuer–DTC operational pipe that eligibility and ownership imply.' }
+};
+
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 10;
+  for (let i = 1; i <= total; i++) {
+    const selected = document.querySelector('input[name="q' + i + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + i);
+    const answer = taAnswers['q' + i];
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback show incorrect';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      continue;
+    }
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+    fb.innerHTML = (isCorrect ? '<strong>✓ Correct!</strong> ' : '<strong>✗ Incorrect.</strong> ') + answer.explanation;
+    if (isCorrect) correct++;
+  }
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : ' fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : ' fail');
+  result.innerHTML = pct >= 80
+    ? '🎉 <strong>Passed with ' + pct + '%.</strong> You understand the TA–DTC interface.'
+    : '⚠️ <strong>Score ' + pct + '%.</strong> Review FAST, DWAC, and DRS. Passing is 80%.';
+  try {
+    const key = 'dtc-progress-v2';
+    const progress = JSON.parse(localStorage.getItem(key) || '{}');
+    if (!progress['transfer-agent']) progress['transfer-agent'] = { viewed: true, quizScore: null };
+    progress['transfer-agent'].viewed = true;
+    progress['transfer-agent'].quizScore = pct;
+    localStorage.setItem(key, JSON.stringify(progress));
+  } catch (e) {}
+}
+
+function showScenario(id) {
+  document.querySelectorAll('.scenario-panel').forEach(function (p) {
+    p.classList.remove('active');
+    p.hidden = true;
+  });
+  document.querySelectorAll('.scenario-tab').forEach(function (t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  var panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.add('active');
+    panel.hidden = false;
+  }
+  var tab = document.querySelector('.scenario-tab[data-target="' + id + '"]');
+  if (tab) {
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+  }
+}
+
+document.querySelectorAll('.scenario-tab').forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    showScenario(tab.getAttribute('data-target'));
+  });
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function () { setupQuiz(taAnswers, 10); });
+} else {
+  setupQuiz(taAnswers, 10);
+}
+
+if (typeof openModal === 'undefined') {
+  window.openModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+  };
+  window.closeModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  };
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function (el) { el.classList.remove('active'); });
+    }
+  });
+}
+</script>
+</body>
+</html>

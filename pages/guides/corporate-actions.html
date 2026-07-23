@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Actions, Entitlements &amp; Omnibus Proxy — Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/shared.css">
+<link rel="stylesheet" href="../../styles/teaching.css">
+<link rel="stylesheet" href="../../styles/guides-corporate-actions.css">
+<script src="../../js/theme-init.js"></script>
+</head>
+<body>
+
+<button class="toc-toggle" aria-label="Toggle table of contents">☰</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#overview">Overview</a>
+  <a href="#taxonomy">Mandatory vs Voluntary</a>
+  <a href="#dates">Key Dates</a>
+  <a href="#allocation">DTC Allocation Chain</a>
+  <a href="#concept-map-allocation" class="sub">Concept map — entitlements</a>
+  <a href="#mandatory">Mandatory Actions</a>
+  <a href="#voluntary">Voluntary Actions</a>
+  <a href="#process-voluntary" class="sub">Process map — instructions</a>
+  <a href="#proxy">Omnibus Proxy &amp; Voting</a>
+  <a href="#tax">Tax Reporting Basics</a>
+  <a href="#red-flags">Red Flags</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <a href="#sources">Sources</a>
+  <div class="toc-divider">Documents</div>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="transfer-agent-operations.html" class="external">Transfer Agents — FAST / DWAC / DRS</a>
+  <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
+  <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
+  <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
+  <a href="non-profit-foundations.html" class="external">Non-Profit Foundations</a>
+  <a href="sf28-teaching-guide.html" class="external">SF 28 — Affidavit of Individual Surety</a>
+  <a href="../docs/treasury-international-bill-of-exchange.html" class="external">Treasury International Bill of Exchange</a>
+  <a href="../../glossary.html" class="external">Glossary</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">Companion: Biblical Exegesis <span class="toc-desc">optional</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">CA</div>
+      <div class="header-text">
+        <h1>Corporate Actions, Entitlements &amp; Omnibus Proxy</h1>
+        <div class="sub">How dividends, splits, tenders, and votes move down the nominee chain after securities sit at DTC</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="header-badge">Core · Post-Trade</div>
+      <button type="button" class="help-btn" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap prose">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../../index.html#documents">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Corporate Actions</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <span><strong>Teaching focus:</strong> entitlement flow through Cede &amp; Co. and DTC participants—not a full SEC proxy-rule treatise. Pair with the <a href="dtc-guide.html">Securities Ownership Wizard</a> for the ownership stack and the <a href="../forms/dtc-eligibility-questionnaire.html">eligibility questionnaire</a> for how issues get on deposit.</span>
+</div>
+
+<div class="ca-thesis" id="overview">
+  <p><strong>This guide answers one question:</strong> once a security sits at DTC in street name, how do cash, stock, choices, and votes reach the beneficial owner? Eligibility and deposit explain <em>how the position exists</em>. Corporate actions explain <em>what the position earns and decides</em>.</p>
+</div>
+
+<p>
+  In the modern U.S. system, the legal holder of record for nearly all public equity and many fixed-income issues is
+  <a href="dtc-guide.html#cede">Cede &amp; Co.</a>, DTC’s nominee. Issuers and transfer agents see Cede—not millions of retail accounts—as the registered owner.
+  Economic entitlements and proxy materials must therefore <em>pass through</em> a layered stack: issuer/agent → DTC → participant → broker or bank custodian → beneficial owner (BO).
+</p>
+<p>
+  Miss a date, mis-route an election, or treat a voluntary offer like a mandatory dividend, and the BO loses value or rights even though the shares never “left” the account. That is the operational heart of post-trade.
+</p>
+
+<nav class="quick-nav" aria-label="Quick navigation">
+  <div class="quick-nav-title">Jump to</div>
+  <div class="quick-nav-links">
+    <a class="quick-nav-link" href="#taxonomy">Mandatory vs voluntary</a>
+    <a class="quick-nav-link" href="#dates">Key dates</a>
+    <a class="quick-nav-link" href="#allocation">Allocation chain</a>
+    <a class="quick-nav-link" href="#voluntary">Voluntary instructions</a>
+    <a class="quick-nav-link" href="#proxy">Proxy &amp; voting</a>
+    <a class="quick-nav-link" href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<!-- ── Taxonomy ── -->
+<h2 class="section-title" id="taxonomy">Mandatory vs Voluntary Actions</h2>
+<p>
+  Market practice sorts corporate actions by whether the beneficial owner must elect a response.
+  The same CUSIP can host both types over its life (e.g., a quarterly cash dividend <em>and</em> a later tender offer).
+</p>
+
+<div class="ca-grid-2">
+  <div class="ca-type-card mandatory">
+    <span class="ca-badge mandatory">Mandatory</span>
+    <h3>No election required</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      Positions on the record date automatically receive the entitlement. Brokers still post entries and tax lots, but the BO does not “opt in.”
+    </p>
+    <ul>
+      <li>Cash dividends and interest payments</li>
+      <li>Stock splits and reverse splits</li>
+      <li>Spin-offs and many stock dividends</li>
+      <li>Mandatory mergers / cash-out events</li>
+      <li>Name changes and CUSIP replacements</li>
+    </ul>
+  </div>
+  <div class="ca-type-card voluntary">
+    <span class="ca-badge voluntary">Voluntary</span>
+    <h3>Election required</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      The BO (or fiduciary) must instruct through the intermediary chain before a deadline. Silence often means default treatment—or forfeiture of the offer.
+    </p>
+    <ul>
+      <li>Tender and exchange offers</li>
+      <li>Rights offerings and warrants exercise</li>
+      <li>Optional dividends (cash vs stock)</li>
+      <li>Consent solicitations</li>
+      <li>Conversions and early redemptions (when elective)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ca-callout tip">
+  <strong>Teaching rule of thumb:</strong> If the BO must answer a question (“tender or not?”, “cash or stock?”), treat the event as voluntary until you prove otherwise. Process maps and cut-offs differ sharply.
+</div>
+
+<table class="ca-compare" aria-label="Action type comparison">
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>Mandatory</th>
+      <th>Voluntary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Driver of entitlement</td>
+      <td>Position on record / effective date</td>
+      <td>Valid instruction + eligible position</td>
+    </tr>
+    <tr>
+      <td>Typical BO action</td>
+      <td>None (monitor posting)</td>
+      <td>Elect via broker / agent before deadline</td>
+    </tr>
+    <tr>
+      <td>Failure mode</td>
+      <td>Posting lag, tax lot error, FX/withholding</td>
+      <td>Missed cut-off, default election, oversubscription</td>
+    </tr>
+    <tr>
+      <td>DTC role (simplified)</td>
+      <td>Allocate cash/securities from agent to participants</td>
+      <td>Collect elections, protect positions, settle results</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ── Dates ── -->
+<h2 class="section-title" id="dates">Key Dates Against the Nominee</h2>
+<p>
+  Date language is where counsel, operations, and retail statements most often talk past each other.
+  Because Cede is holder of record, “who is entitled” is first answered on DTC’s books, then allocated down the chain.
+</p>
+
+<div class="ca-dates">
+  <div class="ca-date-card">
+    <div class="ca-date-label">Ownership test</div>
+    <h4 id="record-date">Record date</h4>
+    <p>The date the issuer’s books (or Cede’s position as registered holder) determine who is entitled to a distribution or certain rights. Street-name BOs rely on intermediary records that reconcile to Cede.</p>
+  </div>
+  <div class="ca-date-card">
+    <div class="ca-date-label">Trading convention</div>
+    <h4 id="ex-date">Ex-date</h4>
+    <p>The first day the security trades without the upcoming dividend (or similar entitlement). Settlement-cycle conventions align who is the buyer of record relative to the record date—critical under T+1.</p>
+  </div>
+  <div class="ca-date-card">
+    <div class="ca-date-label">Cash / stock move</div>
+    <h4 id="pay-date">Pay / payable date</h4>
+    <p>When the issuer/agent pays cash or delivers securities. DTC credits participants; participants credit customer accounts. Posting can lag the legal payable date in edge cases.</p>
+  </div>
+  <div class="ca-date-card">
+    <div class="ca-date-label">Structural change</div>
+    <h4 id="effective-date">Effective date</h4>
+    <p>When a merger, split ratio, name change, or similar structural event takes effect. Positions and CUSIPs may convert; elections for voluntary events have separate instruction deadlines.</p>
+  </div>
+</div>
+
+<div class="ca-callout warn">
+  <strong>T+1 interaction:</strong> With one-day settlement, ex-date / record-date choreography is tighter than under T+2. Teach learners to check the event announcement and their firm’s cut-offs—not only the issuer press release.
+</div>
+
+<!-- ── Allocation ── -->
+<h2 class="section-title" id="allocation">DTC Allocation Chain</h2>
+<p>
+  For a standard cash dividend, the economic path looks like this. Details vary by instrument and intermediary systems, but the <em>legal geometry</em> is stable: the issuer deals with the registered holder; everyone else is an allocation problem.
+</p>
+
+<ol class="ca-chain">
+  <li>
+    <strong>Issuer / paying agent funds the event</strong>
+    <span>Cash is wired to the agent (or agent draws on issuer arrangements). For securities distributions, the agent coordinates with DTC under depositary arrangements.</span>
+  </li>
+  <li>
+    <strong>Cede is the registered holder</strong>
+    <span>The bulk entitlement is calculated against Cede’s position. The issuer does not mail checks to each beneficial owner in street name.</span>
+  </li>
+  <li>
+    <strong>DTC allocates to participants</strong>
+    <span>Based on each participant’s position on the relevant date, DTC credits cash or securities to participant accounts (subject to operational calendars and any holds).</span>
+  </li>
+  <li>
+    <strong>Participant allocates to customers</strong>
+    <span>Broker-dealers and custodian banks post to end-customer or omnibus sub-accounts, applying house policies, tax lots, and any local withholding.</span>
+  </li>
+  <li>
+    <strong>Beneficial owner sees the result</strong>
+    <span>Statement entry, tax form later, and (for votes) proxy materials routed through the communications chain—not a direct issuer envelope in most retail cases.</span>
+  </li>
+</ol>
+
+<div class="diagram-box concept-map" id="concept-map-allocation" role="img" aria-labelledby="cm-alloc-title" aria-describedby="cm-alloc-desc">
+  <div class="diagram-title" id="cm-alloc-title">Concept Map — Entitlement Pass-Through</div>
+  <p id="cm-alloc-desc" class="visually-hidden">
+    Flow from issuer and paying agent to Cede and Co at DTC, then to DTC participant, then broker or custodian, then beneficial owner, for cash, stock, and voting rights.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="ca-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-muted)"/>
+      </marker>
+    </defs>
+    <!-- boxes -->
+    <rect x="20" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="80" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">Issuer</text>
+    <text x="80" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Paying agent</text>
+
+    <rect x="180" y="40" width="120" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+    <text x="240" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">Cede &amp; Co.</text>
+    <text x="240" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Record holder</text>
+
+    <rect x="340" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
+    <text x="400" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">DTC</text>
+    <text x="400" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Allocate</text>
+
+    <rect x="500" y="40" width="90" height="52" rx="8" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.5"/>
+    <text x="545" y="62" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700" font-family="DM Sans,sans-serif">Participant</text>
+    <text x="545" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Broker / bank</text>
+
+    <rect x="620" y="40" width="80" height="52" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" stroke-width="1.5"/>
+    <text x="660" y="62" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif">B.O.</text>
+    <text x="660" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif">Customer</text>
+
+    <!-- arrows -->
+    <line x1="140" y1="66" x2="178" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
+    <line x1="300" y1="66" x2="338" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
+    <line x1="460" y1="66" x2="498" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
+    <line x1="590" y1="66" x2="618" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)"/>
+
+    <!-- bottom lanes -->
+    <rect x="40" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
+    <text x="140" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Cash / securities</text>
+    <text x="140" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Dividends · splits · spin-offs</text>
+
+    <rect x="260" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
+    <text x="360" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Elections</text>
+    <text x="360" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Tenders · rights · options</text>
+
+    <rect x="480" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2"/>
+    <text x="580" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif">Votes &amp; notices</text>
+    <text x="580" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif">Omnibus proxy · NOBO/OBO</text>
+
+    <text x="360" y="280" text-anchor="middle" fill="var(--ink-muted)" font-size="11" font-family="DM Sans,sans-serif">Same stack · three payload types</text>
+    <line x1="140" y1="120" x2="140" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="360" y1="120" x2="360" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="580" y1="120" x2="580" y2="158" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3"/>
+  </svg>
+  <p class="diagram-caption">Cash, stock, elections, and votes all travel the nominee stack—but voluntary elections reverse the instruction flow (BO → participant → DTC) before results settle back down.</p>
+</div>
+
+<!-- ── Mandatory ── -->
+<h2 class="section-title" id="mandatory">Mandatory Actions in Practice</h2>
+
+<h3 class="subsection-title" id="cash-dividend">Cash dividend (template event)</h3>
+<p>
+  The cash dividend is the teaching prototype for mandatory actions. Issuer declares amount and dates; Cede’s position determines the bulk claim; DTC and participants allocate.
+  Beneficial owners should see a credit near payable date and later a Form 1099-DIV (U.S. persons) from their broker—not from the issuer directly in street name.
+</p>
+<p>
+  Operational stress points: foreign withholding on ADR/foreign issues, DRIP enrollments that convert cash to stock, and tax-lot accounting when partial shares or return-of-capital components appear.
+</p>
+
+<h3 class="subsection-title" id="splits">Stock splits &amp; reverse splits</h3>
+<p>
+  A forward split multiplies share count and adjusts price; a reverse consolidates. The economic claim is continuous, but CUSIP, lot sizes, and option contracts may change.
+  Intermediaries must restate positions; fractional shares may be paid in cash under firm policy. Reverse splits can force odd-lot handling and delisting-risk narratives—teach the mechanics, not the investment thesis.
+</p>
+
+<h3 class="subsection-title" id="mergers">Mandatory mergers &amp; CUSIP change</h3>
+<p>
+  When an event forces conversion into cash, acquirer stock, or a mix without election, positions convert on the effective date. Old CUSIPs stop; new ones appear.
+  “Where did my shares go?” tickets are usually allocation or statement-label issues, not lost certificates—because certificates were never the custody form for street-name holders.
+</p>
+
+<!-- ── Voluntary ── -->
+<h2 class="section-title" id="voluntary">Voluntary Actions &amp; Instruction Paths</h2>
+<p>
+  Voluntary events invert the information flow: the beneficial owner (or fiduciary) must decide, and that decision must climb the intermediary stack before DTC can protect or deliver the position into the offer.
+</p>
+
+<div class="diagram-box concept-map" id="process-voluntary" role="img" aria-labelledby="pf-vol-title" aria-describedby="pf-vol-desc">
+  <div class="diagram-title" id="pf-vol-title">Process Map — Voluntary Election (Simplified)</div>
+  <p id="pf-vol-desc" class="visually-hidden">
+    Six steps: announcement, broker notifies customer, customer elects, participant aggregates instructions to DTC, DTC interacts with agent or offer, results allocate back to customers.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- vertical steps -->
+    <g font-family="DM Sans,sans-serif">
+      <rect x="48" y="24" width="624" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)"/>
+      <text x="72" y="46" fill="var(--accent)" font-size="12" font-weight="700">1 · Announcement</text>
+      <text x="72" y="62" fill="var(--ink-secondary)" font-size="11">Issuer / offeror publishes terms, CUSIP, price or exchange ratio, and deadlines</text>
+
+      <rect x="48" y="88" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
+      <text x="72" y="110" fill="var(--ink)" font-size="12" font-weight="700">2 · Intermediary notice</text>
+      <text x="72" y="126" fill="var(--ink-secondary)" font-size="11">Broker/custodian posts corporate-action notice; internal cut-off is earlier than DTC/agent deadline</text>
+
+      <rect x="48" y="152" width="624" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)"/>
+      <text x="72" y="174" fill="var(--gold-deep)" font-size="12" font-weight="700">3 · BO / fiduciary election</text>
+      <text x="72" y="190" fill="var(--ink-secondary)" font-size="11">Elect tender, rights exercise, cash/stock option, etc. Silence may default to “do not participate”</text>
+
+      <rect x="48" y="216" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
+      <text x="72" y="238" fill="var(--ink)" font-size="12" font-weight="700">4 · Participant → DTC</text>
+      <text x="72" y="254" fill="var(--ink-secondary)" font-size="11">Instructions aggregated; positions protected / delivered per DTC procedures for the event type</text>
+
+      <rect x="48" y="280" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)"/>
+      <text x="72" y="302" fill="var(--ink)" font-size="12" font-weight="700">5 · Agent / offer settlement</text>
+      <text x="72" y="318" fill="var(--ink-secondary)" font-size="11">Offer closes; proration, odd-lot priority, or exchange mechanics applied</text>
+
+      <rect x="48" y="344" width="624" height="48" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)"/>
+      <text x="72" y="366" fill="var(--green)" font-size="12" font-weight="700">6 · Results down the stack</text>
+      <text x="72" y="382" fill="var(--ink-secondary)" font-size="11">Cash/securities posted to participants and customers; unaccepted shares released from protect</text>
+    </g>
+  </svg>
+  <p class="diagram-caption">Retail cut-offs are almost always earlier than headline offer deadlines so firms can aggregate and meet DTC/agent times.</p>
+</div>
+
+<h3 class="subsection-title" id="tender">Tender &amp; exchange offers</h3>
+<p>
+  The BO chooses whether (and sometimes how much) to tender. Shares may be “protected” or delivered into the offer while remaining economically tracked.
+  Proration occurs when the offer is oversubscribed. Partial tenders, guaranteed delivery, and odd-lot preferences are advanced topics—teach the election path and the risk of missing the firm’s cut-off first.
+</p>
+
+<h3 class="subsection-title" id="rights">Rights offerings</h3>
+<p>
+  Rights may trade (when transferable) and expire worthless if unused. The entitlement often depends on a record date position; exercise requires cash and timely instruction.
+  Lapsed rights are a classic “I thought my broker would do it” failure—voluntary means voluntary.
+</p>
+
+<!-- ── Proxy ── -->
+<h2 class="section-title" id="proxy">Omnibus Proxy &amp; Beneficial Owner Communications</h2>
+<p>
+  Voting is a corporate action of rights, not cash. Because Cede is the registered holder, the issuer cannot mail a proxy card to every street-name BO as if they were registered holders.
+  Instead, the industry uses an <strong>omnibus proxy</strong> and intermediary communications processes so voting authority and materials flow down the stack.
+</p>
+
+<div class="ca-grid-2">
+  <div class="ca-type-card mandatory">
+    <span class="ca-badge mandatory">Legal form</span>
+    <h3>Omnibus proxy</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      DTC (via Cede) executes a proxy covering the bulk position, enabling participants and downstream intermediaries to solicit and process beneficial owner voting instructions under SEC and industry rules.
+    </p>
+  </div>
+  <div class="ca-type-card voluntary">
+    <span class="ca-badge voluntary">Communications</span>
+    <h3>NOBO / OBO &amp; vendors</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      Non-objecting beneficial owners (NOBOs) may be identified to issuers for communications; objecting BOs (OBOs) are not. Vendors and brokers distribute materials and collect voting instructions.
+    </p>
+  </div>
+</div>
+
+<p>
+  Teaching point for fiduciaries and foundation staff: “I never got the proxy” is often a chain or preferences problem (paperless settings, OBO status, timing)—not proof the issuer failed to hold a meeting.
+  Deep SEC Rule 14a / 14b detail is out of scope here; the ownership stack in the <a href="dtc-guide.html#concept-map-legal-beneficial">DTC guide</a> is the prerequisite.
+</p>
+
+<div class="ca-callout tip">
+  <strong>Connect modules:</strong> Entity titling (trusts, foundations, corps) determines <em>whose</em> instructions and tax ID attach to the account. Street name determines <em>how</em> materials and votes move. Both matter for governance.
+</div>
+
+<!-- ── Tax ── -->
+<h2 class="section-title" id="tax">Tax Reporting Basics (Teaching Level)</h2>
+<p>
+  This section is operational literacy—not tax advice. Forms and rates change; always verify with current IRS materials and qualified advisors.
+</p>
+<table class="ca-compare" aria-label="Tax reporting overview">
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Street-name pattern</th>
+      <th>Watch for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>U.S. person dividends</td>
+      <td>Broker issues Form 1099-DIV</td>
+      <td>Qualified vs ordinary; return of capital; foreign tax paid</td>
+    </tr>
+    <tr>
+      <td>Non-U.S. person</td>
+      <td>Withholding + Form 1042-S pathways</td>
+      <td>Treaty claims, documentation (W-8 series), FATCA status</td>
+    </tr>
+    <tr>
+      <td>Stock splits</td>
+      <td>Usually non-taxable reorganization of basis</td>
+      <td>Basis per share must be adjusted; fractional cash may be taxable</td>
+    </tr>
+    <tr>
+      <td>Tender / merger cash</td>
+      <td>May be sale or exchange treatment</td>
+      <td>Proceeds reporting; installment / earnout complexity</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Withholding and information reporting often execute at the intermediary that faces the customer, even though the issuer paid Cede.
+  That is another reason the allocation chain is not optional knowledge for ops and tax operations staff.
+</p>
+
+<!-- ── Red flags ── -->
+<h2 class="section-title" id="red-flags">Red Flags &amp; Common Failures</h2>
+<ul class="sources-list">
+  <li><strong>Using the issuer deadline as the customer deadline</strong> — firms need aggregation time; late = default.</li>
+  <li><strong>Treating voluntary like mandatory</strong> — no instruction means no tender, not “broker will do the right thing.”</li>
+  <li><strong>Ignoring DRS vs street name</strong> — registered holders receive materials differently; mixed holdings confuse clients.</li>
+  <li><strong>Fiduciary accounts without authority maps</strong> — who may elect or vote for a trust or foundation must be clear before the cut-off.</li>
+  <li><strong>Assuming CUSIP continuity</strong> — mergers and reorganizations retire identifiers; statements need careful reading.</li>
+  <li><strong>Tax lot blindness</strong> — corporate actions can scramble lots if systems mis-apply ratios or return-of-capital coding.</li>
+</ul>
+
+<!-- ── Scenarios ── -->
+<h2 class="section-title" id="scenarios">Scenario-Based Learning</h2>
+<p>Work each scenario as if you were ops or counsel advising the account. Tabs switch panels.</p>
+
+<div class="scenario-tabs" role="tablist" aria-label="Corporate action scenarios">
+  <button type="button" class="scenario-tab active" role="tab" aria-selected="true" data-target="sc-a" id="tab-sc-a">A · Cash dividend</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-b" id="tab-sc-b">B · Tender offer</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-c" id="tab-sc-c">C · Proxy complaint</button>
+</div>
+
+<div class="scenario-panel active" id="sc-a" role="tabpanel" aria-labelledby="tab-sc-a">
+  <h4>Scenario A — “Where is my dividend?”</h4>
+  <p>
+    A retail client holds 500 shares of XYZ in street name. Payable date was yesterday; the account shows no cash.
+    Record date was last week; the client bought 200 of the shares one day before ex-date and 300 two weeks earlier.
+  </p>
+  <p><strong>Questions for the learner:</strong></p>
+  <ul>
+    <li>Which shares are entitled, given ex-date / record-date conventions under T+1?</li>
+    <li>Whom does the client call first—issuer IR, transfer agent, or broker?</li>
+    <li>What would differ if 100 shares were in DRS at the transfer agent?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> Street-name dividends post from the broker’s allocation of DTC credits. Timing complaints start with the intermediary’s CA desk, not the issuer’s shareholder relations line.
+  </div>
+</div>
+
+<div class="scenario-panel" id="sc-b" role="tabpanel" aria-labelledby="tab-sc-b" hidden>
+  <h4>Scenario B — Tender cut-off collision</h4>
+  <p>
+    An exchange offer expires Friday 5:00 p.m. New York time at the agent. The client’s broker lists an instruction deadline of Wednesday 2:00 p.m.
+    The client calls Thursday morning after reading the offer press release.
+  </p>
+  <p><strong>Questions for the learner:</strong></p>
+  <ul>
+    <li>Is the broker deadline arbitrary or structurally necessary?</li>
+    <li>What happens if the firm tries a late instruction?</li>
+    <li>How would you document advice to a fiduciary trustee who “just saw the email”?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> Voluntary events are lost on intermediary clocks. Teach clients the firm cut-off as the real deadline.
+  </div>
+</div>
+
+<div class="scenario-panel" id="sc-c" role="tabpanel" aria-labelledby="tab-sc-c" hidden>
+  <h4>Scenario C — Foundation never received proxies</h4>
+  <p>
+    A private foundation’s investment committee complains it cannot vote holdings held at a prime broker in street name.
+    The custodian confirms positions at DTC; the foundation is marked OBO on some accounts and paperless on others.
+  </p>
+  <p><strong>Questions for the learner:</strong></p>
+  <ul>
+    <li>Why doesn’t the issuer mail the foundation directly?</li>
+    <li>What is the role of the omnibus proxy?</li>
+    <li>Which preferences (NOBO/OBO, e-delivery) should counsel review?</li>
+  </ul>
+  <div class="scenario-tip">
+    <strong>Key takeaway:</strong> Voting rights ride the same nominee stack as dividends. Communications elections and account setup explain most “missing proxy” stories.
+  </div>
+</div>
+
+<!-- ── Quiz ── -->
+<section class="quiz-section" id="quiz" aria-label="Knowledge check quiz">
+  <h2 class="section-heading">Knowledge Check Quiz</h2>
+  <p class="quiz-intro">Ten questions. Passing score: 80%. Progress can be recorded on the hub when you use the shared progress keys for module <code>corporate-actions</code>.</p>
+  <div class="quiz-score-bar" aria-hidden="true"><div class="quiz-score-fill" id="quizScoreFill"></div></div>
+  <p class="quiz-score-text" id="quizScoreText">0 / 10 correct (0%)</p>
+  <div class="quiz-container">
+
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>For most U.S. street-name equity, who is typically the registered holder of record that the issuer sees for bulk dividends?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>Each beneficial owner individually</span></label>
+          <label><input type="radio" name="q1" value="b"><span>Cede &amp; Co., DTC’s nominee</span></label>
+          <label><input type="radio" name="q1" value="c"><span>The SEC</span></label>
+          <label><input type="radio" name="q1" value="d"><span>FINRA</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-1"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>A tender offer that requires the shareholder to elect whether to participate is best classified as:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>Mandatory</span></label>
+          <label><input type="radio" name="q2" value="b"><span>Voluntary</span></label>
+          <label><input type="radio" name="q2" value="c"><span>Always non-taxable</span></label>
+          <label><input type="radio" name="q2" value="d"><span>Outside DTC entirely</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-2"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>The first day a stock trades without an upcoming dividend entitlement is the:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>Pay date</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Ex-date</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Effective date of a merger only</span></label>
+          <label><input type="radio" name="q3" value="d"><span>Omnibus proxy date</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-3"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>In a typical cash dividend for street-name shares, cash generally flows:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>Issuer → each BO’s personal checking account directly</span></label>
+          <label><input type="radio" name="q4" value="b"><span>Issuer/agent → DTC allocation → participant → customer</span></label>
+          <label><input type="radio" name="q4" value="c"><span>NSCC → Federal Reserve → shareholder</span></label>
+          <label><input type="radio" name="q4" value="d"><span>Transfer agent → DRS only, never DTC</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-4"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>Broker cut-offs for voluntary offers are usually earlier than agent deadlines because:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>Brokers dislike retail clients</span></label>
+          <label><input type="radio" name="q5" value="b"><span>Firms must aggregate instructions and meet DTC/agent times</span></label>
+          <label><input type="radio" name="q5" value="c"><span>SEC bans same-day elections</span></label>
+          <label><input type="radio" name="q5" value="d"><span>Ex-dates always fall on Wednesdays</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-5"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>An omnibus proxy is best described as:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>A proxy card mailed only to DRS holders</span></label>
+          <label><input type="radio" name="q6" value="b"><span>A mechanism allowing voting authority for bulk Cede-held positions to be exercised down the intermediary chain</span></label>
+          <label><input type="radio" name="q6" value="c"><span>A tax form for foreign dividends</span></label>
+          <label><input type="radio" name="q6" value="d"><span>A type of mandatory stock split</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-6"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>If a client does nothing in a voluntary tender offer before the firm cut-off, the most common result is:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>Automatic full tender at the best price</span></label>
+          <label><input type="radio" name="q7" value="b"><span>No participation (default), unless firm policy states otherwise</span></label>
+          <label><input type="radio" name="q7" value="c"><span>Mandatory conversion into acquirer stock</span></label>
+          <label><input type="radio" name="q7" value="d"><span>DTC invents an election</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-7"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>Form 1099-DIV for street-name U.S. taxpayers is typically issued by:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>The issuer’s CEO</span></label>
+          <label><input type="radio" name="q8" value="b"><span>The broker or custodian that faces the customer</span></label>
+          <label><input type="radio" name="q8" value="c"><span>DTC’s public website only</span></label>
+          <label><input type="radio" name="q8" value="d"><span>The county recorder</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-8"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>NOBO vs OBO primarily affects:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>Whether T+1 settlement applies</span></label>
+          <label><input type="radio" name="q9" value="b"><span>Whether the beneficial owner’s identity may be disclosed to the issuer for communications</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Whether Cede can hold the security</span></label>
+          <label><input type="radio" name="q9" value="d"><span>Whether FAST enrollment is required</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-9"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>Which statement best captures this module’s thesis?</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>Corporate actions only matter for paper certificates</span></label>
+          <label><input type="radio" name="q10" value="b"><span>After deposit, cash, stock, elections, and votes must pass through the nominee/intermediary stack</span></label>
+          <label><input type="radio" name="q10" value="c"><span>DTC eliminates all record dates</span></label>
+          <label><input type="radio" name="q10" value="d"><span>Voluntary offers never use DTC</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-actions">
+    <button type="button" class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check all answers</button>
+    <button type="button" class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset quiz</button>
+  </div>
+  <div class="quiz-result" id="quizResult"></div>
+</section>
+
+<!-- ── Sources ── -->
+<h2 class="section-title" id="sources">Sources &amp; Further Reading</h2>
+<ul class="sources-list">
+  <li>DTCC / DTC educational materials on corporate actions processing and settlement (dtcc.com).</li>
+  <li>SEC investor and intermediary materials on street name ownership, proxy voting, and NOBO/OBO concepts.</li>
+  <li>Issuer and transfer-agent notices for event-specific terms (always authoritative for a live event).</li>
+  <li>IRS publications on Form 1099-DIV and Form 1042-S (tax reporting—verify current year).</li>
+  <li>Within this collection: <a href="dtc-guide.html">Securities Ownership Wizard</a>, <a href="collateral-ucc-article-8.html">UCC Article 8 collateral</a>, <a href="../../glossary.html">Glossary</a>.</li>
+</ul>
+<p class="citation">
+  Educational use only. Not legal, tax, investment, or operational advice. Procedures vary by participant, event type, and jurisdiction.
+</p>
+
+<footer class="page-footer" data-layout="enhance">
+  <nav class="footer-site-nav" aria-label="Site navigation">
+    <a href="../../index.html">Home</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../../sitemap.html">Site Map</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="../../index.html#documents">All Documents</a>
+    <span class="footer-nav-sep" aria-hidden="true">·</span>
+    <a href="dtc-guide.html">DTC Guide</a>
+  </nav>
+  <p class="footer-meta">DTC Teaching Tool · Corporate Actions module · Educational use only</p>
+</footer>
+
+</div>
+
+<!-- How to use modal -->
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-how-title">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-how-title">How to use this guide</h3>
+      <button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-how-to-use')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Read top to bottom, or jump via the sidebar. Concept maps are teaching diagrams—not live DTC system screens.</p>
+      <p>Work the three scenarios before the quiz. Passing score is 80% (8/10).</p>
+      <p>Prerequisites: <a href="dtc-guide.html">ownership stack</a> and ideally <a href="../forms/dtc-eligibility-questionnaire.html">eligibility</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/shared.js" defer></script>
+<script src="../../js/layout.js" defer></script>
+<script src="../../js/quiz.js"></script>
+<script>
+const caAnswers = {
+  q1: { correct: 'b', explanation: 'Cede & Co. is DTC’s nominee and the registered holder for most street-name securities; issuers see Cede for bulk entitlements.' },
+  q2: { correct: 'b', explanation: 'Tenders require an election to participate—classic voluntary treatment.' },
+  q3: { correct: 'b', explanation: 'Ex-date is the first trading day without the dividend entitlement (aligned with settlement conventions).' },
+  q4: { correct: 'b', explanation: 'Cash is allocated through DTC to participants, then to customer accounts—not mailed by the issuer to each BO in street name.' },
+  q5: { correct: 'b', explanation: 'Intermediaries need time to collect and submit instructions to meet DTC and agent deadlines.' },
+  q6: { correct: 'b', explanation: 'The omnibus proxy supports voting for bulk Cede-held positions through the intermediary chain.' },
+  q7: { correct: 'b', explanation: 'Without a timely election, clients typically do not participate in voluntary tenders.' },
+  q8: { correct: 'b', explanation: 'Information reporting for street-name accounts is generally issued by the broker/custodian facing the customer.' },
+  q9: { correct: 'b', explanation: 'NOBO/OBO status governs whether identity may be disclosed to issuers for communications.' },
+  q10: { correct: 'b', explanation: 'The module thesis: entitlements and votes pass through the nominee stack after deposit.' }
+};
+
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 10;
+  for (let i = 1; i <= total; i++) {
+    const qName = 'q' + i;
+    const selected = document.querySelector('input[name="' + qName + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + i);
+    const answer = caAnswers[qName];
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback show incorrect';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      continue;
+    }
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+    fb.innerHTML = (isCorrect ? '<strong>✓ Correct!</strong> ' : '<strong>✗ Incorrect.</strong> ') + answer.explanation;
+    if (isCorrect) correct++;
+  }
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : ' fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : ' fail');
+  result.innerHTML = pct >= 80
+    ? '🎉 <strong>Passed with ' + pct + '%.</strong> You understand entitlement flow through the nominee stack.'
+    : '⚠️ <strong>Score ' + pct + '%.</strong> Review allocation, dates, and voluntary cut-offs. Passing is 80%.';
+  try {
+    const key = 'dtc-progress-v2';
+    const progress = JSON.parse(localStorage.getItem(key) || '{}');
+    if (!progress['corporate-actions']) progress['corporate-actions'] = { viewed: true, quizScore: null };
+    progress['corporate-actions'].viewed = true;
+    progress['corporate-actions'].quizScore = pct;
+    localStorage.setItem(key, JSON.stringify(progress));
+  } catch (e) {}
+}
+
+function showScenario(id) {
+  document.querySelectorAll('.scenario-panel').forEach(function (p) {
+    p.classList.remove('active');
+    p.hidden = true;
+  });
+  document.querySelectorAll('.scenario-tab').forEach(function (t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  var panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.add('active');
+    panel.hidden = false;
+  }
+  var tab = document.querySelector('.scenario-tab[data-target="' + id + '"]');
+  if (tab) {
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+  }
+}
+
+document.querySelectorAll('.scenario-tab').forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    showScenario(tab.getAttribute('data-target'));
+  });
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function () {
+    setupQuiz(caAnswers, 10);
+  });
+} else {
+  setupQuiz(caAnswers, 10);
+}
+
+if (typeof openModal === 'undefined') {
+  window.openModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+  };
+  window.closeModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  };
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function (el) {
+        el.classList.remove('active');
+      });
+    }
+  });
+}
+</script>
+</body>
+</html>

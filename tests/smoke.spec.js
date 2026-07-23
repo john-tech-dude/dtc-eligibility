@@ -14,6 +14,49 @@ test.describe('Site smoke', () => {
     await page.goto(ELIGIBILITY);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/Eligibility Questionnaire/i);
   });
+
+  test('glossary loads and filters terms', async ({ page }) => {
+    await page.goto('/glossary.html');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Glossary/i);
+    const list = page.locator('#glossaryList');
+    await expect(list.locator('.glossary-item').first()).toBeVisible({ timeout: 10_000 });
+    await page.locator('#glossarySearch').fill('rehypothecation');
+    await expect(list.locator('.glossary-item')).toHaveCount(1);
+    await expect(list).toContainText(/re-uses collateral|rehypothecation/i);
+  });
+
+  test('child guide TOC has live document links', async ({ page }) => {
+    await page.goto('/pages/guides/dtc-guide.html');
+    const toc = page.locator('#tocSidebar');
+    await expect(toc.getByRole('link', { name: /LLCs/i })).toBeVisible();
+    await expect(toc.locator('.no-access')).toHaveCount(0);
+  });
+
+  test('corporate actions guide loads with maps and quiz', async ({ page }) => {
+    await page.goto('/pages/guides/corporate-actions.html');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Corporate Actions/i);
+    await expect(page.locator('#concept-map-allocation')).toBeVisible();
+    await expect(page.locator('#process-voluntary')).toBeVisible();
+    await expect(page.locator('#quiz')).toBeVisible();
+    await expect(page.locator('.quiz-card')).toHaveCount(10);
+    await page.locator('#tab-sc-b').click();
+    await expect(page.locator('#sc-b')).toBeVisible();
+    await expect(page.locator('#sc-b')).toContainText(/Tender/i);
+  });
+
+  test('transfer agent guide loads with FAST/DWAC content', async ({ page }) => {
+    await page.goto('/pages/guides/transfer-agent-operations.html');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Transfer Agent/i);
+    await expect(page.locator('#fast')).toBeVisible();
+    await expect(page.locator('#process-dwac')).toBeVisible();
+    await expect(page.locator('#concept-map-interface')).toBeVisible();
+    await expect(page.locator('#concept-map-dwac-balance')).toBeVisible();
+    await expect(page.locator('#concept-map-drs-street')).toBeVisible();
+    await expect(page.locator('#process-dwac .ta-process-step')).toHaveCount(6);
+    await expect(page.locator('#quiz .quiz-card')).toHaveCount(10);
+    await page.locator('#tab-sc-b').click();
+    await expect(page.locator('#sc-b')).toContainText(/DRS/i);
+  });
 });
 
 test.describe('OA canon crosswalk', () => {

@@ -78,7 +78,9 @@ document.addEventListener('click', function(e) {
 // Close modal on Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    const activeModal = document.querySelector('.modal.active');
+    const activeModal =
+      document.querySelector('.modal-overlay.active') ||
+      document.querySelector('.modal.active');
     if (activeModal) {
       closeModal(activeModal);
     }

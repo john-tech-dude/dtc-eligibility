@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary — DTC Teaching Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/shared.css" />
+  <script src="js/theme-init.js"></script>
+  <script src="js/layout.js" defer></script>
+  <style>
+    .glossary-page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .glossary-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .glossary-header h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .glossary-header p {
+      color: var(--ink-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+    .glossary-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .glossary-search-wrap {
+      position: relative;
+    }
+    .glossary-search {
+      width: 100%;
+      padding: 14px 16px 14px 44px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md, 10px);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      background: var(--bg, #faf9f7);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .glossary-search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light, rgba(26, 58, 92, 0.12));
+    }
+    .glossary-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+    .glossary-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .glossary-count {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+    .glossary-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .glossary-tag-btn {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--ink-secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .glossary-tag-btn:hover {
+      border-color: var(--accent-muted, #b8d4e8);
+      color: var(--accent);
+    }
+    .glossary-tag-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .glossary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .glossary-item {
+      border: 1px solid var(--border-light, #e8e5de);
+      border-radius: var(--radius-md, 10px);
+      padding: 18px 20px;
+      background: var(--bg, #faf9f7);
+      scroll-margin-top: 80px;
+    }
+    .glossary-item-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 16px;
+      margin-bottom: 8px;
+    }
+    .glossary-term {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+    }
+    .glossary-item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .glossary-chip {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      background: var(--accent-light, #e8f0f8);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .glossary-def {
+      margin: 0 0 10px;
+      color: var(--ink-secondary);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+    .glossary-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .glossary-link:hover {
+      text-decoration: underline;
+    }
+    .glossary-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--ink-muted);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md, 10px);
+    }
+    .glossary-az {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .glossary-az a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      text-decoration: none;
+      min-width: 1.5rem;
+      text-align: center;
+      padding: 4px;
+    }
+    .glossary-az a:hover,
+    .glossary-az a.has-terms {
+      color: var(--accent);
+    }
+    .glossary-az a.disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 50;
+      background: transparent;
+      border: 1px solid var(--border-light, #e8e5de);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+    [data-theme="dark"] .theme-toggle .sun-icon { display: none; }
+    [data-theme="light"] .theme-toggle .moon-icon,
+    :root:not([data-theme="dark"]) .theme-toggle .moon-icon { display: none; }
+    [data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+    :root:not([data-theme="dark"]) .theme-toggle .sun-icon { display: block; }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
+  <main class="glossary-page">
+    <nav data-layout="breadcrumbs" data-trail='[{"label":"Glossary"}]' aria-label="Breadcrumb"></nav>
+
+    <header class="glossary-header">
+      <h1>Glossary</h1>
+      <p id="glossaryIntro">
+        Core terms across the DTC teaching collection. Teaching-level summaries with deep links into the guides.
+      </p>
+    </header>
+
+    <div class="glossary-controls">
+      <div class="glossary-search-wrap">
+        <svg class="glossary-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <label class="visually-hidden" for="glossarySearch">Search glossary</label>
+        <input
+          type="search"
+          id="glossarySearch"
+          class="glossary-search"
+          placeholder="Search terms (e.g. Cede, FAST, ACA, T+1)…"
+          autocomplete="off"
+        />
+      </div>
+      <div class="glossary-meta-row">
+        <div class="glossary-tags" id="glossaryTags" role="group" aria-label="Filter by topic"></div>
+        <p class="glossary-count" id="glossaryCount" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <nav class="glossary-az" id="glossaryAz" aria-label="Jump to letter"></nav>
+
+    <div class="glossary-list" id="glossaryList"></div>
+    <div class="glossary-empty" id="glossaryEmpty" hidden>No terms match your search.</div>
+  </main>
+
+  <div data-layout="site-footer"></div>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script>
+    (function () {
+      var DATA_SRC = 'data/glossary.json';
+      var terms = [];
+      var activeTag = 'all';
+
+      var listEl = document.getElementById('glossaryList');
+      var emptyEl = document.getElementById('glossaryEmpty');
+      var countEl = document.getElementById('glossaryCount');
+      var searchEl = document.getElementById('glossarySearch');
+      var tagsEl = document.getElementById('glossaryTags');
+      var azEl = document.getElementById('glossaryAz');
+      var introEl = document.getElementById('glossaryIntro');
+
+      function escapeHtml(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function uniqueTags(items) {
+        var set = {};
+        items.forEach(function (t) {
+          (t.tags || []).forEach(function (tag) {
+            set[tag] = true;
+          });
+        });
+        return Object.keys(set).sort();
+      }
+
+      function renderTags() {
+        var tags = uniqueTags(terms);
+        var html =
+          '<button type="button" class="glossary-tag-btn active" data-tag="all">All</button>' +
+          tags
+            .map(function (tag) {
+              return (
+                '<button type="button" class="glossary-tag-btn" data-tag="' +
+                escapeHtml(tag) +
+                '">' +
+                escapeHtml(tag) +
+                '</button>'
+              );
+            })
+            .join('');
+        tagsEl.innerHTML = html;
+        tagsEl.addEventListener('click', function (e) {
+          var btn = e.target.closest('[data-tag]');
+          if (!btn) return;
+          activeTag = btn.getAttribute('data-tag') || 'all';
+          tagsEl.querySelectorAll('.glossary-tag-btn').forEach(function (b) {
+            b.classList.toggle('active', b.getAttribute('data-tag') === activeTag);
+          });
+          render();
+        });
+      }
+
+      function renderAz(visible) {
+        var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        var present = {};
+        visible.forEach(function (t) {
+          var ch = (t.term || '').charAt(0).toUpperCase();
+          if (ch >= 'A' && ch <= 'Z') present[ch] = true;
+        });
+        azEl.innerHTML = letters
+          .map(function (L) {
+            if (present[L]) {
+              return '<a class="has-terms" href="#letter-' + L + '">' + L + '</a>';
+            }
+            return '<a class="disabled" aria-disabled="true">' + L + '</a>';
+          })
+          .join('');
+      }
+
+      function filterTerms() {
+        var q = (searchEl.value || '').trim().toLowerCase();
+        return terms
+          .filter(function (t) {
+            if (activeTag !== 'all' && (t.tags || []).indexOf(activeTag) === -1) return false;
+            if (!q) return true;
+            var hay = (t.term + ' ' + t.definition + ' ' + (t.tags || []).join(' ')).toLowerCase();
+            return hay.indexOf(q) !== -1;
+          })
+          .sort(function (a, b) {
+            return a.term.localeCompare(b.term, undefined, { sensitivity: 'base' });
+          });
+      }
+
+      function render() {
+        var visible = filterTerms();
+        countEl.textContent =
+          visible.length + ' term' + (visible.length === 1 ? '' : 's') +
+          (activeTag !== 'all' || (searchEl.value || '').trim() ? ' shown' : ' total');
+        renderAz(visible);
+
+        if (!visible.length) {
+          listEl.innerHTML = '';
+          emptyEl.hidden = false;
+          return;
+        }
+        emptyEl.hidden = true;
+
+        var lastLetter = '';
+        listEl.innerHTML = visible
+          .map(function (t) {
+            var letter = (t.term || '').charAt(0).toUpperCase();
+            var anchor = '';
+            if (letter !== lastLetter && letter >= 'A' && letter <= 'Z') {
+              anchor = ' id="letter-' + letter + '"';
+              lastLetter = letter;
+            }
+            var chips = (t.tags || [])
+              .map(function (tag) {
+                return '<span class="glossary-chip">' + escapeHtml(tag) + '</span>';
+              })
+              .join('');
+            return (
+              '<article class="glossary-item"' +
+              anchor +
+              ' data-term-id="' +
+              escapeHtml(t.id || '') +
+              '">' +
+              '<div class="glossary-item-header">' +
+              '<h2 class="glossary-term">' +
+              escapeHtml(t.term) +
+              '</h2>' +
+              '<div class="glossary-item-tags">' +
+              chips +
+              '</div>' +
+              '</div>' +
+              '<p class="glossary-def">' +
+              escapeHtml(t.definition) +
+              '</p>' +
+              (t.url
+                ? '<a class="glossary-link" href="' +
+                  escapeHtml(t.url) +
+                  '">Open in guide →</a>'
+                : '') +
+              '</article>'
+            );
+          })
+          .join('');
+      }
+
+      fetch(DATA_SRC, { credentials: 'same-origin' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          terms = data.terms || [];
+          if (data.meta && data.meta.description && introEl) {
+            introEl.textContent = data.meta.description;
+          }
+          renderTags();
+          render();
+          var hash = (location.hash || '').replace(/^#/, '');
+          if (hash && hash.indexOf('letter-') !== 0) {
+            var match = terms.find(function (t) {
+              return t.id === hash || (t.term || '').toLowerCase() === hash.toLowerCase();
+            });
+            if (match) {
+              searchEl.value = match.term;
+              render();
+              setTimeout(function () {
+                var el = listEl.querySelector('[data-term-id="' + match.id + '"]');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 50);
+            }
+          }
+        })
+        .catch(function (err) {
+          console.warn('[glossary]', err);
+          listEl.innerHTML = '';
+          emptyEl.hidden = false;
+          emptyEl.textContent =
+            'Glossary could not load. Serve over HTTP and ensure data/glossary.json is available.';
+          countEl.textContent = '';
+        });
+
+      searchEl.addEventListener('input', render);
+
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          var root = document.documentElement;
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', next);
+          try {
+            localStorage.setItem('dtc-theme', next);
+          } catch (e) {}
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

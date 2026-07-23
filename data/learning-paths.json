@@ -7,25 +7,35 @@
     {
       "id": "post-trade",
       "title": "Post-Trade & DTC Core",
-      "blurb": "How U.S. securities sit at DTC, become eligible, and settle in book-entry form.",
-      "duration": "≈ 2–3 hours",
+      "blurb": "How U.S. securities sit at DTC, become eligible, move through the transfer agent interface, settle in book-entry form, and pass entitlements to beneficial owners.",
+      "duration": "≈ 4–5 hours",
       "level": "Core",
       "color": "accent",
       "steps": [
         {
-          "label": "Ownership & infrastructure — No Access",
-          "href": "#",
+          "label": "Ownership & infrastructure",
+          "href": "pages/guides/dtc-guide.html",
           "module": "securities"
         },
         {
-          "label": "Eligibility questionnaire (OA) — No Access",
-          "href": "#",
+          "label": "Eligibility questionnaire (OA)",
+          "href": "pages/forms/dtc-eligibility-questionnaire.html",
           "module": "eligibility"
         },
         {
-          "label": "Certificated deposit lifecycle — No Access",
-          "href": "#",
+          "label": "Transfer agent ops (FAST / DWAC / DRS)",
+          "href": "pages/guides/transfer-agent-operations.html",
+          "module": "transfer-agent"
+        },
+        {
+          "label": "Certificated deposit lifecycle",
+          "href": "pages/guides/dtc-guide.html#process-certificated-deposit",
           "module": "securities"
+        },
+        {
+          "label": "Corporate actions & entitlements",
+          "href": "pages/guides/corporate-actions.html",
+          "module": "corporate-actions"
         }
       ]
     },
@@ -38,29 +48,39 @@
       "color": "gold",
       "steps": [
         {
-          "label": "Street name & Cede & Co. — No Access",
-          "href": "#",
+          "label": "Street name & Cede & Co.",
+          "href": "pages/guides/dtc-guide.html#cede",
           "module": "securities"
         },
         {
-          "label": "UCC Article 8 collateral — No Access",
-          "href": "#",
+          "label": "UCC Article 8 collateral",
+          "href": "pages/guides/collateral-ucc-article-8.html",
           "module": "collateral"
         }
       ]
     },
     {
-      "id": "govcon",
-      "title": "Govcon Surety (SF 28)",
-      "blurb": "Federal individual surety affidavits under FAR 28.203 and asset representation.",
-      "duration": "≈ 45–60 min",
+      "id": "verification",
+      "title": "Verification of Claims",
+      "blurb": "One discipline across three artifacts: prove issue eligibility, prove surety assets, prove a payment obligation.",
+      "duration": "≈ 2–2.5 hours",
       "level": "Specialized",
       "color": "green",
       "steps": [
         {
-          "label": "SF 28 teaching guide — No Access",
-          "href": "#",
+          "label": "Eligibility questionnaire (form discipline)",
+          "href": "pages/forms/dtc-eligibility-questionnaire.html",
+          "module": "eligibility"
+        },
+        {
+          "label": "SF 28 individual surety",
+          "href": "pages/guides/sf28-teaching-guide.html",
           "module": "sf28"
+        },
+        {
+          "label": "Treasury bill of exchange",
+          "href": "pages/docs/treasury-international-bill-of-exchange.html",
+          "module": "trade"
         }
       ]
     },
@@ -73,34 +93,109 @@
       "color": "accent",
       "steps": [
         {
-          "label": "Corporate structures — No Access",
-          "href": "#",
+          "label": "Corporate structures",
+          "href": "pages/guides/corporate-structures.html",
           "module": "corporate-structures"
         },
         {
-          "label": "Trusts & fiduciary — No Access",
-          "href": "#",
+          "label": "Trusts & fiduciary",
+          "href": "pages/guides/trusts-fiduciary.html",
           "module": "trusts-fiduciary"
         },
         {
-          "label": "Non-profit foundations — No Access",
-          "href": "#",
+          "label": "Non-profit foundations",
+          "href": "pages/guides/non-profit-foundations.html",
           "module": "non-profit-foundations"
         }
       ]
     },
     {
-      "id": "trade-finance",
-      "title": "Trade Finance",
-      "blurb": "Documentary collections and the Treasury International Bill of Exchange.",
-      "duration": "≈ 45–60 min",
-      "level": "Specialized",
+      "id": "issuer-counsel",
+      "title": "Issuer & Counsel Start",
+      "blurb": "For transfer-agent and issuer counsel: eligibility, TA ops, ownership stack, then entity titling and actions.",
+      "duration": "≈ 3–4 hours",
+      "level": "Audience",
       "color": "gold",
       "steps": [
         {
-          "label": "Bill of exchange guide — No Access",
-          "href": "#",
-          "module": "trade"
+          "label": "Eligibility questionnaire (OA)",
+          "href": "pages/forms/dtc-eligibility-questionnaire.html",
+          "module": "eligibility"
+        },
+        {
+          "label": "Transfer agent ops (FAST / DWAC / DRS)",
+          "href": "pages/guides/transfer-agent-operations.html",
+          "module": "transfer-agent"
+        },
+        {
+          "label": "Ownership & infrastructure",
+          "href": "pages/guides/dtc-guide.html",
+          "module": "securities"
+        },
+        {
+          "label": "Corporate structures",
+          "href": "pages/guides/corporate-structures.html",
+          "module": "corporate-structures"
+        },
+        {
+          "label": "Corporate actions & proxy",
+          "href": "pages/guides/corporate-actions.html",
+          "module": "corporate-actions"
+        }
+      ]
+    },
+    {
+      "id": "ops-trainee",
+      "title": "Ops & Broker Trainee",
+      "blurb": "Street-name ownership, settlement mechanics, entitlements, then pledging book-entry claims as collateral.",
+      "duration": "≈ 3–4 hours",
+      "level": "Audience",
+      "color": "accent",
+      "steps": [
+        {
+          "label": "Ownership & infrastructure",
+          "href": "pages/guides/dtc-guide.html",
+          "module": "securities"
+        },
+        {
+          "label": "T+1 & DVP mechanics",
+          "href": "pages/guides/dtc-guide.html#t1",
+          "module": "securities"
+        },
+        {
+          "label": "Corporate actions (entitlements)",
+          "href": "pages/guides/corporate-actions.html",
+          "module": "corporate-actions"
+        },
+        {
+          "label": "UCC Article 8 collateral",
+          "href": "pages/guides/collateral-ucc-article-8.html",
+          "module": "collateral"
+        }
+      ]
+    },
+    {
+      "id": "fiduciary",
+      "title": "Wealth & Fiduciary",
+      "blurb": "How trusts and foundations title securities in street name and book-entry form.",
+      "duration": "≈ 1.5–2 hours",
+      "level": "Audience",
+      "color": "green",
+      "steps": [
+        {
+          "label": "Street name & Cede & Co.",
+          "href": "pages/guides/dtc-guide.html#cede",
+          "module": "securities"
+        },
+        {
+          "label": "Trusts & fiduciary",
+          "href": "pages/guides/trusts-fiduciary.html",
+          "module": "trusts-fiduciary"
+        },
+        {
+          "label": "Non-profit foundations",
+          "href": "pages/guides/non-profit-foundations.html",
+          "module": "non-profit-foundations"
         }
       ]
     }
