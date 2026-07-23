@@ -50,11 +50,7 @@
     document.querySelectorAll('.page-footer[data-layout="enhance"]').forEach(function (el) {
       if (el.getAttribute('data-layout-filled') === '1') return;
       var nav = el.querySelector('.footer-site-nav');
-      if (
-        nav &&
-        !nav.querySelector('a[href*="learning-paths"]') &&
-        !nav.querySelector('a[href*="glossary"]')
-      ) {
+      if (nav) {
         var sep = nav.querySelector('.footer-nav-sep');
         function appendLink(href, label) {
           if (sep) nav.appendChild(sep.cloneNode(true));
@@ -63,8 +59,12 @@
           a.textContent = label;
           nav.appendChild(a);
         }
-        appendLink(prefix + 'index.html#learning-paths', 'Learning Paths');
-        appendLink(prefix + 'glossary.html', 'Glossary');
+        if (!nav.querySelector('a[href*="learning-paths"]')) {
+          appendLink(prefix + 'index.html#learning-paths', 'Learning Paths');
+        }
+        if (!nav.querySelector('a[href*="glossary"]')) {
+          appendLink(prefix + 'glossary.html', 'Glossary');
+        }
       }
       el.setAttribute('data-layout-filled', '1');
     });

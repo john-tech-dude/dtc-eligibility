@@ -487,3 +487,23 @@ code.oa-cite {
     padding: 8px;
   }
 }
+
+/* Hotspot styling for interactive terms */
+.hotspot {
+  color: var(--accent);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--accent);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  font-weight: 500;
+}
+
+.hotspot:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+.hotspot:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+

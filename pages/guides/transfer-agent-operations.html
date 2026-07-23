@@ -136,13 +136,13 @@
 </div>
 
 <div class="ta-thesis" id="overview">
-  <p><strong>This guide answers one question:</strong> who keeps the issuer’s register accurate when nearly all public float sits in the name of Cede &amp; Co., and how do shares move between that register and DTC without a truck full of certificates? Eligibility explains <em>whether</em> an issue may sit at DTC. This module explains <em>how the transfer agent runs the pipe</em>.</p>
+  <p><strong>This guide answers one question:</strong> who keeps the <span class="hotspot" data-modal="issuer" tabindex="0" role="button" onclick="openModal('modal-issuer')">issuer's</span> register accurate when nearly all public float sits in the name of <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span>, and how do shares move between that register and DTC without a truck full of certificates? Eligibility explains <em>whether</em> an issue may sit at DTC. This module explains <em>how the transfer agent runs the pipe</em>.</p>
 </div>
 
 <p>
-  The transfer agent (TA) maintains the issuer’s official list of registered holders, processes transfers, handles certificates when they still exist, and—under DTC’s
-  <strong>FAST</strong> program—adjusts electronic balances so Cede’s position and the TA’s books stay reconciled.
-  Broker participants face DTC; investors face brokers; the TA faces the <em>issuer’s books</em> and the <em>DTC interface</em>.
+  The <span class="hotspot" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')">transfer agent (TA)</span> maintains the issuer’s official list of registered holders, processes transfers, handles certificates when they still exist, and—under DTC’s
+  <strong><span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span></strong> program—adjusts electronic balances so <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede’s</span> position and the TA’s books stay reconciled.
+  Broker <span class="hotspot" data-modal="participants" tabindex="0" role="button" onclick="openModal('modal-participants')">participants</span> face DTC; investors face brokers; the TA faces the <em>issuer’s books</em> and the <em>DTC interface</em>.
 </p>
 
 <nav class="quick-nav" aria-label="Quick navigation">
@@ -335,7 +335,7 @@
 <!-- DWAC -->
 <h2 class="section-title" id="dwac">DWAC — Deposit / Withdrawal at Custodian</h2>
 <p>
-  <strong>DWAC</strong> is the electronic instruction path for depositing securities into DTC (increasing Cede’s FAST balance) or withdrawing them (decreasing Cede’s balance, often into DRS or a certificated/registered form).
+  <strong><span class="hotspot" data-modal="dwac" tabindex="0" role="button" onclick="openModal('modal-dwac')">DWAC</span></strong> is the electronic instruction path for depositing securities into DTC (increasing Cede’s FAST balance) or withdrawing them (decreasing Cede’s balance, often into <span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">DRS</span> or a certificated/registered form).
   The participant initiates; the TA approves or rejects against the register, restrictions, and documentation.
 </p>
 
@@ -476,8 +476,8 @@
 <!-- DRS -->
 <h2 class="section-title" id="drs">DRS vs Street Name — Decision Tree</h2>
 <p>
-  <strong>DRS (Direct Registration System)</strong> holds book-entry shares on the TA’s register in the investor’s (or entity’s) name—not through a broker’s DTC participant account.
-  It is not a paper certificate; it is not street name. See also the DTC guide’s
+  <strong><span class="hotspot" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')">DRS (Direct Registration System)</span></strong> holds book-entry shares on the TA’s register in the investor’s (or entity’s) name—not through a broker’s DTC participant account.
+  It is not a paper certificate; it is not <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span>. See also the DTC guide’s
   <a href="dtc-guide.html#concept-map-street-vs-drs">Street Name vs DRS map</a>.
 </p>
 
@@ -493,7 +493,7 @@
       <span class="ta-path-arrow">→</span>
       <span class="ta-path-chip">TA register</span>
     </div>
-    <p>Fast trading and settlement. Issuer books show <strong>Cede</strong> as holder. Communications and votes ride the intermediary stack.</p>
+    <p>Fast trading and settlement. Issuer books show <strong><span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede</span></strong> as holder. Communications and votes ride the intermediary stack.</p>
   </div>
   <div class="ta-path-card drs">
     <h3>DRS path</h3>
@@ -504,7 +504,7 @@
       <span class="ta-path-arrow">→</span>
       <span class="ta-path-chip hl">Named on register</span>
     </div>
-    <p>Direct registration on issuer/TA books. Selling usually requires a <strong>DWAC deposit</strong> back into street name first—plan lead time under T+1.</p>
+    <p>Direct registration on issuer/TA books. Selling usually requires a <strong><span class="hotspot" data-modal="dwac" tabindex="0" role="button" onclick="openModal('modal-dwac')">DWAC deposit</span></strong> back into <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span> first—plan lead time under T+1.</p>
   </div>
 </div>
 

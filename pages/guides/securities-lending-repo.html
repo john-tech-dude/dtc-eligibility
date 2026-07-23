@@ -129,7 +129,7 @@
 </div>
 
 <div class="sl-thesis" id="overview">
-  <p><strong>This guide answers one question:</strong> how can a security move (or be reused) to support short sales, financing, and fail coverage while the economic “owner” story still runs through street name and security entitlements? Deposit and eligibility put shares at DTC. Collateral law explains pledges. <em>This module</em> explains temporary transfers of inventory and cash against that stack.</p>
+  <p><strong>This guide answers one question:</strong> how can a security move (or be reused) to support short sales, financing, and <span class="hotspot" data-modal="fails" tabindex="0" role="button" onclick="openModal('modal-fails')">fail coverage</span> while the economic “owner” story still runs through <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span> and security entitlements? Deposit and eligibility put shares at DTC. Collateral law explains pledges. <em>This module</em> explains temporary transfers of inventory and cash against that stack.</p>
 </div>
 
 <nav class="quick-nav" aria-label="Quick navigation">
@@ -153,20 +153,20 @@
   <thead>
     <tr>
       <th>Dimension</th>
-      <th>Securities lending</th>
-      <th>Repo (repurchase agreement)</th>
+      <th><span class="hotspot" data-modal="securities-lending" tabindex="0" role="button" onclick="openModal('modal-securities-lending')">Securities lending</span></th>
+      <th><span class="hotspot" data-modal="repo" tabindex="0" role="button" onclick="openModal('modal-repo')">Repo (repurchase agreement)</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>Primary purpose</strong></td>
-      <td>Borrow specific securities (shorts, fails, market making)</td>
-      <td>Borrow/lend <em>cash</em> against securities as collateral</td>
+      <td>Borrow specific securities (shorts, <span class="hotspot" data-modal="fails" tabindex="0" role="button" onclick="openModal('modal-fails')">fails</span>, market making)</td>
+      <td>Borrow/lend <em>cash</em> against securities as <span class="hotspot" data-modal="collateral" tabindex="0" role="button" onclick="openModal('modal-collateral')">collateral</span></td>
     </tr>
     <tr>
       <td><strong>What “moves”</strong></td>
-      <td>Securities out; cash or other collateral in</td>
-      <td>Cash out; securities transferred as collateral (sale + forward repurchase form)</td>
+      <td>Securities out; cash or other <span class="hotspot" data-modal="collateral" tabindex="0" role="button" onclick="openModal('modal-collateral')">collateral</span> in</td>
+      <td>Cash out; securities transferred as <span class="hotspot" data-modal="collateral" tabindex="0" role="button" onclick="openModal('modal-collateral')">collateral</span> (sale + forward repurchase form)</td>
     </tr>
     <tr>
       <td><strong>Driver of pricing</strong></td>
@@ -195,9 +195,9 @@
     <span class="sl-badge mandatory">Securities-driven</span>
     <h3>Stock loan / stock borrow</h3>
     <ul>
-      <li>Locate inventory before short sale</li>
-      <li>Cover settlement fails</li>
-      <li>Lender earns a fee; borrower posts collateral</li>
+      <li><span class="hotspot" data-modal="locate" tabindex="0" role="button" onclick="openModal('modal-locate')">Locate</span> inventory before short sale</li>
+      <li>Cover settlement <span class="hotspot" data-modal="fails" tabindex="0" role="button" onclick="openModal('modal-fails')">fails</span></li>
+      <li>Lender earns a fee; borrower posts <span class="hotspot" data-modal="collateral" tabindex="0" role="button" onclick="openModal('modal-collateral')">collateral</span></li>
       <li>“Specials” when supply is tight</li>
     </ul>
   </div>
@@ -208,7 +208,7 @@
       <li>Finance a long inventory book</li>
       <li>Invest cash securely overnight/term</li>
       <li>Rate is the economic headline</li>
-      <li>Collateral schedule and haircuts matter</li>
+      <li>Collateral schedule and <span class="hotspot" data-modal="haircut" tabindex="0" role="button" onclick="openModal('modal-haircut')">haircuts</span> matter</li>
     </ul>
   </div>
 </div>
@@ -699,6 +699,179 @@
   </div>
 </footer>
 
+<!-- Hotspot Modal Definitions -->
+<div class="modal-overlay" id="modal-securities-lending" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-lending">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-securities-lending">Securities Lending</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-securities-lending')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Securities lending is the temporary transfer of securities from a lender (such as an institutional investor) to a borrower (such as a broker-dealer or hedge fund). The borrower posts collateral (cash or other high-quality securities) to secure the loan and pays a borrow fee.</p>
+      <p class="modal-section-title">Key Functions</p>
+      <ul>
+        <li>Enables short selling by providing the required deliverable shares</li>
+        <li>Cures settlement fails when a seller cannot deliver on time</li>
+        <li>Generates incremental yield for institutional portfolios (lenders)</li>
+        <li>Marked to market daily to ensure collateral matches exposure</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-securities-lending'); openModal('modal-repo'); return false;">Repo</a>, <a href="#" onclick="closeModal('modal-securities-lending'); openModal('modal-collateral'); return false;">Collateral</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-repo" role="dialog" aria-modal="true" aria-labelledby="modal-title-repo">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-repo">Repurchase Agreement (Repo)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-repo')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>A repurchase agreement (repo) is a transaction where one party sells securities to another against cash, with a simultaneous agreement to buy them back at a specified price and date. Economically, it is a secured cash loan where the seller pays interest (the repo rate) to the buyer.</p>
+      <p class="modal-section-title">Core Characteristics</p>
+      <ul>
+        <li>Driven by cash financing needs rather than the desire to borrow a specific security</li>
+        <li>Governed by Master Repurchase Agreements (MRA / GMRA)</li>
+        <li>Utilizes general collateral (GC) or specific securities ("specials")</li>
+        <li>Clearing is centralized for U.S. Treasuries through FICC GSD</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-repo'); openModal('modal-securities-lending'); return false;">Securities Lending</a>, <a href="#" onclick="closeModal('modal-repo'); openModal('modal-collateral'); return false;">Collateral</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-rehypothecation" role="dialog" aria-modal="true" aria-labelledby="modal-title-rehypothecation">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-rehypothecation">Rehypothecation</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-rehypothecation')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Rehypothecation is the practice where a prime broker or creditor reuse the collateral posted by a client to secure their own borrowings or transactions with third parties. This allows the broker to obtain cheaper funding or facilitate lending to other clients.</p>
+      <p class="modal-section-title">Regulatory Framework</p>
+      <ul>
+        <li>Subject to strict SEC rules (Rule 15c3-3) to protect customer assets</li>
+        <li>Brokers can only rehypothecate customer assets up to 140% of the customer's debit balance</li>
+        <li>Fully paid-for securities cannot be rehypothecated by the broker</li>
+        <li>Exposes the client to broker counterparty risk in the event of insolvency</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-locate" role="dialog" aria-modal="true" aria-labelledby="modal-title-locate">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-locate">Locate Requirement</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-locate')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Under SEC Regulation SHO Rule 203(b), a broker-dealer cannot accept or execute a short sale order in an equity security unless it has "located" the security. This means confirming that the shares are available to borrow and deliver on settlement date.</p>
+      <p class="modal-section-title">Key Elements</p>
+      <ul>
+        <li>Must be documented prior to executing the short sale trade</li>
+        <li>Prevents "naked short selling" where no shares are available to settle the trade</li>
+        <li>Easy-to-Borrow (ETB) lists can satisfy the requirement for liquid securities</li>
+        <li>Hard-to-Borrow (HTB) issues require a specific locate from a lending desk</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-collateral" role="dialog" aria-modal="true" aria-labelledby="modal-title-collateral">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-collateral">Collateral</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-collateral')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Collateral represents cash or high-quality securities posted by a borrower to a lender to secure the repayment of a loan or performance of a contract. In securities lending and repo, collateral is critical for mitigating counterparty credit risk.</p>
+      <p class="modal-section-title">Key Practices</p>
+      <ul>
+        <li>Cash collateral typically earns interest (rebate rate paid to the borrower)</li>
+        <li>Non-cash collateral (such as Treasuries or equities) is held in custody</li>
+        <li>Marked to market daily, triggering margin calls if values diverge</li>
+        <li>Subject to haircuts depending on the credit and liquidity profile of the asset</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-collateral'); openModal('modal-haircut'); return false;">Haircut</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-haircut" role="dialog" aria-modal="true" aria-labelledby="modal-title-haircut">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-haircut">Haircut</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-haircut')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>A haircut is a percentage reduction applied to the market value of assets pledged as collateral. It acts as a safety buffer for the lender against potential price declines or liquidity issues in the collateral assets before they can be liquidated.</p>
+      <p class="modal-section-title">Operational Mechanics</p>
+      <ul>
+        <li>Protects the cash lender from market volatility</li>
+        <li>Determined by asset type, maturity, credit quality, and counterparty strength</li>
+        <li>Higher risk or less liquid assets require larger haircuts (e.g., equities vs. Treasuries)</li>
+        <li>Directly affects the leverage available to the borrower in a financing transaction</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-fails" role="dialog" aria-modal="true" aria-labelledby="modal-title-fails">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-fails">Settlement Fails</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-fails')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>A settlement fail occurs when a trade is executed, but either the seller fails to deliver the securities or the buyer fails to deliver the cash on the contractually agreed settlement date (typically T+1 in the U.S.).</p>
+      <p class="modal-section-title">Remediation &amp; Impact</p>
+      <ul>
+        <li>Cured by borrowing the security via stock loan to complete delivery</li>
+        <li>Subject to penalties under regulatory frameworks like Regulation SHO</li>
+        <li>Continuous fails may lead to forced close-outs (buy-ins) by clearing agencies</li>
+        <li>Imposes liquidity and operational costs on the failing participant</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-cede">Cede &amp; Co.</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cede')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Cede &amp; Co. is the partnership nominee of DTC (The Depository Trust Company). Securities deposited with DTC are registered in the name of Cede &amp; Co. on the issuer's books, making it the single largest record holder for most public companies in the U.S.</p>
+      <p class="modal-section-title">Key Points</p>
+      <ul>
+        <li>Cede &amp; Co. holds legal title as nominee for DTC participants and their customers</li>
+        <li>Enables electronic, book-entry settlement of trades without physical paper</li>
+        <li>Separates legal registration from beneficial ownership and economic rights</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-street-name">Street Name</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-street-name')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Street name ownership refers to the practice where securities are registered on the issuer's books in the name of a broker-dealer or depository (Cede &amp; Co.) rather than the investor's own name. The investor remains the beneficial owner with full economic and voting rights.</p>
+      <p class="modal-section-title">Key Benefits</p>
+      <ul>
+        <li>Allows for rapid, electronic settlement of buy and sell transactions</li>
+        <li>Allows broker-dealers to easily include positions in client lending pools</li>
+        <li>Streamlines dividend collections and proxy solicitations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
     <div class="modal-header">
@@ -821,6 +994,25 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function () { setupQuiz(slAnswers, 10); });
 } else {
   setupQuiz(slAnswers, 10);
+}
+
+if (typeof openModal === 'undefined') {
+  window.openModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('active');
+  };
+  window.closeModal = function (id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  };
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function (el) { el.classList.remove('active'); });
+    }
+  });
 }
 </script>
 </body>

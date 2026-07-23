@@ -100,16 +100,16 @@
 </div>
 
 <div class="ca-thesis" id="overview">
-  <p><strong>This guide answers one question:</strong> once a security sits at DTC in street name, how do cash, stock, choices, and votes reach the beneficial owner? Eligibility and deposit explain <em>how the position exists</em>. Corporate actions explain <em>what the position earns and decides</em>.</p>
+  <p><strong>This guide answers one question:</strong> once a security sits at DTC in <span class="hotspot" data-modal="street-name" tabindex="0" role="button" onclick="openModal('modal-street-name')">street name</span>, how do cash, stock, choices, and votes reach the beneficial owner? Eligibility and deposit explain <em>how the position exists</em>. Corporate actions explain <em>what the position earns and decides</em>.</p>
 </div>
 
 <p>
   In the modern U.S. system, the legal holder of record for nearly all public equity and many fixed-income issues is
-  <a href="dtc-guide.html#cede">Cede &amp; Co.</a>, DTC’s nominee. Issuers and transfer agents see Cede—not millions of retail accounts—as the registered owner.
-  Economic entitlements and proxy materials must therefore <em>pass through</em> a layered stack: issuer/agent → DTC → participant → broker or bank custodian → beneficial owner (BO).
+  <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span>, DTC’s nominee. Issuers and transfer agents see Cede—not millions of retail accounts—as the registered owner.
+  Economic entitlements and proxy materials must therefore <em>pass through</em> a layered stack: issuer/agent → DTC → participant → broker or bank custodian → <span class="hotspot" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')">beneficial owner (BO)</span>.
 </p>
 <p>
-  Miss a date, mis-route an election, or treat a voluntary offer like a mandatory dividend, and the BO loses value or rights even though the shares never “left” the account. That is the operational heart of post-trade.
+  Miss a date, mis-route an election, or treat a <span class="hotspot" data-modal="voluntary" tabindex="0" role="button" onclick="openModal('modal-voluntary')">voluntary</span> offer like a <span class="hotspot" data-modal="mandatory" tabindex="0" role="button" onclick="openModal('modal-mandatory')">mandatory</span> dividend, and the BO loses value or rights even though the shares never “left” the account. That is the operational heart of post-trade.
 </p>
 
 <nav class="quick-nav" aria-label="Quick navigation">
@@ -402,7 +402,7 @@
 <h2 class="section-title" id="proxy">Omnibus Proxy &amp; Beneficial Owner Communications</h2>
 <p>
   Voting is a corporate action of rights, not cash. Because Cede is the registered holder, the issuer cannot mail a proxy card to every street-name BO as if they were registered holders.
-  Instead, the industry uses an <strong>omnibus proxy</strong> and intermediary communications processes so voting authority and materials flow down the stack.
+  Instead, the industry uses an <span class="hotspot" data-modal="omnibus-proxy" tabindex="0" role="button" onclick="openModal('modal-omnibus-proxy')">omnibus proxy</span> and intermediary communications processes so voting authority and materials flow down the stack.
 </p>
 
 <div class="ca-grid-2">
@@ -415,7 +415,7 @@
   </div>
   <div class="ca-type-card voluntary">
     <span class="ca-badge voluntary">Communications</span>
-    <h3>NOBO / OBO &amp; vendors</h3>
+    <h3><span class="hotspot" data-modal="nobo-obo" tabindex="0" role="button" onclick="openModal('modal-nobo-obo')">NOBO / OBO</span> &amp; vendors</h3>
     <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
       Non-objecting beneficial owners (NOBOs) may be identified to issuers for communications; objecting BOs (OBOs) are not. Vendors and brokers distribute materials and collect voting instructions.
     </p>
@@ -873,6 +873,190 @@ if (document.readyState === 'loading') {
 } else {
   setupQuiz(caAnswers, 10);
 }
+</script>
+
+<!-- Modal definitions for corporate actions -->
+<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-beneficial-owner">Beneficial Owner (BO)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-beneficial-owner')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The beneficial owner is the person or entity that ultimately owns the securities and enjoys the economic benefits (dividends, voting rights, etc.), even though the securities may be held in street name through a broker or other intermediary.</p>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li>Has economic ownership but not necessarily legal title</li>
+        <li>Receives corporate action entitlements through intermediaries</li>
+        <li>Must make elections for voluntary corporate actions</li>
+        <li>Protected by intermediary agreements and securities regulations</li>
+        <li>May be different from the registered holder on the issuer's books</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-voluntary" role="dialog" aria-modal="true" aria-labelledby="modal-title-voluntary">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-voluntary">Voluntary Corporate Actions</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-voluntary')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Voluntary corporate actions require the beneficial owner to make an active election to participate. Unlike mandatory actions, if no action is taken, the BO typically receives nothing or defaults to a specific outcome.</p>
+      <p class="modal-section-title">Common Voluntary Actions</p>
+      <ul>
+        <li>Tender offers (cash or stock exchange)</li>
+        <li>Rights offerings and subscriptions</li>
+        <li>Optional dividend reinvestment plans</li>
+        <li>Stock option exercises</li>
+        <li>Choice between cash and stock consideration</li>
+      </ul>
+      <p class="modal-section-title">Critical Timing</p>
+      <ul>
+        <li>Must respond by specific deadlines</li>
+        <li>Broker cut-offs are earlier than official deadlines</li>
+        <li>Failure to elect may result in lost value or rights</li>
+        <li>Instructions must flow through the intermediary chain</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-mandatory');return false;">Mandatory Actions</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-omnibus-proxy" role="dialog" aria-modal="true" aria-labelledby="modal-title-omnibus-proxy">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-omnibus-proxy">Omnibus Proxy</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-omnibus-proxy')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>An omnibus proxy is a legal instrument that allows DTC (acting through its nominee Cede & Co.) to vote shares on behalf of all beneficial owners in street name. It's essential because the issuer only sees Cede as the registered holder, not the millions of actual beneficial owners.</p>
+      <p class="modal-section-title">How It Works</p>
+      <ul>
+        <li>DTC executes a single proxy covering all street-name shares</li>
+        <li>Participants and intermediaries solicit voting instructions from BOs</li>
+        <li>Voting instructions are aggregated and transmitted to DTC</li>
+        <li>DTC votes the shares according to these instructions</li>
+        <li>Ensures voting rights reach beneficial owners despite street name ownership</li>
+      </ul>
+      <p class="modal-section-title">Legal Framework</p>
+      <ul>
+        <li>Governed by SEC Rule 14a and 14b</li>
+        <li>Industry standard procedures through DTCC</li>
+        <li>Protects beneficial owner voting rights</li>
+        <li>Enables efficient proxy solicitation and voting</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-nobo-obo" role="dialog" aria-modal="true" aria-labelledby="modal-title-nobo-obo">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-nobo-obo">NOBO / OBO Status</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-nobo-obo')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>NOBO (Non-Objecting Beneficial Owner) and OBO (Objecting Beneficial Owner) refer to a beneficial owner's preference regarding receiving communications directly from the issuer.</p>
+      <p class="modal-section-title">NOBO (Non-Objecting)</p>
+      <ul>
+        <li>Opted in to receive issuer communications directly</li>
+        <li>May be identified to the issuer for corporate action communications</li>
+        <li>Receives annual reports, proxy materials, and other disclosures</li>
+        <li>Can respond directly to issuer solicitations</li>
+      </ul>
+      <p class="modal-section-title">OBO (Objecting)</p>
+      <ul>
+        <li>Opted out of receiving issuer communications directly</li>
+        <li>Identity is not disclosed to the issuer</li>
+        <li>Relies on broker or intermediary for information</li>
+        <li>May receive communications through the broker's proxy process</li>
+      </ul>
+      <p class="modal-section-title">Operational Impact</p>
+      <ul>
+        <li>Affects how corporate action notices are delivered</li>
+        <li>Influences proxy voting process and communications</li>
+        <li>Can be changed through broker or issuer processes</li>
+        <li>Important for fiduciaries and institutional investors</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-omnibus-proxy');return false;">Omnibus Proxy</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-street-name">Street Name Ownership</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-street-name')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Street name ownership refers to the practice where securities are held in the name of a broker-dealer or other nominee rather than in the investor's name. The actual beneficial owner is the investor, but the registered owner on the issuer's books is the broker's nominee.</p>
+      <p class="modal-section-title">Characteristics</p>
+      <ul>
+        <li>Broker holds securities in nominee name</li>
+        <li>Investor appears as beneficial owner, not registered owner</li>
+        <li>Facilitates trading and settlement</li>
+        <li>Broker provides custody and administrative services</li>
+        <li>Most common form of securities ownership today</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-cede">Cede & Co.</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cede')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Cede & Co. is DTC's partnership nominee. All securities deposited with DTC are registered in the name of Cede & Co., making it the single largest record holder for most public companies. The issuer and trustee have no knowledge of beneficial owners.</p>
+      <p class="modal-section-title">Key Functions</p>
+      <ul>
+        <li>Serves as DTC's nominee for book-entry securities</li>
+        <li>Enables street name ownership through brokers</li>
+        <li>Facilitates electronic settlement and transfers</li>
+        <li>Reduces need for physical certificates</li>
+        <li>Acts as the legal holder on issuer records</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-mandatory" role="dialog" aria-modal="true" aria-labelledby="modal-title-mandatory">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-mandatory">Mandatory Corporate Actions</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-mandatory')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Mandatory corporate actions are automatically applied to all positions on the record date. Beneficial owners do not need to make an election—they automatically receive the entitlement (cash, stock, etc.) regardless of whether they take any action.</p>
+      <p class="modal-section-title">Common Mandatory Actions</p>
+      <ul>
+        <li>Cash dividends and interest payments</li>
+        <li>Stock splits and reverse splits</li>
+        <li>Spin-offs and many stock dividends</li>
+        <li>Mandatory mergers and cash-out events</li>
+        <li>Name changes and CUSIP replacements</li>
+      </ul>
+      <p class="modal-section-title">Operational Characteristics</p>
+      <ul>
+        <li>No election required from beneficial owners</li>
+        <li>Automatically processed by intermediaries</li>
+        <li>Cannot opt out (generally)</li>
+        <li>Tax consequences are automatic</li>
+        <li>Simpler processing than voluntary actions</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-voluntary');return false;">Voluntary Actions</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
 
 if (typeof openModal === 'undefined') {
   window.openModal = function (id) {
