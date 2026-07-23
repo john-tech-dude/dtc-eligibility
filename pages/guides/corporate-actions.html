@@ -39,6 +39,7 @@
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
   <a href="transfer-agent-operations.html" class="external">Transfer Agents — FAST / DWAC / DRS</a>
+  <a href="securities-lending-repo.html" class="external">Securities Lending &amp; Repo</a>
   <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
   <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
   <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
@@ -55,13 +56,13 @@
       <div class="header-icon">CA</div>
       <div class="header-text">
         <h1>Corporate Actions, Entitlements &amp; Omnibus Proxy</h1>
-        <div class="sub">How dividends, splits, tenders, and votes move down the nominee chain after securities sit at DTC</div>
+        <div class="sub">Dividends · tenders · votes · Interactive teaching guide to entitlement flow after DTC deposit</div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div class="header-badge">Core · Post-Trade</div>
+    <div class="header-controls">
+      <div class="header-badge">Teaching Tool</div>
       <button type="button" class="help-btn" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -88,7 +89,9 @@
   <span class="breadcrumb-separator">›</span>
   <a href="../../index.html#documents">Documents</a>
   <span class="breadcrumb-separator">›</span>
-  <span class="breadcrumb-current">Corporate Actions</span>
+  <span class="breadcrumb-current">Teaching Guides</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Corporate Actions &amp; Omnibus Proxy</span>
 </nav>
 
 <div class="update-banner">
@@ -710,32 +713,68 @@
   Educational use only. Not legal, tax, investment, or operational advice. Procedures vary by participant, event type, and jurisdiction.
 </p>
 
+</div><!-- /.wrap -->
+
 <footer class="page-footer" data-layout="enhance">
-  <nav class="footer-site-nav" aria-label="Site navigation">
-    <a href="../../index.html">Home</a>
-    <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../../sitemap.html">Site Map</a>
-    <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="../../index.html#documents">All Documents</a>
-    <span class="footer-nav-sep" aria-hidden="true">·</span>
-    <a href="dtc-guide.html">DTC Guide</a>
-  </nav>
-  <p class="footer-meta">DTC Teaching Tool · Corporate Actions module · Educational use only</p>
+  <div class="footer-content">
+    <nav class="footer-site-nav" aria-label="Site navigation">
+      <a href="../../index.html" class="footer-home-link">Home</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../sitemap.html">Site Map</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../index.html#documents">All Documents</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../glossary.html">Glossary</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="dtc-guide.html">Ownership guide</a>
+    </nav>
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Corporate Actions Teaching Guide v1.0 · Entitlements · Omnibus Proxy</div>
+      <div>Mandatory &amp; voluntary events · Cede allocation · Record / ex / pay dates</div>
+      <div class="footer-links">
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="https://www.sec.gov" rel="noopener">SEC</a>
+        <span class="footer-divider">•</span>
+        <a href="dtc-guide.html">Ownership guide</a>
+        <span class="footer-divider">•</span>
+        <a href="transfer-agent-operations.html">Transfer agents</a>
+        <span class="footer-divider">•</span>
+        <a href="../forms/dtc-eligibility-questionnaire.html">Eligibility</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, tax, investment, or operational advice. Event terms and firm cut-offs control live transactions. For official rules, consult DTCC materials, issuer/agent notices, and applicable SEC guidance.</div>
+    </div>
+  </div>
 </footer>
 
-</div>
-
-<!-- How to use modal -->
-<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-how-title">
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
   <div class="modal-card">
     <div class="modal-header">
-      <h3 id="modal-how-title">How to use this guide</h3>
-      <button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-how-to-use')">&times;</button>
+      <h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog">&times;</button>
     </div>
     <div class="modal-body">
-      <p>Read top to bottom, or jump via the sidebar. Concept maps are teaching diagrams—not live DTC system screens.</p>
-      <p>Work the three scenarios before the quiz. Passing score is 80% (8/10).</p>
-      <p>Prerequisites: <a href="dtc-guide.html">ownership stack</a> and ideally <a href="../forms/dtc-eligibility-questionnaire.html">eligibility</a>.</p>
+      <div class="def-callout">
+        <div class="def-type">Teaching module</div>
+        <div class="def-word">Corporate Actions, Entitlements &amp; Omnibus Proxy</div>
+        <p>How cash, stock, elections, and votes pass through Cede &amp; Co. and DTC participants after securities sit in book-entry form.</p>
+      </div>
+      <p class="modal-section-title">How to navigate</p>
+      <ul>
+        <li>Open the <strong>☰ menu</strong> to jump between sections and related guides.</li>
+        <li>Read <strong>mandatory vs voluntary</strong>, then <strong>key dates</strong>, then the <strong>allocation chain</strong> maps.</li>
+        <li>Work all three <strong>Scenarios</strong> before the quiz.</li>
+        <li>Pass the <strong>Knowledge Check</strong> at <strong>80%</strong> (progress key <code>corporate-actions</code>).</li>
+      </ul>
+      <p class="modal-section-title">Prerequisites</p>
+      <ul>
+        <li><a href="dtc-guide.html">Securities Ownership Wizard</a> — ownership stack and Cede &amp; Co.</li>
+        <li><a href="../forms/dtc-eligibility-questionnaire.html">DTC Eligibility Questionnaire</a> — how issues get on deposit</li>
+      </ul>
+      <div class="tip-box">
+        <strong>Learning tip</strong>
+        For voluntary events, the broker cut-off is the real deadline—not the issuer press release. Silence usually means non-participation.
+      </div>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@
       "id": "post-trade",
       "title": "Post-Trade & DTC Core",
       "blurb": "How U.S. securities sit at DTC, become eligible, move through the transfer agent interface, settle in book-entry form, and pass entitlements to beneficial owners.",
-      "duration": "≈ 4–5 hours",
+      "duration": "\u2248 4\u20135 hours",
       "level": "Core",
       "color": "accent",
       "steps": [
@@ -42,8 +42,8 @@
     {
       "id": "collateral",
       "title": "Collateral & UCC Article 8",
-      "blurb": "Pledging book-entry securities: security entitlements, ACAs, and perfection.",
-      "duration": "≈ 1–1.5 hours",
+      "blurb": "Pledging book-entry securities, then financing and lending inventory on the same pipes.",
+      "duration": "\u2248 2\u20132.5 hours",
       "level": "Advanced",
       "color": "gold",
       "steps": [
@@ -56,6 +56,11 @@
           "label": "UCC Article 8 collateral",
           "href": "pages/guides/collateral-ucc-article-8.html",
           "module": "collateral"
+        },
+        {
+          "label": "Securities lending & repo",
+          "href": "pages/guides/securities-lending-repo.html",
+          "module": "securities-lending"
         }
       ]
     },
@@ -63,7 +68,7 @@
       "id": "verification",
       "title": "Verification of Claims",
       "blurb": "One discipline across three artifacts: prove issue eligibility, prove surety assets, prove a payment obligation.",
-      "duration": "≈ 2–2.5 hours",
+      "duration": "\u2248 2\u20132.5 hours",
       "level": "Specialized",
       "color": "green",
       "steps": [
@@ -88,7 +93,7 @@
       "id": "entities",
       "title": "Entity Structures",
       "blurb": "How LLCs, corporations, trusts, and foundations hold and title securities.",
-      "duration": "≈ 2 hours",
+      "duration": "\u2248 2 hours",
       "level": "Supporting",
       "color": "accent",
       "steps": [
@@ -113,7 +118,7 @@
       "id": "issuer-counsel",
       "title": "Issuer & Counsel Start",
       "blurb": "For transfer-agent and issuer counsel: eligibility, TA ops, ownership stack, then entity titling and actions.",
-      "duration": "≈ 3–4 hours",
+      "duration": "\u2248 3\u20134 hours",
       "level": "Audience",
       "color": "gold",
       "steps": [
@@ -148,7 +153,7 @@
       "id": "ops-trainee",
       "title": "Ops & Broker Trainee",
       "blurb": "Street-name ownership, settlement mechanics, entitlements, then pledging book-entry claims as collateral.",
-      "duration": "≈ 3–4 hours",
+      "duration": "\u2248 3\u20134 hours",
       "level": "Audience",
       "color": "accent",
       "steps": [
@@ -171,6 +176,11 @@
           "label": "UCC Article 8 collateral",
           "href": "pages/guides/collateral-ucc-article-8.html",
           "module": "collateral"
+        },
+        {
+          "label": "Securities lending & repo",
+          "href": "pages/guides/securities-lending-repo.html",
+          "module": "securities-lending"
         }
       ]
     },
@@ -178,7 +188,7 @@
       "id": "fiduciary",
       "title": "Wealth & Fiduciary",
       "blurb": "How trusts and foundations title securities in street name and book-entry form.",
-      "duration": "≈ 1.5–2 hours",
+      "duration": "\u2248 1.5\u20132 hours",
       "level": "Audience",
       "color": "green",
       "steps": [

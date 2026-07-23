@@ -57,6 +57,37 @@ test.describe('Site smoke', () => {
     await page.locator('#tab-sc-b').click();
     await expect(page.locator('#sc-b')).toContainText(/DRS/i);
   });
+
+  test('securities lending guide loads with maps and quiz', async ({ page }) => {
+    await page.goto('/pages/guides/securities-lending-repo.html');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Securities Lending|Repo/i);
+    await expect(page.locator('#compare')).toBeVisible();
+    await expect(page.locator('#concept-map-parties')).toBeVisible();
+    await expect(page.locator('#process-loan .sl-process-step')).toHaveCount(6);
+    await expect(page.locator('#quiz .quiz-card')).toHaveCount(10);
+    await page.locator('#tab-sc-b').click();
+    await expect(page.locator('#sc-b')).toContainText(/Repo|Treasury|financing/i);
+  });
+
+  test('new modules have working TOC sidebars', async ({ page }) => {
+    for (const path of [
+      '/pages/guides/transfer-agent-operations.html',
+      '/pages/guides/corporate-actions.html',
+      '/pages/guides/securities-lending-repo.html',
+    ]) {
+      await page.goto(path);
+      const toggle = page.locator('.toc-toggle');
+      const sidebar = page.locator('#tocSidebar');
+      await expect(toggle).toBeVisible();
+      await expect(sidebar).toBeAttached();
+      await expect(sidebar).not.toHaveClass(/open/);
+      await toggle.click();
+      await expect(sidebar).toHaveClass(/open/);
+      await expect(sidebar.getByRole('link').first()).toBeVisible();
+      await page.locator('#tocClose').click();
+      await expect(sidebar).not.toHaveClass(/open/);
+    }
+  });
 });
 
 test.describe('OA canon crosswalk', () => {

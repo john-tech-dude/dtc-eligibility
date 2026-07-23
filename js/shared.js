@@ -144,6 +144,13 @@ function initTOCSidebar() {
     sidebarBackdrop.addEventListener('click', closeSidebar);
   }
 
+  // Close after in-page section navigation (keep external document links open behavior)
+  tocSidebar.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      closeSidebar();
+    });
+  });
+
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && tocSidebar.classList.contains('open')) {

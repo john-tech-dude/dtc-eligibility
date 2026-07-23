@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securities Lending, Repo &amp; Stock Borrow — Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/shared.css">
+<link rel="stylesheet" href="../../styles/teaching.css">
+<link rel="stylesheet" href="../../styles/guides-securities-lending.css">
+<script src="../../js/theme-init.js"></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-neutral" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--bg-ivory, #f9f8f6)"/>
+      <stop offset="0.55" stop-color="var(--bg-cream)"/>
+      <stop offset="1" stop-color="var(--border-faint, #f0ede6)"/>
+    </linearGradient>
+    <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent-light)"/>
+      <stop offset="0.5" stop-color="var(--accent-muted)"/>
+      <stop offset="1" stop-color="var(--accent-muted)"/>
+    </linearGradient>
+    <linearGradient id="g-accent-solid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--accent)"/>
+      <stop offset="0.6" stop-color="var(--accent)"/>
+      <stop offset="1" stop-color="var(--accent-hover, #0d314a)"/>
+    </linearGradient>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--gold-light)"/>
+      <stop offset="0.55" stop-color="var(--gold-light)"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--green-light, #e8f5ec)"/>
+      <stop offset="0.55" stop-color="var(--green-light, #e8f5ec)"/>
+      <stop offset="1" stop-color="var(--green)" stop-opacity="0.36"/>
+    </linearGradient>
+    <filter id="g-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="rgba(0,0,0,0.10)"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="rgba(0,0,0,0.12)"/>
+    </filter>
+  </defs>
+</svg>
+
+<button class="toc-toggle" aria-label="Toggle table of contents">☰</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="Table of contents">
+  <button class="toc-close" id="tocClose" aria-label="Close navigation">×</button>
+  <h4>Contents</h4>
+  <a href="#overview">Overview</a>
+  <a href="#compare">Lending vs Repo</a>
+  <a href="#why">Why Inventory Moves</a>
+  <a href="#parties">Parties &amp; Infrastructure</a>
+  <a href="#concept-map-parties" class="sub">Concept map — parties</a>
+  <a href="#lifecycle">Stock Loan Lifecycle</a>
+  <a href="#process-loan" class="sub">Process map — loan</a>
+  <a href="#legal">Legal Form (UCC 8 lens)</a>
+  <a href="#rehyp">Rehypothecation</a>
+  <a href="#risk">Risk &amp; Defaults</a>
+  <a href="#red-flags">Red Flags</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#quiz">Knowledge Check Quiz</a>
+  <a href="#sources">Sources</a>
+  <div class="toc-divider">Documents</div>
+  <a href="../../index.html" class="external">DTC Documents Index</a>
+  <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
+  <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
+  <a href="corporate-actions.html" class="external">Corporate Actions &amp; Omnibus Proxy</a>
+  <a href="transfer-agent-operations.html" class="external">Transfer Agents — FAST / DWAC / DRS</a>
+  <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
+  <a href="../../glossary.html" class="external">Glossary</a>
+  <a href="../docs/dtc-biblical-exegesis.html" class="external">Companion: Biblical Exegesis <span class="toc-desc">optional</span></a>
+</div>
+
+<div class="page-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-icon">SL</div>
+      <div class="header-text">
+        <h1>Securities Lending, Repo &amp; Stock Borrow</h1>
+        <div class="sub">Inventory · collateral · fails · Interactive teaching guide to moving claims without “selling” them</div>
+      </div>
+    </div>
+    <div class="header-controls">
+      <div class="header-badge">Teaching Tool</div>
+      <button type="button" class="help-btn" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap prose">
+
+<nav class="breadcrumbs" aria-label="Breadcrumb navigation">
+  <a href="../../index.html">Home</a>
+  <span class="breadcrumb-separator">›</span>
+  <a href="../../index.html#documents">Documents</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Teaching Guides</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Securities Lending &amp; Repo</span>
+</nav>
+
+<div class="update-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  <span><strong>Teaching focus:</strong> how street-name inventory is lent, financed, and borrowed inside the DTC/NSCC/FICC world—not a full GMSLA or GMRA treatise. Pair with <a href="collateral-ucc-article-8.html">UCC Article 8 collateral</a> and the <a href="dtc-guide.html">ownership stack</a>.</span>
+</div>
+
+<div class="sl-thesis" id="overview">
+  <p><strong>This guide answers one question:</strong> how can a security move (or be reused) to support short sales, financing, and fail coverage while the economic “owner” story still runs through street name and security entitlements? Deposit and eligibility put shares at DTC. Collateral law explains pledges. <em>This module</em> explains temporary transfers of inventory and cash against that stack.</p>
+</div>
+
+<nav class="quick-nav" aria-label="Quick navigation">
+  <div class="quick-nav-title">Jump to</div>
+  <div class="quick-nav-links">
+    <a class="quick-nav-link" href="#compare">Lending vs repo</a>
+    <a class="quick-nav-link" href="#parties">Parties</a>
+    <a class="quick-nav-link" href="#lifecycle">Loan lifecycle</a>
+    <a class="quick-nav-link" href="#rehyp">Rehypothecation</a>
+    <a class="quick-nav-link" href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<!-- Compare -->
+<h2 class="section-title" id="compare">Securities Lending vs Repo</h2>
+<p>
+  Markets blur the labels. For teaching, separate the <em>economic purpose</em> and the <em>typical legal packaging</em>, then remember both sit on the same book-entry pipes.
+</p>
+
+<table class="sl-compare" aria-label="Securities lending versus repo">
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>Securities lending</th>
+      <th>Repo (repurchase agreement)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Primary purpose</strong></td>
+      <td>Borrow specific securities (shorts, fails, market making)</td>
+      <td>Borrow/lend <em>cash</em> against securities as collateral</td>
+    </tr>
+    <tr>
+      <td><strong>What “moves”</strong></td>
+      <td>Securities out; cash or other collateral in</td>
+      <td>Cash out; securities transferred as collateral (sale + forward repurchase form)</td>
+    </tr>
+    <tr>
+      <td><strong>Driver of pricing</strong></td>
+      <td>Specialness / borrow fee for the CUSIP</td>
+      <td>General collateral vs special repo rate</td>
+    </tr>
+    <tr>
+      <td><strong>Common docs</strong></td>
+      <td>GMSLA-style master + confirms (varies by market)</td>
+      <td>GMRA / MRA-style master + confirms (varies)</td>
+    </tr>
+    <tr>
+      <td><strong>Infra touchpoints</strong></td>
+      <td>DTC deliveries; agent lenders; sometimes CCP services</td>
+      <td>DTC; FICC GSD for much U.S. Treasury repo clearing</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="sl-callout tip">
+  <strong>Teaching rule:</strong> Ask “are we solving for a security or for cash?” First answer that, then map the legal form and the DTC delivery path.
+</div>
+
+<div class="sl-grid-2">
+  <div class="sl-type-card mandatory">
+    <span class="sl-badge mandatory">Securities-driven</span>
+    <h3>Stock loan / stock borrow</h3>
+    <ul>
+      <li>Locate inventory before short sale</li>
+      <li>Cover settlement fails</li>
+      <li>Lender earns a fee; borrower posts collateral</li>
+      <li>“Specials” when supply is tight</li>
+    </ul>
+  </div>
+  <div class="sl-type-card voluntary">
+    <span class="sl-badge voluntary">Cash-driven</span>
+    <h3>Repo / reverse repo</h3>
+    <ul>
+      <li>Finance a long inventory book</li>
+      <li>Invest cash securely overnight/term</li>
+      <li>Rate is the economic headline</li>
+      <li>Collateral schedule and haircuts matter</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Why -->
+<h2 class="section-title" id="why">Why Inventory Moves</h2>
+<p>In a pure “buy and hold forever in DRS” world, lending markets shrink. In street-name markets they are structural.</p>
+<ul class="sources-list">
+  <li><strong>Short selling:</strong> the short seller must deliver shares; borrow supplies the deliverable inventory.</li>
+  <li><strong>Fails:</strong> when a seller cannot deliver on settlement date, borrowing can cure the fail (subject to rules and economics).</li>
+  <li><strong>Market making &amp; ETF activity:</strong> continuous two-way markets need flexible inventory.</li>
+  <li><strong>Balance-sheet financing:</strong> dealers fund positions via repo rather than unsecured borrowing.</li>
+  <li><strong>Corporate actions &amp; recalls:</strong> lenders may recall loans; borrowers re-source inventory—ops intensity spikes around events (see <a href="corporate-actions.html">Corporate Actions</a>).</li>
+</ul>
+
+<!-- Parties -->
+<h2 class="section-title" id="parties">Parties &amp; Infrastructure</h2>
+<p>
+  Names change by desk, but the cast is stable. Beneficial owners often never see the loan ticket; their shares sit in street name at a participant that has (or uses an agent with) lending authority.
+</p>
+
+<div class="diagram-box concept-map" id="concept-map-parties" role="img" aria-labelledby="cm-sl-title" aria-describedby="cm-sl-desc">
+  <div class="diagram-title" id="cm-sl-title">Concept Map — Lending Stack on Book-Entry Pipes</div>
+  <p id="cm-sl-desc" class="visually-hidden">
+    Beneficial owner through participant and optional agent lender; borrower participant receives securities; cash collateral flows opposite; DTC as delivery path; NSCC FICC for clearing context.
+  </p>
+  <svg class="concept-map-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <marker id="sl-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--ink-muted)"/>
+      </marker>
+      <marker id="sl-arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--green)"/>
+      </marker>
+      <marker id="sl-arr-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--accent)"/>
+      </marker>
+    </defs>
+
+    <rect x="40" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
+    <text class="cm-zone-label" x="56" y="42">Supply side</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="80" y="58" width="220" height="40" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="190" y="83" text-anchor="middle" fill="var(--green)" font-size="13">Beneficial owner</text>
+    </g>
+    <line class="cm-edge" x1="190" y1="98" x2="190" y2="118" marker-end="url(#sl-arr)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="80" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="190" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Lender participant / agent</text>
+    </g>
+    <line class="cm-edge-pass" x1="190" y1="160" x2="190" y2="180" marker-end="url(#sl-arr-g)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="80" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="190" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Securities deliver (loan)</text>
+    </g>
+
+    <rect x="380" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
+    <text class="cm-zone-label" x="396" y="42">Demand side</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="420" y="58" width="220" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="530" y="83" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Borrower / short desk</text>
+    </g>
+    <line class="cm-edge" x1="530" y1="98" x2="530" y2="118" marker-end="url(#sl-arr)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="420" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="530" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Borrower participant</text>
+    </g>
+    <line class="cm-edge" x1="530" y1="160" x2="530" y2="180" marker-end="url(#sl-arr-a)"/>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="420" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="530" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Cash / collateral in</text>
+    </g>
+
+    <!-- DTC pipe -->
+    <rect x="120" y="250" width="480" height="100" rx="14" fill="var(--bg-cream)" stroke="var(--border-light)"/>
+    <text class="cm-zone-label" x="140" y="274">Settlement &amp; clearing layer</text>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="160" y="290" width="140" height="40" rx="8" fill="url(#g-accent-solid)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="230" y="315" text-anchor="middle" fill="#fff" font-size="13">DTC book-entry</text>
+    </g>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="330" y="290" width="120" height="40" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="390" y="315" text-anchor="middle" fill="var(--accent)" font-size="13">NSCC</text>
+    </g>
+    <g class="cm-node cm-node-static">
+      <rect class="cm-node-shape" x="480" y="290" width="100" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
+      <text class="cm-node-title" x="530" y="315" text-anchor="middle" fill="var(--gold-deep)" font-size="13">FICC</text>
+    </g>
+  </svg>
+  <p class="cm-caption">Securities and cash move between <strong>participants</strong> over DTC. NSCC/FICC enter when clearing, netting, or CCP services apply—not every bilateral loan uses every box.</p>
+  <div class="cm-legend" aria-hidden="true">
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--green-light,#e8f5ec);border-color:var(--green)"></span> Economic owner / supply</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--gold-light);border-color:var(--gold)"></span> Demand / specials</span>
+    <span class="cm-legend-item"><span class="cm-legend-swatch" style="background:var(--accent)"></span> Depository / CCP layer</span>
+  </div>
+</div>
+
+<!-- Lifecycle -->
+<h2 class="section-title" id="lifecycle">Stock Loan Lifecycle (Simplified)</h2>
+<p>Live programs differ by agent, CCP, and market. This is the teaching skeleton ops and counsel share.</p>
+
+<section class="sl-process" id="process-loan" aria-labelledby="pf-loan-title">
+  <div class="diagram-title" id="pf-loan-title">Process Map — Securities Loan (Teaching Skeleton)</div>
+  <p class="sl-process-lead">From locate to return. Collateral mark-to-market and recalls can fire at any time after step 4.</p>
+  <div class="sl-process-phases" aria-hidden="true">
+    <span class="sl-process-phase">1–2 · Locate &amp; contract</span>
+    <span class="sl-process-phase review">3–4 · Deliver &amp; collateral</span>
+    <span class="sl-process-phase final">5–6 · Life &amp; return</span>
+  </div>
+  <ol class="sl-process-steps">
+    <li class="sl-process-step">
+      <span class="sl-process-num" aria-hidden="true">1</span>
+      <div class="sl-process-body">
+        <h4>Locate / availability</h4>
+        <p>Borrower (or desk) confirms inventory is available to lend—hard-to-borrow lists, agent programs, or internal inventory.</p>
+        <span class="sl-process-meta">CUSIP · quantity · term</span>
+      </div>
+    </li>
+    <li class="sl-process-step">
+      <span class="sl-process-num" aria-hidden="true">2</span>
+      <div class="sl-process-body">
+        <h4>Contract terms</h4>
+        <p>Fee or rebate, collateral type (cash vs non-cash), haircut, recall rights, and master agreement coverage.</p>
+        <span class="sl-process-meta">Price · collateral schedule</span>
+      </div>
+    </li>
+    <li class="sl-process-step review">
+      <span class="sl-process-num" aria-hidden="true">3</span>
+      <div class="sl-process-body">
+        <h4>Securities delivery</h4>
+        <p>Book-entry delivery from lender participant to borrower participant (often via DTC). Legal title packaging depends on the agreement and market.</p>
+        <span class="sl-process-meta">DTC delivery instruction</span>
+      </div>
+    </li>
+    <li class="sl-process-step review">
+      <span class="sl-process-num" aria-hidden="true">4</span>
+      <div class="sl-process-body">
+        <h4>Collateral posted</h4>
+        <p>Cash or securities collateral moves to (or for the account of) the lender side, often marked daily. See also <a href="collateral-ucc-article-8.html">UCC Article 8</a> for entitlement/control concepts.</p>
+        <span class="sl-process-meta">Haircut · mark-to-market</span>
+      </div>
+    </li>
+    <li class="sl-process-step final">
+      <span class="sl-process-num" aria-hidden="true">5</span>
+      <div class="sl-process-body">
+        <h4>Loan life</h4>
+        <p>Borrower uses inventory (e.g., settle a short). Lender may recall; corporate actions allocate economic outcomes per market practice and contract.</p>
+        <span class="sl-process-meta">Recalls · CA adjustments</span>
+      </div>
+    </li>
+    <li class="sl-process-step final">
+      <span class="sl-process-num" aria-hidden="true">6</span>
+      <div class="sl-process-body">
+        <h4>Return &amp; unwind</h4>
+        <p>Equivalent securities returned; collateral released. Fails to return become credit/ops incidents—not “the shares vanished.”</p>
+        <span class="sl-process-meta">Close · reconcile</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- Legal -->
+<h2 class="section-title" id="legal">Legal Form Through a UCC Article 8 Lens</h2>
+<p>
+  This is not a full GMSLA or bankruptcy analysis. Teaching goal: connect lending/repo language to the same security-entitlement world as the collateral module.
+</p>
+<ul class="sources-list">
+  <li><strong>Street-name reality:</strong> most “owners” hold security entitlements against intermediaries, not certificates.</li>
+  <li><strong>Delivery matters:</strong> book-entry delivery changes who the intermediary shows as entitled—ops must match legal intent.</li>
+  <li><strong>Collateral is not decoration:</strong> cash or securities posted against a loan are themselves claims that need clear control and return paths (<a href="collateral-ucc-article-8.html#aca">ACA / control</a> concepts for account-based collateral).</li>
+  <li><strong>Title transfer vs security interest:</strong> repo is often structured as sale + repurchase; stock loans use different master terms—read the docs before assuming “just a pledge.”</li>
+</ul>
+
+<div class="sl-callout warn">
+  <strong>Counsel note:</strong> Characterization (true sale, secured loan, entitlement transfer) is jurisdiction- and document-specific. Teach the questions; do not invent a single global answer.
+</div>
+
+<!-- Rehyp -->
+<h2 class="section-title" id="rehyp">Rehypothecation &amp; Reuse</h2>
+<p>
+  <strong>Rehypothecation</strong> (and related reuse practices) means collateral or inventory posted by a client is used again—by a prime broker or other intermediary—to finance its own book or to lend onward.
+  The collateral guide introduces the term; here it is operational: reuse multiplies claims against the same underlying position stack.
+</p>
+<div class="sl-grid-2">
+  <div class="sl-type-card mandatory">
+    <span class="sl-badge mandatory">Why firms do it</span>
+    <h3>Balance-sheet efficiency</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      Funding longs, covering shorts, and lowering external borrow cost. Customer agreements and regulation set the outer fence.
+    </p>
+  </div>
+  <div class="sl-type-card voluntary">
+    <span class="sl-badge voluntary">What can go wrong</span>
+    <h3>Chain of reuse</h3>
+    <p style="margin:0;font-size:0.9rem;color:var(--ink-secondary);line-height:1.55;">
+      In intermediary stress, customers discover their “held” securities were re-pledged. Teaching cases (e.g., Lehman-era lessons) emphasize documentation, segregation, and who has control—not rumor.
+    </p>
+  </div>
+</div>
+
+<!-- Risk -->
+<h2 class="section-title" id="risk">Risk, Fails &amp; Defaults</h2>
+<table class="sl-compare" aria-label="Risk types in lending and repo">
+  <thead>
+    <tr>
+      <th>Risk</th>
+      <th>Plain meaning</th>
+      <th>Ops signal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Counterparty credit</td>
+      <td>Other side fails to return securities or collateral</td>
+      <td>Marks, haircuts, CCP membership, close-out rights</td>
+    </tr>
+    <tr>
+      <td>Liquidity / specials</td>
+      <td>Hard-to-borrow spikes fees or freezes locates</td>
+      <td>HTB lists, recall storms</td>
+    </tr>
+    <tr>
+      <td>Settlement fail</td>
+      <td>Deliverable not available on settlement date</td>
+      <td>Buy-ins, fail charges, borrow to cover</td>
+    </tr>
+    <tr>
+      <td>Operational mismatch</td>
+      <td>Wrong CUSIP, quantity, or account</td>
+      <td>DK / reclaim / break reports</td>
+    </tr>
+    <tr>
+      <td>Legal / documentation</td>
+      <td>Master not covering product or entity</td>
+      <td>Onboarding gaps; unauthorized lending</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Red flags -->
+<h2 class="section-title" id="red-flags">Red Flags</h2>
+<ul class="sources-list">
+  <li><strong>“My broker lent my shares without asking”</strong> — check account agreements and street-name lending authority; many margin accounts authorize lending.</li>
+  <li><strong>Assuming DRS shares are in the lendable float</strong> — DRS is not participant inventory until deposited (see <a href="transfer-agent-operations.html#drs">TA / DRS</a>).</li>
+  <li><strong>Ignoring corporate action calendars</strong> — recalls and transformations around record dates are normal, not bugs.</li>
+  <li><strong>Collapsing repo and stock loan into one legal story</strong> — purpose and documentation differ even when DTC pipes look similar.</li>
+  <li><strong>Treating collateral as free cash</strong> — haircuts, segregation, and return rights are the point of the structure.</li>
+</ul>
+
+<!-- Scenarios -->
+<h2 class="section-title" id="scenarios">Scenario-Based Learning</h2>
+<div class="scenario-tabs" role="tablist" aria-label="Lending scenarios">
+  <button type="button" class="scenario-tab active" role="tab" aria-selected="true" data-target="sc-a" id="tab-sc-a">A · Short locate</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-b" id="tab-sc-b">B · Repo funding</button>
+  <button type="button" class="scenario-tab" role="tab" aria-selected="false" data-target="sc-c" id="tab-sc-c">C · Recall + CA</button>
+</div>
+
+<div class="scenario-panel active" id="sc-a" role="tabpanel" aria-labelledby="tab-sc-a">
+  <h4>Scenario A — Hard-to-borrow short</h4>
+  <p>A client wants to short a mid-cap equity. The desk reports “HTB — fee elevated.” The client asks why they cannot just “use exchange inventory.”</p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>What problem is the stock loan solving?</li>
+    <li>Who must deliver on settlement if the short is filled?</li>
+    <li>How does street name at a participant enable the locate?</li>
+  </ul>
+  <div class="scenario-tip"><strong>Key takeaway:</strong> Shorts require a deliverable. Borrow supplies inventory; price reflects scarcity, not a DTC “glitch.”</div>
+</div>
+
+<div class="scenario-panel" id="sc-b" role="tabpanel" aria-labelledby="tab-sc-b" hidden>
+  <h4>Scenario B — Financing a Treasury long</h4>
+  <p>A dealer holds Treasuries and needs overnight cash. The financing desk “repos out” the bonds. Junior staff call it a “stock loan.”</p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>Is the primary objective securities or cash?</li>
+    <li>Where might FICC GSD appear in the story?</li>
+    <li>What should junior staff say instead of “stock loan”?</li>
+  </ul>
+  <div class="scenario-tip"><strong>Key takeaway:</strong> Cash-driven trades are repo/financing language even when securities move on the same pipes.</div>
+</div>
+
+<div class="scenario-panel" id="sc-c" role="tabpanel" aria-labelledby="tab-sc-c" hidden>
+  <h4>Scenario C — Lender recall into a record date</h4>
+  <p>An agent lender recalls a large loan two days before a record date. The borrower must re-source inventory or cover. Ops is flooded with tickets.</p>
+  <p><strong>Questions:</strong></p>
+  <ul>
+    <li>Why might the lender recall ahead of a record date?</li>
+    <li>What corporate-action module concepts apply to who is entitled?</li>
+    <li>What is the borrower’s operational menu?</li>
+  </ul>
+  <div class="scenario-tip"><strong>Key takeaway:</strong> Lending life intersects entitlement calendars. Recall + CA is a designed stress, not random noise.</div>
+</div>
+
+<!-- Quiz -->
+<section class="quiz-section" id="quiz" aria-label="Knowledge check quiz">
+  <h2 class="section-heading">Knowledge Check Quiz</h2>
+  <p class="quiz-intro">Ten questions. Passing score: 80%. Progress key: module <code>securities-lending</code>.</p>
+  <div class="quiz-score-bar" aria-hidden="true"><div class="quiz-score-fill" id="quizScoreFill"></div></div>
+  <p class="quiz-score-text" id="quizScoreText">0 / 10 correct (0%)</p>
+  <div class="quiz-container">
+
+    <div class="quiz-card" data-q="1">
+      <div class="quiz-num">1</div>
+      <div class="quiz-content">
+        <h4>Securities lending is primarily driven by demand for:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="a"><span>Unsecured bank loans only</span></label>
+          <label><input type="radio" name="q1" value="b"><span>Specific securities inventory (e.g., to settle shorts or fails)</span></label>
+          <label><input type="radio" name="q1" value="c"><span>Physical gold settlement</span></label>
+          <label><input type="radio" name="q1" value="d"><span>Issuer IPO roadshows</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-1"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="2">
+      <div class="quiz-num">2</div>
+      <div class="quiz-content">
+        <h4>Repo is best taught as primarily:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="a"><span>A cash financing trade using securities as collateral</span></label>
+          <label><input type="radio" name="q2" value="b"><span>A tool only for retail DRS holders</span></label>
+          <label><input type="radio" name="q2" value="c"><span>Identical to a mandatory stock split</span></label>
+          <label><input type="radio" name="q2" value="d"><span>A transfer-agent FAST function</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-2"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="3">
+      <div class="quiz-num">3</div>
+      <div class="quiz-content">
+        <h4>In U.S. equities street name, loan deliveries typically move through:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="a"><span>County land records</span></label>
+          <label><input type="radio" name="q3" value="b"><span>Book-entry instructions between DTC participants</span></label>
+          <label><input type="radio" name="q3" value="c"><span>Paper certificates mailed overnight only</span></label>
+          <label><input type="radio" name="q3" value="d"><span>SWIFT MT700 letters of credit exclusively</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-3"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="4">
+      <div class="quiz-num">4</div>
+      <div class="quiz-content">
+        <h4>A “locate” in short-sale context is mainly about:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="a"><span>Finding available borrow inventory before selling short</span></label>
+          <label><input type="radio" name="q4" value="b"><span>Finding the issuer’s headquarters address</span></label>
+          <label><input type="radio" name="q4" value="c"><span>Assigning a new CUSIP</span></label>
+          <label><input type="radio" name="q4" value="d"><span>Choosing a transfer agent</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-4"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="5">
+      <div class="quiz-num">5</div>
+      <div class="quiz-content">
+        <h4>Cash or securities posted against a stock loan are best described as:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="a"><span>Irrelevant once the loan starts</span></label>
+          <label><input type="radio" name="q5" value="b"><span>Collateral that must be marked, controlled, and returned per contract</span></label>
+          <label><input type="radio" name="q5" value="c"><span>Always donated to the exchange</span></label>
+          <label><input type="radio" name="q5" value="d"><span>The same as a stock split</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-5"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="6">
+      <div class="quiz-num">6</div>
+      <div class="quiz-content">
+        <h4>Rehypothecation refers to:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q6" value="a"><span>Reusing client collateral/inventory in further financing or lending</span></label>
+          <label><input type="radio" name="q6" value="b"><span>Printing a new jumbo certificate each day</span></label>
+          <label><input type="radio" name="q6" value="c"><span>Mandatory conversion of preferred stock</span></label>
+          <label><input type="radio" name="q6" value="d"><span>Ex-date calculation under T+1</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-6"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="7">
+      <div class="quiz-num">7</div>
+      <div class="quiz-content">
+        <h4>FICC is most associated in this curriculum with:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q7" value="a"><span>Municipal bond printing presses</span></label>
+          <label><input type="radio" name="q7" value="b"><span>Fixed income clearing (including significant U.S. Treasury repo activity)</span></label>
+          <label><input type="radio" name="q7" value="c"><span>Issuing SF 28 affidavits</span></label>
+          <label><input type="radio" name="q7" value="d"><span>DRS statement design</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-7"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="8">
+      <div class="quiz-num">8</div>
+      <div class="quiz-content">
+        <h4>A lender recall shortly before a record date most directly interacts with:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="a"><span>Corporate action entitlement and who holds inventory over the date</span></label>
+          <label><input type="radio" name="q8" value="b"><span>The color of the issuer’s logo</span></label>
+          <label><input type="radio" name="q8" value="c"><span>Whether CUSIPs have nine characters</span></label>
+          <label><input type="radio" name="q8" value="d"><span>Whether the company has a blog</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-8"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="9">
+      <div class="quiz-num">9</div>
+      <div class="quiz-content">
+        <h4>DRS holdings are generally:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="a"><span>Automatically in the broker’s lendable street-name inventory</span></label>
+          <label><input type="radio" name="q9" value="b"><span>On the transfer agent register in the investor’s name—not participant inventory until deposited</span></label>
+          <label><input type="radio" name="q9" value="c"><span>Cleared only at FICC</span></label>
+          <label><input type="radio" name="q9" value="d"><span>Illegal to hold</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-9"></div>
+      </div>
+    </div>
+
+    <div class="quiz-card" data-q="10">
+      <div class="quiz-num">10</div>
+      <div class="quiz-content">
+        <h4>This module’s thesis is best captured by:</h4>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="a"><span>Book-entry markets use temporary inventory and cash financing trades on DTC-linked pipes; purpose and docs distinguish loan vs repo</span></label>
+          <label><input type="radio" name="q10" value="b"><span>All securities must be paper certificates</span></label>
+          <label><input type="radio" name="q10" value="c"><span>Transfer agents clear equities through CNS</span></label>
+          <label><input type="radio" name="q10" value="d"><span>Repo eliminates the need for collateral</span></label>
+        </div>
+        <div class="quiz-feedback" id="fb-10"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-actions">
+    <button type="button" class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Check all answers</button>
+    <button type="button" class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset quiz</button>
+  </div>
+  <div class="quiz-result" id="quizResult"></div>
+</section>
+
+<h2 class="section-title" id="sources">Sources &amp; Further Reading</h2>
+<ul class="sources-list">
+  <li>DTCC / industry educational materials on securities financing and settlement.</li>
+  <li>FICC / NSCC public descriptions of clearing roles (see also DTC guide infrastructure sections).</li>
+  <li>Market association materials on GMSLA / GMRA concepts (high-level; use counsel for live docs).</li>
+  <li>Within this collection: <a href="collateral-ucc-article-8.html">UCC Article 8</a>, <a href="dtc-guide.html">Ownership / FICC / NSCC</a>, <a href="corporate-actions.html">Corporate actions</a>, <a href="../../glossary.html">Glossary</a>.</li>
+</ul>
+<p class="citation">Educational use only. Not legal, credit, investment, or operational advice. Master agreements and firm procedures control live trades.</p>
+
+</div><!-- /.wrap -->
+
+<footer class="page-footer" data-layout="enhance">
+  <div class="footer-content">
+    <nav class="footer-site-nav" aria-label="Site navigation">
+      <a href="../../index.html" class="footer-home-link">Home</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../sitemap.html">Site Map</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../index.html#documents">All Documents</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="../../glossary.html">Glossary</a>
+      <span class="footer-nav-sep" aria-hidden="true">·</span>
+      <a href="collateral-ucc-article-8.html">UCC Article 8</a>
+    </nav>
+    <div class="footer-info">
+      <div class="footer-version">July 2026 · Securities Lending &amp; Repo Teaching Guide v1.0 · Stock borrow · Financing</div>
+      <div>Inventory · collateral · fails · rehypothecation · DTC / NSCC / FICC context</div>
+      <div class="footer-links">
+        <a href="https://www.dtcc.com" rel="noopener">DTCC</a>
+        <span class="footer-divider">•</span>
+        <a href="dtc-guide.html">Ownership guide</a>
+        <span class="footer-divider">•</span>
+        <a href="collateral-ucc-article-8.html">Collateral</a>
+        <span class="footer-divider">•</span>
+        <a href="corporate-actions.html">Corporate actions</a>
+      </div>
+      <div class="footer-legal">Legal Notice: This teaching guide is provided for educational purposes only. It does not constitute legal, credit, investment, or operational advice. Securities financing documentation and CCP rules vary. Consult official DTCC materials, applicable master agreements, and qualified counsel for live transactions.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-how-to-use" role="dialog" aria-modal="true" aria-labelledby="modal-title-how-to-use">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-how-to-use">How to Use This Teaching Guide</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="def-callout">
+        <div class="def-type">Teaching module</div>
+        <div class="def-word">Securities Lending, Repo &amp; Stock Borrow</div>
+        <p>How book-entry inventory and cash financing trades sit on DTC-linked pipes—and how purpose and documentation separate a stock loan from a repo.</p>
+      </div>
+      <p class="modal-section-title">How to navigate</p>
+      <ul>
+        <li>Open the <strong>☰ menu</strong> (or <strong>Ctrl/Cmd+B</strong>) for the table of contents.</li>
+        <li>Start with <strong>lending vs repo</strong>, then the <strong>parties map</strong> and <strong>loan lifecycle</strong>.</li>
+        <li>Connect <strong>rehypothecation</strong> back to the collateral module.</li>
+        <li>Work all three <strong>Scenarios</strong>, then pass the quiz at <strong>80%</strong>.</li>
+      </ul>
+      <p class="modal-section-title">Prerequisites</p>
+      <ul>
+        <li><a href="dtc-guide.html">Securities Ownership Wizard</a> — street name, DTC, NSCC/FICC overview</li>
+        <li><a href="collateral-ucc-article-8.html">UCC Article 8 collateral</a> — security entitlements and control</li>
+      </ul>
+      <div class="tip-box">
+        <strong>Learning tip</strong>
+        Always ask whether the desk is solving for a <em>security</em> or for <em>cash</em>. That single question prevents most loan/repo confusion.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../js/shared.js" defer></script>
+<script src="../../js/layout.js" defer></script>
+<script src="../../js/quiz.js"></script>
+<script>
+const slAnswers = {
+  q1: { correct: 'b', explanation: 'Securities lending is driven by need for specific inventory—shorts, fails, market making—not generic unsecured credit.' },
+  q2: { correct: 'a', explanation: 'Repo is primarily a cash financing structure using securities as collateral (sale+repurchase packaging varies by docs).' },
+  q3: { correct: 'b', explanation: 'Street-name deliveries between participants are book-entry over DTC.' },
+  q4: { correct: 'a', explanation: 'A locate confirms available borrow before shorting.' },
+  q5: { correct: 'b', explanation: 'Collateral is central—marked, controlled, and returned per the agreement.' },
+  q6: { correct: 'a', explanation: 'Rehypothecation/reuse puts client collateral back into financing or lending chains.' },
+  q7: { correct: 'b', explanation: 'FICC is the fixed-income clearing arm; Treasury repo clearing is a core teaching association.' },
+  q8: { correct: 'a', explanation: 'Recalls near record dates interact with entitlement who-holds-what questions.' },
+  q9: { correct: 'b', explanation: 'DRS is on TA books in investor name; not broker lendable inventory until deposited.' },
+  q10: { correct: 'a', explanation: 'Thesis: temporary inventory/cash trades on book-entry pipes; purpose and docs distinguish products.' }
+};
+
+function checkAllAnswers() {
+  let correct = 0;
+  const total = 10;
+  for (let i = 1; i <= total; i++) {
+    const selected = document.querySelector('input[name="q' + i + '"]:checked');
+    const card = document.querySelector('.quiz-card[data-q="' + i + '"]');
+    const fb = document.getElementById('fb-' + i);
+    const answer = slAnswers['q' + i];
+    if (!selected) {
+      card.classList.remove('correct', 'incorrect');
+      fb.className = 'quiz-feedback show incorrect';
+      fb.innerHTML = '<strong>Please select an answer.</strong>';
+      continue;
+    }
+    const isCorrect = selected.value === answer.correct;
+    card.classList.remove('correct', 'incorrect');
+    card.classList.add(isCorrect ? 'correct' : 'incorrect');
+    fb.className = 'quiz-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+    fb.innerHTML = (isCorrect ? '<strong>✓ Correct!</strong> ' : '<strong>✗ Incorrect.</strong> ') + answer.explanation;
+    if (isCorrect) correct++;
+  }
+  const pct = Math.round((correct / total) * 100);
+  const fill = document.getElementById('quizScoreFill');
+  const text = document.getElementById('quizScoreText');
+  const result = document.getElementById('quizResult');
+  fill.style.width = pct + '%';
+  fill.className = 'quiz-score-fill' + (pct >= 80 ? ' pass' : ' fail');
+  text.textContent = correct + ' / ' + total + ' correct (' + pct + '%)';
+  result.className = 'quiz-result show' + (pct >= 80 ? ' pass' : ' fail');
+  result.innerHTML = pct >= 80
+    ? '🎉 <strong>Passed with ' + pct + '%.</strong> You can separate stock loan from repo on book-entry pipes.'
+    : '⚠️ <strong>Score ' + pct + '%.</strong> Review lending vs repo and the loan lifecycle. Passing is 80%.';
+  try {
+    const key = 'dtc-progress-v2';
+    const progress = JSON.parse(localStorage.getItem(key) || '{}');
+    if (!progress['securities-lending']) progress['securities-lending'] = { viewed: true, quizScore: null };
+    progress['securities-lending'].viewed = true;
+    progress['securities-lending'].quizScore = pct;
+    localStorage.setItem(key, JSON.stringify(progress));
+  } catch (e) {}
+}
+
+function showScenario(id) {
+  document.querySelectorAll('.scenario-panel').forEach(function (p) {
+    p.classList.remove('active');
+    p.hidden = true;
+  });
+  document.querySelectorAll('.scenario-tab').forEach(function (t) {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  var panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.add('active');
+    panel.hidden = false;
+  }
+  var tab = document.querySelector('.scenario-tab[data-target="' + id + '"]');
+  if (tab) {
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+  }
+}
+
+document.querySelectorAll('.scenario-tab').forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    showScenario(tab.getAttribute('data-target'));
+  });
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function () { setupQuiz(slAnswers, 10); });
+} else {
+  setupQuiz(slAnswers, 10);
+}
+</script>
+</body>
+</html>

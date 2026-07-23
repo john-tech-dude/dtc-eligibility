@@ -76,6 +76,7 @@
   <a href="dtc-guide.html" class="external">Securities Ownership Wizard — DTC Guide</a>
   <a href="../forms/dtc-eligibility-questionnaire.html" class="external">DTC Eligibility Questionnaire</a>
   <a href="corporate-actions.html" class="external">Corporate Actions &amp; Omnibus Proxy</a>
+  <a href="securities-lending-repo.html" class="external">Securities Lending &amp; Repo</a>
   <a href="collateral-ucc-article-8.html" class="external">Securities as Collateral — UCC Article 8</a>
   <a href="corporate-structures.html" class="external">LLCs &amp; Corporate Structures</a>
   <a href="trusts-fiduciary.html" class="external">Trusts &amp; Fiduciary Structures</a>
@@ -91,13 +92,13 @@
       <div class="header-icon">TA</div>
       <div class="header-text">
         <h1>Transfer Agents &amp; the Issuer–DTC Interface</h1>
-        <div class="sub">FAST, DWAC, DRS, and the day-to-day job of moving shares between issuer books and Cede &amp; Co.</div>
+        <div class="sub">FAST · DWAC · DRS · Interactive teaching guide to the issuer–depository pipe</div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div class="header-badge">Core · Issuer Ops</div>
+    <div class="header-controls">
+      <div class="header-badge">Teaching Tool</div>
       <button type="button" class="help-btn" aria-label="How to use this guide" onclick="openModal('modal-how-to-use')">?</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -124,7 +125,9 @@
   <span class="breadcrumb-separator">›</span>
   <a href="../../index.html#documents">Documents</a>
   <span class="breadcrumb-separator">›</span>
-  <span class="breadcrumb-current">Transfer Agent Operations</span>
+  <span class="breadcrumb-current">Teaching Guides</span>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current">Transfer Agents &amp; Issuer–DTC Interface</span>
 </nav>
 
 <div class="update-banner">
@@ -267,14 +270,14 @@
     <text class="cm-edge-label" x="460" y="188">DWAC instruct</text>
 
     <!-- Issuer -->
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer — open definition">
       <rect class="cm-node-shape" x="270" y="24" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="#fff">Issuer</text>
       <text class="cm-node-sub" x="360" y="57" text-anchor="middle" fill="var(--accent-muted)">Corporation · board authority</text>
     </g>
 
     <!-- Transfer Agent hub -->
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer Agent — open definition">
       <circle class="ta-hub-ring" cx="360" cy="134" r="78"/>
       <rect class="cm-node-shape" x="250" y="104" width="220" height="64" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-glow-gold)"/>
       <text class="cm-node-title" x="360" y="128" text-anchor="middle" fill="var(--gold-deep)" font-size="15">Transfer Agent</text>
@@ -283,7 +286,7 @@
     </g>
 
     <!-- DRS holders -->
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="drs" tabindex="0" role="button" aria-label="DRS holders — open definition">
       <rect class="cm-node-shape" x="48" y="252" width="184" height="72" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="140" y="278" text-anchor="middle" fill="var(--green)">DRS holders</text>
       <text class="cm-node-sub" x="140" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Investor name on TA books</text>
@@ -291,7 +294,7 @@
     </g>
 
     <!-- DTC / Cede -->
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="DTC / Cede & Co. — open definition">
       <rect class="cm-node-shape" x="268" y="252" width="184" height="72" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.6" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="278" text-anchor="middle" fill="var(--accent)">DTC / Cede &amp; Co.</text>
       <text class="cm-node-sub" x="360" y="296" text-anchor="middle" fill="var(--ink-tertiary)">FAST balance certificate</text>
@@ -299,7 +302,7 @@
     </g>
 
     <!-- Participants -->
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="participants" tabindex="0" role="button" aria-label="Participants — open definition">
       <rect class="cm-node-shape" x="488" y="252" width="184" height="72" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.4" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="580" y="278" text-anchor="middle" fill="var(--ink)">Participants</text>
       <text class="cm-node-sub" x="580" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank</text>
@@ -939,6 +942,174 @@
   </div>
 </div>
 
+<!-- Modal definitions for diagram elements -->
+<div class="modal-overlay" id="modal-issuer" role="dialog" aria-modal="true" aria-labelledby="modal-title-issuer">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-issuer">Issuer</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-issuer')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The issuer is the corporation or entity that issues the securities. They have the ultimate authority over their stock and are responsible for appointing a transfer agent to maintain the official register of shareholders.</p>
+      <p class="modal-section-title">Key Responsibilities</p>
+      <ul>
+        <li>Appoint and oversee the transfer agent</li>
+        <li>Authorize share issuances and corporate actions</li>
+        <li>Maintain corporate governance and compliance</li>
+        <li>Ensure proper securities registration and transfer procedures</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-transfer-agent" role="dialog" aria-modal="true" aria-labelledby="modal-title-transfer-agent">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-transfer-agent">Transfer Agent</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-transfer-agent')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The transfer agent is the operational hub appointed by the issuer to maintain the official register of shareholders, process transfers, and manage electronic book-entry movements through the FAST program.</p>
+      <p class="modal-section-title">Core Functions</p>
+      <ul>
+        <li>Maintain the issuer's official shareholder register</li>
+        <li>Process share transfers and certificate handling</li>
+        <li>Manage FAST electronic balance adjustments with DTC</li>
+        <li>Handle DRS (Direct Registration System) accounts</li>
+        <li>Process restriction removals and legend compliance</li>
+        <li>Execute DWAC (Deposit/Withdrawal at Custodian) instructions</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-fast');return false;">FAST</a>, <a href="#" onclick="openModal('modal-drs');return false;">DRS</a>, <a href="#" onclick="openModal('modal-dwac');return false;">DWAC</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-drs" role="dialog" aria-modal="true" aria-labelledby="modal-title-drs">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-drs">DRS (Direct Registration System)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-drs')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The Direct Registration System allows investors to hold securities directly on the books of the issuer or its transfer agent, without a physical certificate and without the shares being held in street name through a broker.</p>
+      <p class="modal-section-title">Key Features</p>
+      <ul>
+        <li>Investor's name appears directly on the issuer's register</li>
+        <li>No physical certificates required</li>
+        <li>Direct communication from the issuer and transfer agent</li>
+        <li>Protection against broker insolvency (securities not held by broker)</li>
+        <li>Can be converted to street name for trading</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-transfer-agent');return false;">Transfer Agent</a>, <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cede" role="dialog" aria-modal="true" aria-labelledby="modal-title-cede">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-cede">DTC / Cede &amp; Co.</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cede')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DTC (The Depository Trust Company) holds securities in book-entry form through its nominee, Cede & Co. All securities deposited with DTC are registered in the name of Cede & Co., making it the single largest record holder for most public companies.</p>
+      <p class="modal-section-title">Key Points</p>
+      <ul>
+        <li>Cede & Co. is DTC's partnership nominee</li>
+        <li>Issuer and trustee have no knowledge of beneficial owners</li>
+        <li>Facilitates electronic settlement and book-entry transfers</li>
+        <li>Enables street name ownership through brokers</li>
+        <li>Reduces certificate movement and operational costs</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-fast');return false;">FAST</a>, <a href="#" onclick="openModal('modal-participants');return false;">Participants</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-participants" role="dialog" aria-modal="true" aria-labelledby="modal-title-participants">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-participants">DTC Participants</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-participants')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DTC participants are broker-dealers, banks, and other financial institutions that maintain accounts at DTC and can hold securities for their customers in street name. They are the intermediaries between individual investors and the depository system.</p>
+      <p class="modal-section-title">Participant Functions</p>
+      <ul>
+        <li>Hold customer securities in street name</li>
+        <li>Execute trades and settle through DTC</li>
+        <li>Provide custody and clearing services</li>
+        <li>Interface with DTC for electronic transfers</li>
+        <li>Manage customer accounts and reporting</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a>, <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-fast" role="dialog" aria-modal="true" aria-labelledby="modal-title-fast">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-fast">FAST (Fast Automated Securities Transfer)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-fast')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>FAST is DTC's program that allows transfer agents to electronically move securities between DTC and the transfer agent without physical certificates. It enables automated balance adjustments and is essential for modern securities operations.</p>
+      <p class="modal-section-title">Key Benefits</p>
+      <ul>
+        <li>Eliminates physical certificate movement</li>
+        <li>Enables same-day settlement for many transactions</li>
+        <li>Reduces operational costs and errors</li>
+        <li>Facilitates automated corporate actions processing</li>
+        <li>Required for DTC eligibility in most cases</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-transfer-agent');return false;">Transfer Agent</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dwac" role="dialog" aria-modal="true" aria-labelledby="modal-title-dwac">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-dwac">DWAC (Deposit/Withdrawal at Custodian)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-dwac')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DWAC is the instruction path that allows DTC participants to communicate directly with the transfer agent to deposit or withdraw securities from DTC without physical certificates. It's the operational link between street name and direct registration.</p>
+      <p class="modal-section-title">DWAC Process</p>
+      <ul>
+        <li>Participant initiates DWAC instruction to transfer agent</li>
+        <li>Transfer agent validates the instruction and restrictions</li>
+        <li>For withdrawals: transfer agent issues book-entry credit to participant</li>
+        <li>For deposits: participant transfers book-entry position to transfer agent</li>
+        <li>Transfer agent updates issuer register accordingly</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-transfer-agent');return false;">Transfer Agent</a>, <a href="#" onclick="openModal('modal-participants');return false;">Participants</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-street-name" role="dialog" aria-modal="true" aria-labelledby="modal-title-street-name">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-street-name">Street Name Ownership</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-street-name')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Street name ownership refers to the practice where securities are held in the name of a broker-dealer or other nominee rather than in the investor's name. The actual beneficial owner is the investor, but the registered owner on the issuer's books is the broker's nominee.</p>
+      <p class="modal-section-title">Characteristics</p>
+      <ul>
+        <li>Broker holds securities in nominee name</li>
+        <li>Investor appears as beneficial owner, not registered owner</li>
+        <li>Facilitates trading and settlement</li>
+        <li>Broker provides custody and administrative services</li>
+        <li>Most common form of securities ownership today</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-drs');return false;">DRS</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
+    </div>
+  </div>
+</div>
+
 <script src="../../js/shared.js" defer></script>
 <script src="../../js/layout.js" defer></script>
 <script src="../../js/quiz.js"></script>
@@ -1049,6 +1220,41 @@ if (typeof openModal === 'undefined') {
     }
   });
 }
+
+// Modal functionality for diagram interactions
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Focus on the modal for accessibility
+    modal.querySelector('.modal-close').focus();
+  }
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Handle diagram node clicks
+document.querySelectorAll('.cm-node[data-modal]').forEach(function(node) {
+  node.addEventListener('click', function() {
+    const modalId = this.getAttribute('data-modal');
+    openModal('modal-' + modalId);
+  });
+  
+  node.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const modalId = this.getAttribute('data-modal');
+      openModal('modal-' + modalId);
+    }
+  });
+});
 </script>
 </body>
 </html>

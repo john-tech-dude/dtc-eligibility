@@ -583,6 +583,15 @@
         .hub-line:nth-child(8) {
             animation-delay: 1.25s;
         }
+        .hub-line:nth-child(9) {
+            animation-delay: 1.4s;
+        }
+        .hub-line:nth-child(10) {
+            animation-delay: 1.55s;
+        }
+        .hub-line:nth-child(11) {
+            animation-delay: 1.7s;
+        }
         @keyframes drawLine {
             to {
                 stroke-dashoffset: 0;
@@ -634,6 +643,21 @@
         }
         .hub-node.live:nth-child(7) {
             animation-delay: 2.4s;
+        }
+        .hub-node.live:nth-child(8) {
+            animation-delay: 2.8s;
+        }
+        .hub-node.live:nth-child(9) {
+            animation-delay: 3.2s;
+        }
+        .hub-node.live:nth-child(10) {
+            animation-delay: 3.6s;
+        }
+        .hub-node.live:nth-child(11) {
+            animation-delay: 4s;
+        }
+        .hub-node.live:nth-child(12) {
+            animation-delay: 4.4s;
         }
         @keyframes nodePulse {
             0%,
@@ -1893,6 +1917,7 @@
         <a href="pages/guides/collateral-ucc-article-8.html" class="external" target="_blank" rel="noopener">Securities as Collateral — UCC Article 8</a>
         <a href="pages/guides/corporate-actions.html" class="external" target="_blank" rel="noopener">Corporate Actions &amp; Omnibus Proxy</a>
         <a href="pages/guides/transfer-agent-operations.html" class="external" target="_blank" rel="noopener">Transfer Agents — FAST / DWAC / DRS</a>
+        <a href="pages/guides/securities-lending-repo.html" class="external" target="_blank" rel="noopener">Securities Lending &amp; Repo</a>
         <a href="pages/guides/sf28-teaching-guide.html" class="external" target="_blank" rel="noopener">SF 28 — Affidavit of Individual Surety</a>
         <a href="pages/forms/dtc-eligibility-questionnaire.html" class="external" target="_blank" rel="noopener">DTC Eligibility Questionnaire</a>
         <a href="pages/docs/treasury-international-bill-of-exchange.html" class="external" target="_blank" rel="noopener">Treasury International Bill of Exchange</a>
@@ -1943,7 +1968,7 @@
                 </div>
             </div>
             <div class="hero-graphic">
-                <svg viewBox="0 0 720 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive diagram showing DTC book-entry settlement at the center, connected to eight equally spaced teaching guide topics. The center hub links to the DTC guide; click any node to navigate.">
+                <svg viewBox="0 0 720 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive diagram showing DTC book-entry settlement at the center, connected to eleven teaching guide topics including transfer agents, corporate actions, and securities lending. Click any node to navigate.">
                     <defs>
                         <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                             <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -1956,31 +1981,27 @@
                     </defs>
 
                     <!--
-                      Equal 45° spokes on radius 270 around (360,320).
-                      Cards are 128×46; R is large enough that top (Eligibility) and
-                      bottom (Collateral) clear diagonal neighbors by ~33px vertically
-                      / ~63px horizontally so nothing touches. All eight nodes share
-                      the same radius and angular step.
-                      Order clockwise from top: Eligibility, Trade, SF28, Settlement Mechanics,
-                      Collateral, Foundations, Trusts, Corporate.
-                      Hub (center) now links to pages/guides/dtc-guide.html — it's the
-                      conceptual root the whole diagram branches from. The former
-                      "Securities Ownership Wizard" spoke pointed to the same URL as the
-                      hub, so it was renamed to "Settlement Mechanics" and deep-links to
-                      dtc-guide.html#t1 to avoid a duplicate destination.
+                      Eleven equal spokes (~32.7°) on radius 278 around (360,320).
+                      Cards 120×44. Clockwise from top:
+                      Eligibility, Transfer Agent, Trade Finance, SF 28, Corp Actions,
+                      Settlement (T+1), Collateral, Lending & Repo, Foundations, Trusts, Corporate.
+                      Hub → dtc-guide.html. Settlement deep-links dtc-guide.html#t1.
                     -->
                     <g stroke="var(--border)" stroke-width="1.5" opacity="0.6">
-                        <line class="hub-line" x1="360" y1="320" x2="360" y2="50" />
-                        <line class="hub-line" x1="360" y1="320" x2="551" y2="129" />
-                        <line class="hub-line" x1="360" y1="320" x2="630" y2="320" />
-                        <line class="hub-line" x1="360" y1="320" x2="551" y2="511" />
-                        <line class="hub-line" x1="360" y1="320" x2="360" y2="590" />
-                        <line class="hub-line" x1="360" y1="320" x2="169" y2="511" />
-                        <line class="hub-line" x1="360" y1="320" x2="90" y2="320" />
-                        <line class="hub-line" x1="360" y1="320" x2="169" y2="129" />
+                        <line class="hub-line" x1="360" y1="320" x2="360" y2="42" />
+                        <line class="hub-line" x1="360" y1="320" x2="510" y2="86" />
+                        <line class="hub-line" x1="360" y1="320" x2="613" y2="205" />
+                        <line class="hub-line" x1="360" y1="320" x2="635" y2="360" />
+                        <line class="hub-line" x1="360" y1="320" x2="570" y2="502" />
+                        <line class="hub-line" x1="360" y1="320" x2="438" y2="587" />
+                        <line class="hub-line" x1="360" y1="320" x2="282" y2="587" />
+                        <line class="hub-line" x1="360" y1="320" x2="150" y2="502" />
+                        <line class="hub-line" x1="360" y1="320" x2="85" y2="360" />
+                        <line class="hub-line" x1="360" y1="320" x2="107" y2="205" />
+                        <line class="hub-line" x1="360" y1="320" x2="210" y2="86" />
                     </g>
 
-                    <!-- Hub — clickable: links to the DTC guide, the conceptual root all eight spokes branch from -->
+                    <!-- Hub — DTC guide (conceptual root) -->
                     <a href="pages/guides/dtc-guide.html" class="hub-node" aria-label="DTC Book-Entry Settlement — open the Securities Ownership Wizard guide" target="_blank" rel="noopener">
                         <g class="hub-center" style="transform-origin: 360px 320px;">
                             <circle cx="360" cy="320" r="58" fill="url(#hubGrad)" filter="url(#glow)" opacity="0.9"/>
@@ -1993,51 +2014,69 @@
 
                     <!-- 0° top — Eligibility -->
                     <a href="pages/forms/dtc-eligibility-questionnaire.html" class="hub-node live" aria-label="DTC Eligibility Questionnaire" target="_blank" rel="noopener">
-                        <rect x="296" y="27" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="360" y="48" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">DTC Eligibility</text>
-                        <text x="360" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Questionnaire</text>
+                        <rect x="300" y="20" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="360" y="39" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">DTC Eligibility</text>
+                        <text x="360" y="53" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Questionnaire</text>
                     </a>
-                    <!-- 45° — Trade Finance -->
+                    <!-- ~33° — Transfer Agent (new) -->
+                    <a href="pages/guides/transfer-agent-operations.html" class="hub-node live" aria-label="Transfer Agents — FAST, DWAC, DRS" target="_blank" rel="noopener">
+                        <rect x="450" y="64" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="510" y="83" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Transfer Agent</text>
+                        <text x="510" y="97" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">FAST · DWAC · DRS</text>
+                    </a>
+                    <!-- ~65° — Trade Finance -->
                     <a href="pages/docs/treasury-international-bill-of-exchange.html" class="hub-node live" aria-label="Treasury International Bill of Exchange" target="_blank" rel="noopener">
-                        <rect x="487" y="106" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="551" y="127" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trade Finance</text>
-                        <text x="551" y="141" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Bill of exchange</text>
+                        <rect x="553" y="183" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="613" y="202" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trade Finance</text>
+                        <text x="613" y="216" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Bill of exchange</text>
                     </a>
-                    <!-- 90° right — SF 28 -->
+                    <!-- ~98° — SF 28 -->
                     <a href="pages/guides/sf28-teaching-guide.html" class="hub-node live" aria-label="SF 28 Affidavit of Individual Surety" target="_blank" rel="noopener">
-                        <rect x="566" y="297" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="630" y="318" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Gov't Surety</text>
-                        <text x="630" y="332" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">SF 28 affidavit</text>
+                        <rect x="575" y="338" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="635" y="357" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Gov't Surety</text>
+                        <text x="635" y="371" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">SF 28 affidavit</text>
                     </a>
-                    <!-- 135° — Settlement Mechanics (deep-links into the DTC guide's T+1/DVP section, distinct from the hub's top-level link) -->
+                    <!-- ~131° — Corporate Actions (new) -->
+                    <a href="pages/guides/corporate-actions.html" class="hub-node live" aria-label="Corporate Actions, Entitlements and Omnibus Proxy" target="_blank" rel="noopener">
+                        <rect x="510" y="480" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="570" y="499" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Corp Actions</text>
+                        <text x="570" y="513" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Entitlements · proxy</text>
+                    </a>
+                    <!-- ~164° — Settlement Mechanics -->
                     <a href="pages/guides/dtc-guide.html#t1" class="hub-node live" aria-label="Settlement Mechanics — T+1 and DVP" target="_blank" rel="noopener">
-                        <rect x="487" y="488" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="551" y="509" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Settlement</text>
-                        <text x="551" y="523" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">T+1 &amp; DVP mechanics</text>
+                        <rect x="378" y="565" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="438" y="584" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Settlement</text>
+                        <text x="438" y="598" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">T+1 &amp; DVP</text>
                     </a>
-                    <!-- 180° bottom — Collateral -->
+                    <!-- ~196° — Collateral -->
                     <a href="pages/guides/collateral-ucc-article-8.html" class="hub-node live" aria-label="Securities as Collateral — UCC Article 8" target="_blank" rel="noopener">
-                        <rect x="296" y="567" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="360" y="588" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Collateral</text>
-                        <text x="360" y="602" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">UCC Article 8</text>
+                        <rect x="222" y="565" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="282" y="584" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Collateral</text>
+                        <text x="282" y="598" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">UCC Article 8</text>
                     </a>
-                    <!-- 225° — Foundations -->
+                    <!-- ~229° — Securities Lending (new) -->
+                    <a href="pages/guides/securities-lending-repo.html" class="hub-node live" aria-label="Securities Lending, Repo and Stock Borrow" target="_blank" rel="noopener">
+                        <rect x="90" y="480" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="150" y="499" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Lending &amp; Repo</text>
+                        <text x="150" y="513" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Stock borrow</text>
+                    </a>
+                    <!-- ~262° — Foundations -->
                     <a href="pages/guides/non-profit-foundations.html" class="hub-node live" aria-label="Non-Profit Foundations" target="_blank" rel="noopener">
-                        <rect x="105" y="488" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="169" y="509" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Foundations</text>
-                        <text x="169" y="523" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Non-profit endowments</text>
+                        <rect x="25" y="338" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="85" y="357" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Foundations</text>
+                        <text x="85" y="371" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Non-profit endowments</text>
                     </a>
-                    <!-- 270° left — Trusts -->
-                    <a href="pages/guides/trusts-fiduciary.html" class="hub-node live" aria-label="Trusts &amp; Fiduciary" target="_blank" rel="noopener">
-                        <rect x="26" y="297" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="90" y="318" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trusts &amp; Fiduciary</text>
-                        <text x="90" y="332" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Fiduciary structures</text>
+                    <!-- ~295° — Trusts -->
+                    <a href="pages/guides/trusts-fiduciary.html" class="hub-node live" aria-label="Trusts and Fiduciary" target="_blank" rel="noopener">
+                        <rect x="47" y="183" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="107" y="202" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Trusts &amp; Fiduciary</text>
+                        <text x="107" y="216" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">Fiduciary structures</text>
                     </a>
-                    <!-- 315° — Corporate -->
+                    <!-- ~327° — Corporate -->
                     <a href="pages/guides/corporate-structures.html" class="hub-node live" aria-label="Corporate Structures" target="_blank" rel="noopener">
-                        <rect x="105" y="106" width="128" height="46" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
-                        <text x="169" y="127" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Corporate Structures</text>
-                        <text x="169" y="141" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">LLCs, C-Corps &amp; S-Corps</text>
+                        <rect x="150" y="64" width="120" height="44" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5"/>
+                        <text x="210" y="83" text-anchor="middle" fill="var(--gold-deep)" font-size="10" font-weight="700" font-family="'DM Sans',sans-serif">Corporate</text>
+                        <text x="210" y="97" text-anchor="middle" fill="var(--gold-deep)" font-size="8" opacity="0.8" font-family="'DM Sans',sans-serif">LLCs · C/S-Corps</text>
                     </a>
                 </svg>
             </div>
@@ -2120,6 +2159,7 @@
                     <li><strong>Collateral:</strong> Master the legal mechanics of pledging book-entry securities as collateral under <span data-term="UCC Article 8">UCC Article 8</span>, including Account Control Agreements (ACAs), margin lending, and rehypothecation</li>
                     <li><strong>Corporate actions:</strong> Follow how dividends, splits, tenders, and votes pass from the issuer through Cede &amp; Co. and DTC participants to beneficial owners—including omnibus proxy basics</li>
                     <li><strong>Transfer agents:</strong> Operate the issuer–DTC interface—FAST balances, DWAC movements, DRS vs street name, and restriction rejects</li>
+                    <li><strong>Lending &amp; repo:</strong> Move inventory for shorts/fails and finance cash against securities on the same book-entry pipes</li>
                 </ul>
             </div>
 
@@ -2390,6 +2430,17 @@
                     learners: 'Transfer agents, issuer counsel, underwriters, broker transfer desks',
                     includes: 'Role map, DWAC process, decision tables, scenarios, 10-question quiz',
                     href: 'pages/guides/transfer-agent-operations.html'
+                },
+                {
+                    module: 'securities-lending', status: 'professional', icon: 'layers', tag: '📉 Lending &amp; Repo',
+                    title: 'Securities Lending, Repo &amp; Stock Borrow',
+                    desc: 'How street-name inventory is lent for shorts and fails, and how cash is financed against securities (repo)—on the same DTC pipes as collateral and settlement. Covers parties, loan lifecycle, rehypothecation, and risk.',
+                    map: conceptMap3(['Lender', {...GOLD_MID,label:'DTC deliver'}, {...GOLD_STRONG,label:'Borrower'}, {...GOLD_RESULT,label:'Collateral',subLabel:'Cash / secs'}], 'Inventory &amp; Financing'),
+                    mapLabel: 'Lending stack map →', mapSub: 'Lender · DTC · borrower · collateral',
+                    focus: 'Stock loan vs repo, locates, recalls, FICC/NSCC context, reuse risk',
+                    learners: 'Ops trainees, prime brokerage, collateral desks, counsel',
+                    includes: 'Compare table, lifecycle map, scenarios, 10-question quiz',
+                    href: 'pages/guides/securities-lending-repo.html'
                 }
             ];
 
@@ -2446,6 +2497,9 @@
                 { title: "Corporate Actions, Entitlements & Omnibus Proxy", description: "How dividends, splits, tenders, and votes pass through Cede & Co. and DTC participants to beneficial owners.", url: "pages/guides/corporate-actions.html", keywords: ["corporate actions", "dividend", "ex-date", "record date", "tender", "omnibus proxy", "entitlement", "voluntary", "mandatory", "nobo", "obo"], type: "page" },
                 { title: "Transfer Agents & the Issuer–DTC Interface", description: "FAST, DWAC deposits and withdrawals, DRS vs street name, and restricted-stock legend failures at the transfer agent.", url: "pages/guides/transfer-agent-operations.html", keywords: ["transfer agent", "fast", "dwac", "drs", "balance certificate", "legend", "restricted stock", "issuer"], type: "page" },
                 { title: "DWAC", description: "Deposit/Withdrawal at Custodian — electronic deposit into or withdrawal from DTC, typically under FAST with transfer-agent approval.", url: "pages/guides/transfer-agent-operations.html#dwac", keywords: ["dwac", "deposit", "withdrawal", "fast", "transfer agent"], type: "term" },
+                { title: "Securities Lending, Repo & Stock Borrow", description: "How inventory is lent for shorts and fails, and how cash is financed against securities, on DTC-linked pipes.", url: "pages/guides/securities-lending-repo.html", keywords: ["securities lending", "repo", "stock borrow", "locate", "rehypothecation", "fails", "ficc", "short sale"], type: "page" },
+                { title: "Repo", description: "Repurchase agreement — cash financing against securities transferred as collateral (sale plus forward repurchase packaging).", url: "pages/guides/securities-lending-repo.html#compare", keywords: ["repo", "repurchase", "financing", "haircut", "gmra"], type: "term" },
+                { title: "Stock loan / stock borrow", description: "Temporary transfer of securities inventory, typically to settle shorts or fails, against cash or other collateral and a borrow fee.", url: "pages/guides/securities-lending-repo.html#lifecycle", keywords: ["stock loan", "stock borrow", "securities lending", "locate"], type: "term" },
                 { title: "Record date", description: "The date used to determine who is entitled to a distribution or certain rights, tested against the registered holder (often Cede & Co.).", url: "pages/guides/corporate-actions.html#record-date", keywords: ["record date", "dividend", "entitlement"], type: "term" },
                 { title: "Ex-date", description: "The first day a security trades without an upcoming dividend or similar entitlement.", url: "pages/guides/corporate-actions.html#ex-date", keywords: ["ex-date", "ex dividend", "trading"], type: "term" },
                 { title: "Omnibus proxy", description: "Mechanism allowing voting authority for bulk Cede-held positions to be exercised through the intermediary chain.", url: "pages/guides/corporate-actions.html#proxy", keywords: ["omnibus proxy", "voting", "proxy", "street name"], type: "term" },
@@ -2530,7 +2584,8 @@
                 'non-profit-foundations',
                 'collateral',
                 'corporate-actions',
-                'transfer-agent'
+                'transfer-agent',
+                'securities-lending'
             ];
             const MODULE_NAMES = {
                 'eligibility': 'DTC Eligibility Questionnaire',
@@ -2542,7 +2597,8 @@
                 'non-profit-foundations': 'Non-Profit Foundations',
                 'collateral': 'Securities as Collateral — UCC Article 8',
                 'corporate-actions': 'Corporate Actions, Entitlements & Omnibus Proxy',
-                'transfer-agent': 'Transfer Agents & Issuer–DTC Interface'
+                'transfer-agent': 'Transfer Agents & Issuer–DTC Interface',
+                'securities-lending': 'Securities Lending, Repo & Stock Borrow'
             };
 
             function getProgress() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; } }

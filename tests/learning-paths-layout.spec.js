@@ -17,6 +17,8 @@ test.describe('Learning paths (hub)', () => {
     const postTrade = json.paths.find((p) => p.id === 'post-trade');
     expect(postTrade.steps.some((s) => s.module === 'corporate-actions')).toBeTruthy();
     expect(postTrade.steps.some((s) => s.module === 'transfer-agent')).toBeTruthy();
+    const collateral = json.paths.find((p) => p.id === 'collateral');
+    expect(collateral.steps.some((s) => s.module === 'securities-lending')).toBeTruthy();
   });
 
   test('hub renders path cards and start links', async ({ page }) => {
@@ -57,6 +59,7 @@ test.describe('Layout partials', () => {
     '/pages/guides/collateral-ucc-article-8.html',
     '/pages/guides/corporate-actions.html',
     '/pages/guides/transfer-agent-operations.html',
+    '/pages/guides/securities-lending-repo.html',
     '/pages/docs/treasury-international-bill-of-exchange.html',
   ];
 
@@ -111,6 +114,8 @@ test.describe('Critical CSS assets', () => {
       '/data/learning-paths.json',
       '/pages/guides/corporate-actions.html',
       '/pages/guides/transfer-agent-operations.html',
+      '/pages/guides/securities-lending-repo.html',
+      '/styles/guides-securities-lending.css',
     ]) {
       const res = await request.get(path);
       expect(res.ok(), path).toBeTruthy();
