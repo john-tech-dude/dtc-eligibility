@@ -400,17 +400,7 @@ function checkUrlHash() {
 }
 
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initTheme();
-    initTOCSidebar();
-    initHotspots();
-    initGenericRoleButtons();
-    initConceptMapScrollHints();
-    initReturnToTop();
-    checkUrlHash();
-  });
-} else {
+function initShared() {
   initTheme();
   initTOCSidebar();
   initHotspots();
@@ -418,6 +408,12 @@ if (document.readyState === 'loading') {
   initConceptMapScrollHints();
   initReturnToTop();
   checkUrlHash();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initShared);
+} else {
+  initShared();
 }
 
 window.addEventListener('hashchange', checkUrlHash);

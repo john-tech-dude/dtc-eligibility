@@ -12,6 +12,21 @@
 <link rel="stylesheet" href="../../styles/guides-transfer-agent.css">
 <script src="../../js/theme-init.js"></script>
 <script src="../../js/shared.js" defer></script>
+<style>
+/* Added: interactive-node hover/focus affordance, static-node distinction, hotspot cursor, click hint */
+.diagram-node, .cm-node:not(.cm-node-static) { cursor: pointer; }
+.diagram-node > rect, .cm-node > rect { transition: filter .15s ease, stroke-width .15s ease, opacity .15s ease; }
+.diagram-node:hover > rect, .diagram-node:focus-visible > rect,
+.cm-node:not(.cm-node-static):hover > rect, .cm-node:not(.cm-node-static):focus-visible > rect {
+  filter: brightness(1.12) drop-shadow(0 0 5px rgba(0,0,0,.28));
+  stroke-width: 2.6;
+}
+.diagram-node:focus-visible, .cm-node:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.cm-node-static { cursor: default; opacity: .78; }
+.hotspot { cursor: pointer; }
+.diagram-hint { display: inline-flex; align-items: center; gap: .35em; font-size: .78em; opacity: .65; font-style: italic; margin: .2em 0 .6em; }
+.diagram-hint::before { content: "🖱"; font-style: normal; }
+</style>
 </head>
 <body>
 
@@ -271,14 +286,14 @@
     <text class="cm-edge-label" x="460" y="188">DWAC instruct</text>
 
     <!-- Issuer -->
-    <g class="cm-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer — open definition">
+    <g class="cm-node" data-modal="issuer" tabindex="0" role="button" onclick="openModal('modal-issuer')" aria-label="Issuer — open definition">
       <rect class="cm-node-shape" x="270" y="24" width="180" height="44" rx="10" fill="url(#g-accent-solid)" stroke="var(--accent)" stroke-width="1" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="42" text-anchor="middle" fill="#fff">Issuer</text>
       <text class="cm-node-sub" x="360" y="57" text-anchor="middle" fill="var(--accent-muted)">Corporation · board authority</text>
     </g>
 
     <!-- Transfer Agent hub -->
-    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" aria-label="Transfer Agent — open definition">
+    <g class="cm-node" data-modal="transfer-agent" tabindex="0" role="button" onclick="openModal('modal-transfer-agent')" aria-label="Transfer Agent — open definition">
       <circle class="ta-hub-ring" cx="360" cy="134" r="78"/>
       <rect class="cm-node-shape" x="250" y="104" width="220" height="64" rx="12" fill="url(#g-gold)" stroke="var(--gold)" stroke-width="1.8" filter="url(#g-glow-gold)"/>
       <text class="cm-node-title" x="360" y="128" text-anchor="middle" fill="var(--gold-deep)" font-size="15">Transfer Agent</text>
@@ -287,7 +302,7 @@
     </g>
 
     <!-- DRS holders -->
-    <g class="cm-node" data-modal="drs" tabindex="0" role="button" aria-label="DRS holders — open definition">
+    <g class="cm-node" data-modal="drs" tabindex="0" role="button" onclick="openModal('modal-drs')" aria-label="DRS holders — open definition">
       <rect class="cm-node-shape" x="48" y="252" width="184" height="72" rx="12" fill="url(#g-green)" stroke="var(--green)" stroke-width="1.5" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="140" y="278" text-anchor="middle" fill="var(--green)">DRS holders</text>
       <text class="cm-node-sub" x="140" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Investor name on TA books</text>
@@ -295,7 +310,7 @@
     </g>
 
     <!-- DTC / Cede -->
-    <g class="cm-node" data-modal="cede" tabindex="0" role="button" aria-label="DTC / Cede & Co. — open definition">
+    <g class="cm-node" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')" aria-label="DTC / Cede & Co. — open definition">
       <rect class="cm-node-shape" x="268" y="252" width="184" height="72" rx="12" fill="url(#g-accent)" stroke="var(--accent)" stroke-width="1.6" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="360" y="278" text-anchor="middle" fill="var(--accent)">DTC / Cede &amp; Co.</text>
       <text class="cm-node-sub" x="360" y="296" text-anchor="middle" fill="var(--ink-tertiary)">FAST balance certificate</text>
@@ -303,7 +318,7 @@
     </g>
 
     <!-- Participants -->
-    <g class="cm-node" data-modal="participants" tabindex="0" role="button" aria-label="Participants — open definition">
+    <g class="cm-node" data-modal="participants" tabindex="0" role="button" onclick="openModal('modal-participants')" aria-label="Participants — open definition">
       <rect class="cm-node-shape" x="488" y="252" width="184" height="72" rx="12" fill="url(#g-neutral)" stroke="var(--border)" stroke-width="1.4" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="580" y="278" text-anchor="middle" fill="var(--ink)">Participants</text>
       <text class="cm-node-sub" x="580" y="296" text-anchor="middle" fill="var(--ink-tertiary)">Broker-dealer / bank</text>

@@ -12,6 +12,21 @@
 <link rel="stylesheet" href="../../styles/guides-securities-lending.css">
 <script src="../../js/theme-init.js"></script>
 <script src="../../js/shared.js" defer></script>
+<style>
+/* Added: interactive-node hover/focus affordance, static-node distinction, hotspot cursor, click hint */
+.diagram-node, .cm-node:not(.cm-node-static) { cursor: pointer; }
+.diagram-node > rect, .cm-node > rect { transition: filter .15s ease, stroke-width .15s ease, opacity .15s ease; }
+.diagram-node:hover > rect, .diagram-node:focus-visible > rect,
+.cm-node:not(.cm-node-static):hover > rect, .cm-node:not(.cm-node-static):focus-visible > rect {
+  filter: brightness(1.12) drop-shadow(0 0 5px rgba(0,0,0,.28));
+  stroke-width: 2.6;
+}
+.diagram-node:focus-visible, .cm-node:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.cm-node-static { cursor: default; opacity: .78; }
+.hotspot { cursor: pointer; }
+.diagram-hint { display: inline-flex; align-items: center; gap: .35em; font-size: .78em; opacity: .65; font-style: italic; margin: .2em 0 .6em; }
+.diagram-hint::before { content: "🖱"; font-style: normal; }
+</style>
 </head>
 <body>
 
@@ -255,34 +270,34 @@
 
     <rect x="40" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
     <text class="cm-zone-label" x="56" y="42">Supply side</text>
-    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Beneficial owner node">
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')" aria-label="Beneficial owner node">
       <rect class="cm-node-shape" x="80" y="58" width="220" height="40" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="83" text-anchor="middle" fill="var(--green)" font-size="13">Beneficial owner</text>
     </g>
     <line class="cm-edge" x1="190" y1="98" x2="190" y2="118" marker-end="url(#sl-arr)"/>
-    <g class="cm-node" data-modal="lender-participant" tabindex="0" role="button" aria-label="Lender participant / agent node">
+    <g class="cm-node" data-modal="lender-participant" tabindex="0" role="button" onclick="openModal('modal-lender-participant')" aria-label="Lender participant / agent node">
       <rect class="cm-node-shape" x="80" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Lender participant / agent</text>
     </g>
     <line class="cm-edge-pass" x1="190" y1="160" x2="190" y2="180" marker-end="url(#sl-arr-g)"/>
-    <g class="cm-node" data-modal="securities-deliver" tabindex="0" role="button" aria-label="Securities deliver (loan) node">
+    <g class="cm-node" data-modal="securities-deliver" tabindex="0" role="button" onclick="openModal('modal-securities-deliver')" aria-label="Securities deliver (loan) node">
       <rect class="cm-node-shape" x="80" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Securities deliver (loan)</text>
     </g>
 
     <rect x="380" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
     <text class="cm-zone-label" x="396" y="42">Demand side</text>
-    <g class="cm-node" data-modal="borrower" tabindex="0" role="button" aria-label="Borrower / short desk node">
+    <g class="cm-node" data-modal="borrower" tabindex="0" role="button" onclick="openModal('modal-borrower')" aria-label="Borrower / short desk node">
       <rect class="cm-node-shape" x="420" y="58" width="220" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="83" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Borrower / short desk</text>
     </g>
     <line class="cm-edge" x1="530" y1="98" x2="530" y2="118" marker-end="url(#sl-arr)"/>
-    <g class="cm-node" data-modal="borrower-participant" tabindex="0" role="button" aria-label="Borrower participant node">
+    <g class="cm-node" data-modal="borrower-participant" tabindex="0" role="button" onclick="openModal('modal-borrower-participant')" aria-label="Borrower participant node">
       <rect class="cm-node-shape" x="420" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Borrower participant</text>
     </g>
     <line class="cm-edge" x1="530" y1="160" x2="530" y2="180" marker-end="url(#sl-arr-a)"/>
-    <g class="cm-node" data-modal="cash-collateral" tabindex="0" role="button" aria-label="Cash / collateral in node">
+    <g class="cm-node" data-modal="cash-collateral" tabindex="0" role="button" onclick="openModal('modal-cash-collateral')" aria-label="Cash / collateral in node">
       <rect class="cm-node-shape" x="420" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Cash / collateral in</text>
     </g>
@@ -290,15 +305,15 @@
     <!-- DTC pipe -->
     <rect x="120" y="250" width="480" height="100" rx="14" fill="var(--bg-cream)" stroke="var(--border-light)"/>
     <text class="cm-zone-label" x="140" y="274">Settlement &amp; clearing layer</text>
-    <g class="cm-node" data-modal="dtc-book-entry" tabindex="0" role="button" aria-label="DTC book-entry node">
+    <g class="cm-node" data-modal="dtc-book-entry" tabindex="0" role="button" onclick="openModal('modal-dtc-book-entry')" aria-label="DTC book-entry node">
       <rect class="cm-node-shape" x="160" y="290" width="140" height="40" rx="8" fill="url(#g-accent-solid)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="230" y="315" text-anchor="middle" fill="#fff" font-size="13">DTC book-entry</text>
     </g>
-    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC node">
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" onclick="openModal('modal-nscc')" aria-label="NSCC node">
       <rect class="cm-node-shape" x="330" y="290" width="120" height="40" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="390" y="315" text-anchor="middle" fill="var(--accent)" font-size="13">NSCC</text>
     </g>
-    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC node">
+    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" onclick="openModal('modal-ficc')" aria-label="FICC node">
       <rect class="cm-node-shape" x="480" y="290" width="100" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="315" text-anchor="middle" fill="var(--gold-deep)" font-size="13">FICC</text>
     </g>
@@ -1089,7 +1104,6 @@
   </div>
 </div>
 
-<script src="../../js/shared.js" defer></script>
 <script src="../../js/layout.js" defer></script>
 <script src="../../js/quiz.js"></script>
 <script>

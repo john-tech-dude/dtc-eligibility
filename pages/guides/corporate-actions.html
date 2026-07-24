@@ -273,31 +273,31 @@
       </marker>
     </defs>
     <!-- boxes -->
-    <g class="diagram-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer node">
+    <g class="diagram-node" data-modal="issuer" tabindex="0" role="button" onclick="openModal('modal-issuer')" aria-label="Issuer node">
       <rect x="20" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
       <text x="80" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Issuer</text>
       <text x="80" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Paying agent</text>
     </g>
 
-    <g class="diagram-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede & Co. node">
+    <g class="diagram-node" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')" aria-label="Cede & Co. node">
       <rect x="180" y="40" width="120" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" class="diagram-rect"/>
       <text x="240" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Cede &amp; Co.</text>
       <text x="240" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Record holder</text>
     </g>
 
-    <g class="diagram-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC node">
+    <g class="diagram-node" data-modal="dtc" tabindex="0" role="button" onclick="openModal('modal-dtc')" aria-label="DTC node">
       <rect x="340" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
       <text x="400" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">DTC</text>
       <text x="400" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Allocate</text>
     </g>
 
-    <g class="diagram-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant node">
+    <g class="diagram-node" data-modal="participant" tabindex="0" role="button" onclick="openModal('modal-participant')" aria-label="Participant node">
       <rect x="500" y="40" width="90" height="52" rx="8" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.5" class="diagram-rect"/>
       <text x="545" y="62" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Participant</text>
       <text x="545" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Broker / bank</text>
     </g>
 
-    <g class="diagram-node" data-modal="bo" tabindex="0" role="button" aria-label="Beneficial Owner node">
+    <g class="diagram-node" data-modal="bo" tabindex="0" role="button" onclick="openModal('modal-bo')" aria-label="Beneficial Owner node">
       <rect x="620" y="40" width="80" height="52" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" stroke-width="1.5" class="diagram-rect"/>
       <text x="660" y="62" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">B.O.</text>
       <text x="660" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Customer</text>
@@ -310,19 +310,19 @@
     <line x1="590" y1="66" x2="618" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
 
     <!-- bottom lanes -->
-    <g class="diagram-node" data-modal="cash" tabindex="0" role="button" aria-label="Cash / securities node">
+    <g class="diagram-node" data-modal="cash" tabindex="0" role="button" onclick="openModal('modal-cash')" aria-label="Cash / securities node">
       <rect x="40" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="140" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Cash / securities</text>
       <text x="140" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Dividends · splits · spin-offs</text>
     </g>
 
-    <g class="diagram-node" data-modal="elections" tabindex="0" role="button" aria-label="Elections node">
+    <g class="diagram-node" data-modal="elections" tabindex="0" role="button" onclick="openModal('modal-elections')" aria-label="Elections node">
       <rect x="260" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="360" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Elections</text>
       <text x="360" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Tenders · rights · options</text>
     </g>
 
-    <g class="diagram-node" data-modal="votes" tabindex="0" role="button" aria-label="Votes & notices node">
+    <g class="diagram-node" data-modal="votes" tabindex="0" role="button" onclick="openModal('modal-votes')" aria-label="Votes & notices node">
       <rect x="480" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="580" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Votes &amp; notices</text>
       <text x="580" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Omnibus proxy · NOBO/OBO</text>
@@ -371,37 +371,37 @@
   <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- vertical steps -->
     <g font-family="DM Sans,sans-serif">
-      <g class="diagram-node" data-modal="announcement" tabindex="0" role="button" aria-label="Announcement step">
+      <g class="diagram-node" data-modal="announcement" tabindex="0" role="button" onclick="openModal('modal-announcement')" aria-label="Announcement step">
         <rect x="48" y="24" width="624" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)" class="diagram-rect"/>
         <text x="72" y="46" fill="var(--accent)" font-size="12" font-weight="700" class="diagram-text">1 · Announcement</text>
         <text x="72" y="62" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Issuer / offeror publishes terms, CUSIP, price or exchange ratio, and deadlines</text>
       </g>
 
-      <g class="diagram-node" data-modal="notice" tabindex="0" role="button" aria-label="Intermediary notice step">
+      <g class="diagram-node" data-modal="notice" tabindex="0" role="button" onclick="openModal('modal-notice')" aria-label="Intermediary notice step">
         <rect x="48" y="88" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="110" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">2 · Intermediary notice</text>
         <text x="72" y="126" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Broker/custodian posts corporate-action notice; internal cut-off is earlier than DTC/agent deadline</text>
       </g>
 
-      <g class="diagram-node" data-modal="election" tabindex="0" role="button" aria-label="BO / fiduciary election step">
+      <g class="diagram-node" data-modal="election" tabindex="0" role="button" onclick="openModal('modal-election')" aria-label="BO / fiduciary election step">
         <rect x="48" y="152" width="624" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" class="diagram-rect"/>
         <text x="72" y="174" fill="var(--gold-deep)" font-size="12" font-weight="700" class="diagram-text">3 · BO / fiduciary election</text>
         <text x="72" y="190" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Elect tender, rights exercise, cash/stock option, etc. Silence may default to "do not participate"</text>
       </g>
 
-      <g class="diagram-node" data-modal="participant-dtc" tabindex="0" role="button" aria-label="Participant → DTC step">
+      <g class="diagram-node" data-modal="participant-dtc" tabindex="0" role="button" onclick="openModal('modal-participant-dtc')" aria-label="Participant → DTC step">
         <rect x="48" y="216" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="238" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">4 · Participant → DTC</text>
         <text x="72" y="254" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Instructions aggregated; positions protected / delivered per DTC procedures for the event type</text>
       </g>
 
-      <g class="diagram-node" data-modal="settlement" tabindex="0" role="button" aria-label="Agent / offer settlement step">
+      <g class="diagram-node" data-modal="settlement" tabindex="0" role="button" onclick="openModal('modal-settlement')" aria-label="Agent / offer settlement step">
         <rect x="48" y="280" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="302" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">5 · Agent / offer settlement</text>
         <text x="72" y="318" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Offer closes; proration, odd-lot priority, or exchange mechanics applied</text>
       </g>
 
-      <g class="diagram-node" data-modal="results" tabindex="0" role="button" aria-label="Results down the stack step">
+      <g class="diagram-node" data-modal="results" tabindex="0" role="button" onclick="openModal('modal-results')" aria-label="Results down the stack step">
         <rect x="48" y="344" width="624" height="48" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" class="diagram-rect"/>
         <text x="72" y="366" fill="var(--green)" font-size="12" font-weight="700" class="diagram-text">6 · Results down the stack</text>
         <text x="72" y="382" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Cash/securities posted to participants and customers; unaccepted shares released from protect</text>
@@ -1321,27 +1321,7 @@ if (document.readyState === 'loading') {
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-bo" role="dialog" aria-modal="true" aria-labelledby="modal-title-bo">
-  <div class="modal-card">
-    <div class="modal-header">
-      <h3 id="modal-title-bo">Beneficial Owner (B.O.)</h3>
-      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-bo')">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p>The beneficial owner is the person or entity that ultimately owns the securities and enjoys the economic benefits (dividends, voting rights, etc.), even though the securities may be held in street name through a broker or other intermediary.</p>
-      <p class="modal-section-title">Key Characteristics</p>
-      <ul>
-        <li>Has economic ownership but not necessarily legal title</li>
-        <li>Receives corporate action entitlements through intermediaries</li>
-        <li>Must make elections for voluntary corporate actions</li>
-        <li>Protected by intermediary agreements and securities regulations</li>
-        <li>May be different from the registered holder on the issuer's books</li>
-      </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
-    </div>
-  </div>
-</div>
-
+<script>
 if (typeof openModal === 'undefined') {
   window.openModal = function (id) {
     var el = document.getElementById(id);
