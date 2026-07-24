@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../styles/teaching.css">
 <link rel="stylesheet" href="../../styles/guides-corporate-actions.css">
 <script src="../../js/theme-init.js"></script>
+<script src="../../js/shared.js" defer></script>
 </head>
 <body>
 
@@ -106,7 +107,7 @@
 <p>
   In the modern U.S. system, the legal holder of record for nearly all public equity and many fixed-income issues is
   <span class="hotspot" data-modal="cede" tabindex="0" role="button" onclick="openModal('modal-cede')">Cede &amp; Co.</span>, DTC’s nominee. Issuers and transfer agents see Cede—not millions of retail accounts—as the registered owner.
-  Economic entitlements and proxy materials must therefore <em>pass through</em> a layered stack: issuer/agent → DTC → participant → broker or bank custodian → <span class="hotspot" data-modal="beneficial-owner" tabindex="0" role="button" onclick="openModal('modal-beneficial-owner')">beneficial owner (BO)</span>.
+  Economic entitlements and proxy materials must therefore <em>pass through</em> a layered stack: issuer/agent → DTC → participant → broker or bank custodian → <span class="hotspot" data-modal="bo" tabindex="0" role="button" onclick="openModal('modal-bo')">beneficial owner (BO)</span>.
 </p>
 <p>
   Miss a date, mis-route an election, or treat a <span class="hotspot" data-modal="voluntary" tabindex="0" role="button" onclick="openModal('modal-voluntary')">voluntary</span> offer like a <span class="hotspot" data-modal="mandatory" tabindex="0" role="button" onclick="openModal('modal-mandatory')">mandatory</span> dividend, and the BO loses value or rights even though the shares never “left” the account. That is the operational heart of post-trade.
@@ -261,11 +262,8 @@
   </li>
 </ol>
 
-<div class="diagram-box concept-map" id="concept-map-allocation" role="img" aria-labelledby="cm-alloc-title" aria-describedby="cm-alloc-desc">
+<div class="diagram-box concept-map" id="concept-map-allocation" aria-labelledby="cm-alloc-title" role="region">
   <div class="diagram-title" id="cm-alloc-title">Concept Map — Entitlement Pass-Through</div>
-  <p id="cm-alloc-desc" class="visually-hidden">
-    Flow from issuer and paying agent to Cede and Co at DTC, then to DTC participant, then broker or custodian, then beneficial owner, for cash, stock, and voting rights.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="ca-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -273,31 +271,31 @@
       </marker>
     </defs>
     <!-- boxes -->
-    <g class="diagram-node" data-info="issuer">
+    <g class="diagram-node" data-modal="issuer" tabindex="0" role="button" aria-label="Issuer node">
       <rect x="20" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
       <text x="80" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Issuer</text>
       <text x="80" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Paying agent</text>
     </g>
 
-    <g class="diagram-node" data-info="cede">
+    <g class="diagram-node" data-modal="cede" tabindex="0" role="button" aria-label="Cede & Co. node">
       <rect x="180" y="40" width="120" height="52" rx="8" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1.5" class="diagram-rect"/>
       <text x="240" y="62" text-anchor="middle" fill="var(--gold-deep)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Cede &amp; Co.</text>
       <text x="240" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Record holder</text>
     </g>
 
-    <g class="diagram-node" data-info="dtc">
+    <g class="diagram-node" data-modal="dtc" tabindex="0" role="button" aria-label="DTC node">
       <rect x="340" y="40" width="120" height="52" rx="8" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5" class="diagram-rect"/>
       <text x="400" y="62" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">DTC</text>
       <text x="400" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Allocate</text>
     </g>
 
-    <g class="diagram-node" data-info="participant">
+    <g class="diagram-node" data-modal="participant" tabindex="0" role="button" aria-label="Participant node">
       <rect x="500" y="40" width="90" height="52" rx="8" fill="var(--bg-cream)" stroke="var(--border)" stroke-width="1.5" class="diagram-rect"/>
       <text x="545" y="62" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">Participant</text>
       <text x="545" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Broker / bank</text>
     </g>
 
-    <g class="diagram-node" data-info="bo">
+    <g class="diagram-node" data-modal="bo" tabindex="0" role="button" aria-label="Beneficial Owner node">
       <rect x="620" y="40" width="80" height="52" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" stroke-width="1.5" class="diagram-rect"/>
       <text x="660" y="62" text-anchor="middle" fill="var(--green)" font-size="12" font-weight="700" font-family="DM Sans,sans-serif" class="diagram-text">B.O.</text>
       <text x="660" y="78" text-anchor="middle" fill="var(--ink-secondary)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Customer</text>
@@ -310,19 +308,19 @@
     <line x1="590" y1="66" x2="618" y2="66" stroke="var(--ink-muted)" stroke-width="1.5" marker-end="url(#ca-arrow)" class="diagram-line"/>
 
     <!-- bottom lanes -->
-    <g class="diagram-node" data-info="cash">
+    <g class="diagram-node" data-modal="cash" tabindex="0" role="button" aria-label="Cash / securities node">
       <rect x="40" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="140" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Cash / securities</text>
       <text x="140" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Dividends · splits · spin-offs</text>
     </g>
 
-    <g class="diagram-node" data-info="elections">
+    <g class="diagram-node" data-modal="elections" tabindex="0" role="button" aria-label="Elections node">
       <rect x="260" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="360" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Elections</text>
       <text x="360" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Tenders · rights · options</text>
     </g>
 
-    <g class="diagram-node" data-info="votes">
+    <g class="diagram-node" data-modal="votes" tabindex="0" role="button" aria-label="Votes & notices node">
       <rect x="480" y="160" width="200" height="64" rx="8" fill="var(--bg)" stroke="var(--border)" stroke-width="1.2" class="diagram-rect"/>
       <text x="580" y="188" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600" font-family="DM Sans,sans-serif" class="diagram-text">Votes &amp; notices</text>
       <text x="580" y="206" text-anchor="middle" fill="var(--ink-muted)" font-size="10" font-family="DM Sans,sans-serif" class="diagram-text">Omnibus proxy · NOBO/OBO</text>
@@ -366,45 +364,42 @@
   Voluntary events invert the information flow: the beneficial owner (or fiduciary) must decide, and that decision must climb the intermediary stack before DTC can protect or deliver the position into the offer.
 </p>
 
-<div class="diagram-box concept-map" id="process-voluntary" role="img" aria-labelledby="pf-vol-title" aria-describedby="pf-vol-desc">
+<div class="diagram-box concept-map" id="process-voluntary" aria-labelledby="pf-vol-title" role="region">
   <div class="diagram-title" id="pf-vol-title">Process Map — Voluntary Election (Simplified)</div>
-  <p id="pf-vol-desc" class="visually-hidden">
-    Six steps: announcement, broker notifies customer, customer elects, participant aggregates instructions to DTC, DTC interacts with agent or offer, results allocate back to customers.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- vertical steps -->
     <g font-family="DM Sans,sans-serif">
-      <g class="diagram-node" data-info="announcement">
+      <g class="diagram-node" data-modal="announcement" tabindex="0" role="button" aria-label="Announcement step">
         <rect x="48" y="24" width="624" height="48" rx="8" fill="var(--accent-light)" stroke="var(--accent)" class="diagram-rect"/>
         <text x="72" y="46" fill="var(--accent)" font-size="12" font-weight="700" class="diagram-text">1 · Announcement</text>
         <text x="72" y="62" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Issuer / offeror publishes terms, CUSIP, price or exchange ratio, and deadlines</text>
       </g>
 
-      <g class="diagram-node" data-info="notice">
+      <g class="diagram-node" data-modal="notice" tabindex="0" role="button" aria-label="Intermediary notice step">
         <rect x="48" y="88" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="110" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">2 · Intermediary notice</text>
         <text x="72" y="126" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Broker/custodian posts corporate-action notice; internal cut-off is earlier than DTC/agent deadline</text>
       </g>
 
-      <g class="diagram-node" data-info="election">
+      <g class="diagram-node" data-modal="election" tabindex="0" role="button" aria-label="BO / fiduciary election step">
         <rect x="48" y="152" width="624" height="48" rx="8" fill="var(--gold-light)" stroke="var(--gold)" class="diagram-rect"/>
         <text x="72" y="174" fill="var(--gold-deep)" font-size="12" font-weight="700" class="diagram-text">3 · BO / fiduciary election</text>
         <text x="72" y="190" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Elect tender, rights exercise, cash/stock option, etc. Silence may default to "do not participate"</text>
       </g>
 
-      <g class="diagram-node" data-info="participant-dtc">
+      <g class="diagram-node" data-modal="participant-dtc" tabindex="0" role="button" aria-label="Participant → DTC step">
         <rect x="48" y="216" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="238" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">4 · Participant → DTC</text>
         <text x="72" y="254" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Instructions aggregated; positions protected / delivered per DTC procedures for the event type</text>
       </g>
 
-      <g class="diagram-node" data-info="settlement">
+      <g class="diagram-node" data-modal="settlement" tabindex="0" role="button" aria-label="Agent / offer settlement step">
         <rect x="48" y="280" width="624" height="48" rx="8" fill="var(--bg-cream)" stroke="var(--border)" class="diagram-rect"/>
         <text x="72" y="302" fill="var(--ink)" font-size="12" font-weight="700" class="diagram-text">5 · Agent / offer settlement</text>
         <text x="72" y="318" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Offer closes; proration, odd-lot priority, or exchange mechanics applied</text>
       </g>
 
-      <g class="diagram-node" data-info="results">
+      <g class="diagram-node" data-modal="results" tabindex="0" role="button" aria-label="Results down the stack step">
         <rect x="48" y="344" width="624" height="48" rx="8" fill="var(--green-light,#e8f5ec)" stroke="var(--green)" class="diagram-rect"/>
         <text x="72" y="366" fill="var(--green)" font-size="12" font-weight="700" class="diagram-text">6 · Results down the stack</text>
         <text x="72" y="382" fill="var(--ink-secondary)" font-size="11" class="diagram-text">Cash/securities posted to participants and customers; unaccepted shares released from protect</text>
@@ -904,27 +899,6 @@ if (document.readyState === 'loading') {
 </script>
 
 <!-- Modal definitions for corporate actions -->
-<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
-  <div class="modal-card">
-    <div class="modal-header">
-      <h3 id="modal-title-beneficial-owner">Beneficial Owner (BO)</h3>
-      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-beneficial-owner')">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p>The beneficial owner is the person or entity that ultimately owns the securities and enjoys the economic benefits (dividends, voting rights, etc.), even though the securities may be held in street name through a broker or other intermediary.</p>
-      <p class="modal-section-title">Key Characteristics</p>
-      <ul>
-        <li>Has economic ownership but not necessarily legal title</li>
-        <li>Receives corporate action entitlements through intermediaries</li>
-        <li>Must make elections for voluntary corporate actions</li>
-        <li>Protected by intermediary agreements and securities regulations</li>
-        <li>May be different from the registered holder on the issuer's books</li>
-      </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
-    </div>
-  </div>
-</div>
-
 <div class="modal-overlay" id="modal-voluntary" role="dialog" aria-modal="true" aria-labelledby="modal-title-voluntary">
   <div class="modal-card">
     <div class="modal-header">
@@ -948,7 +922,7 @@ if (document.readyState === 'loading') {
         <li>Failure to elect may result in lost value or rights</li>
         <li>Instructions must flow through the intermediary chain</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-mandatory');return false;">Mandatory Actions</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-mandatory');return false;">Mandatory Actions</a>, <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a></div>
     </div>
   </div>
 </div>
@@ -976,7 +950,7 @@ if (document.readyState === 'loading') {
         <li>Protects beneficial owner voting rights</li>
         <li>Enables efficient proxy solicitation and voting</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a>, <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a></div>
     </div>
   </div>
 </div>
@@ -1010,7 +984,7 @@ if (document.readyState === 'loading') {
         <li>Can be changed through broker or issuer processes</li>
         <li>Important for fiduciaries and institutional investors</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-omnibus-proxy');return false;">Omnibus Proxy</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-omnibus-proxy');return false;">Omnibus Proxy</a>, <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a></div>
     </div>
   </div>
 </div>
@@ -1031,7 +1005,7 @@ if (document.readyState === 'loading') {
         <li>Broker provides custody and administrative services</li>
         <li>Most common form of securities ownership today</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
     </div>
   </div>
 </div>
@@ -1052,7 +1026,7 @@ if (document.readyState === 'loading') {
         <li>Reduces need for physical certificates</li>
         <li>Acts as the legal holder on issuer records</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a>, <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a></div>
     </div>
   </div>
 </div>
@@ -1081,7 +1055,288 @@ if (document.readyState === 'loading') {
         <li>Tax consequences are automatic</li>
         <li>Simpler processing than voluntary actions</li>
       </ul>
-      <div class="see-also">See also: <a href="#" onclick="openModal('modal-voluntary');return false;">Voluntary Actions</a>, <a href="#" onclick="openModal('modal-beneficial-owner');return false;">Beneficial Owner</a></div>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-voluntary');return false;">Voluntary Actions</a>, <a href="#" onclick="openModal('modal-bo');return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-issuer" role="dialog" aria-modal="true" aria-labelledby="modal-title-issuer">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-issuer">Issuer</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-issuer')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The issuer is the entity that creates and sells securities, such as a corporation for stocks or a government for bonds. In corporate actions, the issuer declares events (dividends, tenders, mergers) and works with paying agents to ensure entitlements reach the nominee stack.</p>
+      <p class="modal-section-title">Corporate Action Role</p>
+      <ul>
+        <li>Declares dividends, stock splits, tender offers, and other events</li>
+        <li>Sets record dates, payable dates, and election deadlines</li>
+        <li>Works with transfer agents and paying agents for distribution</li>
+        <li>Files required documentation with DTC and regulators</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-issuer'); openModal('modal-cede'); return false;">Cede & Co.</a>, <a href="#" onclick="closeModal('modal-issuer'); openModal('modal-dtc'); return false;">DTC</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-dtc">DTC (Depository Trust Company)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-dtc')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DTC is the central securities depository for U.S. markets. It holds securities in book-entry form and facilitates settlement between participants. In corporate actions, DTC allocates entitlements to participants based on their positions and processes election instructions.</p>
+      <p class="modal-section-title">Corporate Action Functions</p>
+      <ul>
+        <li>Allocates cash and securities to participants based on record positions</li>
+        <li>Processes election instructions for voluntary events</li>
+        <li>Protects shares during tender offers and reorganizations</li>
+        <li>Coordinates with agents and transfer agents for settlement</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-dtc'); openModal('modal-cede'); return false;">Cede & Co.</a>, <a href="#" onclick="closeModal('modal-dtc'); openModal('modal-participant'); return false;">Participant</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-participant">DTC Participant</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-participant')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DTC participants are broker-dealers, banks, and other financial institutions that hold securities at DTC. They act as intermediaries between DTC and beneficial owners, processing corporate actions and allocating entitlements to customer accounts.</p>
+      <p class="modal-section-title">Corporate Action Responsibilities</p>
+      <ul>
+        <li>Receive allocations from DTC and post to customer accounts</li>
+        <li>Solicit elections from beneficial owners for voluntary events</li>
+        <li>Apply internal cut-off deadlines before DTC deadlines</li>
+        <li>Handle tax withholding, DRIP enrollment, and other special processing</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-participant'); openModal('modal-dtc'); return false;">DTC</a>, <a href="#" onclick="closeModal('modal-participant'); openModal('modal-bo'); return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cash" role="dialog" aria-modal="true" aria-labelledby="modal-title-cash">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-cash">Cash / Securities Entitlements</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cash')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Cash and securities entitlements represent the core value that flows through the nominee stack. These include mandatory distributions like dividends and stock splits, as well as voluntary entitlements that require elections.</p>
+      <p class="modal-section-title">Types of Entitlements</p>
+      <ul>
+        <li>Cash dividends and interest payments</li>
+        <li>Stock splits, reverse splits, and stock dividends</li>
+        <li>Spin-offs and distributions of new securities</li>
+        <li>Return of capital and special distributions</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-cash'); openModal('modal-elections'); return false;">Elections</a>, <a href="#" onclick="closeModal('modal-cash'); openModal('modal-bo'); return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-elections" role="dialog" aria-modal="true" aria-labelledby="modal-title-elections">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-elections">Elections (Voluntary Corporate Actions)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-elections')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Elections are choices that beneficial owners must make for voluntary corporate actions. These include tender offers, rights offerings, and options to choose between cash and stock. Unlike mandatory actions, the BO must actively respond to receive the desired outcome.</p>
+      <p class="modal-section-title">Common Election Types</p>
+      <ul>
+        <li>Tender offers (sell shares back to issuer at a premium)</li>
+        <li>Rights offerings (subscribe to new shares at a discount)</li>
+        <li>Cash/stock elections in mergers (choose consideration type)</li>
+        <li>Optional dividend reinvestment (DRIP)</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-elections'); openModal('modal-voluntary'); return false;">Voluntary Actions</a>, <a href="#" onclick="closeModal('modal-elections'); openModal('modal-bo'); return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-votes" role="dialog" aria-modal="true" aria-labelledby="modal-title-votes">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-votes">Votes & Notices</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-votes')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Voting rights and corporate communications flow through the same nominee stack as cash and securities. Beneficial owners receive proxy materials and can vote their shares through intermediaries, even though the issuer only sees Cede & Co. as the registered holder.</p>
+      <p class="modal-section-title">Voting Process</p>
+      <ul>
+        <li>Issuer sends proxy materials to Cede & Co.</li>
+        <li>DTC distributes to participants via omnibus proxy</li>
+        <li>Participants solicit voting instructions from BOs</li>
+        <li>Instructions aggregated and voted by DTC or participant</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-votes'); openModal('modal-omnibus-proxy'); return false;">Omnibus Proxy</a>, <a href="#" onclick="closeModal('modal-votes'); openModal('modal-nobo-obo'); return false;">NOBO / OBO Status</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-announcement" role="dialog" aria-modal="true" aria-labelledby="modal-title-announcement">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-announcement">1 · Announcement</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-announcement')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The announcement is the official declaration of a corporate action by the issuer or offeror. It includes all material terms: CUSIP, event type, ratios or prices, key dates, and deadlines. This information flows through DTC to participants and ultimately to beneficial owners.</p>
+      <p class="modal-section-title">Key Information</p>
+      <ul>
+        <li>Event type (tender, rights, merger, dividend, etc.)</li>
+        <li>Record date and payable/expiration dates</li>
+        <li>Exchange ratios, premium amounts, or election options</li>
+        <li>Conditions and regulatory approvals if applicable</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-announcement'); openModal('modal-notice'); return false;">Intermediary Notice</a>, <a href="#" onclick="closeModal('modal-announcement'); openModal('modal-issuer'); return false;">Issuer</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-notice" role="dialog" aria-modal="true" aria-labelledby="modal-title-notice">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-notice">2 · Intermediary Notice</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-notice')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Intermediary notice occurs when brokers and custodians receive the corporate action announcement from DTC and communicate it to beneficial owners. This is a critical operational step because internal cut-off deadlines are typically earlier than the official DTC/agent deadlines.</p>
+      <p class="modal-section-title">Operational Considerations</p>
+      <ul>
+        <li>Internal cut-offs protect processing time before DTC deadlines</li>
+        <li>Notices may be posted to account portals or sent via email</li>
+        <li>BOs must respond within the broker's deadline, not the issuer's</li>
+        <li>Complex events may require additional educational outreach</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-notice'); openModal('modal-announcement'); return false;">Announcement</a>, <a href="#" onclick="closeModal('modal-notice'); openModal('modal-participant'); return false;">Participant</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-election" role="dialog" aria-modal="true" aria-labelledby="modal-title-election">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-election">3 · BO / Fiduciary Election</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-election')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The beneficial owner or fiduciary makes their election for voluntary corporate actions. This is the decision point where the BO chooses to tender, exercise rights, select cash vs. stock, or take other action. Silence may default to "do not participate" in many offers.</p>
+      <p class="modal-section-title">Election Options</p>
+      <ul>
+        <li>Tender shares (sell back to issuer at specified price)</li>
+        <li>Exercise rights (subscribe to additional shares)</li>
+        <li>Choose cash, stock, or mixed consideration in mergers</li>
+        <li>Elect to participate or opt out of the offer</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-election'); openModal('modal-notice'); return false;">Intermediary Notice</a>, <a href="#" onclick="closeModal('modal-election'); openModal('modal-elections'); return false;">Elections</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-participant-dtc" role="dialog" aria-modal="true" aria-labelledby="modal-title-participant-dtc">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-participant-dtc">4 · Participant → DTC</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-participant-dtc')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Participants aggregate BO elections and transmit instructions to DTC. Positions may be protected (set aside) or delivered to the agent depending on the event type. This step requires precise adherence to DTC procedures and deadlines for the specific corporate action.</p>
+      <p class="modal-section-title">Operational Steps</p>
+      <ul>
+        <li>Aggregate individual BO elections into participant-level instructions</li>
+        <li>Protect shares in tender offers to ensure availability</li>
+        <li>Deliver securities to agent for exchange or conversion</li>
+        <li>Submit instructions before DTC's event deadline</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-participant-dtc'); openModal('modal-election'); return false;">BO Election</a>, <a href="#" onclick="closeModal('modal-participant-dtc'); openModal('modal-settlement'); return false;">Settlement</a>, <a href="#" onclick="closeModal('modal-participant-dtc'); openModal('modal-bo'); return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-settlement" role="dialog" aria-modal="true" aria-labelledby="modal-title-settlement">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-settlement">5 · Agent / Offer Settlement</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-settlement')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The agent or offeror settles the corporate action by applying the offer terms. This includes proration if oversubscribed, odd-lot priority rules, exchange ratio calculations, and allocation of consideration. The settlement occurs at the agent level, then results flow back down the stack.</p>
+      <p class="modal-section-title">Settlement Mechanics</p>
+      <ul>
+        <li>Proration applies when oversubscribed (pro-rata allocation)</li>
+        <li>Odd-lot holders may receive priority in some tenders</li>
+        <li>Exchange ratios determine consideration in mergers</li>
+        <li>Results transmitted to DTC for participant allocation</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-settlement'); openModal('modal-participant-dtc'); return false;">Participant → DTC</a>, <a href="#" onclick="closeModal('modal-settlement'); openModal('modal-results'); return false;">Results</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-results" role="dialog" aria-modal="true" aria-labelledby="modal-title-results">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-results">6 · Results Down the Stack</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-results')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Results flow from the agent through DTC to participants and finally to beneficial owners. Cash and securities are posted to accounts, unaccepted shares are released from protect, and positions are updated to reflect the corporate action outcome.</p>
+      <p class="modal-section-title">Post-Settlement Actions</p>
+      <ul>
+        <li>Cash and securities posted to participant accounts at DTC</li>
+        <li>Participants allocate to end-customer accounts</li>
+        <li>Unaccepted tendered shares released from protection</li>
+        <li>Position updates reflected in statements and tax reporting</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-results'); openModal('modal-settlement'); return false;">Settlement</a>, <a href="#" onclick="closeModal('modal-results'); openModal('modal-bo'); return false;">Beneficial Owner</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-bo" role="dialog" aria-modal="true" aria-labelledby="modal-title-bo">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-bo">Beneficial Owner (B.O.)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-bo')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The beneficial owner is the person or entity that enjoys the economic benefits of ownership (dividends, voting rights, capital gains) even though the securities may be held in street name through a broker or nominee.</p>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li>Holds economic rights to dividends, capital gains, and voting</li>
+        <li>May not appear on the issuer's official register</li>
+        <li>Relies on intermediaries for custody and administration</li>
+        <li>Has the right to participate in corporate actions</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-bo'); openModal('modal-street-name'); return false;">Street Name</a>, <a href="#" onclick="closeModal('modal-bo'); openModal('modal-cede'); return false;">Cede & Co.</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-bo" role="dialog" aria-modal="true" aria-labelledby="modal-title-bo">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-bo">Beneficial Owner (B.O.)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-bo')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The beneficial owner is the person or entity that ultimately owns the securities and enjoys the economic benefits (dividends, voting rights, etc.), even though the securities may be held in street name through a broker or other intermediary.</p>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li>Has economic ownership but not necessarily legal title</li>
+        <li>Receives corporate action entitlements through intermediaries</li>
+        <li>Must make elections for voluntary corporate actions</li>
+        <li>Protected by intermediary agreements and securities regulations</li>
+        <li>May be different from the registered holder on the issuer's books</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="openModal('modal-street-name');return false;">Street Name</a>, <a href="#" onclick="openModal('modal-cede');return false;">Cede & Co.</a></div>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../styles/teaching.css">
 <link rel="stylesheet" href="../../styles/guides-transfer-agent.css">
 <script src="../../js/theme-init.js"></script>
+<script src="../../js/shared.js" defer></script>
 </head>
 <body>
 
@@ -231,11 +232,8 @@
   With FAST, the issuer side of DTC eligibility becomes operationally feasible at modern volumes.
 </p>
 
-<div class="diagram-box concept-map" id="concept-map-interface" role="img" aria-labelledby="cm-ta-title" aria-describedby="cm-ta-desc">
+<div class="diagram-box concept-map" id="concept-map-interface" aria-labelledby="cm-ta-title" role="region">
   <div class="diagram-title" id="cm-ta-title">Concept Map — Issuer–TA–DTC Interface</div>
-  <p id="cm-ta-desc" class="visually-hidden">
-    Issuer oversees transfer agent; transfer agent maintains register and FAST balance with DTC and Cede and Co; participants hold street name; DRS holders sit on TA books in investor name. DWAC connects participants and the transfer agent.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="ta-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -401,11 +399,8 @@
 </section>
 
 <!-- Mini SVG: deposit vs withdrawal balance -->
-<div class="diagram-box concept-map" id="concept-map-dwac-balance" role="img" aria-labelledby="cm-bal-title" aria-describedby="cm-bal-desc">
+<div class="diagram-box concept-map" id="concept-map-dwac-balance" aria-labelledby="cm-bal-title" role="region">
   <div class="diagram-title" id="cm-bal-title">Concept Map — FAST Balance Moves</div>
-  <p id="cm-bal-desc" class="visually-hidden">
-    Deposit increases Cede FAST balance and street name; withdrawal decreases Cede FAST balance and increases DRS or registered holdings.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="bal-arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -508,11 +503,8 @@
   </div>
 </div>
 
-<div class="diagram-box concept-map" id="concept-map-drs-street" role="img" aria-labelledby="cm-drs-title" aria-describedby="cm-drs-desc">
+<div class="diagram-box concept-map" id="concept-map-drs-street" aria-labelledby="cm-drs-title" role="region">
   <div class="diagram-title" id="cm-drs-title">Concept Map — Two Paths, One Register</div>
-  <p id="cm-drs-desc" class="visually-hidden">
-    Split diagram: street name routes investor through participant and Cede on the left; DRS routes investor straight to transfer agent books on the right; both connect to the issuer register.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="drs-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -1220,41 +1212,6 @@ if (typeof openModal === 'undefined') {
     }
   });
 }
-
-// Modal functionality for diagram interactions
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    // Focus on the modal for accessibility
-    modal.querySelector('.modal-close').focus();
-  }
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
-// Handle diagram node clicks
-document.querySelectorAll('.cm-node[data-modal]').forEach(function(node) {
-  node.addEventListener('click', function() {
-    const modalId = this.getAttribute('data-modal');
-    openModal('modal-' + modalId);
-  });
-  
-  node.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const modalId = this.getAttribute('data-modal');
-      openModal('modal-' + modalId);
-    }
-  });
-});
 </script>
 </body>
 </html>

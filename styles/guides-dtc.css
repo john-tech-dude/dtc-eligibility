@@ -84,6 +84,7 @@
   background: rgba(0, 0, 0, 0.3);
   z-index: 94;
   display: none;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
 

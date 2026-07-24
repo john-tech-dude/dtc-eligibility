@@ -230,11 +230,8 @@
   Names change by desk, but the cast is stable. Beneficial owners often never see the loan ticket; their shares sit in street name at a participant that has (or uses an agent with) lending authority.
 </p>
 
-<div class="diagram-box concept-map" id="concept-map-parties" role="img" aria-labelledby="cm-sl-title" aria-describedby="cm-sl-desc">
+<div class="diagram-box concept-map" id="concept-map-parties" aria-labelledby="cm-sl-title" role="region">
   <div class="diagram-title" id="cm-sl-title">Concept Map — Lending Stack on Book-Entry Pipes</div>
-  <p id="cm-sl-desc" class="visually-hidden">
-    Beneficial owner through participant and optional agent lender; borrower participant receives securities; cash collateral flows opposite; DTC as delivery path; NSCC FICC for clearing context.
-  </p>
   <svg class="concept-map-svg" viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <marker id="sl-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -250,34 +247,34 @@
 
     <rect x="40" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
     <text class="cm-zone-label" x="56" y="42">Supply side</text>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="beneficial-owner" tabindex="0" role="button" aria-label="Beneficial owner node">
       <rect class="cm-node-shape" x="80" y="58" width="220" height="40" rx="8" fill="url(#g-green)" stroke="var(--green)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="83" text-anchor="middle" fill="var(--green)" font-size="13">Beneficial owner</text>
     </g>
     <line class="cm-edge" x1="190" y1="98" x2="190" y2="118" marker-end="url(#sl-arr)"/>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="lender-participant" tabindex="0" role="button" aria-label="Lender participant / agent node">
       <rect class="cm-node-shape" x="80" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Lender participant / agent</text>
     </g>
     <line class="cm-edge-pass" x1="190" y1="160" x2="190" y2="180" marker-end="url(#sl-arr-g)"/>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="securities-deliver" tabindex="0" role="button" aria-label="Securities deliver (loan) node">
       <rect class="cm-node-shape" x="80" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="190" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Securities deliver (loan)</text>
     </g>
 
     <rect x="380" y="20" width="300" height="200" rx="14" fill="var(--bg)" stroke="var(--border-light)" stroke-dasharray="4 3"/>
     <text class="cm-zone-label" x="396" y="42">Demand side</text>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="borrower" tabindex="0" role="button" aria-label="Borrower / short desk node">
       <rect class="cm-node-shape" x="420" y="58" width="220" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="83" text-anchor="middle" fill="var(--gold-deep)" font-size="13">Borrower / short desk</text>
     </g>
     <line class="cm-edge" x1="530" y1="98" x2="530" y2="118" marker-end="url(#sl-arr)"/>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="borrower-participant" tabindex="0" role="button" aria-label="Borrower participant node">
       <rect class="cm-node-shape" x="420" y="120" width="220" height="40" rx="8" fill="url(#g-neutral)" stroke="var(--border)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="145" text-anchor="middle" fill="var(--ink)" font-size="13">Borrower participant</text>
     </g>
     <line class="cm-edge" x1="530" y1="160" x2="530" y2="180" marker-end="url(#sl-arr-a)"/>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="cash-collateral" tabindex="0" role="button" aria-label="Cash / collateral in node">
       <rect class="cm-node-shape" x="420" y="182" width="220" height="28" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="201" text-anchor="middle" fill="var(--accent)" font-size="12">Cash / collateral in</text>
     </g>
@@ -285,15 +282,15 @@
     <!-- DTC pipe -->
     <rect x="120" y="250" width="480" height="100" rx="14" fill="var(--bg-cream)" stroke="var(--border-light)"/>
     <text class="cm-zone-label" x="140" y="274">Settlement &amp; clearing layer</text>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="dtc-book-entry" tabindex="0" role="button" aria-label="DTC book-entry node">
       <rect class="cm-node-shape" x="160" y="290" width="140" height="40" rx="8" fill="url(#g-accent-solid)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="230" y="315" text-anchor="middle" fill="#fff" font-size="13">DTC book-entry</text>
     </g>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="nscc" tabindex="0" role="button" aria-label="NSCC node">
       <rect class="cm-node-shape" x="330" y="290" width="120" height="40" rx="8" fill="url(#g-accent)" stroke="var(--accent)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="390" y="315" text-anchor="middle" fill="var(--accent)" font-size="13">NSCC</text>
     </g>
-    <g class="cm-node cm-node-static">
+    <g class="cm-node" data-modal="ficc" tabindex="0" role="button" aria-label="FICC node">
       <rect class="cm-node-shape" x="480" y="290" width="100" height="40" rx="8" fill="url(#g-gold)" stroke="var(--gold)" filter="url(#g-shadow)"/>
       <text class="cm-node-title" x="530" y="315" text-anchor="middle" fill="var(--gold-deep)" font-size="13">FICC</text>
     </g>
@@ -900,6 +897,186 @@
         <strong>Learning tip</strong>
         Always ask whether the desk is solving for a <em>security</em> or for <em>cash</em>. That single question prevents most loan/repo confusion.
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-beneficial-owner" role="dialog" aria-modal="true" aria-labelledby="modal-title-beneficial-owner">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-beneficial-owner">Beneficial Owner</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-beneficial-owner')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The beneficial owner is the person or entity that enjoys the benefits of ownership (economic rights, voting rights, etc.) even though the securities may be held in street name through a broker or nominee.</p>
+      <p class="modal-section-title">Key Characteristics</p>
+      <ul>
+        <li>Holds economic rights to dividends, capital gains, and voting</li>
+        <li>May not appear on the issuer's official register</li>
+        <li>Relies on intermediaries for custody and administration</li>
+        <li>Has the right to lend shares or participate in corporate actions</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-beneficial-owner'); openModal('modal-street-name'); return false;">Street Name</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-lender-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-lender-participant">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-lender-participant">Lender Participant / Agent</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-lender-participant')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The lender participant or agent is the DTC participant that holds securities on behalf of beneficial owners and arranges to lend them to borrowers in exchange for collateral and fees.</p>
+      <p class="modal-section-title">Responsibilities</p>
+      <ul>
+        <li>Holds securities in book-entry form at DTC</li>
+        <li>Evaluates borrowing requests and manages lending program</li>
+        <li>Accepts and monitors collateral from borrowers</li>
+        <li>Distributes lending income to beneficial owners</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-lender-participant'); openModal('modal-beneficial-owner'); return false;">Beneficial Owner</a>, <a href="#" onclick="closeModal('modal-lender-participant'); openModal('modal-collateral'); return false;">Collateral</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-securities-deliver" role="dialog" aria-modal="true" aria-labelledby="modal-title-securities-deliver">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-securities-deliver">Securities Deliver (Loan)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-securities-deliver')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Securities delivery represents the actual loan transaction where securities move from the lender's DTC account to the borrower's DTC account via book-entry transfer.</p>
+      <p class="modal-section-title">Process</p>
+      <ul>
+        <li>Initiated through loan agreement between parties</li>
+        <li>Settled via DTC book-entry system</li>
+        <li>Collateral must be posted before or simultaneously with delivery</li>
+        <li>Term and recall conditions specified in the loan agreement</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-securities-deliver'); openModal('modal-collateral'); return false;">Collateral</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-borrower" role="dialog" aria-modal="true" aria-labelledby="modal-title-borrower">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-borrower">Borrower / Short Desk</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-borrower')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The borrower or short desk is the trading desk or entity that borrows securities to support short selling, market making, or fail coverage activities.</p>
+      <p class="modal-section-title">Borrowing Motivations</p>
+      <ul>
+        <li>Short selling needs (selling shares you don't own)</li>
+        <li>Market making (maintaining inventory for two-way markets)</li>
+        <li>Fail coverage (curing settlement failures)</li>
+        <li>Arbitrage strategies</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-borrower'); openModal('modal-borrower-participant'); return false;">Borrower Participant</a>, <a href="#" onclick="closeModal('modal-borrower'); openModal('modal-locate'); return false;">Locate Requirement</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-borrower-participant" role="dialog" aria-modal="true" aria-labelledby="modal-title-borrower-participant">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-borrower-participant">Borrower Participant</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-borrower-participant')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>The borrower participant is the DTC participant that receives the borrowed securities on behalf of the borrower and posts collateral to secure the loan.</p>
+      <p class="modal-section-title">Responsibilities</p>
+      <ul>
+        <li>Receives borrowed securities in DTC account</li>
+        <li>Posts collateral to lender (cash or securities)</li>
+        <li>Manages margin requirements and mark-to-market</li>
+        <li>Returns securities upon loan termination or recall</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-borrower-participant'); openModal('modal-lender-participant'); return false;">Lender Participant</a>, <a href="#" onclick="closeModal('modal-borrower-participant'); openModal('modal-collateral'); return false;">Collateral</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cash-collateral" role="dialog" aria-modal="true" aria-labelledby="modal-title-cash-collateral">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-cash-collateral">Cash / Collateral In</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-cash-collateral')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Cash or collateral is posted by the borrower to secure the loan. This provides protection to the lender against default by the borrower.</p>
+      <p class="modal-section-title">Collateral Types</p>
+      <ul>
+        <li>Cash collateral (often earns interest at a rebate rate)</li>
+        <li>Non-cash securities (Treasuries, equities, etc.)</li>
+        <li>Subject to haircuts based on asset quality and liquidity</li>
+        <li>Marked-to-market daily to maintain adequate coverage</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-cash-collateral'); openModal('modal-haircut'); return false;">Haircut</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-dtc-book-entry" role="dialog" aria-modal="true" aria-labelledby="modal-title-dtc-book-entry">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-dtc-book-entry">DTC Book-Entry</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-dtc-book-entry')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>DTC book-entry is the electronic system that records ownership of securities without physical certificates. All transfers between participants occur through this system.</p>
+      <p class="modal-section-title">Functions</p>
+      <ul>
+        <li>Electronic settlement of securities transfers</li>
+        <li>No physical certificates required</li>
+        <li>Same-day settlement for most transactions</li>
+        <li>Reduces operational risk and cost</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-dtc-book-entry'); openModal('modal-nscc'); return false;">NSCC</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-nscc" role="dialog" aria-modal="true" aria-labelledby="modal-title-nscc">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-nscc">NSCC (National Securities Clearing Corporation)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-nscc')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>NSCC is the clearing corporation for equity trades in the U.S. It nets trades between participants to reduce settlement obligations and guarantee settlement.</p>
+      <p class="modal-section-title">Key Functions</p>
+      <ul>
+        <li>Netting of trades to reduce settlement volume</li>
+        <li>Guarantee of settlement for cleared trades</li>
+        <li>Risk management and margin requirements</li>
+        <li>Operational efficiency for broker-dealers</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-nscc'); openModal('modal-ficc'); return false;">FICC</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ficc" role="dialog" aria-modal="true" aria-labelledby="modal-title-ficc">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title-ficc">FICC (Fixed Income Clearing Corporation)</h3>
+      <button type="button" class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-ficc')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>FICC is the clearing corporation for fixed-income securities in the U.S., including government securities and mortgage-backed securities. It includes the Government Securities Division (GSD) for Treasury repo clearing.</p>
+      <p class="modal-section-title">Key Functions</p>
+      <ul>
+        <li>Clearing of Treasury and agency securities</li>
+        <li>Centralized repo clearing through GSD</li>
+        <li>Netting and risk management for fixed-income trades</li>
+        <li>Operational efficiency for fixed-income markets</li>
+      </ul>
+      <div class="see-also">See also: <a href="#" onclick="closeModal('modal-ficc'); openModal('modal-repo'); return false;">Repo</a>, <a href="#" onclick="closeModal('modal-ficc'); openModal('modal-nscc'); return false;">NSCC</a></div>
     </div>
   </div>
 </div>

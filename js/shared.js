@@ -352,6 +352,21 @@ function initHotspots() {
       }
     });
   });
+
+  // Corporate-actions diagram nodes (data-modal="issuer" opens modal-issuer)
+  document.querySelectorAll('.diagram-node[data-modal]').forEach(node => {
+    const openFromNode = function() {
+      const modalId = node.getAttribute('data-modal');
+      if (modalId) openModal('modal-' + modalId);
+    };
+    node.addEventListener('click', openFromNode);
+    node.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFromNode();
+      }
+    });
+  });
 }
 
 // Generic keyboard support for other clickable "pseudo-buttons"
@@ -360,10 +375,10 @@ function initHotspots() {
 // <button>/<a> elements fire their click handler on Enter/Space
 // automatically; plain <span>/<div> elements do not, so without this a
 // keyboard user can Tab to one of these but Enter/Space does nothing.
-// .hotspot and .cm-node already have their own dedicated handling above,
+// .hotspot, .cm-node, and .diagram-node already have their own dedicated handling above,
 // so they're excluded here to avoid double-firing.
 function initGenericRoleButtons() {
-  document.querySelectorAll('[role="button"][tabindex="0"]:not(.hotspot):not(.cm-node)').forEach(el => {
+  document.querySelectorAll('[role="button"][tabindex="0"]:not(.hotspot):not(.cm-node):not(.diagram-node)').forEach(el => {
     el.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
