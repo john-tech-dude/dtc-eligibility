@@ -4,7 +4,7 @@ A collection of interactive teaching guides and documentation for understanding 
 
 ## Version
 
-**v1.1** (July 2026)
+**v1.4** (July 2026)
 
 ## Overview
 
