@@ -28,13 +28,15 @@
 .lp-card {
   display: flex;
   flex-direction: column;
-  background: var(--bg, #fff);
+  background: radial-gradient(circle 200px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(79, 115, 230, 0.05), transparent), var(--bg, #fff);
   border: 1px solid var(--border-light, #e8e5de);
   border-radius: var(--radius-md, 10px);
   padding: 18px 18px 16px;
   box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   border-top: 3px solid var(--accent, #1a3a5c);
+  position: relative;
+  overflow: hidden;
 }
 .lp-card.lp-color-gold {
   border-top-color: var(--gold, #c4a35a);
@@ -178,9 +180,59 @@
   font-size: 0.88rem;
   color: var(--ink-secondary, #4a4a5e);
 }
+.lp-progress-wrapper {
+  margin: 0 0 14px;
+}
+.lp-progress-container {
+  height: 6px;
+  background: var(--border-light, #e8e5de);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.lp-progress-bar {
+  height: 100%;
+  background: var(--accent, #1a3a5c);
+  border-radius: 99px;
+  transition: width 0.4s ease-out;
+}
+.lp-color-gold .lp-progress-bar {
+  background: var(--gold, #c4a35a);
+}
+.lp-color-green .lp-progress-bar {
+  background: var(--green, #2e8b57);
+}
+.lp-progress-bar.completed {
+  background: var(--green, #2e8b57) !important;
+}
+.lp-progress-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-secondary, #4a4a5e);
+}
+.lp-step-passed .lp-step-link {
+  color: var(--ink, #1a1a2e);
+  font-weight: 600;
+}
+.lp-step-passed .lp-step-num {
+  background: var(--green-light, #e0f0e8);
+  color: var(--green, #2e8b57);
+  border-color: var(--green, #2e8b57);
+}
+.lp-step-viewed .lp-step-num {
+  background: var(--accent-light, #e8f0f8);
+  color: var(--accent, #1a3a5c);
+  border-color: var(--accent, #1a3a5c);
+}
+.lp-step-check {
+  color: var(--green, #2e8b57);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
 
 [data-theme="dark"] .lp-card {
-  background: var(--bg-cream, #1a1a2e);
+  background: radial-gradient(circle 200px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(79, 115, 230, 0.08), transparent), var(--bg-cream, #1a1a2e);
 }
 [data-theme="dark"] .lp-step-link {
   color: var(--ink, #e8e6f0);

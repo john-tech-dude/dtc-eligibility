@@ -13,11 +13,49 @@
       .replace(/"/g, '&quot;');
   }
 
+  function getProgress() {
+    try {
+      return JSON.parse(localStorage.getItem('dtc-progress-v2')) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
   function renderPath(path) {
+    var progress = getProgress();
+    var totalSteps = path.steps ? path.steps.length : 0;
+    var completedPoints = 0;
+    
+    if (path.steps) {
+      path.steps.forEach(function(step) {
+        var p = progress[step.module];
+        if (p) {
+          if (p.quizScore !== null && p.quizScore >= 80) {
+            completedPoints += 1.0;
+          } else if (p.viewed) {
+            completedPoints += 0.5;
+          }
+        }
+      });
+    }
+    
+    var pct = totalSteps > 0 ? Math.round((completedPoints / totalSteps) * 100) : 0;
+
     var steps = (path.steps || [])
       .map(function (step, i) {
+        var p = progress[step.module];
+        var statusClass = '';
+        var checkMark = '';
+        if (p) {
+          if (p.quizScore !== null && p.quizScore >= 80) {
+            statusClass = ' lp-step-passed';
+            checkMark = ' <span class="lp-step-check">✓</span>';
+          } else if (p.viewed) {
+            statusClass = ' lp-step-viewed';
+          }
+        }
         return (
-          '<li class="lp-step">' +
+          '<li class="lp-step' + statusClass + '">' +
           '<span class="lp-step-num" aria-hidden="true">' +
           (i + 1) +
           '</span>' +
@@ -25,6 +63,7 @@
           escapeHtml(step.href) +
           '">' +
           escapeHtml(step.label) +
+          checkMark +
           '</a>' +
           (i < path.steps.length - 1 ? '<span class="lp-step-arrow" aria-hidden="true">→</span>' : '') +
           '</li>'
@@ -33,6 +72,18 @@
       .join('');
 
     var firstHref = path.steps && path.steps[0] ? path.steps[0].href : '#documents';
+    
+    var progressHtml = '';
+    if (totalSteps > 0) {
+      var completedClass = pct === 100 ? ' completed' : '';
+      progressHtml = 
+        '<div class="lp-progress-wrapper">' +
+        '<div class="lp-progress-container" title="' + pct + '% Complete">' +
+        '<div class="lp-progress-bar' + completedClass + '" style="width: ' + pct + '%"></div>' +
+        '</div>' +
+        '<div class="lp-progress-text">' + pct + '% completed' + (pct === 100 ? ' 🏆' : '') + '</div>' +
+        '</div>';
+    }
 
     return (
       '<article class="lp-card lp-color-' +
@@ -54,17 +105,19 @@
       '<p class="lp-blurb">' +
       escapeHtml(path.blurb) +
       '</p>' +
+      progressHtml +
       '<ol class="lp-steps">' +
       steps +
       '</ol>' +
       '<a class="lp-start" href="' +
       escapeHtml(firstHref) +
-      '">Start this path →</a>' +
+      '">' + (pct === 100 ? 'Review path' : (pct > 0 ? 'Continue path' : 'Start this path')) + ' →</a>' +
       '</article>'
     );
   }
 
   function render(root, data) {
+    global.__LEARNING_PATHS_ROOT_EL__ = root;
     var meta = data.meta || {};
     root.innerHTML =
       '<div class="lp-header">' +
@@ -109,6 +162,13 @@
   }
 
   global.initLearningPaths = initLearningPaths;
+
+  // React to progress updates
+  window.addEventListener('dtc-progress-updated', function () {
+    if (global.__LEARNING_PATHS_ROOT_EL__ && global.__LEARNING_PATHS__) {
+      render(global.__LEARNING_PATHS_ROOT_EL__, global.__LEARNING_PATHS__);
+    }
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {

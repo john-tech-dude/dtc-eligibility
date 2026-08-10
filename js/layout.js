@@ -143,6 +143,26 @@
     var prefix = depthPrefix();
     fillFooters(prefix);
     fillBreadcrumbs(prefix);
+    initMouseTracking();
+  }
+
+  function initMouseTracking() {
+    // Enable mouse-tracking radial glow effects on cards
+    var cards = document.querySelectorAll('.document-card, .infra-card, .lp-card');
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        card.style.setProperty('--mouse-x', '0px');
+        card.style.setProperty('--mouse-y', '0px');
+      });
+    });
   }
 
   global.initLayout = initLayout;
