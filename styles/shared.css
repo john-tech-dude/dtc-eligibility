@@ -3,114 +3,129 @@
 
 /* CSS Custom Properties (Design Tokens) */
 :root {
+  /* Fonts */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
   /* Text Colors - Premium High Contrast */
-  --ink: #0a0a0a;
-  --ink-secondary: #1a1a2e;
-  --ink-tertiary: #4a4a5a;
-  --ink-muted: #6a6a7a;
-  --ink-faint: #9a9aaa;
+  --ink: #0d1117;
+  --ink-secondary: #212836;
+  --ink-tertiary: #485264;
+  --ink-muted: #6e7681;
+  --ink-faint: #8b949e;
 
   /* Border Colors - Enhanced Visibility */
-  --border: #c0c0ca;
-  --border-light: #d8d8e2;
-  --border-faint: #e8e8f2;
+  --border: #d0d7de;
+  --border-light: #e1e4e8;
+  --border-faint: #f6f8fa;
 
   /* Background Colors - Subtle Premium Depth */
   --bg: #ffffff;
-  --bg-warm: #faf8f5;
-  --bg-cream: #f5f3ef;
-  --bg-ivory: #fdfbf7;
+  --bg-warm: #f8f9fa;
+  --bg-cream: #f6f8fa;
+  --bg-ivory: #fafbfc;
 
   /* Accent Colors - Richer, More Vibrant */
-  --accent: #0a2a4a;
-  --accent-light: #e0e8f5;
-  --accent-muted: #a0b8d8;
-  --accent-hover: #051a30;
+  --accent: #0969da;
+  --accent-light: #f2f7fd;
+  --accent-muted: #54a3ff;
+  --accent-hover: #0855b1;
 
   /* Gold Colors - Richer Premium Gold */
-  --gold: #b8860b;
-  --gold-light: #faf5e8;
-  --gold-muted: #d4a84a;
-  --gold-deep: #8b6914;
+  --gold: #bc8f2f;
+  --gold-light: #fdfaf2;
+  --gold-muted: #e3b341;
+  --gold-deep: #8c6312;
 
   /* Additional Colors - Enhanced Contrast */
-  --green: #0a4a2a;
-  --green-light: #e0f0e5;
-  --teal: #0a5060;
-  --teal-light: #e0f0f5;
-  --red: #8b2020;
-  --red-light: #f5e0e0;
-  --red-muted: #c05050;
+  --green: #1a7f37;
+  --green-light: #dafbe1;
+  --teal: #059669;
+  --teal-light: #ecfdf5;
+  --red: #cf222e;
+  --red-light: #ffebe9;
+  --red-muted: #ff8182;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(208, 215, 222, 0.5);
+  --glass-backdrop: blur(12px) saturate(130%);
 
   /* Effects - Premium Depth */
   --modal-overlay: rgba(10,12,18,0.75);
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.16), 0 8px 16px rgba(0,0,0,0.12);
-  --shadow-xl: 0 24px 64px rgba(0,0,0,0.20), 0 12px 24px rgba(0,0,0,0.16);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 8px 24px rgba(13,17,23,0.08), 0 4px 8px rgba(13,17,23,0.04);
+  --shadow-lg: 0 16px 48px rgba(13,17,23,0.12), 0 8px 16px rgba(13,17,23,0.06);
+  --shadow-xl: 0 24px 64px rgba(13,17,23,0.16), 0 12px 24px rgba(13,17,23,0.08);
   
   /* Premium colored shadows for accents */
-  --shadow-accent: 0 4px 16px rgba(10,42,74,0.15);
-  --shadow-gold: 0 4px 16px rgba(184,134,11,0.12);
+  --shadow-accent: 0 4px 16px rgba(9,105,218,0.12);
+  --shadow-gold: 0 4px 16px rgba(188,143,47,0.1);
 
   /* Border Radius - Refined */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
 
   /* Motion */
-  --transition: 0.25s ease;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Premium Dark Theme */
 [data-theme="dark"] {
   /* Text — warm off-white hierarchy (muted raised for readable UI chrome) */
-  --ink: #eae8e4;
-  --ink-secondary: #d0cec8;
-  --ink-tertiary: #a8a6b0;
-  --ink-muted: #8a8894;
-  --ink-faint: #6a6874;
+  --ink: #f0f6fc;
+  --ink-secondary: #c9d1d9;
+  --ink-tertiary: #8b949e;
+  --ink-muted: #57606a;
+  --ink-faint: #30363d;
 
   /* Borders — subtle violet-navy undertone */
-  --border: #3a3848;
-  --border-light: #2a2838;
-  --border-faint: #1e1c28;
+  --border: #30363d;
+  --border-light: #21262d;
+  --border-faint: #161b22;
 
   /* Backgrounds — deep navy-charcoal with warmth */
-  --bg: #14141f;
-  --bg-warm: #0a0a12;
-  --bg-cream: #1a1a26;
-  --bg-ivory: #22222e;
+  --bg: #0d1117;
+  --bg-warm: #010409;
+  --bg-cream: #161b22;
+  --bg-ivory: #21262d;
 
   /* Accent — refined steel blue (navy family) */
-  --accent: #5a9fd4;
-  --accent-light: #152030;
-  --accent-muted: #2a4060;
-  --accent-hover: #7ab8ec;
+  --accent: #58a6ff;
+  --accent-light: #161b22;
+  --accent-muted: #1f6feb;
+  --accent-hover: #79c0ff;
 
   /* Gold — luminous premium */
-  --gold: #d4af37;
-  --gold-light: #2a2418;
-  --gold-muted: #a8883a;
-  --gold-deep: #c9a030;
+  --gold: #f2cc60;
+  --gold-light: #21262d;
+  --gold-muted: #d29922;
+  --gold-deep: #bb8009;
 
   /* Semantic colors */
-  --green: #5cb87a;
-  --green-light: #142820;
-  --teal: #5ec4e0;
-  --teal-light: #142830;
-  --red: #e87070;
-  --red-light: #281818;
-  --red-muted: #b05050;
+  --green: #3fb950;
+  --green-light: #161b22;
+  --teal: #10b981;
+  --teal-light: #064e3b;
+  --red: #f85149;
+  --red-light: #21262d;
+  --red-muted: #da3633;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(13, 17, 23, 0.7);
+  --glass-border: rgba(240, 246, 252, 0.08);
 
   /* Effects — depth with accent glow */
-  --modal-overlay: rgba(4, 4, 10, 0.88);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.65);
-  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.75);
-  --shadow-accent: 0 4px 24px rgba(90, 159, 212, 0.18);
-  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.14);
+  --modal-overlay: rgba(1, 4, 9, 0.85);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.8);
+  --shadow-accent: 0 4px 24px rgba(88, 166, 255, 0.15);
+  --shadow-gold: 0 4px 20px rgba(242, 204, 96, 0.12);
 }
 
 /* Reset & Base Styles */
@@ -150,7 +165,7 @@ body {
 
 /* Theme Toggle Button — single icon slot so sun/moon never stack as a ghost */
 .theme-toggle {
-  background: var(--bg);
+  background: var(--glass-bg);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   padding: 0;
@@ -161,24 +176,31 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--ink-muted);
-  transition: all 0.2s ease;
+  transition: all var(--transition);
   font-size: 0.8rem;
   font-weight: 500;
   position: relative;
   flex-shrink: 0;
   isolation: isolate;
   overflow: hidden;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
 }
 .theme-toggle:hover {
   background: var(--bg-cream);
   border-color: var(--border);
   color: var(--ink);
+  transform: scale(1.05);
 }
 .theme-toggle svg {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.theme-toggle:hover svg {
+  transform: rotate(45deg) scale(1.1);
 }
 /* Only one icon is in the layout tree at a time */
 .theme-toggle .sun-icon { display: block; }
@@ -188,7 +210,7 @@ body {
 
 /* Help control (do not reuse .theme-toggle — that left a duplicate “image” beside the sun/moon) */
 .help-btn {
-  background: var(--bg);
+  background: var(--glass-bg);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   width: 36px;
@@ -204,7 +226,9 @@ body {
   font-family: 'DM Sans', system-ui, sans-serif;
   line-height: 1;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition: all var(--transition);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
 }
 .help-btn:hover,
 .help-btn:focus-visible {
@@ -212,6 +236,7 @@ body {
   border-color: var(--border);
   color: var(--ink);
   outline: none;
+  transform: scale(1.05);
 }
 .help-btn:focus-visible {
   outline: 2px solid var(--accent);
@@ -220,15 +245,15 @@ body {
 
 /* Sticky page header — shared chrome for teaching guides */
 .page-header {
-  background: var(--bg) !important;
-  background-color: var(--bg) !important;
-  border-bottom: 1px solid var(--border-light);
+  background: var(--glass-bg) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
   padding: 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  backdrop-filter: var(--glass-backdrop) !important;
+  -webkit-backdrop-filter: var(--glass-backdrop) !important;
+  transition: background var(--transition), border-color var(--transition);
 }
 .header-inner {
   max-width: 1100px;

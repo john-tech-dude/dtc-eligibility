@@ -28,25 +28,26 @@
 .lp-card {
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle 200px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(79, 115, 230, 0.05), transparent), var(--bg, #fff);
-  border: 1px solid var(--border-light, #e8e5de);
-  border-radius: var(--radius-md, 10px);
-  padding: 18px 18px 16px;
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.04));
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  border-top: 3px solid var(--accent, #1a3a5c);
+  background: radial-gradient(circle 220px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(9, 105, 218, 0.06), transparent 80%), var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  border-top: 3px solid var(--accent);
   position: relative;
   overflow: hidden;
 }
 .lp-card.lp-color-gold {
-  border-top-color: var(--gold, #c4a35a);
+  border-top-color: var(--gold);
 }
 .lp-card.lp-color-green {
-  border-top-color: var(--green, #2e8b57);
+  border-top-color: var(--green);
 }
 .lp-card:hover {
-  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--accent-muted);
 }
 .lp-card-top {
   display: flex;
@@ -232,7 +233,7 @@
 }
 
 [data-theme="dark"] .lp-card {
-  background: radial-gradient(circle 200px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(79, 115, 230, 0.08), transparent), var(--bg-cream, #1a1a2e);
+  background: radial-gradient(circle 220px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(88, 166, 255, 0.12), transparent 80%), var(--bg-cream);
 }
 [data-theme="dark"] .lp-step-link {
   color: var(--ink, #e8e6f0);

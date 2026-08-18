@@ -133,6 +133,20 @@
       (data.paths || []).map(renderPath).join('') +
       '</div>';
     root.classList.add('lp-root');
+
+    // Mouse tracking spotlight hover effect
+    var grid = root.querySelector('.lp-grid');
+    if (grid) {
+      grid.addEventListener('mousemove', function (e) {
+        var card = e.target.closest('.lp-card');
+        if (!card) return;
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    }
   }
 
   function initLearningPaths(selector) {

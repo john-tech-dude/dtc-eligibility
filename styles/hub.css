@@ -91,18 +91,18 @@ input:focus-visible {
 
 /* ─── Header ─── */
 .page-header {
-    background: rgba(250, 249, 247, 0.85);
-    border-bottom: 1px solid var(--border-light);
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--glass-border);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(12px) saturate(1.2);
-    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
     transition: all var(--transition);
 }
 [data-theme="dark"] .page-header {
-    background: rgba(18, 18, 31, 0.88);
-    border-bottom-color: var(--border);
+    background: var(--glass-bg);
+    border-bottom-color: var(--glass-border);
 }
 .header-inner {
     max-width: 1140px;
@@ -206,21 +206,24 @@ input:focus-visible {
     transition: all var(--transition);
     font-size: 0.8rem;
     font-weight: 500;
-    background: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
 }
 .theme-toggle:hover {
     background: var(--bg-cream);
     border-color: var(--border);
     color: var(--ink);
+    transform: scale(1.04);
 }
 .theme-toggle svg {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .theme-toggle:hover svg {
-    transform: rotate(20deg);
+    transform: rotate(45deg) scale(1.1);
 }
 .theme-toggle .sun-icon {
     display: block;
