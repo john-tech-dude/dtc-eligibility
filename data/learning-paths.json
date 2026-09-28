@@ -23,6 +23,11 @@
           "module": "eligibility"
         },
         {
+          "label": "DTC Canada flash cards",
+          "href": "pages/guides/dtc-canada-flash-cards.html",
+          "module": "dtc-canada-flash-cards"
+        },
+        {
           "label": "Transfer agent ops (FAST / DWAC / DRS)",
           "href": "pages/guides/transfer-agent-operations.html",
           "module": "transfer-agent"

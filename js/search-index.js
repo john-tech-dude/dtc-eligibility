@@ -6239,6 +6239,25 @@ const searchIndex = [
     "type": "term"
   },
   {
+    "id": "dtc-canada-flash-cards",
+    "title": "DTC Canada Flash Cards — Study Guide",
+    "url": "pages/guides/dtc-canada-flash-cards.html",
+    "description": "Teaching page: DTC Canada Flash Cards — Study Guide",
+    "keywords": [
+      "article 8",
+      "canada",
+      "cards",
+      "dtc",
+      "eligibility call",
+      "flash",
+      "flash cards",
+      "guide",
+      "spoken answer",
+      "study"
+    ],
+    "type": "page"
+  },
+  {
     "id": "sf28-teaching-guide",
     "title": "SF 28 — Affidavit of Individual Surety — Enhanced Teaching Guide",
     "url": "pages/guides/sf28-teaching-guide.html",

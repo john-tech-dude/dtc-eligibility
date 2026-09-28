@@ -12,7 +12,7 @@
   --ink: #0d1117;
   --ink-secondary: #212836;
   --ink-tertiary: #485264;
-  --ink-muted: #6e7681;
+  --ink-muted: #57606a;
   --ink-faint: #8b949e;
 
   /* Border Colors - Enhanced Visibility */
@@ -22,7 +22,7 @@
 
   /* Background Colors - Subtle Premium Depth */
   --bg: #ffffff;
-  --bg-warm: #f8f9fa;
+  --bg-warm: #f0f2f5;
   --bg-cream: #f6f8fa;
   --bg-ivory: #fafbfc;
 
@@ -78,24 +78,24 @@
   /* Text — warm off-white hierarchy (muted raised for readable UI chrome) */
   --ink: #f0f6fc;
   --ink-secondary: #c9d1d9;
-  --ink-tertiary: #8b949e;
-  --ink-muted: #57606a;
+  --ink-tertiary: #a0aab5;
+  --ink-muted: #8b949e;
   --ink-faint: #30363d;
 
   /* Borders — subtle violet-navy undertone */
-  --border: #30363d;
-  --border-light: #21262d;
-  --border-faint: #161b22;
+  --border: #3a4250;
+  --border-light: #2d3542;
+  --border-faint: #222832;
 
-  /* Backgrounds — deep navy-charcoal with warmth */
-  --bg: #0d1117;
-  --bg-warm: #010409;
-  --bg-cream: #161b22;
-  --bg-ivory: #21262d;
+  /* Backgrounds — medium-dark navy-charcoal with warmth */
+  --bg: #1a1f2e;
+  --bg-warm: #161920;
+  --bg-cream: #1e2430;
+  --bg-ivory: #262c3a;
 
   /* Accent — refined steel blue (navy family) */
   --accent: #58a6ff;
-  --accent-light: #161b22;
+  --accent-light: #1f2f40;
   --accent-muted: #1f6feb;
   --accent-hover: #79c0ff;
 
@@ -115,8 +115,8 @@
   --red-muted: #da3633;
 
   /* Glassmorphism */
-  --glass-bg: rgba(13, 17, 23, 0.7);
-  --glass-border: rgba(240, 246, 252, 0.08);
+  --glass-bg: rgba(26, 31, 46, 0.8);
+  --glass-border: rgba(240, 246, 252, 0.12);
 
   /* Effects — depth with accent glow */
   --modal-overlay: rgba(1, 4, 9, 0.85);
@@ -572,13 +572,10 @@ body {
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
   z-index: 110;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
 }
 
 .sidebar-backdrop.active,

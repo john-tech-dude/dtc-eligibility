@@ -31,6 +31,7 @@ PAGES = [
     "sitemap.html",
     "pages/forms/dtc-eligibility-questionnaire.html",
     "pages/guides/dtc-guide.html",
+    "pages/guides/dtc-canada-flash-cards.html",
     "pages/guides/sf28-teaching-guide.html",
     "pages/guides/corporate-structures.html",
     "pages/guides/trusts-fiduciary.html",
@@ -49,6 +50,9 @@ KEYWORD_BOOSTS: dict[str, list[str]] = {
     ],
     "dtc-guide.html": [
         "dtc", "dtcc", "cede", "nominee", "book-entry", "participant", "settlement",
+    ],
+    "dtc-canada-flash-cards.html": [
+        "flash cards", "canada", "eligibility call", "spoken answer", "article 8",
     ],
     "sf28-teaching-guide.html": ["sf 28", "surety", "far", "affidavit", "collateral"],
     "corporate-structures.html": ["llc", "corporation", "partnership", "entity"],
