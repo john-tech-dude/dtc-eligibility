@@ -627,6 +627,10 @@
       <p>If any single maturity exceeds <strong>$500 million</strong>, the issuer must provide multiple certificates (one per $500M tranche). A single oversized certificate will be rejected.</p>
     </div>
     <div class="red-flag-card">
+      <h4>Financial Metrics Requirements</h4>
+      <p>For issuers with significant market activity, DTC may review financial capacity metrics including <strong>$500M annual eligibility</strong> with <strong>$125M quarterly pull</strong> capacity. Each eligibility card represents <strong>$3.5B</strong> in processing capacity for securities <strong>issued for resale</strong>. These metrics help ensure operational stability and settlement capacity.</p>
+    </div>
+    <div class="red-flag-card">
       <h4>Foreign Issuer Legal Opinions</h4>
       <p>For non-U.S. issuers, DTC may require a <strong>foreign legal opinion</strong> confirming that DTC's rights as <span class="hotspot" data-modal="nominee" tabindex="0" role="button" onclick="openModal('modal-nominee')">nominee</span> are enforceable under local law. This can add significant time and cost.</p>
     </div>
@@ -1049,7 +1053,7 @@
 <div class="cusip-section" id="cusip-table">
   <div class="section-heading">CUSIP Information</div>
   <p class="section-subtitle">
-    Complete this table for each CUSIP number associated with the issue. This page was part of the original PDF questionnaire. <strong>Click any column header</strong> for a detailed explanation. The first three rows are worked examples (term, serial, and capital-appreciation bonds).
+    Complete this table for each CUSIP number associated with the issue. This page was part of the original PDF questionnaire. <strong>Click any column header</strong> for a detailed explanation. The first six rows are worked examples showing a Rule 144A issuance with multiple maturity dates.
   </p>
   <div class="cusip-table-wrap">
     <!--
@@ -1066,33 +1070,55 @@
       <div class="cusip-head" role="columnheader"><span class="hotspot" data-modal="issue-type-col" tabindex="0" role="button" onclick="openModal('modal-issue-type-col')">Type of Issue*</span></div>
       <div class="cusip-head" role="columnheader"><span class="hotspot" data-modal="offering-price-col" tabindex="0" role="button" onclick="openModal('modal-offering-price-col')">Initial Offering Price (To the Public)</span></div>
 
-      <!-- Row 1: Term bond worked example -->
-      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>037833AA5</div>
-      <div class="cusip-cell filled" role="cell">5.250%</div>
-      <div class="cusip-cell filled" role="cell">06/15/2035</div>
-      <div class="cusip-cell filled" role="cell">$500,000,000</div>
-      <div class="cusip-cell filled" role="cell">T</div>
-      <div class="cusip-cell filled" role="cell">99.50</div>
+      <!-- Row 1: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">04/01/2020</div>
+      <div class="cusip-cell filled" role="cell">250000</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">1,000,000,000</div>
 
-      <!-- Row 2: Serial bond worked example -->
-      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>912828XX3</div>
-      <div class="cusip-cell filled" role="cell">4.875%</div>
-      <div class="cusip-cell filled" role="cell">12/01/2028</div>
-      <div class="cusip-cell filled" role="cell">$250,000,000</div>
-      <div class="cusip-cell filled" role="cell">S</div>
-      <div class="cusip-cell filled" role="cell">100.00</div>
+      <!-- Row 2: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">07/01/2020</div>
+      <div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">500,000,000</div>
 
-      <!-- Row 3: Capital appreciation bond worked example -->
-      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>46625HXX1</div>
-      <div class="cusip-cell filled" role="cell">0.000%</div>
-      <div class="cusip-cell filled" role="cell">08/15/2030</div>
-      <div class="cusip-cell filled" role="cell">$100,000,000</div>
-      <div class="cusip-cell filled" role="cell">C</div>
-      <div class="cusip-cell filled" role="cell">45.00</div>
+      <!-- Row 3: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">10/01/2020</div>
+      <div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">500,000,000</div>
 
-      <!-- Blank practice rows (7) -->
-      <div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div>
-      <div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <!-- Row 4: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">01/04/2021</div>
+      <div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">500,000,000</div>
+
+      <!-- Row 5: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">04/01/2021</div>
+      <div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">500,000,000</div>
+
+      <!-- Row 6: Example from image -->
+      <div class="cusip-cell filled cusip-example-row" role="cell"><span class="cusip-star" aria-hidden="true">✦</span>XXXXXXXXXX</div>
+      <div class="cusip-cell filled" role="cell">2.000%</div>
+      <div class="cusip-cell filled" role="cell">07/01/2021</div>
+      <div class="cusip-cell empty" role="cell">&nbsp;</div>
+      <div class="cusip-cell filled" role="cell">144A</div>
+      <div class="cusip-cell filled" role="cell">500,000,000</div>
+
+      <!-- Blank practice rows (5) -->
       <div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div>
       <div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div>
       <div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div><div class="cusip-cell empty" role="cell">&nbsp;</div>
@@ -3130,7 +3156,9 @@ function resetQuiz() {
       </div>
       <p class="modal-section-title">Valid Codes</p>
       <ul>
+        <li><strong>144A = Rule 144A</strong> — Securities offered and sold to Qualified Institutional Buyers (QIBs) under Rule 144A of the Securities Act of 1933. Private placement securities with restricted resale rights.</li>
         <li><strong>C = Capital Appreciation</strong> — The security is issued at a discount and accretes to par at maturity. No periodic interest payments; the return is the difference between purchase price and redemption value. Common in municipal zero-coupon bonds.</li>
+        <li><strong>G = General Obligation</strong> — Municipal general obligation bonds backed by the full faith and credit of the issuing government entity. Common structure for municipal debt.</li>
         <li><strong>P = Put</strong> — The security contains a put feature allowing holders to demand repayment before maturity on specified dates. Requires a <strong>Tender Letter of Representations</strong> if certificated.</li>
         <li><strong>S = Serial</strong> — The issue contains multiple maturity dates (serial maturities), with principal amortizing over time. Each serial maturity typically receives its own CUSIP and row in this table.</li>
         <li><strong>T = Term</strong> — The entire issue matures on a single date. The simplest structure; principal is repaid in full at maturity.</li>
@@ -3140,7 +3168,9 @@ function resetQuiz() {
       <p class="modal-section-title">DTC Processing Impact</p>
       <p>The type code determines which DTC processing modules are activated:</p>
       <ul>
+        <li><strong>144A (Rule 144A):</strong> DTC applies restricted securities processing, ensuring only QIB-eligible participants can hold positions. Special documentation and eligibility requirements apply.</li>
         <li><strong>C (Capital Appreciation):</strong> DTC suppresses income payment processing until maturity.</li>
+        <li><strong>G (General Obligation):</strong> Standard municipal bond processing with regular income payments and single or serial maturities.</li>
         <li><strong>P (Put):</strong> DTC enables tender/put processing workflows and requires coordination with the Tender Agent.</li>
         <li><strong>S (Serial):</strong> DTC sets up multiple maturity events and sinking fund schedules.</li>
         <li><strong>T (Term):</strong> Standard single-maturity processing.</li>
@@ -3154,18 +3184,28 @@ function resetQuiz() {
 <!-- ISSUE TYPE LEGEND -->
 <div class="modal-overlay" id="modal-issue-type-legend" role="dialog" aria-modal="true" aria-labelledby="modal-title-issue-type-legend">
   <div class="modal-card">
-    <div class="modal-header"><h3 id="modal-title-issue-type-legend">Type of Issue Legend — C, P, S, T</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
+    <div class="modal-header"><h3 id="modal-title-issue-type-legend">Type of Issue Legend — 144A, C, G, P, S, T</h3><button class="modal-close" aria-label="Close dialog">&times;</button></div>
     <div class="modal-body">
       <div class="def-callout">
         <div class="def-type">Legend Reference</div>
-        <div class="def-word">C, P, S, T Codes</div>
-        <p>Single-letter codes used in the CUSIP Information table to classify the structural features of each security tranche.</p>
+        <div class="def-word">144A, C, G, P, S, T Codes</div>
+        <p>Codes used in the CUSIP Information table to classify the structural features and regulatory status of each security tranche.</p>
       </div>
       <p class="modal-section-title">Code Definitions</p>
+      <div class="def-callout margin-10-0">
+        <div class="def-type">144A</div>
+        <div class="def-word">Rule 144A</div>
+        <p>Securities offered and sold to Qualified Institutional Buyers (QIBs) under Rule 144A. Private placement with restricted resale rights.</p>
+      </div>
       <div class="def-callout margin-10-0">
         <div class="def-type">C</div>
         <div class="def-word">Capital Appreciation</div>
         <p>Zero-coupon or deep-discount bond that accretes to par. No periodic interest. Return = redemption value − purchase price.</p>
+      </div>
+      <div class="def-callout margin-10-0">
+        <div class="def-type">G</div>
+        <div class="def-word">General Obligation</div>
+        <p>Municipal general obligation bonds backed by the full faith and credit of the issuing government entity. Standard structure for municipal debt.</p>
       </div>
       <div class="def-callout margin-10-0">
         <div class="def-type">P</div>
