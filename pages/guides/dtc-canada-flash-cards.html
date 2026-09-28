@@ -3291,17 +3291,21 @@
   });
 
   document.querySelectorAll('.fc-reveal').forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
       var currentCard = btn.closest('.fc-card');
-      var allCards = Array.prototype.slice.call(document.querySelectorAll('.fc-card'));
-      // Close all other cards first
-      allCards.forEach(function (card) {
+      var activeRegion = document.querySelector('.region-content.active');
+      var cardsInRegion = Array.prototype.slice.call(activeRegion.querySelectorAll('.fc-card'));
+      // Close all other cards in the same region first
+      cardsInRegion.forEach(function (card) {
         if (card !== currentCard) {
           card.classList.remove('is-open');
         }
       });
       // Then open the current card
       currentCard.classList.add('is-open');
+      // Ensure the card stays in view
+      currentCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   });
 
