@@ -27,10 +27,10 @@
   --bg-ivory: #fafbfc;
 
   /* Accent Colors - Richer, More Vibrant */
-  --accent: #0969da;
-  --accent-light: #f2f7fd;
-  --accent-muted: #54a3ff;
-  --accent-hover: #0855b1;
+  --accent: #1f6feb;
+  --accent-light: #e6f3ff;
+  --accent-muted: #79c0ff;
+  --accent-hover: #1659b9;
 
   /* Gold Colors - Richer Premium Gold */
   --gold: #bc8f2f;
@@ -94,7 +94,7 @@
   --bg-ivory: #262c3a;
 
   /* Accent — refined steel blue (navy family) */
-  --accent: #58a6ff;
+  --accent: #79c0ff;
   --accent-light: #1f2f40;
   --accent-muted: #1f6feb;
   --accent-hover: #79c0ff;

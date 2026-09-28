@@ -216,10 +216,76 @@
 
 .inline-checkbox {
   display: inline-block;
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   border-width: 1px;
   margin: 0 2px;
+  position: relative;
+}
+
+.example-checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  position: relative;
+}
+
+.inline-checkbox.example-checked::after {
+  content: "✓";
+  position: absolute;
+  top: -1px;
+  left: 2px;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.example-value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Interactive Field Quiz Modal */
+.field-quiz-options {
+  margin: 20px 0;
+}
+
+.field-quiz-option {
+  display: block;
+  margin: 12px 0;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.field-quiz-option:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.field-quiz-option input[type="radio"] {
+  margin-right: 12px;
+}
+
+.field-quiz-feedback {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.field-quiz-feedback.correct {
+  background: var(--green-light);
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+
+.field-quiz-feedback.incorrect {
+  background: var(--ink-light);
+  border: 1px solid var(--ink-muted);
+  color: var(--ink);
 }
 
 .hint-text {

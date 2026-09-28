@@ -357,28 +357,25 @@
 <div class="section-heading" id="issue-info">Issue Information</div>
 
 <div class="form-row">
-  <div class="bullet round"></div>
   <div class="label">Please check one of the following:
-    <span class="hotspot" data-modal="municipal" tabindex="0" role="button" onclick="openModal('modal-municipal')">Municipal</span> &nbsp;
-    <span class="hotspot" data-modal="corporate" tabindex="0" role="button" onclick="openModal('modal-corporate')">Corporate</span> &nbsp;
-    <span class="hotspot" data-modal="limited-underwriting" tabindex="0" role="button" onclick="openModal('modal-limited-underwriting')">Limited Underwriting<sup>1</sup></span> &nbsp;
-    <span class="hotspot" data-modal="abs" tabindex="0" role="button" onclick="openModal('modal-abs')">ABS</span> &nbsp;
-    <span class="hotspot" data-modal="cmo" tabindex="0" role="button" onclick="openModal('modal-cmo')">CMO</span>
+    <span class="hotspot quiz-trigger" data-quiz="issue-type" data-modal="municipal" tabindex="0" role="button" onclick="openModal('modal-municipal')">Municipal</span> &nbsp;
+    <span class="hotspot quiz-trigger" data-quiz="issue-type" data-modal="corporate" tabindex="0" role="button" onclick="openModal('modal-corporate')">Corporate</span> <span class="inline-checkbox example-checked" aria-hidden="true"></span> &nbsp;
+    <span class="hotspot quiz-trigger" data-quiz="issue-type" data-modal="limited-underwriting" tabindex="0" role="button" onclick="openModal('modal-limited-underwriting')">Limited Underwriting<sup>1</sup></span> &nbsp;
+    <span class="hotspot quiz-trigger" data-quiz="issue-type" data-modal="abs" tabindex="0" role="button" onclick="openModal('modal-abs')">ABS</span> &nbsp;
+    <span class="hotspot quiz-trigger" data-quiz="issue-type" data-modal="cmo" tabindex="0" role="button" onclick="openModal('modal-cmo')">CMO</span>
   </div>
 </div>
 
 <div class="form-row">
-  <div class="bullet round"></div>
   <div class="label">Please indicate whether or not the issue is a <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">"security"</span> as such term is defined in <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">Article 8</span> of the <span class="hotspot" data-modal="ny-ucc" tabindex="0" role="button" onclick="openModal('modal-ny-ucc')">New York Uniform Commercial Code</span>.
-    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox example-checked" aria-hidden="true"></span> Yes
     &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
 
 <div class="form-row">
-  <div class="bullet round"></div>
   <div class="label">Please indicate whether or not the issuer is a <span class="hotspot" data-modal="uk-entity" tabindex="0" role="button" onclick="openModal('modal-uk-entity')">United Kingdom entity</span>.
-    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox example-checked" aria-hidden="true"></span> Yes
     &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
@@ -388,12 +385,12 @@
   <div class="label">Please check <em>at least one</em> of the following, the issue is:</div>
 </div>
 <div class="pad-left-28">
-  <div class="form-row"><div class="bullet round"></div><div class="label"><span class="hotspot" data-modal="sec-registered" tabindex="0" role="button" onclick="openModal('modal-sec-registered')">Registered with the SEC</span></div></div>
-  <div class="form-row"><div class="bullet round"></div><div class="label"><span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Eligible for resale under Rule 144A<sup>2</sup></span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
-  <div class="form-row"><div class="bullet round"></div><div class="label"><span class="hotspot" data-modal="regs" tabindex="0" role="button" onclick="openModal('modal-regs')">Eligible for resale under Regulation S</span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
-  <div class="form-row"><div class="bullet round"></div><div class="label">Issuer relying on <span class="hotspot" data-modal="3c7" tabindex="0" role="button" onclick="openModal('modal-3c7')">Section 3(c)(7)</span> of the <span class="hotspot" data-modal="investment-company-act-40" tabindex="0" role="button" onclick="openModal('modal-investment-company-act-40')">'40 Act</span></div></div>
-  <div class="form-row"><div class="bullet round"></div><div class="label">Exempt under <span class="hotspot" data-modal="rule3a2" tabindex="0" role="button" onclick="openModal('modal-rule3a2')">Rule 3(a)(2)</span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
-  <div class="form-row"><div class="bullet round"></div><div class="label">Exempt under another exemption(s); indicate exemption(s): <span class="inline-field wide"></span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox example-checked" aria-hidden="true"></span> <span class="hotspot quiz-trigger" data-quiz="registration" data-modal="sec-registered" tabindex="0" role="button" onclick="openModal('modal-sec-registered')">Registered with the SEC</span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox example-checked" aria-hidden="true"></span> <span class="hotspot quiz-trigger" data-quiz="registration" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Eligible for resale under Rule 144A<sup>2</sup></span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox example-checked" aria-hidden="true"></span> <span class="hotspot quiz-trigger" data-quiz="registration" data-modal="regs" tabindex="0" role="button" onclick="openModal('modal-regs')">Eligible for resale under Regulation S</span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox" aria-hidden="true"></span> Issuer relying on <span class="hotspot quiz-trigger" data-quiz="registration" data-modal="3c7" tabindex="0" role="button" onclick="openModal('modal-3c7')">Section 3(c)(7)</span> of the <span class="hotspot" data-modal="investment-company-act-40" tabindex="0" role="button" onclick="openModal('modal-investment-company-act-40')">'40 Act</span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox" aria-hidden="true"></span> Exempt under <span class="hotspot quiz-trigger" data-quiz="registration" data-modal="rule3a2" tabindex="0" role="button" onclick="openModal('modal-rule3a2')">Rule 3(a)(2)</span> of the <span class="hotspot" data-modal="securities-act-33" tabindex="0" role="button" onclick="openModal('modal-securities-act-33')">'33 Act</span></div></div>
+  <div class="form-row"><div class="label"><span class="inline-checkbox" aria-hidden="true"></span> Exempt under another exemption(s); indicate exemption(s): <span class="inline-field wide"></span></div></div>
 </div>
 
 <div class="form-row form-margin-top">
@@ -406,11 +403,11 @@
 </div>
 <div class="form-row">
   <div class="bullet"></div>
-  <div class="label"><strong>Issue <span class="hotspot" data-modal="principal" tabindex="0" role="button" onclick="openModal('modal-principal')">Principal / Offering Amount</span>:</strong> <span class="inline-field"></span></div>
+  <div class="label"><strong>Issue <span class="hotspot" data-modal="principal" tabindex="0" role="button" onclick="openModal('modal-principal')">Principal / Offering Amount</span>:</strong> <span class="inline-field example-value">250000</span></div>
 </div>
 <div class="form-row">
   <div class="bullet"></div>
-  <div class="label"><strong><span class="hotspot" data-modal="share-quantity" tabindex="0" role="button" onclick="openModal('modal-share-quantity')">Share Quantity</span>:</strong> <span class="inline-field"></span></div>
+  <div class="label"><strong><span class="hotspot" data-modal="share-quantity" tabindex="0" role="button" onclick="openModal('modal-share-quantity')">Share Quantity</span>:</strong> <span class="inline-field example-value">1</span></div>
 </div>
 <div class="form-row">
   <div class="bullet"></div>
@@ -418,18 +415,16 @@
 </div>
 
 <div class="form-row form-margin-top">
-  <div class="bullet round"></div>
-  <div class="label">Is this a <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> issue (with no certificates available to investors)?
-    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+  <div class="label">Is this a <span class="hotspot quiz-trigger" data-quiz="beo" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> issue (with no certificates available to investors)?
+    &nbsp;<span class="inline-checkbox example-checked" aria-hidden="true"></span> Yes
     &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
     &nbsp;<span class="hint-text">(If yes, a <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">Letter of Representations</span> is required.)</span>
   </div>
 </div>
 
 <div class="form-row">
-  <div class="bullet round"></div>
   <div class="label">Does this issue contain a <span class="hotspot" data-modal="put-tender" tabindex="0" role="button" onclick="openModal('modal-put-tender')">put/tender feature</span>?
-    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+    &nbsp;<span class="inline-checkbox example-checked" aria-hidden="true"></span> Yes
     &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
     &nbsp;<span class="hint-text">(If yes, for certificated issues a <span class="hotspot" data-modal="tender-lor" tabindex="0" role="button" onclick="openModal('modal-tender-lor')">Tender Letter of Representations</span> is required).</span>
   </div>
@@ -523,9 +518,8 @@
 <div class="section-heading" id="delivery">Delivery of Securities</div>
 
 <div class="form-row">
-  <div class="bullet round"></div>
-  <div class="label">Will the securities be eligible as a <span class="hotspot" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span> (Fast Automated Securities Transfer) issue?
-    &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> Yes
+  <div class="label">Will the securities be eligible as a <span class="hotspot quiz-trigger" data-quiz="fast" data-modal="fast" tabindex="0" role="button" onclick="openModal('modal-fast')">FAST</span> (Fast Automated Securities Transfer) issue?
+    &nbsp;<span class="inline-checkbox example-checked" aria-hidden="true"></span> Yes
     &nbsp;<span class="inline-checkbox" aria-hidden="true"></span> No
   </div>
 </div>
@@ -656,7 +650,7 @@
     Work through four realistic offerings to see how the questionnaire applies in practice. Use tabs or ← → keys. Deep-link with <code>#sc-a</code> … <code>#sc-d</code>.
   </p>
   <div class="scenario-tabs" role="tablist" aria-label="Eligibility scenarios">
-    <button type="button" class="scenario-tab active" data-scenario-target="sc-a" role="tab" aria-controls="sc-a" aria-selected="true" tabindex="0">A: UK Dual Eligibility (144A/Reg S)</button>
+    <button type="button" class="scenario-tab active" data-scenario-target="sc-a" role="tab" aria-controls="sc-a" aria-selected="true" tabindex="0">A: SEC Registered Corporate Bond</button>
     <button type="button" class="scenario-tab" data-scenario-target="sc-b" role="tab" aria-controls="sc-b" aria-selected="false" tabindex="-1">B: Rule 144A High-Yield Note</button>
     <button type="button" class="scenario-tab" data-scenario-target="sc-c" role="tab" aria-controls="sc-c" aria-selected="false" tabindex="-1">C: UK Corporate Issuer</button>
     <button type="button" class="scenario-tab" data-scenario-target="sc-d" role="tab" aria-controls="sc-d" aria-selected="false" tabindex="-1">D: Municipal GO Bond</button>
@@ -667,26 +661,30 @@
       <span class="scenario-tag">Corporate</span>
       <span class="scenario-tag">UK Entity</span>
       <span class="scenario-tag">Rule 144A + Reg S</span>
+      <span class="scenario-tag">SEC Registered</span>
       <span class="scenario-tag">BEO</span>
       <span class="scenario-tag">Put Feature</span>
+      <span class="scenario-tag">FAST</span>
     </div>
-    <h4>Scenario A: British Telecom plc — Dual 144A/Reg S Notes with Put Option</h4>
-    <p><strong>The Offering:</strong> £400 million notes issued by a UK-incorporated entity, eligible for resale under both Rule 144A to QIBs and Regulation S to non-U.S. persons. Book-Entry-Only with a 3-year put option. Lead underwriter is a DTC Participant. Transfer Agent is Euroclear Bank.</p>
+    <h4>Scenario A: Corporate Bond — UK Entity with Dual Eligibility (144A/Reg S) and FAST</h4>
+    <p><strong>The Offering:</strong> Corporate bond issue by a UK entity, registered with the SEC and eligible for resale under both Rule 144A to QIBs and Regulation S to non-U.S. persons. Book-Entry-Only with a put/tender feature. Principal amount $250,000, single share. Eligible for FAST delivery. Lead underwriter is a DTC Participant.</p>
     <p><strong>Questionnaire Walkthrough:</strong></p>
     <ul>
-      <li><strong>UK Entity:</strong> Check "Yes." OA § I.B.1.b requires a <strong>UK/Ireland LOR rider</strong> for each U.K./Ireland issuer security (list all CUSIPs on the rider).</li>
-      <li><strong>Article 8 Security:</strong> Yes — notes are clearly securities under <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">NY UCC Article 8</span>.</li>
-      <li><strong>Registration:</strong> Check BOTH "Eligible for resale under <span class="hotspot" data-modal="rule144a" tabindex="0" role="button" onclick="openModal('modal-rule144a')">Rule 144A</span>" AND "Eligible for resale under <span class="hotspot" data-modal="regs" tabindex="0" role="button" onclick="openModal('modal-regs')">Regulation S</span>." Dual eligibility is common for global issuers.</li>
-      <li><strong>BEO:</strong> Yes — <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> (no investor certificates; Cede &amp; Co. holds the entire balance via DTC/FAST). Requires fully executed BEO <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> (BLOR or ILOR) on DTC’s form before eligibility (OA § I.B.1.a).</li>
-      <li><strong>Put/Tender:</strong> Yes — 3-year put. The questionnaire form calls for a <span class="hotspot" data-modal="tender-lor" tabindex="0" role="button" onclick="openModal('modal-tender-lor')">Tender LOR</span> for put/tender features on <strong>certificated</strong> issues. This deal is BEO — do not assume Tender LOR is automatic; confirm put-processing rules with DTC (OA special rules for daily/weekly puts) and tender-agent setup.</li>
-      <li><strong>LOR package (OA § I.B.1):</strong> (1) Standard Issuer LOR/BLOR, (2) <strong>UK/Ireland rider</strong> (required), (3) <strong>non-U.S. currency rider</strong> (required for GBP). List CUSIPs on each rider. For 144A/Reg S: <strong>distinct restricted CUSIP(s)</strong> (OA § II.A.1.b); OA expressly requires LOR riders for <em>older</em> 144A/Reg S issues — use current DTCC forms for new issues.</li>
-      <li><strong>Signatures / timing:</strong> Non-U.S. issuer — original manual signatures commonly required (§ I.A.6); Exhibit B: draft LOR ≥ 10 BD, original hard copy by 3 BD pre-close.</li>
-      <li><strong>CUSIP:</strong> Restricted 144A/Reg S CUSIP(s) must be <strong>distinct</strong> from unrestricted British Telecom notes of the same class.</li>
-      <li><strong>Currency:</strong> £ (GBP) — OA requires the non-U.S. currency rider <em>in addition to</em> the UK/Ireland rider (not optional).</li>
-      <li><strong>Agent Letter + Confirmation:</strong> <span class="hotspot" data-modal="euroclear" tabindex="0" role="button" onclick="openModal('modal-euroclear')">Euroclear Bank</span> (as Agent) must have an executed Operational Arrangements Agent Letter on file before eligibility, understand <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">BEO</span> mechanics, and supply Agent Confirmation by email within <strong>10 business days after closing</strong> (OA § I.A.1).</li>
+      <li><strong>Issue Type:</strong> Check "Corporate" in Issue Information section.</li>
+      <li><strong>Article 8 Security:</strong> Check "Yes" — the bond is clearly a security under <span class="hotspot" data-modal="article8" tabindex="0" role="button" onclick="openModal('modal-article8')">NY UCC Article 8</span>.</li>
+      <li><strong>UK Entity:</strong> Check "Yes" — issuer is a United Kingdom entity (chartered by the Crown), so UK/Ireland LOR rider is required (OA § I.B.1.b).</li>
+      <li><strong>Registration:</strong> Check ALL THREE: "Registered with the SEC," "Eligible for resale under Rule 144A," AND "Eligible for resale under Regulation S" — the issue has dual eligibility for both U.S. QIBs and foreign investors under the '33 Act.</li>
+      <li><strong>BEO:</strong> Check "Yes" — <span class="hotspot" data-modal="beo" tabindex="0" role="button" onclick="openModal('modal-beo')">Book-Entry-Only</span> (no investor certificates; Cede &amp; Co. holds the entire balance). Requires fully executed BEO <span class="hotspot" data-modal="lor" tabindex="0" role="button" onclick="openModal('modal-lor')">LOR</span> (BLOR or ILOR) on DTC’s form before eligibility (OA § I.B.1.a).</li>
+      <li><strong>Put/Tender:</strong> Check "Yes" — the issue contains a put/tender feature. For BEO issues, put-processing rules differ from certificated issues. Confirm put-processing requirements with DTC and tender-agent setup.</li>
+      <li><strong>FAST Eligibility:</strong> Check "Yes" — the securities are eligible as a FAST issue. FAST enables electronic transfer between DTC and the transfer agent without physical certificates. Transfer agent must be enrolled in FAST.</li>
+      <li><strong>Principal Amount:</strong> Enter $250,000 in the Issue Principal/Offering Amount field.</li>
+      <li><strong>Share Quantity:</strong> Enter 1 for single share/bond.</li>
+      <li><strong>CUSIP:</strong> Enter the CUSIP number (redacted as XXXXXXXXXX in this example). For 144A/Reg S, use distinct restricted CUSIP(s) from unrestricted securities of the same class (OA § II.A.1.b).</li>
+      <li><strong>LOR Package (OA § I.B.1):</strong> (1) Standard Issuer LOR/BLOR, (2) <strong>UK/Ireland rider</strong> (required for UK entity), (3) If applicable, non-U.S. currency rider. List CUSIPs on each rider.</li>
+      <li><strong>Agent Confirmation:</strong> The transfer agent must supply Agent Confirmation by email to DTC Underwriting within <strong>10 business days after closing</strong> (OA § I.A.1), confirming features/attributes match underwriter data.</li>
       <li><strong>OFAC:</strong> Screen issuer/principals; sanctioned issuers are not DTC eligible (OA § I.D). Transfer agents also provide OFAC certifications.</li>
     </ul>
-    <div class="scenario-tip"><strong>Key Takeaway:</strong> Maximum complexity under OA § I.B: UK/Ireland rider <em>and</em> non-U.S. currency rider are both required for a GBP UK issuer; BEO needs BLOR/ILOR on DTC’s form with Exhibit B timing; 144A/Reg S needs distinct restricted CUSIP(s). Tender LOR is a certificated-form concept — don’t bolt it onto BEO without checking. Start LOR/rider packages early (non-U.S. original signatures and 10 BD draft LOR).</div>
+    <div class="scenario-tip"><strong>Key Takeaway:</strong> UK entities with dual 144A/Reg S eligibility require maximum documentation: UK/Ireland LOR rider is mandatory alongside standard BEO LOR. Distinct restricted CUSIPs are required for 144A/Reg S securities. FAST eligibility simplifies settlement but requires transfer agent enrollment. Put features on BEO issues need special coordination with DTC for proper tender processing.</div>
   </div>
 
   <div class="scenario-panel" id="sc-b" data-scenario-panel role="tabpanel" tabindex="0" hidden>
@@ -1257,6 +1255,19 @@
 
 </div><!-- /doc-frame -->
 
+<!-- ── INTERACTIVE FIELD QUIZ MODAL ── -->
+<div class="modal-overlay" id="fieldQuizModal" role="dialog" aria-modal="true" aria-labelledby="fieldQuizTitle">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="fieldQuizTitle">Why did you choose this option?</h3>
+      <button class="modal-close" id="fieldQuizClose" aria-label="Close dialog">&times;</button>
+    </div>
+    <div class="modal-body" id="fieldQuizContent">
+      <!-- Quiz content will be injected here -->
+    </div>
+  </div>
+</div>
+
 <!-- ── COMPREHENSIVE QUIZ ── -->
 <div class="quiz-section" id="quiz">
   <div class="section-heading">Comprehensive Knowledge Check</div>
@@ -1698,6 +1709,107 @@ function resetQuiz() {
   result.className = 'quiz-result';
   result.innerHTML = '';
 }
+
+// ── Interactive Field Quiz ──
+(function() {
+  const fieldQuizData = {
+    'issue-type': {
+      question: 'Why did you choose Corporate for this issue type?',
+      options: [
+        { text: 'The issuer is a corporation (LLC, C-Corp, S-Corp, partnership)', correct: true },
+        { text: 'The issue is a municipal bond', correct: false },
+        { text: 'The issue is asset-backed securities', correct: false },
+        { text: 'The issue is a CMO/structured product', correct: false }
+      ],
+      explanation: 'Corporate issues include LLCs, C-Corps, S-Corps, and partnerships. Municipal bonds use a different issuer type and eligibility path.'
+    },
+    'registration': {
+      question: 'Why did you choose SEC Registration for this issue?',
+      options: [
+        { text: 'The issuer filed a registration statement with the SEC for public offering', correct: true },
+        { text: 'The securities are offered only to QIBs under Rule 144A', correct: false },
+        { text: 'The securities are offered only outside the US under Regulation S', correct: false },
+        { text: 'The issuer is relying on Section 3(c)(7) exemption', correct: false }
+      ],
+      explanation: 'SEC registration means the issuer filed a registration statement (Form S-1, S-3, etc.) for a public offering. Rule 144A and Regulation S are private placement exemptions.'
+    },
+    'beo': {
+      question: 'Why did you choose Book-Entry-Only for this issue?',
+      options: [
+        { text: 'No physical certificates will be issued to investors', correct: true },
+        { text: 'Physical certificates will be delivered to investors', correct: false },
+        { text: 'The issue is only for institutional investors', correct: false },
+        { text: 'The issue has a put feature only', correct: false }
+      ],
+      explanation: 'BEO means Book-Entry-Only - no physical certificates exist. All ownership is electronic through DTC/FAST and Cede & Co. requires a BEO Letter of Representations.'
+    },
+    'fast': {
+      question: 'Why did you choose not eligible for FAST for this issue?',
+      options: [
+        { text: 'Physical delivery of securities to DTC is required', correct: true },
+        { text: 'The transfer agent is not enrolled in FAST', correct: false },
+        { text: 'The issue is not book-entry', correct: false },
+        { text: 'FAST is only for municipal bonds', correct: false }
+      ],
+      explanation: 'Non-FAST means physical delivery to DTC is required. FAST enables electronic movement between DTC and transfer agents without certificates.'
+    }
+  };
+
+  const modal = document.getElementById('fieldQuizModal');
+  const modalTitle = document.getElementById('fieldQuizTitle');
+  const modalContent = document.getElementById('fieldQuizContent');
+  const modalClose = document.getElementById('fieldQuizClose');
+
+  document.querySelectorAll('.quiz-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      const quizType = this.getAttribute('data-quiz');
+      const data = fieldQuizData[quizType];
+      
+      if (!data) return;
+
+      modalTitle.textContent = data.question;
+      
+      let html = '<div class="field-quiz-options">';
+      data.options.forEach((opt, index) => {
+        html += `
+          <label class="field-quiz-option">
+            <input type="radio" name="fieldQuizOption" value="${index}">
+            <span>${opt.text}</span>
+          </label>
+        `;
+      });
+      html += '</div>';
+      html += '<div class="field-quiz-feedback" id="fieldQuizFeedback"></div>';
+      
+      modalContent.innerHTML = html;
+      modal.classList.add('active');
+
+      // Add click handlers for options
+      modalContent.querySelectorAll('.field-quiz-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const selected = parseInt(this.querySelector('input').value);
+          const correct = data.options[selected].correct;
+          const feedback = document.getElementById('fieldQuizFeedback');
+          
+          if (correct) {
+            feedback.innerHTML = '<strong>✓ Correct!</strong> ' + data.explanation;
+            feedback.className = 'field-quiz-feedback correct';
+          } else {
+            feedback.innerHTML = '<strong>✗ Incorrect.</strong> ' + data.explanation;
+            feedback.className = 'field-quiz-feedback incorrect';
+          }
+          
+          // Disable all options after selection
+          modalContent.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+        });
+      });
+    });
+  });
+
+  modalClose.addEventListener('click', () => modal.classList.remove('active'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+})();
 </script>
 </div><!-- /wrap -->
 

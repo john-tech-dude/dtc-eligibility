@@ -192,6 +192,12 @@
 .fc-label span { letter-spacing: 0; text-transform: none; font-style: italic; }
 .fc-p { margin: 0 0 8px; line-height: 1.55; color: var(--ink-secondary); }
 .fc-p:last-child { margin-bottom: 0; }
+
+.region-flag {
+  font-size: 0.75rem;
+  margin-left: 6px;
+  cursor: help;
+}
 .fc-aside,
 p.fc-aside { color: var(--ink-muted); font-style: italic; }
 .fc-list { margin: 6px 0 8px 1.15rem; color: var(--ink-secondary); }
