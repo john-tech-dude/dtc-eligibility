@@ -680,6 +680,7 @@
       <li><strong>Principal Amount:</strong> Enter $250,000 in the Issue Principal/Offering Amount field.</li>
       <li><strong>Share Quantity:</strong> Enter 1 for single share/bond.</li>
       <li><strong>CUSIP:</strong> Enter the CUSIP number (redacted as XXXXXXXXXX in this example). For 144A/Reg S, use distinct restricted CUSIP(s) from unrestricted securities of the same class (OA § II.A.1.b).</li>
+      <li><strong>Interest rate (2.000%):</strong> On the <a href="#cusip-table">CUSIP Information table</a>, 2.000% is the stated annual coupon for each maturity tranche. It is applied to principal to calculate the interest payment. Holders of that CUSIP on the record date receive it. Corporate and municipal bonds of this type typically pay semi-annually (every 6 months), for example April 1 and October 1, until that row’s final maturity. The worked dates include 04/01/2020 and 07/01/2020.</li>
       <li><strong>LOR Package (OA § I.B.1):</strong> (1) Standard Issuer LOR/BLOR, (2) <strong>UK/Ireland rider</strong> (required for UK entity), (3) If applicable, non-U.S. currency rider. List CUSIPs on each rider.</li>
       <li><strong>Agent Confirmation:</strong> The transfer agent must supply Agent Confirmation by email to DTC Underwriting within <strong>10 business days after closing</strong> (OA § I.A.1), confirming features/attributes match underwriter data.</li>
       <li><strong>OFAC:</strong> Screen issuer/principals; sanctioned issuers are not DTC eligible (OA § I.D). Transfer agents also provide OFAC certifications.</li>
@@ -1125,6 +1126,7 @@
     </div>
   </div>
   <p class="cusip-example-hint">✦ Rows 1–3 are worked examples: term (T), serial (S), and capital-appreciation (C) bond CUSIP entries. Blank rows below are for practice.</p>
+  <p class="cusip-example-hint">The <span class="hotspot" data-modal="interest-rate-col" tabindex="0" role="button" onclick="openModal('modal-interest-rate-col')">2.000%</span> on each worked row is that tranche’s annual coupon. Click it for who is paid, how the rate is applied to principal, and the semi-annual schedule.</p>
   <p class="cusip-note">* <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">C</span> = Capital Appreciation, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">P</span> = Put, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">S</span> = Serial, <span class="hotspot" data-modal="issue-type-legend" tabindex="0" role="button" onclick="openModal('modal-issue-type-legend')">T</span> = Term</p>
 </div>
 
@@ -3186,6 +3188,13 @@ function resetQuiz() {
         <div class="def-word">Interest Rate</div>
         <p>The annual coupon rate (stated interest rate) payable on the security, expressed as a percentage of par value.</p>
       </div>
+      <p class="modal-section-title">The 2.000% on the worked rows</p>
+      <ul>
+        <li><strong>What it is:</strong> The stated annual interest rate (coupon) on that maturity tranche. The issuer pays it to the holders of the security.</li>
+        <li><strong>How it is used:</strong> It is applied to the principal amount to calculate the periodic interest owed.</li>
+        <li><strong>Who gets it:</strong> The investors who hold that CUSIP tranche on the record date.</li>
+        <li><strong>When:</strong> Corporate and municipal bonds of this type typically pay semi-annually (every 6 months), for example April 1 and October 1, until the final maturity on that row. The worked schedule includes 04/01/2020, 07/01/2020, and later dates.</li>
+      </ul>
       <p class="modal-section-title">What to Enter</p>
       <ul>
         <li><strong>Fixed-rate bonds:</strong> Enter the stated coupon (e.g., "5.25%" or "5.250%").</li>
