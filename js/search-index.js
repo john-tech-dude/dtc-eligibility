@@ -60,6 +60,28 @@ const searchIndex = [
     "type": "page"
   },
   {
+    "id": "dtc-eligibility-questionnaire-fieldQuizTitle",
+    "title": "Why did you choose this option?",
+    "url": "pages/forms/dtc-eligibility-questionnaire.html#fieldQuizTitle",
+    "description": "Section on DTC Eligibility Questionnaire — Enhanced Teaching Guide (June 2026 OA)",
+    "keywords": [
+      "blor",
+      "choose",
+      "cusip",
+      "did",
+      "eligibility",
+      "exhibit b",
+      "fieldquiztitle",
+      "ilor",
+      "lor",
+      "option",
+      "questionnaire",
+      "uw source",
+      "why"
+    ],
+    "type": "section"
+  },
+  {
     "id": "dtc-eligibility-questionnaire-modal-title-how-to-use",
     "title": "How to Use This Teaching Guide",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-title-how-to-use",
@@ -1425,10 +1447,11 @@ const searchIndex = [
   },
   {
     "id": "dtc-eligibility-questionnaire-modal-title-issue-type-legend",
-    "title": "Type of Issue Legend — C, P, S, T",
+    "title": "Type of Issue Legend — 144A, C, G, P, S, T",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-title-issue-type-legend",
     "description": "Section on DTC Eligibility Questionnaire — Enhanced Teaching Guide (June 2026 OA)",
     "keywords": [
+      "144a",
       "blor",
       "cusip",
       "eligibility",
@@ -2695,7 +2718,7 @@ const searchIndex = [
     "id": "modal-interest-rate-col",
     "title": "Interest Rate — Column Explained",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-interest-rate-col",
-    "description": "Interest Rate — Column Explained × Column Field Interest Rate The annual coupon rate (stated interest rate) payable on the security, expressed as a percentage of par value. What to",
+    "description": "Interest Rate — Column Explained × Column Field Interest Rate The annual coupon rate (stated interest rate) payable on the security, expressed as a percentage of par value. The 2.0",
     "keywords": [
       "annual",
       "col",
@@ -2765,16 +2788,15 @@ const searchIndex = [
   },
   {
     "id": "modal-issue-type-legend",
-    "title": "Type of Issue Legend — C, P, S, T",
+    "title": "Type of Issue Legend — 144A, C, G, P, S, T",
     "url": "pages/forms/dtc-eligibility-questionnaire.html#modal-issue-type-legend",
-    "description": "Type of Issue Legend — C, P, S, T × Legend Reference C, P, S, T Codes Single-letter codes used in the CUSIP Information table to classify the structural features of each security t",
+    "description": "Type of Issue Legend — 144A, C, G, P, S, T × Legend Reference 144A, C, G, P, S, T Codes Codes used in the CUSIP Information table to classify the structural features and regulatory",
     "keywords": [
-      "codes",
+      "144a",
       "issue",
       "legend",
       "modal",
       "reference",
-      "single-let",
       "type"
     ],
     "type": "term"
@@ -6239,10 +6261,10 @@ const searchIndex = [
     "type": "term"
   },
   {
-    "id": "dtc-canada-flash-cards",
-    "title": "DTC Canada Flash Cards — Study Guide",
-    "url": "pages/guides/dtc-canada-flash-cards.html",
-    "description": "Teaching page: DTC Canada Flash Cards — Study Guide",
+    "id": "dtc-flash-cards",
+    "title": "DTC Interview Study Guide — Flash Cards",
+    "url": "pages/guides/dtc-flash-cards.html",
+    "description": "Teaching page: DTC Interview Study Guide — Flash Cards",
     "keywords": [
       "article 8",
       "canada",
@@ -6252,8 +6274,13 @@ const searchIndex = [
       "flash",
       "flash cards",
       "guide",
+      "interview",
+      "jobs act",
+      "regulation s",
+      "rule 144a",
       "spoken answer",
-      "study"
+      "study",
+      "uncitral"
     ],
     "type": "page"
   },

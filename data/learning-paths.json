@@ -24,8 +24,8 @@
         },
         {
           "label": "DTC FLASH CARDS",
-          "href": "pages/guides/dtc-canada-flash-cards.html",
-          "module": "dtc-canada-flash-cards"
+          "href": "pages/guides/dtc-flash-cards.html",
+          "module": "dtc-flash-cards"
         },
         {
           "label": "Transfer agent ops (FAST / DWAC / DRS)",
