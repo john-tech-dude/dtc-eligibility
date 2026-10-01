@@ -12061,7 +12061,7 @@ const searchIndex = [
   },
   {
     "id": "treasury-international-bill-of-exchange-modal-title-uncitral",
-    "title": "UNCITRAL Convention on International Bills of Exchange",
+    "title": "Uncitral Convention on International Bills of Exchange",
     "url": "pages/docs/treasury-international-bill-of-exchange.html#modal-title-uncitral",
     "description": "Section on Trade Payment Wizard — International Documentary Collection & Bill of Exchange",
     "keywords": [
@@ -12625,9 +12625,9 @@ const searchIndex = [
   },
   {
     "id": "modal-uncitral",
-    "title": "UNCITRAL Convention on International Bills of Exchange",
+    "title": "Uncitral Convention on International Bills of Exchange",
     "url": "pages/docs/treasury-international-bill-of-exchange.html#modal-uncitral",
-    "description": "UNCITRAL Convention on International Bills of Exchange × International Convention UNCITRAL Convention (1988) The United Nations Convention on International Bills of Exchange and In",
+    "description": "Uncitral Convention on International Bills of Exchange × International Convention Uncitral Convention (1988) The United Nations Convention on International Bills of Exchange and In",
     "keywords": [
       "bills",
       "conventio",
