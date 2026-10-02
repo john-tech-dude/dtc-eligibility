@@ -106,12 +106,12 @@
 }
 .fc-search {
   flex: 1 1 240px;
-  min-height: 42px;
+  min-height: 38px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--ink);
-  padding: 8px 12px;
+  padding: 6px 10px;
   font: inherit;
 }
 .fc-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -296,6 +296,8 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   padding: 4px;
+  position: relative;
+  z-index: 101;
 }
 
 .region-tab {
@@ -311,6 +313,8 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
   cursor: pointer;
   border-radius: var(--radius-sm);
   transition: all var(--transition);
+  position: relative;
+  z-index: 102;
 }
 
 .region-tab:hover {
