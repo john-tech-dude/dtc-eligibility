@@ -411,7 +411,9 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
     align-items: stretch;
   }
   .fc-search {
-    min-height: 48px;
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
   
   /* Improved mobile button sizing */
@@ -535,6 +537,9 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
   }
   .fc-search {
     width: 100%;
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
   .fc-search-label {
     margin-bottom: 4px;
