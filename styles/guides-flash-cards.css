@@ -351,7 +351,6 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
 
 @media (max-width: 760px) {
   .wrap { padding: 20px 14px 88px 76px; }
-  .header-inner { padding: 16px; align-items: flex-start; }
   .toc-toggle { top: auto; bottom: 20px; transform: none; }
   .fc-card { grid-template-columns: 40px 1fr; padding: 14px; }
   .fc-answer { grid-template-columns: 1fr; }
@@ -453,4 +452,70 @@ p.fc-aside { color: var(--ink-muted); font-style: italic; }
   .page-footer { padding: 24px 20px 32px; margin-top: 32px; }
   .footer-info { gap: 6px; }
   .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+
+/* Mobile header for flash cards */
+@media (max-width: 760px) {
+  .header-inner {
+    padding: 16px 20px 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .header-brand {
+    flex: 1;
+    min-width: 0;
+  }
+  .header-text h1 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+  .header-text .sub {
+    font-size: 0.75rem;
+  }
+  .header-controls {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .header-back-link {
+    display: none;
+  }
+  .header-badge {
+    display: none;
+  }
+  .region-tabs {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .region-tab {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  .flag-icon {
+    font-size: 1rem;
+  }
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+  .fc-practice-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  .fc-tools {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fc-search {
+    width: 100%;
+  }
+  .fc-search-label {
+    margin-bottom: 4px;
+  }
 }
