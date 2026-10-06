@@ -422,18 +422,37 @@ body {
     min-width: 0;
     overflow: hidden;
   }
+  .page-header .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .page-header .header-controls,
+  .page-header .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .page-header .header-brand,
+  .page-header .header-text {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .page-header .header-text h1,
   .header-text h1 {
     font-size: 1.1rem;
     line-height: 1.3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
+  .page-header .header-text .sub,
   .header-text .sub {
     font-size: 0.75rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   .header-controls {
     gap: 8px;
@@ -1555,6 +1574,22 @@ body,
   white-space: nowrap;
   border: 0;
 }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  img, video, canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  th, td {
+    overflow-wrap: anywhere;
+  }
+}
+
 @media (max-width: 640px) {
   .diagram-box.concept-map { padding: 18px 8px 18px; }
   /* Force horizontal scroll on phones so wide SVGs stay readable */

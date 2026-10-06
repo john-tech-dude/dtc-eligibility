@@ -406,6 +406,17 @@ function checkUrlHash() {
 }
 
 // Initialize when DOM is ready
+function initResponsiveTables() {
+  document.querySelectorAll('table').forEach(function (table) {
+    var parent = table.parentElement;
+    if (!parent || parent.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'table-scroll';
+    parent.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  });
+}
+
 function initShared() {
   initTheme();
   initTOCSidebar();
@@ -413,6 +424,7 @@ function initShared() {
   initGenericRoleButtons();
   initConceptMapScrollHints();
   initReturnToTop();
+  initResponsiveTables();
   checkUrlHash();
 }
 
