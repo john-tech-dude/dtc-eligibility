@@ -1175,7 +1175,6 @@ input:focus-visible {
 @media (max-width: 480px) {
     .document-card {
         padding: 24px 20px 20px;
-        min-height: auto;
     }
     .card-icon {
         width: 48px;
