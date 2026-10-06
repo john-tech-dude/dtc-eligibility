@@ -841,6 +841,19 @@ body {
   .toc-sidebar,
   .page-sidebar {
     width: 100%;
+    padding: 60px 20px 20px;
+  }
+  .toc-sidebar h4,
+  .page-sidebar .sidebar-heading {
+    font-size: 1rem;
+  }
+  .toc-sidebar a {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+  .toc-sidebar a.sub {
+    padding-left: 16px;
+    font-size: 0.76rem;
   }
 }
 

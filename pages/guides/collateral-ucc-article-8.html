@@ -1404,11 +1404,39 @@
 
         /* ─── Responsive ─── */
         @media (max-width: 768px) {
+            .page-header {
+                overflow-x: hidden;
+            }
             .header-inner {
                 padding: 18px 20px 16px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 12px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .header-brand {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+            }
+            .header-text {
+                min-width: 0;
+                overflow: hidden;
+            }
+            .header-text h1 {
+                font-size: 1.1rem;
+                line-height: 1.3;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .header-text .sub {
+                font-size: 0.75rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             .wrap {
                 padding: 22px 16px 56px;
@@ -1424,7 +1452,8 @@
                 gap: 12px;
             }
             .toc-sidebar {
-                width: 260px;
+                width: 100%;
+                padding: 60px 20px 20px;
             }
         }
 

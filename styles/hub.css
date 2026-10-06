@@ -2045,9 +2045,14 @@ footer {
     color: #fff;
     border-color: var(--accent);
 }
-@media (max-width: 1200px) {
+@media (min-width: 1201px) {
     .toc-toggle {
         display: none;
+    }
+}
+@media (max-width: 1200px) {
+    .toc-toggle {
+        display: flex;
     }
 }
 .toc-sidebar {
@@ -2069,6 +2074,12 @@ footer {
 }
 [data-theme="dark"] .toc-sidebar {
     background: rgba(18, 18, 31, 0.88);
+}
+@media (max-width: 768px) {
+    .toc-sidebar {
+        width: 100%;
+        padding: 60px 20px 20px;
+    }
 }
 .toc-sidebar.open {
     transform: translateX(0);

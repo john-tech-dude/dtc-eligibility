@@ -245,5 +245,39 @@
 @media (max-width: 640px) {
   .lp-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .lp-card {
+    padding: 18px 16px;
+  }
+  .lp-title {
+    font-size: 1.1rem;
+  }
+  .lp-blurb {
+    font-size: 0.82rem;
+  }
+  .lp-section-title {
+    font-size: 1.1rem;
+  }
+  .lp-intro {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .lp-card {
+    padding: 16px 14px;
+  }
+  .lp-title {
+    font-size: 1rem;
+  }
+  .lp-blurb {
+    font-size: 0.8rem;
+  }
+  .lp-steps li {
+    font-size: 0.82rem;
+  }
+  .lp-start {
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
 }

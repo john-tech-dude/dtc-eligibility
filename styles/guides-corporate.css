@@ -560,12 +560,78 @@
             white-space: nowrap;
             border: 0;
         }
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
+            .page-header {
+                overflow-x: hidden;
+            }
+            .header-inner {
+                padding: 16px 20px 14px;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 12px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .header-brand {
+                flex: 1;
+                min-width: 0;
+                overflow: hidden;
+            }
+            .header-text {
+                min-width: 0;
+                overflow: hidden;
+            }
+            .header-text h1 {
+                font-size: 1.1rem;
+                line-height: 1.3;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .header-text .sub {
+                font-size: 0.75rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .header-controls {
+                gap: 8px;
+                flex-shrink: 0;
+            }
+            .header-back-link {
+                display: none;
+            }
+            .header-badge {
+                display: none;
+            }
+            .wrap {
+                padding: 24px 16px 48px;
+            }
+            .doc-frame {
+                padding: 24px 18px 32px;
+            }
+            .update-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .entity-grid {
+                grid-template-columns: 1fr;
+            }
             .diagram-box.concept-map {
                 padding: 18px 8px 14px;
             }
             .concept-map-svg {
                 min-width: 300px;
+            }
+        }
+        @media (max-width: 640px) {
+            .diagram-box.concept-map {
+                padding: 16px 6px 12px;
+            }
+            .concept-map-svg {
+                min-width: 280px;
             }
         }
 
